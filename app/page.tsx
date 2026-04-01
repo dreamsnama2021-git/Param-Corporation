@@ -1,65 +1,142 @@
-import Image from "next/image";
+// app/page.tsx
+'use client'
+
+import { motion } from 'framer-motion'
+import { useState } from 'react'
+
+const words = 'Corporate gifting that feels personal.'.split(' ')
 
 export default function Home() {
+  const [open, setOpen] = useState(false)
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="overflow-x-hidden">
+      {/* Navbar */}
+      <nav className="flex justify-between items-center p-6 md:px-12">
+        <h1 className="font-display text-xl">Elevate Gifts</h1>
+        <button onClick={() => setOpen(!open)} className="md:hidden">
+          ☰
+        </button>
+        <div className="hidden md:flex gap-8">
+          <a href="#features">Solutions</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </nav>
+
+      {open && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="md:hidden flex flex-col gap-4 px-6 pb-6"
+        >
+          <a href="#features">Solutions</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </motion.div>
+      )}
+
+      {/* Hero */}
+      <section className="px-6 md:px-12 py-20">
+        <h2 className="font-display text-[clamp(2rem,5vw,5rem)] leading-tight">
+          {words.map((word, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="inline-block mr-2"
+            >
+              {word}
+            </motion.span>
+          ))}
+        </h2>
+        <p className="mt-6 max-w-xl text-lg">
+          From onboarding kits to festive hampers, we craft memorable gifting experiences that strengthen relationships and elevate your brand.
+        </p>
+        <motion.button
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          className="mt-8 px-6 py-3 border border-black"
+        >
+          Explore Catalog
+        </motion.button>
+      </section>
+
+      {/* Stats */}
+      <section className="px-6 md:px-12 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {['500+ Clients', '1M+ Gifts Delivered', 'Pan India Reach'].map((stat, i) => (
+          <motion.div
+            key={i}
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            viewport={{ once: true }}
+            className="text-2xl"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            {stat}
+          </motion.div>
+        ))}
+      </section>
+
+      {/* Features */}
+      <section id="features" className="px-6 md:px-12 py-20">
+        <h3 className="font-display text-4xl mb-10">Our Solutions</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            'Custom Gift Kits',
+            'Employee Welcome Boxes',
+            'Festive Hampers',
+            'Luxury Executive Gifts',
+            'Eco-Friendly Gifting',
+            'Bulk Order Management'
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              viewport={{ once: true }}
+              className="p-6 border border-black"
+            >
+              {item}
+            </motion.div>
+          ))}
         </div>
-      </main>
-    </div>
-  );
+      </section>
+
+      {/* Testimonial */}
+      <section className="px-6 md:px-12 py-20">
+        <motion.blockquote
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          viewport={{ once: true }}
+          className="font-display text-3xl max-w-3xl"
+        >
+          “They turned our Diwali gifting into a premium experience our clients still talk about.”
+        </motion.blockquote>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="px-6 md:px-12 py-20">
+        <h3 className="font-display text-3xl mb-8">FAQs</h3>
+        {[
+          'Do you handle bulk orders?',
+          'Can we customize branding?',
+          'Do you deliver across India?'
+        ].map((q, i) => (
+          <details key={i} className="mb-4 border-b border-black pb-4">
+            <summary className="cursor-pointer">{q}</summary>
+            <p className="mt-2 text-sm">
+              Yes, we offer full customization and nationwide delivery with scalable operations.
+            </p>
+          </details>
+        ))}
+      </section>
+
+      {/* Footer */}
+      <footer id="contact" className="px-6 md:px-12 py-12 border-t border-black">
+        <p>© 2026 Elevate Gifts</p>
+      </footer>
+    </main>
+  )
 }
