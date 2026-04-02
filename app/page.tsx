@@ -1,7 +1,6 @@
 // app/page.tsx
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
-import Stats from '@/components/Stats'
 import Features from '@/components/Features'
 import Testimonial from '@/components/Testimonial'
 import FAQ from '@/components/FAQ'
@@ -12,7 +11,6 @@ export default function Page() {
     <main className="overflow-x-hidden">
       <Navbar />
       <Hero />
-      <Stats />
       <Features />
       <Testimonial />
       <FAQ />
