@@ -1,9 +1,16 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
-    domains: ["*"],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'www.bigimpex.com',
+        pathname: '/wp-content/uploads/**',
+      },
+    ],
+    // Optional: If you want to use quality 90, add it here:
+    // qualities: [75, 90],
   },
-};
+}
 
-export default nextConfig;
+module.exports = nextConfig

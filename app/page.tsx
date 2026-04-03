@@ -5,12 +5,16 @@ import Features from '@/components/Features'
 import Testimonial from '@/components/Testimonial'
 import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
+import GiftsByIndustry from '@/components/GiftByIndustry'
+import ProductSections from '@/components/GiftByCategories'
 
 export default function Page() {
   return (
     <main className="overflow-x-hidden">
       <Navbar />
       <Hero />
+      <GiftsByIndustry/>
+      <ProductSections/>
       <Features />
       <Testimonial />
       <FAQ />
