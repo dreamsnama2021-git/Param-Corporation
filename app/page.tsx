@@ -7,6 +7,7 @@ import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
 import GiftsByIndustry from '@/components/GiftByIndustry'
 import ProductSections from '@/components/GiftByCategories'
+import NewArrivals from '@/components/NewArrivals'
 
 export default function Page() {
   return (
@@ -15,9 +16,7 @@ export default function Page() {
       <Hero />
       <GiftsByIndustry/>
       <ProductSections/>
-      <Features />
-      <Testimonial />
-      <FAQ />
+      <NewArrivals />
       <Footer />
     </main>
   )

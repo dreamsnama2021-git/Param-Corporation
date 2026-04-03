@@ -15,51 +15,51 @@ const INDUSTRIES: IndustryItem[] = [
   {
     id: "liquor",
     title: "Liquor",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/01/liquor-gifts.jpg",
+    image: "http://www.bigimpex.com/wp-content/uploads/2024/07/Liquor.png",
     href: "/industries/liquor",
   },
   {
     id: "food-beverages",
     title: "Food and Beverages",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/01/food-gifts.jpg",
+    image: "http://www.bigimpex.com/wp-content/uploads/2024/07/Food-Beverages.png",
     href: "/industries/food-beverages",
   },
   {
     id: "education",
     title: "Education",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/01/education-gifts.jpg",
+    image: "http://www.bigimpex.com/wp-content/uploads/2024/07/Education.png",
     href: "/industries/education",
   },
   {
     id: "cement-construction",
     title: "Cement and Construction",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/01/construction-gifts.jpg",
+    image: "http://www.bigimpex.com/wp-content/uploads/2024/10/Construction.png",
     href: "/industries/cement-construction",
   },
   {
     id: "oil-energy",
     title: "Oil and Energy",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/01/oil-energy-gifts.jpg",
+    image: "http://www.bigimpex.com/wp-content/uploads/2024/10/Oil-Energy.png",
     href: "/industries/oil-energy",
   },
-  {
-    id: "pharmaceutical",
-    title: "Pharmaceutical",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/01/pharma-gifts.jpg",
-    href: "/industries/pharmaceutical",
-  },
-  {
-    id: "banking",
-    title: "Banking & Finance",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/01/banking-gifts.jpg",
-    href: "/industries/banking",
-  },
-  {
-    id: "hospitality",
-    title: "Hospitality",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/01/hospitality-gifts.jpg",
-    href: "/industries/hospitality",
-  },
+  // {
+  //   id: "pharmaceutical",
+  //   title: "Pharmaceutical",
+  //   image: "http://www.bigimpex.com/wp-content/uploads/2024/10/Oil-Energy.png",
+  //   href: "/industries/pharmaceutical",
+  // },
+  // {
+  //   id: "banking",
+  //   title: "Banking & Finance",
+  //   image: "https://www.bigimpex.com/wp-content/uploads/2024/01/banking-gifts.jpg",
+  //   href: "/industries/banking",
+  // },
+  // {
+  //   id: "hospitality",
+  //   title: "Hospitality",
+  //   image: "https://www.bigimpex.com/wp-content/uploads/2024/01/hospitality-gifts.jpg",
+  //   href: "/industries/hospitality",
+  // },
 ];
 
 export default function GiftsByIndustry() {

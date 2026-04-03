@@ -6,7 +6,7 @@ const display = Playfair_Display({ subsets: ['latin'], variable: '--font-display
 const body = DM_Sans({ subsets: ['latin'], variable: '--font-body' })
 
 export const metadata = {
-  title: 'Elevate Gifts — Corporate Gifting Redefined',
+  title: 'Param — Corporate Gifting Redefined',
   description: 'Premium corporate gifting solutions designed to impress clients and teams.'
 }
 

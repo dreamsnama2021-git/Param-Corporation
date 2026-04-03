@@ -105,7 +105,7 @@ export default function HeroWithStats() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col overflow-hidden">
+    <div className=" md:h-screen flex flex-col overflow-hidden">
       
       {/* ─── Hero Section (Full Width) ───────────────── */}
       <section className="relative h-[60vh] sm:h-[70vh] lg:h-[80vh] bg-gradient-to-br from-[#fdf4f2] via-white to-[#fff8f6] overflow-hidden">
