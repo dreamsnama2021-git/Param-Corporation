@@ -1,49 +1,15 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
-
-// ─── Data ────────────────────────────────────────────────────────────────────
-const CATEGORY_LINKS = [
-  'Employee Gifts',
-  'Office Accessories',
-  'Household Gifts',
-  'Health & Hygiene',
-  'Appreciation Gifts',
-];
-
-const SUPPORT_LINKS = [
-  'About Us',
-  'Contact Us',
-  'Careers',
-  'Privacy Policy',
-  'Terms and Conditions',
-  'Blogs',
-];
-
-const BRANDED_LINKS = [
-  'Crafted By Big',
-  'Self Gard',
-  'Moss & Adams',
-  'Hidrate Spark',
-  'Grob',
-  'Astonish',
-];
-
-const POPULAR_SEARCHES = {
-  therapy: ['Dermatology', 'Nephrology', 'Nutrition', 'Cardiology', 'Pulmonology', 'Hepatology', 'Ophthalmology', 'Gastroenterology', 'Urology'],
-  price: ['Gifts Under ₹100', 'Gifts Under ₹250', 'Gifts Under ₹500', 'Gifts Under ₹1000', 'Gifts Under ₹2000'],
-  category: [
-    'Employee Gifts', 'Office Accessories', 'Household Gifts', 'Gadgets and Electronic Gifts', 
-    'Appreciation Gifts', 'Celebration Gifts', 'Premium Gifts', 'Health & Hygiene', 
-    'Drinkware', 'Gift Sets', 'Gifts for MRs'
-  ],
-  occasion: [
-    'Diwali Gifts', 'Holi Gifts', 'New Year Gifts', 'World Health Day Gifts', 
-    'World Asthma Day Gifts', "Mother's Day Gifts", "Doctor's Day Gifts", "Children's Day Gifts",
-    'World Diabetes Day Gifts', 'World Cancer Day Gifts', 'World Heart Day Gifts'
-  ],
-};
+import { 
+  industries, 
+  categories, 
+  priceRanges, 
+  occasions, 
+  therapies 
+} from '../app/data';
 
 // ─── Social Icon Components ───────────────────────────────────────────────────
 const SocialIcon = ({ children, color }: { children: React.ReactNode; color: string }) => (
@@ -56,6 +22,11 @@ const SocialIcon = ({ children, color }: { children: React.ReactNode; color: str
 );
 
 export default function Footer() {
+  // Limit items for footer display
+  const displayCategories = categories.slice(0, 6);
+  const displayIndustries = industries.slice(0, 6);
+  const displayTherapies = therapies.slice(0, 6);
+
   return (
     <footer className="bg-[#2a2a2a] text-gray-300 pt-12 pb-6">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -104,46 +75,55 @@ export default function Footer() {
               By Category
             </h3>
             <ul className="space-y-2">
-              {CATEGORY_LINKS.map((item) => (
-                <li key={item}>
-                  <a href="#" className="flex items-center gap-2 text-sm hover:text-red-400 transition-colors group">
+              {displayCategories.map((item) => (
+                <li key={item.slug}>
+                  <Link 
+                    href={`/gift-categories/${item.slug}`}
+                    className="flex items-center gap-2 text-sm hover:text-red-400 transition-colors group"
+                  >
                     <ChevronRight size={12} className="text-red-500 group-hover:translate-x-1 transition-transform" />
-                    <span className="group-hover:text-white">{item}</span>
-                  </a>
+                    <span className="group-hover:text-white">{item.name}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 3: Support & Help */}
+          {/* Column 3: By Industry */}
           <div>
             <h3 className="text-white text-lg font-medium mb-4 pb-2 border-b-2 border-red-500 inline-block">
-              Support & Help
+              By Industry
             </h3>
             <ul className="space-y-2">
-              {SUPPORT_LINKS.map((item) => (
-                <li key={item}>
-                  <a href="#" className="flex items-center gap-2 text-sm hover:text-red-400 transition-colors group">
+              {displayIndustries.map((item) => (
+                <li key={item.slug}>
+                  <Link 
+                    href={`/industry/${item.slug}`}
+                    className="flex items-center gap-2 text-sm hover:text-red-400 transition-colors group"
+                  >
                     <ChevronRight size={12} className="text-red-500 group-hover:translate-x-1 transition-transform" />
-                    <span className="group-hover:text-white">{item}</span>
-                  </a>
+                    <span className="group-hover:text-white">{item.name}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 4: Branded Corporate Gifts */}
+          {/* Column 4: By Therapy */}
           <div>
             <h3 className="text-white text-lg font-medium mb-4 pb-2 border-b-2 border-red-500 inline-block">
-              Branded Corporate Gifts
+              By Therapy
             </h3>
             <ul className="space-y-2">
-              {BRANDED_LINKS.map((item) => (
-                <li key={item}>
-                  <a href="#" className="flex items-center gap-2 text-sm hover:text-red-400 transition-colors group">
+              {displayTherapies.map((item) => (
+                <li key={item.slug}>
+                  <Link 
+                    href={`/therapy/${item.slug}`}
+                    className="flex items-center gap-2 text-sm hover:text-red-400 transition-colors group"
+                  >
                     <ChevronRight size={12} className="text-red-500 group-hover:translate-x-1 transition-transform" />
-                    <span className="group-hover:text-white">{item}</span>
-                  </a>
+                    <span className="group-hover:text-white">{item.name}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -158,10 +138,10 @@ export default function Footer() {
           <div className="pb-4 border-b border-red-600/50">
             <h4 className="text-white text-sm font-medium mb-2">By Therapy</h4>
             <div className="flex flex-wrap gap-x-2 gap-y-1 text-xs">
-              {POPULAR_SEARCHES.therapy.map((item, idx) => (
-                <span key={item}>
-                  <a href="#" className="hover:text-red-400 transition-colors">{item}</a>
-                  {idx < POPULAR_SEARCHES.therapy.length - 1 && <span className="mx-1 text-gray-500">|</span>}
+              {therapies.map((item, idx) => (
+                <span key={item.slug}>
+                  <Link href={`/therapy/${item.slug}`} className="hover:text-red-400 transition-colors">{item.name}</Link>
+                  {idx < therapies.length - 1 && <span className="mx-1 text-gray-500">|</span>}
                 </span>
               ))}
             </div>
@@ -171,10 +151,10 @@ export default function Footer() {
           <div className="pb-4 border-b border-red-600/50">
             <h4 className="text-white text-sm font-medium mb-2">By Price</h4>
             <div className="flex flex-wrap gap-x-2 gap-y-1 text-xs">
-              {POPULAR_SEARCHES.price.map((item, idx) => (
-                <span key={item}>
-                  <a href="#" className="hover:text-red-400 transition-colors">{item}</a>
-                  {idx < POPULAR_SEARCHES.price.length - 1 && <span className="mx-1 text-gray-500">|</span>}
+              {priceRanges.map((item, idx) => (
+                <span key={item.slug}>
+                  <Link href={`/price/${item.slug}`} className="hover:text-red-400 transition-colors">{item.name}</Link>
+                  {idx < priceRanges.length - 1 && <span className="mx-1 text-gray-500">|</span>}
                 </span>
               ))}
             </div>
@@ -184,10 +164,10 @@ export default function Footer() {
           <div className="pb-4 border-b border-red-600/50">
             <h4 className="text-white text-sm font-medium mb-2">By Category</h4>
             <div className="flex flex-wrap gap-x-2 gap-y-1 text-xs">
-              {POPULAR_SEARCHES.category.map((item, idx) => (
-                <span key={item}>
-                  <a href="#" className="hover:text-red-400 transition-colors">{item}</a>
-                  {idx < POPULAR_SEARCHES.category.length - 1 && <span className="mx-1 text-gray-500">|</span>}
+              {categories.map((item, idx) => (
+                <span key={item.slug}>
+                  <Link href={`/gift-categories/${item.slug}`} className="hover:text-red-400 transition-colors">{item.name}</Link>
+                  {idx < categories.length - 1 && <span className="mx-1 text-gray-500">|</span>}
                 </span>
               ))}
             </div>
@@ -197,10 +177,10 @@ export default function Footer() {
           <div className="pb-4">
             <h4 className="text-white text-sm font-medium mb-2">By Occasion</h4>
             <div className="flex flex-wrap gap-x-2 gap-y-1 text-xs">
-              {POPULAR_SEARCHES.occasion.map((item, idx) => (
-                <span key={item}>
-                  <a href="#" className="hover:text-red-400 transition-colors">{item}</a>
-                  {idx < POPULAR_SEARCHES.occasion.length - 1 && <span className="mx-1 text-gray-500">|</span>}
+              {occasions.map((item, idx) => (
+                <span key={item.slug}>
+                  <Link href={`/occasion/${item.slug}`} className="hover:text-red-400 transition-colors">{item.name}</Link>
+                  {idx < occasions.length - 1 && <span className="mx-1 text-gray-500">|</span>}
                 </span>
               ))}
             </div>
