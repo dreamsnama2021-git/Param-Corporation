@@ -75,7 +75,7 @@ export default function BrandsPage() {
               <Home className="w-3 h-3" /> Home
             </Link>
             <span>»</span>
-            <span className="text-[#ff5757]">Brands</span>
+            <span className="text-[var(--clr-primary)]">Brands</span>
           </div>
         </div>
       </section>
@@ -87,7 +87,7 @@ export default function BrandsPage() {
             {brands.map((brand) => (
               <div
                 key={brand.id}
-                className="bg-white border border-gray-200 rounded-lg p-6 md:p-8 flex items-center justify-center hover:shadow-lg hover:border-[#ff5757]/30 transition-all duration-300 group cursor-pointer"
+                className="bg-white border border-gray-200 rounded-lg p-6 md:p-8 flex items-center justify-center hover:shadow-lg hover:border-[var(--clr-primary)]/30 transition-all duration-300 group cursor-pointer"
               >
                 <div className="relative w-full h-12 md:h-16 flex items-center justify-center">
                   {/* If you have actual logo images, use Image component */}
@@ -113,7 +113,7 @@ export default function BrandsPage() {
         <div className="max-w-7xl mx-auto px-4 flex justify-center">
           <Link
             href="/contact-us"
-            className="bg-[#ff5757] hover:bg-[#e64c4c] text-white px-8 py-3 rounded-md font-medium transition-colors shadow-md hover:shadow-lg text-sm tracking-wide"
+            className="bg-[var(--clr-primary)] hover:bg-[var(--clr-secondary)] text-white px-8 py-3 rounded-md font-medium transition-colors shadow-md hover:shadow-lg text-sm tracking-wide"
           >
             Enquiry Here
           </Link>

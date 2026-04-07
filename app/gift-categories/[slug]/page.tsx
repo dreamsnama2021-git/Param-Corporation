@@ -194,7 +194,7 @@ export default function CategoryPage() {
               <Home className="w-3 h-3" /> Home
             </Link>
             <span>»</span>
-            <span className="text-[#ff5757] capitalize">{slug.replace(/-/g, ' ')}</span>
+            <span className="text-[var(--clr-primary)] capitalize">{slug.replace(/-/g, ' ')}</span>
           </div>
         </div>
       </section>
@@ -343,7 +343,7 @@ export default function CategoryPage() {
                   <li key={category.slug}>
                     <Link 
                       href={`/gift-categories/${category.slug}`}
-                      className={`text-sm hover:text-[#ff5757] transition-colors ${slug === category.slug ? 'text-[#ff5757] font-medium' : 'text-gray-700'}`}
+                      className={`text-sm hover:text-[var(--clr-primary)] transition-colors ${slug === category.slug ? 'text-[var(--clr-primary)] font-medium' : 'text-gray-700'}`}
                     >
                       {category.name}
                     </Link>

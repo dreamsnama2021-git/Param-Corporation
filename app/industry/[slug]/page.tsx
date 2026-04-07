@@ -172,7 +172,7 @@ export default function IndustryPage() {
               <Home className="w-3 h-3" /> Home
             </Link>
             <span>»</span>
-            <span className="text-[#ff5757]">{formatIndustryName(industry.slug)}</span>
+            <span className="text-[var(--clr-primary)]">{formatIndustryName(industry.slug)}</span>
           </div>
         </div>
       </section>

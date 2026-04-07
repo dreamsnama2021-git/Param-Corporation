@@ -84,7 +84,7 @@ export default function ContactUs() {
         <Home className="w-3 h-3" /> Home
       </Link>
       <span>»</span>
-      <span className="text-[#ff5757]">Contact Us</span>
+      <span className="text-[var(--clr-primary)]">Contact Us</span>
     </div>
   </div>
 </section>
@@ -98,7 +98,7 @@ export default function ContactUs() {
             <defs>
               <pattern id="honeycomb" x="0" y="0" width="56" height="100" patternUnits="userSpaceOnUse">
                 <path d="M28 66L0 50V16L28 0l28 16v34L28 66zM0 50l28 16 28-16M28 0v16M0 16l28 16 28-16" 
-                      fill="none" stroke="#ff5757" strokeWidth="1"/>
+                      fill="none" stroke="var(--clr-primary)" strokeWidth="1"/>
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#honeycomb)"/>
@@ -114,7 +114,7 @@ export default function ContactUs() {
               <div className="bg-white rounded-lg shadow-md p-6 border border-gray-100">
                 <h3 className="text-xl font-bold text-gray-900 mb-6">Address</h3>
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-[#ff5757] flex-shrink-0 mt-1" />
+                  <MapPin className="w-5 h-5 text-[var(--clr-primary)] flex-shrink-0 mt-1" />
                   <p className="text-gray-600 text-sm leading-relaxed">
                     5th Floor, ABM House, Linking Rd,<br />
                     Bandra West, Mumbai,<br />
@@ -131,8 +131,8 @@ export default function ContactUs() {
                   <div className="space-y-3">
                     {['+91 86579 58081', '+91 86570 29709', '+91 8828552305'].map((phone, i) => (
                       <a key={i} href={`tel:${phone.replace(/\s/g, '')}`} 
-                         className="flex items-center gap-2 text-gray-600 hover:text-[#ff5757] text-sm transition-colors">
-                        <Phone className="w-4 h-4 text-[#ff5757]" />
+                         className="flex items-center gap-2 text-gray-600 hover:text-[var(--clr-primary)] text-sm transition-colors">
+                        <Phone className="w-4 h-4 text-[var(--clr-primary)]" />
                         {phone}
                       </a>
                     ))}
@@ -143,8 +143,8 @@ export default function ContactUs() {
                 <div className="bg-white rounded-lg shadow-md p-6 border border-gray-100">
                   <h3 className="text-lg font-bold text-gray-900 mb-4">Email Us</h3>
                   <a href="mailto:sales@bigimpex.com" 
-                     className="flex items-center gap-2 text-gray-600 hover:text-[#ff5757] text-sm transition-colors">
-                    <Mail className="w-4 h-4 text-[#ff5757]" />
+                     className="flex items-center gap-2 text-gray-600 hover:text-[var(--clr-primary)] text-sm transition-colors">
+                    <Mail className="w-4 h-4 text-[var(--clr-primary)]" />
                     sales@bigimpex.com
                   </a>
                 </div>
@@ -184,7 +184,7 @@ export default function ContactUs() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#ff5757] focus:ring-2 focus:ring-[#ff5757]/20 outline-none transition-all text-sm"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--clr-primary)] focus:ring-2 focus:ring-[var(--clr-primary)]/20 outline-none transition-all text-sm"
                   />
                 </div>
                 
@@ -195,7 +195,7 @@ export default function ContactUs() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#ff5757] focus:ring-2 focus:ring-[#ff5757]/20 outline-none transition-all text-sm"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--clr-primary)] focus:ring-2 focus:ring-[var(--clr-primary)]/20 outline-none transition-all text-sm"
                   />
                 </div>
                 
@@ -205,7 +205,7 @@ export default function ContactUs() {
                     placeholder="Phone Number"
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#ff5757] focus:ring-2 focus:ring-[#ff5757]/20 outline-none transition-all text-sm"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--clr-primary)] focus:ring-2 focus:ring-[var(--clr-primary)]/20 outline-none transition-all text-sm"
                   />
                 </div>
                 
@@ -216,13 +216,13 @@ export default function ContactUs() {
                     rows={5}
                     value={formData.query}
                     onChange={(e) => setFormData({...formData, query: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#ff5757] focus:ring-2 focus:ring-[#ff5757]/20 outline-none transition-all text-sm resize-none"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--clr-primary)] focus:ring-2 focus:ring-[var(--clr-primary)]/20 outline-none transition-all text-sm resize-none"
                   />
                 </div>
                 
                 <button
                   type="submit"
-                  className="w-full bg-[#ff5757] hover:bg-[#e64c4c] text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+                  className="w-full bg-[var(--clr-primary)] hover:bg-[var(--clr-secondary)] text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
                 >
                   <Send className="w-4 h-4" />
                   Send Message
@@ -242,7 +242,7 @@ export default function ContactUs() {
               onClick={prevSlide}
               disabled={currentSlide === 0}
               className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-gray-800 transition-colors ${
-                currentSlide === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#ff5757] hover:text-white'
+                currentSlide === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[var(--clr-primary)] hover:text-white'
               }`}
               aria-label="Previous product"
             >
@@ -253,7 +253,7 @@ export default function ContactUs() {
               onClick={nextSlide}
               disabled={currentSlide >= maxSlide}
               className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-gray-800 transition-colors ${
-                currentSlide >= maxSlide ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#ff5757] hover:text-white'
+                currentSlide >= maxSlide ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[var(--clr-primary)] hover:text-white'
               }`}
               aria-label="Next product"
             >

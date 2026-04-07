@@ -87,7 +87,7 @@ export default function ZexcelPage() {
               <Home className="w-3 h-3" /> Home
             </Link>
             <span>»</span>
-            <span className="text-[#ff5757]">Zexcel</span>
+            <span className="text-[var(--clr-primary)]">Zexcel</span>
           </div>
         </div>
       </section>
@@ -106,13 +106,13 @@ export default function ZexcelPage() {
               <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200">
                 <div className="text-center">
                   <div className="text-4xl font-black text-gray-800 mb-2">ZEXCEL</div>
-                  <div className="text-sm text-[#e8402a] font-bold tracking-widest">MEDICAL COMMUNICATIONS</div>
+                  <div className="text-sm text-[var(--clr-secondary)] font-bold tracking-widest">MEDICAL COMMUNICATIONS</div>
                   <div className="text-xs text-gray-500 mt-2 italic">Your extended brand team!</div>
                   <div className="text-xs text-gray-400 mt-1">A division of BigImpex</div>
                 </div>
               </div>
             </div>
-            <button className="bg-[#ff5757] hover:bg-[#e64c4c] text-white px-6 py-2.5 rounded-md font-medium text-sm flex items-center gap-2 transition-colors shadow-md">
+            <button className="bg-[var(--clr-primary)] hover:bg-[var(--clr-secondary)] text-white px-6 py-2.5 rounded-md font-medium text-sm flex items-center gap-2 transition-colors shadow-md">
               <Download className="w-4 h-4" />
               Download Brochure
             </button>
@@ -136,8 +136,8 @@ export default function ZexcelPage() {
           
           {/* Strategic Solutions */}
           <div className="bg-white rounded-xl shadow-sm p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start">
-            <div className="flex-shrink-0 w-16 h-16 bg-red-50 rounded-full flex items-center justify-center">
-              <svg className="w-8 h-8 text-[#ff5757]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex-shrink-0 w-16 h-16 bg-[var(--clr-secondary)]/20 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 text-[var(--clr-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m12.728 0l-.707.707M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM12 8v4l3 3" />
               </svg>
             </div>
@@ -151,8 +151,8 @@ export default function ZexcelPage() {
 
           {/* Doctor Engagement */}
           <div className="bg-white rounded-xl shadow-sm p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start">
-            <div className="flex-shrink-0 w-16 h-16 bg-red-50 rounded-full flex items-center justify-center">
-              <svg className="w-8 h-8 text-[#ff5757]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex-shrink-0 w-16 h-16 bg-[var(--clr-secondary)]/20 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 text-[var(--clr-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 11v4m0 0l-2-2m2 2l2-2" />
               </svg>
@@ -167,8 +167,8 @@ export default function ZexcelPage() {
 
           {/* Patient Engagement */}
           <div className="bg-white rounded-xl shadow-sm p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start">
-            <div className="flex-shrink-0 w-16 h-16 bg-red-50 rounded-full flex items-center justify-center">
-              <svg className="w-8 h-8 text-[#ff5757]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex-shrink-0 w-16 h-16 bg-[var(--clr-secondary)]/20 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 text-[var(--clr-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 4v4m0 0l-2-2m2 2l2-2" />
               </svg>
@@ -234,7 +234,7 @@ export default function ZexcelPage() {
               </div>
               <div className="p-4 border-t border-gray-100 flex items-center justify-between">
                 <span className="font-semibold text-sm text-gray-800">{specialty.title}</span>
-                <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#ff5757] group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[var(--clr-primary)] group-hover:translate-x-1 transition-all" />
               </div>
             </Link>
           ))}

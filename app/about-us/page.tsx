@@ -95,22 +95,22 @@ const timelineData = [
 // Statistics Data
 const stats = [
   {
-    icon: <Building2 className="w-8 h-8 text-[#ff5757]" />,
+    icon: <Building2 className="w-8 h-8 text-[var(--clr-primary)]" />,
     number: "10,000+",
     label: "Products",
   },
   {
-    icon: <Users className="w-8 h-8 text-[#ff5757]" />,
+    icon: <Users className="w-8 h-8 text-[var(--clr-primary)]" />,
     number: "300+",
     label: "Corporate Customers",
   },
   {
-    icon: <Calendar className="w-8 h-8 text-[#ff5757]" />,
+    icon: <Calendar className="w-8 h-8 text-[var(--clr-primary)]" />,
     number: "1,000+",
     label: "Corporate Orders Annually",
   },
   {
-    icon: <Award className="w-8 h-8 text-[#ff5757]" />,
+    icon: <Award className="w-8 h-8 text-[var(--clr-primary)]" />,
     number: "100+",
     label: "Experienced Employees",
   },
@@ -179,7 +179,7 @@ export default function AboutUs() {
               <Home className="w-3 h-3" /> Home
             </Link>
             <span>»</span>
-            <span className="text-[#ff5757]">About Us</span>
+            <span className="text-[var(--clr-primary)]">About Us</span>
           </div>
         </div>
       </section>
@@ -214,7 +214,7 @@ export default function AboutUs() {
 
           <div className="relative">
             {/* Center Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-red-200"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-[var(--clr-secondary)]"></div>
 
             {/* Timeline Items */}
             <div className="space-y-12">
@@ -255,14 +255,14 @@ export default function AboutUs() {
                       >
                         <Calendar
                           className={`w-5 h-5 transition-all duration-500 ${
-                            isVisible ? "text-[#ff5757]" : "text-gray-400"
+                            isVisible ? "text-[var(--clr-primary)]" : "text-gray-400"
                           }`}
                         />
                       </div>
                       {/* Year Label */}
                       <div
                         className={`absolute top-12 ${item.position === "left" ? "left-1/2 ml-2" : "right-1/2 mr-2"} font-bold text-sm transition-colors duration-500 ${
-                          isVisible ? "text-[#ff5757]" : "text-gray-400"
+                          isVisible ? "text-[var(--clr-primary)]" : "text-gray-400"
                         }`}
                       >
                         {item.year}

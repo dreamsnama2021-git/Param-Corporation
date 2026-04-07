@@ -139,7 +139,7 @@ export default function PricePage() {
               <Home className="w-3 h-3" /> Home
             </Link>
             <span>»</span>
-            <span className="text-[#ff5757]">{priceRange.name.replace('Corporate Gifts Under ', 'Under ')}</span>
+            <span className="text-[var(--clr-primary)]">{priceRange.name.replace('Corporate Gifts Under ', 'Under ')}</span>
           </div>
         </div>
       </section>

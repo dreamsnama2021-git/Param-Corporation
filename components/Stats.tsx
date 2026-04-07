@@ -15,7 +15,7 @@ export default function Stats() {
   return (
     <section className="bg-[#1a1a2e] relative overflow-hidden">
       {/* Decorative line accent */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#e8402a] to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[var(--clr-secondary)] to-transparent" />
  
       {/* Background pattern */}
       <div
@@ -35,7 +35,7 @@ export default function Stats() {
               style={{ animationDelay: `${i * 100}ms` }}
             >
               {/* Icon circle */}
-              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#e8402a]/10 border border-[#e8402a]/20 flex items-center justify-center text-2xl md:text-3xl mb-4 group-hover:bg-[#e8402a]/20 group-hover:scale-110 transition-all duration-300">
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[var(--clr-secondary)]/10 border border-[var(--clr-secondary)]/20 flex items-center justify-center text-2xl md:text-3xl mb-4 group-hover:bg-[var(--clr-secondary)]/20 group-hover:scale-110 transition-all duration-300">
                 {stat.icon}
               </div>
  
@@ -50,14 +50,14 @@ export default function Stats() {
               </div>
  
               {/* Accent dot */}
-              <div className="w-1.5 h-1.5 rounded-full bg-[#e8402a] mt-3 group-hover:scale-150 transition-transform duration-300" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[var(--clr-secondary)] mt-3 group-hover:scale-150 transition-transform duration-300" />
             </div>
           ))}
         </div>
       </div>
  
       {/* Bottom accent */}
-      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#e8402a]/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[var(--clr-secondary)]/40 to-transparent" />
     </section>
   );
 }

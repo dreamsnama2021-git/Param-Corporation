@@ -145,7 +145,7 @@ export default function OccasionPage() {
               <Home className="w-3 h-3" /> Home
             </Link>
             <span>»</span>
-            <span className="text-[#ff5757]">{occasion.name}</span>
+            <span className="text-[var(--clr-primary)]">{occasion.name}</span>
           </div>
         </div>
       </section>

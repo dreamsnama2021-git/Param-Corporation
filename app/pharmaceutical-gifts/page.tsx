@@ -110,7 +110,7 @@ export default function PharmaceuticalGiftsPage() {
               <Home className="w-3 h-3" /> Home
             </Link>
             <span>»</span>
-            <span className="text-[#ff5757]">Pharmaceutical Gifts</span>
+            <span className="text-[var(--clr-primary)]">Pharmaceutical Gifts</span>
           </div>
         </div>
       </section>

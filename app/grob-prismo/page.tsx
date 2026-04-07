@@ -104,7 +104,7 @@ export default function GrobPrismoPage() {
               <Home className="w-3 h-3" /> Home
             </Link>
             <span>»</span>
-            <span className="text-[#ff5757]">Grob Prismo</span>
+            <span className="text-[var(--clr-primary)]">Grob Prismo</span>
           </div>
         </div>
       </section>
@@ -123,14 +123,14 @@ export default function GrobPrismoPage() {
               <div className="text-center">
                 <div className="text-5xl font-black tracking-tight mb-2">
                   <span className="text-orange-500">GR</span>
-                  <span className="text-red-500">Ö</span>
+                  <span className="text-[var(--clr-secondary)]/200">Ö</span>
                   <span className="text-orange-500">B</span>
                 </div>
                 <div className="text-2xl text-teal-500 font-script italic">prismo</div>
                 <div className="text-xs text-gray-500 mt-2 tracking-widest uppercase">Desk Essentials Reimagined</div>
               </div>
             </div>
-            <button className="bg-[#ff5757] hover:bg-[#e64c4c] text-white px-6 py-2.5 rounded-md font-medium text-sm flex items-center gap-2 transition-colors shadow-md">
+            <button className="bg-[var(--clr-primary)] hover:bg-[var(--clr-secondary)] text-white px-6 py-2.5 rounded-md font-medium text-sm flex items-center gap-2 transition-colors shadow-md">
               <Download className="w-4 h-4" />
               Download Brochure
             </button>

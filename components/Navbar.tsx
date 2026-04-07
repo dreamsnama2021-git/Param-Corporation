@@ -114,24 +114,37 @@ export default function Navbar() {
                       <div className="grid grid-cols-5 gap-6">
 
                         {/* Column */}
-                        {[industries, categories, priceRanges, occasions, therapies].map((group, idx) => (
-                          <div key={idx}>
-                            <h3 className="font-bold text-xs uppercase mb-3 border-b pb-2">
-                              {["Industry","Category","Price","Occasion","Therapy"][idx]}
-                            </h3>
-                            <ul className="space-y-1.5">
-                              {group.slice(0,6).map((item:any) => (
-                                <li key={item.slug}>
-                                  <Link
-                                    href="#"
-                                    className="text-xs text-gray-600 hover:text-[var(--clr-primary)]">
-                                    {item.name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
+                 {[industries, categories, priceRanges, occasions, therapies].map((group, idx) => {
+
+  const basePaths = [
+    "/industry",
+    "/gift-categories",
+    "/by-price",
+    "/occasion",
+    "/therapy",
+  ];
+
+  return (
+    <div key={idx}>
+      <h3 className="font-bold text-xs uppercase mb-3 border-b pb-2">
+        {["Industry","Category","Price","Occasion","Therapy"][idx]}
+      </h3>
+
+      <ul className="space-y-1.5">
+        {group.slice(0,6).map((item:any) => (
+          <li key={item.slug}>
+            <Link
+              href={`${basePaths[idx]}/${item.slug}`}
+              className="text-xs text-gray-600 hover:text-[var(--clr-primary)]"
+            >
+              {item.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+})}
 
                       </div>
                     </div>
