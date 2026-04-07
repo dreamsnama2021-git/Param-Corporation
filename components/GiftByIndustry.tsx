@@ -42,24 +42,6 @@ const INDUSTRIES: IndustryItem[] = [
     image: "http://www.bigimpex.com/wp-content/uploads/2024/10/Oil-Energy.png",
     href: "/industries/oil-energy",
   },
-  // {
-  //   id: "pharmaceutical",
-  //   title: "Pharmaceutical",
-  //   image: "http://www.bigimpex.com/wp-content/uploads/2024/10/Oil-Energy.png",
-  //   href: "/industries/pharmaceutical",
-  // },
-  // {
-  //   id: "banking",
-  //   title: "Banking & Finance",
-  //   image: "https://www.bigimpex.com/wp-content/uploads/2024/01/banking-gifts.jpg",
-  //   href: "/industries/banking",
-  // },
-  // {
-  //   id: "hospitality",
-  //   title: "Hospitality",
-  //   image: "https://www.bigimpex.com/wp-content/uploads/2024/01/hospitality-gifts.jpg",
-  //   href: "/industries/hospitality",
-  // },
 ];
 
 export default function GiftsByIndustry() {
@@ -69,99 +51,114 @@ export default function GiftsByIndustry() {
 
   const checkScrollButtons = () => {
     const container = scrollContainerRef.current;
-    if (container) {
-      setCanScrollLeft(container.scrollLeft > 0);
-      setCanScrollRight(
-        container.scrollLeft < container.scrollWidth - container.clientWidth - 10
-      );
-    }
+    if (!container) return;
+
+    setCanScrollLeft(container.scrollLeft > 0);
+    setCanScrollRight(
+      container.scrollLeft <
+        container.scrollWidth - container.clientWidth - 10
+    );
   };
 
   const scroll = (direction: "left" | "right") => {
     const container = scrollContainerRef.current;
-    if (container) {
-      const scrollAmount = 300;
-      container.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-      setTimeout(checkScrollButtons, 300);
-    }
+    if (!container) return;
+
+    container.scrollBy({
+      left: direction === "left" ? -300 : 300,
+      behavior: "smooth",
+    });
+
+    setTimeout(checkScrollButtons, 300);
   };
 
   return (
-    <section className="w-full bg-white py-12 sm:py-16 lg:py-20">
-      {/* Intro Section */}
+    <section className="w-full bg-[var(--clr-bg-cream)] py-12 sm:py-16 lg:py-20">
+
+      {/* ─── INTRO ───────────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-gray-900 mb-6">
+
+        <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-bold text-center 
+        text-[var(--clr-text-dark)] mb-6">
           Best Corporate Gifting Company in Mumbai and India
         </h2>
-        <div className="max-w-4xl mx-auto text-center text-gray-600 text-sm sm:text-base leading-relaxed space-y-4">
+
+        <div className="max-w-4xl mx-auto text-center 
+        text-[var(--clr-text-muted)] text-sm sm:text-base space-y-4">
+
           <p>
-            BIG Impex is a <strong className="text-gray-900">leading provider of employee gifts</strong> in Mumbai. 
-            We specialize in supplying high-quality gifts to industries such as pharmaceuticals, banking, and 
-            hospitality all over India. Since our establishment in 2003, we have been providing gifting solutions 
-            to esteemed clients like Sun Pharmaceuticals Ltd., Dr. Reddy&apos;s Ltd., Abbott India, Torrent 
-            Pharmaceuticals Ltd., and HDFC Bank.
-          </p>
-          <p>
-            We are dedicated to delivering products that not only align with your brand&apos;s values but also 
-            leave a lasting impression. BIG Imports and Gifts is your trusted partner for corporate gifting 
+            BIG Impex is a{" "}
+            <span className="text-[var(--clr-primary)] font-semibold">
+              leading provider of employee gifts
+            </span>{" "}
             in Mumbai.
+          </p>
+
+          <p>
+            We deliver gifting solutions aligned with your brand and create lasting impressions.
           </p>
         </div>
       </div>
 
-      {/* Gifts By Industry Section */}
+      {/* ─── HEADER ───────────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header with Navigation */}
+
         <div className="flex items-center justify-between mb-8">
-          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
+
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold 
+          text-[var(--clr-text-dark)]">
             Gifts By Industry
           </h3>
-          
+
           <div className="flex gap-2">
+
             <button
               onClick={() => scroll("left")}
               disabled={!canScrollLeft}
-              className={`p-2 rounded-full border-2 transition-all duration-200 ${
+              className={`p-2 rounded-full border transition ${
                 canScrollLeft
-                  ? "border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white cursor-pointer"
-                  : "border-gray-300 text-gray-300 cursor-not-allowed"
+                  ? "border-[var(--clr-primary)] text-[var(--clr-primary)] hover:bg-[var(--clr-primary)] hover:text-white"
+                  : "border-[var(--clr-border-light)] text-[var(--clr-text-muted)] cursor-not-allowed"
               }`}
-              aria-label="Scroll left"
             >
-              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
+
             <button
               onClick={() => scroll("right")}
               disabled={!canScrollRight}
-              className={`p-2 rounded-full border-2 transition-all duration-200 ${
+              className={`p-2 rounded-full border transition ${
                 canScrollRight
-                  ? "border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white cursor-pointer"
-                  : "border-gray-300 text-gray-300 cursor-not-allowed"
+                  ? "border-[var(--clr-primary)] text-[var(--clr-primary)] hover:bg-[var(--clr-primary)] hover:text-white"
+                  : "border-[var(--clr-border-light)] text-[var(--clr-text-muted)] cursor-not-allowed"
               }`}
-              aria-label="Scroll right"
             >
-              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+              <ChevronRight className="w-5 h-5" />
             </button>
+
           </div>
         </div>
 
-        {/* Carousel Container */}
+        {/* ─── CAROUSEL ───────────────── */}
         <div
           ref={scrollContainerRef}
           onScroll={checkScrollButtons}
-          className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide pb-4 snap-x snap-mandatory"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 snap-x snap-mandatory"
         >
+
           {INDUSTRIES.map((industry) => (
             <a
               key={industry.id}
               href={industry.href}
               className="flex-shrink-0 w-[160px] sm:w-[200px] lg:w-[220px] snap-start group"
             >
-              <div className="relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden border-4 border-gray-100 shadow-lg mb-3 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
+
+              <div className="relative aspect-square rounded-2xl overflow-hidden 
+              border border-[var(--clr-border-light)] 
+              shadow-[0_10px_30px_rgba(15,143,191,0.15)] 
+              mb-3 transition-all duration-300 
+              group-hover:scale-105 group-hover:shadow-[0_20px_50px_rgba(15,143,191,0.25)]">
+
                 <Image
                   src={industry.image}
                   alt={industry.title}
@@ -170,37 +167,36 @@ export default function GiftsByIndustry() {
                   sizes="(max-width: 640px) 160px, (max-width: 1024px) 200px, 220px"
                   unoptimized
                 />
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+
+                {/* Overlay */}
+                <div className="absolute inset-0 
+                bg-transparent 
+                group-hover:bg-[var(--clr-primary)/20] transition" />
+
               </div>
-              <h4 className="text-center text-sm sm:text-base font-medium text-gray-800 group-hover:text-[#e8402a] transition-colors duration-200 line-clamp-2">
+
+              <h4 className="text-center text-sm sm:text-base font-medium 
+              text-[var(--clr-text-dark)] 
+              group-hover:text-[var(--clr-primary)] transition">
                 {industry.title}
               </h4>
+
             </a>
           ))}
         </div>
 
-        {/* Mobile Scroll Indicator */}
+        {/* MOBILE DOTS */}
         <div className="sm:hidden flex justify-center mt-4 gap-1">
           {INDUSTRIES.map((_, idx) => (
             <div
               key={idx}
-              className="w-1.5 h-1.5 rounded-full bg-gray-300"
+              className="w-1.5 h-1.5 rounded-full 
+              bg-[var(--clr-border-light)]"
             />
           ))}
         </div>
-      </div>
 
-      {/* Add custom scrollbar hide styles */}
-      <style jsx>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
+      </div>
     </section>
   );
 }
