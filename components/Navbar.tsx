@@ -6,12 +6,10 @@ import { ChevronDown, Menu, X, Search, Phone, Mail } from "lucide-react";
 import {
   categories,
   therapies,
-  // industries, // Replace with personalizedGifts if available in data.ts
-  // priceRanges, // Replace with digitalGifts if available in data.ts
-  personalizedGifts, // Ensure this is exported from data.ts
+  personalizedGifts,
   occasions,
-  digitalGifts, // Ensure this is exported from data.ts
-} from "../app/data";
+  digitalGifts,
+} from "@/app/data"; // Changed to absolute import
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -32,8 +30,17 @@ export default function Navbar() {
     { label: "About Us", href: "/about-us" },
     { label: "Koru", href: "/koru" },
     { label: "Medipride", href: "/medipride" },
-    { label: " Case Study", href: "/case-study" },
+    { label: "Case Study", href: "/case-study" },
     { label: "Contact Us", href: "/contact-us" },
+  ];
+
+  // Mega menu column configuration (Order: Categories → Therapy → Personalized → Occasion → Digital)
+  const megaMenuColumns = [
+    { title: "Categories", data: categories, path: "/categories" },
+    { title: "Therapy", data: therapies, path: "/therepy" },
+    { title: "Personalized Gifts", data: personalizedGifts, path: "/personalized-gifts" },
+    { title: "Occasion", data: occasions, path: "/occasion" },
+    { title: "Digital Gifts", data: digitalGifts, path: "/digital-gifts" },
   ];
 
   return (
@@ -101,7 +108,7 @@ export default function Navbar() {
 
               {/* Desktop Menu */}
               <ul className="hidden lg:flex items-center gap-2">
-                {/* PRODUCTS */}
+                {/* PRODUCTS MEGA MENU */}
                 <li
                   className="relative"
                   onMouseEnter={() => setActiveDropdown("products")}
@@ -121,55 +128,29 @@ export default function Navbar() {
 
                   {activeDropdown === "products" && (
                     <div
-                      className="absolute top-full left-1/2 -translate-x-1/2 w-[900px] 
-                    bg-white rounded-xl shadow-2xl border border-[var(--clr-border-light)] p-6"
+                      className="absolute top-full left-1/2 -translate-x-1/2 w-[1000px] 
+                    bg-white rounded-xl shadow-2xl border border-[var(--clr-border-light)] p-6 z-50"
                     >
                       <div className="grid grid-cols-5 gap-6">
-                        {/* Reordered Columns: 1.Categories 2.Therapy 3.Personalized Gifts 4.Occasion 5.Digital Gifts */}
-                        {[
-                          categories,
-                          therapies,
-                          personalizedGifts,
-                          occasions,
-                          digitalGifts,
-                        ].map((group, idx) => {
-                          const basePaths = [
-                            "/categories",
-                            "/therapy",
-                            "/personalized-gifts",
-                            "/occasion",
-                            "/digital-gifts",
-                          ];
-
-                          const labels = [
-                            "Categories",
-                            "Therapy",
-                            "Personalized Gifts",
-                            "Occasion",
-                            "Digital Gifts",
-                          ];
-
-                          return (
-                            <div key={idx}>
-                              <h3 className="font-bold text-xs uppercase mb-3 border-b pb-2">
-                                {labels[idx]}
-                              </h3>
-
-                              <ul className="space-y-1.5">
-                                {group.slice(0, 10).map((item: any) => (
-                                  <li key={item.slug}>
-                                    <Link
-                                      href={`${basePaths[idx]}/${item.slug}`}
-                                      className="text-xs text-gray-600 hover:text-[var(--clr-primary)]"
-                                    >
-                                      {item.name}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          );
-                        })}
+                        {megaMenuColumns.map((column, idx) => (
+                          <div key={idx}>
+                            <h3 className="font-bold text-xs uppercase mb-3 border-b pb-2 text-[var(--clr-text-dark)] tracking-wide">
+                              {column.title}
+                            </h3>
+                            <ul className="space-y-2">
+                              {column.data?.slice(0, 10).map((item: any) => (
+                                <li key={item.slug}>
+                                  <Link
+                                    href={`${column.path}/${item.slug}`}
+                                    className="text-xs text-gray-600 hover:text-[var(--clr-primary)] hover:translate-x-1 transition-all block py-0.5"
+                                  >
+                                    {item.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   )}

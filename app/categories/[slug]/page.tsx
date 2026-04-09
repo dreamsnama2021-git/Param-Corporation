@@ -7,11 +7,11 @@ import { ChevronRight, Plus, Home, Grid3X3, List, Filter, ArrowRight, Check, X }
 import Image from 'next/image';
 import { 
   allProducts, 
-  therapies,
+  getCombinedCategories, 
   getCategoryBySlug 
 } from '../../data';
 
-export default function TherapyPage() {
+export default function CategoryPage() {
   const params = useParams();
   const router = useRouter();
   const slug = params?.slug as string | undefined;
@@ -20,43 +20,35 @@ export default function TherapyPage() {
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
   const [imageLoading, setImageLoading] = useState(true);
 
-  // Filter products for therapies only
-  const therapyProducts = useMemo(() => {
-    return allProducts.filter(p => 
-      therapies.some(t => t.slug === p.category)
-    );
-  }, []);
-
-  // Filter by specific therapy or show all therapy products
-  const filteredProducts = useMemo(() => {
-    if (!slug || slug === 'all') return therapyProducts;
-    return therapyProducts.filter(product => product.category === slug);
-  }, [slug, therapyProducts]);
-
-  const currentTherapy = therapies.find(t => t.slug === slug);
-  
-  // Get representative image
-  const categoryImage = useMemo(() => {
-    if (!slug || slug === 'all') return null;
-    const firstProduct = therapyProducts.find(p => p.category === slug);
-    return firstProduct?.image || 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800';
-  }, [slug, therapyProducts]);
-
-  const getTherapyCount = (therapySlug: string) => {
-    return therapyProducts.filter(p => p.category === therapySlug).length;
-  };
-  
-  const handleTherapyClick = (therapySlug: string) => {
-    router.push(`/therapy/${therapySlug}`);
-    setMobileFilterOpen(false);
-  };
-
-  const showAllTherapies = () => {
-    router.push('/therapy/all');
-    setMobileFilterOpen(false);
-  };
-
+  const categories = getCombinedCategories();
   const isAllProducts = !slug || slug === 'all';
+  
+  const filteredProducts = useMemo(() => {
+    if (isAllProducts) return allProducts;
+    return allProducts.filter(product => product.category === slug);
+  }, [slug, isAllProducts]);
+
+  const currentCategory = getCategoryBySlug(slug || '');
+  
+  const categoryImage = useMemo(() => {
+    if (isAllProducts) return null;
+    const firstProduct = allProducts.find(p => p.category === slug);
+    return firstProduct?.image || 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800';
+  }, [slug, isAllProducts]);
+
+  const getCategoryCount = (categorySlug: string) => {
+    return allProducts.filter(p => p.category === categorySlug).length;
+  };
+  
+  const handleCategoryClick = (categorySlug: string) => {
+    router.push(`/categories/${categorySlug}`);
+    setMobileFilterOpen(false);
+  };
+
+  const showAllProducts = () => {
+    router.push('/categories/all');
+    setMobileFilterOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans antialiased">
@@ -64,7 +56,7 @@ export default function TherapyPage() {
       <div className="bg-slate-900 text-white py-8 md:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center tracking-tight">
-            {isAllProducts ? 'Medical Therapy Gifts' : currentTherapy?.name || 'Therapy'}
+            {isAllProducts ? 'All Corporate Gifts' : currentCategory?.name || 'Category'}
           </h1>
           
           {/* Breadcrumb */}
@@ -73,13 +65,13 @@ export default function TherapyPage() {
               <Home className="w-4 h-4" /> Home
             </Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/therapy/all" className={`hover:text-white transition-colors ${isAllProducts ? 'text-white font-medium' : ''}`}>
-              Therapy
+            <Link href="/categories/all" className={`hover:text-white transition-colors ${isAllProducts ? 'text-white font-medium' : ''}`}>
+              Categories
             </Link>
-            {!isAllProducts && currentTherapy && (
+            {!isAllProducts && currentCategory && (
               <>
                 <ChevronRight className="w-4 h-4" />
-                <span className="text-white font-medium">{currentTherapy.name}</span>
+                <span className="text-white font-medium">{currentCategory.name}</span>
               </>
             )}
           </nav>
@@ -96,7 +88,7 @@ export default function TherapyPage() {
             className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white border border-slate-200 rounded-lg shadow-sm text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
           >
             {mobileFilterOpen ? <X className="w-4 h-4" /> : <Filter className="w-4 h-4" />}
-            {mobileFilterOpen ? 'Close Filters' : 'Browse Therapies'}
+            {mobileFilterOpen ? 'Close Filters' : 'Browse Categories'}
             {!isAllProducts && !mobileFilterOpen && (
               <span className="ml-1 px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded-full">
                 1
@@ -114,11 +106,11 @@ export default function TherapyPage() {
                 <div className="flex items-center justify-between">
                   <h3 className="font-semibold text-slate-900 flex items-center gap-2">
                     <Filter className="w-4 h-4 text-slate-500" />
-                    Medical Specialties
+                    Categories
                   </h3>
                   {!isAllProducts && (
                     <button 
-                      onClick={showAllTherapies}
+                      onClick={showAllProducts}
                       className="text-xs font-medium text-blue-600 hover:text-blue-700 hover:underline transition-colors"
                     >
                       View All
@@ -128,9 +120,9 @@ export default function TherapyPage() {
               </div>
               
               <div className="p-2 max-h-[calc(100vh-300px)] overflow-y-auto scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent">
-                {/* All Therapies */}
+                {/* All Products */}
                 <button
-                  onClick={showAllTherapies}
+                  onClick={showAllProducts}
                   className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 mb-1 ${
                     isAllProducts 
                       ? 'bg-blue-600 text-white shadow-md shadow-blue-100' 
@@ -138,23 +130,23 @@ export default function TherapyPage() {
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span>All Specialties</span>
+                    <span>All Products</span>
                     <span className={`text-xs px-2 py-0.5 rounded-full ${isAllProducts ? 'bg-blue-500 text-white' : 'bg-slate-100 text-slate-500'}`}>
-                      {therapyProducts.length}
+                      {allProducts.length}
                     </span>
                   </div>
                 </button>
                 
-                {/* Therapy List */}
-                {therapies.map((therapy) => {
-                  const count = getTherapyCount(therapy.slug);
-                  const isActive = slug === therapy.slug;
+                {/* Categories */}
+                {categories.map((category) => {
+                  const count = getCategoryCount(category.slug);
+                  const isActive = slug === category.slug;
                   if (count === 0) return null;
                   
                   return (
                     <button
-                      key={therapy.slug}
-                      onClick={() => handleTherapyClick(therapy.slug)}
+                      key={category.slug}
+                      onClick={() => handleCategoryClick(category.slug)}
                       className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-200 mb-1 ${
                         isActive 
                           ? 'bg-blue-600 text-white shadow-md shadow-blue-100' 
@@ -162,7 +154,7 @@ export default function TherapyPage() {
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="truncate pr-2">{therapy.name}</span>
+                        <span className="truncate pr-2">{category.name}</span>
                         <span className={`text-xs px-2 py-0.5 rounded-full flex-shrink-0 ${
                           isActive ? 'bg-blue-500 text-white' : 'bg-slate-100 text-slate-500'
                         }`}>
@@ -179,13 +171,13 @@ export default function TherapyPage() {
           {/* RIGHT: Main Content Area */}
           <div className="flex-1 min-w-0">
             
-            {/* Therapy Detail Block */}
-            {!isAllProducts && currentTherapy && (
+            {/* Category Detail Block */}
+            {!isAllProducts && currentCategory && (
               <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-6 md:mb-8">
                 {/* Heading */}
                 <div className="px-6 py-4 border-b border-slate-100 bg-slate-50/30">
                   <h2 className="text-xl md:text-2xl font-bold text-slate-900">
-                    {currentTherapy.name}
+                    {currentCategory.name}
                   </h2>
                 </div>
                 
@@ -196,7 +188,7 @@ export default function TherapyPage() {
                     <div className="relative aspect-[4/3] md:aspect-square rounded-xl overflow-hidden bg-slate-100 group">
                       <Image
                         src={categoryImage || ''}
-                        alt={currentTherapy.name}
+                        alt={currentCategory.name}
                         fill
                         className={`object-cover transition-transform duration-700 group-hover:scale-105 ${
                           imageLoading ? 'opacity-0' : 'opacity-100'
@@ -216,7 +208,7 @@ export default function TherapyPage() {
                     {/* Right: Content */}
                     <div className="flex flex-col justify-center py-2">
                       <p className="text-slate-600 leading-relaxed mb-6 text-base">
-                        {currentTherapy.description || `Specialized corporate gifting solutions for ${currentTherapy.name.toLowerCase()} professionals. Our gifts are thoughtfully curated to meet healthcare standards while maintaining professional appeal.`}
+                        {currentCategory.description || `Explore our premium collection of ${currentCategory.name.toLowerCase()}. Perfect for corporate gifting, employee appreciation, and special occasions with customization options available.`}
                       </p>
                       
                       <div className="space-y-3 mb-6">
@@ -224,19 +216,19 @@ export default function TherapyPage() {
                           <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
                             <Check className="w-3.5 h-3.5 text-green-600" />
                           </div>
-                          <span className="text-sm font-medium">Medical-grade quality assured</span>
+                          <span className="text-sm font-medium">Premium quality materials</span>
                         </div>
                         <div className="flex items-center gap-3 text-slate-700">
                           <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
                             <Check className="w-3.5 h-3.5 text-green-600" />
                           </div>
-                          <span className="text-sm font-medium">Hospital hygiene compliant</span>
+                          <span className="text-sm font-medium">Bulk customization available</span>
                         </div>
                         <div className="flex items-center gap-3 text-slate-700">
                           <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
                             <Check className="w-3.5 h-3.5 text-green-600" />
                           </div>
-                          <span className="text-sm font-medium">Specialty-specific customization</span>
+                          <span className="text-sm font-medium">Express delivery options</span>
                         </div>
                       </div>
 
@@ -260,7 +252,7 @@ export default function TherapyPage() {
               <div className="flex items-center gap-2">
                 <span className="text-slate-500 text-sm">
                   Showing <span className="font-semibold text-slate-900">{filteredProducts.length}</span> products
-                  {currentTherapy && <span className="text-slate-400"> in {currentTherapy.name}</span>}
+                  {currentCategory && <span className="text-slate-400"> in {currentCategory.name}</span>}
                 </span>
               </div>
               
@@ -302,12 +294,12 @@ export default function TherapyPage() {
                   <Filter className="w-8 h-8 text-slate-400" />
                 </div>
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">No products found</h3>
-                <p className="text-slate-500 mb-6 max-w-md mx-auto">We couldn't find any products in this therapy category.</p>
+                <p className="text-slate-500 mb-6 max-w-md mx-auto">We couldn't find any products in this category.</p>
                 <button 
-                  onClick={showAllTherapies}
+                  onClick={showAllProducts}
                   className="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors shadow-md shadow-blue-100"
                 >
-                  View All Therapies
+                  View All Products
                 </button>
               </div>
             ) : (
@@ -364,7 +356,7 @@ export default function TherapyPage() {
               </div>
             )}
 
-            {/* Load More */}
+            {/* Load More / Pagination */}
             {filteredProducts.length > 0 && filteredProducts.length >= 12 && (
               <div className="mt-8 text-center">
                 <button className="px-8 py-3 bg-white border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 hover:border-slate-400 transition-colors">

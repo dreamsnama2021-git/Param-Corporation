@@ -88,7 +88,7 @@ export default function Footer() {
               {displayCategories.map((item) => (
                 <li key={item.slug}>
                   <Link
-                    href={`/gift-categories/${item.slug}`}
+                    href={`/categories/${item.slug}`}
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >
