@@ -52,7 +52,7 @@ export default function Footer() {
             <div className="space-y-2 text-sm">
               <a className="flex items-center gap-2 hover:text-[var(--clr-primary)]">
                 <Phone size={14} className="text-[var(--clr-primary)]" />
-                <span>+91 86579 58081</span>
+                <span>+91 98201 49950</span>
               </a>
 
               <a className="flex items-center gap-2 hover:text-[var(--clr-primary)]">

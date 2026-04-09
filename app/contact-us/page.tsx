@@ -314,11 +314,7 @@ export default function ContactUs() {
       </section>
 
       {/* Floating Contact Button */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-        <button className="w-12 h-12 rounded-full bg-green-500 text-white shadow-lg flex items-center justify-center hover:scale-110 transition-transform">
-          <span className="text-xl">💬</span>
-        </button>
-      </div>
+    
     </div>
   );
 }

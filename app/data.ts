@@ -25,20 +25,30 @@ export const industries: CategoryItem[] = [
 
 // 2. By Category
 export const categories: CategoryItem[] = [
+  { name: "Paperweights", slug: "paperweights", description: "Desk paperweights (Rs. 25 to 30 range)" },
+  { name: "Tabletops", slug: "tabletops", description: "Tabletop decorations and desk items" },
+  // { name: "Appreciation Gifts", slug: "appreciation-gifts", description: "Thank you and recognition gifts" },
+  // { name: "Celebration Gifts", slug: "celebration-gifts", description: "Gifts for celebrations and milestones" },
+  { name: "Desk Utility", slug: "desk-utility", description: "Desk organization and utility products" },
+  { name: "3D Printed", slug: "3d-printed", description: "Custom 3D printed gift items and inputs" },
+  { name: "Fibre and Resin Products", slug: "fibre-resin-products", description: "Fibre and resin crafted decorative items" },
+  // { name: "Drinkware", slug: "drinkware", description: "Bottles, mugs, and sippers" },
+  { name: "Eco Friendly Products", slug: "eco-friendly-products", description: "Sustainable and green gift options" },
+  { name: "LED Tabletops", slug: "led-tabletops", description: "LED illuminated tabletop decorations" },
+  { name: "Indoor Plants", slug: "indoor-plants", description: "Indoor plants and greenery for gifting" },
+  { name: "Calendars", slug: "calendars", description: "Desk and wall calendars for corporate gifting" },
+  { name: "Photo Frames", slug: "photo-frames", description: "Photo frames and memory displays" },
   { name: "Employee Gifts", slug: "employee-gifts", description: "Appreciation gifts for employees" },
-  { name: "Office Accessories", slug: "office-accessories", description: "Desk and office essentials" },
-  { name: "Household Gifts", slug: "household-gifts", description: "Home and kitchen items" },
-  { name: "Gadgets and Electronic Gifts", slug: "gadgets-and-electronic-gifts", description: "Tech gadgets and electronics" },
-  { name: "Appreciation Gifts", slug: "appreciation-gifts", description: "Thank you and recognition gifts" },
-  { name: "Celebration Gifts", slug: "celebration-gifts", description: "Gifts for celebrations" },
   { name: "Festive Gifts", slug: "festive-gifts", description: "Festival and holiday gifting" },
-  { name: "Eco Friendly Gifts", slug: "eco-friendly-gifts", description: "Sustainable and green gifts" },
-  { name: "Premium Gifts", slug: "premium-gifts", description: "Luxury and high-end gifts" },
-  { name: "Health and Hygiene", slug: "health-and-hygiene", description: "Wellness and personal care" },
-  { name: "Drinkware", slug: "drinkware", description: "Bottles, mugs, and sippers" },
+  { name: "Gadgets and Electronic Gifts", slug: "gadgets-and-electronic-gifts", description: "Tech gadgets and electronics" },
   { name: "Gift Sets", slug: "gift-sets", description: "Curated gift combinations" },
+  { name: "Health and Hygiene", slug: "health-and-hygiene", description: "Wellness and personal care items" },
+  { name: "Household Gifts", slug: "household-gifts", description: "Home and kitchen items" },
   { name: "MR Gifts", slug: "mr-gifts", description: "Medical representative gifts" },
+  { name: "Office Accessories", slug: "office-accessories", description: "Desk and office essentials" },
+  { name: "Premium Gifts", slug: "premium-gifts", description: "Luxury and high-end gifts" },
 ];
+
 
 // 3. By Price
 export const priceRanges: CategoryItem[] = [
