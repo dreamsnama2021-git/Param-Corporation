@@ -1,4 +1,3 @@
-
 // data/giftCategories.ts
 
 export interface CategoryItem {
@@ -23,32 +22,19 @@ export const industries: CategoryItem[] = [
   { name: "Retail", slug: "retail", description: "Retail sector corporate gifts" },
 ];
 
-// 2. By Category
+// 2. By Category (DO NOT TOUCH - AS REQUESTED)
 export const categories: CategoryItem[] = [
   { name: "Paperweights", slug: "paperweights", description: "Desk paperweights (Rs. 25 to 30 range)" },
   { name: "Tabletops", slug: "tabletops", description: "Tabletop decorations and desk items" },
-  // { name: "Appreciation Gifts", slug: "appreciation-gifts", description: "Thank you and recognition gifts" },
-  // { name: "Celebration Gifts", slug: "celebration-gifts", description: "Gifts for celebrations and milestones" },
   { name: "Desk Utility", slug: "desk-utility", description: "Desk organization and utility products" },
   { name: "3D Printed", slug: "3d-printed", description: "Custom 3D printed gift items and inputs" },
   { name: "Fibre and Resin Products", slug: "fibre-resin-products", description: "Fibre and resin crafted decorative items" },
-  // { name: "Drinkware", slug: "drinkware", description: "Bottles, mugs, and sippers" },
   { name: "Eco Friendly Products", slug: "eco-friendly-products", description: "Sustainable and green gift options" },
   { name: "LED Tabletops", slug: "led-tabletops", description: "LED illuminated tabletop decorations" },
   { name: "Indoor Plants", slug: "indoor-plants", description: "Indoor plants and greenery for gifting" },
   { name: "Calendars", slug: "calendars", description: "Desk and wall calendars for corporate gifting" },
   { name: "Photo Frames", slug: "photo-frames", description: "Photo frames and memory displays" },
-  { name: "Employee Gifts", slug: "employee-gifts", description: "Appreciation gifts for employees" },
-  { name: "Festive Gifts", slug: "festive-gifts", description: "Festival and holiday gifting" },
-  { name: "Gadgets and Electronic Gifts", slug: "gadgets-and-electronic-gifts", description: "Tech gadgets and electronics" },
-  { name: "Gift Sets", slug: "gift-sets", description: "Curated gift combinations" },
-  { name: "Health and Hygiene", slug: "health-and-hygiene", description: "Wellness and personal care items" },
-  { name: "Household Gifts", slug: "household-gifts", description: "Home and kitchen items" },
-  { name: "MR Gifts", slug: "mr-gifts", description: "Medical representative gifts" },
-  { name: "Office Accessories", slug: "office-accessories", description: "Desk and office essentials" },
-  { name: "Premium Gifts", slug: "premium-gifts", description: "Luxury and high-end gifts" },
 ];
-
 
 // 3. By Price
 export const priceRanges: CategoryItem[] = [
@@ -60,24 +46,23 @@ export const priceRanges: CategoryItem[] = [
   { name: "Corporate Gifts Under ₹5000", slug: "under-5000", description: "Luxury gifts under ₹5000" },
 ];
 
-// 4. By Occasion
+
+// 4. By Occasion (Month-wise)
 export const occasions: CategoryItem[] = [
-  { name: "Diwali", slug: "diwali", description: "Festival of lights gifts" },
-  { name: "Holi", slug: "holi", description: "Festival of colors gifts" },
-  { name: "Independence and Republic day", slug: "independence-republic-day", description: "Patriotic corporate gifts" },
-  { name: "New Year", slug: "new-year", description: "New year corporate gifting" },
-  { name: "World Health Day", slug: "world-health-day", description: "Health awareness gifts" },
-  { name: "Asthma Day", slug: "asthma-day", description: "Respiratory care gifts" },
-  { name: "Mother's Day", slug: "mothers-day", description: "Gifts for mothers" },
-  { name: "Doctor's Day", slug: "doctors-day", description: "Medical professional gifts" },
-  { name: "World Environment Day", slug: "world-environment-day", description: "Eco-friendly gifting" },
-  { name: "Nutrition Week", slug: "nutrition-week", description: "Health and nutrition gifts" },
-  { name: "World Osteoporosis Day", slug: "world-osteoporosis-day", description: "Bone health awareness" },
-  { name: "Children's Day", slug: "childrens-day", description: "Gifts for children" },
-  { name: "World Diabetes Day", slug: "world-diabetes-day", description: "Diabetes awareness gifts" },
-  { name: "World Cancer Day", slug: "world-cancer-day", description: "Cancer awareness gifts" },
-  { name: "World Heart Day", slug: "world-heart-day", description: "Cardiac health gifts" },
+  { name: "January", slug: "january", description: "New Year and Republic Day gifting" },
+  { name: "February", slug: "february", description: "Valentine's Day and Cancer Awareness" },
+  { name: "March", slug: "march", description: "Holi and Women's Day celebrations" },
+  { name: "April", slug: "april", description: "World Health Day and New Financial Year" },
+  { name: "May", slug: "may", description: "Mother's Day and Asthma Awareness" },
+  { name: "June", slug: "june", description: "World Environment Day celebrations" },
+  { name: "July", slug: "july", description: "Doctor's Day and Monsoon specials" },
+  { name: "August", slug: "august", description: "Independence Day and Raksha Bandhan" },
+  { name: "September", slug: "september", description: "Nutrition Week and World Heart Day" },
+  { name: "October", slug: "october", description: "Diwali and Osteoporosis Awareness" },
+  { name: "November", slug: "november", description: "Children's Day and Diabetes Awareness" },
+  { name: "December", slug: "december", description: "Christmas and Year-end corporate gifting" },
 ];
+
 
 // 5. By Therapy (Medical Specialties)
 export const therapies: CategoryItem[] = [
@@ -92,6 +77,34 @@ export const therapies: CategoryItem[] = [
   { name: "Urology", slug: "urology", description: "Urological gifts" },
 ];
 
+// 6. Personalized Gifts (Customized items)
+export const personalizedGifts: CategoryItem[] = [
+  { name: "Engraved Pens", slug: "engraved-pens", description: "Personalized writing instruments" },
+  { name: "Custom Mugs", slug: "custom-mugs", description: "Printed and personalized coffee mugs" },
+  { name: "Photo Gifts", slug: "photo-gifts", description: "Personalized photo items and collages" },
+  // { name: "Custom Stationery", slug: "custom-stationery", description: "Branded and personalized stationery sets" },
+  // { name: "Embossed Leather", slug: "embossed-leather", description: "Personalized leather goods and accessories" },
+  // { name: "Engraved Keychains", slug: "engraved-keychains", description: "Custom metal and wooden keychains" },
+  // { name: "Custom Apparel", slug: "custom-apparel", description: "Personalized T-shirts, caps and clothing" },
+  // { name: "Personalized Diaries", slug: "personalized-diaries", description: "Custom notebooks and planners" },
+  // { name: "Custom Drinkware", slug: "custom-drinkware", description: "Personalized bottles and sippers" },
+  // { name: "Engraved Awards", slug: "engraved-awards", description: "Custom trophies and recognition awards" },
+];
+
+// 7. Digital Gifts (Tech and electronic items)
+export const digitalGifts: CategoryItem[] = [
+  { name: "Power Banks", slug: "power-banks", description: "Portable charging solutions" },
+  { name: "Bluetooth Speakers", slug: "bluetooth-speakers", description: "Wireless audio devices" },
+  // { name: "USB Drives", slug: "usb-drives", description: "Branded storage devices and pen drives" },
+  // { name: "Wireless Chargers", slug: "wireless-chargers", description: "Cable-free charging pads and stands" },
+  // { name: "Digital Photo Frames", slug: "digital-photo-frames", description: "Electronic photo displays" },
+  // { name: "Smart Gadgets", slug: "smart-gadgets", description: "Smart home and office devices" },
+  // { name: "Phone Accessories", slug: "phone-accessories", description: "Cases, stands and mobile accessories" },
+  // { name: "Fitness Bands", slug: "fitness-bands", description: "Health tracking wearables" },
+  // { name: "Travel Adapters", slug: "travel-adapters", description: "Multi-port charging adapters" },
+  // { name: "Tech Combos", slug: "tech-combos", description: "Digital gift sets and technology combos" },
+];
+
 // Helper function to get all categories combined
 export const getAllCategories = () => {
   return {
@@ -100,6 +113,8 @@ export const getAllCategories = () => {
     priceRanges,
     occasions,
     therapies,
+    personalizedGifts,
+    digitalGifts,
   };
 };
 
@@ -110,4 +125,6 @@ export const categoryCounts = {
   priceRanges: priceRanges.length,
   occasions: occasions.length,
   therapies: therapies.length,
+  personalizedGifts: personalizedGifts.length,
+  digitalGifts: digitalGifts.length,
 };

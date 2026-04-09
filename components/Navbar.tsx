@@ -4,11 +4,13 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronDown, Menu, X, Search, Phone, Mail } from "lucide-react";
 import {
-  industries,
   categories,
-  priceRanges,
-  occasions,
   therapies,
+  // industries, // Replace with personalizedGifts if available in data.ts
+  // priceRanges, // Replace with digitalGifts if available in data.ts
+  personalizedGifts, // Ensure this is exported from data.ts
+  occasions,
+  digitalGifts, // Ensure this is exported from data.ts
 } from "../app/data";
 
 export default function Navbar() {
@@ -28,10 +30,9 @@ export default function Navbar() {
 
   const mainNavItems = [
     { label: "About Us", href: "/about-us" },
-    { label: "Brands", href: "/brands" },
-    { label: "Pharmaceutical Gifts", href: "/pharmaceutical-gifts" },
-    { label: "Zexcel", href: "/zexcel" },
-    { label: "Grob Prismo", href: "/grob-prismo" },
+    { label: "Koru", href: "/koru" },
+    { label: "Medipride", href: "/medipride" },
+    { label: " Case Study", href: "/case-study" },
     { label: "Contact Us", href: "/contact-us" },
   ];
 
@@ -124,38 +125,38 @@ export default function Navbar() {
                     bg-white rounded-xl shadow-2xl border border-[var(--clr-border-light)] p-6"
                     >
                       <div className="grid grid-cols-5 gap-6">
-                        {/* Column */}
+                        {/* Reordered Columns: 1.Categories 2.Therapy 3.Personalized Gifts 4.Occasion 5.Digital Gifts */}
                         {[
                           categories,
-                          industries,
-                          priceRanges,
-                          occasions,
                           therapies,
+                          personalizedGifts,
+                          occasions,
+                          digitalGifts,
                         ].map((group, idx) => {
                           const basePaths = [
-                            "/industry",
-                            "/gift-categories",
-                            "/by-price",
-                            "/occasion",
+                            "/categories",
                             "/therapy",
+                            "/personalized-gifts",
+                            "/occasion",
+                            "/digital-gifts",
+                          ];
+
+                          const labels = [
+                            "Categories",
+                            "Therapy",
+                            "Personalized Gifts",
+                            "Occasion",
+                            "Digital Gifts",
                           ];
 
                           return (
                             <div key={idx}>
                               <h3 className="font-bold text-xs uppercase mb-3 border-b pb-2">
-                                {
-                                  [
-                                    "Category",
-                                    "Industry",
-                                    "Price",
-                                    "Occasion",
-                                    "Therapy",
-                                  ][idx]
-                                }
+                                {labels[idx]}
                               </h3>
 
                               <ul className="space-y-1.5">
-                                {group.slice(0, 6).map((item: any) => (
+                                {group.slice(0, 10).map((item: any) => (
                                   <li key={item.slug}>
                                     <Link
                                       href={`${basePaths[idx]}/${item.slug}`}
