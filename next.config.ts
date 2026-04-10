@@ -7,9 +7,11 @@ const nextConfig = {
         hostname: 'www.bigimpex.com',
         pathname: '/wp-content/uploads/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
     ],
-    // Optional: If you want to use quality 90, add it here:
-    // qualities: [75, 90],
   },
 }
 
