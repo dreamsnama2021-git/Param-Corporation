@@ -3,42 +3,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
-import { ArrowUpRight, ChevronRight, Quote, Award, Globe, Heart, Zap, Mail } from 'lucide-react';
+import { ArrowUpRight, ChevronRight, Quote, Award, Globe, Heart, Zap, Mail, Sparkles, Gift, Package, Users } from 'lucide-react';
 import Image from 'next/image';
 import { Timeline, TimelineItem } from '../../components/about-us/modern-timeline';
 import { TeamSection } from '../../components/about-us/team';
 import { LinkedinLogoIcon, TwitterLogoIcon } from '@phosphor-icons/react';
-
-// Custom cursor component
-const CustomCursor = () => {
-  const cursorX = useMotionValue(0);
-  const cursorY = useMotionValue(0);
-  
-  const springConfig = { damping: 25, stiffness: 700 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
-
-  useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-    };
-    window.addEventListener('mousemove', moveCursor);
-    return () => window.removeEventListener('mousemove', moveCursor);
-  }, [cursorX, cursorY]);
-
-  return (
-    <motion.div
-      className="fixed top-0 left-0 w-5 h-5 bg-blue-500 rounded-full pointer-events-none z-[9999] mix-blend-difference hidden lg:block"
-      style={{
-        x: cursorXSpring,
-        y: cursorYSpring,
-        translateX: '-50%',
-        translateY: '-50%',
-      }}
-    />
-  );
-};
 
 // Magnetic button component
 const MagneticButton = ({ children, className }: { children: React.ReactNode; className?: string }) => {
@@ -153,7 +122,7 @@ const teamMembers = [
   {
     name: "Priya Patel",
     designation: "Creative Director",
-    imageSrc: "https://images.unsplash.com/photo-157349极简主义9142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+    imageSrc: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
     socialLinks: [
       { icon: LinkedinLogoIcon, href: "#" },
       { icon: TwitterLogoIcon, href: "#" }
@@ -164,69 +133,11 @@ const teamMembers = [
     designation: "Head of Operations",
     imageSrc: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
     socialLinks: [
-    { icon: LinkedinLogoIcon, href: "#" },
+      { icon: LinkedinLogoIcon, href: "#" },
       { icon: Mail, href: "mailto:amit@company.com" }
     ]
   }
 ];
-
-// Geometric background pattern component
-const GeometricPattern = () => {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-0 left-0 w-64 h-64 border-2 border-blue-400/20 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute top-0 right-0 w-48 h-48 border-2 border-emerald-400/20 rounded-lg translate-x-1/2 -translate-y-1/2 rotate-45"></div>
-      <div className="absolute bottom-0 left-0 w-56 h-56 border-2 border-purple-400/20 rounded-lg -translate-x-1/2 translate-y-1/2 rotate-12"></div>
-      <div className="absolute bottom-0 right-0 w-40 h-40 border-2 border-amber-400/20 rounded-full translate-x-1/2 translate-y-1/2"></div>
-    </div>
-  );
-};
-
-// Animated floating elements
-const FloatingElements = () => {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <motion.div
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, 5, 0],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        className="absolute top-1/4 left-1/4 w-8 h-8 bg-blue-500/10 rounded-full"
-      ></motion.div>
-      <motion.div
-        animate={{
-          y: [0, 15, 0],
-          rotate: [0, -5, 0],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1
-        }}
-        className="absolute top-1/3 right-1/4 w-6 h-6 bg-emerald-500/10 rounded-lg"
-      ></motion.div>
-      <motion.div
-        animate={{
-          y: [0, -15, 0],
-          rotate: [0, 8, 0],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2
-        }}
-        className="absolute bottom-1/4 left-1/3 w-10 h-10 bg-purple-500/10 rounded-lg"
-      ></motion.div>
-    </div>
-  );
-};
 
 // Vision & Mission Section
 const VisionSection = () => {
@@ -241,40 +152,54 @@ const VisionSection = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 overflow-hidden py-24">
-      <GeometricPattern />
-      <FloatingElements />
-      
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
+    <div ref={containerRef} className="relative py-20 md:py-28" style={{ background: "#fff" }}>
+      <div className="ui-container">
         <motion.div 
           style={{ opacity }}
-          className="text-center mb-20"
+          className="text-center mb-12"
         >
-          <span className="text-blue-600 font-medium text-sm tracking-wider uppercase mb-4 block">Our Purpose</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Vision & Mission</h2>
+          <p
+            className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 flex items-center justify-center gap-2"
+            style={{ color: "var(--clr-primary)" }}
+          >
+            <span className="inline-block w-5 h-[1.5px]" style={{ background: "var(--clr-primary)" }} />
+            OUR PURPOSE
+          </p>
+          <h2
+            className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4"
+            style={{ color: "var(--clr-text-dark)" }}
+          >
+            Vision & Mission
+          </h2>
           <p className="text-slate-600 max-w-2xl mx-auto">
             Guiding principles that shape our approach to corporate gifting and client relationships
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <motion.div style={{ y: y1 }} className="relative">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
-              className="bg-white p-10 rounded-2xl shadow-lg border border-slate-100 relative overflow-hidden"
+              className="group relative flex flex-col gap-4 p-8 overflow-hidden cursor-default transition-colors duration-200"
+              style={{ background: "#fff" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "#f0f9ff")}
+              onMouseLeave={e => (e.currentTarget.style.background = "#fff")}
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-bl-full"></div>
+              <span
+                className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                style={{ background: "var(--clr-primary)" }}
+              />
               <span className="text-blue-600 font-medium text-sm tracking-wider uppercase mb-4 block">Vision</span>
-              <h3 className="text-3xl font-bold text-slate-900 leading-tight mb-6">
+              <h3 className="text-2xl font-bold text-slate-900 leading-tight mb-4">
                 We imagine a world where every gift tells a story
               </h3>
               <p className="text-slate-600 leading-relaxed">
                 Our vision extends beyond transactions. We see gifting as a language of appreciation, 
                 a bridge between cultures, and a catalyst for lasting business relationships.
               </p>
-              <div className="mt-8 w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
+              <div className="mt-4 w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
             </motion.div>
           </motion.div>
 
@@ -283,18 +208,24 @@ const VisionSection = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="bg-white p-10 rounded-2xl shadow-lg border border-slate-100 relative overflow-hidden"
+              className="group relative flex flex-col gap-4 p-8 overflow-hidden cursor-default transition-colors duration-200"
+              style={{ background: "#fff" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "#f0f9ff")}
+              onMouseLeave={e => (e.currentTarget.style.background = "#fff")}
             >
-              <div className="absolute top-0 left-0 w-32 h-32 bg-emerald-500/5 rounded-br-full"></div>
+              <span
+                className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                style={{ background: "var(--clr-primary)" }}
+              />
               <span className="text-emerald-600 font-medium text-sm tracking-wider uppercase mb-4 block">Mission</span>
-              <h3 className="text-3xl font-bold text-slate-900 leading-tight mb-6">
+              <h3 className="text-2xl font-bold text-slate-900 leading-tight mb-4">
                 Engineering delight through thoughtful design
               </h3>
               <p className="text-slate-600 leading-relaxed">
                 We combine data-driven insights with creative intuition to craft gifting experiences 
                 that resonate emotionally while delivering measurable business impact.
               </p>
-              <div className="mt-8 w-16 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></div>
+              <div className="mt-4 w-16 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></div>
             </motion.div>
           </motion.div>
         </div>
@@ -315,38 +246,37 @@ const WhyUsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-900 to-blue-900 relative overflow-hidden">
-      <GeometricPattern />
-      <FloatingElements />
-      
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16">
-          <div className="lg:w-2/5 text-white">
-            <motion.span 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              className="text-blue-400 font-medium text-sm tracking-wider uppercase mb-4 block"
-            >
-              Why Choose Us
-            </motion.span>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
+    <section className="py-20 md:py-28" style={{ background: "#fff" }}>
+      <div className="ui-container">
+        <div className="flex flex-col lg:flex-row gap-12">
+          <div className="lg:w-2/5">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="text-3xl md:text-4xl font-bold leading-tight mb-6"
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mb-8"
             >
-              The difference is in the details
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="text-slate-300 leading-relaxed mb-8"
-            >
-              We don't just deliver gifts. We deliver experiences, memories, and 
-              moments of genuine connection that strengthen your business relationships.
-            </motion.p>
+              <p
+                className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 flex items-center gap-2"
+                style={{ color: "var(--clr-primary)" }}
+              >
+                <span className="inline-block w-5 h-[1.5px]" style={{ background: "var(--clr-primary)" }} />
+                WHY CHOOSE US
+              </p>
+              <h2
+                className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4"
+                style={{ color: "var(--clr-text-dark)" }}
+              >
+                The difference is in the details
+              </h2>
+              <p className="text-slate-600 leading-relaxed">
+                We don't just deliver gifts. We deliver experiences, memories, and 
+                moments of genuine connection that strengthen your business relationships.
+              </p>
+            </motion.div>
             
-            <MagneticButton className="bg-white text-slate-900 px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:bg-slate-100 transition-colors group">
+            <MagneticButton className="bg-[var(--clr-primary)] text-white px-6 py-3 rounded-full font-medium flex items-center gap-2 hover:opacity-90 transition-opacity group">
               Start a Project
               <ArrowUpRight className="group-hover:rotate-45 transition-transform" size={18} />
             </MagneticButton>
@@ -356,27 +286,31 @@ const WhyUsSection = () => {
             {reasons.map((item, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                onMouseEnter={() => setHoveredIndex(idx)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className={`relative p-6 rounded-2xl cursor-pointer transition-all duration-500 overflow-hidden ${hoveredIndex === idx ? 'bg-white scale-105 shadow-xl' : 'bg-white/10 backdrop-blur-sm'}`}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className="group relative flex flex-col gap-4 p-6 overflow-hidden cursor-default transition-colors duration-200"
+                style={{ background: "#fff" }}
+                onMouseEnter={e => (e.currentTarget.style.background = "#f0f9ff")}
+                onMouseLeave={e => (e.currentTarget.style.background = "#fff")}
               >
-                <div className="absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-500 hover:opacity-10 ${item.color}"></div>
-                
-                <div className={`w-12 h-12 rounded-xl ${item.bgColor} flex items-center justify-center mb-4 relative z-10`}>
-                  <item.icon size={24} className={hoveredIndex === idx ? 'text-white' : `text-gradient ${item.color}`} />
+                <span
+                  className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                  style={{ background: "var(--clr-primary)" }}
+                />
+                <div className={`w-12 h-12 rounded-xl ${item.bgColor} flex items-center justify-center mb-4`}>
+                  <item.icon size={24} className="text-[var(--clr-primary)]" />
                 </div>
-                <h3 className={`text-xl font-bold mb-2 transition-colors relative z-10 ${hoveredIndex === idx ? 'text-slate-900' : 'text-white'}`}>
+                <h3 className="text-xl font-bold mb-2" style={{ color: "var(--clr-text-dark)" }}>
                   {item.title}
                 </h3>
-                <p className={`transition-colors relative z-10 ${hoveredIndex === idx ? 'text-slate-600' : 'text-slate-300'}`}>
+                <p className="text-slate-600">
                   {item.desc}
                 </p>
-                
-                <div className={`absolute top-6 right-6 w-8 h-8 rounded-full flex items-center justify-center transition-all ${hoveredIndex === idx ? 'bg-slate-900 text-white rotate-45' : 'bg-white/20 text-white'}`}>
-                  <ArrowUpRight size={16} />
+                <div className="mt-4 flex items-center text-[var(--clr-primary)] font-medium text-sm">
+                  Learn more
+                  <ChevronRight size={16} className="ml-1" />
                 </div>
               </motion.div>
             ))}
@@ -387,112 +321,252 @@ const WhyUsSection = () => {
   );
 };
 
+// Floating Card Component for Hero
+const FloatingCard = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay }}
+    className={className}
+  >
+    <motion.div
+      animate={{ y: [0, -10, 0] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay }}
+    >
+      {children}
+    </motion.div>
+  </motion.div>
+);
+
 // Main Page Component
 export default function AboutUsPage() {
   return (
-    <div className="bg-white min-h-screen selection:bg-blue-500 selection:text-white cursor-none lg:cursor-auto">
-      <CustomCursor />
+    <div className="bg-white min-h-screen selection:bg-blue-500 selection:text-white">
       
-      {/* Hero Section */}
-      <section className="min-h-screen relative bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center overflow-hidden">
-        <GeometricPattern />
-        <FloatingElements />
-        
-        <div className="max-w-6xl mx-auto px-8 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-slate-900 mb-6">
-              We craft <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">meaningful</span> corporate connections
-            </h1>
-          </motion.div>
-          
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.7 }}
-            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12"
-          >
-            Transforming business relationships into lasting impressions through thoughtfully designed gifting solutions.
-          </motion.p>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="mt-16 flex justify-center gap-12 text-slate-900"
-          >
-            {[
-              { number: "14+", label: "Years", color: "blue" },
-              { number: "500+", label: "Clients", color: "emerald" },
-              { number: "1M+", label: "Gifts", color: "purple" }
-            ].map((item, idx) => (
-              <div key={idx} className="text-center">
-                <div className={`text-4xl font-bold mb-2 text-${item.color}-600`}>{item.number}</div>
-                <div className="text-sm text-slate-500 uppercase tracking-wide">{item.label}</div>
-              </div>
-            ))}
-          </motion.div>
+      {/* Modern Hero Section */}
+      <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-200/20 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-blue-100/40 to-transparent rounded-full" />
         </div>
 
-        <motion.div 
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 text-slate-400"
-        >
-          <div className="w-6 h-10 rounded-full border-2 border-slate-400 flex justify-center p-2">
-            <div className="w-1 h-2 bg-slate-400 rounded-full" />
+        <div className="ui-container relative z-10 min-h-screen flex items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center w-full py-20">
+            
+            {/* Left Content */}
+            <div className="space-y-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-[var(--clr-primary)] text-sm font-medium"
+              >
+                <Sparkles size={16} />
+                <span>India's Leading Corporate Gifting Partner</span>
+              </motion.div>
+
+              <motion.h1 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]"
+              >
+                <span className="text-slate-900">We craft</span>
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--clr-primary)] to-cyan-500">
+                  meaningful
+                </span>
+                <br />
+                <span className="text-slate-900">connections</span>
+              </motion.h1>
+
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-xl text-slate-600 max-w-lg leading-relaxed"
+              >
+                Transforming business relationships into lasting impressions through thoughtfully designed gifting solutions for 500+ enterprise clients.
+              </motion.p>
+
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex flex-wrap gap-4"
+              >
+                <MagneticButton className="bg-[var(--clr-primary)] text-white px-8 py-4 rounded-full font-semibold flex items-center gap-2 hover:shadow-lg hover:shadow-blue-500/25 transition-all group">
+                  Explore Solutions
+                  <ArrowUpRight className="group-hover:rotate-45 transition-transform" size={20} />
+                </MagneticButton>
+                
+                <button className="px-8 py-4 rounded-full font-semibold text-slate-700 border border-slate-200 hover:border-[var(--clr-primary)] hover:text-[var(--clr-primary)] transition-colors flex items-center gap-2">
+                  <PlayIcon />
+                  Watch Our Story
+                </button>
+              </motion.div>
+
+              {/* Stats Row */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex gap-8 pt-8 border-t border-slate-200"
+              >
+                {[
+                  { number: "14+", label: "Years Experience" },
+                  { number: "500+", label: "Enterprise Clients" },
+                  { number: "1M+", label: "Gifts Delivered" }
+                ].map((stat, idx) => (
+                  <div key={idx}>
+                    <div className="text-3xl font-bold text-slate-900">{stat.number}</div>
+                    <div className="text-sm text-slate-500">{stat.label}</div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Right Visual */}
+            <div className="relative hidden lg:block h-[600px]">
+              {/* Main Image */}
+              <FloatingCard delay={0.2} className="absolute top-0 right-0 w-80 h-96 rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/10">
+                <Image 
+                  src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&h=800&fit=crop" 
+                  alt="Premium gift boxes" 
+                  className="w-full h-full object-cover"
+                  width={600}
+                  height={800}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              </FloatingCard>
+
+              {/* Floating Stats Card */}
+              <FloatingCard delay={0.4} className="absolute top-20 left-0 bg-white p-6 rounded-2xl shadow-xl border border-slate-100">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center">
+                    <Heart className="text-emerald-600" size={24} />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-slate-900">98%</div>
+                    <div className="text-sm text-slate-500">Client Retention</div>
+                  </div>
+                </div>
+              </FloatingCard>
+
+              {/* Floating Service Card */}
+              <FloatingCard delay={0.6} className="absolute bottom-20 right-20 bg-white p-6 rounded-2xl shadow-xl border border-slate-100">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                    <Package className="text-blue-600" size={24} />
+                  </div>
+                  <div>
+                    <div className="text-lg font-bold text-slate-900">24hr</div>
+                    <div className="text-sm text-slate-500">Express Delivery</div>
+                  </div>
+                </div>
+              </FloatingCard>
+
+              {/* Floating Users Card */}
+              <FloatingCard delay={0.8} className="absolute bottom-0 left-10 bg-slate-900 text-white p-4 rounded-2xl shadow-xl">
+                <div className="flex items-center gap-3">
+                  <div className="flex -space-x-2">
+                    {[1,2,3].map((i) => (
+                      <div key={i} className="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-700 overflow-hidden">
+                        <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="Team" width={32} height={32} />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="text-sm font-medium">
+                    <span className="text-emerald-400">120+</span> Team Members
+                  </div>
+                </div>
+              </FloatingCard>
+
+              {/* Decorative Elements */}
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 left-1/2 w-64 h-64 border border-dashed border-slate-200 rounded-full"
+              />
+            </div>
           </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="w-6 h-10 rounded-full border-2 border-slate-300 flex justify-center p-2"
+          >
+            <div className="w-1 h-2 bg-slate-400 rounded-full" />
+          </motion.div>
         </motion.div>
       </section>
 
       {/* Quote Section */}
-      <section className="py-24 px-8 bg-white relative overflow-hidden">
-        <GeometricPattern />
-        
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="relative">
-            <Quote className="absolute -top-8 -left-8 w-20 h-20 text-slate-100" />
-            <motion.blockquote 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7 }}
-              className="text-3xl md:text-4xl font-light text-slate-900 leading-relaxed relative z-10"
-            >
-              &ldquo;Gifting is not about the price tag. It's about the thought, the timing, and the emotional resonance it creates.&rdquo;
-            </motion.blockquote>
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mt-8 flex items-center gap-4"
-            >
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold">
-                RS
-              </div>
-              <div>
-                <div className="font-bold text-slate-900">Rajesh Sharma</div>
-                <div className="text-slate-500 text-sm">Founder & CEO</div>
-              </div>
-            </motion.div>
+      <section className="py-20 md:py-28" style={{ background: "#fff" }}>
+        <div className="ui-container">
+          <div className="max-w-4xl mx-auto">
+            <div className="relative group">
+              <Quote className="absolute -top-8 -left-8 w-20 h-20" style={{ color: "var(--clr-primary)", opacity: 0.15 }} />
+              <motion.blockquote 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7 }}
+                className="text-3xl md:text-4xl font-light text-slate-900 leading-relaxed relative z-10 pl-12"
+              >
+                &ldquo;Gifting is not about the price tag. It's about the thought, the timing, and the emotional resonance it creates.&rdquo;
+              </motion.blockquote>
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="mt-8 flex items-center gap-4 pl-12"
+              >
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--clr-primary)] to-cyan-500 flex items-center justify-center text-white font-bold">
+                  RS
+                </div>
+                <div>
+                  <div className="font-bold text-slate-900">Rajesh Sharma</div>
+                  <div className="text-slate-500 text-sm">Founder & CEO</div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Timeline Section */}
-      <section className="py-24 px-8 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
-        <GeometricPattern />
-        
-        <div className="max-w-4xl mx-auto relative z-10">
+      <section className="py-20 md:py-28" style={{ background: "#fff" }}>
+        <div className="ui-container">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="mb-16 text-center"
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center"
           >
-            <span className="text-blue-600 font-medium text-sm tracking-wider uppercase block mb-4">Our Journey</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Company Timeline</h2>
+            <p
+              className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 flex items-center justify-center gap-2"
+              style={{ color: "var(--clr-primary)" }}
+            >
+              <span className="inline-block w-5 h-[1.5px]" style={{ background: "var(--clr-primary)" }} />
+              OUR JOURNEY
+            </p>
+            <h2
+              className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4"
+              style={{ color: "var(--clr-text-dark)" }}
+            >
+              Company Timeline
+            </h2>
             <p className="text-slate-600 max-w-2xl mx-auto leading-relaxed">
               From a simple idea to a trusted partner for 500+ enterprises. 
               Follow our story of innovation, growth, and the amazing people who made it possible.
@@ -519,22 +593,29 @@ export default function AboutUsPage() {
       />
 
       {/* Footer CTA */}
-      <section className="py-24 bg-gradient-to-br from-blue-600 to-cyan-600 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-10"></div>
-        
-        <div className="max-w-4xl mx-auto text-center px-8 relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+      <section className="py-20 md:py-28" style={{ background: "linear-gradient(to right, var(--clr-primary), #0ea5e9)" }}>
+        <div className="ui-container text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">
             Let's create something extraordinary together
           </h2>
           <p className="text-blue-100 mb-10 max-w-2xl mx-auto">
             Ready to transform your corporate gifting strategy with innovative solutions that leave lasting impressions?
           </p>
-          <MagneticButton className="bg-white text-blue-600 px-8 py-4 rounded-full font-bold hover:shadow-2xl transition-shadow flex items-center gap-2 mx-auto">
+          <MagneticButton className="bg-white text-[var(--clr-primary)] px-8 py-4 rounded-full font-bold hover:shadow-2xl transition-shadow flex items-center gap-2 mx-auto">
             Get in Touch
             <ArrowUpRight size={20} />
           </MagneticButton>
         </div>
       </section>
     </div>
+  );
+}
+
+// Helper component for play icon
+function PlayIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="5 3 19 12 5 21 5 3" />
+    </svg>
   );
 }

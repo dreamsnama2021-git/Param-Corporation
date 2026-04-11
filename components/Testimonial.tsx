@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
 
 const testimonials = [
   {
@@ -27,52 +26,98 @@ const testimonials = [
   },
 ];
 
-const Testimonial = () => {
+const TestimonialCards = () => {
   return (
-    <section className="py-20 md:py-28 bg-background">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section className="py-20 md:py-28" style={{ background: "#fff" }}>
+      <div className="ui-container">
+
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          transition={{ duration: 0.5 }}
+          className="mb-12"
         >
-          <p className="text-primary text-sm uppercase tracking-[0.25em] mb-3 font-medium">
+          <p
+            className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 flex items-center gap-2"
+            style={{ color: "var(--clr-primary)" }}
+          >
+            <span className="inline-block w-5 h-[1.5px]" style={{ background: "var(--clr-primary)" }} />
             Testimonials
           </p>
-          <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground">
-            Trusted by Industry Leaders
+          <h2
+            className="text-3xl md:text-4xl font-extrabold tracking-tight"
+            style={{ color: "var(--clr-text-dark)" }}
+          >
+            Trusted by industry leaders
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Grid */}
+        <div
+          className="grid md:grid-cols-3 overflow-hidden rounded-2xl"
+          style={{
+            gap: "1.5px",
+            background: "rgba(0,147,203,0.12)",
+            border: "1.5px solid rgba(0,147,203,0.12)",
+          }}
+        >
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="relative p-8 bg-card rounded-sm border border-border"
+              transition={{ duration: 0.4, delay: i * 0.08 }}
+              className="group relative flex flex-col gap-4 p-8 overflow-hidden cursor-default transition-colors duration-200"
+              style={{ background: "#fff" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "#f0f9ff")}
+              onMouseLeave={e => (e.currentTarget.style.background = "#fff")}
             >
-              <Quote size={28} className="text-gold/30 mb-4" />
-              <p className="text-foreground/80 leading-relaxed mb-8 text-[15px]">
-                "{t.quote}"
+              {/* Bottom accent */}
+              <span
+                className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                style={{ background: "var(--clr-primary)" }}
+              />
+
+              {/* Big quote */}
+              <span
+                className="text-5xl font-black leading-none select-none"
+                style={{ color: "var(--clr-primary)", opacity: 0.15 }}
+              >
+                "
+              </span>
+
+              <p
+                className="text-[14px] leading-[1.75] flex-1"
+                style={{ color: "#334155" }}
+              >
+                {t.quote}
               </p>
-              <div className="border-t border-gold pt-4">
-                <p className="font-display text-lg font-semibold text-foreground">
+
+              {/* Author */}
+              <div
+                className="flex flex-col gap-0.5 pt-4"
+                style={{ borderTop: "1px solid rgba(0,147,203,0.12)" }}
+              >
+                <p className="text-[14px] font-bold" style={{ color: "var(--clr-text-dark)" }}>
                   {t.name}
                 </p>
-                <p className="text-muted-foreground text-sm">{t.role}</p>
-                <p className="text-primary text-xs font-medium mt-1">{t.company}</p>
+                <p className="text-[12px]" style={{ color: "var(--clr-text-muted)" }}>
+                  {t.role}
+                </p>
+                <p className="text-[11px] font-semibold mt-0.5" style={{ color: "var(--clr-primary)" }}>
+                  {t.company}
+                </p>
               </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
 };
 
-export default Testimonial;
+export default TestimonialCards;

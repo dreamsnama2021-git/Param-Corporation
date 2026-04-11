@@ -1,10 +1,13 @@
-// components/ui/team-section.tsx
-import * as React from "react";
-import { cn } from "@/lib/utils"; // Assuming you have a utility for class concatenation
 
-// Define interfaces for props
+// TeamSection Component - Updated to match testimonial styling
+import { cn } from '@/lib/utils';
+import { LinkedinLogoIcon, TwitterLogoIcon } from '@phosphor-icons/react';
+import { motion } from 'framer-motion';
+import { Mail } from "lucide-react";
+import React from 'react';
+
 interface SocialLink {
-  icon: React.ElementType; // For Shadcn icons or any SVG component
+  icon: React.ElementType;
   href: string;
 }
 
@@ -20,11 +23,8 @@ interface TeamSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   description: string;
   members: TeamMember[];
   registerLink?: string;
-  logo?: React.ReactNode; // For a custom logo, or you can use a string src
-  socialLinksMain?: SocialLink[]; // Main social links for the company/section
 }
 
-// TeamSection Component
 export const TeamSection = React.forwardRef<HTMLDivElement, TeamSectionProps>(
   (
     {
@@ -32,8 +32,6 @@ export const TeamSection = React.forwardRef<HTMLDivElement, TeamSectionProps>(
       description,
       members,
       registerLink,
-      logo,
-      socialLinksMain,
       className,
       ...props
     },
@@ -43,145 +41,124 @@ export const TeamSection = React.forwardRef<HTMLDivElement, TeamSectionProps>(
       <section
         ref={ref}
         className={cn(
-          "relative w-full overflow-hidden bg-background py-12 md:py-24 lg:py-32",
+          "py-20 md:py-28",
           className
         )}
+        style={{ background: "#fff" }}
         {...props}
       >
-        <div className="container grid items-center justify-center gap-8 px-4 text-center md:px-6">
-          {/* Background Grid - for visual appeal */}
-          <div className="absolute inset-0 z-0 opacity-5">
-            <svg className="h-full w-full" fill="none">
-              <defs>
-                <pattern
-                  id="grid"
-                  x="0"
-                  y="0"
-                  width="20"
-                  height="20"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <path
-                    d="M20 0L0 0 0 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="0.5"
-                    className="text-muted-foreground"
-                  />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
-            </svg>
-          </div>
+        <div className="ui-container">
+          {/* Header - Matching testimonial style */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center"
+          >
+            <p
+              className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 flex items-center justify-center gap-2"
+              style={{ color: "var(--clr-primary)" }}
+            >
+              <span className="inline-block w-5 h-[1.5px]" style={{ background: "var(--clr-primary)" }} />
+              OUR TEAM
+            </p>
+            <h2
+              className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4"
+              style={{ color: "var(--clr-text-dark)" }}
+            >
+              {title}
+            </h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              {description}
+            </p>
+          </motion.div>
 
-          {/* Header Section */}
-          <div className="relative z-10 flex w-full flex-col items-center justify-between gap-4 md:flex-row md:items-start md:text-left lg:gap-8">
-            <div className="grid gap-2 text-center md:text-left">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-muted-foreground">
-                <span className="text-primary block text-xl sm:text-2xl md:text-3xl font-medium">
-                  O U R
-                </span>
-                {title}
-              </h1>
-              <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                {description}
-              </p>
-            </div>
-            <div className="flex flex-col items-center gap-4 md:items-end">
-              {logo && <div className="text-2xl font-bold">{logo}</div>}
-              {registerLink && (
-                <a
-                  href={registerLink}
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                >
-                  REGISTER NOW
-                </a>
-              )}
-            </div>
-          </div>
-
-          {/* Main Social Links */}
-          {socialLinksMain && socialLinksMain.length > 0 && (
-            <div className="relative z-10 flex w-full items-center justify-center gap-4 py-4 md:justify-center">
-              {socialLinksMain.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <link.icon className="h-6 w-6" />
-                </a>
-              ))}
-              <span className="text-muted-foreground text-sm">
-                www.website.com
-              </span>{" "}
-              {/* This can also be a prop */}
-            </div>
-          )}
-
-          {/* Team Members Grid */}
-          <div className="relative z-10 mx-auto grid w-full max-w-5xl grid-cols-1 gap-8 md:grid-cols-3 lg:gap-12">
+          {/* Team Grid - Styled like testimonial cards */}
+          <div className="grid md:grid-cols-3 overflow-hidden rounded-2xl" style={{
+            gap: "1.5px",
+            background: "rgba(0,147,203,0.12)",
+            border: "1.5px solid rgba(0,147,203,0.12)",
+          }}>
             {members.map((member, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="group relative flex flex-col items-center justify-end overflow-hidden rounded-xl bg-card p-6 text-center shadow-lg transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl"
-                style={{
-                  // Dynamic background color based on index or theme
-                  backgroundColor:
-                    index === 0
-                      ? "hsl(var(--destructive)/0.1)" // Example: using destructive as pinkish
-                      : index === 1
-                      ? "hsl(var(--muted))" // Example: using muted for grey
-                      : "hsl(var(--warning)/0.2)", // Example: using warning as yellowish
-                  color: "hsl(var(--foreground))",
-                }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="group relative flex flex-col items-center gap-4 p-8 overflow-hidden cursor-default transition-colors duration-200"
+                style={{ background: "#fff" }}
+                onMouseEnter={e => (e.currentTarget.style.background = "#f0f9ff")}
+                onMouseLeave={e => (e.currentTarget.style.background = "#fff")}
               >
-                {/* Background wave animation */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-1/2 origin-bottom scale-y-0 transform rounded-t-full bg-gradient-to-t from-primary/20 to-transparent transition-transform duration-500 ease-out group-hover:scale-y-100"
-                  style={{ transitionDelay: `${index * 50}ms` }}
+                {/* Bottom accent */}
+                <span
+                  className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                  style={{ background: "var(--clr-primary)" }}
                 />
 
-                {/* Member Image with mask and border animation */}
-                <div
-                  className="relative z-10 h-36 w-36 overflow-hidden rounded-full border-4 border-transparent bg-background/20 transition-all duration-500 ease-out group-hover:border-primary group-hover:scale-105"
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                >
+                {/* Avatar */}
+                <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-slate-100 group-hover:border-[var(--clr-primary)] transition-colors duration-300 mb-4">
                   <img
                     src={member.imageSrc}
                     alt={member.name}
-                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                    className="w-full h-full object-cover"
                   />
                 </div>
 
-                <h3 className="relative z-10 mt-4 text-xl font-semibold text-foreground">
-                  {member.name}
-                </h3>
-                <p className="relative z-10 text-sm text-muted-foreground">
-                  {member.designation}
-                </p>
+                {/* Info */}
+                <div className="text-center">
+                  <h3 className="text-lg font-bold mb-1" style={{ color: "var(--clr-text-dark)" }}>
+                    {member.name}
+                  </h3>
+                  <p className="text-[12px] text-slate-500 mb-4 uppercase tracking-wider">
+                    {member.designation}
+                  </p>
 
-                {/* Social Links for individual members */}
-                {member.socialLinks && member.socialLinks.length > 0 && (
-                  <div className="relative z-10 mt-4 flex gap-3 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
-                    {member.socialLinks.map((link, linkIndex) => (
-                      <a
-                        key={linkIndex}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <link.icon className="h-5 w-5" />
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
+                  {/* Social Links */}
+                  {member.socialLinks && member.socialLinks.length > 0 && (
+                    <div className="flex items-center justify-center gap-3">
+                      {member.socialLinks.map((link, linkIndex) => (
+                        <a
+                          key={linkIndex}
+                          href={link.href}
+                          className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:text-[var(--clr-primary)] hover:bg-blue-50 transition-colors duration-200"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <link.icon className="w-4 h-4" />
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </motion.div>
             ))}
           </div>
+
+          {/* Optional CTA */}
+          {registerLink && (
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="mt-12 text-center"
+            >
+              <a
+                href={registerLink}
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-medium text-sm transition-colors duration-200"
+                style={{ 
+                  background: "var(--clr-primary)", 
+                  color: "#fff"
+                }}
+              >
+                JOIN OUR TEAM
+                <span className="w-4 h-[1px] bg-white/50" />
+              </a>
+            </motion.div>
+          )}
         </div>
       </section>
     );
