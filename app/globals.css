@@ -34,9 +34,8 @@
   --clr-bg-dark: #0b3c5d;
   --clr-bg-dark-deep: #072c44;
 
-  /* Borders */
-  --clr-border-light: rgba(15, 143, 191, 0.15);
-  --clr-border-accent: rgba(46, 196, 166, 0.25);
+
+  
 
   /* Shadows (cool toned now) */
   --shadow-soft: 0 10px 30px rgba(15, 143, 191, 0.15);
@@ -534,17 +533,6 @@
   }
 }
 
-@layer base {
-  body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-primary);
-  }
-}
 
-body {
-  background: var(--clr-bg-cream);
-  color: var(--clr-text-dark);
-  font-family: var(--font-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+
+
