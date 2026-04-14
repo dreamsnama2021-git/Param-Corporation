@@ -80,7 +80,7 @@ export default function HeroWithStats() {
   const slide = HERO_SLIDES[current];
 
   return (
-    <div className="md:h-screen flex flex-col overflow-hidden">
+    <div className="md:h-auto flex flex-col overflow-hidden">
 
       {/* ─── HERO ───────────────── */}
       <section className="relative h-[60vh] sm:h-[70vh] lg:h-[80vh] 
@@ -119,11 +119,11 @@ export default function HeroWithStats() {
             <div className="absolute inset-0 flex items-center justify-center 
             bg-black/0 group-hover:bg-black/20 transition">
 
-              <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 
+              {/* <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 
               bg-white text-[var(--clr-primary)] font-semibold px-6 py-3 rounded-full shadow-lg 
               translate-y-4 group-hover:translate-y-0">
                 View Category
-              </span>
+              </span> */}
             </div>
           </a>
 
@@ -159,42 +159,7 @@ export default function HeroWithStats() {
       </section>
 
       {/* ─── STATS ───────────────── */}
-      <section className="w-full bg-[var(--clr-primary)] py-10 relative">
-
-        {/* top line */}
-        <div className="absolute top-0 w-full h-1 
-        bg-gradient-to-r from-transparent via-[var(--clr-primary)] to-transparent" />
-
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-
-          {STATS.map((stat, i) => (
-            <div key={stat.label}
-              className={`text-center group `}
-              style={{ animationDelay: `${i * 100}ms` }}>
-
-              <div className="w-12 h-12 mx-auto mb-3 rounded-xl 
-              bg-[var(--clr-secondary)] border border-[var(--clr-secondary)] 
-              flex items-center justify-center text-2xl 
-              group-hover:bg-[var(--clr-primary)/20] transition">
-                {stat.icon}
-              </div>
-
-              <div className="text-xl font-bold text-white">
-                {stat.value}
-              </div>
-
-              <div className="text-xs text-white">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-
-        </div>
-
-        {/* bottom line */}
-        <div className="absolute bottom-0 w-full h-[1px] 
-        bg-gradient-to-r from-transparent via-[var(--clr-primary)/40] to-transparent" />
-      </section>
+    
 
     </div>
   );

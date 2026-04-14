@@ -1,27 +1,47 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import { ChevronDown, Menu, X, Search, Phone, Mail } from "lucide-react";
+import { ChevronDown, Menu, X, Search } from "lucide-react";
 import {
   categories,
   therapies,
   personalizedGifts,
   occasions,
   digitalGifts,
-} from "@/app/data"; // Changed to absolute import
+} from "@/app/data";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     setMounted(true);
-    const handler = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
+    
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Determine scroll direction
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        // Scrolling down & past threshold - hide navbar
+        setVisible(false);
+      } else {
+        // Scrolling up - show navbar
+        setVisible(true);
+      }
+      
+      // Update scrolled state for styling (bg change)
+      setScrolled(currentScrollY > 50);
+      
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   if (!mounted) return <div className="h-20 bg-[var(--clr-white)]" />;
@@ -34,7 +54,6 @@ export default function Navbar() {
     { label: "Contact Us", href: "/contact-us" },
   ];
 
-  // Mega menu column configuration (Order: Categories → Therapy → Personalized → Occasion → Digital)
   const megaMenuColumns = [
     { title: "Categories", data: categories, path: "/categories" },
     { title: "Therapy", data: therapies, path: "/therepy" },
@@ -45,51 +64,14 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ─── TOP BAR ───────────────── */}
-      <div
-        className={`fixed top-0 left-0 right-0 z-50 
-        bg-[var(--clr-primary)] text-white transition-transform duration-300 ${
-          scrolled ? "-translate-y-full" : "translate-y-0"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 h-10 flex items-center justify-between text-xs md:text-sm">
-          <div className="flex items-center gap-4 md:gap-6">
-            <a
-              href="tel:+911234567890"
-              className="flex items-center gap-1.5 hover:text-[var(--clr-accent)]"
-            >
-              <Phone className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">+91 12345 67890</span>
-            </a>
-
-            <a
-              href="mailto:info@bigimpex.com"
-              className="flex items-center gap-1.5 hover:text-[var(--clr-accent)]"
-            >
-              <Mail className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">info@bigimpex.com</span>
-            </a>
-          </div>
-
-          <div className="flex items-center gap-4 font-medium">
-            <a href="/track" className="hover:text-[var(--clr-accent)]">
-              Track Order
-            </a>
-            <a href="/support" className="hover:text-[var(--clr-accent)]">
-              Support
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* ─── NAVBAR ───────────────── */}
       <div
-        className={`fixed left-0 right-0 z-40 flex justify-center px-4 py-3 transition-all ${
-          scrolled ? "top-0" : "top-10"
+        className={`fixed left-0 right-0 z-40 flex justify-center px-4 py-3 transition-all duration-500 ease-in-out ${
+          visible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         }`}
       >
         <nav
-          className={`w-full max-w-7xl rounded-2xl transition-all ${
+          className={`w-full max-w-7xl rounded-2xl transition-all duration-300 ${
             scrolled
               ? "bg-white/95 shadow-xl backdrop-blur-md"
               : "bg-white/90 shadow-md backdrop-blur-sm"
@@ -115,8 +97,7 @@ export default function Navbar() {
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
                   <button
-                    className="flex items-center gap-1 px-3 py-2 text-sm font-semibold 
-                  text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] transition"
+                    className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] transition"
                   >
                     Products
                     <ChevronDown
@@ -128,8 +109,7 @@ export default function Navbar() {
 
                   {activeDropdown === "products" && (
                     <div
-                      className="absolute top-full left-1/2 -translate-x-1/2 w-[1000px] 
-                    bg-white rounded-xl shadow-2xl border border-[var(--clr-border-light)] p-6 z-50"
+                      className="absolute top-full left-1/2 -translate-x-1/2 w-[1000px] bg-white rounded-xl shadow-2xl border border-[var(--clr-border-light)] p-6 z-50"
                     >
                       <div className="grid grid-cols-5 gap-6">
                         {megaMenuColumns.map((column, idx) => (
@@ -138,7 +118,7 @@ export default function Navbar() {
                               {column.title}
                             </h3>
                             <ul className="space-y-2">
-                              {column.data?.slice(0, 10).map((item: any) => (
+                              {column.data?.slice(0, 12).map((item: any) => (
                                 <li key={item.slug}>
                                   <Link
                                     href={`${column.path}/${item.slug}`}
@@ -161,8 +141,7 @@ export default function Navbar() {
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="px-3 py-2 text-sm font-semibold 
-                      text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] transition"
+                      className="px-3 py-2 text-sm font-semibold text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] transition"
                     >
                       {item.label}
                     </Link>
@@ -198,8 +177,7 @@ export default function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="block px-4 py-3 text-sm font-semibold 
-                    text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] hover:bg-[var(--clr-bg-gray)] rounded-xl"
+                    className="block px-4 py-3 text-sm font-semibold text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] hover:bg-[var(--clr-bg-gray)] rounded-xl"
                     onClick={() => setMobileOpen(false)}
                   >
                     {item.label}
@@ -209,8 +187,7 @@ export default function Navbar() {
                 {/* CTA */}
                 <Link
                   href="/brochure"
-                  className="block text-center bg-[var(--clr-primary)] hover:bg-[var(--clr-secondary)] 
-                  text-white font-bold py-3 rounded-xl transition"
+                  className="block text-center bg-[var(--clr-primary)] hover:bg-[var(--clr-secondary)] text-white font-bold py-3 rounded-xl transition"
                 >
                   Download Brochure
                 </Link>

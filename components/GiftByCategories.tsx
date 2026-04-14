@@ -1,238 +1,116 @@
 "use client";
 
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef } from "react";
+import { Sparkles, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
-// ─── DATA ─────────────────
+// ─── DATA (Limited to 4 items) ─────────────────
 const CATEGORIES = [
   {
     id: "1",
     title: "Appreciation Gifts",
     image: "https://www.bigimpex.com/wp-content/uploads/2024/10/16-300x300.png",
+    count: "24",
+    tag: "Popular",
   },
   {
     id: "2",
     title: "Household Gifts",
     image: "https://www.bigimpex.com/wp-content/uploads/2024/07/5.jpg",
+    count: "18",
+    tag: "New",
   },
   {
     id: "3",
     title: "Office Accessories",
     image: "https://www.bigimpex.com/wp-content/uploads/2024/10/Office-Acessiories-300x300.png",
+    count: "32",
+    tag: "Prime",
   },
   {
     id: "4",
     title: "Health & Hygiene",
     image: "https://www.bigimpex.com/wp-content/uploads/2024/10/Health-Hygiene-300x300.png",
+    count: "15",
+    tag: "Trending",
   },
 ];
 
-// ─── CATEGORIES ─────────────────
+// ─── CATEGORIES SECTION ─────────────────
 function GiftsByCategories() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const CARD_WIDTH = 220; // match actual width
-  const GAP = 16;
-
-  const scroll = (dir: "left" | "right") => {
-    if (!ref.current) return;
-
-    const amount = CARD_WIDTH + GAP;
-
-    ref.current.scrollBy({
-      left: dir === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <section className="w-full bg-[var(--clr-bg-cream)] py-16">
-
-      <div className="max-w-7xl mx-auto px-4">
-
-        {/* HEADER */}
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-[var(--clr-text-dark)]">
-            Gifts By Categories
+    <section className="w-full bg-[#F8F9FA] py-16 md:py-24 xl:py-10">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl uppercase font-bold text-[#1a1a1a] tracking-tight mb-3">
+            Our Categories
           </h2>
-
-          <div className="flex gap-2">
-            <button
-              onClick={() => scroll("left")}
-              className="p-2 rounded-full border border-[var(--clr-border-light)] 
-              text-[var(--clr-primary)] hover:bg-[var(--clr-primary)] hover:text-white transition"
-            >
-              <ChevronLeft />
-            </button>
-
-            <button
-              onClick={() => scroll("right")}
-              className="p-2 rounded-full border border-[var(--clr-border-light)] 
-              text-[var(--clr-primary)] hover:bg-[var(--clr-primary)] hover:text-white transition"
-            >
-              <ChevronRight />
-            </button>
+          <div className="flex justify-center">
+            <div className="w-16 h-1 bg-[#0093cb] rounded-full" />
           </div>
         </div>
 
-        {/* CAROUSEL */}
-    <div className="flex justify-center">
-  <div
-    ref={ref}
-    className="flex gap-6 overflow-x-auto snap-x snap-mandatory 
-    px-4 pb-4 scrollbar-hide max-w-5xl w-full justify-center"
-  >
-    {CATEGORIES.map((item) => (
-      <div
-        key={item.id}
-        className="snap-start flex-shrink-0 w-[200px] group"
-      >
-        <div className="relative aspect-square rounded-2xl overflow-hidden 
-        border border-[var(--clr-border-light)] shadow-[var(--shadow-soft)]">
-
-          <Image
-            src={item.image}
-            alt={item.title}
-            fill
-            className="object-cover"
-            unoptimized
-          />
-        </div>
-
-        <p className="text-center mt-3 text-sm 
-        text-[var(--clr-text-dark)]">
-          {item.title}
-        </p>
-      </div>
-    ))}
-  </div>
-</div>
-      </div>
-    </section>
-  );
-}
-const PRODUCTS = [
-  {
-    id: "1",
-    title: "Crystal Cube",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/09/8.png",
-  },
-  {
-    id: "2",
-    title: "Crystal Globe",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/07/15-3.png",
-  },
-  {
-    id: "3",
-    title: "Crystal Heart",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/09/7.png",
-  },
-  {
-    id: "4",
-    title: "Crystal Cube Premium",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/09/8.png",
-  },
-  {
-    id: "5",
-    title: "Crystal Globe Deluxe",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/07/15-3.png",
-  },
-  {
-    id: "6",
-    title: "Crystal Heart LED",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/09/7.png",
-  },
-  {
-    id: "7",
-    title: "Award Trophy",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/09/8.png",
-  },
-  {
-    id: "8",
-    title: "Corporate Gift Set",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/07/15-3.png",
-  },
-];
-// ─── PRODUCTS ─────────────────
-function ProductShowcase() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const scroll = (dir: "left" | "right") => {
-    if (!ref.current) return;
-
-    const container = ref.current;
-    const width = container.clientWidth;
-
-    container.scrollBy({
-      left: dir === "left" ? -width : width,
-      behavior: "smooth",
-    });
-  };
-
-  return (
-    <section className="w-full bg-[var(--clr-bg-gray)] py-20">
-
-      <div className="max-w-6xl mx-auto px-4">
-
-        <h2 className="text-2xl font-semibold text-center mb-10">
-          Featured Products
-        </h2>
-
-        <div className="relative">
-
-          {/* ARROWS */}
-          <button
-            onClick={() => scroll("left")}
-            className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 
-            bg-[var(--clr-primary)] text-white p-2 rounded-full"
-          >
-            <ChevronLeft />
-          </button>
-
-          <button
-            onClick={() => scroll("right")}
-            className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 
-            bg-[var(--clr-primary)] text-white p-2 rounded-full"
-          >
-            <ChevronRight />
-          </button>
-
-          {/* VIEWPORT */}
-          <div className="overflow-hidden">
-
-            {/* TRACK */}
-            <div
-              ref={ref}
-              className="flex transition-all duration-300"
+        {/* 4 Cards Grid - No Individual Arrows */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+          {CATEGORIES.map((item) => (
+            <Link
+              key={item.id}
+              href={`/categories/${item.id}`}
+              className="group cursor-pointer relative h-[380px] rounded-2xl overflow-hidden 
+                shadow-md hover:shadow-2xl transition-all duration-500 ease-out
+                transform hover:-translate-y-2 block"
             >
-              {PRODUCTS.map((p) => (
-                <div
-                  key={p.id}
-                  className="w-1/4 flex-shrink-0 px-2"
-                >
-                  <div className="rounded-2xl overflow-hidden 
-                  bg-[var(--clr-bg-dark)]">
+              {/* Image */}
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover transition-transform duration-700 
+                  group-hover:scale-110"
+                unoptimized
+              />
 
-                    <div className="relative h-[220px]">
-                      <Image
-                        src={p.image}
-                        alt={p.title}
-                        fill
-                        className="object-contain p-4"
-                        unoptimized
-                      />
-                    </div>
-                  </div>
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent 
+                opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
 
-                  <p className="text-center mt-3 text-sm">
-                    {p.title}
-                  </p>
+              {/* Tag Badge - Top Left (Kept) */}
+              <div className="absolute top-4 left-4">
+                <div className="flex items-center gap-1.5 bg-white/95 backdrop-blur-sm 
+                  px-3 py-1.5 rounded-full text-xs font-semibold text-gray-900 shadow-sm">
+                  <Sparkles className="w-3.5 h-3.5 text-[#00a65d]" />
+                  {item.tag}
                 </div>
-              ))}
-            </div>
+              </div>
 
-          </div>
+              {/* Bottom Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                <h3 className="font-bold text-xl md:text-2xl mb-1 
+                  group-hover:translate-x-1 transition-transform duration-300">
+                  {item.title}
+                </h3>
+                <p className="text-white/80 text-sm font-medium">
+                  {item.count} Items
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Common Navigation Button */}
+        <div className="flex justify-center">
+          <Link
+            href="/categories/all"
+            className="group flex items-center gap-3 bg-white border-2 border-[#0093cb] 
+              text-[#0093cb] px-8 py-3.5 rounded-full font-semibold text-sm 
+              hover:bg-[#0093cb] hover:text-white hover:shadow-lg hover:shadow-[#0093cb]/20
+              transition-all duration-300 transform hover:scale-105 active:scale-95"
+          >
+            <span>View All Categories</span>
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 
+              group-hover:translate-x-1" />
+          </Link>
         </div>
       </div>
     </section>
@@ -242,15 +120,8 @@ function ProductShowcase() {
 // ─── EXPORT ─────────────────
 export default function ProductSections() {
   return (
-    <>
+    <div>
       <GiftsByCategories />
-      <ProductShowcase />
-
-      <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
-    </>
+    </div>
   );
 }

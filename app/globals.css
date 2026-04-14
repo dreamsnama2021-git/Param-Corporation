@@ -12,66 +12,275 @@
 }
 
 /* =====================================================
-   DESIGN TOKENS & FLUID VARIABLES
-   Base: 380px (Mobile)
+   DESIGN TOKENS & BASE VARIABLES
 ===================================================== */
 :root {
-  /* Brand Colors (From Logo) */
-  --clr-primary: #0093cb;       /* Main blue */
-  --clr-secondary: #00a65d;     /* Teal green */
-  --clr-accent: #8bde7a;        /* Light green highlight */
-
+  /* Brand Colors */
+  --clr-primary: #0093cb;
+  --clr-secondary: #00a65d;
+  --clr-accent: #8bde7a;
+  
   /* Text */
   --clr-text-dark: #0f172a;
   --clr-text-muted: #6b7280;
-
+  
   /* Backgrounds */
   --clr-bg-cream: #f8fafc;
   --clr-bg-gray: #eef2f7;
   --clr-white: #ffffff;
-
-  /* Dark mode / depth */
   --clr-bg-dark: #0b3c5d;
   --clr-bg-dark-deep: #072c44;
-
-
   
-
-  /* Shadows (cool toned now) */
+  /* Shadows */
   --shadow-soft: 0 10px 30px rgba(15, 143, 191, 0.15);
   --shadow-strong: 0 30px 60px rgba(11, 60, 93, 0.25);
   --shadow-accent: 0 8px 24px rgba(46, 196, 166, 0.25);
+  
+  /* Spacing Scale */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  
+  /* Container Config */
+  --container-padding: 1rem;
+  --container-max: 100%;
 }
 
 /* =====================================================
-   BASE LAYOUT (All Devices - Consistent 15% margins)
+   UI-SECTION BASE (Mobile First)
+   - Full width with consistent padding
+   - Auto margins for centering
+   - Max-width constraints on larger screens
 ===================================================== */
 .ui-section {
-  width: 100%; /* 100% - 15% left - 15% right = 70% */
-  max-width: var(--container-max);
-  margin: 0 auto; /* Centers the 70% width block */
+  width: 100%;
+  margin: 0 auto;
   padding: var(--space-md) var(--container-padding);
   position: relative;
   overflow: visible;
 }
 
+/* =====================================================
+   MOBILE BREAKPOINTS (350px - 767px)
+===================================================== */
+@media (min-width: 350px) {
+  :root {
+    --container-padding: 1rem;
+    --h1-size: clamp(1.5rem, 6vw, 2rem);
+    --h2-size: clamp(1.25rem, 5vw, 1.75rem);
+    --h3-size: clamp(1.1rem, 4vw, 1.5rem);
+    --h4-size: 1rem;
+    --para-size: clamp(0.875rem, 3.5vw, 1rem);
+    --desc-size: clamp(0.8rem, 3vw, 0.9rem);
+  }
+  
+  .ui-section {
+    padding: var(--space-lg) var(--container-padding);
+  }
+}
+
+@media (min-width: 411px) {
+  :root {
+    --container-padding: 1.25rem;
+    --h1-size: clamp(1.75rem, 5vw, 2.25rem);
+    --h2-size: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .ui-section {
+    padding: var(--space-xl) var(--container-padding);
+  }
+}
+
+@media (min-width: 640px) {
+  :root {
+    --container-padding: 1.5rem;
+    --container-max: 600px;
+  }
+  
+  .ui-section {
+    max-width: var(--container-max);
+    padding: var(--space-xl) var(--container-padding);
+  }
+}
+
+/* =====================================================
+   TABLET (768px - 1023px)
+   - Increases padding
+   - Wider max-width
+===================================================== */
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 2rem;
+    --container-max: 720px;
+    --h1-size: clamp(2rem, 4vw, 2.75rem);
+    --h2-size: clamp(1.75rem, 3.5vw, 2.25rem);
+    --h3-size: clamp(1.5rem, 2.5vw, 1.875rem);
+    --para-size: clamp(1rem, 2vw, 1.125rem);
+  }
+  
+  .ui-section {
+    max-width: var(--container-max);
+    padding: var(--space-2xl) var(--container-padding);
+  }
+}
+
+/* =====================================================
+   SMALL LAPTOP (1024px - 1279px)
+===================================================== */
+@media (min-width: 1024px) {
+  :root {
+    --container-padding: 2.5rem;
+    --container-max: 960px;
+    --h1-size: clamp(2.25rem, 3.5vw, 3rem);
+    --h2-size: clamp(1.875rem, 2.5vw, 2.5rem);
+    --h3-size: clamp(1.5rem, 2vw, 2rem);
+    --h4-size: clamp(1.125rem, 1.5vw, 1.25rem);
+    --space-2xl: 3.5rem;
+  }
+  
+  .ui-section {
+    max-width: var(--container-max);
+    padding: var(--space-2xl) var(--container-padding);
+  }
+}
+
+/* =====================================================
+   DESKTOP (1280px - 1439px)
+   - Standard desktop container
+   - 15% margins effect (max-width 70% or fixed max-width)
+===================================================== */
+@media (min-width: 1280px) {
+  :root {
+    --container-padding: 3rem;
+    --container-max: 1100px;
+    --h1-size: clamp(2.5rem, 3vw, 3.5rem);
+    --h2-size: clamp(2rem, 2.5vw, 2.75rem);
+    --h3-size: clamp(1.625rem, 2vw, 2.25rem);
+    --para-size: clamp(1.0625rem, 1.2vw, 1.125rem);
+    --space-2xl: 4rem;
+  }
+  
+  .ui-section {
+    max-width: var(--container-max);
+    /* Alternative for 15% margins: width: 70%; */
+    padding: var(--space-2xl) var(--container-padding);
+  }
+}
+
+/* =====================================================
+   LARGE DESKTOP (1440px - 1599px)
+===================================================== */
+@media (min-width: 1440px) {
+  :root {
+    --container-padding: 4rem;
+    --container-max: 1280px;
+    --h1-size: clamp(2.75rem, 2.5vw, 3.75rem);
+    --h2-size: clamp(2.25rem, 2vw, 3rem);
+    --h3-size: clamp(1.75rem, 1.8vw, 2.5rem);
+  }
+  
+  .ui-section {
+    max-width: var(--container-max);
+    padding: var(--space-2xl) var(--container-padding);
+  }
+}
+
+/* =====================================================
+   XL DESKTOP (1600px - 1899px)
+===================================================== */
+@media (min-width: 1600px) {
+  :root {
+    --container-padding: 5rem;
+    --container-max: 1400px;
+    --h1-size: clamp(3rem, 2vw, 4rem);
+    --h2-size: clamp(2.5rem, 1.8vw, 3.25rem);
+    --h3-size: clamp(1.875rem, 1.5vw, 2.75rem);
+    --h4-size: clamp(1.25rem, 1vw, 1.5rem);
+    --para-size: 1.125rem;
+    --desc-size: 1.05rem;
+    --space-2xl: 5rem;
+  }
+  
+  .ui-section {
+    max-width: var(--container-max);
+    padding: var(--space-2xl) var(--container-padding);
+  }
+}
+
+/* =====================================================
+   ULTRA-WIDE (1900px+)
+   - Optional: use 70% width for 15% margins
+   - Or keep max-width for readability
+===================================================== */
+@media (min-width: 1900px) {
+  :root {
+    --container-padding: 6rem;
+    --container-max: 1600px;
+    --h1-size: 3.5rem;
+    --h2-size: 3rem;
+    --h3-size: 2.5rem;
+    --h4-size: 1.5rem;
+    --para-size: 1.25rem;
+    --space-2xl: 6rem;
+  }
+  
+  /* Option 1: Fixed max-width (recommended) */
+  .ui-section {
+    max-width: var(--container-max);
+    padding: var(--space-2xl) var(--container-padding);
+  }
+  
+  /* Option 2: Percentage-based (uncomment to use) */
+  /*
+  .ui-section {
+    width: 70%;
+    max-width: 1800px;
+    padding: var(--space-2xl) 0;
+  }
+  */
+}
+
+/* =====================================================
+   UI-CONTAINER (Inner wrapper)
+===================================================== */
 .ui-container {
-  width: 95%;
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
   position: relative;
 }
 
+@media (min-width: 1440px) {
+  .ui-container {
+    max-width: 1360px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .ui-container {
+    max-width: 1460px;
+  }
+}
+
+@media (min-width: 1900px) {
+  .ui-container {
+    max-width: 1600px;
+  }
+}
+
 /* =====================================================
-   TYPOGRAPHY BASE
+   TYPOGRAPHY
 ===================================================== */
 .ui-h1 {
   font-size: var(--h1-size);
   line-height: 1.1;
   font-weight: 700;
-  
+  color: var(--clr-text-dark);
   margin-bottom: var(--space-sm);
-  text-shadow: 0 8px 30px rgba(100, 122, 183, 0.25);
 }
 
 .ui-h2 {
@@ -111,24 +320,19 @@
 }
 
 /* =====================================================
-   COMPONENTS BASE
+   COMPONENTS
 ===================================================== */
 .ui-badge {
   display: inline-flex;
   align-items: center;
-  padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.8rem, 2vw, 1.25rem);
+  padding: 0.5rem 1rem;
   font-size: clamp(0.75rem, 1.5vw, 0.9rem);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.05em;
   color: var(--clr-white);
   background: var(--clr-primary);
-  border-radius: 500px;
+  border-radius: 9999px;
   line-height: 1;
-}
-
-.ui-badge-2 {
-  background: linear-gradient(135deg, var(--clr-primary), var(--clr-secondary));
-  box-shadow: var(--shadow-soft);
 }
 
 .ui-btn {
@@ -136,10 +340,10 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: clamp(0.6rem, 1.5vw, 0.9rem) clamp(1rem, 3vw, 1.5rem);
-  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  padding: 0.75rem 1.5rem;
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
   font-weight: 600;
-  border-radius: clamp(10px, 1vw, 14px);
+  border-radius: 12px;
   transition: all 0.25s ease;
   cursor: pointer;
   border: none;
@@ -158,23 +362,9 @@
   transform: translateY(-2px);
 }
 
-.ui-btn-outline {
-  background: var(--clr-white);
-  color: var(--clr-secondary);
-  border: 1px solid var(--clr-border-light);
-}
-
-.ui-btn-outline:hover {
-  background: var(--clr-primary);
-  color: var(--clr-white);
-  border-color: transparent;
-}
-
-.ui-input {
+.ui-input,
+.ui-textarea {
   width: 100%;
-  height: clamp(44px, 5vh, 56px);
-  padding: 0 clamp(0.75rem, 2vw, 1.25rem);
-  font-size: clamp(0.875rem, 1vw, 1rem);
   background: #f7f7f7;
   border: 1px solid #e5e5e5;
   border-radius: 10px;
@@ -183,356 +373,34 @@
   transition: all 0.25s ease;
 }
 
-.ui-input:focus {
-  background: #ffffff;
-  border-color: var(--clr-primary);
-  box-shadow: 0 0 0 3px rgba(33, 65, 55, 0.1);
-}
-
-.ui-input::placeholder {
-  color: #b5b5b5;
+.ui-input {
+  height: 48px;
+  padding: 0 1rem;
+  font-size: var(--para-size);
 }
 
 .ui-textarea {
-  width: 100%;
-  min-height: clamp(100px, 15vh, 150px);
-  padding: clamp(0.75rem, 2vw, 1rem);
-  font-size: clamp(0.875rem, 1vw, 1rem);
-  background: #f7f7f7;
-  border: 1px solid #e5e5e5;
-  border-radius: 12px;
-  color: var(--clr-text-dark);
+  min-height: 120px;
+  padding: 1rem;
+  font-size: var(--para-size);
   resize: vertical;
-  outline: none;
-  transition: all 0.25s ease;
 }
 
+.ui-input:focus,
 .ui-textarea:focus {
   background: #ffffff;
   border-color: var(--clr-primary);
-  box-shadow: 0 0 0 3px rgba(33, 65, 55, 0.1);
-}
-
-.ui-textarea::placeholder {
-  color: #b5b5b5;
-}
-
-/* Card Extension */
-.card-corner-extension {
-  position: absolute;
-  bottom: clamp(-8px, -1vw, -12px);
-  right: clamp(-8px, -1vw, -12px);
-  width: clamp(80px, 10vw, 120px);
-  height: clamp(40px, 5vw, 56px);
-  border-radius: 999px;
-  background: #ffffff;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 0 3px rgba(0, 147, 203, 0.1);
 }
 
 /* =====================================================
-   BREAKPOINT: 350px - 410px (Small Phones)
+   UTILITY CLASSES
 ===================================================== */
-@media (min-width: 350px) and (max-width: 410px) {
-  :root {
-    --container-padding: 0.75rem;
-    --h1-size: clamp(1.35rem, 5.5vw, 1.5rem);
-    --h2-size: clamp(1.15rem, 4.5vw, 1.35rem);
-    --h3-size: clamp(1rem, 4vw, 1.2rem);
-    --para-size: clamp(0.8rem, 3.5vw, 0.9rem);
-    --desc-size: clamp(0.75rem, 3vw, 0.85rem);
-    --space-sm: 0.5rem;
-    --space-md: 0.875rem;
-    --space-lg: 1.25rem;
-    --space-xl: 1.75rem;
-  }
-  
-  .ui-section {
-    width: 95%; /* Consistent 15% margins on each side */
-    padding: var(--space-md) var(--container-padding);
-  }
-  
-  .ui-badge {
-    font-size: 0.7rem;
-    padding: 0.3rem 0.6rem;
-  }
-  
-  .ui-btn {
-    padding: 0.5rem 0.875rem;
-    font-size: 0.8rem;
-  }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-/* =====================================================
-   BREAKPOINT: 411px - 500px (Large Phones)
-===================================================== */
-@media (min-width: 411px) and (max-width: 500px) {
-  :root {
-    --container-padding: 1rem;
-    --h1-size: clamp(1.5rem, 5vw, 1.85rem);
-    --h2-size: clamp(1.35rem, 4vw, 1.65rem);
-    --h3-size: clamp(1.15rem, 3.5vw, 1.4rem);
-    --para-size: clamp(0.9rem, 3vw, 1rem);
-    --desc-size: clamp(0.8rem, 2.8vw, 0.9rem);
-    --space-sm: 0.625rem;
-    --space-md: 1rem;
-    --space-lg: 1.5rem;
-    --space-xl: 2rem;
-  }
-  
-  .ui-section {
-    width: 100%; /* Consistent 15% margins on each side */
-    padding: var(--space-lg) var(--container-padding);
-  }
-  
-  .ui-badge {
-    font-size: 0.8rem;
-    padding: 0.35rem 0.8rem;
-  }
-  
-  .ui-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.85rem;
-  }
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
-/* =====================================================
-   BREAKPOINT: 501px - 767px (Large Mobile/Small Tablet)
-===================================================== */
-@media (min-width: 501px) and (max-width: 767px) {
-  :root {
-    --container-padding: clamp(1.25rem, 4vw, 2rem);
-  }
-  
-  .ui-section {
-    width: 100%; /* Consistent 15% margins on each side */
-    padding-top: var(--space-xl);
-    padding-bottom: var(--space-xl);
-  }
-}
-
-/* =====================================================
-   BREAKPOINT: 768px - 1023px (Tablet)
-===================================================== */
-@media (min-width: 768px) and (max-width: 1023px) {
-  :root {
-    --h1-size: clamp(2rem, 4vw, 3rem);
-    --h2-size: clamp(1.75rem, 3vw, 2.5rem);
-    --h3-size: clamp(1.35rem, 2vw, 1.75rem);
-    --para-size: clamp(1rem, 1.5vw, 1.125rem);
-  }
-  
-  .ui-section {
-    width: 100%; /* Consistent 15% margins on each side */
-    padding: var(--space-xl) var(--container-padding);
-  }
-  
-  .ui-badge {
-    font-size: clamp(0.85rem, 1.2vw, 1rem);
-  }
-  
-  .ui-btn {
-    padding: clamp(0.7rem, 1.5vw, 1rem) clamp(1.25rem, 2.5vw, 1.75rem);
-  }
-}
-
-/* =====================================================
-   BREAKPOINT: 1024px - 1279px (Small Laptop)
-===================================================== */
-@media (min-width: 1024px) and (max-width: 1279px) {
-  :root {
-    --h1-size: clamp(2.25rem, 3.5vw, 3.5rem);
-    --h2-size: clamp(1.85rem, 2.5vw, 2.75rem);
-    --h3-size: clamp(1.5rem, 2vw, 1.85rem);
-    --h4-size: clamp(1rem, 1.5vw, 1.25rem);
-    --para-size: clamp(1rem, 1.2vw, 1.125rem);
-    --container-padding: clamp(1.5rem, 4vw, 2.5rem);
-  }
-  
-  .ui-section {
-    width: 100%; /* Consistent 15% margins on each side */
-    padding: var(--space-2xl) var(--container-padding);
-  }
-  
-  .ui-container {
-    max-width: 1200px;
-  }
-}
-
-/* =====================================================
-   BREAKPOINT: 1280px - 1439px (Desktop)
-===================================================== */
-@media (min-width: 1280px) and (max-width: 1439px) {
-  :root {
-    --h1-size: clamp(2.5rem, 3vw, 4rem);
-    --h2-size: clamp(2rem, 2.5vw, 3rem);
-    --h3-size: clamp(1.6rem, 1.8vw, 2rem);
-    --para-size: clamp(1.05rem, 1.1vw, 1.125rem);
-    --desc-size: clamp(0.95rem, 1vw, 1.05rem);
-  }
-  
-  .ui-section {
-    width: 100%; /* Consistent 15% margins on each side */
-    padding: clamp(3rem, 4vw, 5rem) var(--container-padding);
-  }
-  
-  .ui-container {
-    max-width: 1300px;
-  }
-  
-  .ui-badge {
-    font-size: clamp(0.9rem, 1vw, 1rem);
-    padding: 0.5rem 1.25rem;
-  }
-}
-
-/* =====================================================
-   BREAKPOINT: 1440px - 1599px (Large Desktop)
-===================================================== */
-@media (min-width: 1440px) and (max-width: 1599px) {
-  :root {
-    --h1-size: clamp(2.75rem, 2.5vw, 4rem);
-    --h2-size: clamp(2.25rem, 2vw, 3rem);
-    --h3-size: clamp(1.75rem, 1.5vw, 2.25rem);
-    --h4-size: clamp(1.1rem, 1vw, 1.35rem);
-    --para-size: clamp(1.1rem, 0.9vw, 1.25rem);
-    --desc-size: clamp(1rem, 0.8vw, 1.1rem);
-    --container-padding: clamp(2rem, 5vw, 3rem);
-  }
-  
-  .ui-section {
-    width: 100%; /* Consistent 15% margins on each side */
-    padding: var(--space-2xl) var(--container-padding);
-  }
-  
-  .ui-container {
-    max-width: 1360px;
-  }
-  
-  .ui-btn {
-    font-size: clamp(1rem, 0.9vw, 1.125rem);
-    padding: 0.85rem 1.75rem;
-  }
-  
-  .ui-input,
-  .ui-textarea {
-    font-size: clamp(1rem, 0.9vw, 1.125rem);
-  }
-}
-
-/* =====================================================
-   BREAKPOINT: 1600px - 1899px (XL Desktop)
-===================================================== */
-@media (min-width: 1600px) and (max-width: 1899px) {
-  :root {
-    --h1-size: clamp(3rem, 2vw, 4.5rem);
-    --h2-size: clamp(2.5rem, 1.8vw, 3.5rem);
-    --h3-size: clamp(2rem, 1.3vw, 2.5rem);
-    --h4-size: clamp(1.25rem, 1vw, 1.5rem);
-    --para-size: 1.125rem;
-    --desc-size: 1.05rem;
-  }
-  
-  .ui-section {
-    width: 100%; /* Consistent 15% margins on each side */
-    padding: clamp(4rem, 5vw, 6rem) var(--container-padding);
-  }
-  
-  .ui-container {
-    max-width: 1460px;
-  }
-  
-  .card-corner-extension {
-    width: 120px;
-    height: 56px;
-    bottom: -12px;
-    right: -12px;
-  }
-}
-
-/* =====================================================
-   BREAKPOINT: 1900px+ (XXL Desktop / Ultra-wide)
-===================================================== */
-@media (min-width: 1900px) {
-  :root {
-    --h1-size: 4rem;
-    --h2-size: 3.5rem;
-    --h3-size: 2.25rem;
-    --h4-size: 1.5rem;
-    --para-size: 1.25rem;
-    --desc-size: 1.1rem;
-    --container-padding: 4rem;
-  }
-  
-  .ui-section {
-    width: 100%; /* Consistent 15% margins on each side */
-    max-width: 1800px; /* Optional: prevents too wide on ultra-wide */
-    padding: 6rem var(--container-padding);
-  }
-  
-  .ui-container {
-    max-width: 1600px;
-  }
-  
-  .ui-btn {
-    padding: 1rem 2rem;
-    font-size: 1.125rem;
-    border-radius: 14px;
-  }
-  
-  .ui-badge {
-    font-size: 1.1rem;
-    padding: 0.6rem 1.5rem;
-  }
-  
-  .ui-input {
-    height: 60px;
-    padding: 0 1.5rem;
-    font-size: 1.125rem;
-  }
-  
-  .ui-textarea {
-    min-height: 180px;
-    padding: 1.25rem;
-    font-size: 1.125rem;
-  }
-}
-
-/* =====================================================
-   UTILITY CLASSES & ANIMATIONS
-===================================================== */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 40s linear infinite;
-  will-change: transform;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-/* Responsive helpers */
-@media (max-width: 767px) {
-  .about-wrapper {
-    grid-template-columns: 1fr;
-  }
-  
-  .about-contact-btn {
-    position: static;
-    margin-top: var(--space-md);
-    display: inline-block;
-  }
-  
-  .about-right {
-    margin-top: var(--space-lg);
-  }
-}
-
-
-
-
