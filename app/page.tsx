@@ -21,7 +21,7 @@ export default function Page() {
       <CaseStudy/>
       <CreativeStatsSection/>
       {/* <SubCategory /> */}
-      <TrendingChits/>
+      {/* <TrendingChits/> */}
       
       {/* Original Grid Testimonials */}
       <Testimonial/>

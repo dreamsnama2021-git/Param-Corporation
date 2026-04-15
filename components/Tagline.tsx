@@ -11,7 +11,7 @@ const stats = [
 
 const TagLine = () => {
   return (
-    <section className="ui-section py-16 md:py-24 xl:py-5">
+    <section className=" py-6 md:py-14 xl:py-10">
       <div className="">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

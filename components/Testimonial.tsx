@@ -51,7 +51,7 @@ const avatarStyles: Record<string, { bg: string; color: string }> = {
 // ─── Default Export: Clean Grid Layout (Original preserved) ──────────────────
 const TestimonialCards = () => {
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section className="py-10 md:py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -108,7 +108,7 @@ export const TestimonialCardsVariant = () => {
   const side = testimonials.slice(1);
 
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ── Header ───────────────────────────────────────────────────────── */}
