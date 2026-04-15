@@ -1,19 +1,42 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, ReactNode } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useInView } from 'framer-motion';
 import { 
   Users, 
   PackageCheck, 
   Clock, 
   MapPin, 
-  Star,
   TrendingUp,
   ArrowUpRight,
   Sparkles
 } from 'lucide-react';
 
-const stats = [
+// Type definitions
+interface Stat {
+  id: number;
+  value: number;
+  suffix: string;
+  label: string;
+  subtext: string;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  gradient: string;
+  accent: string;
+  position: string;
+}
+
+interface TiltCardProps {
+  stat: Stat;
+  index: number;
+}
+
+interface FloatingShapeProps {
+  delay: number;
+  color: string;
+  className: string;
+}
+
+const stats: Stat[] = [
   {
     id: 1,
     value: 500,
@@ -58,12 +81,11 @@ const stats = [
     accent: "#0093cb",
     position: "center"
   },
-
 ];
 
 // 3D Tilt Card Component
-const TiltCard = ({ stat, index }) => {
-  const ref = useRef(null);
+const TiltCard = ({ stat, index }: TiltCardProps): React.ReactElement => {
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   
   const x = useMotionValue(0);
@@ -75,7 +97,7 @@ const TiltCard = ({ stat, index }) => {
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
   
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>): void => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
@@ -88,20 +110,20 @@ const TiltCard = ({ stat, index }) => {
     y.set(yPct);
   };
   
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (): void => {
     x.set(0);
     y.set(0);
   };
 
   const Icon = stat.icon;
-  const [displayValue, setDisplayValue] = useState(0);
+  const [displayValue, setDisplayValue] = useState<number>(0);
 
   useEffect(() => {
     if (isInView) {
-      let startTime;
+      let startTime: number | null = null;
       const duration = 2500;
       
-      const step = (timestamp) => {
+      const step = (timestamp: number): void => {
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / duration, 1);
         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
@@ -198,7 +220,7 @@ const TiltCard = ({ stat, index }) => {
 };
 
 // Background Floating Elements
-const FloatingShape = ({ delay, color, className }) => (
+const FloatingShape = ({ delay, color, className }: FloatingShapeProps): React.ReactElement => (
   <motion.div
     animate={{
       y: [0, -30, 0],
@@ -216,7 +238,7 @@ const FloatingShape = ({ delay, color, className }) => (
   />
 );
 
-export default function CreativeStatsSection() {
+export default function CreativeStatsSection(): React.ReactElement {
   return (
     <section className="relative w-full py-8 md:py-10 overflow-hidden bg-[#fafafa]">
       {/* Animated Background Elements */}
@@ -265,13 +287,11 @@ export default function CreativeStatsSection() {
         </div>
 
         {/* Stats Grid - Staggered Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {stats.map((stat, index) => (
             <TiltCard key={stat.id} stat={stat} index={index} />
           ))}
         </div>
-
-       
 
       </div>
     </section>

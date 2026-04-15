@@ -7,9 +7,9 @@ import TagLine from "@/components/Tagline";
 import SubCategory from "@/components/Category";
 import Testimonial, { TestimonialCardsVariant } from "@/components/Testimonial"; // Import both
 import TrendingChits from "@/components/Trending";
-import Countdown from "@/components/Counter";
 import CaseStudy from "@/components/CaseStudy";
 import ClientSection from "@/components/Clientele";
+import CreativeStatsSection from "@/components/Counter";
 
 export default function Page() {
   return (
@@ -19,7 +19,7 @@ export default function Page() {
       <ProductSections />
       <ClientSection/>
       <CaseStudy/>
-      <Countdown/>
+      <CreativeStatsSection/>
       {/* <SubCategory /> */}
       <TrendingChits/>
       
