@@ -283,7 +283,7 @@ function CaseStudiesGrid() {
         {/* View All Button */}
         <div className="flex justify-center mt-12">
           <Link
-            href="/case-studies"
+            href="/case-study"
             className="group flex items-center gap-3 bg-white border-2 border-[#0093cb] hover:border-[#00a65d] 
               text-[#0093cb] px-8 py-3 rounded-full font-semibold text-sm 
               hover:bg-[#00a65d] hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(0,147,203,0.4)]
