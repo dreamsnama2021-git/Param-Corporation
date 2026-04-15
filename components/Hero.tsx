@@ -28,17 +28,17 @@ const STATS: StatItem[] = [
 const HERO_SLIDES: HeroSlide[] = [
   {
     image: "http://www.bigimpex.com/wp-content/uploads/2025/02/BANNER-16.jpg",
-    href: "/products/corporate-gifts",
+    href: "/categories/all",
     alt: "Corporate Gifts",
   },
   {
     image: "http://www.bigimpex.com/wp-content/uploads/2025/09/Artboard-9-100.jpg",
-    href: "/products/promotional",
+    href: "/categories/all",
     alt: "Branding",
   },
   {
     image: "http://www.bigimpex.com/wp-content/uploads/2025/04/BANNERs.jpg",
-    href: "/pharma",
+    href: "/categories/all",
     alt: "Pharmaceutical Gifts",
   },
 ];

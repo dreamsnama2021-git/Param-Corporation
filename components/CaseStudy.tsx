@@ -1,209 +1,314 @@
-'use client';
+"use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { ArrowRight, Calendar, Building2, Tag, Clock } from "lucide-react";
+import Link from "next/link";
 
-const testimonials = [
+// ─── ORIGINAL CASE STUDIES DATA (Alternating Layout) ─────────────────
+const CASE_STUDIES = [
   {
     id: 1,
-    name: "Anjali Mehta",
-    initials: "AM",
-    role: "HR Director",
-    company: "TechFlow Solutions",
-    content:
-      "Param Corporation transformed our employee appreciation program. The personalized gifts arrived on time for our Diwali celebration, and the feedback from our team was overwhelmingly positive. Will definitely partner again!",
-    rating: 5,
+    title: "Transforming Pharma Marketing Strategy",
+    category: "Medical Communications",
+    client: "Leading Healthcare Brand",
+    date: "2024",
+    description: "Developed comprehensive digital strategy for pharmaceutical portfolio, resulting in 45% increase in physician engagement.",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop",
+    slug: "pharma-strategy",
+    stats: { growth: "+45%", reach: "2.8M+" }
   },
   {
     id: 2,
-    name: "Rajiv Kapoor",
-    initials: "RK",
-    role: "CEO",
-    company: "FinEdge Analytics",
-    content:
-      "We commissioned Param Corporation for our client gifting during our 10th anniversary. The bespoke wooden keepsakes with our company history etched on them were a huge hit. Several clients mentioned they'd keep it on their desk!",
-    rating: 5,
+    title: "Cardio-Diabetes Campaign Success",
+    category: "Digital Marketing",
+    client: "Global Pharma Co.",
+    date: "2023",
+    description: "Executed multi-channel campaign targeting healthcare professionals with interactive content and KOL webinars.",
+    image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop",
+    slug: "cardio-campaign",
+    stats: { growth: "+60%", reach: "4.2M+" }
   },
   {
     id: 3,
-    name: "Priya Sharma",
-    initials: "PS",
-    role: "Marketing Head",
-    company: "Luxe Brands Inc.",
-    content:
-      "The festival hampers exceeded our expectations. Each box was meticulously curated with premium products and elegant packaging. Our customers appreciated the thoughtfulness, and it strengthened our brand perception significantly.",
-    rating: 5,
-  },
+    title: "Medical Device Launch Excellence",
+    category: "Brand Strategy",
+    client: "Medical Device Inc.",
+    date: "2024",
+    description: "Comprehensive launch strategy for orthopedic devices including training programs and educational materials.",
+    image: "https://www.adornscustomgifts.com/wp-content/uploads/2024/09/diwalicombo6-2.jpg",
+    slug: "device-launch",
+    stats: { growth: "+120%", reach: "1.5M+" }
+  }
 ];
 
-const avatarColors = ["var(--clr-primary)", "var(--clr-secondary)", "var(--clr-bg-dark)"];
+// ─── NEW CASE STUDIES DATA (Card Grid Layout) ─────────────────
+const CASE_STUDIES_CARDS = [
+  {
+    id: 1,
+    title: "The Stunning Transformation of Thordiam Jewellery: From B2B to B2C",
+    description: "How we helped shift from low-margin B2B (3%) to high-impact B2C (~30%), using trust-first content and conversion-focused creative.",
+    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop", // Jewellery/retail image
+    slug: "thordiam-transformation",
+    readTime: "6 min read",
+    category: "Retail"
+  },
+  {
+    id: 2,
+    title: "Scaling Healthcare Outreach with Digital-First Strategy",
+    description: "Leveraging WhatsApp-led nurturing and targeted content to increase patient engagement by 200% for a leading clinic chain.Leveraging WhatsApp-led nurturing ",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop", // Healthcare image
+    slug: "healthcare-digital",
+    readTime: "4 min read",
+    category: "Healthcare"
+  },
+  {
+    id: 3,
+    title: "Corporate Gifting Success for Fortune 500 Company",
+    description: "Implementing a personalized gifting solution that improved employee retention and client satisfaction scores significantly retention and client satisfaction scores significantly.",
+    image: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=600&h=400&fit=crop", // Gifting/corporate image
+    slug: "corporate-gifting",
+    readTime: "5 min read",
+    category: "Corporate"
+  }
+];
 
-const TestimonialSlider = () => {
-  const [idx, setIdx] = useState(0);
-
-  const prev = () => setIdx((i) => (i === 0 ? testimonials.length - 1 : i - 1));
-  const next = () => setIdx((i) => (i === testimonials.length - 1 ? 0 : i + 1));
-
-  const t = testimonials[idx];
-
+// ─── ORIGINAL ALTERNATING SECTION ─────────────────
+function CaseStudiesSection() {
   return (
-    <section className="py-20 md:py-28" style={{ background: "var(--clr-bg-cream)" }}>
-      <div className="ui-container">
-
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <p
-            className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3"
-            style={{ color: "var(--clr-primary)" }}
-          >
-            Client voices
-          </p>
-          <h2
-            className="text-3xl md:text-4xl font-extrabold tracking-tight"
-            style={{ color: "var(--clr-text-dark)" }}
-          >
-            What our clients say
+    <section className="w-full bg-white py-10 md:py-10 overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header - Compact */}
+        <div className="text-center mb-10 md:mb-12">
+          <h2 className="text-2xl md:text-3xl uppercase font-bold text-[#1a1a1a] tracking-tight mb-3">
+            Case Studies
           </h2>
-        </motion.div>
+          <div className="flex justify-center mb-4">
+            <div className="w-12 h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full" />
+          </div>
+          <p className="text-gray-600 text-sm md:text-base max-w-xl mx-auto">
+            Discover how we've helped leading healthcare brands achieve their marketing objectives.
+          </p>
+        </div>
 
-        {/* Card */}
-        <div className="max-w-2xl mx-auto">
-          <div
-            className="rounded-2xl p-8 md:p-10 relative overflow-hidden"
-            style={{
-              background: "#fff",
-              border: "1px solid rgba(0,147,203,0.12)",
-            }}
-          >
-            {/* Top gradient bar */}
-            <span
-              className="absolute top-0 left-8 right-8 h-[2px]"
-              style={{ background: "linear-gradient(90deg, var(--clr-primary), var(--clr-secondary))" }}
-            />
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.25 }}
+        {/* Case Studies List - Compact Spacing */}
+        <div className="space-y-12 md:space-y-16">
+          {CASE_STUDIES.map((study, index) => {
+            const isEven = index % 2 === 0;
+            
+            return (
+              <article 
+                key={study.id}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center"
               >
-                {/* Big quote mark */}
-                <p
-                  className="text-6xl font-black leading-none mb-3 select-none"
-                  style={{ color: "var(--clr-primary)", opacity: 0.18 }}
-                >
-                  "
-                </p>
-
-                {/* Stars */}
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <svg key={i} width="14" height="14" viewBox="0 0 12 12" fill="var(--clr-primary)">
-                      <path d="M6 1l1.3 2.6L10 4.1l-2 2 .5 2.9L6 7.7l-2.5 1.3.5-2.9-2-2 2.7-.5z" />
-                    </svg>
-                  ))}
-                </div>
-
-                <p
-                  className="text-[15px] leading-[1.75] italic mb-6"
-                  style={{ color: "#334155" }}
-                >
-                  {t.content}
-                </p>
-
-                {/* Author */}
-                <div
-                  className="flex items-center gap-3 pt-5"
-                  style={{ borderTop: "1px solid rgba(0,147,203,0.12)" }}
-                >
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-white text-[13px] font-bold flex-shrink-0"
-                    style={{ background: avatarColors[idx] }}
-                  >
-                    {t.initials}
-                  </div>
-                  <div>
-                    <p className="text-[14px] font-bold" style={{ color: "var(--clr-text-dark)" }}>
-                      {t.name}
-                    </p>
-                    <p className="text-[12px]" style={{ color: "var(--clr-text-muted)" }}>
-                      {t.role}
-                    </p>
-                    <p
-                      className="text-[11px] font-semibold mt-0.5"
-                      style={{ color: "var(--clr-primary)" }}
-                    >
-                      {t.company}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Controls */}
-          <div className="flex items-center justify-between mt-6 px-1">
-            {/* Prev / Next */}
-            <div className="flex gap-2">
-              {[prev, next].map((fn, i) => (
-                <button
-                  key={i}
-                  onClick={fn}
-                  className="w-9 h-9 rounded-full border flex items-center justify-center transition-colors duration-200"
-                  style={{
-                    borderColor: "rgba(0,147,203,0.2)",
-                    color: "var(--clr-primary)",
-                  }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.background = "var(--clr-primary)";
-                    (e.currentTarget as HTMLElement).style.color = "#fff";
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.background = "transparent";
-                    (e.currentTarget as HTMLElement).style.color = "var(--clr-primary)";
-                  }}
-                  aria-label={i === 0 ? "Previous" : "Next"}
-                >
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path
-                      d={i === 0 ? "M9 2.5L4.5 7 9 11.5" : "M5 2.5L9.5 7 5 11.5"}
-                      stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                {/* Image - Alternating Order */}
+                <div className={`relative group ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+                  <div className="relative aspect-[16/10] rounded-xl overflow-hidden shadow-lg bg-gray-100">
+                    <Image
+                      src={study.image}
+                      alt={study.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      unoptimized
                     />
-                  </svg>
-                </button>
-              ))}
-            </div>
+                    {/* Compact Stats Card */}
+                    {/* <div className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-sm rounded-lg p-2 shadow-md transform translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <div className="grid grid-cols-2 gap-2 text-center">
+                        <div>
+                          <div className="text-lg font-bold text-[#0093cb]">{study.stats.growth}</div>
+                          <div className="text-[10px] text-gray-500 uppercase">Growth</div>
+                        </div>
+                        <div>
+                          <div className="text-lg font-bold text-[#00a65d]">{study.stats.reach}</div>
+                          <div className="text-[10px] text-gray-500 uppercase">Reach</div>
+                        </div>
+                      </div>
+                    </div> */}
+                  </div>
+                  
+                  {/* Compact Decorative Element */}
+                  <div className={`absolute -z-10 w-full h-full rounded-xl bg-[#0093cb]/10 top-2 ${isEven ? 'left-2' : 'right-2'}`} />
+                </div>
 
-            {/* Dot indicators */}
-            <div className="flex gap-1.5 items-center">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setIdx(i)}
-                  className="rounded-full transition-all duration-300"
-                  style={{
-                    width: i === idx ? "18px" : "6px",
-                    height: "6px",
-                    background: i === idx ? "var(--clr-primary)" : "rgba(0,147,203,0.2)",
-                  }}
-                  aria-label={`Go to testimonial ${i + 1}`}
-                />
-              ))}
-            </div>
-          </div>
+                {/* Content - Alternating Order */}
+                <div className={`space-y-4 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                  {/* Meta Tags - Compact */}
+                  <div className="flex flex-wrap gap-2">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#0093cb]/10 text-[#0093cb] text-xs font-semibold">
+                      <Tag className="w-3 h-3" />
+                      {study.category}
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium">
+                      <Calendar className="w-3 h-3" />
+                      {study.date}
+                    </span>
+                  </div>
+
+                  {/* Title - Smaller */}
+                  <h3 className="text-xl md:text-2xl font-bold text-[#1a1a1a] leading-snug">
+                    {study.title}
+                  </h3>
+
+                  {/* Description - Shorter */}
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                    {study.description}
+                  </p>
+
+                  {/* Key Points - Compact */}
+                  <ul className="space-y-2">
+                    {['Strategic medical communications', 'Multi-channel engagement', 'Measurable ROI'].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-gray-700">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#00a65d] mt-1.5 flex-shrink-0" />
+                        <span className="text-sm">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA Button - Compact */}
+                  <div className="pt-2">
+                    <Link 
+                      href={`/case-studies/${study.slug}`}
+                      className="inline-flex items-center gap-2 bg-[#0093cb] hover:bg-[#00a65d] text-white px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 hover:shadow-md group/btn"
+                    >
+                      Read More
+                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* Bottom CTA - Compact */}
+        <div className="flex justify-center mt-12 md:mt-16">
+          <Link
+            href="/case-studies"
+            className="group flex items-center gap-2 bg-white border-2 border-[#0093cb] 
+              text-[#0093cb] px-8 py-3 rounded-full font-semibold text-sm 
+              hover:bg-[#0093cb] hover:text-white transition-all duration-300"
+          >
+            <span>View All</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
 
       </div>
     </section>
   );
-};
+}
 
-export default TestimonialSlider;
+// ─── NEW CARD GRID VARIANT (Reference Image Style) ─────────────────
+function CaseStudiesGrid() {
+  return (
+    <section className="w-full bg-[#F8F9FA] py-16 md:py-20">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl uppercase font-bold text-[#1a1a1a] tracking-tight mb-3">
+            Case Study
+          </h2>
+          <div className="flex justify-center mb-4">
+            <div className="w-12 h-1 bg-[#0093cb] rounded-full" />
+          </div>
+          <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">
+            Explore how we transformed businesses with strategic solutions
+          </p>
+        </div>
+
+        {/* 3 Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {CASE_STUDIES_CARDS.map((study) => (
+            <article 
+              key={study.id}
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg 
+                hover:shadow-[0_20px_50px_-12px_rgba(0,147,203,0.25)] 
+                hover:shadow-2xl transition-all duration-500 ease-out 
+                transform hover:-translate-y-2 flex flex-col
+                border border-transparent hover:border-[#0093cb]/20"
+            >
+              {/* Clean Image Section (No Text Overlay) */}
+              <div className="relative h-48 md:h-56 overflow-hidden">
+                <Image
+                  src={study.image}
+                  alt={study.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  unoptimized
+                />
+                {/* Subtle primary glow on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0093cb]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+
+              {/* Content Section - Title Moved Here */}
+              <div className="p-6 flex flex-col flex-grow bg-white">
+                {/* Category Tag */}
+                <span className="inline-block w-fit px-2.5 py-1 bg-[#0093cb]/10 text-[#0093cb] text-[10px] font-semibold rounded mb-3">
+                  {study.category}
+                </span>
+                
+                {/* Title - Now Below Image */}
+                <h3 className="text-[#1a1a1a] font-bold text-lg md:text-xl leading-snug mb-3 line-clamp-2 
+                  group-hover:text-[#0093cb] transition-colors duration-300">
+                  {study.title}
+                </h3>
+
+                <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+                  {study.description}
+                </p>
+
+                {/* Footer: Button with Primary Hover */}
+                <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                  <Link 
+                    href={`/case-studies/${study.slug}`}
+                    className="inline-flex items-center gap-2 bg-[#8bde7a] group-hover:bg-[#0093cb] 
+                      text-gray-900 group-hover:text-white px-5 py-2 rounded-full font-semibold text-sm 
+                      transition-all duration-300 group/btn shadow-sm group-hover:shadow-lg group-hover:shadow-[#0093cb]/30"
+                  >
+                    Read Article
+                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
+                  
+                  <div className="flex items-center gap-1.5 text-gray-400 text-xs">
+                    <Clock className="w-3.5 h-3.5" />
+                    {study.readTime}
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* View All Button */}
+        <div className="flex justify-center mt-12">
+          <Link
+            href="/case-studies"
+            className="group flex items-center gap-3 bg-white border-2 border-[#0093cb] hover:border-[#00a65d] 
+              text-[#0093cb] px-8 py-3 rounded-full font-semibold text-sm 
+              hover:bg-[#00a65d] hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(0,147,203,0.4)]
+              transition-all duration-300"
+          >
+            <span>View All Case Study</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+
+// ─── EXPORT BOTH SECTIONS ─────────────────
+export default function CaseStudiesPage() {
+  return (
+    <div className="space-y-0">
+      {/* Original Alternating Layout */}
+      <CaseStudiesSection />
+      
+      {/* New Card Grid Variant */}
+      <CaseStudiesGrid />
+    </div>
+  );
+}

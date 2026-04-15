@@ -1,151 +1,279 @@
 'use client';
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, useInView } from 'framer-motion';
+import { 
+  Users, 
+  PackageCheck, 
+  Clock, 
+  MapPin, 
+  Star,
+  TrendingUp,
+  ArrowUpRight,
+  Sparkles
+} from 'lucide-react';
 
-const TARGET_DATE = new Date();
-TARGET_DATE.setDate(TARGET_DATE.getDate() + 18);
+const stats = [
+  {
+    id: 1,
+    value: 500,
+    suffix: "+",
+    label: "Happy Clients",
+    subtext: "Trusted Partners",
+    icon: Users,
+    gradient: "from-[#0093cb] to-[#0077b6]",
+    accent: "#0093cb",
+    position: "top"
+  },
+  {
+    id: 2,
+    value: 50,
+    suffix: "K",
+    label: "Products Delivered",
+    subtext: "And Counting",
+    icon: PackageCheck,
+    gradient: "from-[#00a65d] to-[#008f4c]",
+    accent: "#00a65d",
+    position: "center"
+  },
+  {
+    id: 3,
+    value: 12,
+    suffix: "+",
+    label: "Years Experience",
+    subtext: "Industry Leaders",
+    icon: Clock,
+    gradient: "from-[#8bde7a] to-[#6bc952]",
+    accent: "#8bde7a",
+    position: "top"
+  },
+  {
+    id: 4,
+    value: 25,
+    suffix: "+",
+    label: "Cities Covered",
+    subtext: "Nationwide Reach",
+    icon: MapPin,
+    gradient: "from-[#0093cb] to-[#00a65d]",
+    accent: "#0093cb",
+    position: "center"
+  },
 
-function getTimeLeft() {
-  const diff = TARGET_DATE.getTime() - Date.now();
-  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  return {
-    days:    Math.floor(diff / 86400000),
-    hours:   Math.floor((diff % 86400000) / 3600000),
-    minutes: Math.floor((diff % 3600000) / 60000),
-    seconds: Math.floor((diff % 60000) / 1000),
+];
+
+// 3D Tilt Card Component
+const TiltCard = ({ stat, index }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  
+  const mouseXSpring = useSpring(x, { stiffness: 500, damping: 100 });
+  const mouseYSpring = useSpring(y, { stiffness: 500, damping: 100 });
+  
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
+  
+  const handleMouseMove = (e) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
   };
-}
+  
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
-const Countdown = () => {
-  const [time, setTime] = useState(getTimeLeft);
+  const Icon = stat.icon;
+  const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setTime(getTimeLeft()), 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  const blocks = [
-    { value: time.days,    label: "Days" },
-    { value: time.hours,   label: "Hours" },
-    { value: time.minutes, label: "Mins" },
-    { value: time.seconds, label: "Secs" },
-  ];
+    if (isInView) {
+      let startTime;
+      const duration = 2500;
+      
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        setDisplayValue(Math.floor(easeOutQuart * stat.value));
+        
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
+      };
+      
+      requestAnimationFrame(step);
+    }
+  }, [isInView, stat.value]);
 
   return (
-    <section
-      className="py-20 md:py-28 relative overflow-hidden text-center"
-      style={{ background: "var(--clr-bg-dark)" }}
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay: index * 0.15, duration: 0.6 }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d"
+      }}
+      className="relative group perspective-1000"
     >
-      {/* Decorative rings */}
-      <span
-        className="absolute -top-16 -right-16 w-72 h-72 rounded-full pointer-events-none"
-        style={{ border: "1px solid rgba(0,147,203,0.15)" }}
-      />
-      <span
-        className="absolute -bottom-20 -left-10 w-52 h-52 rounded-full pointer-events-none"
-        style={{ border: "1px solid rgba(0,166,93,0.12)" }}
-      />
+      <div className={`relative bg-white/70 backdrop-blur-xl rounded-3xl p-6 md:p-8 
+        border border-white/50 shadow-xl hover:shadow-2xl 
+        transition-all duration-500 hover:border-${stat.accent}/30
+        ${stat.position === 'center' ? 'lg:mt-12' : ''}`}
+        style={{
+          boxShadow: `0 25px 50px -12px ${stat.accent}20`
+        }}
+      >
+        {/* Floating Gradient Orb */}
+        <div className={`absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br ${stat.gradient} 
+          rounded-full opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-700`} />
+        
+        {/* Glass Shine Effect */}
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/40 via-transparent to-transparent 
+          opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-      <div className="ui-container relative z-10">
+        {/* Top Row: Icon & Trend */}
+        <div className="flex justify-between items-start mb-6 relative z-10">
+          <div className={`p-3 rounded-2xl bg-gradient-to-br ${stat.gradient} text-white 
+            shadow-lg transform group-hover:scale-110 transition-transform duration-300
+            group-hover:rotate-3`}>
+            <Icon className="w-6 h-6 md:w-7 md:h-7" strokeWidth={1.5} />
+          </div>
+          
+          <div className="flex items-center gap-1 text-xs font-medium text-gray-400 
+            opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+            <TrendingUp className="w-3 h-3 text-green-500" />
+            <span className="text-green-600">+{Math.floor(Math.random() * 15 + 5)}%</span>
+          </div>
+        </div>
 
-        {/* Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55 }}
-        >
-          <p
-            className="text-[10px] font-bold uppercase tracking-[0.25em] mb-4 flex items-center justify-center gap-2.5"
-            style={{ color: "var(--clr-accent)" }}
-          >
-            <span className="inline-block w-5 h-px" style={{ background: "var(--clr-accent)" }} />
-            Limited time offer
-            <span className="inline-block w-5 h-px" style={{ background: "var(--clr-accent)" }} />
+        {/* Number Display */}
+        <div className="relative mb-2">
+          <h3 className={`text-5xl md:text-6xl font-black tracking-tighter bg-gradient-to-r ${stat.gradient} 
+            bg-clip-text text-transparent tabular-nums`}>
+            {displayValue}{stat.suffix}
+          </h3>
+          
+          {/* Animated Underline */}
+          <motion.div 
+            className={`h-1 bg-gradient-to-r ${stat.gradient} rounded-full mt-2`}
+            initial={{ width: 0 }}
+            animate={isInView ? { width: "60%" } : {}}
+            transition={{ delay: index * 0.15 + 0.5, duration: 0.8 }}
+          />
+        </div>
+
+        {/* Label */}
+        <div className="relative z-10">
+          <h4 className="text-gray-900 font-bold text-lg md:text-xl mb-1 group-hover:text-gray-800 transition-colors">
+            {stat.label}
+          </h4>
+          <p className="text-gray-500 text-sm flex items-center gap-1">
+            {stat.subtext}
+            <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
           </p>
-          <h2
-            className="text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-4"
-            style={{ color: "#fff" }}
-          >
-            Diwali early bird{" "}
-            <em className="not-italic" style={{ color: "var(--clr-accent)" }}>discount</em>
-          </h2>
-          <p
-            className="text-sm md:text-base leading-relaxed max-w-md mx-auto mb-12"
-            style={{ color: "rgba(255,255,255,0.4)" }}
-          >
-            Place bulk orders before the timer ends and get an exclusive 20% off on all festival hamper collections.
-          </p>
-        </motion.div>
+        </div>
 
-        {/* Timer blocks */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex justify-center items-center flex-wrap gap-1 mb-12"
-        >
-          {blocks.map((b, i) => (
-            <div key={b.label} className="flex items-center">
-              <div className="flex flex-col items-center min-w-[80px] md:min-w-[100px]">
-                <div
-                  className="w-[84px] h-[84px] md:w-[100px] md:h-[100px] rounded-xl flex items-center justify-center relative"
-                  style={{
-                    background: "rgba(0,147,203,0.06)",
-                    border: "1px solid rgba(0,147,203,0.3)",
-                    boxShadow: "inset 0 1px 0 rgba(0,147,203,0.4)",
-                  }}
-                >
-                  <span
-                    className="text-[2.2rem] md:text-[2.8rem] font-extrabold leading-none tracking-[-0.04em] tabular-nums"
-                    style={{ color: "#fff" }}
-                  >
-                    {String(b.value).padStart(2, "0")}
-                  </span>
-                </div>
-                <span
-                  className="text-[10px] font-semibold uppercase tracking-[0.12em] mt-2.5"
-                  style={{ color: "rgba(255,255,255,0.3)" }}
-                >
-                  {b.label}
-                </span>
-              </div>
+        {/* Bottom Accent Line */}
+        <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${stat.gradient} 
+          transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-b-3xl`} />
+      </div>
+    </motion.div>
+  );
+};
 
-              {/* Separator */}
-              {i < blocks.length - 1 && (
-                <span
-                  className="text-3xl font-extrabold mx-1 mb-6"
-                  style={{ color: "rgba(0,147,203,0.35)" }}
-                >
-                  :
-                </span>
-              )}
-            </div>
+// Background Floating Elements
+const FloatingShape = ({ delay, color, className }) => (
+  <motion.div
+    animate={{
+      y: [0, -30, 0],
+      rotate: [0, 10, -10, 0],
+      scale: [1, 1.1, 1]
+    }}
+    transition={{
+      duration: 6,
+      delay,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }}
+    className={`absolute rounded-full blur-3xl opacity-20 pointer-events-none ${className}`}
+    style={{ backgroundColor: color }}
+  />
+);
+
+export default function CreativeStatsSection() {
+  return (
+    <section className="relative w-full py-8 md:py-10 overflow-hidden bg-[#fafafa]">
+      {/* Animated Background Elements */}
+      <FloatingShape delay={0} color="#0093cb" className="w-96 h-96 -top-20 -left-20" />
+      <FloatingShape delay={2} color="#00a65d" className="w-80 h-80 top-1/2 right-0" />
+      <FloatingShape delay={4} color="#8bde7a" className="w-64 h-64 bottom-20 left-1/3" />
+      
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center mb-16 md:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-md border border-gray-100 mb-6"
+          >
+            <Sparkles className="w-4 h-4 text-[#0093cb]" />
+            <span className="text-sm font-semibold bg-gradient-to-r from-[#0093cb] to-[#00a65d] bg-clip-text text-transparent">
+              Our Impact in Numbers
+            </span>
+          </motion.div>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4"
+          >
+            Trusted by <span className="text-[#0093cb]">Industry Leaders</span>
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-600 text-lg max-w-2xl mx-auto"
+          >
+            Delivering excellence in corporate gifting with measurable results and lasting partnerships
+          </motion.p>
+        </div>
+
+        {/* Stats Grid - Staggered Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
+          {stats.map((stat, index) => (
+            <TiltCard key={stat.id} stat={stat} index={index} />
           ))}
-        </motion.div>
+        </div>
 
-        {/* CTA */}
-        <a
-          href="#contact"
-          className="inline-flex items-center gap-2 text-[13px] font-bold px-7 py-3.5 rounded-full transition-colors duration-200"
-          style={{
-            background: "var(--clr-accent)",
-            color: "var(--clr-bg-dark)",
-          }}
-          onMouseEnter={e => (e.currentTarget.style.background = "#fff")}
-          onMouseLeave={e => (e.currentTarget.style.background = "var(--clr-accent)")}
-        >
-          Claim your discount
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
+       
 
       </div>
     </section>
   );
-};
-
-export default Countdown;
+}

@@ -50,9 +50,9 @@ export default function Footer() {
 
           {/* ABOUT / LOCATION */}
           <div>
-            <h3 className="text-white text-lg font-medium mb-4 pb-2 
+            <h3 className="bg-white rounded-2xl p-1 text-lg font-medium mb-2 
             border-b-2 border-[var(--clr-primary)] inline-block">
-              Location
+            <img  src="/param-logo.png" alt="Param Corporation" className="scale-110 h-10 md:h-14" />
             </h3>
 
             <p className="text-sm leading-relaxed mb-4 text-gray-400">
