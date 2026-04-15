@@ -24,16 +24,29 @@ const SocialIcon = ({ children }: { children: React.ReactNode }) => (
 );
 
 export default function Footer() {
-  const displayCategories = categories.slice(0, 6);
-  const displayIndustries = industries.slice(0, 6);
-  const displayTherapies = therapies.slice(0, 6);
+  const displayCategories = categories.slice(0, 12
+
+    
+  );
+  const displayIndustries = industries.slice(0, 12
+
+    
+  );
+  const displayTherapies = therapies.slice(0, 12
+
+    
+  );
+  const displayOccasions = occasions.slice(0, 12
+
+    
+  );
 
   return (
     <footer className="bg-[var(--clr-bg-dark-deep)] text-gray-300 pt-12 pb-6">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ─── MAIN GRID ───────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
 
           {/* ABOUT / LOCATION */}
           <div>
@@ -92,7 +105,7 @@ export default function Footer() {
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >
-                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1" />
+                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1 transition-transform" />
                     <span>{item.name}</span>
                   </Link>
                 </li>
@@ -115,7 +128,30 @@ export default function Footer() {
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >
-                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1" />
+                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1 transition-transform" />
+                    <span>{item.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* BY OCCASION */}
+          <div>
+            <h3 className="text-white text-lg font-medium mb-4 pb-2 
+            border-b-2 border-[var(--clr-primary)] inline-block">
+              By Occasion
+            </h3>
+
+            <ul className="space-y-2">
+              {displayOccasions.map((item) => (
+                <li key={item.slug}>
+                  <Link
+                    href={`/occasion/${item.slug}`}
+                    className="flex items-center gap-2 text-sm 
+                    hover:text-[var(--clr-primary)] group"
+                  >
+                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1 transition-transform" />
                     <span>{item.name}</span>
                   </Link>
                 </li>
@@ -138,7 +174,7 @@ export default function Footer() {
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >
-                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1" />
+                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1 transition-transform" />
                     <span>{item.name}</span>
                   </Link>
                 </li>
@@ -147,45 +183,10 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* POPULAR SEARCH */}
-        <div className="border-t border-[var(--clr-border-light)] pt-6 space-y-4">
-          <h3 className="text-white text-lg font-medium mb-4">Popular Search</h3>
-
-          {/* THERAPY */}
-          <div className="pb-4 border-b border-[var(--clr-border-light)]">
-            <h4 className="text-white text-sm mb-2">By Therapy</h4>
-            <div className="flex flex-wrap gap-x-2 gap-y-1 text-xs">
-              {therapies.map((item, idx) => (
-                <span key={item.slug}>
-                  <Link href={`/therapy/${item.slug}`} className="hover:text-[var(--clr-primary)]">
-                    {item.name}
-                  </Link>
-                  {idx < therapies.length - 1 && <span className="mx-1 text-gray-500">|</span>}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* PRICE */}
-          <div className="pb-4 border-b border-[var(--clr-border-light)]">
-            <h4 className="text-white text-sm mb-2">By Price</h4>
-            <div className="flex flex-wrap gap-x-2 gap-y-1 text-xs">
-              {priceRanges.map((item, idx) => (
-                <span key={item.slug}>
-                  <Link href={`/price/${item.slug}`} className="hover:text-[var(--clr-primary)]">
-                    {item.name}
-                  </Link>
-                  {idx < priceRanges.length - 1 && <span className="mx-1 text-gray-500">|</span>}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
         {/* BOTTOM */}
         <div className="mt-8 pt-4 text-center border-t border-[var(--clr-border-light)]">
           <p className="text-sm text-gray-400">
-            © 2024 – 2025 | All rights reserved by Param Corporation
+            © 2026 | All rights reserved by Param Corporation
           </p>
 
           <p className="text-sm mt-2">
