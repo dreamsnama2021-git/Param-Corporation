@@ -175,7 +175,7 @@ interface TimelineItem {
   description: string;
   image: string;
   category: string;
-  icon: LucideIcon;
+  icon: React.ElementType;  // ← Changed from LucideIcon
 }
 const EditorialTimeline = ({ items }: { items: TimelineItem[] }) => {
   return (
