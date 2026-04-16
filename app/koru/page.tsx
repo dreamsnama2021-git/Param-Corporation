@@ -1,6 +1,8 @@
+// app/brands/page.tsx
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Home } from 'lucide-react';
 
 // Brand data - Replace with actual brand logo URLs
@@ -63,14 +65,90 @@ const brands = [
   { id: 56, name: 'Fujifilm', logo: 'https://www.bigimpex.com/wp-content/uploads/2024/brands/fujifilm.png' },
 ];
 
+// Banner images for different screen sizes
+const bannerImages = {
+  mobile: '/koru/WhatsApp Image 2026-04-16 at 5.02.38 PM.jpeg', // Square-ish for mobile
+  tablet: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1024&q=80', // Tablet landscape
+  desktop: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1920&q=80', // Desktop wide
+};
+
 export default function BrandsPage() {
   return (
     <div className="min-h-screen bg-white font-sans">
-      {/* Hero Section - Aligned Bottom */}
-      <section className="bg-[#1a1a1a] text-white relative min-h-[160px] flex items-end">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">Brands</h1>
-          <div className="flex items-center gap-2 text-sm text-gray-400">
+      {/* Hero Banner Section */}
+      <section className="relative w-full overflow-hidden bg-[#1a1a1a]">
+        {/* Desktop Banner (lg and above) */}
+        <div className="hidden lg:block relative w-full h-[60vh]">
+          <Image
+            src={bannerImages.desktop}
+            alt="Brands - Desktop Banner"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+                Premium <span className="text-[var(--clr-primary)]">Brands</span>
+              </h1>
+              <p className="text-lg text-gray-200 max-w-xl">
+                Discover our curated collection from the world's most beloved brands
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Tablet Banner (md to lg) */}
+        <div className="hidden md:block lg:hidden relative w-full" style={{ height: '300px' }}>
+          <Image
+            src={bannerImages.tablet}
+            alt="Brands - Tablet Banner"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">
+                Premium <span className="text-[var(--clr-primary)]">Brands</span>
+              </h1>
+              <p className="text-base text-gray-200">
+                Discover our curated collection from the world's most beloved brands
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Banner (sm and below) */}
+        <div className="md:hidden relative w-full h-[60vh]">
+          <Image
+            src={bannerImages.mobile}
+            alt="Brands - Mobile Banner"
+            fill
+            className="object-fill"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
+          <div className="absolute inset-0 flex items-end">
+            <div className="w-full max-w-7xl mx-auto px-4 pb-6">
+              <h1 className="text-3xl font-bold text-white mb-2">
+                Premium <span className="text-[var(--clr-primary)]">Brands</span>
+              </h1>
+              <p className="text-sm text-gray-200">
+                Curated from the world's best
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Breadcrumb - Overlapping Banner */}
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10">
+          <div className="flex items-center gap-2 text-sm text-white/80 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
             <Link href="/" className="hover:text-white flex items-center gap-1">
               <Home className="w-3 h-3" /> Home
             </Link>
@@ -81,29 +159,29 @@ export default function BrandsPage() {
       </section>
 
       {/* Brands Grid Section */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-16 bg-white -mt-8 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {brands.map((brand) => (
-              <div
-                key={brand.id}
-                className="bg-white border border-gray-200 rounded-lg p-6 md:p-8 flex items-center justify-center hover:shadow-lg hover:border-[var(--clr-primary)]/30 transition-all duration-300 group cursor-pointer"
-              >
-                <div className="relative w-full h-12 md:h-16 flex items-center justify-center">
-                  {/* If you have actual logo images, use Image component */}
-                  <img
-                    src={brand.logo}
-                    alt={brand.name}
-                    className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-                    onError={(e) => {
-                      // Fallback to text if image fails
-                      e.currentTarget.style.display = 'none';
-                      e.currentTarget.parentElement!.innerHTML = `<span class="font-bold text-gray-800 text-sm md:text-base">${brand.name}</span>`;
-                    }}
-                  />
+          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              {brands.map((brand) => (
+                <div
+                  key={brand.id}
+                  className="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex items-center justify-center hover:shadow-lg hover:border-[var(--clr-primary)]/30 transition-all duration-300 group cursor-pointer"
+                >
+                  <div className="relative w-full h-12 md:h-16 flex items-center justify-center">
+                    <img
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.parentElement!.innerHTML = `<span class="font-bold text-gray-800 text-sm md:text-base">${brand.name}</span>`;
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -27,17 +27,17 @@ const STATS: StatItem[] = [
 
 const HERO_SLIDES: HeroSlide[] = [
   {
-    image: "http://www.bigimpex.com/wp-content/uploads/2025/02/BANNER-16.jpg",
+    image: "/WhatsApp Image 2026-04-16 at 5.04.08 PM.jpeg",
     href: "/categories/all",
     alt: "Corporate Gifts",
   },
   {
-    image: "http://www.bigimpex.com/wp-content/uploads/2025/09/Artboard-9-100.jpg",
+    image: "/WhatsApp Image 2026-04-16 at 5.04.08 PM.jpeg",
     href: "/categories/all",
     alt: "Branding",
   },
   {
-    image: "http://www.bigimpex.com/wp-content/uploads/2025/04/BANNERs.jpg",
+    image: "/WhatsApp Image 2026-04-16 at 5.04.08 PM.jpeg",
     href: "/categories/all",
     alt: "Pharmaceutical Gifts",
   },
@@ -83,7 +83,7 @@ export default function HeroWithStats() {
     <div className="md:h-auto flex flex-col overflow-hidden">
 
       {/* ─── HERO ───────────────── */}
-      <section className="relative h-[60vh] sm:h-[70vh] lg:h-[80vh] 
+      <section className="relative h-[70vh] sm:h-[70vh] lg:h-[80vh] 
       bg-gradient-to-br from-[var(--clr-bg-cream)] via-[var(--clr-white)] to-[var(--clr-bg-gray)] overflow-hidden">
 
         {/* overlay */}
