@@ -169,6 +169,14 @@ const FloatingCard = ({ children, className, delay = 0 }: { children: React.Reac
 // ─────────────────────────────────────────────────
 // EDITORIAL TIMELINE COMPONENTS
 // ─────────────────────────────────────────────────
+interface TimelineItem {
+  date: string;
+  title: string;
+  description: string;
+  image: string;
+  category: string;
+  icon: LucideIcon;
+}
 const EditorialTimeline = ({ items }: { items: TimelineItem[] }) => {
   return (
     <div className="relative max-w-6xl mx-auto px-6">
