@@ -270,7 +270,7 @@ export default function CreativeStatsSection(): React.ReactElement {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4"
+            className="ui-h1 font-extrabold tracking-tight mb-3 text-gray-900 mb-4"
           >
             Trusted by <span className="text-[#0093cb]">Industry Leaders</span>
           </motion.h2>

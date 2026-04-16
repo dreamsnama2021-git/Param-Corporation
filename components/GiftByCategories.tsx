@@ -76,11 +76,11 @@ const TRENDING_PRODUCTS = [
 function GiftsByCategories() {
   return (
     <section className="w-full bg-[#F8F9FA] py-16 md:py-24 xl:py-10">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl uppercase font-bold text-[#1a1a1a] tracking-tight mb-3">
-            Our Categories
+          <h2 className="ui-h1 uppercase font-bold text-[#1a1a1a] tracking-tight mb-3">
+            Our <span className="text-[#0093cb]">Categories</span>
           </h2>
           <div className="flex justify-center">
             <div className="w-16 h-1 bg-[#0093cb] rounded-full" />
@@ -93,7 +93,7 @@ function GiftsByCategories() {
             <Link
               key={item.id}
               href={`/categories/${item.id}`}
-              className="group cursor-pointer relative h-[380px] rounded-2xl overflow-hidden 
+              className="group cursor-pointer relative h-[370px] rounded-2xl overflow-hidden 
                 shadow-md hover:shadow-2xl transition-all duration-500 ease-out
                 transform hover:-translate-y-2 block"
             >
@@ -112,13 +112,13 @@ function GiftsByCategories() {
                 opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
 
               {/* Tag Badge - Top Left */}
-              <div className="absolute top-4 left-4">
+              {/* <div className="absolute top-4 left-4">
                 <div className="flex items-center gap-1.5 bg-white/95 backdrop-blur-sm 
                   px-3 py-1.5 rounded-full text-xs font-semibold text-gray-900 shadow-sm">
-                  <Sparkles className="w-3.5 h-3.5 text-[#00a65d]" />
+                  <Sparkles className="w-3.5 h-3.5 text-[#0093cb]" />
                   {item.tag}
                 </div>
-              </div>
+              </div> */}
 
               {/* Bottom Content */}
               <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
@@ -156,26 +156,26 @@ function GiftsByCategories() {
 // ─── TRENDING PRODUCTS SECTION (DARK THEME) ─────────────────
 function TrendingProducts() {
   return (
-    <section className="w-full bg-[#134769d5] py-16 md:py-24 xl:py-10 relative overflow-hidden">
+    <section className="w-full bg-[#00a65e1c] py-16 md:py-24 xl:py-10 relative overflow-hidden">
       {/* Background Accent Elements using Brand Colors */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+      <div className="absolute top-0 z-30 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#0093cb]/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#00a65d]/10 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#8bde7a]/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1500px] z-40 mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
           
-          <h2 className="text-3xl md:text-4xl uppercase font-bold text-white tracking-tight mb-3">
-            Trending Products
+          <h2 className="ui-h1 uppercase font-bold text-black tracking-tight mb-3">
+            Trending <span className="text-[#0093cb]">Products</span>
           </h2>
-          <p className="text-gray-200 text-sm md:text-base max-w-2xl mx-auto">
+          {/* <p className="text-gray-200 text-sm md:text-base max-w-2xl mx-auto">
             Discover our most popular items, curated based on customer favorites and current trends
-          </p>
-          <div className="flex justify-center mt-4">
-            <div className="w-16 h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full" />
+          </p> */}
+      <div className="flex justify-center">
+            <div className="w-16 h-1 bg-[#0093cb] rounded-full" />
           </div>
         </div>
 
@@ -242,9 +242,9 @@ function TrendingProducts() {
         <div className="flex justify-center">
           <Link
             href="/trending"
-            className="group flex items-center gap-3 bg-transparent border-2 border-[#00a65d] 
-              text-[#00a65d] bg-white px-8 py-3.5 rounded-full font-semibold text-sm 
-              hover:bg-[#00a65d] hover:text-white hover:shadow-lg hover:shadow-[#0093cb]/30
+            className="group flex items-center gap-3 bg-transparent border-2 border-[#0093cb] 
+              text-[#0093cb] bg-white px-8 py-3.5 rounded-full font-semibold text-sm 
+              hover:bg-[#0093cb] hover:text-white hover:shadow-lg hover:shadow-[#0093cb]/30
               transition-all duration-300 transform hover:scale-105 active:scale-95"
           >
             <span>Explore All Trending</span>

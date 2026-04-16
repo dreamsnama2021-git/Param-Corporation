@@ -18,14 +18,11 @@ const TagLine = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto "
+          className="text-center max-w-4xl mx-auto "
         >
-          <p className="text-primary text-sm uppercase tracking-[0.25em] mb-4 font-medium">
-            Why Param Corporation
-          </p>
           <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground leading-tight mb-6">
             Where Thoughtfulness Meets
-            <span className="text-gradient-gold italic"> Prestige</span>
+            <span className="text-[#0093cb]"> Prestige</span> 
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
             We don't just deliver gifts — we craft experiences. Every package is

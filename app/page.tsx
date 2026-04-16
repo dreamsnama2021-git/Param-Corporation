@@ -5,7 +5,7 @@ import ProductSections from "@/components/GiftByCategories";
 import NewArrivals from "@/components/NewArrivals";
 import TagLine from "@/components/Tagline";
 import SubCategory from "@/components/Category";
-import Testimonial, { TestimonialCardsVariant } from "@/components/Testimonial"; // Import both
+import Testimonial, { TestimonialCardsVariant, TestimonialCardsVariant2 } from "@/components/Testimonial"; // Import both
 import TrendingChits from "@/components/Trending";
 import CaseStudy from "@/components/CaseStudy";
 import ClientSection from "@/components/Clientele";
@@ -24,9 +24,10 @@ export default function Page() {
       {/* <TrendingChits/> */}
       
       {/* Original Grid Testimonials */}
-      <Testimonial/>
+      {/* <Testimonial/> */}
       
       {/* New Editorial Variant */}
+      <TestimonialCardsVariant2/>
       <TestimonialCardsVariant/>
     </main>
   );

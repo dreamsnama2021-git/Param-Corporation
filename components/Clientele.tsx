@@ -32,10 +32,10 @@ const ClientSection = () => {
             Our clients
             <span className="inline-block w-6 h-[1.5px] bg-[var(--clr-primary)]" />
           </p>
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-3 text-[var(--clr-text-dark)]">
-            Trusted by industry leaders
+          <h2 className="ui-h1 font-extrabold tracking-tight mb-3 text-[var(--clr-text-dark)]">
+            Trusted by <span className="text-[#0093cb]">industry leader</span>
           </h2>
-          <p className="text-sm leading-relaxed max-w-[480px] mx-auto text-[var(--clr-text-muted)]">
+          <p className="text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)]">
             From startups to Fortune 500 companies, we help businesses create gifting experiences that leave lasting impressions.
           </p>
         </motion.div>

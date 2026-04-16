@@ -279,7 +279,7 @@
   font-size: var(--h1-size);
   line-height: 1.1;
   font-weight: 700;
-  color: var(--clr-text-dark);
+  /* color: var(--clr-text-dark); */
   margin-bottom: var(--space-sm);
 }
 
