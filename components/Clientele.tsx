@@ -17,7 +17,7 @@ const ClientSection = () => {
   const tripleClients = [...clients, ...clients, ...clients];
 
   return (
-    <section className="py-10 bg-white overflow-hidden">
+    <section className="py-10 overflow-hidden">
       <div className="ui-container">
         {/* Header */}
         <motion.div
@@ -32,7 +32,7 @@ const ClientSection = () => {
             Our clients
             <span className="inline-block w-6 h-[1.5px] bg-[var(--clr-primary)]" />
           </p>
-          <h2 className="ui-h1 font-extrabold tracking-tight mb-3 text-[var(--clr-text-dark)]">
+          <h2 className="ui-h1 font-extrabold capitalize tracking-tight mb-3 text-[var(--clr-text-dark)]">
             Trusted by <span className="text-[#0093cb]">industry leader</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)]">

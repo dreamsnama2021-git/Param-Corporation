@@ -75,11 +75,11 @@ const TRENDING_PRODUCTS = [
 // ─── CATEGORIES SECTION ─────────────────
 function GiftsByCategories() {
   return (
-    <section className="w-full bg-[#F8F9FA] py-16 md:py-24 xl:py-10">
+    <section className="w-full bg-[#f8f9fa00] py-16 md:py-24 xl:py-10">
       <div className="max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="ui-h1 uppercase font-bold text-[#1a1a1a] tracking-tight mb-3">
+          <h2 className="ui-h1 capitalize font-bold text-[#1a1a1a] tracking-tight mb-3">
             Our <span className="text-[#0093cb]">Categories</span>
           </h2>
           <div className="flex justify-center">
@@ -168,7 +168,7 @@ function TrendingProducts() {
         {/* Header */}
         <div className="text-center mb-12">
           
-          <h2 className="ui-h1 uppercase font-bold text-black tracking-tight mb-3">
+          <h2 className="ui-h1 capitalize font-bold text-black tracking-tight mb-3">
             Trending <span className="text-[#0093cb]">Products</span>
           </h2>
           {/* <p className="text-gray-200 text-sm md:text-base max-w-2xl mx-auto">

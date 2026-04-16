@@ -20,7 +20,7 @@ const TagLine = () => {
           transition={{ duration: 0.8 }}
           className="text-center max-w-4xl mx-auto "
         >
-          <h2 className="font-display text-3xl md:text-5xl font-semibold text-foreground leading-tight mb-6">
+          <h2 className="font-display capitalize text-3xl md:text-5xl font-semibold text-foreground leading-tight mb-6">
             Where Thoughtfulness Meets
             <span className="text-[#0093cb]"> Prestige</span> 
           </h2>

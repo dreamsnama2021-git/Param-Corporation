@@ -236,7 +236,7 @@ function CaseStudiesSection() {
 // ─── NEW CARD GRID VARIANT (Reference Image Style) ─────────────────
 function CaseStudiesGrid() {
   return (
-    <section className="w-full bg-[#F8F9FA] py-16 md:py-20">
+    <section className="w-full bg-[#f8f9fa00] py-16 md:py-20">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -252,7 +252,7 @@ function CaseStudiesGrid() {
             <span className="inline-block w-6 h-[1.5px] bg-[var(--clr-primary)]" />
           </p>
 
-          <h2 className="ui-h1 font-extrabold tracking-tight mb-3 text-[var(--clr-text-dark)]">
+          <h2 className="ui-h1 font-extrabold capitalize tracking-tight mb-3 text-[var(--clr-text-dark)]">
             Real results for <span className="text-[#0093cb]">growing brands</span>
           </h2>
 

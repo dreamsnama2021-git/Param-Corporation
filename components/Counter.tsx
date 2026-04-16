@@ -240,14 +240,13 @@ const FloatingShape = ({ delay, color, className }: FloatingShapeProps): React.R
 
 export default function CreativeStatsSection(): React.ReactElement {
   return (
-    <section className="relative w-full py-8 md:py-10 overflow-hidden bg-[#fafafa]">
+    <section className="relative w-full py-8 md:py-10 overflow-hidden bg-[#fafafa00]">
       {/* Animated Background Elements */}
       <FloatingShape delay={0} color="#0093cb" className="w-96 h-96 -top-20 -left-20" />
       <FloatingShape delay={2} color="#00a65d" className="w-80 h-80 top-1/2 right-0" />
       <FloatingShape delay={4} color="#8bde7a" className="w-64 h-64 bottom-20 left-1/3" />
       
       {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -270,7 +269,7 @@ export default function CreativeStatsSection(): React.ReactElement {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="ui-h1 font-extrabold tracking-tight mb-3 text-gray-900 mb-4"
+            className="ui-h1 font-extrabold capitalize tracking-tight mb-3 text-gray-900 mb-4"
           >
             Trusted by <span className="text-[#0093cb]">Industry Leaders</span>
           </motion.h2>

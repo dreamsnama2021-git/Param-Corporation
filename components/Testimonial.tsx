@@ -218,7 +218,7 @@ export const TestimonialCardsVariant = () => {
   const featured = featuredTestimonials[activeIndex];
 
   return (
-    <section className="py-16 bg-white overflow-hidden">
+    <section className="py-16  overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <motion.div
@@ -233,8 +233,8 @@ export const TestimonialCardsVariant = () => {
              Client testimonials
             <span className="inline-block w-6 h-[1.5px] bg-[#639922]" />
           </p>
-          <h2 className="ui-h1 font-extrabold tracking-tight mb-3 text-[var(--clr-text-dark)]">
-                Trusted by{" "}
+          <h2 className="ui-h1 capitalize font-extrabold tracking-tight mb-3 text-[var(--clr-text-dark)]">
+                Trusted By{" "}
             <span
               style={{
                 background: "linear-gradient(90deg, #3B6D11, #0F6E56)",
@@ -242,7 +242,7 @@ export const TestimonialCardsVariant = () => {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              India's largest
+              India's Largest
             </span>{" "}
             enterprises
           </h2>
@@ -387,7 +387,7 @@ export const TestimonialCardsVariant2 = () => {
   const displayTestimonials = testimonials.slice(0, 4);
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ── Header ───────────────────────────────────────────────────────── */}
      
@@ -403,7 +403,7 @@ export const TestimonialCardsVariant2 = () => {
              Client testimonials
             <span className="inline-block w-6 h-[1.5px] bg-[#639922]" />
           </p>
-          <h2 className="ui-h1 font-extrabold tracking-tight mb-3 text-[var(--clr-text-dark)]">
+          <h2 className="ui-h1 font-extrabold capitalize tracking-tight mb-3 text-[var(--clr-text-dark)]">
                 Trusted by{" "}
             <span
               style={{
