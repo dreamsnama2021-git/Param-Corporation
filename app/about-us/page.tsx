@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRight, ChevronRight, Quote, Award, Globe, Heart, Zap, Mail, Sparkles, Gift, Package, Users, Star, Trophy, Target, Rocket } from 'lucide-react';
+import { ArrowUpRight, ChevronRight, Quote, Award, Globe, Heart, Zap, Mail, Sparkles, Gift, Package, Users, Star, Trophy, Target, Rocket, LucideIcon } from 'lucide-react';
 import Image from 'next/image';
 
 // ─────────────────────────────────────────────────
