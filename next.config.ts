@@ -4,12 +4,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: 'www.bigimpex.com',
+        hostname: '*',
         pathname: '/wp-content/uploads/**',
       },
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: '*',
       },
     ],
   },
