@@ -275,6 +275,60 @@
 /* =====================================================
    TYPOGRAPHY
 ===================================================== */
+/* Add to globals.css */
+body {
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: 
+    linear-gradient(to right, rgba(197, 192, 177, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(197, 192, 177, 0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+/* Add at the very end of globals.css */
+
+/* Force grid pattern visibility */
+.fixed.inset-0 {
+  z-index: 0 !important;
+}
+
+body {
+  position: relative;
+}
+
+/* Alternative grid pattern directly on body */
+body {
+  background-image: 
+    repeating-linear-gradient(
+      to right,
+      #c5c0b1 0px,
+      #c5c0b1 0.5px,
+      transparent 0.5px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      #c5c0b1 0px,
+      #c5c0b1 0.5px,
+      transparent 0.5px,
+      transparent 40px
+    );
+  background-attachment: fixed;
+}
 .ui-h1 {
   font-size: var(--h1-size);
   line-height: 1.1;

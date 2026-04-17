@@ -15,11 +15,9 @@ const listingStyles = `
   .listing-container {
     font-family: 'DM Sans', sans-serif;
     color: #1a1a1a;
-    background-color: #fafaf8;
   }
 
   .accent-color { color: #968c4d; }
-  .accent-bg { background-color: #968c4d; }
   .accent-border { border-color: #968c4d; }
 
   .index-number {

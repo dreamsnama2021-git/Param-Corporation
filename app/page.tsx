@@ -15,7 +15,7 @@ import BackgroundDecoration from "@/components/BackgroundDecoration";
 export default function Page() {
   return (
     <main className="overflow-x-hidden">
-      <BackgroundDecoration />
+      {/* <BackgroundDecoration /> */}
       <Hero />
       <TagLine />
       <ProductSections />

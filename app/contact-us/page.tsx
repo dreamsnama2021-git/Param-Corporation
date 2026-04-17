@@ -1,54 +1,55 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  ChevronLeft, 
-  ChevronRight, 
+import React, { useState } from "react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  ChevronLeft,
+  ChevronRight,
   Home,
-  Send
-} from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+  Send,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 // Product data for the carousel
 const products = [
   {
     id: 1,
-    name: 'crystal globe 60mm with Engraving',
-    image: 'https://www.bigimpex.com/wp-content/uploads/2024/07/15-3.png',
+    name: "crystal globe 60mm with Engraving",
+    image: "https://www.bigimpex.com/wp-content/uploads/2024/07/15-3.png",
   },
   {
     id: 2,
-    name: 'Crystal Cube 5 x 5 x 5 cm with Metallic Printing',
-    image: 'https://www.bigimpex.com/wp-content/uploads/2024/09/9.png',
+    name: "Crystal Cube 5 x 5 x 5 cm with Metallic Printing",
+    image: "https://www.bigimpex.com/wp-content/uploads/2024/09/9.png",
   },
   {
     id: 3,
-    name: 'Crystal Cube 4 x 4 x 6 cm with Engraving',
-    image: 'https://www.bigimpex.com/wp-content/uploads/2024/09/8.png',
+    name: "Crystal Cube 4 x 4 x 6 cm with Engraving",
+    image: "https://www.bigimpex.com/wp-content/uploads/2024/09/8.png",
   },
   {
     id: 4,
-    name: 'Crystal Cube 5 x 5 x 8 cm with Engraving',
-    image: 'https://www.bigimpex.com/wp-content/uploads/2024/09/7.png',
+    name: "Crystal Cube 5 x 5 x 8 cm with Engraving",
+    image: "https://www.bigimpex.com/wp-content/uploads/2024/09/7.png",
   },
   {
     id: 5,
-    name: 'Crystal Cube 5 x 5 x 8 cm with Metallic Printing',
-    image: 'https://www.bigimpex.com/wp-content/uploads/2025/10/WhatsApp-Image-2025-08-20-at-14.27.48_f1984dac-1199x1536.jpg',
+    name: "Crystal Cube 5 x 5 x 8 cm with Metallic Printing",
+    image:
+      "https://www.bigimpex.com/wp-content/uploads/2025/10/WhatsApp-Image-2025-08-20-at-14.27.48_f1984dac-1199x1536.jpg",
   },
 ];
 
 export default function ContactUs() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    query: ''
+    name: "",
+    email: "",
+    phone: "",
+    query: "",
   });
 
   // Show 4 cards at a time on desktop, calculate max slides
@@ -65,30 +66,27 @@ export default function ContactUs() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Message sent successfully!');
+    console.log("Form submitted:", formData);
+    alert("Message sent successfully!");
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans">
-      
+    <div className="min-h-screen  font-sans">
       {/* Navigation - Simplified Header */}
-     
 
-  {/* Hero Section - Aligned at Bottom */}
-<section className="bg-[#1a1a1a] text-white relative min-h-[200px] xl:min-h-[280px] flex items-end">
-  <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 xl:pb-12">
-    <h1 className="text-3xl md:text-4xl font-bold mb-2">Contact Us</h1>
-    <div className="flex items-center gap-2 text-sm text-gray-400">
-      <Link href="/" className="hover:text-white flex items-center gap-1">
-        <Home className="w-3 h-3" /> Home
-      </Link>
-      <span>»</span>
-      <span className="text-[var(--clr-primary)]">Contact Us</span>
-    </div>
-  </div>
-</section>
-
+      {/* Hero Section - Aligned at Bottom */}
+      <section className="bg-[#1a1a1a] text-white relative min-h-[200px] xl:min-h-[280px] flex items-end">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 xl:pb-12">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2">Contact Us</h1>
+          <div className="flex items-center gap-2 text-sm text-gray-400">
+            <Link href="/" className="hover:text-white flex items-center gap-1">
+              <Home className="w-3 h-3" /> Home
+            </Link>
+            <span>»</span>
+            <span className="text-[var(--clr-primary)]">Contact Us</span>
+          </div>
+        </div>
+      </section>
 
       {/* Main Contact Section with Honeycomb Background */}
       <section className="relative py-16 overflow-hidden">
@@ -96,28 +94,42 @@ export default function ContactUs() {
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <pattern id="honeycomb" x="0" y="0" width="56" height="100" patternUnits="userSpaceOnUse">
-                <path d="M28 66L0 50V16L28 0l28 16v34L28 66zM0 50l28 16 28-16M28 0v16M0 16l28 16 28-16" 
-                      fill="none" stroke="var(--clr-primary)" strokeWidth="1"/>
+              <pattern
+                id="honeycomb"
+                x="0"
+                y="0"
+                width="56"
+                height="100"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M28 66L0 50V16L28 0l28 16v34L28 66zM0 50l28 16 28-16M28 0v16M0 16l28 16 28-16"
+                  fill="none"
+                  stroke="var(--clr-primary)"
+                  strokeWidth="1"
+                />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#honeycomb)"/>
+            <rect width="100%" height="100%" fill="url(#honeycomb)" />
           </svg>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 items-start">
-            
             {/* Left Column - Contact Info & Map */}
             <div className="space-y-8">
               {/* Address */}
               <div className="bg-white rounded-lg shadow-md p-6 border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Address</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-6">
+                  Address
+                </h3>
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-[var(--clr-primary)] flex-shrink-0 mt-1" />
                   <p className="text-gray-600 text-sm leading-relaxed">
-                    5th Floor, ABM House, Linking Rd,<br />
-                    Bandra West, Mumbai,<br />
+                    5th Floor, ABM House, Linking Rd,
+                    <br />
+                    Bandra West, Mumbai,
+                    <br />
                     Maharashtra 400050
                   </p>
                 </div>
@@ -127,11 +139,20 @@ export default function ContactUs() {
               <div className="grid sm:grid-cols-2 gap-6">
                 {/* Call Us */}
                 <div className="bg-white rounded-lg shadow-md p-6 border border-gray-100">
-                  <h3 className="text-lg font-bold text-gray-900 mb-4">Call Us</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">
+                    Call Us
+                  </h3>
                   <div className="space-y-3">
-                    {['+91 86579 58081', '+91 86570 29709', '+91 8828552305'].map((phone, i) => (
-                      <a key={i} href={`tel:${phone.replace(/\s/g, '')}`} 
-                         className="flex items-center gap-2 text-gray-600 hover:text-[var(--clr-primary)] text-sm transition-colors">
+                    {[
+                      "+91 86579 58081",
+                      "+91 86570 29709",
+                      "+91 8828552305",
+                    ].map((phone, i) => (
+                      <a
+                        key={i}
+                        href={`tel:${phone.replace(/\s/g, "")}`}
+                        className="flex items-center gap-2 text-gray-600 hover:text-[var(--clr-primary)] text-sm transition-colors"
+                      >
                         <Phone className="w-4 h-4 text-[var(--clr-primary)]" />
                         {phone}
                       </a>
@@ -141,9 +162,13 @@ export default function ContactUs() {
 
                 {/* Email Us */}
                 <div className="bg-white rounded-lg shadow-md p-6 border border-gray-100">
-                  <h3 className="text-lg font-bold text-gray-900 mb-4">Email Us</h3>
-                  <a href="mailto:sales@bigimpex.com" 
-                     className="flex items-center gap-2 text-gray-600 hover:text-[var(--clr-primary)] text-sm transition-colors">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">
+                    Email Us
+                  </h3>
+                  <a
+                    href="mailto:sales@bigimpex.com"
+                    className="flex items-center gap-2 text-gray-600 hover:text-[var(--clr-primary)] text-sm transition-colors"
+                  >
                     <Mail className="w-4 h-4 text-[var(--clr-primary)]" />
                     sales@bigimpex.com
                   </a>
@@ -170,7 +195,9 @@ export default function ContactUs() {
             {/* Right Column - Contact Form */}
             <div className="bg-white rounded-lg shadow-lg p-8 border border-gray-100 lg:sticky lg:top-24">
               <div className="text-center mb-8">
-                <span className="text-xs text-gray-500 uppercase tracking-widest">Contact Form</span>
+                <span className="text-xs text-gray-500 uppercase tracking-widest">
+                  Contact Form
+                </span>
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-2">
                   Don&apos;t Hesitate to Connect Us.
                 </h2>
@@ -183,43 +210,51 @@ export default function ContactUs() {
                     placeholder="Your Full Name"
                     required
                     value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--clr-primary)] focus:ring-2 focus:ring-[var(--clr-primary)]/20 outline-none transition-all text-sm"
                   />
                 </div>
-                
+
                 <div>
                   <input
                     type="email"
                     placeholder="Email Address"
                     required
                     value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--clr-primary)] focus:ring-2 focus:ring-[var(--clr-primary)]/20 outline-none transition-all text-sm"
                   />
                 </div>
-                
+
                 <div>
                   <input
                     type="tel"
                     placeholder="Phone Number"
                     value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, phone: e.target.value })
+                    }
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--clr-primary)] focus:ring-2 focus:ring-[var(--clr-primary)]/20 outline-none transition-all text-sm"
                   />
                 </div>
-                
+
                 <div>
                   <textarea
                     placeholder="Add Your Query"
                     required
                     rows={5}
                     value={formData.query}
-                    onChange={(e) => setFormData({...formData, query: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, query: e.target.value })
+                    }
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[var(--clr-primary)] focus:ring-2 focus:ring-[var(--clr-primary)]/20 outline-none transition-all text-sm resize-none"
                   />
                 </div>
-                
+
                 <button
                   type="submit"
                   className="w-full bg-[var(--clr-primary)] hover:bg-[var(--clr-secondary)] text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
@@ -234,7 +269,7 @@ export default function ContactUs() {
       </section>
 
       {/* Product Carousel Section - FIXED CARD DIMENSIONS */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative">
             {/* Navigation Arrows */}
@@ -242,18 +277,22 @@ export default function ContactUs() {
               onClick={prevSlide}
               disabled={currentSlide === 0}
               className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-gray-800 transition-colors ${
-                currentSlide === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[var(--clr-primary)] hover:text-white'
+                currentSlide === 0
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-[var(--clr-primary)] hover:text-white"
               }`}
               aria-label="Previous product"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            
+
             <button
               onClick={nextSlide}
               disabled={currentSlide >= maxSlide}
               className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-gray-800 transition-colors ${
-                currentSlide >= maxSlide ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[var(--clr-primary)] hover:text-white'
+                currentSlide >= maxSlide
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-[var(--clr-primary)] hover:text-white"
               }`}
               aria-label="Next product"
             >
@@ -262,12 +301,14 @@ export default function ContactUs() {
 
             {/* Products Container - Fixed Width Cards */}
             <div className="overflow-hidden px-4">
-              <div 
+              <div
                 className="flex gap-4 transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * (100 / visibleCards)}%)` }}
+                style={{
+                  transform: `translateX(-${currentSlide * (100 / visibleCards)}%)`,
+                }}
               >
                 {products.map((product) => (
-                  <div 
+                  <div
                     key={product.id}
                     className="w-[calc(25%-12px)] min-w-[calc(25%-12px)] flex-shrink-0"
                   >
@@ -298,23 +339,26 @@ export default function ContactUs() {
 
             {/* Pagination Dots */}
             <div className="flex justify-center gap-2 mt-8">
-              {Array.from({ length: products.length - visibleCards + 1 }).map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentSlide(idx)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    idx === currentSlide ? 'bg-gray-800 w-4' : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
+              {Array.from({ length: products.length - visibleCards + 1 }).map(
+                (_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      idx === currentSlide
+                        ? "bg-gray-800 w-4"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ),
+              )}
             </div>
           </div>
         </div>
       </section>
 
       {/* Floating Contact Button */}
-    
     </div>
   );
 }

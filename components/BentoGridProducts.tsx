@@ -402,7 +402,7 @@ export default function ProductBentoGrid() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950 py-12 sm:py-16 px-4 sm:px-6 overflow-hidden">
+      <section className=" dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950 py-12 sm:py-16 px-4 sm:px-6 overflow-hidden">
         {/* Ambient blobs */}
         <div className="pointer-events-none fixed inset-0 overflow-hidden">
           <div className="absolute top-32 left-1/4 w-96 h-96 rounded-full bg-sky-500/[0.06] blur-3xl" />

@@ -45,7 +45,7 @@ const caseStudies = [
 
 export default function CaseStudiesPage() {
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
+    <div className="min-h-screen  font-sans">
       
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] text-white py-20 lg:py-28 relative overflow-hidden">

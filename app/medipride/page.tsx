@@ -248,7 +248,7 @@ export default function MediPrideLanding() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="bg-white text-slate-800 font-sans scroll-smooth">
+    <div className=" text-slate-800 font-sans scroll-smooth">
       {/* Hero */}
       <header className="relative pt-40 pb-24 lg:pt-56 lg:pb-40 overflow-hidden xl:h-[60vh] flex items-center">
         {/* 1. Background Image Layer */}
@@ -320,7 +320,7 @@ export default function MediPrideLanding() {
       </section> */}
 
       {/* About Us */}
-      <section id="about" className="relative py-12 bg-white overflow-hidden">
+      <section id="about" className="relative py-12  overflow-hidden">
         {/* Subtle Background Decorative Element */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-[#8bde7a]/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-72 h-72 bg-[#0093cb]/10 rounded-full blur-3xl" />
@@ -416,7 +416,7 @@ export default function MediPrideLanding() {
       </section>
 
       {/* Service Section */}
-      <section className="  bg-slate-50 flex flex-col justify-center py-4 lg:py-16 overflow-hidden">
+      <section className="   flex flex-col justify-center py-4 lg:py-16 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 w-full">
           {/* Compact Header */}
           <div className="text-center mb-8 lg:mb-16">
@@ -491,7 +491,7 @@ export default function MediPrideLanding() {
       </section>
 
       {/* --- ALL PRODUCT CATEGORIES --- */}
-      <section id="products" className="py-12 bg-slate-50">
+      <section id="products" className="py-12 ">
         <div className="max-w-7xl mx-auto px-4">
           {/* Header Section - Modern Typography */}
           <div className="text-center mb-20">

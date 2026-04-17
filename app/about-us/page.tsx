@@ -225,14 +225,11 @@ const FloatingCard = ({
 );
 
 // ─────────────────────────────────────────────────
-// VISION SECTION - Glassmorphism Design
+// VISION SECTION - Clean Design (No background overlay)
 // ─────────────────────────────────────────────────
 const VisionSection = () => {
   return (
-    <section className="py-12 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-50" />
-      
+    <section className="py-12 relative">
       <div className="relative max-w-7xl mx-auto px-6">
         
         {/* Section Header */}
@@ -262,7 +259,7 @@ const VisionSection = () => {
         {/* Cards Container */}
         <div className="grid lg:grid-cols-2 gap-5 lg:gap-6">
           
-          {/* Vision Card - Primary Glassmorphism */}
+          {/* Vision Card */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -270,20 +267,13 @@ const VisionSection = () => {
             transition={{ duration: 0.6 }}
             className="group"
           >
-            <div className="relative h-full min-h-[280px] bg-[rgba(0,147,203,0.15)] backdrop-blur-xl rounded-xl border border-[rgba(0,147,203,0.3)] overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:bg-[rgba(0,147,203,0.25)] flex flex-col">
-              
-              {/* Background Color Blur */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[rgba(0,147,203,0.1)] to-[rgba(0,147,203,0.05)]" />
+            <div className="relative h-full min-h-[280px] bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl flex flex-col">
               
               {/* Decorative Elements */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-[var(--clr-primary)]/10 rounded-full blur-2xl" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-[var(--clr-primary)]/5 rounded-full blur-xl" />
-              
-              {/* Glass Reflection */}
-              <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[var(--clr-primary)]/5 rounded-full blur-2xl" />
               
               {/* Decorative Letter */}
-              <div className="absolute bottom-0 right-0 text-[100px] font-black text-[var(--clr-primary)]/[0.08] leading-none select-none pointer-events-none">
+              <div className="absolute bottom-0 right-0 text-[100px] font-black text-[var(--clr-primary)]/[0.04] leading-none select-none pointer-events-none">
                 V
               </div>
               
@@ -292,7 +282,7 @@ const VisionSection = () => {
                 
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-[var(--clr-primary)]/20 backdrop-blur-md flex items-center justify-center border border-[var(--clr-primary)]/30">
+                  <div className="w-10 h-10 rounded-lg bg-[var(--clr-primary)]/10 flex items-center justify-center">
                     <Target className="text-[var(--clr-primary)]" size={18} strokeWidth={1.5} />
                   </div>
                   <div>
@@ -320,7 +310,7 @@ const VisionSection = () => {
                 </p>
                 
                 {/* Footer */}
-                <div className="flex items-center justify-between pt-3 border-t border-[var(--clr-primary)]/20">
+                <div className="flex items-center justify-between pt-3 border-t border-slate-100">
                   <span className="text-[10px] font-medium text-slate-500">
                     Est. 2010
                   </span>
@@ -335,7 +325,7 @@ const VisionSection = () => {
             </div>
           </motion.div>
 
-          {/* Mission Card - Secondary Glassmorphism */}
+          {/* Mission Card */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -343,20 +333,13 @@ const VisionSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="group"
           >
-            <div className="relative h-full min-h-[280px] bg-[rgba(0,166,93,0.15)] backdrop-blur-xl rounded-xl border border-[rgba(0,166,93,0.3)] overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:bg-[rgba(0,166,93,0.25)] flex flex-col">
-              
-              {/* Background Color Blur */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[rgba(0,166,93,0.1)] to-[rgba(0,166,93,0.05)]" />
+            <div className="relative h-full min-h-[280px] bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl flex flex-col">
               
               {/* Decorative Elements */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-[var(--clr-secondary)]/10 rounded-full blur-2xl" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-[var(--clr-secondary)]/5 rounded-full blur-xl" />
-              
-              {/* Glass Reflection */}
-              <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[var(--clr-secondary)]/5 rounded-full blur-2xl" />
               
               {/* Decorative Letter */}
-              <div className="absolute bottom-0 right-0 text-[100px] font-black text-[var(--clr-secondary)]/[0.08] leading-none select-none pointer-events-none">
+              <div className="absolute bottom-0 right-0 text-[100px] font-black text-[var(--clr-secondary)]/[0.04] leading-none select-none pointer-events-none">
                 M
               </div>
               
@@ -365,7 +348,7 @@ const VisionSection = () => {
                 
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-[var(--clr-secondary)]/20 backdrop-blur-md flex items-center justify-center border border-[var(--clr-secondary)]/30">
+                  <div className="w-10 h-10 rounded-lg bg-[var(--clr-secondary)]/10 flex items-center justify-center">
                     <Gift className="text-[var(--clr-secondary)]" size={18} strokeWidth={1.5} />
                   </div>
                   <div>
@@ -393,7 +376,7 @@ const VisionSection = () => {
                 </p>
                 
                 {/* Footer */}
-                <div className="flex items-center justify-between pt-3 border-t border-[var(--clr-secondary)]/20">
+                <div className="flex items-center justify-between pt-3 border-t border-slate-100">
                   <span className="text-[10px] font-medium text-slate-500">
                     Since 2010
                   </span>
@@ -414,11 +397,8 @@ const VisionSection = () => {
   );
 };
 
-
-
-
 // ─────────────────────────────────────────────────
-// WHY US SECTION
+// WHY US SECTION - Clean Design
 // ─────────────────────────────────────────────────
 const WhyUsSection = () => {
   const reasons = [
@@ -457,13 +437,10 @@ const WhyUsSection = () => {
   ];
 
   return (
-    <section className="relative py-12 lg:py-12 overflow-hidden">
-      {/* Subtle Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-50" />
-
+    <section className="relative py-12 lg:py-12">
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+        
         {/* Section Header */}
-
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -477,16 +454,17 @@ const WhyUsSection = () => {
             <span className="inline-block w-6 h-[1.5px] bg-[var(--clr-primary)]" />
           </p>
 
-          <h2 className="ui-h1 font-extrabold capitalize tracking-tight mb-3 text-[var(--clr-text-dark)]">
+          <h2 className="text-3xl md:text-4xl font-extrabold capitalize tracking-tight mb-3 text-[var(--clr-text-dark)]">
             Excellence in <span className="text-[#0093cb]">Every Detail</span>
           </h2>
 
           <p className="text-sm leading-relaxed max-w-[980px] mx-auto text-[var(--clr-text-muted)]">
-            For over two decades, we've been the trusted partner for India's
+            For over a decade, we've been the trusted partner for India's
             leading brands, delivering meaningful gifting solutions that foster
             lasting connections.
           </p>
         </motion.div>
+        
         {/* Cards Grid - 4 Columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {reasons.map((item, idx) => (
@@ -498,48 +476,34 @@ const WhyUsSection = () => {
               transition={{ duration: 0.6, delay: idx * 0.12 }}
               className="group relative"
             >
-              {/* Card Container */}
-              <div className="relative h-full bg-white rounded-2xl border border-slate-200/80 p-8 hover:shadow-xl hover:border-slate-300/80 transition-all duration-500 overflow-hidden">
+              <div className="relative h-full bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-xl hover:border-slate-300 transition-all duration-500 overflow-hidden">
                 {/* Top Gradient Accent */}
                 <div
                   className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                 />
 
-                {/* Content */}
                 <div className="relative">
-                  {/* Number & Icon Row */}
                   <div className="flex items-start justify-between mb-6">
-                    {/* Number */}
                     <span className="text-5xl font-bold text-slate-100 tracking-tight leading-none select-none">
                       {item.number}
                     </span>
-
-                    {/* Icon Circle */}
                     <div
                       className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center shadow-md transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}
                     >
-                      <item.icon
-                        className="text-white"
-                        size={22}
-                        strokeWidth={1.5}
-                      />
+                      <item.icon className="text-white" size={22} strokeWidth={1.5} />
                     </div>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-xl capitalize font-bold text-slate-900 mb-3 tracking-tight">
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">
                     {item.title}
                   </h3>
 
-                  {/* Description */}
                   <p className="text-slate-500 text-sm leading-relaxed mb-6">
                     {item.description}
                   </p>
 
-                  {/* Divider */}
                   <div className="w-12 h-px bg-slate-200 mb-6 group-hover:w-full group-hover:bg-slate-300 transition-all duration-500" />
 
-                  {/* Link */}
                   <div className="flex items-center gap-2 text-slate-700 font-medium text-sm group-hover:text-slate-900 transition-colors">
                     <span>Explore</span>
                     <svg
@@ -561,14 +525,13 @@ const WhyUsSection = () => {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );
 };
 
 // ─────────────────────────────────────────────────
-// TEAM SECTION - Uniform Border Glow (Tailwind Only)
+// TEAM SECTION - Clean Design
 // ─────────────────────────────────────────────────
 const TeamSection = () => {
   const team = [
@@ -593,10 +556,7 @@ const TeamSection = () => {
   ];
 
   return (
-    <section className="py-12 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-50" />
-      
+    <section className="py-12 relative">
       <div className="relative max-w-[1500px] mx-auto px-6">
         
         {/* Section Header */}
@@ -631,44 +591,21 @@ const TeamSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: member.delay }}
-              className="group cursor-pointer p-[3px] rounded-3xl hover:rounded-3xl transition-all duration-500"
-              style={{
-                background: 'transparent',
-                backgroundImage: 'linear-gradient(rgba(0,166,93,0), rgba(0,166,93,0))',
-                backgroundSize: '100% 100%',
-                transition: 'all 0.5s ease',
-              }}
-              onMouseEnter={(e) => {
-                const style = e.currentTarget.style;
-                style.backgroundImage = 'linear-gradient(rgba(0,166,93,1), rgba(0,166,93,1))';
-                style.boxShadow = '0 0 30px rgba(0,166,93,0.5), 0 0 60px rgba(0,166,93,0.2)';
-                style.background = 'transparent';
-              }}
-              onMouseLeave={(e) => {
-                const style = e.currentTarget.style;
-                style.backgroundImage = 'linear-gradient(rgba(0,166,93,0), rgba(0,166,93,0))';
-                style.boxShadow = 'none';
-                style.background = 'transparent';
-              }}
+              className="group cursor-pointer"
             >
-              {/* Card */}
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
-                
-                {/* Image */}
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-slate-200">
                 <Image
                   src={member.image}
                   alt={member.name}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110 rounded-2xl"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
                 
                 {/* Hover Content */}
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
-                  
-                  {/* Name & Role */}
                   <div className="transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <h3 className="text-lg font-bold text-white mb-1">
                       {member.name}
@@ -686,11 +623,6 @@ const TeamSection = () => {
     </section>
   );
 };
-
-
-
-
-
 
 // ─────────────────────────────────────────────────
 // PLAY ICON COMPONENT
@@ -715,9 +647,9 @@ const PlayIcon = () => (
 // ─────────────────────────────────────────────────
 export default function AboutUsPage() {
   return (
-    <div className="bg-white min-h-screen selection:bg-blue-500 selection:text-white">
-      {/* Hero Section */}
-      <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen ">
+      {/* Hero Section - Clean gradient only, no overlay */}
+      <section className="min-h-screen relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-200/20 rounded-full blur-3xl" />
@@ -907,41 +839,9 @@ export default function AboutUsPage() {
         </motion.div>
       </section>
 
-      {/* Quote Section */}
-      {/* <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
-            className="relative group"
-          >
-            <Quote className="absolute -top-8 -left-8 w-20 h-20 text-blue-600/15" />
-            <blockquote className="text-3xl md:text-4xl font-light text-slate-900 leading-relaxed relative z-10 pl-12">
-              "Gifting is not about the price tag. It's about the thought, the timing, 
-              and the emotional resonance it creates."
-            </blockquote>
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mt-8 flex items-center gap-4 pl-12"
-            >
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white font-bold">
-                RS
-              </div>
-              <div>
-                <div className="font-bold text-slate-900">Rajesh Sharma</div>
-                <div className="text-slate-500 text-sm">Founder & CEO</div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section> */}
-
       {/* Editorial Timeline Section */}
-      <section className="py-12 bg-white">
-        <div className="max-w-4xl mx-auto px-6 text-center mb-32">
+      <section className="py-12">
+        <div className="max-w-4xl mx-auto px-6 text-center mb-16">
           <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-widest mb-6">
             Experience the Legacy
           </span>
@@ -958,13 +858,12 @@ export default function AboutUsPage() {
 
       {/* Why Us */}
       <WhyUsSection />
+      
       {/* Vision & Mission */}
       <VisionSection />
 
       {/* Team Section */}
       <TeamSection />
-
-   
     </div>
   );
 }
