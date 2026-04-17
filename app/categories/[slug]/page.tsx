@@ -89,10 +89,11 @@ const listingStyles = `
   }
 `;
 
+// Alternative version with clear alternating layout
 function ProductListingItem({ product, index }: { product: any; index: number }) {
   const formattedIndex = String(index + 1).padStart(2, '0');
+  const isImageLeft = index % 2 === 0; // Even = image left, Odd = image right
   
-  // Custom plans/features for the list
   const plans = [
     "3D Visualizations",
     "Design Concepts",
@@ -109,46 +110,54 @@ function ProductListingItem({ product, index }: { product: any; index: number })
       viewport={{ once: true }}
       className="mb-32"
     >
-      {/* Header Area */}
+      {/* Header Area - Same for both layouts */}
       <div className="flex flex-col mb-8">
         <span className="index-number">{formattedIndex}</span>
         <h2 className="main-title">{product.name}</h2>
         <div className="title-line" />
         <p className="description-text">
-          {product.description || "We deliver detailed 3D visualisation that bring your design to life through realistic visuals, showcasing layouts, materials, and lighting. This clarity helps you make informed decisions and ensures smooth, accurate execution."}
+          {product.description || "We deliver detailed 3D visualisation that bring your design to life through realistic visuals, showcasing layouts, materials, and lighting."}
         </p>
       </div>
 
-      {/* Content Area: Image + List */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        {/* Left: Image (7/12 width) */}
-        <div className="lg:col-span-7 relative aspect-[16/10] rounded-[2rem] overflow-hidden shadow-2xl">
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            className="object-cover"
-            unoptimized
-          />
-        </div>
-
-        {/* Right: Plans (5/12 width) */}
-        <div className="lg:col-span-5 flex flex-col pt-4">
-          <h4 className="text-sm font-bold uppercase tracking-widest mb-6 opacity-80">Our Plans</h4>
-          <div className="flex flex-col space-y-2 mb-10">
-            {plans.map((plan, idx) => (
-              <div key={idx} className="plan-item">
-                {plan}
-              </div>
-            ))}
+      {/* Zigzag Layout */}
+      {isImageLeft ? (
+        // Image on LEFT, Content on RIGHT
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="lg:col-span-7 relative aspect-[16/10] rounded-[2rem] overflow-hidden shadow-2xl">
+            <Image src={product.image} alt={product.name} fill className="object-cover" unoptimized />
           </div>
-
-          <Link href={`/product/${product.id}`} className="explore-btn group w-fit">
-            Explore More
-            <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </Link>
+          <div className="lg:col-span-5 flex flex-col pt-4">
+            <h4 className="text-sm font-bold uppercase tracking-widest mb-6 opacity-80">Our Plans</h4>
+            <div className="flex flex-col space-y-2 mb-10">
+              {plans.map((plan, idx) => (
+                <div key={idx} className="plan-item">{plan}</div>
+              ))}
+            </div>
+            <Link href={`/product/${product.id}`} className="explore-btn group w-fit">
+              Explore More <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </Link>
+          </div>
         </div>
-      </div>
+      ) : (
+        // Image on RIGHT, Content on LEFT
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="lg:col-span-5 flex flex-col pt-4">
+            <h4 className="text-sm font-bold uppercase tracking-widest mb-6 opacity-80">Our Plans</h4>
+            <div className="flex flex-col space-y-2 mb-10">
+              {plans.map((plan, idx) => (
+                <div key={idx} className="plan-item">{plan}</div>
+              ))}
+            </div>
+            <Link href={`/product/${product.id}`} className="explore-btn group w-fit">
+              Explore More <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </Link>
+          </div>
+          <div className="lg:col-span-7 relative aspect-[16/10] rounded-[2rem] overflow-hidden shadow-2xl">
+            <Image src={product.image} alt={product.name} fill className="object-cover" unoptimized />
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 }
