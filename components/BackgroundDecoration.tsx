@@ -10,10 +10,10 @@ export default function BackgroundDecoration(): React.ReactElement {
       style={{ 
         zIndex: 0,
         backgroundImage: `
-          linear-gradient(to right, rgba(0, 147, 203, 0.2) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(0, 147, 203, 0.2) 1px, transparent 1px)
+          linear-gradient(to right, rgba(0, 147, 203, 0.1) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0, 147, 203, 0.1) 1px, transparent 1px)
         `,
-        backgroundSize: '40px 40px',
+        backgroundSize: '30px 30px',
       }}
     />
   );
