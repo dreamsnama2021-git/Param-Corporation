@@ -29,9 +29,9 @@ export function EditorialTimeline({ items }: EditorialTimelineProps) {
   return (
     <div className="relative max-w-6xl mx-auto px-6">
       {/* Central Path */}
-      <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[1px] bg-slate-200 hidden md:block" />
+      <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[1px] bg-[#0093cb] hidden md:block" />
 
-      <div className="space-y-32">
+      <div className="space-y-8 md:space-y-12 xl:space-y-32">
         {items.map((item, index) => (
           <EditorialRow key={index} item={item} index={index} />
         ))}
@@ -79,7 +79,7 @@ const EditorialRow = ({ item, index }: { item: TimelineItem; index: number }) =>
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block z-20">
         <div className="relative flex items-center justify-center">
             {/* The Node */}
-            <div className="w-4 h-4 rounded-full bg-white border-2 border-slate-900" />
+            <div className="w-4 h-4 rounded-full bg-[#0093cb]  " />
             
             {/* The Connecting Arm Line */}
             <motion.div 
@@ -87,7 +87,7 @@ const EditorialRow = ({ item, index }: { item: TimelineItem; index: number }) =>
                 whileInView={{ width: 100 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 0.4 }}
-                className={`absolute h-[1px] bg-slate-300 -z-10 ${isEven ? 'left-4' : 'right-4'}`}
+                className={`absolute h-[1px] bg-[#0093cb] -z-10 ${isEven ? 'left-4' : 'right-4'}`}
                 style={{ originX: isEven ? 0 : 1 }}
             />
         </div>
