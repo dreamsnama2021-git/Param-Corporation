@@ -22,6 +22,12 @@ import {
   Rocket,
   LucideIcon,
   Phone,
+  Factory,
+  Pill,
+  Lightbulb,
+  TrendingUp,
+  Handshake,
+  Leaf,
 } from "lucide-react";
 import Image from "next/image";
 import {
@@ -77,88 +83,101 @@ const TwitterIcon = (props: any) => (
   </svg>
 );
 
-const timelineItems: TimelineItem[] = [
+// ─────────────────────────────────────────────────
+// TIMELINE DATA - Pharma Gifting Journey 2019-2026
+// ─────────────────────────────────────────────────
+export const timelineItems: TimelineItem[] = [
   {
-    title: "Founded with a Vision",
+    title: "The Beginning",
     description:
-      "Started in Mumbai with a simple belief: corporate gifting should be meaningful, not transactional. Three dreamers, one garage, and a vision to transform how businesses say 'thank you'.",
-    date: "2010",
+      "Founded with a vision to create impactful corporate gifting solutions for the pharmaceutical industry. Started operations with a small team dedicated to quality and innovation.",
+    date: "2019",
     category: "Foundation",
     icon: Rocket,
     image:
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",
   },
   {
-    title: "First Enterprise Partnership",
+    title: "Building Capabilities",
     description:
-      "Secured our first Fortune 500 client in the pharmaceutical sector. Delivered 10,000+ personalized gift sets — proving that thoughtfulness scales.",
-    date: "2013",
+      "Strengthened production infrastructure, expanded vendor network, and established end-to-end execution processes. Built a reliable supply chain to serve pharma clients efficiently.",
+    date: "2020",
     category: "Growth",
-    icon: HandshakeIcon,
+    icon: Factory,
     image:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80",
+      "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&q=80",
   },
   {
-    title: "Introduced Bespoke Curation",
+    title: "Growing in Pharma",
     description:
-      "Launched India's first AI-powered gift curation engine. Every gift now tells a story, every story builds a relationship.",
-    date: "2015",
+      "Expanded presence by working with leading pharmaceutical brands across India. Delivered consistent quality and built trust through reliable gifting solutions for doctor engagement.",
+    date: "2021",
+    category: "Expansion",
+    icon: Pill,
+    image:
+      "https://images.unsplash.com/photo-1584308666744-3c0b9c22406f?w=800&q=80",
+  },
+  {
+    title: "Focus on Innovation",
+    description:
+      "Introduced customized and concept-driven gifting solutions aligned with brand campaigns. Developed therapy-specific gifts for cardiac, diabetic, and pediatric segments.",
+    date: "2022",
     category: "Innovation",
-    icon: Sparkles,
+    icon: Lightbulb,
     image:
       "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80",
   },
   {
-    title: "Pan-India Network",
+    title: "Scaling Operations",
     description:
-      "Expanded delivery to 15,000+ pin codes. Same care, same quality — from Kutch to Kohima. Became India's most comprehensive gifting network.",
-    date: "2017",
-    category: "Expansion",
-    icon: Globe,
+      "Executed larger projects across India with improved efficiency and creative output. Expanded team, enhanced logistics, and delivered 50,000+ gift items in a single campaign.",
+    date: "2023",
+    category: "Growth",
+    icon: TrendingUp,
     image:
       "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&q=80",
   },
   {
-    title: "Award-Winning Studio",
+    title: "Driving Engagement",
     description:
-      "Recognized as India's Best Corporate Gifting Agency. Our studio approach became the industry benchmark for quality and creativity.",
-    date: "2019",
+      "Focused on creating gifting solutions that enhance doctor engagement and brand recall. Introduced personalized gifts with clinic branding and doctor name customization.",
+    date: "2024",
     category: "Achievement",
-    icon: Trophy,
+    icon: Users,
     image:
       "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
   },
   {
-    title: "98% Retention Milestone",
+    title: "Strengthening Partnerships",
     description:
-      "Our clients don't just return — they refer. Achieved 98% client retention rate, making us the most trusted gifting partner in India.",
-    date: "2021",
+      "Built long-term relationships with pharma companies through reliable delivery and measurable results. Achieved 90%+ client retention rate with repeat annual orders.",
+    date: "2025",
     category: "Achievement",
-    icon: Heart,
+    icon: HandshakeIcon,
     image:
       "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80",
   },
   {
-    title: "Sustainable Gifting Initiative",
+    title: "Looking Ahead",
     description:
-      "Launched India's first carbon-neutral gifting line. 100% eco-friendly packaging, sustainable sourcing, and conscious design.",
-    date: "2023",
-    category: "Sustainability",
-    icon: LeafIcon,
+      "Continuing to innovate and deliver meaningful gifting solutions for evolving pharma needs. Expanding into new therapy areas and sustainable gifting options.",
+    date: "2026",
+    category: "Future",
+    icon: Target,
     image:
-      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80",
-  },
-  {
-    title: "500+ Enterprise Clients",
-    description:
-      "Crossed the 500-enterprise milestone. From startups to conglomerates, we've become the gifting partner of choice for India's leading brands.",
-    date: "2024",
-    category: "Growth",
-    icon: Star,
-    image:
-      "https://images.unsplash.com/photo-1553028826-f4804a6d8313?w=800&q=80",
+      "https://images.unsplash.com/photo-1494783367193-149034c05e8f?w=800&q=80",
   },
 ];
+
+// Category colors for styling
+export const categoryColors: Record<string, string> = {
+  Foundation: "#0093cb",
+  Growth: "#00a65d",
+  Expansion: "#8bde7a",
+  Innovation: "#f59e0b",
+  Achievement: "#8b5cf6",
+  Future: "#ec4899",
+};
 
 // ─────────────────────────────────────────────────
 // MAGNETIC BUTTON COMPONENT
@@ -166,9 +185,11 @@ const timelineItems: TimelineItem[] = [
 const MagneticButton = ({
   children,
   className,
+  href,
 }: {
   children: React.ReactNode;
   className?: string;
+  href?: string;
 }) => {
   const ref = useRef<HTMLButtonElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -191,6 +212,7 @@ const MagneticButton = ({
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 350, damping: 15, mass: 0.5 }}
       className={className}
+      onClick={() => href && (window.location.href = href)}
     >
       {children}
     </motion.button>
@@ -225,7 +247,7 @@ const FloatingCard = ({
 );
 
 // ─────────────────────────────────────────────────
-// VISION SECTION - Clean Design (No background overlay)
+// VISION SECTION - Updated for Pharma Gifting
 // ─────────────────────────────────────────────────
 const VisionSection = () => {
   return (
@@ -250,8 +272,8 @@ const VisionSection = () => {
           </h2>
 
           <p className="text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)]">
-            Guiding principles that shape our approach to corporate gifting and
-            client relationships
+            Guiding principles that shape our approach to pharmaceutical gifting
+            and doctor engagement
           </p>
         </motion.div>
 
@@ -266,17 +288,12 @@ const VisionSection = () => {
             className="group"
           >
             <div className="relative h-full min-h-[280px] bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl flex flex-col">
-              {/* Decorative Elements */}
               <div className="absolute top-0 right-0 w-40 h-40 bg-[var(--clr-primary)]/5 rounded-full blur-2xl" />
-
-              {/* Decorative Letter */}
               <div className="absolute bottom-0 right-0 text-[100px] font-black text-[var(--clr-primary)]/[0.04] leading-none select-none pointer-events-none">
                 V
               </div>
 
-              {/* Content */}
               <div className="relative z-10 flex-1 flex flex-col p-6">
-                {/* Header */}
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-lg bg-[var(--clr-primary)]/10 flex items-center justify-center">
                     <Target
@@ -290,45 +307,30 @@ const VisionSection = () => {
                       01 / Vision
                     </span>
                     <h3 className="text-base font-bold text-[var(--clr-text-dark)]">
-                      Creating Meaningful Brand Connections
+                      Transforming Pharma Gifting
                     </h3>
                   </div>
                 </div>
 
-                {/* Quote */}
                 <div className="mb-2">
                   <p className="text-sm font-medium text-[var(--clr-text-dark)] italic">
-                    "Every gift, a conversation starter"
+                    "Every gift strengthens doctor relationships"
                   </p>
                 </div>
 
-                {/* Description */}
                 <p className="text-[var(--clr-text-muted)] text-xs leading-relaxed mb-3 flex-1">
-                  To become a trusted partner for pharmaceutical brands by
-                  delivering innovative gifting solutions that create lasting
-                  impressions and real engagement.
+                  To become the most trusted gifting partner for pharmaceutical
+                  brands by delivering innovative, therapy-aligned solutions
+                  that create lasting impressions and measurable engagement.
                 </p>
 
-                {/* Footer */}
                 <div className="flex items-center justify-between pt-3 border-t border-slate-100">
                   <span className="text-[10px] font-medium text-slate-500">
-                    Est. 2010
+                    Est. 2019
                   </span>
                   <div className="flex items-center gap-2 text-[var(--clr-primary)] font-semibold text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span>Learn More</span>
-                    <svg
-                      className="w-3 h-3"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
+                    <span>Our Vision</span>
+                    <ArrowUpRight size={12} />
                   </div>
                 </div>
               </div>
@@ -344,17 +346,12 @@ const VisionSection = () => {
             className="group"
           >
             <div className="relative h-full min-h-[280px] bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl flex flex-col">
-              {/* Decorative Elements */}
               <div className="absolute top-0 right-0 w-40 h-40 bg-[var(--clr-secondary)]/5 rounded-full blur-2xl" />
-
-              {/* Decorative Letter */}
               <div className="absolute bottom-0 right-0 text-[100px] font-black text-[var(--clr-secondary)]/[0.04] leading-none select-none pointer-events-none">
                 M
               </div>
 
-              {/* Content */}
               <div className="relative z-10 flex-1 flex flex-col p-6">
-                {/* Header */}
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-lg bg-[var(--clr-secondary)]/10 flex items-center justify-center">
                     <Gift
@@ -368,45 +365,30 @@ const VisionSection = () => {
                       02 / Mission
                     </span>
                     <h3 className="text-base font-bold text-[var(--clr-text-dark)]">
-                      Driven by Purpose. Focused on Results.
+                      Delivering Excellence Daily
                     </h3>
                   </div>
                 </div>
 
-                {/* Quote */}
                 <div className="mb-2">
                   <p className="text-sm font-medium text-[var(--clr-text-dark)] italic">
-                    "Engineering delight through design"
+                    "Quality, creativity, and reliability"
                   </p>
                 </div>
 
-                {/* Description */}
                 <p className="text-[var(--clr-text-muted)] text-xs leading-relaxed mb-3 flex-1">
                   To design and deliver high-quality, customized gifting
-                  solutions that add value, improve brand communication, and
-                  consistently exceed client expectations.
+                  solutions that add value to pharma campaigns, improve brand
+                  communication, and consistently exceed client expectations.
                 </p>
 
-                {/* Footer */}
                 <div className="flex items-center justify-between pt-3 border-t border-slate-100">
                   <span className="text-[10px] font-medium text-slate-500">
-                    Since 2010
+                    Since 2019
                   </span>
                   <div className="flex items-center gap-2 text-[var(--clr-secondary)] font-semibold text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span>Learn More</span>
-                    <svg
-                      className="w-3 h-3"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
+                    <span>Our Mission</span>
+                    <ArrowUpRight size={12} />
                   </div>
                 </div>
               </div>
@@ -419,40 +401,40 @@ const VisionSection = () => {
 };
 
 // ─────────────────────────────────────────────────
-// WHY US SECTION - Clean Design
+// WHY US SECTION - Pharma Focused
 // ─────────────────────────────────────────────────
 const WhyUsSection = () => {
   const reasons = [
     {
       number: "01",
-      title: "Quality & Creativity",
+      title: "Pharma Expertise",
       description:
-        "Recognized as India's Best Corporate Gifting Agency with excellence in design and service quality.",
-      icon: Award,
+        "Specialized in pharmaceutical gifting with deep understanding of doctor preferences and compliance requirements.",
+      icon: Pill,
       gradient: "from-amber-500 to-orange-600",
     },
     {
       number: "02",
-      title: "Uniquely Curated Gifts",
+      title: "Pan-India Delivery",
       description:
-        "Seamless delivery across 15,000+ pin codes ensuring your gifts reach anywhere in India.",
+        "Seamless delivery across India ensuring your gifts reach doctors and clinics anywhere in the country.",
       icon: Globe,
       gradient: "from-blue-500 to-indigo-600",
     },
     {
       number: "03",
-      title: "Assisted Curation",
+      title: "90%+ Retention",
       description:
-        "98% client retention rate reflects our commitment to building lasting business relationships.",
+        "Our clients trust us year after year for consistent quality and reliable execution of gifting campaigns.",
       icon: Heart,
       gradient: "from-rose-500 to-pink-600",
     },
     {
       number: "04",
-      title: "Doctor certified content",
+      title: "Therapy-Aligned",
       description:
-        "Industry-leading 24-hour turnaround for custom corporate gifts without compromising quality.",
-      icon: Zap,
+        "Customized gifting solutions aligned with specific therapy areas like cardiac, diabetic, and pediatric care.",
+      icon: Target,
       gradient: "from-emerald-500 to-teal-600",
     },
   ];
@@ -460,7 +442,6 @@ const WhyUsSection = () => {
   return (
     <section className="relative py-12 lg:py-12">
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -475,17 +456,16 @@ const WhyUsSection = () => {
           </p>
 
           <h2 className="text-3xl md:text-4xl font-extrabold capitalize tracking-tight mb-3 text-[var(--clr-text-dark)]">
-            Excellence in <span className="text-[#0093cb]">Every Detail</span>
+            Excellence in <span className="text-[#0093cb]">Pharma Gifting</span>
           </h2>
 
           <p className="text-sm leading-relaxed max-w-[980px] mx-auto text-[var(--clr-text-muted)]">
-            For over a decade, we've been the trusted partner for India's
-            leading brands, delivering meaningful gifting solutions that foster
-            lasting connections.
+            Since 2019, we've been the trusted partner for pharmaceutical
+            brands, delivering meaningful gifting solutions that enhance doctor
+            engagement and brand recall.
           </p>
         </motion.div>
 
-        {/* Cards Grid - 4 Columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {reasons.map((item, idx) => (
             <motion.div
@@ -497,7 +477,6 @@ const WhyUsSection = () => {
               className="group relative"
             >
               <div className="relative h-full bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-xl hover:border-slate-300 transition-all duration-500 overflow-hidden">
-                {/* Top Gradient Accent */}
                 <div
                   className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                 />
@@ -529,20 +508,11 @@ const WhyUsSection = () => {
                   <div className="w-12 h-px bg-slate-200 mb-6 group-hover:w-full group-hover:bg-slate-300 transition-all duration-500" />
 
                   <div className="flex items-center gap-2 text-slate-700 font-medium text-sm group-hover:text-slate-900 transition-colors">
-                    <span>Explore</span>
-                    <svg
-                      className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
+                    <span>Learn More</span>
+                    <ArrowUpRight
+                      size={14}
+                      className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                    />
                   </div>
                 </div>
               </div>
@@ -555,37 +525,39 @@ const WhyUsSection = () => {
 };
 
 // ─────────────────────────────────────────────────
-// TEAM SECTION - Clean Design
+// TEAM SECTION - Pharma Focused
 // ─────────────────────────────────────────────────
 const TeamSection = () => {
   const team = [
     {
-      name: "Rajesh Sharma",
+      name: "Ms. Saakshi Dosi",
       role: "Founder & CEO",
       image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
+        "https://medipride.org/wp-content/uploads/2025/11/IMG-20251106-WA0063-Edited-768x1024.jpg",
       delay: 0,
+      bio: "Visionary leader with 15+ years in pharma marketing",
     },
     {
-      name: "Priya Patel",
+      name: "Rajesh Kumar",
+      role: "Operations Head",
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
+      delay: 0.1,
+      bio: "Supply chain expert ensuring pan-India delivery excellence",
+    },
+    {
+      name: "Priya Mehta",
       role: "Creative Director",
       image:
         "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
-      delay: 0.1,
-    },
-    {
-      name: "Amit Kumar",
-      role: "Head of Operations",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
       delay: 0.2,
+      bio: "Award-winning designer specializing in pharma branding",
     },
   ];
 
   return (
     <section className="py-12 relative">
-      <div className="relative max-w-[1500px] mx-auto px-6">
-        {/* Section Header */}
+      <div className="relative max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -595,21 +567,20 @@ const TeamSection = () => {
         >
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 flex items-center justify-center gap-2 text-[var(--clr-primary)]">
             <span className="inline-block w-6 h-[1.5px] bg-[var(--clr-primary)]" />
-            Our Team
+            Leadership Team
             <span className="inline-block w-6 h-[1.5px] bg-[var(--clr-primary)]" />
           </p>
 
           <h2 className="text-3xl md:text-4xl font-extrabold capitalize tracking-tight mb-3 text-[var(--clr-text-dark)]">
-            Meet the <span className="text-[#0093cb]">Leaders</span>
+            Meet the <span className="text-[#0093cb]">Visionaries</span>
           </h2>
 
           <p className="text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)]">
-            Experts in Pharma Gifting Delivering solutions aligned with doctor
-            preferences and pharma campaign goals.
+            Experts in pharma gifting delivering solutions aligned with doctor
+            preferences and campaign goals.
           </p>
         </motion.div>
 
-        {/* Team Grid */}
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {team.map((member, idx) => (
             <motion.div
@@ -626,18 +597,18 @@ const TeamSection = () => {
                   alt={member.name}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  unoptimized
                 />
 
-                {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
 
-                {/* Hover Content */}
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
                   <div className="transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <h3 className="text-lg font-bold text-white mb-1">
                       {member.name}
                     </h3>
-                    <p className="text-sm text-white/80">{member.role}</p>
+                    <p className="text-sm text-white/80 mb-2">{member.role}</p>
+                    <p className="text-xs text-white/60">{member.bio}</p>
                   </div>
                 </div>
               </div>
@@ -672,8 +643,8 @@ const PlayIcon = () => (
 // ─────────────────────────────────────────────────
 export default function AboutUsPage() {
   return (
-    <div className="min-h-screen ">
-      {/* Hero Section - Clean gradient only, no overlay */}
+    <div className="min-h-screen">
+      {/* Hero Section */}
       <section className="min-h-screen relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl" />
@@ -691,7 +662,7 @@ export default function AboutUsPage() {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium"
               >
                 <Sparkles size={16} />
-                <span>India's Leading Corporate Gifting Partner</span>
+                <span>Trusted Pharma Gifting Partner Since 2019</span>
               </motion.div>
 
               <motion.h1
@@ -700,13 +671,13 @@ export default function AboutUsPage() {
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]"
               >
-                <span className="text-slate-900">We craft</span>
+                <span className="text-slate-900">We create</span>
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
                   meaningful
                 </span>
                 <br />
-                <span className="text-slate-900">connections</span>
+                <span className="text-slate-900">doctor connections</span>
               </motion.h1>
 
               <motion.p
@@ -715,9 +686,9 @@ export default function AboutUsPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-xl text-slate-600 max-w-lg leading-relaxed"
               >
-                Transforming business relationships into lasting impressions
-                through thoughtfully designed gifting solutions for 500+
-                enterprise clients.
+                Transforming pharmaceutical brand communication through
+                thoughtfully designed gifting solutions that enhance engagement
+                and build lasting relationships.
               </motion.p>
 
               <motion.div
@@ -728,10 +699,7 @@ export default function AboutUsPage() {
               >
                 <MagneticButton className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold flex items-center gap-3 hover:shadow-lg hover:shadow-blue-500/25 transition-all">
                   Explore Solutions
-                  <ArrowUpRight
-                    className="group-hover:rotate-45 transition-transform"
-                    size={20}
-                  />
+                  <ArrowUpRight size={20} />
                 </MagneticButton>
 
                 <button className="px-8 py-4 rounded-full font-semibold text-slate-700 border border-slate-200 hover:border-blue-500 hover:text-blue-600 transition-colors flex items-center gap-2">
@@ -748,9 +716,9 @@ export default function AboutUsPage() {
                 className="flex gap-10 pt-8 border-t border-slate-200"
               >
                 {[
-                  { number: "14+", label: "Years Experience" },
-                  { number: "500+", label: "Enterprise Clients" },
-                  { number: "98%", label: "Retention Rate" },
+                  { number: "6+", label: "Years Experience" },
+                  { number: "100+", label: "Pharma Clients" },
+                  { number: "90%", label: "Retention Rate" },
                 ].map((stat, idx) => (
                   <div key={idx}>
                     <div className="text-3xl font-bold text-slate-900">
@@ -787,7 +755,7 @@ export default function AboutUsPage() {
                     <Heart className="text-emerald-600" size={24} />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-slate-900">98%</div>
+                    <div className="text-2xl font-bold text-slate-900">90%</div>
                     <div className="text-sm text-slate-500">
                       Client Retention
                     </div>
@@ -805,9 +773,9 @@ export default function AboutUsPage() {
                   </div>
                   <div>
                     <div className="text-lg font-bold text-slate-900">
-                      15,000+
+                      50,000+
                     </div>
-                    <div className="text-sm text-slate-500">Pin Codes</div>
+                    <div className="text-sm text-slate-500">Gifts Delivered</div>
                   </div>
                 </div>
               </FloatingCard>
@@ -833,7 +801,7 @@ export default function AboutUsPage() {
                     ))}
                   </div>
                   <div className="text-sm font-medium">
-                    <span className="text-emerald-400">120+</span> Team Members
+                    <span className="text-emerald-400">50+</span> Team Members
                   </div>
                 </div>
               </FloatingCard>
@@ -868,14 +836,18 @@ export default function AboutUsPage() {
       <section className="py-12">
         <div className="max-w-4xl mx-auto px-6 text-center mb-16">
           <span className="inline-block px-4 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-widest mb-6">
-            Experience the Legacy
+            Our Journey
           </span>
           <h2 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tighter">
-            A Journey Defined <br /> by{" "}
+            A Legacy of{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
-              Innovation
+              Excellence
             </span>
           </h2>
+          <p className="text-slate-500 mt-4 max-w-2xl mx-auto">
+            From 2019 to today — six years of transforming pharmaceutical
+            gifting through innovation and trust.
+          </p>
         </div>
 
         <EditorialTimeline items={timelineItems} />

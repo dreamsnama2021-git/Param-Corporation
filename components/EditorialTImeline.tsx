@@ -102,7 +102,7 @@ const EditorialRow = ({ item, index }: { item: TimelineItem; index: number }) =>
         className="w-full md:w-1/2 space-y-6"
       >
         <div className="flex items-baseline gap-4">
-            <span className="text-6xl font-black text-slate-100 tracking-tighter">{item.date}</span>
+            <span className="text-6xl font-black text-[#00a65d] tracking-tighter">{item.date}</span>
             <div className="h-px flex-1 bg-slate-100 md:hidden" />
         </div>
         
