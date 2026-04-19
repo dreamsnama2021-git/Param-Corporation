@@ -316,6 +316,7 @@ function Modal({
 }
 
 // ─── Bento card ──────────────────────────────────────────────────────────────
+// ─── Bento card ──────────────────────────────────────────────────────────────
 
 function BentoCard({
   cat,
@@ -330,8 +331,9 @@ function BentoCard({
 }) {
   return (
     <article
-      className={`group relative rounded-2xl overflow-hidden cursor-pointer border border-white/10 bg-neutral-200 dark:bg-neutral-800 ${
-        spanTwo ? 'col-span-2' : ''
+      className={`group relative rounded-2xl overflow-hidden cursor-pointer border border-white/10 bg-neutral-200 dark:bg-neutral-800 transition-all duration-500 hover:-translate-y-1 ${
+        /* Mobile/Tablet: 1 col | Laptop (lg): index 5 spans 2 cols */
+        spanTwo ? 'col-span-1 lg:col-span-2' : 'col-span-1'
       }`}
       onClick={onClick}
       role="button"
@@ -341,51 +343,35 @@ function BentoCard({
         if (e.key === 'Enter' || e.key === ' ') onClick();
       }}
     >
-      {/* Background image */}
       <Image
         src={cat.items[0].img}
         alt={cat.category}
         fill
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]"
-        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
       />
 
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent transition-opacity duration-500 group-hover:from-black/70 group-hover:via-black/30" />
-      <div className="absolute inset-0 bg-gradient-to-r from-sky-500/0 via-transparent to-emerald-500/0 group-hover:from-sky-500/10 group-hover:via-transparent group-hover:to-emerald-500/10 transition-all duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500 group-hover:from-black/90" />
 
-      {/* Glow effect on hover */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <div className="absolute inset-0 bg-gradient-to-t from-sky-500/20 to-transparent" />
-      </div>
-
-      {/* Card content */}
-      <div className="absolute inset-0 p-5 flex flex-col justify-between">
-        {/* Top section - emoji and arrow */}
+      <div className="absolute inset-0 p-4 lg:p-6 flex flex-col justify-between">
         <div className="flex items-start justify-between">
-          <div className="w-11 h-11 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center text-xl opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+          <div className="w-9 h-9 lg:w-11 lg:h-11 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center text-lg opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300">
             {cat.emoji}
           </div>
-          
-          {/* Arrow icon */}
-          <div className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/25 flex items-center justify-center opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ease-out">
-            <ArrowUpRight className="w-4 h-4 text-white" />
+          <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-[#8bde7a] flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300">
+            <ArrowUpRight className="w-4 h-4 text-[#0093cb]" />
           </div>
         </div>
 
-        {/* Bottom section - category info */}
         <div className="space-y-1">
-          <p className="text-[10px] uppercase tracking-[0.15em] text-white/60 font-medium">
+          <p className="text-[10px] uppercase tracking-[0.15em] text-[#8bde7a] font-bold">
             {cat.items.length} products
           </p>
-          <h3 className="text-white text-base sm:text-lg font-semibold leading-tight">
+          <h3 className="text-white text-sm sm:text-lg lg:text-xl font-bold leading-tight">
             {cat.category}
           </h3>
         </div>
       </div>
-
-      {/* Animated border on hover */}
-      <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-sky-500/30 transition-colors duration-300 pointer-events-none" />
     </article>
   );
 }
@@ -402,63 +388,47 @@ export default function ProductBentoGrid() {
 
   return (
     <>
-      <section className=" dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950 py-12 sm:py-16 px-4 sm:px-6 overflow-hidden">
-        {/* Ambient blobs */}
-        <div className="pointer-events-none fixed inset-0 overflow-hidden">
-          <div className="absolute top-32 left-1/4 w-96 h-96 rounded-full bg-sky-500/[0.06] blur-3xl" />
-          <div className="absolute bottom-32 right-1/4 w-80 h-80 rounded-full bg-emerald-500/[0.05] blur-3xl" />
-        </div>
-
-        <div className="relative max-w-[1200px] mx-auto">
+      <section className="py-12 sm:py-20 px-4 sm:px-6 bg-[#f8fafc]">
+        <div className="relative max-w-[1280px] mx-auto">
           {/* Header */}
-          <div className="text-center mb-14">
-            <div
-              className={`inline-flex items-center gap-3 mb-4 transition-all duration-700 ${
-                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}
-            >
-              <span className="block w-8 h-px bg-gradient-to-r from-transparent to-sky-500" />
-              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-sky-600 dark:text-sky-400">
-                Medical education solutions
+          <div className="text-left mb-12 lg:mb-16">
+            <div className={`flex items-center gap-3 mb-4 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <span className="w-12 h-px bg-[#00a65d]" />
+              <span className="text-[11px] font-black uppercase tracking-[0.3em] text-[#00a65d]">
+                Medical Solutions
               </span>
-              <span className="block w-8 h-px bg-gradient-to-l from-transparent to-sky-500" />
             </div>
             
-            <h1
-              className={`text-4xl sm:text-5xl lg:text-[56px] font-semibold tracking-tight text-neutral-900 dark:text-white mb-4 leading-none transition-all duration-700 delay-100 ${
-                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}
-            >
-              Premium{' '}
-              <span className="relative">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-emerald-500">products</span>
-                <span className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-sky-500 to-emerald-500 rounded-full opacity-40" />
-              </span>
+            <h1 className={`text-4xl lg:text-6xl font-black tracking-tighter text-[#0f172a] mb-4 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              Premium <span className="text-[#0093cb]">Portfolio</span>
             </h1>
-            
-            <p
-              className={`text-sm sm:text-base text-neutral-500 dark:text-neutral-400 max-w-lg mx-auto leading-relaxed transition-all duration-700 delay-200 ${
-                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}
-            >
-              Comprehensive medical education tools designed for healthcare professionals.
-            </p>
           </div>
 
-          {/* Bento grid */}
+          {/* 
+              Bento grid Logic:
+              - Mobile & Tablet: grid-cols-2 (Always 2 columns)
+              - Laptop/Desktop: lg:grid-cols-4 (4 columns)
+          */}
           <div
-            className={`grid gap-3 transition-all duration-700 delay-300 ${
+            className={`grid gap-3 lg:gap-6 transition-all duration-700 delay-300 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gridTemplateRows: 'repeat(2, 280px)',
-            }}
+            }
+            grid-cols-2 
+            lg:grid-cols-4
+            auto-rows-[160px] 
+            sm:auto-rows-[220px] 
+            lg:auto-rows-[280px]
+            `}
           >
             {PRODUCT_DATA.map((cat, i) => (
               <BentoCard
                 key={cat.category}
                 cat={cat}
+                /* index 5 is the 6th card. 
+                   On Desktop (4 cols): 
+                   Row 1: 0,1,2,3 (4 cols)
+                   Row 2: 4 (1col), 5 (2cols), 6 (1col) = total 4 cols.
+                */
                 spanTwo={i === 5}
                 onClick={() => setSelected(cat)}
                 index={i}

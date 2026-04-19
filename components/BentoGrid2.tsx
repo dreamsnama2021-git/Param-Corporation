@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { ArrowUpRight, X, Sparkles } from 'lucide-react';
+import { ArrowUpRight, X } from 'lucide-react';
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 const PRODUCT_DATA = [
@@ -75,7 +75,7 @@ const PRODUCT_DATA = [
     items: [
       {
         title: 'Epilepsy poster',
-        desc: 'Explains epilepsy signs and seizures (focal vs. generalized) and essential first aid dos and don\'ts.',
+        desc: "Explains epilepsy signs and seizures (focal vs. generalized) and essential first aid dos and don'ts.",
         img: 'https://medipride.org/wp-content/uploads/2025/11/Epilipsy-1.jpg',
       },
       {
@@ -127,7 +127,7 @@ const PRODUCT_DATA = [
       },
       {
         title: 'Benitowa PCOS',
-        desc: 'Interactive display module for women\'s health clinics and educational environments.',
+        desc: "Interactive display module for women's health clinics and educational environments.",
         img: 'https://medipride.org/wp-content/uploads/2025/11/Benitowa-PCOS-1.jpg',
       },
     ],
@@ -155,89 +155,82 @@ const PRODUCT_DATA = [
   },
 ];
 
-// ─── Types ───────────────────────────────────────────────────────────────────
-type Product = {
-  title: string;
-  desc: string;
-  img: string;
-};
-
-type Category = {
-  category: string;
-  emoji: string;
-  items: Product[];
-};
+type Product = { title: string; desc: string; img: string };
+type Category = { category: string; emoji: string; items: Product[] };
 
 // ─── Modal ───────────────────────────────────────────────────────────────────
 function Modal({ cat, onClose }: { cat: Category; onClose: () => void }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') handleClose();
-    };
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') handleClose(); };
     document.addEventListener('keydown', handler);
     document.body.style.overflow = 'hidden';
-    
     return () => {
       document.removeEventListener('keydown', handler);
       document.body.style.overflow = '';
     };
   }, []);
 
-  useEffect(() => {
-    requestAnimationFrame(() => setIsVisible(true));
-  }, []);
+  useEffect(() => { requestAnimationFrame(() => setIsVisible(true)); }, []);
 
-  const handleClose = () => {
-    setIsVisible(false);
-    setTimeout(onClose, 300);
-  };
+  const handleClose = () => { setIsVisible(false); setTimeout(onClose, 300); };
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-500 ${
+      className={`fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all duration-500 ${
         isVisible ? 'bg-[#0b3c5d]/90 backdrop-blur-md' : 'bg-transparent'
       }`}
       onClick={handleClose}
     >
       <div
-        className={`relative bg-white rounded-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden shadow-2xl transition-all duration-500 ${
-          isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
+        className={`relative bg-white w-full sm:max-w-6xl sm:max-h-[90vh] 
+          /* Mobile: slides up from bottom, full width, tall */
+          max-h-[92vh] rounded-t-2xl sm:rounded-2xl
+          overflow-hidden shadow-2xl transition-all duration-500 ${
+          isVisible
+            ? 'opacity-100 translate-y-0 scale-100'
+            : 'opacity-0 translate-y-12 scale-95'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="relative px-6 sm:px-8 pt-6 sm:pt-8 pb-4">
-          <svg width="40" height="6" viewBox="0 0 40 6" fill="none" className="text-[#0093cb] mb-3">
-            <path d="M2 4C4 1 8 0 10 3C12 6 14 5 18 3C22 1 26 4 30 3C34 2 36 4 38 3" 
-                  stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+        <div className="relative px-4 sm:px-6 lg:px-8 pt-5 sm:pt-6 lg:pt-8 pb-3 sm:pb-4">
+          {/* Mobile drag handle */}
+          <div className="flex justify-center mb-3 sm:hidden">
+            <div className="w-10 h-1 rounded-full bg-[#d1d5db]" />
+          </div>
+
+          <svg width="40" height="6" viewBox="0 0 40 6" fill="none" className="text-[#0093cb] mb-2 sm:mb-3 hidden sm:block">
+            <path d="M2 4C4 1 8 0 10 3C12 6 14 5 18 3C22 1 26 4 30 3C34 2 36 4 38 3"
+              stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
           </svg>
-          
+
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-xs uppercase tracking-wider text-[#6b7280] mb-1">
+              <p className="text-[10px] sm:text-xs uppercase tracking-wider text-[#6b7280] mb-1">
                 {cat.items.length} handcrafted tools
               </p>
-              <h2 className="text-2xl sm:text-3xl font-serif italic text-[#0f172a]">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif italic text-[#0f172a]">
                 {cat.category}
               </h2>
             </div>
-            
+
             <button
               onClick={handleClose}
-              className="group w-10 h-10 rounded-full bg-[#f8fafc] hover:bg-[#0093cb] flex items-center justify-center transition-all duration-300"
+              className="group w-9 sm:w-10 h-9 sm:h-10 rounded-full bg-[#f8fafc] hover:bg-[#0093cb] flex items-center justify-center transition-all duration-300 flex-shrink-0 ml-4"
             >
               <X className="w-4 h-4 text-[#6b7280] group-hover:text-white transition-colors" />
             </button>
           </div>
-          
-          <div className="h-px bg-gradient-to-r from-[#0093cb]/20 via-[#00a65d]/20 to-transparent mt-4" />
+
+          <div className="h-px bg-gradient-to-r from-[#0093cb]/20 via-[#00a65d]/20 to-transparent mt-3 sm:mt-4" />
         </div>
 
         {/* Product grid */}
-        <div className="overflow-y-auto px-6 sm:px-8 pb-8 pt-2 max-h-[calc(90vh-140px)]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="overflow-y-auto px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 pt-2 max-h-[calc(92vh-120px)] sm:max-h-[calc(90vh-140px)]">
+          {/* Mobile: 1 col | Tablet: 2 col | Desktop: 3 col */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {cat.items.map((item, idx) => (
               <div key={idx} className="group relative">
                 <div className="relative bg-[#f8fafc] rounded-xl overflow-hidden border border-[#eef2f7] hover:border-[#0093cb]/30 transition-all duration-500 hover:-translate-y-1">
@@ -247,15 +240,15 @@ function Modal({ cat, onClose }: { cat: Category; onClose: () => void }) {
                       alt={item.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                    
+
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0b3c5d]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
+
                     <div className="absolute top-3 left-3 w-7 h-7 bg-white rounded-lg flex items-center justify-center text-xs font-bold text-[#0093cb] shadow-md">
                       {String(idx + 1).padStart(2, '0')}
                     </div>
-                    
+
                     <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                       <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full">
                         <span className="text-xs font-medium text-[#0f172a]">View details</span>
@@ -263,16 +256,15 @@ function Modal({ cat, onClose }: { cat: Category; onClose: () => void }) {
                       </div>
                     </div>
                   </div>
-                  
-                  <div className="p-5">
-                    <h3 className="font-bold text-[#0f172a] mb-2 group-hover:text-[#0093cb] transition-colors">
+
+                  <div className="p-4 sm:p-5">
+                    <h3 className="font-bold text-sm sm:text-base text-[#0f172a] mb-1.5 sm:mb-2 group-hover:text-[#0093cb] transition-colors">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-[#6b7280] leading-relaxed line-clamp-2">
+                    <p className="text-xs sm:text-sm text-[#6b7280] leading-relaxed line-clamp-2">
                       {item.desc}
                     </p>
-                    
-                    <div className="mt-3 h-0.5 w-0 bg-gradient-to-r from-[#0093cb] to-[#00a65d] group-hover:w-12 transition-all duration-500" />
+                    <div className="mt-2 sm:mt-3 h-0.5 w-0 bg-gradient-to-r from-[#0093cb] to-[#00a65d] group-hover:w-12 transition-all duration-500" />
                   </div>
                 </div>
               </div>
@@ -284,244 +276,118 @@ function Modal({ cat, onClose }: { cat: Category; onClose: () => void }) {
   );
 }
 
-// ─── Bento Card ──────────────────────────────────────────────────────────────
-function BentoCard({ cat, spanTwo, onClick, index }: { 
-  cat: Category; 
-  spanTwo?: boolean; 
-  onClick: () => void; 
+// ─── Bento Card Component ────────────────────────────────────────────────────
+function BentoCard({
+  cat,
+  index,
+  onClick,
+}: {
+  cat: any;
   index: number;
+  onClick: () => void;
 }) {
   const [isHovered, setIsHovered] = useState(false);
-  
+
+  // LOGIC: 
+  // Mobile/Tablet: Always col-span-1
+  // Laptop (lg): 
+  // - First 4 cards (0,1,2,3) = span 1
+  // - 5th card (4) = span 1
+  // - 6th card (5) = span 2 (The specific requirement)
+  // - 7th card (6) = span 1
+  const spanClass = index === 5 ? 'col-span-1 lg:col-span-2' : 'col-span-1';
+
   return (
     <article
-      className={`group relative rounded-2xl overflow-hidden cursor-pointer border border-[#eef2f7] hover:border-[#0093cb]/30 transition-all duration-500 hover:-translate-y-1 ${
-        spanTwo ? 'sm:col-span-2' : ''
-      }`}
-      style={{ minHeight: '240px' }}
+      className={`group relative rounded-xl lg:rounded-2xl overflow-hidden cursor-pointer border border-[#eef2f7] hover:border-[#0093cb]/30 transition-all duration-500 hover:-translate-y-1 shadow-sm ${spanClass}`}
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      role="button"
-      tabIndex={0}
-      aria-label={`View ${cat.category} products`}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') onClick();
-      }}
     >
-      {/* Image container */}
+      {/* Image Layer */}
       <div className="absolute inset-0">
         <Image
           src={cat.items[0].img}
           alt={cat.category}
           fill
           className="object-cover transition-all duration-700 group-hover:scale-105"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-        
-        {/* Subtle base overlay for text readability */}
-        <div className="absolute inset-0 bg-black/5" />
-        
-        {/* Gradient overlays - only on hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0b3c5d]/30 via-[#072c44]/20 to-[#0093cb]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b3c5d]/40 via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-500" />
-        
-        {/* Subtle pattern overlay - only on hover */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500">
-          <svg width="100%" height="100%">
-            <pattern id={`pattern-${index}`} width="20" height="20" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1" fill="white" />
-            </pattern>
-            <rect width="100%" height="100%" fill={`url(#pattern-${index})`} />
-          </svg>
-        </div>
+        {/* Overlay: Stronger on mobile, subtle on desktop until hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b3c5d]/90 via-[#0b3c5d]/20 to-transparent opacity-90 lg:opacity-40 lg:group-hover:opacity-95 transition-opacity duration-500" />
       </div>
-      
-      {/* Content */}
-      <div className="absolute inset-0 p-5 sm:p-6 flex flex-col justify-between">
-        {/* Top section - Items count badge */}
-        <div className="flex items-start justify-between">
-          
-        </div>
-        
-        {/* Bottom section - Category name and dots */}
-        <div>
-          <div className="flex items-end gap-2 mb-2">
-            <h3 className={`text-lg sm:text-xl font-bold transition-all duration-300 ${
-              isHovered 
-                ? 'text-white drop-shadow-md ' 
-                : 'text-[#0f172a]'
-            }`}>
+
+      {/* Content Layer */}
+      <div className="absolute inset-0 p-4 lg:p-8 flex flex-col justify-end">
+        <div className="flex items-end justify-between gap-2">
+          <div className="space-y-1">
+            <p className="text-[10px] font-bold text-[#8bde7a] uppercase tracking-[0.2em] opacity-0 lg:group-hover:opacity-100 transition-opacity">
+              {cat.items.length} Products
+            </p>
+            <h3 className="text-sm lg:text-2xl font-bold text-white leading-tight">
               {cat.category}
             </h3>
-            
-            {/* Arrow that appears next to category on hover */}
-            <ArrowUpRight className={`w-6 h-6 transition-all duration-300 ${
-              isHovered 
-                ? 'opacity-100 translate-x-0 p-1 rounded-full bg-[#8bde7a] text-[#0093cb]' 
-                : 'opacity-0 -translate-x-2 text-[#0093cb]'
-            }`} />
           </div>
-          
-          {/* Preview dots */}
-          <div className="flex items-center gap-1.5">
-            {cat.items.slice(0, 3).map((_, i) => (
-              <div 
-                key={i}
-                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                  isHovered 
-                    ? 'bg-[#8bde7a] opacity-70 group-hover:opacity-100' 
-                    : 'bg-[#0093cb] opacity-60'
-                }`}
-                style={{ transitionDelay: `${i * 50}ms` }}
-              />
-            ))}
-            {cat.items.length > 3 && (
-              <span className={`text-xs ml-1 transition-colors duration-300 ${
-                isHovered ? 'text-white/70 drop-shadow-sm' : 'text-[#6b7280]'
-              }`}>
-                +{cat.items.length - 3}
-              </span>
-            )}
+          <div className="bg-[#8bde7a] p-1.5 lg:p-2 rounded-full transform translate-y-4 lg:translate-y-8 opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 transition-all duration-300">
+            <ArrowUpRight className="w-4 h-4 text-[#0093cb]" />
           </div>
         </div>
-      </div>
-      
-      {/* Hover border */}
-      <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[#0093cb]/40 pointer-events-none transition-colors duration-500" />
-      
-      {/* Corner accent */}
-      <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <div className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-br from-[#0093cb]/60 to-[#00a65d]/60 rotate-45" />
+        
+        {/* Mobile-only indicator */}
+        <div className="flex lg:hidden items-center gap-1 mt-1">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#8bde7a]" />
+          <span className="text-[9px] text-white/70 uppercase font-bold tracking-widest">Explore</span>
+        </div>
       </div>
     </article>
   );
 }
 
-// ─── Main Component ──────────────────────────────────────────────────────────
+// ─── Main Grid Component ─────────────────────────────────────────────────────
 export default function BentoGrid2() {
-  const [selected, setSelected] = useState<Category | null>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
-  // Make the 5th and 6th items span 2 columns for a dynamic layout
-  const spanTwoIndices = [4, 5]; // Scales and Table tops
+  const [selected, setSelected] = useState<any | null>(null);
 
   return (
     <>
-      <section className="relative py-16 sm:py-20 bg-gradient-to-br from-[#f8fafc] via-white to-[#8bde7a]/5 overflow-hidden">
-        {/* Ambient background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 right-0 w-96 h-96 bg-[#0093cb]/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-0 w-80 h-80 bg-[#00a65d]/5 rounded-full blur-3xl" />
-        </div>
-        
-        {/* Grid pattern */}
-        <div className="absolute inset-0 opacity-[0.015]">
-          <svg width="100%" height="100%">
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" />
-            </pattern>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
-          {/* Header */}
-          <div className="mb-12 sm:mb-16">
-            <div className="flex items-center gap-3 mb-3">
-              <svg width="32" height="8" viewBox="0 0 32 8" fill="none" className="text-[#0093cb]">
-                <path d="M2 6C4 2 8 1 10 3C12 5 14 7 18 4C22 1 26 5 30 3" 
-                      stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-              </svg>
-              <span className="text-[#0093cb] font-medium tracking-wider text-[10px] sm:text-xs uppercase">
-                Medical Education Solutions
-              </span>
-            </div>
-            
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-              <div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif italic text-[#0f172a] mb-3">
-                  Premium <span className="relative inline-block">
-                    Products
-                    <svg className="absolute -bottom-1 left-0 w-full" height="6" viewBox="0 0 100 6" preserveAspectRatio="none">
-                      <path d="M0,4 Q25,0 50,4 Q75,8 100,4" stroke="#00a65d" strokeWidth="2" fill="none" strokeLinecap="round" />
-                    </svg>
-                  </span>
-                </h2>
-                <p className="text-sm sm:text-base text-[#6b7280] max-w-xl">
-                  Comprehensive medical education tools designed with precision and care for healthcare professionals.
-                </p>
-              </div>
-              
-       
-            </div>
-          </div>
-
-          {/* Bento Grid - Fixed grid with proper row heights */}
-          <div className={`grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 auto-rows-[200px] sm:auto-rows-[220px] lg:auto-rows-[240px] transition-all duration-700 ${
-            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            {/* Books & Magazines */}
-            <BentoCard
-              cat={PRODUCT_DATA[0]}
-              onClick={() => setSelected(PRODUCT_DATA[0])}
-              index={0}
-            />
-            
-            {/* Flip Charts */}
-            <BentoCard
-              cat={PRODUCT_DATA[1]}
-              onClick={() => setSelected(PRODUCT_DATA[1])}
-              index={1}
-            />
-            
-            {/* Laptop Mats */}
-            <BentoCard
-              cat={PRODUCT_DATA[2]}
-              onClick={() => setSelected(PRODUCT_DATA[2])}
-              index={2}
-            />
-            
-            {/* Patient Education Posters */}
-            <BentoCard
-              cat={PRODUCT_DATA[3]}
-              onClick={() => setSelected(PRODUCT_DATA[3])}
-              index={3}
-            />
-            
-            {/* Scales - spans 2 columns */}
-            <BentoCard
-              cat={PRODUCT_DATA[4]}
-              spanTwo={false}
-              onClick={() => setSelected(PRODUCT_DATA[4])}
-              index={4}
-            />
-            
-            {/* Table tops - spans 2 columns */}
-            <BentoCard
-              cat={PRODUCT_DATA[5]}
-              spanTwo={true}
-              onClick={() => setSelected(PRODUCT_DATA[5])}
-              index={5}
-            />
-            
-            {/* Write & wipe */}
-            <BentoCard
-              cat={PRODUCT_DATA[6]}
-              onClick={() => setSelected(PRODUCT_DATA[6])}
-              index={6}
-            />
-          </div>
+      <section className="relative py-12 lg:py-24 bg-[#f8fafc]">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
           
-       
+          <div className="mb-10 lg:mb-16 relative">
+            <span className="text-[#00a65d] text-xs font-black uppercase tracking-[0.4em] block mb-2">
+              Koru Communications
+            </span>
+            <h2 className="text-3xl lg:text-6xl font-black text-[#0f172a] tracking-tighter">
+              Premium <span className="text-[#0093cb]">Solutions</span>
+            </h2>
+            {/* Visual accent line */}
+            <div className="absolute -left-4 top-0 w-1 h-full bg-[#00a65d] hidden lg:block" />
+          </div>
+
+          <div
+            className={`
+              grid gap-3 lg:gap-6
+              /* MOBILE & TABLET: 2 Columns, each card 1 col */
+              grid-cols-2 
+              /* LAPTOP/DESKTOP: 4 Columns */
+              lg:grid-cols-4
+              
+              /* Responsive Row Heights */
+              auto-rows-[160px] 
+              lg:auto-rows-[300px]
+            `}
+          >
+            {PRODUCT_DATA.map((category, idx) => (
+              <BentoCard 
+                key={idx} 
+                cat={category} 
+                index={idx}
+                onClick={() => setSelected(category)} 
+              />
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Modal */}
+      {/* Reusable Modal Component */}
       {selected && <Modal cat={selected} onClose={() => setSelected(null)} />}
     </>
   );
