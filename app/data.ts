@@ -1,3 +1,5 @@
+// types/categories.ts
+
 export interface CategoryItem {
   name: string;
   slug: string;
@@ -31,18 +33,18 @@ export const industries: CategoryItem[] = [
   { name: "Retail", slug: "retail", description: "Retail sector corporate gifts" },
 ];
 
-// 2. By Category (DO NOT TOUCH - AS REQUESTED)
+// 2. By Category - Product Categories
 export const categories: CategoryItem[] = [
-  { name: "Paperweights", slug: "paperweights", description: "Desk paperweights (Rs. 25 to 30 range)" },
-  { name: "Tabletops", slug: "tabletops", description: "Tabletop decorations and desk items" },
-  { name: "Desk Utility", slug: "desk-utility", description: "Desk organization and utility products" },
-  { name: "3D Printed", slug: "3d-printed", description: "Custom 3D printed gift items and inputs" },
-  { name: "Fibre and Resin Products", slug: "fibre-resin-products", description: "Fibre and resin crafted decorative items" },
-  { name: "Eco Friendly Products", slug: "eco-friendly-products", description: "Sustainable and green gift options" },
-  { name: "LED Tabletops", slug: "led-tabletops", description: "LED illuminated tabletop decorations" },
-  { name: "Indoor Plants", slug: "indoor-plants", description: "Indoor plants and greenery for gifting" },
-  { name: "Calendars", slug: "calendars", description: "Desk and wall calendars for corporate gifting" },
-  { name: "Photo Frames", slug: "photo-frames", description: "Photo frames and memory displays" },
+  { name: "Paperweights", slug: "paperweights", description: "Practical and widely used, ideal for doctor tables with strong branding visibility (₹25-₹30 range)" },
+  { name: "Tabletops", slug: "tabletops", description: "Engaging and informative tabletop displays for clinics and consultation desks" },
+  { name: "Desk Utility", slug: "desk-utility", description: "Functional items like pen stands, organizers, and multi-utility desk tools for gifting doctors" },
+  { name: "3D Printed", slug: "3d-printed", description: "Innovative pharma branding 3D models to visually explain molecules, organs, or concepts" },
+  { name: "Fibre and Resin Products", slug: "fibre-resin-products", description: "Premium and durable gifting solutions with high perceived value" },
+  { name: "Eco Friendly Products", slug: "eco-friendly-products", description: "Sustainable gifting options like recycled materials and plant-based products" },
+  { name: "LED Tabletops", slug: "led-tabletops", description: "Illuminated pharma branding solutions for high visibility and modern appeal" },
+  { name: "Indoor Plants", slug: "indoor-plants", description: "Aesthetic and thoughtful doctor gifts that stay long and build daily recall" },
+  { name: "Calendars", slug: "calendars", description: "Medical-focused calendars designed as per medical relevance and brand messaging" },
+  { name: "Photo Frames", slug: "photo-frames", description: "Personalized and professional frames with pharma branding for clinics and offices" },
 ];
 
 // 3. By Price
@@ -55,8 +57,18 @@ export const priceRanges: CategoryItem[] = [
   { name: "Corporate Gifts Under ₹5000", slug: "under-5000", description: "Luxury gifts under ₹5000" },
 ];
 
-// 4. By Occasion (Month-wise)
+// 4. By Occasion (Month-wise and key medical/corporate occasions)
 export const occasions: CategoryItem[] = [
+  { name: "Doctor's Day", slug: "doctors-day", description: "Special gifts to honor and appreciate doctors" },
+  { name: "Medical Conferences", slug: "medical-conferences", description: "Gifts for medical events and symposiums" },
+  { name: "Product Launches", slug: "product-launches", description: "Launch event giveaways and promotional items" },
+  { name: "Festive Gifting", slug: "festive-gifting", description: "Diwali, Christmas, and festival hampers" },
+  { name: "Brand Campaigns", slug: "brand-campaigns", description: "Campaign-specific promotional gifts" },
+  { name: "Seasonal Campaigns", slug: "seasonal-campaigns", description: "Season-specific gifting solutions" },
+  { name: "Product Promotions", slug: "product-promotions", description: "Promotional items for product visibility" },
+  { name: "Brand Milestones", slug: "brand-milestones", description: "Anniversary and achievement celebration gifts" },
+  { name: "Doctor Engagement Programs", slug: "doctor-engagement-programs", description: "Relationship-building gifts for doctors" },
+  // Month-wise breakdown
   { name: "January", slug: "january", description: "New Year and Republic Day gifting" },
   { name: "February", slug: "february", description: "Valentine's Day and Cancer Awareness" },
   { name: "March", slug: "march", description: "Holi and Women's Day celebrations" },
@@ -71,21 +83,31 @@ export const occasions: CategoryItem[] = [
   { name: "December", slug: "december", description: "Christmas and Year-end corporate gifting" },
 ];
 
-// 5. By Therapy (Medical Specialties)
+// 5. By Therapy (Medical Specialties - Doctor-Focused & Therapy-Based Gifting)
 export const therapies: CategoryItem[] = [
+  { name: "Cardiac Care", slug: "cardiac-care", description: "Heart health themed products for cardiology professionals" },
+  { name: "Diabetic Care", slug: "diabetic-care", description: "Diabetes management and awareness kits" },
+  { name: "Pediatric", slug: "pediatric", description: "Child-friendly items for pediatricians" },
+  { name: "General Wellness", slug: "general-wellness", description: "Holistic health and wellness tools" },
   { name: "Dermatology", slug: "dermatology", description: "Skin care gifts for dermatology professionals" },
   { name: "Nephrology", slug: "nephrology", description: "Kidney health and renal care gifts" },
   { name: "Nutrition", slug: "nutrition", description: "Diet and wellness gifts for nutritionists" },
-  { name: "Cardiology", slug: "cardiology", description: "Heart health gifts for cardiac care" },
   { name: "Pulmonology", slug: "pulmonology", description: "Respiratory health and lung care gifts" },
   { name: "Hepatology", slug: "hepatology", description: "Liver health and digestive wellness gifts" },
   { name: "Ophthalmology", slug: "ophthalmology", description: "Eye care gifts for vision specialists" },
   { name: "Gastroenterology", slug: "gastroenterology", description: "Digestive health and GI care gifts" },
   { name: "Urology", slug: "urology", description: "Urological health and kidney stone care gifts" },
+  { name: "Orthopedics", slug: "orthopedics", description: "Bone and joint health gifts" },
+  { name: "Neurology", slug: "neurology", description: "Brain health and neurological care gifts" },
+  { name: "Oncology", slug: "oncology", description: "Cancer care and awareness gifts" },
 ];
 
-// 6. Personalized Gifts (Customized items)
+// 6. Personalized Gifts (Customized items with doctor name, clinic branding, etc.)
 export const personalizedGifts: CategoryItem[] = [
+  { name: "Doctor Name Personalization", slug: "doctor-name-personalization", description: "Gifts with doctor's name engraved or printed" },
+  { name: "Clinic Branding", slug: "clinic-branding", description: "Items customized with clinic logo and details" },
+  { name: "Custom Packaging", slug: "custom-packaging", description: "Branded packaging solutions for gifts" },
+  { name: "Brand-Specific Messaging", slug: "brand-specific-messaging", description: "Personalized messages and brand communication" },
   { name: "Engraved Pens", slug: "engraved-pens", description: "Personalized writing instruments" },
   { name: "Custom Mugs", slug: "custom-mugs", description: "Printed and personalized coffee mugs" },
   { name: "Photo Gifts", slug: "photo-gifts", description: "Personalized photo items and collages" },
@@ -112,216 +134,214 @@ export const digitalGifts: CategoryItem[] = [
   { name: "Tech Combos", slug: "tech-combos", description: "Digital gift sets and technology combos" },
 ];
 
-// 8. All Products Data (Mapped to categories above)
+// ==========================================
+// ALL PRODUCTS DATA
+// ==========================================
+
 export const allProducts: Product[] = [
   // Categories - Paperweights
-  { id: 1, name: "Crystal Glass Paperweight", image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400", price: "₹299", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
-  { id: 2, name: "Corporate Logo Paperweight", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=400", price: "₹349", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
+  { id: 1, name: "Crystal Glass Paperweight", image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
+  { id: 2, name: "Corporate Logo Paperweight", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=400", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
+  { id: 3, name: "Metal Finish Paperweight", image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   
   // Categories - Tabletops
-  { id: 3, name: "Executive Desk Calendar", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
-  { id: 4, name: "Brass Table Decor", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹899", category: "tabletops", categoryName: "Tabletops", description: "Traditional brass decorative piece" },
+  { id: 4, name: "Executive Desk Calendar", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
+  { id: 5, name: "Brass Table Decor", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹899", category: "tabletops", categoryName: "Tabletops", description: "Traditional brass decorative piece" },
+  { id: 6, name: "Anatomy Display Board", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
   
   // Categories - Desk Utility
-  { id: 5, name: "Pen Stand with Clock", image: "https://images.unsplash.com/photo-1516961642265-531546e84af2?w=400", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "Multi-functional desk organizer" },
-  { id: 6, name: "Document Tray Set", image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=400", price: "₹699", category: "desk-utility", categoryName: "Desk Utility", description: "3-tier document organizer" },
+  { id: 7, name: "Pen Stand with Clock", image: "https://images.unsplash.com/photo-1516961642265-531546e84af2?w=400", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "Multi-functional desk organizer" },
+  { id: 8, name: "Document Tray Set", image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=400", price: "₹699", category: "desk-utility", categoryName: "Desk Utility", description: "3-tier document organizer" },
+  { id: 9, name: "Multi-Utility Desk Tool", image: "https://images.unsplash.com/photo-1516961642265-531546e84af2?w=400", price: "₹399", category: "desk-utility", categoryName: "Desk Utility", description: "All-in-one desk organizer with phone stand" },
   
   // Categories - 3D Printed
-  { id: 7, name: "3D Printed Name Plate", image: "https://images.unsplash.com/photo-1631541909061-71e349d1f203?w=400", price: "₹799", category: "3d-printed", categoryName: "3D Printed", description: "Custom 3D printed desk name plate" },
-  { id: 8, name: "3D Printed Mobile Stand", image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400", price: "₹499", category: "3d-printed", categoryName: "3D Printed", description: "Ergonomic mobile holder" },
+  { id: 10, name: "3D Printed Name Plate", image: "https://images.unsplash.com/photo-1631541909061-71e349d1f203?w=400", price: "₹799", category: "3d-printed", categoryName: "3D Printed", description: "Custom 3D printed desk name plate" },
+  { id: 11, name: "3D Molecule Model", image: "https://images.unsplash.com/photo-1631541909061-71e349d1f203?w=400", price: "₹1499", category: "3d-printed", categoryName: "3D Printed", description: "Pharma branding 3D molecule visualization" },
+  { id: 12, name: "3D Organ Model", image: "https://images.unsplash.com/photo-1631541909061-71e349d1f203?w=400", price: "₹1999", category: "3d-printed", categoryName: "3D Printed", description: "Educational 3D printed organ model" },
   
   // Categories - Fibre and Resin
-  { id: 9, name: "Resin Art Coaster Set", image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=400", price: "₹649", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Handcrafted resin coasters" },
-  { id: 10, name: "Fibre Glass Trophy", image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400", price: "₹1299", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Modern fibre glass award trophy" },
+  { id: 13, name: "Resin Art Coaster Set", image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=400", price: "₹649", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Handcrafted resin coasters" },
+  { id: 14, name: "Fibre Glass Trophy", image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400", price: "₹1299", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Modern fibre glass award trophy" },
+  { id: 15, name: "Resin Doctor Figurine", image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=400", price: "₹899", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Premium resin doctor appreciation gift" },
   
   // Categories - Eco Friendly
-  { id: 11, name: "Bamboo Cutlery Set", image: "https://images.unsplash.com/photo-1584622651921-47e0e8043693?w=400", price: "₹499", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Sustainable bamboo utensils" },
-  { id: 12, name: "Seed Paper Diary", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹399", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Plantable seed paper notebook" },
-  { id: 13, name: "Jute Laptop Bag", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400", price: "₹999", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Eco-friendly jute carry bag" },
+  { id: 16, name: "Bamboo Cutlery Set", image: "https://images.unsplash.com/photo-1584622651921-47e0e8043693?w=400", price: "₹499", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Sustainable bamboo utensils" },
+  { id: 17, name: "Seed Paper Diary", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹399", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Plantable seed paper notebook" },
+  { id: 18, name: "Jute Laptop Bag", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400", price: "₹999", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Eco-friendly jute carry bag" },
+  { id: 19, name: "Recycled Material Planter", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹299", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Sustainable desk planter made from recycled materials" },
   
   // Categories - LED Tabletops
-  { id: 14, name: "LED Desk Lamp", image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400", price: "₹1599", category: "led-tabletops", categoryName: "LED Tabletops", description: "Smart LED table lamp with touch control" },
-  { id: 15, name: "Illuminated Globe", image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=400", price: "₹2499", category: "led-tabletops", categoryName: "LED Tabletops", description: "World globe with LED lighting" },
+  { id: 20, name: "LED Desk Lamp", image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400", price: "₹1599", category: "led-tabletops", categoryName: "LED Tabletops", description: "Smart LED table lamp with touch control" },
+  { id: 21, name: "Illuminated Globe", image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=400", price: "₹2499", category: "led-tabletops", categoryName: "LED Tabletops", description: "World globe with LED lighting" },
+  { id: 22, name: "LED Branded Display", image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated pharma branding display" },
   
   // Categories - Indoor Plants
-  { id: 16, name: "Succulent Set with Pot", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
-  { id: 17, name: "Lucky Bamboo Plant", image: "https://images.unsplash.com/photo-1599598425947-d35301f7c396?w=400", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
+  { id: 23, name: "Succulent Set with Pot", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
+  { id: 24, name: "Lucky Bamboo Plant", image: "https://images.unsplash.com/photo-1599598425947-d35301f7c396?w=400", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
+  { id: 25, name: "Air Purifying Plant", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
   
   // Categories - Calendars
-  { id: 18, name: "Executive Table Calendar", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹299", category: "calendars", categoryName: "Calendars", description: "Premium desk calendar 2024" },
-  { id: 19, name: "Planner Diary Combo", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹599", category: "calendars", categoryName: "Calendars", description: "Year planner with monthly calendar" },
+  { id: 26, name: "Medical Desk Calendar", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹299", category: "calendars", categoryName: "Calendars", description: "Medical-focused desk calendar 2025" },
+  { id: 27, name: "Wall Calendar with Health Tips", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹399", category: "calendars", categoryName: "Calendars", description: "Monthly calendar with wellness messages" },
+  { id: 28, name: "Planner Diary Combo", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹599", category: "calendars", categoryName: "Calendars", description: "Year planner with monthly calendar" },
   
   // Categories - Photo Frames
-  { id: 20, name: "Digital Photo Frame 7 inch", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹3499", category: "photo-frames", categoryName: "Photo Frames", description: "Electronic photo display frame" },
-  { id: 21, name: "Collage Photo Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹799", category: "photo-frames", categoryName: "Photo Frames", description: "Multi-photo wooden frame" },
+  { id: 29, name: "Digital Photo Frame 7 inch", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹3499", category: "photo-frames", categoryName: "Photo Frames", description: "Electronic photo display frame" },
+  { id: 30, name: "Collage Photo Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹799", category: "photo-frames", categoryName: "Photo Frames", description: "Multi-photo wooden frame" },
+  { id: 31, name: "Branded Photo Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹599", category: "photo-frames", categoryName: "Photo Frames", description: "Clinic branding photo frame" },
   
   // ==========================================
-  // THERAPIES - COMPREHENSIVE DATA ADDED BELOW
+  // THERAPIES - Therapy-Based Gifting
   // ==========================================
   
-  // Therapies - Dermatology (Skin Care)
-  { id: 101, name: "Premium Skin Care Kit", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400", price: "₹1299", category: "dermatology", categoryName: "Dermatology", description: "Complete skin care gift set with moisturizers and cleansers", tags: ["skincare", "beauty", "wellness"] },
-  { id: 102, name: "Sunscreen Protection Combo", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400", price: "₹899", category: "dermatology", categoryName: "Dermatology", description: "SPF 50+ sunscreen collection for UV protection", tags: ["sunscreen", "protection", "outdoor"] },
-  { id: 103, name: "Dermatology Reference Set", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹1599", category: "dermatology", categoryName: "Dermatology", description: "Medical books and skin condition charts for professionals", tags: ["medical", "education", "reference"] },
-  { id: 104, name: "UV Monitor Device", image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=400", price: "₹2499", category: "dermatology", categoryName: "Dermatology", description: "Portable UV index detector with smartphone connectivity", tags: ["tech", "uv", "monitoring"] },
-  { id: 105, name: "Aloe Vera Plant Set", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹699", category: "dermatology", categoryName: "Dermatology", description: "Natural aloe vera plants for skin healing and office decor", tags: ["natural", "plants", "healing"] },
+  // Cardiac Care
+  { id: 101, name: "Heart Rate Monitor Watch", image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400", price: "₹2499", category: "cardiac-care", categoryName: "Cardiac Care", description: "Advanced ECG and heart rate tracking smartwatch", tags: ["heart", "monitor", "smartwatch"] },
+  { id: 102, name: "Healthy Heart Kit", image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=400", price: "₹1499", category: "cardiac-care", categoryName: "Cardiac Care", description: "Heart healthy food basket with oats, nuts, and berries", tags: ["healthy", "heart", "food"] },
+  { id: 103, name: "Blood Pressure Monitor", image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400", price: "₹1999", category: "cardiac-care", categoryName: "Cardiac Care", description: "Digital BP monitor with irregular heartbeat detection", tags: ["medical", "bp", "monitor"] },
+  { id: 104, name: "Heart Model Display", image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400", price: "₹1799", category: "cardiac-care", categoryName: "Cardiac Care", description: "Anatomical heart model for clinic display", tags: ["anatomy", "model", "educational"] },
   
-  // Therapies - Nephrology (Kidney Health)
-  { id: 106, name: "Kidney Health Monitor", image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400", price: "₹3499", category: "nephrology", categoryName: "Nephrology", description: "Digital blood pressure and kidney function tracking device", tags: ["medical", "monitor", "health"] },
-  { id: 107, name: "Hydration Tracking Bottle", image: "https://images.unsplash.com/photo-1602143407151-7111542b16c9?w=400", price: "₹799", category: "nephrology", categoryName: "Nephrology", description: "Smart water bottle with intake reminders and LED display", tags: ["hydration", "smart", "water"] },
-  { id: 108, name: "Renal Diet Recipe Book", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹599", category: "nephrology", categoryName: "Nephrology", description: "Kidney-friendly diet guide and meal planner", tags: ["diet", "recipes", "health"] },
-  { id: 109, name: "Wellness Hamper for Kidney Health", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1999", category: "nephrology", categoryName: "Nephrology", description: "Curated gift set with low-sodium snacks and herbal teas", tags: ["wellness", "hamper", "organic"] },
-  { id: 110, name: "Medical Grade Water Purifier", image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400", price: "₹1299", category: "nephrology", categoryName: "Nephrology", description: "Portable water filter for clean hydration on the go", tags: ["purifier", "water", "medical"] },
+  // Diabetic Care
+  { id: 105, name: "Diabetes Care Kit", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400", price: "₹2499", category: "diabetic-care", categoryName: "Diabetic Care", description: "Glucometer and sugar-free snacks hamper", tags: ["diabetes", "health", "care"] },
+  { id: 106, name: "Sugar-Free Snack Hamper", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1299", category: "diabetic-care", categoryName: "Diabetic Care", description: "Diabetic-friendly healthy snacks collection", tags: ["sugarfree", "snacks", "healthy"] },
+  { id: 107, name: "Diabetes Management Guide", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹699", category: "diabetic-care", categoryName: "Diabetic Care", description: "Comprehensive diabetes education booklet", tags: ["education", "guide", "diabetes"] },
   
-  // Therapies - Nutrition
-  { id: 111, name: "Protein Gift Box", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400", price: "₹1999", category: "nutrition", categoryName: "Nutrition", description: "Premium protein supplements and shaker set", tags: ["protein", "fitness", "supplements"] },
-  { id: 112, name: "Vitamin Combo Pack", image: "https://images.unsplash.com/photo-1584308666744-3c0b9c22406f?w=400", price: "₹1199", category: "nutrition", categoryName: "Nutrition", description: "Essential vitamins A-Z gift set with storage box", tags: ["vitamins", "health", "supplements"] },
-  { id: 113, name: "Smart Nutrition Scale", image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=400", price: "₹2499", category: "nutrition", categoryName: "Nutrition", description: "Digital food scale with calorie calculator app", tags: ["smart", "scale", "diet"] },
-  { id: 114, name: "Healthy Snack Hamper", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1499", category: "nutrition", categoryName: "Nutrition", description: "Assorted nuts, seeds, and dried fruits gift basket", tags: ["healthy", "snacks", "organic"] },
-  { id: 115, name: "Meal Prep Container Set", image: "https://images.unsplash.com/photo-1514228742587-6f155f924bb5?w=400", price: "₹899", category: "nutrition", categoryName: "Nutrition", description: "BPA-free portion control containers with recipe guide", tags: ["mealprep", "containers", "diet"] },
+  // Pediatric
+  { id: 108, name: "Educational Toy Set", image: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400", price: "₹1499", category: "pediatric", categoryName: "Pediatric", description: "STEM toys for children's learning", tags: ["toys", "educational", "children"] },
+  { id: 109, name: "Pediatric Sticker Collection", image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400", price: "₹299", category: "pediatric", categoryName: "Pediatric", description: "Fun stickers for young patients", tags: ["kids", "stickers", "fun"] },
+  { id: 110, name: "Children's Health Book", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹499", category: "pediatric", categoryName: "Pediatric", description: "Illustrated health education book for kids", tags: ["books", "children", "health"] },
   
-  // Therapies - Cardiology (Heart Health)
-  { id: 116, name: "Heart Rate Monitor Watch", image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400", price: "₹2499", category: "cardiology", categoryName: "Cardiology", description: "Advanced ECG and heart rate tracking smartwatch", tags: ["heart", "monitor", "smartwatch"] },
-  { id: 117, name: "Healthy Heart Kit", image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=400", price: "₹1499", category: "cardiology", categoryName: "Cardiology", description: "Heart healthy food basket with oats, nuts, and berries", tags: ["healthy", "heart", "food"] },
-  { id: 118, name: "Blood Pressure Monitor", image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400", price: "₹1999", category: "cardiology", categoryName: "Cardiology", description: "Digital BP monitor with irregular heartbeat detection", tags: ["medical", "bp", "monitor"] },
-  { id: 119, name: "Stress Relief Kit", image: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=400", price: "₹999", category: "cardiology", categoryName: "Cardiology", description: "Aromatherapy set for stress management and heart health", tags: ["stress", "relief", "aromatherapy"] },
-  { id: 120, name: "Cardiac Emergency Kit", image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=400", price: "₹1299", category: "cardiology", categoryName: "Cardiology", description: "Portable first aid kit with aspirin and emergency contacts", tags: ["emergency", "firstaid", "medical"] },
+  // Dermatology
+  { id: 111, name: "Premium Skin Care Kit", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400", price: "₹1299", category: "dermatology", categoryName: "Dermatology", description: "Complete skin care gift set with moisturizers and cleansers", tags: ["skincare", "beauty", "wellness"] },
+  { id: 112, name: "Sunscreen Protection Combo", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400", price: "₹899", category: "dermatology", categoryName: "Dermatology", description: "SPF 50+ sunscreen collection for UV protection", tags: ["sunscreen", "protection", "outdoor"] },
+  { id: 113, name: "Dermatology Reference Set", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹1599", category: "dermatology", categoryName: "Dermatology", description: "Medical books and skin condition charts", tags: ["medical", "education", "reference"] },
   
-  // Therapies - Pulmonology (Respiratory)
-  { id: 121, name: "Steam Inhaler", image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=400", price: "₹699", category: "pulmonology", categoryName: "Pulmonology", description: "Electric steam vaporizer for respiratory therapy", tags: ["steam", "inhaler", "respiratory"] },
-  { id: 122, name: "Air Purifier Plant", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹899", category: "pulmonology", categoryName: "Pulmonology", description: "Snake plant and peace lily combo for clean air", tags: ["plants", "airpurifier", "natural"] },
-  { id: 123, name: "Breathing Exercise Device", image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=400", price: "₹1299", category: "pulmonology", categoryName: "Pulmonology", description: "Lung capacity trainer with digital progress tracking", tags: ["breathing", "lungs", "exercise"] },
-  { id: 124, name: "HEPA Air Purifier", image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400", price: "₹3999", category: "pulmonology", categoryName: "Pulmonology", description: "Desktop HEPA filter for clinic and office use", tags: ["purifier", "hepa", "airquality"] },
-  { id: 125, name: "Essential Oil Diffuser", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ac8108?w=400", price: "₹1499", category: "pulmonology", categoryName: "Pulmonology", description: "Ultrasonic diffuser with eucalyptus and peppermint oils", tags: ["aromatherapy", "oils", "wellness"] },
+  // Nephrology
+  { id: 114, name: "Kidney Health Monitor", image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400", price: "₹3499", category: "nephrology", categoryName: "Nephrology", description: "Digital blood pressure and kidney function tracking device", tags: ["medical", "monitor", "health"] },
+  { id: 115, name: "Hydration Tracking Bottle", image: "https://images.unsplash.com/photo-1602143407151-7111542b16c9?w=400", price: "₹799", category: "nephrology", categoryName: "Nephrology", description: "Smart water bottle with intake reminders", tags: ["hydration", "smart", "water"] },
+  { id: 116, name: "Renal Diet Recipe Book", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹599", category: "nephrology", categoryName: "Nephrology", description: "Kidney-friendly diet guide and meal planner", tags: ["diet", "recipes", "health"] },
   
-  // Therapies - Hepatology (Liver Health)
-  { id: 126, name: "Liver Detox Tea Set", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400", price: "₹799", category: "hepatology", categoryName: "Hepatology", description: "Herbal tea collection with milk thistle and dandelion", tags: ["tea", "detox", "herbal"] },
-  { id: 127, name: "Healthy Liver Diet Guide", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹699", category: "hepatology", categoryName: "Hepatology", description: "Comprehensive diet plan book for liver health", tags: ["diet", "book", "health"] },
-  { id: 128, name: "Milk Thistle Supplement Kit", image: "https://images.unsplash.com/photo-1584308666744-3c0b9c22406f?w=400", price: "₹1499", category: "hepatology", categoryName: "Hepatology", description: "Premium liver support supplements with vitamin complex", tags: ["supplements", "milkthistle", "health"] },
-  { id: 129, name: "Non-Alcoholic Wine Set", image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400", price: "₹1999", category: "hepatology", categoryName: "Hepatology", description: "Gourmet alcohol-free wine for liver-conscious gifting", tags: ["beverage", "alcoholfree", "gourmet"] },
-  { id: 130, name: "Organic Food Hamper", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2499", category: "hepatology", categoryName: "Hepatology", description: "Liver-friendly organic foods and snacks collection", tags: ["organic", "food", "healthy"] },
+  // Nutrition
+  { id: 117, name: "Protein Gift Box", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400", price: "₹1999", category: "nutrition", categoryName: "Nutrition", description: "Premium protein supplements and shaker set", tags: ["protein", "fitness", "supplements"] },
+  { id: 118, name: "Vitamin Combo Pack", image: "https://images.unsplash.com/photo-1584308666744-3c0b9c22406f?w=400", price: "₹1199", category: "nutrition", categoryName: "Nutrition", description: "Essential vitamins A-Z gift set with storage box", tags: ["vitamins", "health", "supplements"] },
+  { id: 119, name: "Healthy Snack Hamper", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1499", category: "nutrition", categoryName: "Nutrition", description: "Assorted nuts, seeds, and dried fruits gift basket", tags: ["healthy", "snacks", "organic"] },
   
-  // Therapies - Ophthalmology (Eye Care)
-  { id: 131, name: "Blue Light Glasses", image: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400", price: "₹1299", category: "ophthalmology", categoryName: "Ophthalmology", description: "Anti-glare computer glasses with UV protection", tags: ["glasses", "bluelight", "protection"] },
-  { id: 132, name: "Eye Care Kit", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400", price: "₹899", category: "ophthalmology", categoryName: "Ophthalmology", description: "Cooling eye masks and drops for strain relief", tags: ["eyecare", "masks", "wellness"] },
-  { id: 133, name: "LED Desk Lamp with Eye Protection", image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400", price: "₹2499", category: "ophthalmology", categoryName: "Ophthalmology", description: "Adjustable desk light with anti-flicker technology", tags: ["lighting", "desk", "protection"] },
-  { id: 134, name: "Eye Model Anatomical Display", image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400", price: "₹1799", category: "ophthalmology", categoryName: "Ophthalmology", description: "3D eye structure model for educational purposes", tags: ["educational", "model", "anatomy"] },
-  { id: 135, name: "Screen Time Tracker", image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=400", price: "₹999", category: "ophthalmology", categoryName: "Ophthalmology", description: "Device to monitor and limit screen exposure time", tags: ["tech", "screentime", "health"] },
+  // Pulmonology
+  { id: 120, name: "Steam Inhaler", image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=400", price: "₹699", category: "pulmonology", categoryName: "Pulmonology", description: "Electric steam vaporizer for respiratory therapy", tags: ["steam", "inhaler", "respiratory"] },
+  { id: 121, name: "Air Purifier Plant", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹899", category: "pulmonology", categoryName: "Pulmonology", description: "Snake plant and peace lily combo for clean air", tags: ["plants", "airpurifier", "natural"] },
+  { id: 122, name: "Breathing Exercise Device", image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=400", price: "₹1299", category: "pulmonology", categoryName: "Pulmonology", description: "Lung capacity trainer with digital tracking", tags: ["breathing", "lungs", "exercise"] },
   
-  // Therapies - Gastroenterology (Digestive Health)
-  { id: 136, name: "Probiotic Wellness Kit", image: "https://images.unsplash.com/photo-1584308666744-3c0b9c22406f?w=400", price: "₹1599", category: "gastroenterology", categoryName: "Gastroenterology", description: "Complete probiotic supplement set with digestive enzymes", tags: ["probiotics", "digestion", "health"] },
-  { id: 137, name: "Herbal Digestive Tea Set", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400", price: "₹699", category: "gastroenterology", categoryName: "Gastroenterology", description: "Chamomile, ginger, and peppermint tea collection", tags: ["tea", "herbal", "digestion"] },
-  { id: 138, name: "Gut Health Recipe Book", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹899", category: "gastroenterology", categoryName: "Gastroenterology", description: "Cookbook with recipes for healthy gut microbiome", tags: ["recipes", "cookbook", "guthealth"] },
-  { id: 139, name: "Bamboo Fiber Dinner Set", image: "https://images.unsplash.com/photo-1584622651921-47e0e8043693?w=400", price: "₹1499", category: "gastroenterology", categoryName: "Gastroenterology", description: "Eco-friendly dining set for mindful eating", tags: ["dinnerware", "bamboo", "ecofriendly"] },
-  { id: 140, name: "Portion Control Plate Set", image: "https://images.unsplash.com/photo-1514228742587-6f155f924bb5?w=400", price: "₹1199", category: "gastroenterology", categoryName: "Gastroenterology", description: "Sectioned plates for balanced meal portions", tags: ["portions", "plates", "diet"] },
+  // Hepatology
+  { id: 123, name: "Liver Detox Tea Set", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400", price: "₹799", category: "hepatology", categoryName: "Hepatology", description: "Herbal tea collection with milk thistle and dandelion", tags: ["tea", "detox", "herbal"] },
+  { id: 124, name: "Milk Thistle Supplement Kit", image: "https://images.unsplash.com/photo-1584308666744-3c0b9c22406f?w=400", price: "₹1499", category: "hepatology", categoryName: "Hepatology", description: "Premium liver support supplements", tags: ["supplements", "milkthistle", "health"] },
   
-  // Therapies - Urology
-  { id: 141, name: "Kidney Stone Prevention Kit", image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=400", price: "₹1899", category: "urology", categoryName: "Urology", description: "Hydration bundle with citrate supplements and bottles", tags: ["kidney", "prevention", "hydration"] },
-  { id: 142, name: "Smart Hydration Bottle", image: "https://images.unsplash.com/photo-1602143407151-7111542b16c9?w=400", price: "₹1299", category: "urology", categoryName: "Urology", description: "Water bottle with intake tracking and reminders", tags: ["water", "smartbottle", "hydration"] },
-  { id: 143, name: "Urinary Health Supplement Set", image: "https://images.unsplash.com/photo-1584308666744-3c0b9c22406f?w=400", price: "₹1699", category: "urology", categoryName: "Urology", description: "Cranberry extract and D-mannose supplements", tags: ["supplements", "urinary", "health"] },
-  { id: 144, name: "Urology Reference Guide", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹2499", category: "urology", categoryName: "Urology", description: "Medical atlas with latest urological procedures", tags: ["medical", "reference", "book"] },
-  { id: 145, name: "Wellness Hamper for Urology", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2199", category: "urology", categoryName: "Urology", description: "Curated health foods and wellness products", tags: ["wellness", "hamper", "health"] },
+  // Ophthalmology
+  { id: 125, name: "Blue Light Glasses", image: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400", price: "₹1299", category: "ophthalmology", categoryName: "Ophthalmology", description: "Anti-glare computer glasses with UV protection", tags: ["glasses", "bluelight", "protection"] },
+  { id: 126, name: "Eye Care Kit", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400", price: "₹899", category: "ophthalmology", categoryName: "Ophthalmology", description: "Cooling eye masks and drops for strain relief", tags: ["eyecare", "masks", "wellness"] },
+  { id: 127, name: "Eye Model Anatomical Display", image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400", price: "₹1799", category: "ophthalmology", categoryName: "Ophthalmology", description: "3D eye structure model for educational purposes", tags: ["educational", "model", "anatomy"] },
   
-  // Personalized Gifts
-  { id: 201, name: "Engraved Metal Pen", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=400", price: "₹599", category: "engraved-pens", categoryName: "Engraved Pens", description: "Premium pen with custom engraving" },
-  { id: 202, name: "Custom Magic Mug", image: "https://images.unsplash.com/photo-1514228742587-6f155f924bb5?w=400", price: "₹499", category: "custom-mugs", categoryName: "Custom Mugs", description: "Photo reveals on heating" },
-  { id: 203, name: "Crystal Photo Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹899", category: "photo-gifts", categoryName: "Photo Gifts", description: "3D crystal photo engraving" },
-  { id: 204, name: "Branded Notebook", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹399", category: "custom-stationery", categoryName: "Custom Stationery", description: "Company logo printed diary" },
-  { id: 205, name: "Leather Card Holder", image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=400", price: "₹799", category: "embossed-leather", categoryName: "Embossed Leather", description: "Genuine leather card wallet" },
-  { id: 206, name: "Metal Keychain Set", image: "https://images.unsplash.com/photo-1581338834647-b0a407628db1?w=400", price: "₹299", category: "engraved-keychains", categoryName: "Engraved Keychains", description: "Custom engraved metal keychain" },
+  // Gastroenterology
+  { id: 128, name: "Probiotic Wellness Kit", image: "https://images.unsplash.com/photo-1584308666744-3c0b9c22406f?w=400", price: "₹1599", category: "gastroenterology", categoryName: "Gastroenterology", description: "Complete probiotic supplement set", tags: ["probiotics", "digestion", "health"] },
+  { id: 129, name: "Herbal Digestive Tea Set", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400", price: "₹699", category: "gastroenterology", categoryName: "Gastroenterology", description: "Chamomile, ginger, and peppermint tea collection", tags: ["tea", "herbal", "digestion"] },
   
-  // Digital Gifts
-  { id: 301, name: "Power Bank 20000mAh", image: "https://images.unsplash.com/photo-1619985632461-f33748ef7661?w=400", price: "₹1499", category: "power-banks", categoryName: "Power Banks", description: "High capacity portable charger" },
-  { id: 302, name: "JBL Bluetooth Speaker", image: "https://images.unsplash.com/photo-1608043152269-423db5724e21?w=400", price: "₹2999", category: "bluetooth-speakers", categoryName: "Bluetooth Speakers", description: "Wireless portable speaker" },
-  { id: 303, name: "USB 3.0 64GB Drive", image: "https://images.unsplash.com/photo-1586449480537-3ac15f1d6162?w=400", price: "₹699", category: "usb-drives", categoryName: "USB Drives", description: "Branded metal pen drive" },
-  { id: 304, name: "Wireless Charging Pad", image: "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=400", price: "₹1299", category: "wireless-chargers", categoryName: "Wireless Chargers", description: "Fast charging Qi pad" },
-  { id: 305, name: "7-inch Digital Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹3999", category: "digital-photo-frames", categoryName: "Digital Photo Frames", description: "Slideshow photo display" },
+  // Urology
+  { id: 130, name: "Kidney Stone Prevention Kit", image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=400", price: "₹1899", category: "urology", categoryName: "Urology", description: "Hydration bundle with citrate supplements", tags: ["kidney", "prevention", "hydration"] },
+  { id: 131, name: "Urinary Health Supplement Set", image: "https://images.unsplash.com/photo-1584308666744-3c0b9c22406f?w=400", price: "₹1699", category: "urology", categoryName: "Urology", description: "Cranberry extract and D-mannose supplements", tags: ["supplements", "urinary", "health"] },
   
-   // Occasions - January (New Year & Republic Day)
-  { id: 401, name: "New Year Celebration Hamper", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1999", category: "january", categoryName: "January", description: "Premium hamper with chocolates, wine, and diary", tags: ["newyear", "hamper", "celebration"] },
-  { id: 402, name: "Republic Day Tricolor Combo", image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=400", price: "₹1299", category: "january", categoryName: "January", description: "Saffron, white, and green themed corporate gifts", tags: ["republicday", "tricolor", "patriotic"] },
-  { id: 403, name: "Executive Planner 2025", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹899", category: "january", categoryName: "January", description: "Premium leather planner with company branding", tags: ["planner", "executive", "branding"] },
-  { id: 404, name: "Desk Calendar Premium", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹599", category: "january", categoryName: "January", description: "Wooden base calendar with motivational quotes", tags: ["calendar", "desk", "motivational"] },
-  { id: 405, name: "Wellness Starter Kit", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2499", category: "january", categoryName: "January", description: "Health-focused gift box for New Year resolutions", tags: ["wellness", "health", "newyear"] },
+  // Orthopedics
+  { id: 132, name: "Posture Corrector", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400", price: "₹999", category: "orthopedics", categoryName: "Orthopedics", description: "Back support and posture correction device", tags: ["posture", "back", "health"] },
+  { id: 133, name: "Bone Health Supplement Set", image: "https://images.unsplash.com/photo-1584308666744-3c0b9c22406f?w=400", price: "₹1699", category: "orthopedics", categoryName: "Orthopedics", description: "Calcium and vitamin D supplements", tags: ["bones", "health", "supplements"] },
+  { id: 134, name: "Joint Support Kit", image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=400", price: "₹1499", category: "orthopedics", categoryName: "Orthopedics", description: "Glucosamine and joint health supplements", tags: ["joints", "health", "supplements"] },
   
-  // Occasions - February (Valentine's & Cancer Awareness)
-  { id: 406, name: "Pink Ribbon Gift Set", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400", price: "₹1499", category: "february", categoryName: "February", description: "Cancer awareness themed corporate gifts", tags: ["cancerawareness", "pink", "health"] },
-  { id: 407, name: "Heart Healthy Hamper", image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=400", price: "₹1899", category: "february", categoryName: "February", description: "Valentine's special with healthy treats", tags: ["valentine", "healthy", "heart"] },
-  { id: 408, name: "Red Velvet Cake Box", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400", price: "₹799", category: "february", categoryName: "February", description: "Premium cakes and confectionery gift set", tags: ["cake", "valentine", "sweet"] },
-  { id: 409, name: "Rose Gold Pen Set", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=400", price: "₹1299", category: "february", categoryName: "February", description: "Elegant rose gold finish writing instruments", tags: ["pen", "rosegold", "elegant"] },
-  { id: 410, name: "Self Care Wellness Box", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400", price: "₹2199", category: "february", categoryName: "February", description: "Spa and wellness products for self-love", tags: ["selfcare", "wellness", "spa"] },
+  // Neurology
+  { id: 135, name: "Stress Relief Kit", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ac8108?w=400", price: "₹999", category: "neurology", categoryName: "Neurology", description: "Aromatherapy and stress management products", tags: ["stress", "relief", "aromatherapy"] },
+  { id: 136, name: "Brain Health Supplement", image: "https://images.unsplash.com/photo-1584308666744-3c0b9c22406f?w=400", price: "₹1899", category: "neurology", categoryName: "Neurology", description: "Omega-3 and cognitive support supplements", tags: ["brain", "cognitive", "health"] },
   
-  // Occasions - March (Holi & Women's Day)
-  { id: 411, name: "Holi Color Hamper Organic", image: "https://images.unsplash.com/photo-1561361513-2d000a50f0ec?w=400", price: "₹699", category: "march", categoryName: "March", description: "Natural herbal gulal with sweets and thandai", tags: ["holi", "colors", "festival"] },
-  { id: 412, name: "Women's Day Special Hamper", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400", price: "₹1599", category: "march", categoryName: "March", description: "Empowerment themed gifts for women employees", tags: ["womensday", "empowerment", "appreciation"] },
-  { id: 413, name: "Spring Festival Combo", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹1299", category: "march", categoryName: "March", description: "Spring themed floral gifts and plants", tags: ["spring", "floral", "plants"] },
-  { id: 414, name: "Organic Sweets Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹999", category: "march", categoryName: "March", description: "Chemical-free traditional Indian sweets", tags: ["sweets", "organic", "traditional"] },
-  { id: 415, name: "Waterproof Gadget Case", image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400", price: "₹899", category: "march", categoryName: "March", description: "Protection for devices during Holi celebrations", tags: ["waterproof", "gadgets", "protection"] },
+  // Oncology
+  { id: 137, name: "Pink Ribbon Gift Set", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400", price: "₹1499", category: "oncology", categoryName: "Oncology", description: "Cancer awareness themed corporate gifts", tags: ["cancerawareness", "pink", "health"] },
+  { id: 138, name: "Wellness Care Package", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2499", category: "oncology", categoryName: "Oncology", description: "Comfort and wellness items for patients", tags: ["wellness", "care", "comfort"] },
   
-  // Occasions - April (Health Day & Financial Year)
-  { id: 416, name: "Health Checkup Kit", image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400", price: "₹2499", category: "april", categoryName: "April", description: "Basic health monitoring devices and vouchers", tags: ["health", "checkup", "wellness"] },
-  { id: 417, name: "Financial Year Planner", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹799", category: "april", categoryName: "April", description: "Tax planner and financial organizer", tags: ["financial", "planner", "tax"] },
-  { id: 418, name: "Stress Relief Kit", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ac8108?w=400", price: "₹1499", category: "april", categoryName: "April", description: "Aromatherapy and stress management products", tags: ["stressrelief", "aromatherapy", "wellness"] },
-  { id: 419, name: "Healthy Snack Subscription", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2999", category: "april", categoryName: "April", description: "3-month healthy snack delivery service", tags: ["healthy", "snacks", "subscription"] },
-  { id: 420, name: "Fitness Band Corporate", image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400", price: "₹1999", category: "april", categoryName: "April", description: "Health tracking wearable with company logo", tags: ["fitness", "tracker", "health"] },
+  // General Wellness
+  { id: 139, name: "Wellness Starter Kit", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2499", category: "general-wellness", categoryName: "General Wellness", description: "Health-focused gift box for overall wellness", tags: ["wellness", "health", "lifestyle"] },
+  { id: 140, name: "Self Care Wellness Box", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400", price: "₹2199", category: "general-wellness", categoryName: "General Wellness", description: "Spa and wellness products for self-care", tags: ["selfcare", "wellness", "spa"] },
   
-  // Occasions - May (Mother's Day & Asthma Day)
-  { id: 421, name: "Mother's Day Care Package", image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400", price: "₹1899", category: "may", categoryName: "May", description: "Wellness products and spa vouchers for mothers", tags: ["mothersday", "care", "wellness"] },
-  { id: 422, name: "Air Purifying Plants Set", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹1299", category: "may", categoryName: "May", description: "Best indoor plants for asthma and allergies", tags: ["plants", "airpurifier", "health"] },
-  { id: 423, name: "Organic Tea Collection", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400", price: "₹999", category: "may", categoryName: "May", description: "Caffeine-free herbal teas for respiratory health", tags: ["tea", "herbal", "organic"] },
-  { id: 424, name: "Handcrafted Jewelry Box", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹1699", category: "may", categoryName: "May", description: "Artisanal jewelry organizer for Mother's Day", tags: ["jewelry", "handcrafted", "gift"] },
-  { id: 425, name: "Essential Oil Diffuser", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ac8108?w=400", price: "₹1399", category: "may", categoryName: "May", description: "Aromatherapy diffuser with eucalyptus oil", tags: ["aromatherapy", "diffuser", "wellness"] },
+  // ==========================================
+  // OCCASIONS - Gifting Based on Occasion
+  // ==========================================
   
-  // Occasions - June (Environment Day)
-  { id: 426, name: "Zero Waste Starter Kit", image: "https://images.unsplash.com/photo-1584622651921-47e0e8043693?w=400", price: "₹1499", category: "june", categoryName: "June", description: "Sustainable living essentials and bamboo products", tags: ["zerowaste", "sustainable", "eco"] },
-  { id: 427, name: "Plantable Seed Paper Set", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹699", category: "june", categoryName: "June", description: "Stationery that grows into plants", tags: ["seedpaper", "plantable", "eco"] },
-  { id: 428, name: "Solar Powered Gadgets", image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400", price: "₹2499", category: "june", categoryName: "June", description: "Eco-friendly tech powered by solar energy", tags: ["solar", "eco", "tech"] },
-  { id: 429, name: "Recycled Material Bag", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400", price: "₹899", category: "june", categoryName: "June", description: "Stylish bags made from recycled plastic", tags: ["recycled", "bags", "eco"] },
-  { id: 430, name: "Organic Gardening Kit", image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400", price: "₹1199", category: "june", categoryName: "June", description: "Seeds, tools, and pots for office gardening", tags: ["gardening", "organic", "plants"] },
+  // Doctor's Day
+  { id: 201, name: "Doctor's Day Pen Set", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=400", price: "₹1299", category: "doctors-day", categoryName: "Doctor's Day", description: "Premium medical-themed pens and diaries", tags: ["doctorsday", "medical", "appreciation"] },
+  { id: 202, name: "Doctor Appreciation Plaque", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹899", category: "doctors-day", categoryName: "Doctor's Day", description: "Thank you plaque for doctors", tags: ["appreciation", "plaque", "gratitude"] },
+  { id: 203, name: "Desk Plant with Quote", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹649", category: "doctors-day", categoryName: "Doctor's Day", description: "Succulent with 'Thank You Doctor' message", tags: ["plants", "doctorsday", "gratitude"] },
   
-  // Occasions - July (Doctor's Day)
-  { id: 431, name: "Doctor's Day Pen Set", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=400", price: "₹1299", category: "july", categoryName: "July", description: "Premium medical-themed pens and diaries", tags: ["doctorsday", "medical", "appreciation"] },
-  { id: 432, name: "Monsoon Care Package", image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=400", price: "₹999", category: "july", categoryName: "July", description: "Umbrellas, raincoats, and herbal teas", tags: ["monsoon", "rain", "care"] },
-  { id: 433, name: "Medical Reference Books", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹2999", category: "july", categoryName: "July", description: "Latest medical journals and reference guides", tags: ["medical", "books", "reference"] },
-  { id: 434, name: "Sanitizer and Wellness Kit", image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=400", price: "₹799", category: "july", categoryName: "July", description: "Hygiene essentials for healthcare workers", tags: ["sanitizer", "hygiene", "wellness"] },
-  { id: 435, name: "Desk Plant with Quote", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹649", category: "july", categoryName: "July", description: "Succulent with 'Thank You Doctor' message", tags: ["plants", "doctorsday", "gratitude"] },
+  // Medical Conferences
+  { id: 204, name: "Conference Welcome Kit", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹799", category: "medical-conferences", categoryName: "Medical Conferences", description: "Notebook, pen, and essentials for attendees", tags: ["conference", "kit", "medical"] },
+  { id: 205, name: "Medical Tote Bag", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400", price: "₹499", category: "medical-conferences", categoryName: "Medical Conferences", description: "Branded conference bag for doctors", tags: ["bag", "conference", "branded"] },
   
-  // Occasions - August (Independence Day)
-  { id: 436, name: "Tiranga Gift Hamper", image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=400", price: "₹1599", category: "august", categoryName: "August", description: "Tricolor themed premium corporate gifts", tags: ["independenceday", "tiranga", "patriotic"] },
-  { id: 437, name: "Freedom Fighter Biography Set", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹1899", category: "august", categoryName: "August", description: "Books on Indian independence leaders", tags: ["books", "history", "patriotic"] },
-  { id: 438, name: "Khadi Product Collection", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400", price: "₹1499", category: "august", categoryName: "August", description: "Handwoven khadi bags and accessories", tags: ["khadi", "handwoven", "traditional"] },
-  { id: 439, name: "Flag Themed Desk Set", image: "https://images.unsplash.com/photo-1516961642265-531546e84af2?w=400", price: "₹999", category: "august", categoryName: "August", description: "Patriotic desk organizers and stationery", tags: ["desk", "patriotic", "office"] },
-  { id: 440, name: "Independence Day Sweets", image: "https://images.unsplash.com/photo-1561361573-7c8a6405e1ca?w=400", price: "₹899", category: "august", categoryName: "August", description: "Tricolor barfi and traditional Indian sweets", tags: ["sweets", "tricolor", "traditional"] },
+  // Product Launches
+  { id: 206, name: "Launch Event Gift Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1999", category: "product-launches", categoryName: "Product Launches", description: "Premium gift box for product launch attendees", tags: ["launch", "premium", "event"] },
+  { id: 207, name: "Branded Launch Kit", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=400", price: "₹1499", category: "product-launches", categoryName: "Product Launches", description: "Customized kit with product information", tags: ["launch", "branded", "promotional"] },
   
-  // Occasions - September (Nutrition Week)
-  { id: 441, name: "Healthy Eating Guide Book", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹799", category: "september", categoryName: "September", description: "Nutrition guide with meal planning templates", tags: ["nutrition", "healthy", "guide"] },
-  { id: 442, name: "Protein Bar Assortment", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400", price: "₹1299", category: "september", categoryName: "September", description: "Assorted protein bars and health snacks", tags: ["protein", "healthy", "snacks"] },
-  { id: 443, name: "World Heart Day Kit", image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400", price: "₹2499", category: "september", categoryName: "September", description: "BP monitor and heart healthy food basket", tags: ["heart", "health", "monitor"] },
-  { id: 444, name: "Superfood Hamper", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1999", category: "september", categoryName: "September", description: "Chia, quinoa, and organic superfoods", tags: ["superfood", "organic", "healthy"] },
-  { id: 445, name: "Meal Prep Container Set", image: "https://images.unsplash.com/photo-1514228742587-6f155f924bb5?w=400", price: "₹1199", category: "september", categoryName: "September", description: "BPA-free containers for healthy meal planning", tags: ["mealprep", "containers", "healthy"] },
+  // Festive Gifting
+  { id: 208, name: "Premium Diwali Hamper", image: "https://images.unsplash.com/photo-1573662761572-2c2be631a545?w=400", price: "₹4999", category: "festive-gifting", categoryName: "Festive Gifting", description: "Luxury sweets, dry fruits, and decor items", tags: ["diwali", "luxury", "festival"] },
+  { id: 209, name: "Christmas Celebration Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2999", category: "festive-gifting", categoryName: "Festive Gifting", description: "Cakes, wine, and Christmas decor", tags: ["christmas", "celebration", "festival"] },
   
-  // Occasions - October (Diwali & Osteoporosis)
-  { id: 446, name: "Premium Diwali Hamper", image: "https://images.unsplash.com/photo-1573662761572-2c2be631a545?w=400", price: "₹4999", category: "october", categoryName: "October", description: "Luxury sweets, dry fruits, and decor items", tags: ["diwali", "luxury", "festival"] },
-  { id: 447, name: "Bone Health Supplement Set", image: "https://images.unsplash.com/photo-1584308666744-3c0b9c22406f?w=400", price: "₹1699", category: "october", categoryName: "October", description: "Calcium and vitamin D for osteoporosis prevention", tags: ["bones", "health", "supplements"] },
-  { id: 448, name: "Decorative Diya Set", image: "https://images.unsplash.com/photo-1573662761572-2c2be631a545?w=400", price: "₹599", category: "october", categoryName: "October", description: "Handcrafted brass diyas with branded packaging", tags: ["diya", "diwali", "traditional"] },
-  { id: 449, name: "Festive Office Decor Kit", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹2499", category: "october", categoryName: "October", description: "Rangoli kits, lights, and wall hangings", tags: ["decor", "festive", "office"] },
-  { id: 450, name: "Dry Fruit Premium Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2999", category: "october", categoryName: "October", description: "Imported nuts and dried fruits collection", tags: ["dryfruits", "premium", "diwali"] },
+  // January
+  { id: 210, name: "New Year Celebration Hamper", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1999", category: "january", categoryName: "January", description: "Premium hamper with chocolates, wine, and diary", tags: ["newyear", "hamper", "celebration"] },
+  { id: 211, name: "Executive Planner 2025", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹899", category: "january", categoryName: "January", description: "Premium leather planner with company branding", tags: ["planner", "executive", "branding"] },
   
-  // Occasions - November (Children's Day & Diabetes Day)
-  { id: 451, name: "Educational Toy Set", image: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400", price: "₹1499", category: "november", categoryName: "November", description: "STEM toys for children's learning", tags: ["toys", "educational", "children"] },
-  { id: 452, name: "Diabetes Care Kit", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400", price: "₹2499", category: "november", categoryName: "November", description: "Glucometer and sugar-free snacks hamper", tags: ["diabetes", "health", "care"] },
-  { id: 453, name: "Childhood Memory Book", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹899", category: "november", categoryName: "November", description: "Photo album and memory keeping kit", tags: ["memory", "children", "nostalgia"] },
-  { id: 454, name: "Healthy Kids Snack Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹799", category: "november", categoryName: "November", description: "Nutritious snacks for children", tags: ["kids", "snacks", "healthy"] },
-  { id: 455, name: "Coloring Stationery Set", image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400", price: "₹699", category: "november", categoryName: "November", description: "Art supplies and creative materials", tags: ["art", "stationery", "creative"] },
+  // July (Doctor's Day & Monsoon)
+  { id: 212, name: "Monsoon Care Package", image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=400", price: "₹999", category: "july", categoryName: "July", description: "Umbrellas, raincoats, and herbal teas", tags: ["monsoon", "rain", "care"] },
   
-  // Occasions - December (Christmas & Year End)
-  { id: 456, name: "Christmas Celebration Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2999", category: "december", categoryName: "December", description: "Cakes, wine, and Christmas decor", tags: ["christmas", "celebration", "festival"] },
-  { id: 457, name: "Year End Planner 2025", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹999", category: "december", categoryName: "December", description: "Premium planner for the upcoming year", tags: ["planner", "2025", "newyear"] },
-  { id: 458, name: "Winter Care Package", image: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=400", price: "₹1799", category: "december", categoryName: "December", description: "Warmers, teas, and skincare for winter", tags: ["winter", "care", "warm"] },
-  { id: 459, name: "Corporate Gift Hampers", image: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=400", price: "₹3999", category: "december", categoryName: "December", description: "Luxury hampers for year-end corporate gifting", tags: ["corporate", "luxury", "yearend"] },
-  { id: 460, name: "Gratitude Journal Set", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹899", category: "december", categoryName: "December", description: "Year review and thank you notes collection", tags: ["journal", "gratitude", "reflection"] },
-
+  // October (Diwali)
+  { id: 213, name: "Decorative Diya Set", image: "https://images.unsplash.com/photo-1573662761572-2c2be631a545?w=400", price: "₹599", category: "october", categoryName: "October", description: "Handcrafted brass diyas with branded packaging", tags: ["diya", "diwali", "traditional"] },
+  { id: 214, name: "Dry Fruit Premium Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2999", category: "october", categoryName: "October", description: "Imported nuts and dried fruits collection", tags: ["dryfruits", "premium", "diwali"] },
+  
+  // November (Diabetes Awareness)
+  { id: 215, name: "Diabetes Care Kit", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400", price: "₹2499", category: "november", categoryName: "November", description: "Glucometer and sugar-free snacks hamper", tags: ["diabetes", "health", "care"] },
+  
+  // December
+  { id: 216, name: "Year End Planner 2025", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹999", category: "december", categoryName: "December", description: "Premium planner for the upcoming year", tags: ["planner", "2025", "newyear"] },
+  { id: 217, name: "Winter Care Package", image: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=400", price: "₹1799", category: "december", categoryName: "December", description: "Warmers, teas, and skincare for winter", tags: ["winter", "care", "warm"] },
+  
+  // ==========================================
+  // PERSONALIZED GIFTS
+  // ==========================================
+  
+  { id: 301, name: "Engraved Metal Pen", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=400", price: "₹599", category: "engraved-pens", categoryName: "Engraved Pens", description: "Premium pen with custom engraving" },
+  { id: 302, name: "Custom Magic Mug", image: "https://images.unsplash.com/photo-1514228742587-6f155f924bb5?w=400", price: "₹499", category: "custom-mugs", categoryName: "Custom Mugs", description: "Photo reveals on heating" },
+  { id: 303, name: "Crystal Photo Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹899", category: "photo-gifts", categoryName: "Photo Gifts", description: "3D crystal photo engraving" },
+  { id: 304, name: "Branded Notebook", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹399", category: "custom-stationery", categoryName: "Custom Stationery", description: "Company logo printed diary" },
+  { id: 305, name: "Leather Card Holder", image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=400", price: "₹799", category: "embossed-leather", categoryName: "Embossed Leather", description: "Genuine leather card wallet" },
+  { id: 306, name: "Metal Keychain Set", image: "https://images.unsplash.com/photo-1581338834647-b0a407628db1?w=400", price: "₹299", category: "engraved-keychains", categoryName: "Engraved Keychains", description: "Custom engraved metal keychain" },
+  { id: 307, name: "Custom T-Shirt", image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400", price: "₹699", category: "custom-apparel", categoryName: "Custom Apparel", description: "Personalized T-shirt with branding" },
+  { id: 308, name: "Personalized Diary", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹599", category: "personalized-diaries", categoryName: "Personalized Diaries", description: "Custom notebook with name embossing" },
+  { id: 309, name: "Custom Water Bottle", image: "https://images.unsplash.com/photo-1602143407151-7111542b16c9?w=400", price: "₹449", category: "custom-drinkware", categoryName: "Custom Drinkware", description: "Personalized bottle with doctor name" },
+  { id: 310, name: "Engraved Award Trophy", image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400", price: "₹1299", category: "engraved-awards", categoryName: "Engraved Awards", description: "Custom trophy with recipient name" },
+  
+  // Clinic Branding Items
+  { id: 311, name: "Clinic Branded Calendar", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹399", category: "clinic-branding", categoryName: "Clinic Branding", description: "Calendar with clinic logo and details" },
+  { id: 312, name: "Clinic Name Plate", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹899", category: "clinic-branding", categoryName: "Clinic Branding", description: "Custom name plate for clinic entrance" },
+  { id: 313, name: "Doctor Name Personalized Stethoscope Tag", image: "https://images.unsplash.com/photo-1581338834647-b0a407628db1?w=400", price: "₹199", category: "doctor-name-personalization", categoryName: "Doctor Name Personalization", description: "Engraved stethoscope ID tag" },
+  
+  // ==========================================
+  // DIGITAL GIFTS
+  // ==========================================
+  
+  { id: 401, name: "Power Bank 20000mAh", image: "https://images.unsplash.com/photo-1619985632461-f33748ef7661?w=400", price: "₹1499", category: "power-banks", categoryName: "Power Banks", description: "High capacity portable charger" },
+  { id: 402, name: "JBL Bluetooth Speaker", image: "https://images.unsplash.com/photo-1608043152269-423db5724e21?w=400", price: "₹2999", category: "bluetooth-speakers", categoryName: "Bluetooth Speakers", description: "Wireless portable speaker" },
+  { id: 403, name: "USB 3.0 64GB Drive", image: "https://images.unsplash.com/photo-1586449480537-3ac15f1d6162?w=400", price: "₹699", category: "usb-drives", categoryName: "USB Drives", description: "Branded metal pen drive" },
+  { id: 404, name: "Wireless Charging Pad", image: "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=400", price: "₹1299", category: "wireless-chargers", categoryName: "Wireless Chargers", description: "Fast charging Qi pad" },
+  { id: 405, name: "7-inch Digital Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹3999", category: "digital-photo-frames", categoryName: "Digital Photo Frames", description: "Slideshow photo display" },
+  { id: 406, name: "Smart Home Assistant", image: "https://images.unsplash.com/photo-1558089687-f282ffcbc126?w=400", price: "₹3499", category: "smart-gadgets", categoryName: "Smart Gadgets", description: "Voice-controlled smart assistant" },
+  { id: 407, name: "Phone Stand with Charger", image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400", price: "₹899", category: "phone-accessories", categoryName: "Phone Accessories", description: "Adjustable stand with wireless charging" },
+  { id: 408, name: "Fitness Tracker Band", image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400", price: "₹1999", category: "fitness-bands", categoryName: "Fitness Bands", description: "Health and activity tracking wearable" },
+  { id: 409, name: "Universal Travel Adapter", image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400", price: "₹1299", category: "travel-adapters", categoryName: "Travel Adapters", description: "Multi-country charging adapter" },
+  { id: 410, name: "Tech Gift Combo", image: "https://images.unsplash.com/photo-1619985632461-f33748ef7661?w=400", price: "₹2499", category: "tech-combos", categoryName: "Tech Combos", description: "Power bank, USB drive, and cable set" },
 ];
+
+// ==========================================
+// HELPER FUNCTIONS
+// ==========================================
 
 // Helper function to get category by slug
 export const getCategoryBySlug = (slug: string): CategoryItem | undefined => {
@@ -344,10 +364,10 @@ export const getProductsByCategory = (slug: string): Product[] => {
 
 // Helper function to get all categories for sidebar
 export const getAllCategoryGroups = () => [
-  { title: "Categories", data: categories, path: "/categories" },
-  { title: "Therapy", data: therapies, path: "/therapy" },
+  { title: "Product Categories", data: categories, path: "/categories" },
+  { title: "Therapy-Based", data: therapies, path: "/therapy" },
+  { title: "Occasions", data: occasions.filter(o => !o.slug.match(/^(january|february|march|april|may|june|july|august|september|october|november|december)$/)), path: "/occasion" },
   { title: "Personalized Gifts", data: personalizedGifts, path: "/personalized-gifts" },
-  { title: "Occasion", data: occasions, path: "/occasion" },
   { title: "Digital Gifts", data: digitalGifts, path: "/digital-gifts" },
 ];
 
@@ -374,6 +394,28 @@ export const getAllCategories = () => {
     digitalGifts,
     allProducts
   };
+};
+
+// Get occasion categories (non-month specific)
+export const getOccasionCategories = (): CategoryItem[] => {
+  return occasions.filter(o => 
+    ['doctors-day', 'medical-conferences', 'product-launches', 'festive-gifting', 
+     'brand-campaigns', 'seasonal-campaigns', 'product-promotions', 
+     'brand-milestones', 'doctor-engagement-programs'].includes(o.slug)
+  );
+};
+
+// Get month-wise categories
+export const getMonthCategories = (): CategoryItem[] => {
+  return occasions.filter(o => 
+    ['january', 'february', 'march', 'april', 'may', 'june', 
+     'july', 'august', 'september', 'october', 'november', 'december'].includes(o.slug)
+  );
+};
+
+// Get therapy-based categories
+export const getTherapyCategories = (): CategoryItem[] => {
+  return therapies;
 };
 
 // Total counts

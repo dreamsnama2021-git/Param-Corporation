@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ChevronDown, Menu, X, Search } from "lucide-react";
 import {
   categories,
@@ -12,6 +13,7 @@ import {
 } from "@/app/data";
 
 export default function Navbar() {
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
@@ -44,6 +46,22 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.mega-menu-container')) {
+        setActiveDropdown(null);
+      }
+    };
+    
+    if (activeDropdown) {
+      document.addEventListener('click', handleClickOutside);
+    }
+    
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [activeDropdown]);
+
   if (!mounted) return <div className="h-20 bg-[var(--clr-white)]" />;
 
   const mainNavItems = [
@@ -54,13 +72,65 @@ export default function Navbar() {
     { label: "Contact Us", href: "/contact-us" },
   ];
 
+  // Helper function to get the first category of a type for navigation
+  const getFirstCategorySlug = (type: string) => {
+    switch (type) {
+      case 'categories': return categories[0]?.slug || 'all';
+      case 'therapy': return therapies[0]?.slug || 'all';
+      case 'personalized': return personalizedGifts[0]?.slug || 'all';
+      case 'occasion': return occasions[0]?.slug || 'all';
+      case 'digital': return digitalGifts[0]?.slug || 'all';
+      default: return 'all';
+    }
+  };
+
   const megaMenuColumns = [
-    { title: "Categories", data: categories, path: "/categories" },
-    { title: "Therapy", data: therapies, path: "/therepy" },
-    { title: "Personalized Gifts", data: personalizedGifts, path: "/personalized-gifts" },
-    { title: "Occasion", data: occasions, path: "/occasion" },
-    { title: "Digital Gifts", data: digitalGifts, path: "/digital-gifts" },
+    { 
+      title: "Categories", 
+      data: categories, 
+      tabId: 'categories',
+      color: '#F5A623' 
+    },
+    { 
+      title: "Therapy", 
+      data: therapies, 
+      tabId: 'therapy',
+      color: '#10B981' 
+    },
+    { 
+      title: "Personalized Gifts", 
+      data: personalizedGifts, 
+      tabId: 'personalized',
+      color: '#8B5CF6' 
+    },
+    { 
+      title: "Occasion", 
+      data: occasions, 
+      tabId: 'occasion',
+      color: '#EF4444' 
+    },
+    { 
+      title: "Digital Gifts", 
+      data: digitalGifts, 
+      tabId: 'digital',
+      color: '#3B82F6' 
+    },
   ];
+
+  // Handle category link click
+  const handleCategoryClick = (e: React.MouseEvent, tabId: string, categorySlug: string) => {
+    e.preventDefault();
+    router.push(`/categories/${categorySlug}?tab=${tabId}`);
+    setActiveDropdown(null);
+  };
+
+  // Handle "View All" for a section
+  const handleViewAll = (e: React.MouseEvent, tabId: string) => {
+    e.preventDefault();
+    const firstSlug = getFirstCategorySlug(tabId);
+    router.push(`/categories/${firstSlug}?tab=${tabId}`);
+    setActiveDropdown(null);
+  };
 
   return (
     <>
@@ -92,9 +162,8 @@ export default function Navbar() {
               <ul className="hidden lg:flex items-center gap-2">
                 {/* PRODUCTS MEGA MENU */}
                 <li
-                  className="relative"
+                  className="relative mega-menu-container"
                   onMouseEnter={() => setActiveDropdown("products")}
-                  onMouseLeave={() => setActiveDropdown(null)}
                 >
                   <button
                     className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] transition"
@@ -110,27 +179,54 @@ export default function Navbar() {
                   {activeDropdown === "products" && (
                     <div
                       className="absolute top-full left-1/2 -translate-x-1/2 w-[1000px] bg-white rounded-xl shadow-2xl border border-[var(--clr-border-light)] p-6 z-50"
+                      onMouseLeave={() => setActiveDropdown(null)}
                     >
                       <div className="grid grid-cols-5 gap-6">
                         {megaMenuColumns.map((column, idx) => (
                           <div key={idx}>
-                            <h3 className="font-bold text-xs uppercase mb-3 border-b pb-2 text-[var(--clr-text-dark)] tracking-wide">
-                              {column.title}
-                            </h3>
+                            {/* Section Header with View All link */}
+                            <div className="flex items-center justify-between mb-3 border-b pb-2">
+                              <h3 className="font-bold text-xs uppercase text-[var(--clr-text-dark)] tracking-wide">
+                                {column.title}
+                              </h3>
+                              {/* <button
+                                onClick={(e) => handleViewAll(e, column.tabId)}
+                                className="text-[9px] font-bold uppercase tracking-wider hover:underline transition-all"
+                                style={{ color: column.color }}
+                              >
+                                View All →
+                              </button> */}
+                            </div>
                             <ul className="space-y-2">
                               {column.data?.slice(0, 12).map((item: any) => (
                                 <li key={item.slug}>
-                                  <Link
-                                    href={`${column.path}/${item.slug}`}
+                                  <a
+                                    href={`/categories/${item.slug}?tab=${column.tabId}`}
+                                    onClick={(e) => handleCategoryClick(e, column.tabId, item.slug)}
                                     className="text-xs text-gray-600 hover:text-[var(--clr-primary)] hover:translate-x-1 transition-all block py-0.5"
+                                    style={{ 
+                                      ':hover': { color: column.color } 
+                                    } as any}
                                   >
                                     {item.name}
-                                  </Link>
+                                  </a>
                                 </li>
                               ))}
                             </ul>
                           </div>
                         ))}
+                      </div>
+                      
+                      {/* Footer - All Products link */}
+                      <div className="mt-6 pt-4 border-t border-gray-100">
+                        <Link
+                          href="/categories/all?tab=categories"
+                          onClick={() => setActiveDropdown(null)}
+                          className="text-xs font-semibold text-gray-500 hover:text-[var(--clr-primary)] transition-colors flex items-center justify-center gap-1"
+                        >
+                          Browse All Products
+                          <ChevronDown className="w-3 h-3 -rotate-90" />
+                        </Link>
                       </div>
                     </div>
                   )}
@@ -161,8 +257,8 @@ export default function Navbar() {
 
           {/* MOBILE MENU */}
           {mobileOpen && (
-            <div className="lg:hidden border-t border-[var(--clr-border-light)] bg-white">
-              <div className="p-4 space-y-3">
+            <div className="lg:hidden border-t border-[var(--clr-border-light)] bg-white max-h-[80vh] overflow-y-auto">
+              <div className="p-4 space-y-4">
                 {/* Search */}
                 <div className="flex items-center gap-2 bg-[var(--clr-bg-gray)] rounded-full px-4 py-2">
                   <Search className="w-4 h-4 text-gray-400" />
@@ -172,7 +268,57 @@ export default function Navbar() {
                   />
                 </div>
 
-                {/* Links */}
+                {/* Mobile Product Categories */}
+                <div className="space-y-3">
+                  <p className="text-xs font-bold uppercase tracking-wider text-gray-500 px-2">
+                    Products
+                  </p>
+                  
+                  {/* All Products Link */}
+                  <Link
+                    href="/categories/all?tab=categories"
+                    className="block px-4 py-2.5 text-sm font-semibold text-[var(--clr-primary)] hover:bg-[var(--clr-bg-gray)] rounded-xl"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    All Products
+                  </Link>
+                  
+                  {megaMenuColumns.map((column, idx) => (
+                    <div key={idx} className="space-y-1">
+                      <div className="flex items-center justify-between px-2">
+                        <p className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                          {column.title}
+                        </p>
+                        {/* <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleViewAll(e, column.tabId);
+                            setMobileOpen(false);
+                          }}
+                          className="text-[9px] font-bold uppercase tracking-wider"
+                          style={{ color: column.color }}
+                        >
+                          View All
+                        </button> */}
+                      </div>
+                      {column.data?.slice(0, 6).map((item: any) => (
+                        <Link
+                          key={item.slug}
+                          href={`/categories/${item.slug}?tab=${column.tabId}`}
+                          className="block px-4 py-2 text-sm text-gray-600 hover:text-[var(--clr-primary)] hover:bg-[var(--clr-bg-gray)] rounded-lg"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Divider */}
+                <div className="h-px bg-gray-200 my-2" />
+
+                {/* Main Nav Links */}
                 {mainNavItems.map((item) => (
                   <Link
                     key={item.label}
@@ -188,6 +334,7 @@ export default function Navbar() {
                 <Link
                   href="/brochure"
                   className="block text-center bg-[var(--clr-primary)] hover:bg-[var(--clr-secondary)] text-white font-bold py-3 rounded-xl transition"
+                  onClick={() => setMobileOpen(false)}
                 >
                   Download Brochure
                 </Link>

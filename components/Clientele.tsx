@@ -1,15 +1,29 @@
-'use client';
+"use client";
 
-
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const clients = [
-  { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" },
-  { name: "Google",    logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
-  { name: "Amazon",   logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
-  { name: "Netflix",  logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
-  { name: "Nike",     logo: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" },
+  {
+    name: "Microsoft",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+  },
+  {
+    name: "Google",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+  },
+  {
+    name: "Amazon",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+  },
+  {
+    name: "Netflix",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
+  },
+  {
+    name: "Nike",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg",
+  },
 ];
 
 const ClientSection = () => {
@@ -36,7 +50,9 @@ const ClientSection = () => {
             Trusted by <span className="text-[#0093cb]">industry leader</span>
           </h2>
           <p className="text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)]">
-            From startups to Fortune 500 companies, we help businesses create gifting experiences that leave lasting impressions.
+            Trusted by pharmaceutical brands nationwide. Supporting impactful
+            doctor engagement solutions. Our clients trust us to deliver
+            results. We deliver with precision and consistency.
           </p>
         </motion.div>
       </div>
@@ -50,7 +66,12 @@ const ClientSection = () => {
               className="flex-shrink-0 flex items-center justify-center px-12 h-[72px] border-r border-[rgba(0,147,203,0.12)]"
             >
               <div className="relative h-7 w-28  transition-all duration-300">
-                <Image src={c.logo} alt={c.name} fill className="object-contain" />
+                <Image
+                  src={c.logo}
+                  alt={c.name}
+                  fill
+                  className="object-contain"
+                />
               </div>
             </div>
           ))}

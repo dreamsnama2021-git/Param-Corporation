@@ -231,7 +231,6 @@ const VisionSection = () => {
   return (
     <section className="py-12 relative">
       <div className="relative max-w-7xl mx-auto px-6">
-        
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -251,14 +250,13 @@ const VisionSection = () => {
           </h2>
 
           <p className="text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)]">
-            Guiding principles that shape our approach to corporate gifting 
-            and client relationships
+            Guiding principles that shape our approach to corporate gifting and
+            client relationships
           </p>
         </motion.div>
 
         {/* Cards Container */}
         <div className="grid lg:grid-cols-2 gap-5 lg:gap-6">
-          
           {/* Vision Card */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -268,47 +266,49 @@ const VisionSection = () => {
             className="group"
           >
             <div className="relative h-full min-h-[280px] bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl flex flex-col">
-              
               {/* Decorative Elements */}
               <div className="absolute top-0 right-0 w-40 h-40 bg-[var(--clr-primary)]/5 rounded-full blur-2xl" />
-              
+
               {/* Decorative Letter */}
               <div className="absolute bottom-0 right-0 text-[100px] font-black text-[var(--clr-primary)]/[0.04] leading-none select-none pointer-events-none">
                 V
               </div>
-              
+
               {/* Content */}
               <div className="relative z-10 flex-1 flex flex-col p-6">
-                
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-lg bg-[var(--clr-primary)]/10 flex items-center justify-center">
-                    <Target className="text-[var(--clr-primary)]" size={18} strokeWidth={1.5} />
+                    <Target
+                      className="text-[var(--clr-primary)]"
+                      size={18}
+                      strokeWidth={1.5}
+                    />
                   </div>
                   <div>
                     <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-[var(--clr-primary)] block mb-0.5">
                       01 / Vision
                     </span>
                     <h3 className="text-base font-bold text-[var(--clr-text-dark)]">
-                      The Future We See
+                      Creating Meaningful Brand Connections
                     </h3>
                   </div>
                 </div>
-                
+
                 {/* Quote */}
                 <div className="mb-2">
                   <p className="text-sm font-medium text-[var(--clr-text-dark)] italic">
                     "Every gift, a conversation starter"
                   </p>
                 </div>
-                
+
                 {/* Description */}
                 <p className="text-[var(--clr-text-muted)] text-xs leading-relaxed mb-3 flex-1">
-                  We envision a world where corporate gifting transcends 
-                  transactions — becoming a language of appreciation that 
-                  bridges cultures and builds lasting relationships.
+                  To become a trusted partner for pharmaceutical brands by
+                  delivering innovative gifting solutions that create lasting
+                  impressions and real engagement.
                 </p>
-                
+
                 {/* Footer */}
                 <div className="flex items-center justify-between pt-3 border-t border-slate-100">
                   <span className="text-[10px] font-medium text-slate-500">
@@ -316,8 +316,18 @@ const VisionSection = () => {
                   </span>
                   <div className="flex items-center gap-2 text-[var(--clr-primary)] font-semibold text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
                     <span>Learn More</span>
-                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <svg
+                      className="w-3 h-3"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
                     </svg>
                   </div>
                 </div>
@@ -334,47 +344,49 @@ const VisionSection = () => {
             className="group"
           >
             <div className="relative h-full min-h-[280px] bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl flex flex-col">
-              
               {/* Decorative Elements */}
               <div className="absolute top-0 right-0 w-40 h-40 bg-[var(--clr-secondary)]/5 rounded-full blur-2xl" />
-              
+
               {/* Decorative Letter */}
               <div className="absolute bottom-0 right-0 text-[100px] font-black text-[var(--clr-secondary)]/[0.04] leading-none select-none pointer-events-none">
                 M
               </div>
-              
+
               {/* Content */}
               <div className="relative z-10 flex-1 flex flex-col p-6">
-                
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-lg bg-[var(--clr-secondary)]/10 flex items-center justify-center">
-                    <Gift className="text-[var(--clr-secondary)]" size={18} strokeWidth={1.5} />
+                    <Gift
+                      className="text-[var(--clr-secondary)]"
+                      size={18}
+                      strokeWidth={1.5}
+                    />
                   </div>
                   <div>
                     <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-[var(--clr-secondary)] block mb-0.5">
                       02 / Mission
                     </span>
                     <h3 className="text-base font-bold text-[var(--clr-text-dark)]">
-                      What We Strive For
+                      Driven by Purpose. Focused on Results.
                     </h3>
                   </div>
                 </div>
-                
+
                 {/* Quote */}
                 <div className="mb-2">
                   <p className="text-sm font-medium text-[var(--clr-text-dark)] italic">
                     "Engineering delight through design"
                   </p>
                 </div>
-                
+
                 {/* Description */}
                 <p className="text-[var(--clr-text-muted)] text-xs leading-relaxed mb-3 flex-1">
-                  We combine data-driven insights with creative intuition to 
-                  craft gifting experiences that resonate emotionally while 
-                  delivering measurable business impact.
+                  To design and deliver high-quality, customized gifting
+                  solutions that add value, improve brand communication, and
+                  consistently exceed client expectations.
                 </p>
-                
+
                 {/* Footer */}
                 <div className="flex items-center justify-between pt-3 border-t border-slate-100">
                   <span className="text-[10px] font-medium text-slate-500">
@@ -382,15 +394,24 @@ const VisionSection = () => {
                   </span>
                   <div className="flex items-center gap-2 text-[var(--clr-secondary)] font-semibold text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
                     <span>Learn More</span>
-                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <svg
+                      className="w-3 h-3"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
                     </svg>
                   </div>
                 </div>
               </div>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>
@@ -439,7 +460,6 @@ const WhyUsSection = () => {
   return (
     <section className="relative py-12 lg:py-12">
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -464,7 +484,7 @@ const WhyUsSection = () => {
             lasting connections.
           </p>
         </motion.div>
-        
+
         {/* Cards Grid - 4 Columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {reasons.map((item, idx) => (
@@ -490,7 +510,11 @@ const WhyUsSection = () => {
                     <div
                       className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center shadow-md transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}
                     >
-                      <item.icon className="text-white" size={22} strokeWidth={1.5} />
+                      <item.icon
+                        className="text-white"
+                        size={22}
+                        strokeWidth={1.5}
+                      />
                     </div>
                   </div>
 
@@ -538,19 +562,22 @@ const TeamSection = () => {
     {
       name: "Rajesh Sharma",
       role: "Founder & CEO",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
       delay: 0,
     },
     {
       name: "Priya Patel",
       role: "Creative Director",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+      image:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
       delay: 0.1,
     },
     {
       name: "Amit Kumar",
       role: "Head of Operations",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
       delay: 0.2,
     },
   ];
@@ -558,7 +585,6 @@ const TeamSection = () => {
   return (
     <section className="py-12 relative">
       <div className="relative max-w-[1500px] mx-auto px-6">
-        
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -578,7 +604,8 @@ const TeamSection = () => {
           </h2>
 
           <p className="text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)]">
-            Passionate professionals driving innovation in corporate gifting
+            Experts in Pharma Gifting Delivering solutions aligned with doctor
+            preferences and pharma campaign goals.
           </p>
         </motion.div>
 
@@ -600,19 +627,17 @@ const TeamSection = () => {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                
+
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
-                
+
                 {/* Hover Content */}
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
                   <div className="transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <h3 className="text-lg font-bold text-white mb-1">
                       {member.name}
                     </h3>
-                    <p className="text-sm text-white/80">
-                      {member.role}
-                    </p>
+                    <p className="text-sm text-white/80">{member.role}</p>
                   </div>
                 </div>
               </div>
@@ -858,7 +883,7 @@ export default function AboutUsPage() {
 
       {/* Why Us */}
       <WhyUsSection />
-      
+
       {/* Vision & Mission */}
       <VisionSection />
 

@@ -39,9 +39,9 @@ interface FloatingShapeProps {
 const stats: Stat[] = [
   {
     id: 1,
-    value: 500,
-    suffix: "+",
-    label: "Happy Clients",
+    value: 98,
+    suffix: "%",
+    label: "Clients Satisfaction Rate",
     subtext: "Trusted Partners",
     icon: Users,
     gradient: "from-[#0093cb] to-[#0077b6]",
@@ -50,8 +50,8 @@ const stats: Stat[] = [
   },
   {
     id: 2,
-    value: 50,
-    suffix: "K",
+    value: 500,
+    suffix: "+",
     label: "Products Delivered",
     subtext: "And Counting",
     icon: PackageCheck,
@@ -61,9 +61,9 @@ const stats: Stat[] = [
   },
   {
     id: 3,
-    value: 12,
+    value: 50000,
     suffix: "+",
-    label: "Years Experience",
+    label: "Patients Reached",
     subtext: "Industry Leaders",
     icon: Clock,
     gradient: "from-[#8bde7a] to-[#6bc952]",
@@ -281,7 +281,7 @@ export default function CreativeStatsSection(): React.ReactElement {
             transition={{ delay: 0.2 }}
             className="text-gray-600 text-lg max-w-2xl mx-auto"
           >
-            Delivering excellence in corporate gifting with measurable results and lasting partnerships
+            Delivering measurable impact through healthcare communication.
           </motion.p>
         </div>
 

@@ -3,11 +3,22 @@
 
 import React, { useMemo, useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { ArrowUpRight, Home, ChevronRight, ChevronLeft, X, ZoomIn } from 'lucide-react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { allProducts, categories, getCategoryBySlug } from '../../data';
+import { 
+  allProducts, 
+  categories, 
+  therapies, 
+  occasions, 
+  personalizedGifts, 
+  digitalGifts,
+  getCategoryBySlug,
+  getOccasionCategories,
+  getMonthCategories,
+  getTherapyCategories
+} from '../../data';
 
 const listingStyles = `
   .listing-container { font-family: system-ui, -apple-system, sans-serif; }
@@ -19,7 +30,43 @@ const listingStyles = `
   .img-card-hover:hover img { transform: scale(1.06); }
   .img-card-hover img { transition: transform 0.5s ease; }
   .thumb-active { border: 2px solid #F5A623 !important; }
+  .tab-active { background: #F5A623; color: #7a3e00; }
+  .tab-inactive { background: transparent; color: #6b7280; }
+  .tab-inactive:hover { background: #f3f4f6; color: #0f172a; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 `;
+
+// Tab configuration
+const TABS = [
+  { id: 'categories', label: 'Categories', color: '#F5A623', path: '/categories' },
+  { id: 'therapy', label: 'Therapy', color: '#10B981', path: '/therapy' },
+  { id: 'personalized', label: 'Personalized Gifts', color: '#8B5CF6', path: '/personalized-gifts' },
+  { id: 'occasion', label: 'Occasion', color: '#EF4444', path: '/occasion' },
+  { id: 'digital', label: 'Digital Gifts', color: '#3B82F6', path: '/digital-gifts' },
+] as const;
+
+type TabId = typeof TABS[number]['id'];
+
+// Get categories based on active tab
+const getCategoriesForTab = (tabId: TabId) => {
+  switch (tabId) {
+    case 'categories': return categories;
+    case 'therapy': return therapies;
+    case 'personalized': return personalizedGifts;
+    case 'occasion': return occasions;
+    case 'digital': return digitalGifts;
+    default: return categories;
+  }
+};
+
+// Get sidebar categories (filtered for occasion tab to show only main occasions)
+const getSidebarCategories = (tabId: TabId) => {
+  if (tabId === 'occasion') {
+    return getOccasionCategories();
+  }
+  return getCategoriesForTab(tabId);
+};
 
 /* ── Ensure minimum 6 images by repeating if needed ── */
 const getProductImages = (product: any): string[] => {
@@ -27,7 +74,6 @@ const getProductImages = (product: any): string[] => {
     ? product.images
     : [product.image];
 
-  // Repeat until we have at least 6
   const result: string[] = [];
   while (result.length < 6) {
     result.push(...base);
@@ -37,8 +83,6 @@ const getProductImages = (product: any): string[] => {
 
 /* ══════════════════════════════════════════
    LIGHTBOX — 2-STEP MODAL
-   Step 1: Grid of all product images
-   Step 2: Single image viewer (click a thumb)
 ══════════════════════════════════════════ */
 function LightboxModal({
   images,
@@ -51,7 +95,6 @@ function LightboxModal({
   productName: string;
   onClose: () => void;
 }) {
-  // null = grid view, number = single image view
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const prev = useCallback(() =>
@@ -63,12 +106,16 @@ function LightboxModal({
     [images.length]
   );
 
+  const handleBackToGrid = useCallback(() => {
+    setActiveIndex(null);
+  }, []);
+
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (activeIndex !== null) {
         if (e.key === 'ArrowLeft') prev();
         if (e.key === 'ArrowRight') next();
-        if (e.key === 'Escape') setActiveIndex(null); // go back to grid
+        if (e.key === 'Escape') setActiveIndex(null);
       } else {
         if (e.key === 'Escape') onClose();
       }
@@ -79,7 +126,13 @@ function LightboxModal({
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    return () => { 
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    };
   }, []);
 
   const isGridView = activeIndex === null;
@@ -90,17 +143,26 @@ function LightboxModal({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[999] flex flex-col"
-        style={{ background: 'rgba(8,8,8,0.97)' }}
+        style={{ 
+          background: 'rgba(8,8,8,0.97)',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: 999999
+        }}
+        className="flex flex-col"
       >
-        {/* ── HEADER ── */}
         <div className="flex items-center justify-between px-6 py-4 flex-shrink-0 border-b border-white/8">
           <div className="flex items-center gap-3">
-            {/* Back to grid button — only in single view */}
-            {!isGridView && (
+            {!isGridView && activeIndex !== null && (
               <button
-                onClick={() => setActiveIndex(null)}
+                onClick={handleBackToGrid}
                 className="flex items-center gap-1.5 text-white/50 hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors mr-2"
+                type="button"
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
                 All Photos
@@ -114,7 +176,6 @@ function LightboxModal({
             </div>
           </div>
 
-          {/* Step indicator pills */}
           <div className="hidden sm:flex items-center gap-2">
             <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all ${
               isGridView ? 'bg-[#F5A623] text-[#7a3e00]' : 'bg-white/10 text-white/40'
@@ -134,12 +195,12 @@ function LightboxModal({
           <button
             onClick={onClose}
             className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#F5A623] flex items-center justify-center transition-colors"
+            type="button"
           >
             <X className="w-4 h-4 text-white" />
           </button>
         </div>
 
-        {/* ══ STEP 1: GRID VIEW ══ */}
         <AnimatePresence mode="wait">
           {isGridView ? (
             <motion.div
@@ -150,12 +211,10 @@ function LightboxModal({
               transition={{ duration: 0.25 }}
               className="flex-1 overflow-y-auto p-6"
             >
-              {/* Hint */}
               <p className="text-center text-white/30 text-[11px] uppercase tracking-widest font-semibold mb-5">
                 Click any image to view full size
               </p>
 
-              {/* Masonry-style grid */}
               <div
                 style={{
                   display: 'grid',
@@ -178,13 +237,13 @@ function LightboxModal({
                       position: 'relative',
                       borderRadius: '12px',
                       overflow: 'hidden',
-                      // Give alternating cards more height for a staggered feel
                       aspectRatio: idx % 3 === 0 ? '4/5' : idx % 3 === 1 ? '1/1' : '4/3',
                       border: '2px solid transparent',
                       cursor: 'pointer',
                       transition: 'border-color 0.2s',
                     }}
                     className="hover:border-[#F5A623]"
+                    type="button"
                   >
                     <Image
                       src={img}
@@ -193,21 +252,6 @@ function LightboxModal({
                       className="object-cover"
                       unoptimized
                     />
-                    {/* Hover overlay */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%)',
-                        display: 'flex',
-                        alignItems: 'flex-end',
-                        padding: '10px',
-                        opacity: 0,
-                        transition: 'opacity 0.25s',
-                      }}
-                      className="img-overlay"
-                    />
-                    {/* Number badge */}
                     <div
                       style={{
                         position: 'absolute',
@@ -220,11 +264,11 @@ function LightboxModal({
                         fontWeight: 700,
                         padding: '2px 8px',
                         borderRadius: 20,
+                        zIndex: 5
                       }}
                     >
                       {idx + 1}
                     </div>
-                    {/* Zoom icon */}
                     <div
                       style={{
                         position: 'absolute',
@@ -234,6 +278,7 @@ function LightboxModal({
                         justifyContent: 'center',
                         opacity: 0,
                         transition: 'opacity 0.25s',
+                        zIndex: 5
                       }}
                       className="zoom-overlay"
                     >
@@ -250,8 +295,7 @@ function LightboxModal({
               </div>
             </motion.div>
 
-          ) : (
-            /* ══ STEP 2: SINGLE IMAGE VIEW ══ */
+          ) : activeIndex !== null ? (
             <motion.div
               key="single"
               initial={{ opacity: 0, scale: 0.97 }}
@@ -260,8 +304,7 @@ function LightboxModal({
               transition={{ duration: 0.25 }}
               className="flex-1 flex flex-col min-h-0"
             >
-              {/* Main image area */}
-              <div className="flex-1 flex items-center justify-center px-14 relative min-h-0">
+              <div className="flex-1 flex items-center justify-center px-4 md:px-14 relative min-h-0">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}
@@ -269,36 +312,39 @@ function LightboxModal({
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -30 }}
                     transition={{ duration: 0.28, ease: 'easeOut' }}
-                    className="relative w-full h-full max-w-2xl"
+                    className="relative w-full h-full max-w-4xl"
                   >
                     <Image
-                      src={images[activeIndex!]}
-                      alt={`${productName} ${activeIndex! + 1}`}
+                      src={images[activeIndex]}
+                      alt={`${productName} ${activeIndex + 1}`}
                       fill
                       className="object-contain"
                       unoptimized
+                      priority
                     />
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Nav arrows */}
                 <button
                   onClick={prev}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-[#F5A623] flex items-center justify-center transition-colors z-10"
+                  className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-[#F5A623] flex items-center justify-center transition-colors"
+                  style={{ zIndex: 1000000 }}
+                  type="button"
                 >
-                  <ChevronLeft className="w-5 h-5 text-white" />
+                  <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </button>
                 <button
                   onClick={next}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-[#F5A623] flex items-center justify-center transition-colors z-10"
+                  className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-[#F5A623] flex items-center justify-center transition-colors"
+                  style={{ zIndex: 1000000 }}
+                  type="button"
                 >
-                  <ChevronRight className="w-5 h-5 text-white" />
+                  <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </button>
               </div>
 
-              {/* Thumbnail strip */}
-              <div className="flex-shrink-0 px-6 pb-5 pt-3">
-                <div className="flex justify-center gap-2 flex-wrap max-w-2xl mx-auto">
+              <div className="flex-shrink-0 px-4 md:px-6 pb-5 pt-3">
+                <div className="flex justify-center gap-2 flex-wrap max-w-4xl mx-auto">
                   {images.map((img, i) => (
                     <motion.button
                       key={i}
@@ -306,9 +352,9 @@ function LightboxModal({
                       whileHover={{ scale: 1.08 }}
                       whileTap={{ scale: 0.95 }}
                       style={{
-                        width: 56,
-                        height: 56,
-                        borderRadius: 10,
+                        width: 48,
+                        height: 48,
+                        borderRadius: 8,
                         overflow: 'hidden',
                         position: 'relative',
                         flexShrink: 0,
@@ -316,14 +362,16 @@ function LightboxModal({
                         opacity: i === activeIndex ? 1 : 0.45,
                         transition: 'all 0.2s',
                       }}
+                      className="md:w-14 md:h-14"
+                      type="button"
                     >
-                      <Image src={img} alt="" fill className="object-cover" unoptimized />
+                      <Image src={img} alt={`Thumbnail ${i + 1}`} fill className="object-cover" unoptimized />
                     </motion.button>
                   ))}
                 </div>
               </div>
             </motion.div>
-          )}
+          ) : null}
         </AnimatePresence>
       </motion.div>
     </AnimatePresence>
@@ -376,8 +424,7 @@ function ThreeCardGallery({ images, productName }: { images: string[]; productNa
 
   return (
     <>
-      <div className="relative select-none">
-        {/* Viewport */}
+      <div className="relative select-none" style={{ zIndex: 1 }}>
         <div
           className="overflow-hidden rounded-2xl"
           onPointerDown={onPointerDown}
@@ -418,17 +465,14 @@ function ThreeCardGallery({ images, productName }: { images: string[]; productNa
                   draggable={false}
                 />
 
-                {/* Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
-                {/* Zoom icon on hover */}
                 <div className="zoom-icon absolute inset-0 flex items-center justify-center">
                   <div className="w-10 h-10 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
                     <ZoomIn className="w-4 h-4 text-[#0f172a]" />
                   </div>
                 </div>
 
-                {/* Counter badge */}
                 <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
                   {idx + 1} / {images.length}
                 </div>
@@ -437,11 +481,12 @@ function ThreeCardGallery({ images, productName }: { images: string[]; productNa
           </div>
         </div>
 
-        {/* Arrows */}
         {offset > 0 && (
           <button
             onClick={() => goTo(-1)}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-lg flex items-center justify-center z-10 hover:bg-[#F5A623] hover:text-white transition-colors"
+            className="absolute -left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-[#F5A623] hover:text-white transition-colors"
+            style={{ zIndex: 10 }}
+            type="button"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -449,13 +494,14 @@ function ThreeCardGallery({ images, productName }: { images: string[]; productNa
         {offset < maxOffset && (
           <button
             onClick={() => goTo(1)}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-lg flex items-center justify-center z-10 hover:bg-[#F5A623] hover:text-white transition-colors"
+            className="absolute -right-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-[#F5A623] hover:text-white transition-colors"
+            style={{ zIndex: 10 }}
+            type="button"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
         )}
 
-        {/* Dots */}
         {maxOffset > 0 && (
           <div className="flex justify-center gap-2 mt-4">
             {Array.from({ length: maxOffset + 1 }).map((_, i) => (
@@ -465,18 +511,17 @@ function ThreeCardGallery({ images, productName }: { images: string[]; productNa
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   offset === i ? 'w-6 bg-[#F5A623]' : 'w-1.5 bg-slate-300 hover:bg-slate-400'
                 }`}
+                type="button"
               />
             ))}
           </div>
         )}
 
-        {/* "Click to view gallery" hint */}
         <p className="text-center text-[10px] text-slate-400 font-medium mt-2 uppercase tracking-widest">
           Click any image to open gallery
         </p>
       </div>
 
-      {/* Lightbox */}
       {lightboxIndex !== null && (
         <LightboxModal
           images={images}
@@ -492,7 +537,7 @@ function ThreeCardGallery({ images, productName }: { images: string[]; productNa
 /* ══════════════════════════════════════════
    PRODUCT LISTING ITEM
 ══════════════════════════════════════════ */
-function ProductListingItem({ product, index }: { product: any; index: number }) {
+function ProductListingItem({ product, index, accentColor }: { product: any; index: number; accentColor: string }) {
   const formattedIndex = String(index + 1).padStart(2, '0');
   const productImages = getProductImages(product);
 
@@ -503,23 +548,23 @@ function ProductListingItem({ product, index }: { product: any; index: number })
       viewport={{ once: true, margin: '-50px' }}
       className="mb-24 lg:mb-32"
     >
-      {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-3">
-          <span className="text-xs font-bold text-[#F5A623] tracking-wider">{formattedIndex}</span>
-          <div className="h-px w-10 bg-gradient-to-r from-[#F5A623] to-transparent" />
+          <span className="text-xs font-bold tracking-wider" style={{ color: accentColor }}>{formattedIndex}</span>
+          <div className="h-px w-10 bg-gradient-to-r to-transparent" style={{ backgroundColor: accentColor }} />
         </div>
         <h2 className="text-3xl lg:text-4xl font-serif italic text-[#0f172a] mb-3">
           {product.name}
         </h2>
-        <div className="h-px w-16 bg-[#F5A623] mb-4" />
+        <div className="h-px w-16 mb-4" style={{ backgroundColor: accentColor }} />
         <div className="flex items-start justify-between gap-6 flex-wrap">
           <p className="text-[#6b7280] max-w-xl leading-relaxed text-sm">
             {product.description || 'Premium quality product crafted with precision and care for exceptional results.'}
           </p>
           <Link
             href={`/product/${product.id}`}
-            className="inline-flex items-center gap-2 bg-[#0f172a] hover:bg-[#F5A623] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-colors duration-300 flex-shrink-0"
+            className="inline-flex items-center gap-2 bg-[#0f172a] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-colors duration-300 flex-shrink-0"
+            style={{ ':hover': { backgroundColor: accentColor } } as any}
           >
             View Details
             <ArrowUpRight className="w-4 h-4" />
@@ -527,27 +572,71 @@ function ProductListingItem({ product, index }: { product: any; index: number })
         </div>
       </div>
 
-      {/* Gallery */}
       <ThreeCardGallery images={productImages} productName={product.name} />
     </motion.div>
   );
 }
 
 /* ══════════════════════════════════════════
-   PAGE
+   PAGE COMPONENT
 ══════════════════════════════════════════ */
 export default function CategoryPage() {
   const params = useParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  
   const slug = params?.slug as string | undefined;
+  const tabParam = searchParams.get('tab') as TabId | null;
+  
+  // Determine active tab
+  const activeTab: TabId = useMemo(() => {
+    if (tabParam && TABS.some(t => t.id === tabParam)) return tabParam;
+    
+    if (slug) {
+      if (categories.some(c => c.slug === slug)) return 'categories';
+      if (therapies.some(t => t.slug === slug)) return 'therapy';
+      if (personalizedGifts.some(p => p.slug === slug)) return 'personalized';
+      if (occasions.some(o => o.slug === slug)) return 'occasion';
+      if (digitalGifts.some(d => d.slug === slug)) return 'digital';
+    }
+    
+    return 'categories';
+  }, [slug, tabParam]);
+
   const isAllProducts = !slug || slug === 'all';
+  const activeTabColor = TABS.find(t => t.id === activeTab)?.color || '#F5A623';
+  const activeTabPath = TABS.find(t => t.id === activeTab)?.path || '/categories';
 
+  // Get all categories for the active tab
+  const tabCategories = useMemo(() => getCategoriesForTab(activeTab), [activeTab]);
+  
+  // Get sidebar categories
+  const sidebarCategories = useMemo(() => getSidebarCategories(activeTab), [activeTab]);
+
+  // Filter products
   const filteredProducts = useMemo(() => {
-    if (isAllProducts) return allProducts.filter(p => categories.some(cat => cat.slug === p.category));
+    if (isAllProducts) {
+      return allProducts.filter(p => tabCategories.some(cat => cat.slug === p.category));
+    }
     return allProducts.filter(p => p.category === slug);
-  }, [slug, isAllProducts]);
+  }, [slug, isAllProducts, tabCategories]);
 
-  const currentCategory = getCategoryBySlug(slug || '');
+  const currentCategory = isAllProducts ? null : tabCategories.find(c => c.slug === slug);
+
+  // Handle tab change
+  const handleTabChange = (tabId: TabId) => {
+    const firstCategory = getCategoriesForTab(tabId)[0];
+    if (firstCategory) {
+      router.push(`/categories/${firstCategory.slug}?tab=${tabId}`);
+    } else {
+      router.push(`/categories/all?tab=${tabId}`);
+    }
+  };
+
+  // Handle category selection
+  const handleCategorySelect = (catSlug: string) => {
+    router.push(`/categories/${catSlug}?tab=${activeTab}`);
+  };
 
   return (
     <>
@@ -565,72 +654,165 @@ export default function CategoryPage() {
             </svg>
           </div>
           <div className="relative max-w-7xl mx-auto px-6">
-            <nav className="flex items-center gap-2 text-xs uppercase tracking-wider text-white/60 mb-8">
+            <nav className="flex items-center gap-2 text-xs uppercase tracking-wider text-white/60 mb-8 flex-wrap">
               <Link href="/" className="hover:text-white flex items-center gap-1.5 transition-colors">
                 <Home className="w-3 h-3" /> Home
               </Link>
               <ChevronRight className="w-3 h-3" />
-              <span className="text-[#F5A623] font-medium">
-                {isAllProducts ? 'All Categories' : currentCategory?.name || 'Products'}
+              <Link href="/categories/all" className="hover:text-white transition-colors">
+                Products
+              </Link>
+              <ChevronRight className="w-3 h-3" />
+              <span className="text-white/80">
+                {TABS.find(t => t.id === activeTab)?.label}
               </span>
+              {!isAllProducts && currentCategory && (
+                <>
+                  <ChevronRight className="w-3 h-3" />
+                  <span className="font-medium" style={{ color: activeTabColor }}>
+                    {currentCategory.name}
+                  </span>
+                </>
+              )}
             </nav>
             <h1 className="text-4xl lg:text-5xl font-serif italic text-white">
-              {isAllProducts ? 'Our Collection' : currentCategory?.name}
+              {isAllProducts ? `All ${TABS.find(t => t.id === activeTab)?.label}` : currentCategory?.name}
             </h1>
+            <p className="text-white/60 mt-3 max-w-2xl">
+              {isAllProducts 
+                ? `Explore our complete collection of ${TABS.find(t => t.id === activeTab)?.label.toLowerCase()}`
+                : currentCategory?.description || 'Premium quality products for your needs'}
+            </p>
           </div>
         </section>
+
+        {/* Tab Navigation */}
+        <div className="border-b border-gray-200 bg-white sticky top-[72px] z-30">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex items-center gap-1 overflow-x-auto pb-0.5 scrollbar-hide">
+              {TABS.map(tab => (
+                <button
+                  key={tab.id}
+                  onClick={() => handleTabChange(tab.id)}
+                  className={`px-5 py-3.5 text-sm font-semibold whitespace-nowrap transition-all duration-200 border-b-2 ${
+                    activeTab === tab.id
+                      ? 'border-current text-[#0f172a]'
+                      : 'border-transparent text-[#6b7280] hover:text-[#0f172a] hover:border-gray-300'
+                  }`}
+                  style={{ 
+                    color: activeTab === tab.id ? tab.color : undefined,
+                    borderBottomColor: activeTab === tab.id ? tab.color : undefined
+                  }}
+                  type="button"
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
 
         {/* Content */}
         <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
 
             {/* Sidebar */}
-            <aside className="lg:w-56 bg-gray-100 h-fit p-2 flex-shrink-0">
-              <div className="sticky top-8">
-                <div className="flex items-center gap-2 mb-6">
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#6b7280]">Categories</span>
-                  <div className="h-px flex-1 bg-gradient-to-r from-[#F5A623]/30 to-transparent" />
+            <aside className="lg:w-64 flex-shrink-0">
+              <div className="sticky top-[140px]">
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#6b7280]">
+                    {TABS.find(t => t.id === activeTab)?.label}
+                  </span>
+                  <div className="h-px flex-1 bg-gradient-to-r from-current/30 to-transparent" style={{ color: activeTabColor }} />
                 </div>
-                <div className="flex flex-col space-y-1">
+                
+                <div className="flex flex-col space-y-0.5 max-h-[calc(100vh-200px)] overflow-y-auto pr-2">
                   <button
-                    onClick={() => router.push('/categories/all')}
-                    className={`category-item group text-left py-2.5 px-3 rounded-lg transition-all ${
-                      isAllProducts ? 'bg-[#F5A623]/10 text-[#b45309] font-medium' : 'text-[#6b7280] hover:text-[#0f172a] hover:bg-orange-50'
+                    onClick={() => router.push(`/categories/all?tab=${activeTab}`)}
+                    className={`category-item group text-left py-3 px-4 rounded-xl transition-all ${
+                      isAllProducts 
+                        ? 'font-semibold' 
+                        : 'text-[#6b7280] hover:text-[#0f172a] hover:bg-gray-100'
                     }`}
+                    style={isAllProducts ? { backgroundColor: `${activeTabColor}20`, color: '#0f172a' } : {}}
+                    type="button"
                   >
-                    <div className="flex items-center justify-between px-2">
-                      <span>All Categories</span>
-                      {isAllProducts && <ArrowUpRight className="category-arrow w-3.5 h-3.5 text-[#F5A623]" />}
+                    <div className="flex items-center justify-between">
+                      <span>All {TABS.find(t => t.id === activeTab)?.label}</span>
+                      {isAllProducts && (
+                        <span className="text-xs px-2 py-0.5 rounded-full text-white" style={{ backgroundColor: activeTabColor }}>
+                          {filteredProducts.length}
+                        </span>
+                      )}
                     </div>
                   </button>
-                  {categories.map(cat => (
-                    <button
-                      key={cat.slug}
-                      onClick={() => router.push(`/categories/${cat.slug}`)}
-                      className={`category-item group text-left py-2.5 px-3 rounded-lg transition-all ${
-                        slug === cat.slug ? 'bg-[#F5A623]/10 text-[#b45309] font-medium' : 'text-[#6b7280] hover:text-[#0f172a] hover:bg-orange-50'
-                      }`}
-                    >
-                      <div className="flex items-center px-2 justify-between">
-                        <span>{cat.name}</span>
-                        {slug === cat.slug && <ArrowUpRight className="category-arrow w-3.5 h-3.5 text-[#F5A623]" />}
-                      </div>
-                    </button>
-                  ))}
+                  
+                  {sidebarCategories.map(cat => {
+                    const count = allProducts.filter(p => p.category === cat.slug).length;
+                    const isActive = slug === cat.slug;
+                    
+                    return (
+                      <button
+                        key={cat.slug}
+                        onClick={() => handleCategorySelect(cat.slug)}
+                        className={`category-item group text-left py-3 px-4 rounded-xl transition-all ${
+                          isActive 
+                            ? 'font-semibold' 
+                            : 'text-[#6b7280] hover:text-[#0f172a] hover:bg-gray-100'
+                        }`}
+                        style={isActive ? { backgroundColor: `${activeTabColor}20`, color: '#0f172a' } : {}}
+                        type="button"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="truncate pr-2">{cat.name}</span>
+                          <span className={`text-xs px-2 py-0.5 rounded-full transition-colors ${
+                            isActive ? 'text-white' : 'bg-gray-200 text-[#6b7280] group-hover:bg-gray-300'
+                          }`} style={isActive ? { backgroundColor: activeTabColor } : {}}>
+                            {count}
+                          </span>
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </aside>
 
             {/* Listings */}
-            <main className="flex-1">
+            <main className="flex-1 min-w-0">
               {filteredProducts.length === 0 ? (
                 <div className="text-center py-20">
-                  <p className="text-[#6b7280]">No products found in this category.</p>
+                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
+                    <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 12H4M12 4v16" />
+                    </svg>
+                  </div>
+                  <p className="text-[#6b7280] text-lg">No products found in this category.</p>
+                  <button
+                    onClick={() => router.push(`/categories/all?tab=${activeTab}`)}
+                    className="mt-4 text-sm font-medium px-4 py-2 rounded-full transition-colors"
+                    style={{ color: activeTabColor }}
+                    type="button"
+                  >
+                    View all {TABS.find(t => t.id === activeTab)?.label}
+                  </button>
                 </div>
               ) : (
-                filteredProducts.map((product, idx) => (
-                  <ProductListingItem key={product.id} product={product} index={idx} />
-                ))
+                <>
+                  <div className="mb-6 flex items-center justify-between">
+                    <p className="text-sm text-[#6b7280]">
+                      Showing <span className="font-semibold text-[#0f172a]">{filteredProducts.length}</span> products
+                    </p>
+                  </div>
+                  {filteredProducts.map((product, idx) => (
+                    <ProductListingItem 
+                      key={product.id} 
+                      product={product} 
+                      index={idx} 
+                      accentColor={activeTabColor}
+                    />
+                  ))}
+                </>
               )}
             </main>
           </div>

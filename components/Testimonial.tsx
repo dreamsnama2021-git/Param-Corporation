@@ -129,7 +129,7 @@ const TestimonialCards = () => {
   return (
     <section className="py-10 md:py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-       <motion.div
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -138,11 +138,11 @@ const TestimonialCards = () => {
         >
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 flex items-center justify-center gap-2 text-[#639922]">
             <span className="inline-block w-6 h-[1.5px] bg-[#639922]" />
-             Client testimonials
+            Client testimonials
             <span className="inline-block w-6 h-[1.5px] bg-[#639922]" />
           </p>
           <h2 className="ui-h1 font-extrabold tracking-tight mb-3 text-[var(--clr-text-dark)]">
-                Trusted by{" "}
+            Trusted by{" "}
             <span
               style={{
                 background: "linear-gradient(90deg, #3B6D11, #0F6E56)",
@@ -230,11 +230,11 @@ export const TestimonialCardsVariant = () => {
         >
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 flex items-center justify-center gap-2 text-[#639922]">
             <span className="inline-block w-6 h-[1.5px] bg-[#639922]" />
-             Client testimonials
+            Client testimonials
             <span className="inline-block w-6 h-[1.5px] bg-[#639922]" />
           </p>
           <h2 className="ui-h1 capitalize font-extrabold tracking-tight mb-3 text-[var(--clr-text-dark)]">
-                Trusted By{" "}
+            Trusted By{" "}
             <span
               style={{
                 background: "linear-gradient(90deg, #3B6D11, #0F6E56)",
@@ -390,8 +390,8 @@ export const TestimonialCardsVariant2 = () => {
     <section className="py-16 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ── Header ───────────────────────────────────────────────────────── */}
-     
-         <motion.div
+
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -400,11 +400,11 @@ export const TestimonialCardsVariant2 = () => {
         >
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 flex items-center justify-center gap-2 text-[#639922]">
             <span className="inline-block w-6 h-[1.5px] bg-[#639922]" />
-             Client testimonials
+            Client testimonials
             <span className="inline-block w-6 h-[1.5px] bg-[#639922]" />
           </p>
           <h2 className="ui-h1 font-extrabold capitalize tracking-tight mb-3 text-[var(--clr-text-dark)]">
-                Trusted by{" "}
+            Trusted by{" "}
             <span
               style={{
                 background: "linear-gradient(90deg, #3B6D11, #0F6E56)",
@@ -418,7 +418,7 @@ export const TestimonialCardsVariant2 = () => {
           </h2>
           <p className="text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)]">
             Procurement leaders and HR directors rely on us to deliver curated
-            gifting — at scale, without compromise.
+            gifting — at scale, without compromise
           </p>
         </motion.div>
         {/* ── Grid: Uniform 2x2 ────────────────────────────────────────────── */}
