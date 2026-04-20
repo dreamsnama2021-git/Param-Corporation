@@ -158,24 +158,6 @@ function ProductCard({ item }: { item: ProductItem }) {
 }
 
 
-// ─── Product card ─────────────────────────────────────────────────────────────
-function ProductCard({ item }) {
-  return (
-    <div className="group p-3 sm:p-4 bg-white rounded-[24px] sm:rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(0,147,203,0.15)] transition-all duration-500 border border-slate-100 flex flex-col h-full">
-      <div className="relative h-48 sm:h-52 w-full rounded-[16px] sm:rounded-[20px] overflow-hidden mb-4 sm:mb-5">
-        <img src={item.img} alt={item.title} className="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
-        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[9px] font-bold text-[#3972b7] uppercase">
-          MediPride
-        </div>
-      </div>
-      <div className="px-2 sm:px-3 pb-3 sm:pb-4 flex flex-col flex-grow">
-        <h4 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 leading-tight">{item.title}</h4>
-        <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
-      </div>
-    </div>
-  );
-}
-
 export default function MediPrideLanding() {
   return (
     <div className="text-slate-800 font-sans scroll-smooth bg-white">
