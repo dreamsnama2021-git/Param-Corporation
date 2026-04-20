@@ -14,9 +14,17 @@ const SERVICES = [
   { title: "Clinical Tools", desc: "Interactive educational charts, mats, and scales for real-world medical use.", icon: <Activity size={28} /> },
 ];
 
+// ─── Define the types for the props ───────────────────────────
+interface SwipeCarouselProps {
+  children: React.ReactNode;
+  count: number;
+  accentColor?: string;
+}
+
 // ─── Reusable swipe carousel (mobile + tablet only) ───────────────────────────
-function SwipeCarousel({ children, count, accentColor = "#0093cb" }) {
-  const trackRef = useRef(null);
+function SwipeCarousel({ children, count, accentColor = "#0093cb" }: SwipeCarouselProps) {
+  // Specify that the ref is for a Div element
+  const trackRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
 
   const handleScroll = () => {
@@ -26,7 +34,8 @@ function SwipeCarousel({ children, count, accentColor = "#0093cb" }) {
     setActiveIdx(Math.min(Math.round(el.scrollLeft / cardWidth), count - 1));
   };
 
-  const scrollTo = (idx) => {
+  // Explicitly type 'idx' as a number
+  const scrollTo = (idx: number) => {
     const el = trackRef.current;
     if (!el) return;
     const cardWidth = el.scrollWidth / count;
