@@ -72,10 +72,22 @@ const SERVICES = [
   { title: "Concept-Based Healthcare Communication", desc: "Creative communication ideas built around therapy, brand, and patient understanding.", icon: <Lightbulb size={28} /> },
 ];
 
+// ─── Define Types ─────────────────────────────────────────────────────────────
+interface SwipeCarouselProps {
+  children: React.ReactNode;
+  count: number;
+  accentColor?: string;
+}
+
+interface ProductItem {
+  title: string;
+  desc: string;
+  img: string;
+}
+
 // ─── Reusable swipe carousel (mobile + tablet only) ───────────────────────────
-// Pure CSS scroll-snap — zero dependencies.
-function SwipeCarousel({ children, count, accentColor = "#3972b7" }) {
-  const trackRef = useRef(null);
+function SwipeCarousel({ children, count, accentColor = "#3972b7" }: SwipeCarouselProps) {
+  const trackRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
 
   const handleScroll = () => {
@@ -85,7 +97,7 @@ function SwipeCarousel({ children, count, accentColor = "#3972b7" }) {
     setActiveIdx(Math.min(Math.round(el.scrollLeft / cardWidth), count - 1));
   };
 
-  const scrollTo = (idx) => {
+  const scrollTo = (idx: number) => {
     const el = trackRef.current;
     if (!el) return;
     const cardWidth = el.scrollWidth / count;
@@ -95,7 +107,6 @@ function SwipeCarousel({ children, count, accentColor = "#3972b7" }) {
 
   return (
     <div className="block lg:hidden">
-      {/* Hide scrollbar cross-browser */}
       <style>{`
         .swipe-track::-webkit-scrollbar { display: none; }
         .swipe-track { -ms-overflow-style: none; scrollbar-width: none; }
@@ -109,7 +120,6 @@ function SwipeCarousel({ children, count, accentColor = "#3972b7" }) {
         {children}
       </div>
 
-      {/* Pill dot indicators */}
       {count > 1 && (
         <div className="flex justify-center gap-2 mt-4">
           {Array.from({ length: count }).map((_, i) => (
@@ -128,6 +138,25 @@ function SwipeCarousel({ children, count, accentColor = "#3972b7" }) {
     </div>
   );
 }
+
+// ─── Product card ─────────────────────────────────────────────────────────────
+function ProductCard({ item }: { item: ProductItem }) {
+  return (
+    <div className="group p-3 sm:p-4 bg-white rounded-[24px] sm:rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(0,147,203,0.15)] transition-all duration-500 border border-slate-100 flex flex-col h-full">
+      <div className="relative h-48 sm:h-52 w-full rounded-[16px] sm:rounded-[20px] overflow-hidden mb-4 sm:mb-5">
+        <img src={item.img} alt={item.title} className="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[9px] font-bold text-[#3972b7] uppercase">
+          MediPride
+        </div>
+      </div>
+      <div className="px-2 sm:px-3 pb-3 sm:pb-4 flex flex-col flex-grow">
+        <h4 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 leading-tight">{item.title}</h4>
+        <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
+      </div>
+    </div>
+  );
+}
+
 
 // ─── Product card ─────────────────────────────────────────────────────────────
 function ProductCard({ item }) {
