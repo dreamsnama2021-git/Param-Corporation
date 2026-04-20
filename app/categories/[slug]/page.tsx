@@ -473,9 +473,9 @@ function ThreeCardGallery({ images, productName }: { images: string[]; productNa
                   </div>
                 </div>
 
-                <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
+                {/* <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
                   {idx + 1} / {images.length}
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
@@ -517,9 +517,9 @@ function ThreeCardGallery({ images, productName }: { images: string[]; productNa
           </div>
         )}
 
-        <p className="text-center text-[10px] text-slate-400 font-medium mt-2 uppercase tracking-widest">
+        {/* <p className="text-center text-[10px] text-slate-400 font-medium mt-2 uppercase tracking-widest">
           Click any image to open gallery
-        </p>
+        </p> */}
       </div>
 
       {lightboxIndex !== null && (
@@ -546,23 +546,23 @@ function ProductListingItem({ product, index, accentColor }: { product: any; ind
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
-      className="mb-24 lg:mb-32"
+      className="mb-4 xl:mb-6 xl:mb-12"
     >
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-3">
           <span className="text-xs font-bold tracking-wider" style={{ color: accentColor }}>{formattedIndex}</span>
           <div className="h-px w-10 bg-gradient-to-r to-transparent" style={{ backgroundColor: accentColor }} />
         </div>
-        <h2 className="text-3xl lg:text-4xl font-serif italic text-[#0f172a] mb-3">
+        <h2 className="text-3xl lg:text-4xl font-serif italic text-[#0f172a] xl:mb-2 mb-1">
           {product.name}
         </h2>
-        <div className="h-px w-16 mb-4" style={{ backgroundColor: accentColor }} />
+        <div className="h-px w-16 xl:mb-2 mb-1" style={{ backgroundColor: accentColor }} />
         <div className="flex items-start justify-between gap-6 flex-wrap">
           <p className="text-[#6b7280] max-w-xl leading-relaxed text-sm">
             {product.description || 'Premium quality product crafted with precision and care for exceptional results.'}
           </p>
           <Link
-            href={`/product/${product.id}`}
+            href={`/contact-us`}
             className="inline-flex items-center gap-2 bg-[#0f172a] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-colors duration-300 flex-shrink-0"
             style={{ ':hover': { backgroundColor: accentColor } } as any}
           >

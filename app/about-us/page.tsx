@@ -77,7 +77,7 @@ const timelineItems: TimelineItem[] = [
 ];
 
 // ─── HELPER STYLES FOR SWIPING ──────────────────────────────────────────────
-const scrollContainerStyles = "flex lg:grid overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide gap-6 pb-8 -mx-6 px-6";
+const scrollContainerStyles = "flex lg:grid lg:grid-cols-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide gap-6 pb-8 -mx-6 px-6";
 const scrollItemStyles = "flex-shrink-0 w-[85vw] sm:w-[450px] lg:w-auto snap-center lg:snap-align-none";
 
 // ─── COMPONENTS ─────────────────────────────────────────────────────────────
@@ -137,54 +137,111 @@ const WhyUsSection = () => {
     </section>
   );
 };
+// ─── TYPES ──────────────────────────────────────────────────────────────────
+interface VisionMissionProps {
+  children: React.ReactNode;
+  count: number;
+}
 
-const VisionSection = () => (
-  <section className="py-12 relative overflow-hidden">
-    <div className="relative max-w-7xl mx-auto px-6">
-      <div className="text-center mb-10">
-        <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 text-[#0093cb]">Our Purpose</p>
-        <h2 className="text-3xl md:text-4xl font-extrabold">Vision & <span className="text-[#0093cb]">Mission</span></h2>
+// ─── SWIPE WRAPPER ─────────────────────────────────────────────────────────
+function VisionSwipeCarousel({ children, count }: VisionMissionProps) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const handleScroll = () => {
+    const el = trackRef.current;
+    if (!el || count === 0) return;
+    const cardWidth = el.scrollWidth / count;
+    setActiveIdx(Math.min(Math.round(el.scrollLeft / cardWidth), count - 1));
+  }; return (
+    <div className="block md:hidden">
+      <style>{`
+        .vision-track::-webkit-scrollbar { display: none; }
+        .vision-track { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
+
+      <div
+        ref={trackRef}
+        onScroll={handleScroll}
+        className="vision-track flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth"
+      >
+        {children}
       </div>
-      <div className={scrollContainerStyles}>
-        <div className={scrollItemStyles}>
-          <div className="bg-white rounded-xl border border-slate-200 p-8 h-full min-h-[300px]">
-            <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center text-[#0093cb] mb-6"><Target size={24} /></div>
-            <h3 className="text-xl font-bold mb-4">Our Vision</h3>
-            <p className="text-slate-500">To be the most trusted gifting partner for pharma brands by delivering innovative, therapy-aligned solutions.</p>
-          </div>
-        </div>
-        <div className={scrollItemStyles}>
-          <div className="bg-white rounded-xl border border-slate-200 p-8 h-full min-h-[300px]">
-            <div className="w-12 h-12 rounded-lg bg-green-50 flex items-center justify-center text-[#00a65d] mb-6"><Gift size={24} /></div>
-            <h3 className="text-xl font-bold mb-4">Our Mission</h3>
-            <p className="text-slate-500">To design and deliver high-quality, customized gifting solutions that add value to pharma campaigns.</p>
-          </div>
-        </div>
+
+      {/* Pagination dots (Only visible on mobile) */}
+      <div className="flex justify-center gap-2">
+        {Array.from({ length: count }).map((_, i) => (
+          <div
+            key={i}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === activeIdx ? "w-6 bg-[#0093cb]" : "w-1.5 bg-gray-300"
+            }`}
+          />
+        ))}
       </div>
     </div>
-  </section>
-);
+  );
+}
 
-const TeamSection = () => {
-  const team = [
-    { name: "Ms. Saakshi Dosi", role: "Founder & CEO", image: "https://medipride.org/wp-content/uploads/2025/11/IMG-20251106-WA0063-Edited-768x1024.jpg" },
-    { name: "Rajesh Kumar", role: "Operations Head", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=600&fit=crop" },
-    { name: "Priya Mehta", role: "Creative Director", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=600&fit=crop" },
+// ─── MAIN SECTION ──────────────────────────────────────────────────────────
+const VisionSection = () => {
+  const data = [
+    {
+      title: "Our Vision",
+      desc: "To be the most trusted gifting partner for pharma brands by delivering innovative, therapy-aligned solutions.",
+      icon: <Target size={24} />,
+      bgColor: "bg-blue-50",
+      iconColor: "text-[#0093cb]",
+    },
+    {
+      title: "Our Mission",
+      desc: "To design and deliver high-quality, customized gifting solutions that add value to pharma campaigns.",
+      icon: <Gift size={24} />,
+      bgColor: "bg-green-50",
+      iconColor: "text-[#00a65d]",
+    },
   ];
+
   return (
-    <section className="py-12 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-extrabold text-center mb-12">The <span className="text-[#0093cb]">Leadership</span></h2>
-        <div className={scrollContainerStyles}>
-          {team.map((member, idx) => (
-            <div key={idx} className={scrollItemStyles}>
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden group">
-                <Image src={member.image} alt={member.name} fill className="object-cover transition-transform group-hover:scale-105" unoptimized />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
-                  <h3 className="text-xl font-bold text-white">{member.name}</h3>
-                  <p className="text-white/70 text-sm">{member.role}</p>
+    <section className="py-16 md:py-24 relative overflow-hidden bg-white">
+      <div className="relative max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 text-[#0093cb]">
+            Our Purpose
+          </p>
+          <h2 className="text-3xl md:text-4xl font-black text-slate-900">
+            Vision & <span className="text-[#0093cb]">Mission</span>
+          </h2>
+        </div>
+
+        {/* ── Mobile/Small Tablet (Swipe) ── */}
+        <VisionSwipeCarousel count={data.length}>
+          {data.map((item, idx) => (
+            <div key={idx} className="snap-center flex-shrink-0 w-[85vw]">
+              <div className="bg-white rounded-2xl border border-slate-200 p-8 h-full min-h-[260px] shadow-sm">
+                <div className={`w-12 h-12 rounded-xl ${item.bgColor} flex items-center justify-center ${item.iconColor} mb-6`}>
+                  {item.icon}
                 </div>
+                <h3 className="text-xl font-bold mb-4 text-slate-900">{item.title}</h3>
+                <p className="text-slate-500 leading-relaxed">{item.desc}</p>
               </div>
+            </div>
+          ))}
+        </VisionSwipeCarousel>
+
+        {/* ── Desktop & Large Tablet (Grid) ── */}
+        <div className="hidden md:grid md:grid-cols-2 gap-8">
+          {data.map((item, idx) => (
+            <div 
+              key={idx} 
+              className="bg-white rounded-2xl border border-slate-200 p-10 hover:border-[#0093cb]/30 hover:shadow-xl hover:shadow-[#0093cb]/5 transition-all duration-300"
+            >
+              <div className={`w-14 h-14 rounded-xl ${item.bgColor} flex items-center justify-center ${item.iconColor} mb-8`}>
+                {item.icon}
+              </div>
+              <h3 className="text-2xl font-bold mb-4 text-slate-900">{item.title}</h3>
+              <p className="text-slate-600 text-lg leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -192,6 +249,120 @@ const TeamSection = () => {
     </section>
   );
 };
+// ─── TYPES ──────────────────────────────────────────────────────────────────
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+}
+
+interface SwipeCarouselProps {
+  children: React.ReactNode;
+  count: number;
+}
+
+// ─── SWIPE CAROUSEL COMPONENT ───────────────────────────────────────────────
+function TeamSwipeCarousel({ children, count }: SwipeCarouselProps) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const handleScroll = () => {
+    const el = trackRef.current;
+    if (!el || count === 0) return;
+    const cardWidth = el.scrollWidth / count;
+    setActiveIdx(Math.min(Math.round(el.scrollLeft / cardWidth), count - 1));
+  };
+
+  return (
+    <div className="block lg:hidden">
+      <style>{`
+        .team-track::-webkit-scrollbar { display: none; }
+        .team-track { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
+
+      <div
+        ref={trackRef}
+        onScroll={handleScroll}
+        className="team-track flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth"
+      >
+        {children}
+      </div>
+
+      {/* Pagination dots */}
+      <div className="flex justify-center gap-2">
+        {Array.from({ length: count }).map((_, i) => (
+          <div
+            key={i}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === activeIdx ? "w-6 bg-[#0093cb]" : "w-1.5 bg-gray-300"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+// ─── MAIN TEAM SECTION ──────────────────────────────────────────────────────
+const TeamSection = () => {
+  const team: TeamMember[] = [
+    { name: "Ms. Saakshi Dosi", role: "Founder & CEO", image: "https://medipride.org/wp-content/uploads/2025/11/IMG-20251106-WA0063-Edited-768x1024.jpg" },
+    { name: "Rajesh Kumar", role: "Operations Head", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=600&fit=crop" },
+    { name: "Priya Mehta", role: "Creative Director", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=600&fit=crop" },
+  ];
+
+  return (
+    <section className="py-16 relative overflow-hidden bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-3xl md:text-4xl font-black text-center mb-12">
+          The <span className="text-[#0093cb]">Leadership</span>
+        </h2>
+
+        {/* ── Mobile & Tablet View (Swipe) ── */}
+        <TeamSwipeCarousel count={team.length}>
+          {team.map((member, idx) => (
+            <div 
+              key={idx} 
+              className="snap-center flex-shrink-0 w-[85vw] sm:w-[46vw]"
+            >
+              <TeamCard member={member} />
+            </div>
+          ))}
+        </TeamSwipeCarousel>
+
+        {/* ── Desktop View (Grid) ── */}
+        <div className="hidden lg:grid grid-cols-3 gap-8">
+          {team.map((member, idx) => (
+            <TeamCard key={idx} member={member} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ─── REUSABLE CARD COMPONENT ────────────────────────────────────────────────
+function TeamCard({ member }: { member: TeamMember }) {
+  return (
+    <div className="relative aspect-[3/4] rounded-3xl overflow-hidden group shadow-lg">
+      <Image 
+        src={member.image} 
+        alt={member.name} 
+        fill 
+        className="object-cover transition-transform duration-700 group-hover:scale-110" 
+        unoptimized 
+      />
+      {/* Dark Overlay with Text */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8">
+        <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
+          {member.name}
+        </h3>
+        <p className="text-[#8bde7a] font-medium text-sm sm:text-base uppercase tracking-wider">
+          {member.role}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 // ─── MAIN PAGE ──────────────────────────────────────────────────────────────
 export default function AboutUsPage() {
