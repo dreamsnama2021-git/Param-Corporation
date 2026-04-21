@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useState, useRef } from "react";
+import { motion } from "framer-motion";
 import {
   ArrowUpRight,
-  ChevronRight,
   Target,
   Rocket,
   Factory,
@@ -15,8 +14,6 @@ import {
   Heart,
   Users,
   Sparkles,
-  Package,
-  Gift,
 } from "lucide-react";
 import Image from "next/image";
 import {
@@ -80,7 +77,7 @@ const timelineItems: TimelineItem[] = [
 const scrollContainerStyles = "flex lg:grid lg:grid-cols-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide gap-6 pb-8 -mx-6 px-6";
 const scrollItemStyles = "flex-shrink-0 w-[85vw] sm:w-[450px] lg:w-auto snap-center lg:snap-align-none";
 
-// ─── COMPONENTS ─────────────────────────────────────────────────────────────
+// ─── REUSABLE COMPONENTS ─────────────────────────────────────────────────────
 
 const MagneticButton = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   const ref = useRef<HTMLButtonElement>(null);
@@ -137,132 +134,14 @@ const WhyUsSection = () => {
     </section>
   );
 };
-// ─── TYPES ──────────────────────────────────────────────────────────────────
+
+// ─── VISION & MISSION COMPONENTS ─────────────────────────────────────────────
 interface VisionMissionProps {
   children: React.ReactNode;
   count: number;
 }
 
-// ─── SWIPE WRAPPER ─────────────────────────────────────────────────────────
 function VisionSwipeCarousel({ children, count }: VisionMissionProps) {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [activeIdx, setActiveIdx] = useState(0);
-
-  const handleScroll = () => {
-    const el = trackRef.current;
-    if (!el || count === 0) return;
-    const cardWidth = el.scrollWidth / count;
-    setActiveIdx(Math.min(Math.round(el.scrollLeft / cardWidth), count - 1));
-  }; return (
-    <div className="block md:hidden">
-      <style>{`
-        .vision-track::-webkit-scrollbar { display: none; }
-        .vision-track { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
-
-      <div
-        ref={trackRef}
-        onScroll={handleScroll}
-        className="vision-track flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth"
-      >
-        {children}
-      </div>
-
-      {/* Pagination dots (Only visible on mobile) */}
-      <div className="flex justify-center gap-2">
-        {Array.from({ length: count }).map((_, i) => (
-          <div
-            key={i}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              i === activeIdx ? "w-6 bg-[#0093cb]" : "w-1.5 bg-gray-300"
-            }`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// ─── MAIN SECTION ──────────────────────────────────────────────────────────
-const VisionSection = () => {
-  const data = [
-    {
-      title: "Our Vision",
-      desc: "To be the most trusted gifting partner for pharma brands by delivering innovative, therapy-aligned solutions.",
-      icon: <Target size={24} />,
-      bgColor: "bg-blue-50",
-      iconColor: "text-[#0093cb]",
-    },
-    {
-      title: "Our Mission",
-      desc: "To design and deliver high-quality, customized gifting solutions that add value to pharma campaigns.",
-      icon: <Gift size={24} />,
-      bgColor: "bg-green-50",
-      iconColor: "text-[#00a65d]",
-    },
-  ];
-
-  return (
-    <section className="py-16 md:py-24 relative overflow-hidden bg-white">
-      <div className="relative max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 text-[#0093cb]">
-            Our Purpose
-          </p>
-          <h2 className="text-3xl md:text-4xl font-black text-slate-900">
-            Vision & <span className="text-[#0093cb]">Mission</span>
-          </h2>
-        </div>
-
-        {/* ── Mobile/Small Tablet (Swipe) ── */}
-        <VisionSwipeCarousel count={data.length}>
-          {data.map((item, idx) => (
-            <div key={idx} className="snap-center flex-shrink-0 w-[85vw]">
-              <div className="bg-white rounded-2xl border border-slate-200 p-8 h-full min-h-[260px] shadow-sm">
-                <div className={`w-12 h-12 rounded-xl ${item.bgColor} flex items-center justify-center ${item.iconColor} mb-6`}>
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-slate-900">{item.title}</h3>
-                <p className="text-slate-500 leading-relaxed">{item.desc}</p>
-              </div>
-            </div>
-          ))}
-        </VisionSwipeCarousel>
-
-        {/* ── Desktop & Large Tablet (Grid) ── */}
-        <div className="hidden md:grid md:grid-cols-2 gap-8">
-          {data.map((item, idx) => (
-            <div 
-              key={idx} 
-              className="bg-white rounded-2xl border border-slate-200 p-10 hover:border-[#0093cb]/30 hover:shadow-xl hover:shadow-[#0093cb]/5 transition-all duration-300"
-            >
-              <div className={`w-14 h-14 rounded-xl ${item.bgColor} flex items-center justify-center ${item.iconColor} mb-8`}>
-                {item.icon}
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-900">{item.title}</h3>
-              <p className="text-slate-600 text-lg leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-// ─── TYPES ──────────────────────────────────────────────────────────────────
-interface TeamMember {
-  name: string;
-  role: string;
-  image: string;
-}
-
-interface SwipeCarouselProps {
-  children: React.ReactNode;
-  count: number;
-}
-
-// ─── SWIPE CAROUSEL COMPONENT ───────────────────────────────────────────────
-function TeamSwipeCarousel({ children, count }: SwipeCarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
 
@@ -274,63 +153,183 @@ function TeamSwipeCarousel({ children, count }: SwipeCarouselProps) {
   };
 
   return (
-    <div className="block lg:hidden">
-      <style>{`
-        .team-track::-webkit-scrollbar { display: none; }
-        .team-track { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
-
+    <div className="block md:hidden">
       <div
         ref={trackRef}
         onScroll={handleScroll}
-        className="team-track flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth"
+        className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
       >
         {children}
       </div>
-
-      {/* Pagination dots */}
       <div className="flex justify-center gap-2">
         {Array.from({ length: count }).map((_, i) => (
-          <div
-            key={i}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              i === activeIdx ? "w-6 bg-[#0093cb]" : "w-1.5 bg-gray-300"
-            }`}
-          />
+          <div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i === activeIdx ? "w-6 bg-[#0093cb]" : "w-1.5 bg-gray-300"}`} />
         ))}
       </div>
     </div>
   );
 }
-// ─── MAIN TEAM SECTION ──────────────────────────────────────────────────────
-const TeamSection = () => {
-  const team: TeamMember[] = [
-    { name: "Ms. Saakshi Dosi", role: "Founder & CEO", image: "https://medipride.org/wp-content/uploads/2025/11/IMG-20251106-WA0063-Edited-768x1024.jpg" },
-    { name: "Rajesh Kumar", role: "Operations Head", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=600&fit=crop" },
-    { name: "Priya Mehta", role: "Creative Director", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=600&fit=crop" },
+
+interface CardData {
+  number: string;
+  label: string;
+  title: string;
+  tagline: string;
+  desc: string;
+  icon: React.ReactNode;
+  iconBg: string;
+  iconColor: string;
+  showCta?: boolean;
+  ctaLabel?: string;
+  ctaHref?: string;
+  estLabel: string;
+}
+
+function VisionCard({ item }: { item: CardData }) {
+  return (
+    <div className="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col min-h-[280px] hover:border-slate-300 hover:shadow-sm transition-all duration-200">
+      <div className="flex items-center gap-3 mb-5">
+        <span className="text-[11px] font-medium uppercase tracking-widest text-slate-400">
+          {item.number} / {item.label}
+        </span>
+        <div className="flex-1 h-px bg-slate-100" />
+      </div>
+
+      <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${item.iconBg}`}>
+        <span className={item.iconColor}>{item.icon}</span>
+      </div>
+
+      <h3 className="text-[17px] font-semibold text-slate-900 mb-2">{item.title}</h3>
+      <p className="text-[13px] italic text-slate-400 mb-3">{item.tagline}</p>
+      <p className="text-[13px] text-slate-500 leading-relaxed flex-1">{item.desc}</p>
+
+      <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
+        <span className="text-[11px] text-slate-400">{item.estLabel}</span>
+       
+      </div>
+    </div>
+  );
+}
+
+const VisionSection = () => {
+  const data: CardData[] = [
+    {
+      number: "01",
+      label: "Vision",
+      title: "Transforming Pharma Gifting",
+      tagline: '"Every gift strengthens doctor relationships"',
+      desc: "To become the most trusted gifting partner for pharmaceutical brands by delivering innovative, therapy-aligned solutions that create lasting impressions.",
+      icon: <Target size={20} />,
+      iconBg: "bg-blue-50",
+      iconColor: "text-[#0093cb]",
+      showCta: true,
+      ctaLabel: "Our Vision",
+      ctaHref: "#",
+      estLabel: "Est. 2019",
+    },
+    {
+      number: "02",
+      label: "Mission",
+      title: "Delivering Excellence Daily",
+      tagline: '"Quality, creativity, and reliability"',
+      desc: "To design and deliver high-quality, customized gifting solutions that add value to pharma campaigns and consistently exceed client expectations.",
+      icon: <Rocket size={20} />,
+      iconBg: "bg-emerald-50",
+      iconColor: "text-[#00a65d]",
+      showCta: false,
+      estLabel: "Since 2019",
+    },
   ];
 
   return (
-    <section className="py-16 relative overflow-hidden bg-white">
+    <section className="py-16 md:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-black text-center mb-12">
-          The <span className="text-[#0093cb]">Leadership</span>
-        </h2>
-
-        {/* ── Mobile & Tablet View (Swipe) ── */}
-        <TeamSwipeCarousel count={team.length}>
-          {team.map((member, idx) => (
-            <div 
-              key={idx} 
-              className="snap-center flex-shrink-0 w-[85vw] sm:w-[46vw]"
-            >
-              <TeamCard member={member} />
+        <div className="text-center mb-12">
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 text-[#0093cb]">Our Purpose</p>
+          <h2 className="text-3xl md:text-4xl font-black text-slate-900">
+            Vision & <span className="text-[#0093cb]">Mission</span>
+          </h2>
+        </div>
+        <VisionSwipeCarousel count={data.length}>
+          {data.map((item, idx) => (
+            <div key={idx} className="snap-center flex-shrink-0 w-[85vw]">
+              <VisionCard item={item} />
             </div>
           ))}
-        </TeamSwipeCarousel>
+        </VisionSwipeCarousel>
+        <div className="hidden md:grid md:grid-cols-2 gap-6">
+          {data.map((item, idx) => (
+            <VisionCard key={idx} item={item} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+// ─── TEAM SECTION ────────────────────────────────────────────────────────────
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+}
 
-        {/* ── Desktop View (Grid) ── */}
-        <div className="hidden lg:grid grid-cols-3 gap-8">
+const TeamCard = ({ member }: { member: TeamMember }) => (
+  <div className="relative aspect-[3/4] rounded-3xl overflow-hidden group shadow-lg cursor-pointer bg-slate-100">
+    {/* Image: Scales slightly on hover */}
+    <Image 
+      src={member.image} 
+      alt={member.name} 
+      fill 
+      className="object-cover transition-transform duration-700 group-hover:scale-105" 
+      unoptimized 
+    />
+
+    {/* Hover Overlay: Opacity 0 by default, 100 on group-hover */}
+    <div className="absolute inset-0 bg-black/20 flex flex-col justify-end p-6 sm:p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
+      
+      {/* Animated Text: Slides up from the bottom */}
+      <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+        <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
+          {member.name}
+        </h3>
+        <p className="text-[#8bde7a] font-semibold text-sm sm:text-base uppercase tracking-wider">
+          {member.role}
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
+const TeamSection = () => {
+  const team: TeamMember[] = [
+    { 
+      name: "Ms. Saakshi Dosi", 
+      role: "Founder & CEO", 
+      image: "https://medipride.org/wp-content/uploads/2025/11/IMG-20251106-WA0063-Edited-768x1024.jpg" 
+    },
+    { 
+      name: "Rajesh Kumar", 
+      role: "Operations Head", 
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=600&fit=crop" 
+    },
+    { 
+      name: "Priya Mehta", 
+      role: "Creative Director", 
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=600&fit=crop" 
+    },
+  ];
+
+  return (
+    <section className="py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="mb-12 text-center">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-2">Our People</p>
+            <h2 className="text-3xl md:text-4xl font-black">
+              The <span className="text-[#0093cb]">Leadership</span>
+            </h2>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {team.map((member, idx) => (
             <TeamCard key={idx} member={member} />
           ))}
@@ -340,29 +339,6 @@ const TeamSection = () => {
   );
 };
 
-// ─── REUSABLE CARD COMPONENT ────────────────────────────────────────────────
-function TeamCard({ member }: { member: TeamMember }) {
-  return (
-    <div className="relative aspect-[3/4] rounded-3xl overflow-hidden group shadow-lg">
-      <Image 
-        src={member.image} 
-        alt={member.name} 
-        fill 
-        className="object-cover transition-transform duration-700 group-hover:scale-110" 
-        unoptimized 
-      />
-      {/* Dark Overlay with Text */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8">
-        <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
-          {member.name}
-        </h3>
-        <p className="text-[#8bde7a] font-medium text-sm sm:text-base uppercase tracking-wider">
-          {member.role}
-        </p>
-      </div>
-    </div>
-  );
-}
 
 // ─── MAIN PAGE ──────────────────────────────────────────────────────────────
 export default function AboutUsPage() {
@@ -404,7 +380,6 @@ export default function AboutUsPage() {
         <EditorialTimeline items={timelineItems} />
       </section>
 
-      {/* Swipeable Sections */}
       <WhyUsSection />
       <VisionSection />
       <TeamSection />

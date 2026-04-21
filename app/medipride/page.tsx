@@ -1,8 +1,9 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Phone, CheckCircle } from "lucide-react";
 import { FileText, Users, Monitor, Lightbulb, Activity, Presentation } from "lucide-react";
 import BentoGrid from "@/components/BentoGridProducts";
+import { motion, AnimatePresence } from "framer-motion";
 
 const PRODUCT_DATA = [
   {
@@ -84,11 +85,16 @@ interface ProductItem {
   desc: string;
   img: string;
 }
-
-// ─── Reusable swipe carousel (mobile + tablet only) ───────────────────────────
+// ─── Reusable swipe carousel (mobile + tablet only) with animations ───────────────────────────
 function SwipeCarousel({ children, count, accentColor = "#3972b7" }: SwipeCarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleScroll = () => {
     const el = trackRef.current;
@@ -110,6 +116,58 @@ function SwipeCarousel({ children, count, accentColor = "#3972b7" }: SwipeCarous
       <style>{`
         .swipe-track::-webkit-scrollbar { display: none; }
         .swipe-track { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes slideUpFade {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        @keyframes dotPulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+        }
+        
+        .carousel-card {
+          animation: slideUpFade 0.6s ease-out forwards;
+          opacity: 0;
+        }
+        
+        .carousel-card:nth-child(1) { animation-delay: 0.1s; }
+        .carousel-card:nth-child(2) { animation-delay: 0.2s; }
+        .carousel-card:nth-child(3) { animation-delay: 0.3s; }
+        .carousel-card:nth-child(4) { animation-delay: 0.4s; }
+        .carousel-card:nth-child(5) { animation-delay: 0.5s; }
+        .carousel-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        .dot-active {
+          animation: dotPulse 2s ease-in-out infinite;
+        }
+        
+        .card-hover-effect {
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover-effect:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
       `}</style>
 
       <div
@@ -117,19 +175,38 @@ function SwipeCarousel({ children, count, accentColor = "#3972b7" }: SwipeCarous
         onScroll={handleScroll}
         className="swipe-track flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory scroll-smooth"
       >
-        {children}
+        {React.Children.map(children, (child, index) => (
+          <div 
+            className="carousel-card"
+            style={{ 
+              animationDelay: `${index * 0.1}s`,
+              opacity: isVisible ? 1 : 0 
+            }}
+          >
+            {child}
+          </div>
+        ))}
       </div>
 
       {count > 1 && (
-        <div className="flex justify-center gap-2 mt-4">
+        <div 
+          className="flex justify-center gap-2 mt-4"
+          style={{
+            animation: isVisible ? 'slideUpFade 0.6s ease-out 0.3s forwards' : 'none',
+            opacity: 0
+          }}
+        >
           {Array.from({ length: count }).map((_, i) => (
             <button
               key={i}
               onClick={() => scrollTo(i)}
               aria-label={`Go to slide ${i + 1}`}
-              style={{ backgroundColor: i === activeIdx ? accentColor : "#cbd5e1" }}
-              className={`rounded-full transition-all duration-300 ${
-                i === activeIdx ? "w-6 h-2" : "w-2 h-2"
+              style={{ 
+                backgroundColor: i === activeIdx ? accentColor : "#cbd5e1",
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+              className={`rounded-full hover:scale-110 ${
+                i === activeIdx ? "w-6 h-2 dot-active" : "w-2 h-2 hover:bg-opacity-80"
               }`}
             />
           ))}
@@ -232,50 +309,81 @@ export default function MediPrideLanding() {
           </div>
         </div>
       </section>
+{/* service */}
+<section className="py-12 sm:py-16 bg-slate-50 overflow-hidden">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
+    <div 
+      className="text-center mb-8 sm:mb-12 lg:mb-16"
+      data-aos="fade-up"
+      data-aos-duration="800"
+    >
+      <span 
+        className="text-[#00a65d] font-bold uppercase tracking-widest text-xs sm:text-sm inline-block"
+        data-aos="fade-down"
+        data-aos-delay="100"
+      >
+        Core Offerings
+      </span>
+      <h2 
+        className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mt-2"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        Specialized Medical{" "}
+        <span className="text-[#0093cb] relative inline-block">
+          Communication Solutions
+          <span className="absolute -bottom-1 left-0 w-full h-1 bg-[#0093cb]/20 rounded-full transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></span>
+        </span>
+      </h2>
+    </div>
 
-
-      {/* ── SERVICES ── */}
-      <section className="py-12 sm:py-16 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <span className="text-[#00a65d] font-bold uppercase tracking-widest text-xs sm:text-sm">Core Offerings</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mt-2">
-              Specialized Medical <span className="text-[#0093cb]">Communication Solutions</span>
-            </h2>
+    {/* Mobile / tablet: swipe carousel */}
+    <SwipeCarousel count={SERVICES.length} accentColor="#0093cb">
+      {SERVICES.map((service, index) => (
+        <div
+          key={index}
+          className="snap-center flex-shrink-0 w-[82vw] sm:w-[46vw] bg-white rounded-3xl p-6 text-center shadow-sm border border-slate-100 card-hover-effect"
+        >
+          <div className="w-14 h-14 bg-[#0093cb]/10 rounded-2xl flex items-center justify-center text-[#0093cb] mx-auto mb-5 group-hover:scale-110 transition-transform duration-300">
+            {service.icon}
           </div>
+          <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-[#0093cb] transition-colors duration-300">
+            {service.title}
+          </h3>
+          <p className="text-slate-500 leading-relaxed text-sm">{service.desc}</p>
+        </div>
+      ))}
+    </SwipeCarousel>
 
-          {/* ── Mobile / tablet: swipe carousel ── */}
-          <SwipeCarousel count={SERVICES.length} accentColor="#0093cb">
-            {SERVICES.map((service, index) => (
-              <div
-                key={index}
-                // 82vw on phone, ~46vw on tablet so 2 peek — snap to center
-                className="snap-center flex-shrink-0 w-[82vw] sm:w-[46vw] bg-white rounded-3xl p-6 text-center shadow-sm border border-slate-100"
-              >
-                <div className="w-14 h-14 bg-[#0093cb]/10 rounded-2xl flex items-center justify-center text-[#0093cb] mx-auto mb-5">
-                  {service.icon}
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">{service.title}</h3>
-                <p className="text-slate-500 leading-relaxed text-sm">{service.desc}</p>
-              </div>
-            ))}
-          </SwipeCarousel>
-
-          {/* ── Desktop: 3-column grid ── */}
-          <div className="hidden lg:grid grid-cols-3 gap-8">
-            {SERVICES.map((service, index) => (
-              <div key={index} className="group relative bg-white rounded-3xl p-8 text-center shadow-sm hover:shadow-xl transition-all border border-slate-100">
-                <div className="w-16 h-16 bg-[#0093cb]/10 rounded-2xl flex items-center justify-center text-[#0093cb] mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
-                <p className="text-slate-500 leading-relaxed">{service.desc}</p>
-              </div>
-            ))}
+    {/* Desktop: 3-column grid with staggered animations */}
+    <div className="hidden lg:grid grid-cols-3 gap-8">
+      {SERVICES.map((service, index) => (
+        <div 
+          key={index} 
+          className="group relative bg-white rounded-3xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100"
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+          data-aos-duration="600"
+          style={{
+            animation: `slideUpFade 0.6s ease-out ${index * 0.1}s forwards`,
+            opacity: 0
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0093cb]/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="relative z-10">
+            <div className="w-16 h-16 bg-[#0093cb]/10 rounded-2xl flex items-center justify-center text-[#0093cb] mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+              {service.icon}
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#0093cb] transition-colors duration-300">
+              {service.title}
+            </h3>
+            <p className="text-slate-500 leading-relaxed">{service.desc}</p>
           </div>
         </div>
-      </section>
-
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ── PRODUCTS ── */}
       <section id="products" className="py-14 sm:py-16 lg:py-20 bg-white">

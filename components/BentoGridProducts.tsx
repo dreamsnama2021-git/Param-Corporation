@@ -351,23 +351,19 @@ function BentoCard({
         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500 group-hover:from-black/90" />
+      <div className="absolute inset-0 bg-black/10  transition-opacity duration-500 group-hover:from-black/90" />
 
       <div className="absolute inset-0 p-4 lg:p-6 flex flex-col justify-between">
-        <div className="flex items-start justify-between">
-          <div className="w-9 h-9 lg:w-11 lg:h-11 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center text-lg opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300">
-            {cat.emoji}
-          </div>
+        <div className="flex items-end justify-end">
+        
           <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-[#8bde7a] flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300">
             <ArrowUpRight className="w-4 h-4 text-[#0093cb]" />
           </div>
         </div>
 
         <div className="space-y-1">
-          <p className="text-[10px] uppercase tracking-[0.15em] text-[#8bde7a] font-bold">
-            {cat.items.length} products
-          </p>
-          <h3 className="text-white text-sm sm:text-lg lg:text-xl font-bold leading-tight">
+        
+          <h3 className="text-[#8bde7a] text-sm sm:text-lg lg:text-xl font-bold leading-tight">
             {cat.category}
           </h3>
         </div>

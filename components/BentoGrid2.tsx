@@ -320,9 +320,7 @@ function BentoCard({
       <div className="absolute inset-0 p-4 lg:p-8 flex flex-col justify-end">
         <div className="flex items-end justify-between gap-2">
           <div className="space-y-1">
-            <p className="text-[10px] font-bold text-[#8bde7a] uppercase tracking-[0.2em] opacity-0 lg:group-hover:opacity-100 transition-opacity">
-              {cat.items.length} Products
-            </p>
+          
             <h3 className="text-sm lg:text-2xl font-bold text-white leading-tight">
               {cat.category}
             </h3>
@@ -343,7 +341,7 @@ function BentoCard({
 }
 
 // ─── Main Grid Component ─────────────────────────────────────────────────────
-export default function BentoGrid2() {
+export default function  BentoGrid2() {
   const [selected, setSelected] = useState<any | null>(null);
 
   return (
