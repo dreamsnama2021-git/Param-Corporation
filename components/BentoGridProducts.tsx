@@ -363,7 +363,7 @@ function BentoCard({
 
         <div className="space-y-1">
         
-          <h3 className="text-[#8bde7a] text-sm sm:text-lg lg:text-xl font-bold leading-tight">
+          <h3 className="text-[#000000] text-sm sm:text-lg lg:text-xl font-bold leading-tight">
             {cat.category}
           </h3>
         </div>
