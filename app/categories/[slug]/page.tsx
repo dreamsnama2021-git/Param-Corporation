@@ -82,7 +82,7 @@ const getProductImages = (product: any): string[] => {
 };
 
 /* ══════════════════════════════════════════
-   LIGHTBOX — 2-STEP MODAL
+   LIGHTBOX — 2-STEP MODAL (CENTERED)
 ══════════════════════════════════════════ */
 function LightboxModal({
   images,
@@ -124,259 +124,179 @@ function LightboxModal({
     return () => window.removeEventListener('keydown', handler);
   }, [activeIndex, prev, next, onClose]);
 
+  // Prevent background scrolling
   useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.width = '100%';
-    return () => { 
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-    };
+    return () => { document.body.style.overflow = originalStyle; };
   }, []);
 
   const isGridView = activeIndex === null;
 
   return (
     <AnimatePresence>
+      {/* 1. BACKDROP: Full screen, darkened, and flex centering */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         style={{ 
-          background: 'rgba(8,8,8,0.97)',
+          background: 'rgba(0,0,0,0.75)', // Background dimming
+          backdropFilter: 'blur(8px)',
           position: 'fixed',
           top: 0,
           left: 0,
-          right: 0,
-          bottom: 0,
           width: '100vw',
           height: '100vh',
-          zIndex: 999999
+          zIndex: 999999,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
         }}
-        className="flex flex-col"
+        onClick={onClose} // Close if clicking background
       >
-        <div className="flex items-center justify-between px-6 py-4 flex-shrink-0 border-b border-white/8">
-          <div className="flex items-center gap-3">
-            {!isGridView && activeIndex !== null && (
-              <button
-                onClick={handleBackToGrid}
-                className="flex items-center gap-1.5 text-white/50 hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors mr-2"
-                type="button"
-              >
-                <ChevronLeft className="w-3.5 h-3.5" />
-                All Photos
-              </button>
-            )}
-            <div>
-              <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold">
-                {isGridView ? `${images.length} Photos` : `${activeIndex! + 1} / ${images.length}`}
-              </p>
-              <h3 className="text-white font-semibold text-base leading-tight">{productName}</h3>
-            </div>
-          </div>
-
-          <div className="hidden sm:flex items-center gap-2">
-            <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all ${
-              isGridView ? 'bg-[#F5A623] text-[#7a3e00]' : 'bg-white/10 text-white/40'
-            }`}>
-              <span className="w-4 h-4 rounded-full bg-current/20 flex items-center justify-center text-[9px]">1</span>
-              All Images
-            </div>
-            <ChevronRight className="w-3 h-3 text-white/20" />
-            <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all ${
-              !isGridView ? 'bg-[#F5A623] text-[#7a3e00]' : 'bg-white/10 text-white/40'
-            }`}>
-              <span className="w-4 h-4 rounded-full bg-current/20 flex items-center justify-center text-[9px]">2</span>
-              View Image
-            </div>
-          </div>
-
-          <button
-            onClick={onClose}
-            className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#F5A623] flex items-center justify-center transition-colors"
-            type="button"
-          >
-            <X className="w-4 h-4 text-white" />
-          </button>
-        </div>
-
-        <AnimatePresence mode="wait">
-          {isGridView ? (
-            <motion.div
-              key="grid"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.25 }}
-              className="flex-1 overflow-y-auto p-6"
-            >
-              <p className="text-center text-white/30 text-[11px] uppercase tracking-widest font-semibold mb-5">
-                Click any image to view full size
-              </p>
-
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-                  gap: '12px',
-                  maxWidth: '960px',
-                  margin: '0 auto',
-                }}
-              >
-                {images.map((img, idx) => (
-                  <motion.button
-                    key={idx}
-                    onClick={() => setActiveIndex(idx)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.97 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.04 }}
-                    style={{
-                      position: 'relative',
-                      borderRadius: '12px',
-                      overflow: 'hidden',
-                      aspectRatio: idx % 3 === 0 ? '4/5' : idx % 3 === 1 ? '1/1' : '4/3',
-                      border: '2px solid transparent',
-                      cursor: 'pointer',
-                      transition: 'border-color 0.2s',
-                    }}
-                    className="hover:border-[#F5A623]"
-                    type="button"
-                  >
-                    <Image
-                      src={img}
-                      alt={`${productName} ${idx + 1}`}
-                      fill
-                      className="object-cover"
-                      unoptimized
-                    />
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: 8,
-                        left: 8,
-                        background: 'rgba(0,0,0,0.55)',
-                        backdropFilter: 'blur(4px)',
-                        color: 'white',
-                        fontSize: 10,
-                        fontWeight: 700,
-                        padding: '2px 8px',
-                        borderRadius: 20,
-                        zIndex: 5
-                      }}
-                    >
-                      {idx + 1}
-                    </div>
-                    <div
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        opacity: 0,
-                        transition: 'opacity 0.25s',
-                        zIndex: 5
-                      }}
-                      className="zoom-overlay"
-                    >
-                      <div style={{
-                        width: 36, height: 36, borderRadius: '50%',
-                        background: 'rgba(255,255,255,0.9)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      }}>
-                        <ZoomIn style={{ width: 16, height: 16, color: '#0f172a' }} />
-                      </div>
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
-
-          ) : activeIndex !== null ? (
-            <motion.div
-              key="single"
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.97 }}
-              transition={{ duration: 0.25 }}
-              className="flex-1 flex flex-col min-h-0"
-            >
-              <div className="flex-1 flex items-center justify-center px-4 md:px-14 relative min-h-0">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeIndex}
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -30 }}
-                    transition={{ duration: 0.28, ease: 'easeOut' }}
-                    className="relative w-full h-full max-w-4xl"
-                  >
-                    <Image
-                      src={images[activeIndex]}
-                      alt={`${productName} ${activeIndex + 1}`}
-                      fill
-                      className="object-contain"
-                      unoptimized
-                      priority
-                    />
-                  </motion.div>
-                </AnimatePresence>
-
+        {/* 2. THE MODAL BOX: Fixed 90vw/90vh container */}
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+          style={{ 
+            background: 'rgba(8,8,8,0.85)', // Modal background
+            width: '92vw',
+            height: '92vh',
+            borderRadius: '24px',
+            overflow: 'hidden',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+          }}
+          className="flex flex-col relative border border-white/10"
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between px-6 py-4 flex-shrink-0 border-b border-white/5 bg-black/20">
+            <div className="flex items-center gap-3">
+              {!isGridView && activeIndex !== null && (
                 <button
-                  onClick={prev}
-                  className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-[#F5A623] flex items-center justify-center transition-colors"
-                  style={{ zIndex: 1000000 }}
+                  onClick={handleBackToGrid}
+                  className="flex items-center gap-1.5 text-white/50 hover:text-[#F5A623] text-xs font-semibold uppercase tracking-wider transition-colors mr-2"
                   type="button"
                 >
-                  <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                  <ChevronLeft className="w-4 h-4" />
+                  All Photos
                 </button>
-                <button
-                  onClick={next}
-                  className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-[#F5A623] flex items-center justify-center transition-colors"
-                  style={{ zIndex: 1000000 }}
-                  type="button"
-                >
-                  <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                </button>
+              )}
+              <div>
+                <p className="text-white/40 text-[10px] uppercase tracking-widest font-bold">
+                  {isGridView ? `${images.length} Photos` : `${activeIndex! + 1} / ${images.length}`}
+                </p>
+                <h3 className="text-white font-semibold text-base leading-tight">{productName}</h3>
               </div>
+            </div>
 
-              <div className="flex-shrink-0 px-4 md:px-6 pb-5 pt-3">
-                <div className="flex justify-center gap-2 flex-wrap max-w-4xl mx-auto">
-                  {images.map((img, i) => (
+            {/* Stepper (Desktop only) */}
+            <div className="hidden sm:flex items-center gap-2">
+              <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all ${
+                isGridView ? 'bg-[#F5A623] text-[#7a3e00]' : 'bg-white/5 text-white/40'
+              }`}>
+                1. Gallery
+              </div>
+              <ChevronRight className="w-3 h-3 text-white/20" />
+              <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all ${
+                !isGridView ? 'bg-[#F5A623] text-[#7a3e00]' : 'bg-white/5 text-white/40'
+              }`}>
+                2. Detail
+              </div>
+            </div>
+
+            <button
+              onClick={onClose}
+              className="w-10 h-10 rounded-full bg-white/5 hover:bg-red-500/20 hover:text-red-500 flex items-center justify-center transition-all group"
+              type="button"
+            >
+              <X className="w-5 h-5 text-white group-hover:scale-110" />
+            </button>
+          </div>
+
+          <AnimatePresence mode="wait">
+            {isGridView ? (
+              <motion.div
+                key="grid"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex-1 overflow-y-auto p-6 scrollbar-hide"
+              >
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+                    gap: '16px',
+                    maxWidth: '1200px',
+                    margin: '0 auto',
+                  }}
+                >
+                  {images.map((img, idx) => (
                     <motion.button
-                      key={i}
-                      onClick={() => setActiveIndex(i)}
-                      whileHover={{ scale: 1.08 }}
-                      whileTap={{ scale: 0.95 }}
-                      style={{
-                        width: 48,
-                        height: 48,
-                        borderRadius: 8,
-                        overflow: 'hidden',
-                        position: 'relative',
-                        flexShrink: 0,
-                        border: i === activeIndex ? '2px solid #F5A623' : '2px solid rgba(255,255,255,0.1)',
-                        opacity: i === activeIndex ? 1 : 0.45,
-                        transition: 'all 0.2s',
-                      }}
-                      className="md:w-14 md:h-14"
-                      type="button"
+                      key={idx}
+                      onClick={() => setActiveIndex(idx)}
+                      whileHover={{ y: -4 }}
+                      className="relative rounded-2xl overflow-hidden aspect-square bg-white/5 border border-white/5 hover:border-[#F5A623]/50 transition-all group"
                     >
-                      <Image src={img} alt={`Thumbnail ${i + 1}`} fill className="object-cover" unoptimized />
+                      <Image src={img} alt={productName} fill className="object-cover transition-transform duration-500 group-hover:scale-110" unoptimized />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                         <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
                     </motion.button>
                   ))}
                 </div>
-              </div>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="single"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex-1 flex flex-col min-h-0 bg-black/40"
+              >
+                {/* Main Image View */}
+                <div className="flex-1 relative flex items-center justify-center p-4">
+                   <button onClick={prev} className="absolute left-4 z-10 p-4 rounded-full bg-black/40 text-white hover:bg-[#F5A623] transition-colors">
+                      <ChevronLeft />
+                   </button>
+                   
+                   <div className="relative w-full h-full">
+                      <Image src={images[activeIndex!]} alt={productName} fill className="object-contain" unoptimized priority />
+                   </div>
+
+                   <button onClick={next} className="absolute right-4 z-10 p-4 rounded-full bg-black/40 text-white hover:bg-[#F5A623] transition-colors">
+                      <ChevronRight />
+                   </button>
+                </div>
+
+                {/* Thumbnails */}
+                <div className="p-6 bg-black/60 border-t border-white/5">
+                   <div className="flex justify-center gap-3 overflow-x-auto">
+                      {images.map((img, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setActiveIndex(i)}
+                          className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                            i === activeIndex ? 'border-[#F5A623] scale-110' : 'border-transparent opacity-40'
+                          }`}
+                        >
+                          <Image src={img} alt="thumb" fill className="object-cover" unoptimized />
+                        </button>
+                      ))}
+                   </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </motion.div>
     </AnimatePresence>
   );
 }
+
 
 /* ══════════════════════════════════════════
    3-CARD SWIPEABLE GALLERY

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { motion } from "framer-motion";
 
@@ -21,17 +21,15 @@ const TagLine = () => {
           className="text-center max-w-4xl mx-auto "
         >
           <h2 className="font-display capitalize text-3xl md:text-5xl font-semibold text-foreground leading-tight mb-6">
-            Where Thoughtfulness Meets
-            <span className="text-[#0093cb]"> Prestige</span> 
+            Corporate Gifting Solutions for
+            <span className="text-[#0093cb]"> Pharma Brands in India</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            We don't just deliver gifts — we craft experiences. Every package is
-            a reflection of your brand's commitment to excellence, tailored to
-            resonate with your stakeholders.
+            We help pharmaceutical companies build stronger doctor
+            relationships, improve brand recall, and drive engagement through
+            innovative, customized gifting solutions.
           </p>
         </motion.div>
-
-       
       </div>
     </section>
   );

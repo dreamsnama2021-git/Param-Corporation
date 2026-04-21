@@ -140,9 +140,9 @@ export const digitalGifts: CategoryItem[] = [
 
 export const allProducts: Product[] = [
   // Categories - Paperweights
-  { id: 1, name: "Crystal Glass Paperweight", image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
-  { id: 2, name: "Corporate Logo Paperweight", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=400", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
-  { id: 3, name: "Metal Finish Paperweight", image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 1, name: "Crystal Glass Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
+  { id: 2, name: "Corporate Logo Paperweight", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
+  { id: 3, name: "Metal Finish Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   
   // Categories - Tabletops
   { id: 4, name: "Executive Desk Calendar", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
@@ -207,7 +207,7 @@ export const allProducts: Product[] = [
   
   // Pediatric
   { id: 108, name: "Educational Toy Set", image: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400", price: "₹1499", category: "pediatric", categoryName: "Pediatric", description: "STEM toys for children's learning", tags: ["toys", "educational", "children"] },
-  { id: 109, name: "Pediatric Sticker Collection", image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400", price: "₹299", category: "pediatric", categoryName: "Pediatric", description: "Fun stickers for young patients", tags: ["kids", "stickers", "fun"] },
+  { id: 109, name: "Pediatric Sticker Collection", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹299", category: "pediatric", categoryName: "Pediatric", description: "Fun stickers for young patients", tags: ["kids", "stickers", "fun"] },
   { id: 110, name: "Children's Health Book", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹499", category: "pediatric", categoryName: "Pediatric", description: "Illustrated health education book for kids", tags: ["books", "children", "health"] },
   
   // Dermatology
@@ -269,7 +269,7 @@ export const allProducts: Product[] = [
   // ==========================================
   
   // Doctor's Day
-  { id: 201, name: "Doctor's Day Pen Set", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=400", price: "₹1299", category: "doctors-day", categoryName: "Doctor's Day", description: "Premium medical-themed pens and diaries", tags: ["doctorsday", "medical", "appreciation"] },
+  { id: 201, name: "Doctor's Day Pen Set", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹1299", category: "doctors-day", categoryName: "Doctor's Day", description: "Premium medical-themed pens and diaries", tags: ["doctorsday", "medical", "appreciation"] },
   { id: 202, name: "Doctor Appreciation Plaque", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹899", category: "doctors-day", categoryName: "Doctor's Day", description: "Thank you plaque for doctors", tags: ["appreciation", "plaque", "gratitude"] },
   { id: 203, name: "Desk Plant with Quote", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹649", category: "doctors-day", categoryName: "Doctor's Day", description: "Succulent with 'Thank You Doctor' message", tags: ["plants", "doctorsday", "gratitude"] },
   
@@ -279,7 +279,7 @@ export const allProducts: Product[] = [
   
   // Product Launches
   { id: 206, name: "Launch Event Gift Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1999", category: "product-launches", categoryName: "Product Launches", description: "Premium gift box for product launch attendees", tags: ["launch", "premium", "event"] },
-  { id: 207, name: "Branded Launch Kit", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=400", price: "₹1499", category: "product-launches", categoryName: "Product Launches", description: "Customized kit with product information", tags: ["launch", "branded", "promotional"] },
+  { id: 207, name: "Branded Launch Kit", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹1499", category: "product-launches", categoryName: "Product Launches", description: "Customized kit with product information", tags: ["launch", "branded", "promotional"] },
   
   // Festive Gifting
   { id: 208, name: "Premium Diwali Hamper", image: "https://images.unsplash.com/photo-1573662761572-2c2be631a545?w=400", price: "₹4999", category: "festive-gifting", categoryName: "Festive Gifting", description: "Luxury sweets, dry fruits, and decor items", tags: ["diwali", "luxury", "festival"] },
@@ -307,7 +307,7 @@ export const allProducts: Product[] = [
   // PERSONALIZED GIFTS
   // ==========================================
   
-  { id: 301, name: "Engraved Metal Pen", image: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=400", price: "₹599", category: "engraved-pens", categoryName: "Engraved Pens", description: "Premium pen with custom engraving" },
+  { id: 301, name: "Engraved Metal Pen", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹599", category: "engraved-pens", categoryName: "Engraved Pens", description: "Premium pen with custom engraving" },
   { id: 302, name: "Custom Magic Mug", image: "https://images.unsplash.com/photo-1514228742587-6f155f924bb5?w=400", price: "₹499", category: "custom-mugs", categoryName: "Custom Mugs", description: "Photo reveals on heating" },
   { id: 303, name: "Crystal Photo Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹899", category: "photo-gifts", categoryName: "Photo Gifts", description: "3D crystal photo engraving" },
   { id: 304, name: "Branded Notebook", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹399", category: "custom-stationery", categoryName: "Custom Stationery", description: "Company logo printed diary" },

@@ -55,7 +55,7 @@ const CASE_STUDIES_CARDS = [
     description:
       "How we helped shift from low-margin B2B (3%) to high-impact B2C (~30%), using trust-first content and conversion-focused creative.",
     image:
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop", // Jewellery/retail image
+      "/products/4 IN 1 DESK ORGANISER.png", // Jewellery/retail image
     slug: "thordiam-transformation",
     readTime: "6 min read",
     category: "Retail",
@@ -66,7 +66,7 @@ const CASE_STUDIES_CARDS = [
     description:
       "Leveraging WhatsApp-led nurturing and targeted content to increase patient engagement by 200% for a leading clinic chain.Leveraging WhatsApp-led nurturing ",
     image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop", // Healthcare image
+      "/products/4 IN 1 DESK ORGANISER.png", // Healthcare image
     slug: "healthcare-digital",
     readTime: "4 min read",
     category: "Healthcare",
@@ -77,7 +77,7 @@ const CASE_STUDIES_CARDS = [
     description:
       "Implementing a personalized gifting solution that improved employee retention and client satisfaction scores significantly retention and client satisfaction scores significantly.",
     image:
-      "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=600&h=400&fit=crop", // Gifting/corporate image
+      "/products/4 IN 1 DESK ORGANISER.png", // Gifting/corporate image
     slug: "corporate-gifting",
     readTime: "5 min read",
     category: "Corporate",

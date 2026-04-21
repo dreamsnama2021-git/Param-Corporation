@@ -72,7 +72,7 @@ const featuredTestimonials = [
     initials: "RM",
     avatarColor: "green",
     productImage:
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop",
+      "/products/3D EAR MODEL.png",
   },
   {
     id: 2,
@@ -85,7 +85,7 @@ const featuredTestimonials = [
     initials: "SM",
     avatarColor: "teal",
     productImage:
-      "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=800&auto=format&fit=crop",
+      "/products/3D EAR MODEL.png",
   },
   {
     id: 3,
@@ -98,7 +98,7 @@ const featuredTestimonials = [
     initials: "AI",
     avatarColor: "blue",
     productImage:
-      "https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=800&auto=format&fit=crop",
+      "/products/3D EAR MODEL.png",
   },
 ];
 
