@@ -179,7 +179,7 @@ function Modal({ cat, onClose }: { cat: Category; onClose: () => void }) {
   return (
     <div
       className={`fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all duration-500 ${
-        isVisible ? 'bg-[#0b3c5d]/90 backdrop-blur-md' : 'bg-transparent'
+        isVisible ? 'bg-black/60 backdrop-blur-md' : 'bg-transparent'
       }`}
       onClick={handleClose}
     >
