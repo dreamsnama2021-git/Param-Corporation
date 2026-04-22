@@ -17,7 +17,7 @@ import {
   Award,
   Users
 } from "lucide-react";
-import { allProducts } from "../../data"; // Adjust path to your data file
+import { allProducts, Product } from "../../data"; // Ensure Product type is imported
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -28,7 +28,7 @@ export default function ProductDetailPage() {
 
   // 1. Find Product
   const product = useMemo(() => {
-    return allProducts.find((p) => p.id.toString() === id);
+    return allProducts.find((p) => p.id.toString() === id) as Product | undefined;
   }, [id]);
 
   // 2. Filter Related Products
@@ -48,7 +48,10 @@ export default function ProductDetailPage() {
     );
   }
 
-  const images = product.images?.length ? product.images : [product.image].filter(Boolean);
+  // Safe Image Logic: Check if images array exists, otherwise fallback to singular image
+  const images: string[] = product.images && product.images.length > 0 
+    ? product.images 
+    : [product.image].filter(Boolean);
 
   return (
     <div className="min-h-screen bg-[#fcfdfe] pb-20">
@@ -83,7 +86,7 @@ export default function ProductDetailPage() {
                   className="relative w-full h-full"
                 >
                   <Image
-                    src={images[currentImageIndex]}
+                    src={images[currentImageIndex] || "/placeholder.png"}
                     alt={product.name}
                     fill
                     className="object-contain p-8"
@@ -135,18 +138,17 @@ export default function ProductDetailPage() {
               <h1 className="text-4xl font-serif text-slate-900 leading-tight">
                 {product.name}
               </h1>
-           
             </div>
 
             <div className="space-y-6">
               <div className="prose prose-slate prose-sm text-slate-600">
                 <h3 className="text-slate-900 font-bold text-base mb-2">Product Description</h3>
                 <p className="leading-relaxed">
-                  {product.description || "Premium quality product designed for corporate excellence. Perfect for doctor gifting, brand reminders, and clinical utility."}
+                  {product.description || "Premium quality product designed for corporate excellence."}
                 </p>
               </div>
 
-              {/* Product Highlights Section */}
+              {/* Highlights */}
               <div className="space-y-4 border-t border-slate-100 pt-6">
                 <h3 className="text-slate-900 font-bold text-base">Key Highlights</h3>
                 <ul className="grid grid-cols-1 gap-3">
@@ -154,7 +156,7 @@ export default function ProductDetailPage() {
                     { icon: <Award size={16} className="text-orange-500" />, text: "Premium quality materials & finish" },
                     { icon: <Zap size={16} className="text-orange-500" />, text: "High brand recall for medical professionals" },
                     { icon: <Users size={16} className="text-orange-500" />, text: "Ideal for conferences & clinic gifting" },
-                    { icon: <ShieldCheck size={16} className="text-orange-500" />, text: "Custom branding & logo printing available" },
+                    { icon: <ShieldCheck size={16} className="text-orange-500" />, text: "Custom branding available" },
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm text-slate-600">
                       <div className="flex-shrink-0 w-6 h-6 rounded-full bg-orange-50 flex items-center justify-center">
@@ -166,32 +168,15 @@ export default function ProductDetailPage() {
                 </ul>
               </div>
 
-              {/* Logistics/Features Grid */}
-              <div className="grid grid-cols-2 gap-3">
-                <div className="flex flex-col gap-1 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                  <Package className="text-[#0b3c5d]" size={20} />
-                  <span className="text-xs font-bold text-slate-900 mt-1">Bulk Only</span>
-                  <span className="text-[10px] text-slate-500 uppercase">Min. Order Applies</span>
-                </div>
-                <div className="flex flex-col gap-1 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                  <MessageCircle className="text-[#0b3c5d]" size={20} />
-                  <span className="text-xs font-bold text-slate-900 mt-1">Customizable</span>
-                  <span className="text-[10px] text-slate-500 uppercase">Logo & Name</span>
-                </div>
-              </div>
-
-              {/* ENQUIRY CTA BUTTON */}
+              {/* Action */}
               <div className="pt-4">
                 <Link 
                   href={`/contact-us?product=${encodeURIComponent(product.name)}`}
-                  className="w-full bg-[#0b3c5d] hover:bg-[#072c44] text-white font-bold py-5 rounded-2xl transition-all flex items-center justify-center gap-3 shadow-xl shadow-blue-900/20 active:scale-[0.98]"
+                  className="w-full bg-[#0b3c5d] hover:bg-[#072c44] text-white font-bold py-5 rounded-2xl transition-all flex items-center justify-center gap-3 shadow-xl"
                 >
                   <MessageCircle size={20} />
                   Enquire About This Product
                 </Link>
-                <p className="text-center text-[11px] text-slate-400 mt-3 italic">
-                  * Click to navigate to our contact form for bulk pricing and customization details.
-                </p>
               </div>
             </div>
           </div>
@@ -200,23 +185,15 @@ export default function ProductDetailPage() {
         {/* --- BOTTOM: Related Products --- */}
         {relatedProducts.length > 0 && (
           <section className="mt-32">
-            <div className="flex items-end justify-between mb-10">
-              <div>
-                <h2 className="text-3xl font-serif text-slate-900 italic">Similar Collections</h2>
-                <div className="h-1 w-12 bg-orange-500 mt-2 rounded-full" />
-              </div>
-              <Link href="/categories/all" className="text-sm font-bold text-orange-500 hover:text-orange-600 transition-colors">
-                View All →
-              </Link>
-            </div>
-
+            <h2 className="text-3xl font-serif text-slate-900 italic mb-10">Similar Collections</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {relatedProducts.map((rel) => (
                 <Link key={rel.id} href={`/product/${rel.id}`} className="group">
-                  <div className="bg-white rounded-3xl p-3 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+                  <div className="bg-white rounded-3xl p-3 shadow-sm border border-slate-100 hover:shadow-xl transition-all">
                     <div className="relative aspect-square rounded-2xl overflow-hidden bg-slate-50 mb-4">
                       <Image 
-                        src={rel.images?.[0] || rel.image} 
+                        // Fix for related products type check
+                        src={(rel as any).images?.[0] || rel.image} 
                         alt={rel.name} 
                         fill 
                         className="object-contain p-4 group-hover:scale-110 transition-transform duration-700" 
@@ -226,7 +203,6 @@ export default function ProductDetailPage() {
                     <div className="px-2 pb-2">
                       <p className="text-xs font-bold text-orange-500 mb-1">{rel.categoryName}</p>
                       <h4 className="text-sm font-semibold text-slate-800 line-clamp-1">{rel.name}</h4>
-                      <p className="text-xs text-slate-500 mt-1">{rel.price}</p>
                     </div>
                   </div>
                 </Link>

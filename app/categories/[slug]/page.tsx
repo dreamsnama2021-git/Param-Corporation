@@ -56,7 +56,7 @@ const TABS = [
   { id: "all", label: "All Products", color: "#F5A623", path: "/categories" },
   {
     id: "categories",
-    label: "Products",
+    label: "Categories",
     color: "#F5A623",
     path: "/categories",
   },
@@ -127,7 +127,7 @@ function ProductCard({
   accentColor: string;
 }) {
   const productImages = getProductImages(product);
-  const productName = product.name || "Product";
+  const productName = product.name || "Category";
 
   return (
     <Link href={`/product/${product.id}`} className="block">
@@ -302,7 +302,7 @@ export default function CategoryPage() {
             </nav>
             <h1 className="text-4xl lg:text-5xl font-serif italic text-white">
               {isAllProducts
-                ? `All ${TABS.find((t) => t.id === activeTab)?.label}`
+                ? ` ${TABS.find((t) => t.id === activeTab)?.label}`
                 : currentCategory?.name}
             </h1>
             <p className="text-white/60 mt-3 max-w-2xl">
