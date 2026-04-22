@@ -4,27 +4,72 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const clients = [
+  // --- Logos from Medipride ---
   {
-    name: "Microsoft",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+    name: "Abbott",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0014-scaled.jpg",
   },
   {
-    name: "Google",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+    name: "Sun Pharma",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0013-scaled.jpg",
   },
   {
-    name: "Amazon",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+    name: "Cipla",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0012-scaled.jpg",
   },
   {
-    name: "Netflix",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
+    name: "Alkem",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0011-scaled.jpg",
   },
   {
-    name: "Nike",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg",
+    name: "Lupin",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0007-scaled.jpg",
+  },
+
+  // --- New Logos from ParamCorp ---
+  {
+    name: "Wockhardt",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/30-r0ab2j57fa83f10caqxix4wdrv1r5342o3bfsjgavo.png",
+  },
+  {
+    name: "Pfizer",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/1-18-r0ab0wv7nk0bf7czr1qnmjlsxz0zvuops2vc1duplg.png",
+  },
+  {
+    name: "Novartis",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/2-8-r0ab0yqw182w2fa9g2jwrj4q4qrqb8w6gc6azxrx90.png",
+  },
+  {
+    name: "GSK",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/3-11-r0ab10mkew5gpn7j53d5winnbiigqn3n4lh9yhp4wk.png",
+  },
+  {
+    name: "Sanofi",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/4-6-r0ab14dx68am0322j4zo6hphp1zxlfikh437vljk7o.png",
+  },
+  {
+    name: "AstraZeneca",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/5-6-r0ab169ljwd6nazc85sxbh8evtqo0tq15de6u5grv8.png",
+  },
+  {
+    name: "Intas",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/13-1-r0ab1kd6eewhhgeuxtwbuvobslt68aa07b6h1avv9w.png",
+  },
+  {
+    name: "Eris Lifesciences",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/14-1-r0ab1m8us2z24oc4mupkzv78zdjwnohgvkhfzut2xg.png",
+  },
+  {
+    name: "Micro Labs",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/25-1-r0ab27v559snjpgq4m2037qun8lckpvamjhm17x0yc.png",
+  },
+  {
+    name: "Aristo Pharma",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/35-1-r0ab37l0cz5jsw0uc1htpyqd7vpap7t3fga29qg2dw.png",
   },
 ];
+
+
 
 const ClientSection = () => {
   // Triple the array to ensure seamless looping
@@ -58,14 +103,14 @@ const ClientSection = () => {
       </div>
 
       {/* Infinite Scrolling Ticker - CSS Based */}
-      <div className="relative w-full border-y border-[rgba(0,147,203,0.12)]">
+      <div className="relative w-full bg-white">
         <div className="flex animate-scroll hover:[animation-play-state:paused]">
           {tripleClients.map((c, i) => (
             <div
               key={i}
-              className="flex-shrink-0 flex items-center justify-center px-12 h-[72px] border-r border-[rgba(0,147,203,0.12)]"
+              className="flex-shrink-0 flex items-center  justify-center px-12  border-r border-[rgba(0,147,203,0.12)]"
             >
-              <div className="relative h-7 w-28  transition-all duration-300">
+              <div className="relative h-30 w-28  transition-all duration-300">
                 <Image
                   src={c.logo}
                   alt={c.name}

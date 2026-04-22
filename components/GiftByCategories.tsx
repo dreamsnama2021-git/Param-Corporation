@@ -101,7 +101,7 @@ function GiftsByCategories() {
                 <h3 className="font-bold text-xl md:text-2xl mb-1 group-hover:translate-x-1 transition-transform duration-300">
                   {item.title}
                 </h3>
-                <p className="text-white/80 text-sm font-medium">{item.count} Items</p>
+                {/* <p className="text-white/80 text-sm font-medium">{item.count} Items</p> */}
               </div>
             </Link>
           ))}
@@ -165,9 +165,9 @@ function TrendingProducts() {
                 <h3 className="font-bold text-xl md:text-2xl mb-1 group-hover:translate-x-1 transition-transform duration-300">
                   {item.title}
                 </h3>
-                <div className="flex justify-between items-center">
+                {/* <div className="flex justify-between items-center">
                   <p className="text-white/80 text-sm font-medium">Starting at {item.price}</p>
-                </div>
+                </div> */}
               </div>
             </Link>
           ))}
@@ -195,3 +195,4 @@ export default function ProductSections() {
     </div>
   );
 }
+

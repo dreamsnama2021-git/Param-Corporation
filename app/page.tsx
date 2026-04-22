@@ -11,12 +11,14 @@ import CaseStudy from "@/components/CaseStudy";
 import ClientSection from "@/components/Clientele";
 import CreativeStatsSection from "@/components/Counter";
 import BackgroundDecoration from "@/components/BackgroundDecoration";
+import AboutUs from "@/components/AboutUs";
 
 export default function Page() {
   return (
     <main className="overflow-x-hidden">
       {/* <BackgroundDecoration /> */}
       <Hero />
+      <AboutUs />
       <TagLine />
       <ProductSections />
       <ClientSection/>
@@ -30,7 +32,7 @@ export default function Page() {
       
       {/* New Editorial Variant */}
       <TestimonialCardsVariant2/>
-      <TestimonialCardsVariant/>
+      {/* <TestimonialCardsVariant/> */}
     </main>
   );
 }

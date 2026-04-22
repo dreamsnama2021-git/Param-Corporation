@@ -275,12 +275,12 @@ function CaseStudiesGrid() {
                 border border-transparent hover:border-[#0093cb]/20"
             >
               {/* Clean Image Section (No Text Overlay) */}
-              <div className="relative h-48 md:h-56 overflow-hidden">
+              <div className="relative h-48 md:h-65 overflow-hidden">
                 <Image
                   src={study.image}
                   alt={study.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-contain scale-150 xl:scale-180 transition-transform duration-700 group-hover:scale-190"
                   unoptimized
                 />
                 {/* Subtle primary glow on hover */}
@@ -288,7 +288,7 @@ function CaseStudiesGrid() {
               </div>
 
               {/* Content Section - Title Moved Here */}
-              <div className="p-6 flex flex-col flex-grow bg-white">
+              <div className="px-6 py-4 flex flex-col flex-grow bg-white">
                 {/* Category Tag */}
                 <span className="inline-block w-fit px-2.5 py-1 bg-[#0093cb]/10 text-[#0093cb] text-[10px] font-semibold rounded mb-3">
                   {study.category}
@@ -332,9 +332,9 @@ function CaseStudiesGrid() {
         <div className="flex justify-center mt-12">
           <Link
             href="/case-study"
-            className="group flex items-center gap-3 bg-white border-2 border-[#0093cb] hover:border-[#00a65d] 
+            className="group flex items-center gap-3 bg-white border-2 border-[#0093cb] hover:border-[#0093cb] 
               text-[#0093cb] px-8 py-3 rounded-full font-semibold text-sm 
-              hover:bg-[#00a65d] hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(0,147,203,0.4)]
+              hover:bg-[#0093cb] hover:text-white hover:shadow-[0_10px_30px_-10px_rgba(0,147,203,0.4)]
               transition-all duration-300"
           >
             <span>View All Case Study</span>

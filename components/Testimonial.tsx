@@ -6,42 +6,56 @@ import { useEffect, useState } from "react";
 const testimonials = [
   {
     quote:
-      "Param Corporation transformed our annual gifting program. Their attention to detail and ability to customize at scale is unmatched in the industry.",
-    name: "Rajesh Menon",
-    role: "VP of Human Resources",
-    company: "Tata Consultancy Services",
-    stat: "500+ gifts delivered",
-    initials: "RM",
-    avatarColor: "green",
+      "I was traveling across and i met doctors and field force. The response of the Patient Education Write and Wipe board and the EDD and Ovulation Calculator is very impressive. A big shout out to the whole Param Team!",
+    logo: "https://paramcorp.in/wp-content/uploads/2025/01/Untitled-design-1.png",
+    name: "Ms. Deeksha Pahwa",
+    role: "Brand Management",
+    company: "Mankind Pharma Ltd",
+    stat: "Field Force Verified",
+    initials: "DP",
+    avatarColor: "blue",
   },
+  // {
+  //   quote:
+  //     "Working with Param Corporation was a fantastic experience. They turned my concept into a practical solution, completing the Fluvir Dosage Scale with precision and dedication.",
+  //   name: "Samriddhi Pednekar",
+  //   role: "Product Management",
+  //   company: "Hetero Healthcare",
+  //   stat: "Concept to Reality",
+  //   initials: "SP",
+  //   avatarColor: "indigo",
+  // },
   {
     quote:
-      "We've been working with Param for 5 years now. They handle Diwali gifts for our 3,000+ employees every year without a single hiccup.",
-    name: "Sneha Kapoor",
-    role: "Head of Procurement",
-    company: "Infosys BPM",
-    stat: "5-year partnership",
-    initials: "SK",
+      "Their innovative solutions, prompt responses, and seamless communication stood out. Their creativity and professionalism ensured results aligned perfectly with client needs.",
+    logo: "https://paramcorp.in/wp-content/uploads/2025/01/Untitled-design.png",
+    name: "Divya Kumar",
+    role: "Marketing Head",
+    company: "Torrent Pharma",
+    stat: "Prompt & Creative",
+    initials: "DK",
     avatarColor: "teal",
   },
   {
     quote:
-      "The quality of their curated hampers helped us strengthen our relationship with key clients. It's not just a gift — it's a statement.",
-    name: "Arjun Patel",
-    role: "Business Development Director",
-    company: "Wipro Limited",
-    stat: "98% satisfaction",
-    initials: "AP",
-    avatarColor: "amber",
+      "Their prompt responses, friendly demeanor, and comprehensive solutions are truly commendable. Their professionalism shines through in every aspect of their work.",
+    logo: "https://paramcorp.in/wp-content/uploads/2025/01/Untitled-design-2.png",
+    name: "Aayesha Idrisi",
+    role: "Operations Manager",
+    company: "Ajanta International",
+    stat: "Commendable Service",
+    initials: "AI",
+    avatarColor: "green",
   },
   {
     quote:
-      "The quality of their curated hampers helped us strengthen our relationship with key clients. It's not just a gift — it's a statement.",
-    name: "Arjun Patel",
-    role: "Business Development Director",
-    company: "Wipro Limited",
-    stat: "98% satisfaction",
-    initials: "AP",
+      "Thanks for your prompt & timely response. Happy to see your team efforts within a short notice. Looking forward to continuing our partnership on future projects!",
+    logo: "https://paramcorp.in/wp-content/uploads/2025/01/wockhart-testi.png",
+    name: "Sidhharth Roy",
+    role: "Procurement Lead",
+    company: "Wockhardt",
+    stat: "Agile Response",
+    initials: "SR",
     avatarColor: "amber",
   },
 ];
@@ -60,70 +74,121 @@ const avatarStyles: Record<string, { bg: string; color: string }> = {
 };
 
 // ─── Data ──────────────────────────────────────────────────────────────────
+
 const featuredTestimonials = [
   {
     id: 1,
     quote:
-      "The personalized executive hampers for our board members were exquisite. Param Corporation's attention to detail is unmatched.",
-    name: "Rajesh Menon",
-    role: "VP of Human Resources",
-    company: "TATA CONSULTANCY SERVICES",
-    stat: "500+ GIFTS DELIVERED",
-    initials: "RM",
-    avatarColor: "green",
+      "I was traveling across and i met doctors and field force. The response of the Patient Education Write and Wipe board and the EDD and Ovulation Calculator is very impressive. The quality is appreciated by both internal and external stakeholders. A big shout out to the whole Param Team!",
+    name: "Ms. Deeksha Pahwa",
+    role: "Brand Management",
+    company: "MANKIND PHARMA LTD",
+    stat: "FIELD FORCE VERIFIED",
+    initials: "DP",
+    avatarColor: "blue",
     productImage:
-      "/products/3D EAR MODEL.png",
+      "https://paramcorp.in/wp-content/uploads/2025/01/Untitled-design-1.png",
   },
   {
     id: 2,
     quote:
-      "Our Diwali distribution across 12 locations was seamless. The eco-friendly packaging received immense praise from our team.",
-    name: "Siddharth Mehta",
-    role: "Director of Ops",
-    company: "RELIANCE RETAIL",
-    stat: "1200+ HAMPERS",
-    initials: "SM",
-    avatarColor: "teal",
-    productImage:
-      "/products/3D EAR MODEL.png",
+      "Working with Param Corporation was a fantastic experience. They turned my concept into a practical solution, completing the Fluvir Dosage Scale with precision and dedication. I appreciate their exceptional service and look forward to future collaborations.",
+    name: "Samriddhi Pednekar",
+    role: "Product Management",
+    company: "HETERO HEALTHCARE",
+    stat: "CONCEPT TO REALITY",
+    initials: "SP",
+    avatarColor: "indigo",
+    productImage: "/products/3D EAR MODEL.png",
   },
   {
     id: 3,
     quote:
-      "Finding a partner who understands premium branding while maintaining scale was tough until we found this team.",
-    name: "Ananya Iyer",
-    role: "Procurement Head",
-    company: "HDFC BANK",
-    stat: "98% SATISFACTION",
+      "I had the pleasure of working with Param Corporation on several projects. Their innovative solutions, prompt responses, and seamless communication stood out. Their creativity and professionalism ensured results aligned perfectly with client needs.",
+    name: "Divya Kumar",
+    role: "Marketing Manager",
+    company: "TORRENT PHARMA",
+    stat: "INNOVATIVE SOLUTIONS",
+    initials: "DK",
+    avatarColor: "teal",
+    productImage: "/products/CUSTOMIZED PAPER WEIGHT.png",
+  },
+  {
+    id: 4,
+    quote:
+      "Working with Param Corporation has been a fantastic experience. We’ve collaborated on several projects, and their prompt responses, friendly demeanor, and comprehensive solutions are truly commendable. Their professionalism shines through in every aspect.",
+    name: "Aayesha Idrisi",
+    role: "Operations Head",
+    company: "AJANTA INTERNATIONAL",
+    stat: "FANTASTIC EXPERIENCE",
     initials: "AI",
-    avatarColor: "blue",
-    productImage:
-      "/products/3D EAR MODEL.png",
+    avatarColor: "green",
+    productImage: "/products/4 IN 1 DESK ORGANISER.png",
+  },
+  {
+    id: 5,
+    quote:
+      "Thanks Sonal for your prompt & timely response. Happy to see your team efforts within a short notice. Lets shake hands & close this deal with a better price. Looking forward to hearing from you soon.👍🏼",
+    name: "Sidhharth Roy",
+    role: "Procurement Lead",
+    company: "WOCKHARDT",
+    stat: "AGILE TEAM EFFORTS",
+    initials: "SR",
+    avatarColor: "amber",
+    productImage: "/products/CUSTOMIZED CHITS HOLDER.png",
   },
 ];
 
 const sideTestimonials = [
   {
     quote:
-      "We've been working with Param for 5 years now. They handle gifts for our 3,000+ employees flawlessly.",
-    name: "Sneha Kapoor",
-    role: "Head of Procurement",
-    company: "INFOSYS BPM",
-    stat: "5-YEAR PARTNERSHIP",
-    initials: "SK",
-    avatarColor: "green",
+      "The response of the Patient Education Write and Wipe board is very impressive. A big shout out to the whole Param Team!",
+    name: "Ms. Deeksha Pahwa",
+    role: "MANKIND PHARMA LTD",
+    company: "Mankind",
+    stat: "VERY IMPRESSIVE",
+    initials: "DP",
+    avatarColor: "blue",
   },
   {
     quote:
-      "The quality of their curated hampers helped us strengthen our relationship with key clients. It's a statement.",
-    name: "Arjun Patel",
-    role: "Business Dev Director",
-    company: "WIPRO LIMITED",
-    stat: "ELITE CLIENTELE",
-    initials: "AP",
-    avatarColor: "teal",
+      "They turned my concept into a practical solution, completing the Fluvir Dosage Scale with precision and dedication.",
+    name: "Samriddhi Pednekar",
+    role: "HETERO HEALTHCARE",
+    company: "Hetero",
+    stat: "PRECISION WORK",
+    initials: "SP",
+    avatarColor: "indigo",
   },
+  // {
+  //   quote: "Innovative solutions and seamless communication. Their creativity ensured results aligned perfectly with our needs.",
+  //   name: "Divya Kumar",
+  //   role: "TORRENT PHARMA",
+  //   company: "Torrent",
+  //   stat: "CREATIVE & PROMPT",
+  //   initials: "DK",
+  //   avatarColor: "teal",
+  // },
+  // {
+  //   quote: "Prompt responses, friendly demeanor, and comprehensive solutions are truly commendable. Professionalism in every aspect.",
+  //   name: "Aayesha Idrisi",
+  //   role: "AJANTA INTERNATIONAL",
+  //   company: "Ajanta",
+  //   stat: "COMMENDABLE",
+  //   initials: "AI",
+  //   avatarColor: "green",
+  // },
+  // {
+  //   quote: "Happy to see your team efforts within a short notice. Prompt and timely response. Looking forward to the partnership.",
+  //   name: "Sidhharth Roy",
+  //   role: "WOCKHARDT",
+  //   company: "Wockhardt",
+  //   stat: "TIMELY RESPONSE",
+  //   initials: "SR",
+  //   avatarColor: "amber",
+  // },
 ];
+
 // ─── Default Export: Clean Grid Layout (Original preserved) ──────────────────
 const TestimonialCards = () => {
   return (
@@ -399,21 +464,12 @@ export const TestimonialCardsVariant2 = () => {
           className="text-center mb-12"
         >
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 flex items-center justify-center gap-2 text-[#639922]">
-            <span className="inline-block w-6 h-[1.5px] bg-[#639922]" />
+            <span className="inline-block w-6 h-[1.5px] bg-[#0093cb]" />
             Client testimonials
-            <span className="inline-block w-6 h-[1.5px] bg-[#639922]" />
+            <span className="inline-block w-6 h-[1.5px] bg-[#0093cb]" />
           </p>
           <h2 className="ui-h1 font-extrabold capitalize tracking-tight mb-3 text-[var(--clr-text-dark)]">
-            Trusted by{" "}
-            <span
-              style={{
-                background: "linear-gradient(90deg, #3B6D11, #0F6E56)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              India's largest
-            </span>{" "}
+            Trusted by <span className="text-[#0093cb]">India's largest</span>{" "}
             enterprises
           </h2>
           <p className="text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)]">
@@ -437,7 +493,7 @@ export const TestimonialCardsVariant2 = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative bg-white hover:bg-[#fcfdfa] transition-colors duration-300 flex flex-col p-8 md:p-10"
+              className="group relative bg-white hover:bg-[#e9f3e8] transition-colors duration-300 flex flex-col p-8 md:p-10"
             >
               {/* Top accent line visible on hover */}
               <span
@@ -445,22 +501,15 @@ export const TestimonialCardsVariant2 = () => {
                 style={{ background: "#639922" }}
               />
 
-              {/* Stat / Label */}
-              <p
-                className="text-[11px] font-medium tracking-[0.06em] uppercase mb-6 flex items-center gap-2"
-                style={{ color: "#3B6D11" }}
-              >
-                <span
-                  className="inline-block"
-                  style={{
-                    width: "20px",
-                    height: "1px",
-                    background: "#639922",
-                    opacity: 0.5,
-                  }}
-                />
-                {t.stat}
-              </p>
+              {t.logo && (
+                <div className="w-24 h-14 p-2 scale-250 xl:scale-300 flex items-center justify-center mb-2 shrink-0">
+                  <img
+                    src={t.logo}
+                    alt={`${t.company} logo`}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              )}
 
               {/* Quote mark */}
               <span
