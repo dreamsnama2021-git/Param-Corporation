@@ -23,7 +23,6 @@ import {
   occasions,
   personalizedGifts,
   digitalGifts,
-  getOccasionCategories,
 } from ".././data";
 
 const listingStyles = `
@@ -64,6 +63,14 @@ function TabNavigationCard({ tab, onClick }: { tab: any; onClick: () => void }) 
   const sampleProduct = allProducts.find((p) => tabCats.some((c) => c.slug === p.category));
   const displayImage = sampleProduct?.image || "";
 
+  // Helper function to safely inject size into the Lucide icons
+  const renderIcon = (icon: React.ReactNode, size: number) => {
+    if (React.isValidElement(icon)) {
+      return React.cloneElement(icon as React.ReactElement<any>, { size });
+    }
+    return icon;
+  };
+
   return (
     <motion.div
       whileHover={{ y: -5 }}
@@ -75,16 +82,14 @@ function TabNavigationCard({ tab, onClick }: { tab: any; onClick: () => void }) 
           <Image src={displayImage} alt={tab.label} fill className="object-cover group-hover:scale-110 transition-transform duration-700" unoptimized />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-slate-50 text-slate-200">
-            {/* FIXED: Added <any> to ReactElement cast */}
-            {React.cloneElement(tab.icon as React.ReactElement<any>, { size: 48 })}
+            {renderIcon(tab.icon, 48)}
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-4 left-5 text-white">
           <div className="flex items-center gap-2 mb-1">
             <span className="p-1.5 rounded-lg bg-white/20 backdrop-blur-md">
-              {/* FIXED: Added <any> to ReactElement cast */}
-              {React.cloneElement(tab.icon as React.ReactElement<any>, { size: 16 })}
+              {renderIcon(tab.icon, 16)}
             </span>
             <span className="text-xs font-bold uppercase tracking-widest opacity-80">Explore</span>
           </div>
@@ -100,7 +105,6 @@ function TabNavigationCard({ tab, onClick }: { tab: any; onClick: () => void }) 
     </motion.div>
   );
 }
-
 
 function ProductCard({ product }: { product: any }) {
   return (
@@ -119,10 +123,6 @@ function ProductCard({ product }: { product: any }) {
   );
 }
 
-/* ══════════════════════════════════════════
-   MAIN PAGE
-══════════════════════════════════════════ */
-
 export default function CategoryPage() {
   const params = useParams();
   const router = useRouter();
@@ -137,10 +137,9 @@ export default function CategoryPage() {
   }, [tabParam]);
 
   const isRootAll = activeTab === "all" && (!slug || slug === "all");
-  const isTabAll = activeTab !== "all" && (!slug || slug === "all");
 
   const filteredProducts = useMemo(() => {
-    if (isRootAll) return []; // We show category cards instead
+    if (isRootAll) return [];
     const tabCats = getCategoriesForTab(activeTab);
     
     if (!slug || slug === "all") {
@@ -209,7 +208,6 @@ export default function CategoryPage() {
             {/* Main Area */}
             <main className="flex-1">
               {isRootAll ? (
-                /* ── FLOW 1: SHOW TAB CARDS ── */
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                   {TABS.filter(t => t.id !== 'all').map((tab) => (
                     <TabNavigationCard 
@@ -220,10 +218,9 @@ export default function CategoryPage() {
                   ))}
                 </div>
               ) : (
-                /* ── FLOW 2: SHOW PRODUCTS ── */
                 <>
                   <div className="mb-8 flex items-center justify-between">
-                    <h2 className="text-2xl font-serif italic">
+                    <h2 className="text-2xl font-serif italic capitalize">
                       {slug && slug !== 'all' ? slug.replace(/-/g, ' ') : `All ${activeTab}`}
                     </h2>
                     <p className="text-sm text-gray-400">{filteredProducts.length} Products</p>
