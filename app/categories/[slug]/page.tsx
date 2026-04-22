@@ -1,21 +1,26 @@
 /* ─── 3-Card Swipeable Gallery with Lightbox Modal ─── */
 "use client";
 
-import React, { useMemo } from "react";
+import React, {
+  useMemo,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from "react";
 import Link from "next/link";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import {
+  ArrowUpRight,
   Home,
   ChevronRight,
+  ChevronLeft,
+  X,
+  ZoomIn,
   ArrowRight,
-  LayoutGrid,
-  Stethoscope,
-  Gift,
-  Calendar,
-  Smartphone,
 } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   allProducts,
   categories,
@@ -23,29 +28,61 @@ import {
   occasions,
   personalizedGifts,
   digitalGifts,
+  getCategoryBySlug,
   getOccasionCategories,
+  getMonthCategories,
+  getTherapyCategories,
 } from "../../data";
 
 const listingStyles = `
   .listing-container { font-family: system-ui, -apple-system, sans-serif; }
   .category-item { position: relative; transition: all 0.3s ease; }
-  .tab-card:hover .tab-icon { transform: scale(1.1) rotate(-5deg); }
+  .category-item:hover .category-arrow { opacity: 1; transform: translateX(0); }
+  .category-arrow { opacity: 0; transform: translateX(-8px); transition: all 0.3s ease; }
+  .img-card-hover:hover .zoom-icon { opacity: 1; }
+  .zoom-icon { opacity: 0; transition: opacity 0.3s ease; }
+  .img-card-hover:hover img { transform: scale(1.06); }
+  .img-card-hover img { transition: transform 0.5s ease; }
+  .thumb-active { border: 2px solid #F5A623 !important; }
+  .tab-active { background: #F5A623; color: #7a3e00; }
+  .tab-inactive { background: transparent; color: #6b7280; }
+  .tab-inactive:hover { background: #f3f4f6; color: #0f172a; }
   .scrollbar-hide::-webkit-scrollbar { display: none; }
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 `;
 
+// Tab configuration
 const TABS = [
-  { id: "all", label: "All Products", color: "#F5A623", icon: <LayoutGrid /> },
-  { id: "categories", label: "Categories", color: "#F5A623", icon: <LayoutGrid /> },
-  { id: "therapy", label: "Therapy", color: "#10B981", icon: <Stethoscope /> },
-  { id: "personalized", label: "Personalized", color: "#8B5CF6", icon: <Gift /> },
-  { id: "occasion", label: "Occasions", color: "#EC4899", icon: <Calendar /> },
-  { id: "digital", label: "Digital", color: "#3B82F6", icon: <Smartphone /> },
+  { id: "all", label: "All Products", color: "#F5A623", path: "/categories" },
+  {
+    id: "categories",
+    label: "Categories",
+    color: "#F5A623",
+    path: "/categories",
+  },
+  { id: "therapy", label: "Therapy", color: "#10B981", path: "/therapy" },
+  {
+    id: "personalized",
+    label: "Personalized",
+    color: "#8B5CF6",
+    path: "/personalized",
+  },
+  { id: "occasion", label: "Occasions", color: "#EC4899", path: "/occasions" },
+  { id: "digital", label: "Digital", color: "#3B82F6", path: "/digital" },
 ] as const;
 
 type TabId = (typeof TABS)[number]["id"];
 
+// Get categories based on active tab
 const getCategoriesForTab = (tabId: TabId) => {
+  if (tabId === "all")
+    return [
+      ...categories,
+      ...therapies,
+      ...personalizedGifts,
+      ...occasions,
+      ...digitalGifts,
+    ];
   if (tabId === "categories") return categories;
   if (tabId === "therapy") return therapies;
   if (tabId === "personalized") return personalizedGifts;
@@ -54,62 +91,78 @@ const getCategoriesForTab = (tabId: TabId) => {
   return [];
 };
 
+// Get sidebar categories (filtered for occasion tab to show only main occasions)
+const getSidebarCategories = (tabId: TabId) => {
+  if (tabId === "occasion") {
+    return getOccasionCategories();
+  }
+  return getCategoriesForTab(tabId);
+};
+
+/* ── Ensure minimum 6 images by repeating if needed ── */
+const getProductImages = (product: any): string[] => {
+  const base: string[] = product.images?.length
+    ? product.images
+    : [product.image].filter(Boolean);
+
+  if (!base.length || !base[0]) {
+    return [];
+  }
+
+  const result: string[] = [];
+  while (result.length < 6) {
+    result.push(...base);
+  }
+  return result.slice(0, Math.max(6, base.length));
+};
+
 /* ══════════════════════════════════════════
-   COMPONENTS
+   PRODUCT CARD (Updated to Link to Page)
 ══════════════════════════════════════════ */
-
-function TabNavigationCard({ tab, onClick }: { tab: any; onClick: () => void }) {
-  // Find a representative image from the products in this tab
-  const tabCats = getCategoriesForTab(tab.id);
-  const sampleProduct = allProducts.find((p) => tabCats.some((c) => c.slug === p.category));
-  const displayImage = sampleProduct?.image || "";
+function ProductCard({
+  product,
+  accentColor,
+}: {
+  product: any;
+  accentColor: string;
+}) {
+  const productImages = getProductImages(product);
+  const productName = product.name || "Category";
 
   return (
-    <motion.div
-      whileHover={{ y: -5 }}
-      onClick={onClick}
-      className="group cursor-pointer bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 h-full"
-    >
-      <div className="relative h-48 overflow-hidden bg-gray-100">
-        {displayImage ? (
-          <Image src={displayImage} alt={tab.label} fill className="object-cover group-hover:scale-110 transition-transform duration-700" unoptimized />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-slate-50 text-slate-200">
-            {React.cloneElement(tab.icon as React.ReactElement, { size: 48 })}
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        <div className="absolute bottom-4 left-5 text-white">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="p-1.5 rounded-lg bg-white/20 backdrop-blur-md">
-              {React.cloneElement(tab.icon as React.ReactElement, { size: 16 })}
-            </span>
-            <span className="text-xs font-bold uppercase tracking-widest opacity-80">Explore</span>
-          </div>
-          <h3 className="text-xl font-bold">{tab.label}</h3>
-        </div>
-      </div>
-      <div className="p-5 flex justify-between items-center">
-        <span className="text-sm text-gray-500">View Collection</span>
-        <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-50 group-hover:bg-black group-hover:text-white transition-colors">
-          <ArrowRight size={18} />
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function ProductCard({ product }: { product: any }) {
-  return (
-    <Link href={`/product/${product.id}`} className="block group">
-      <motion.div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full border border-gray-50">
+    <Link href={`/product/${product.id}`} className="block">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-30px" }}
+        className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer group h-full"
+      >
         <div className="relative aspect-square overflow-hidden bg-gray-50">
-          <Image src={product.image} alt={product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" unoptimized />
+          {productImages[0] ? (
+            <Image
+              src={productImages[0]}
+              alt={productName}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              unoptimized
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <span className="text-gray-300 text-sm">No image</span>
+            </div>
+          )}
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+            <div className="opacity-0 group-hover:opacity-100 transition-opacity w-10 h-10 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+              <ZoomIn className="w-4 h-4 text-[#0f172a]" />
+            </div>
+          </div>
         </div>
+
         <div className="p-3">
-          <p className="text-sm font-medium text-[#0f172a] line-clamp-2 group-hover:text-blue-600 transition-colors">
-            {product.name}
+          <p className="text-sm font-medium text-[#0f172a] leading-tight line-clamp-2">
+            {productName}
           </p>
+        
         </div>
       </motion.div>
     </Link>
@@ -117,9 +170,8 @@ function ProductCard({ product }: { product: any }) {
 }
 
 /* ══════════════════════════════════════════
-   MAIN PAGE
+   PAGE COMPONENT
 ══════════════════════════════════════════ */
-
 export default function CategoryPage() {
   const params = useParams();
   const router = useRouter();
@@ -130,24 +182,67 @@ export default function CategoryPage() {
 
   const activeTab: TabId = useMemo(() => {
     if (tabParam && TABS.some((t) => t.id === tabParam)) return tabParam;
-    return "all";
-  }, [tabParam]);
 
-  const isRootAll = activeTab === "all" && (!slug || slug === "all");
-  const isTabAll = activeTab !== "all" && (!slug || slug === "all");
+    if (slug) {
+      if (categories.some((c) => c.slug === slug)) return "categories";
+      if (therapies.some((t) => t.slug === slug)) return "therapy";
+      if (personalizedGifts.some((p) => p.slug === slug)) return "personalized";
+      if (occasions.some((o) => o.slug === slug)) return "occasion";
+      if (digitalGifts.some((d) => d.slug === slug)) return "digital";
+    }
+
+    return "categories";
+  }, [slug, tabParam]);
+
+  const isAllProducts = !slug || slug === "all";
+  const activeTabColor =
+    TABS.find((t) => t.id === activeTab)?.color || "#F5A623";
+  const activeTabPath =
+    TABS.find((t) => t.id === activeTab)?.path || "/categories";
+
+  const tabCategories = useMemo(
+    () => getCategoriesForTab(activeTab),
+    [activeTab],
+  );
+  const sidebarCategories = useMemo(
+    () => getSidebarCategories(activeTab),
+    [activeTab],
+  );
 
   const filteredProducts = useMemo(() => {
-    if (isRootAll) return []; // We show category cards instead
-    const tabCats = getCategoriesForTab(activeTab);
-    
-    if (!slug || slug === "all") {
-      return allProducts.filter((p) => tabCats.some((cat) => cat.slug === p.category));
+    if (activeTab === "all" || isAllProducts) {
+      const tabCats =
+        activeTab === "all"
+          ? [
+              ...categories,
+              ...therapies,
+              ...personalizedGifts,
+              ...occasions,
+              ...digitalGifts,
+            ]
+          : tabCategories;
+      return allProducts.filter((p) =>
+        tabCats.some((cat) => cat.slug === p.category),
+      );
     }
     return allProducts.filter((p) => p.category === slug);
-  }, [slug, activeTab, isRootAll]);
+  }, [slug, isAllProducts, tabCategories, activeTab]);
+
+  const currentCategory = isAllProducts
+    ? null
+    : tabCategories.find((c) => c.slug === slug);
 
   const handleTabChange = (tabId: TabId) => {
-    router.push(`/categories/all?tab=${tabId}`);
+    const firstCategory = getCategoriesForTab(tabId)[0];
+    if (firstCategory) {
+      router.push(`/categories/${firstCategory.slug}?tab=${tabId}`);
+    } else {
+      router.push(`/categories/all?tab=${tabId}`);
+    }
+  };
+
+  const handleCategorySelect = (catSlug: string) => {
+    router.push(`/categories/${catSlug}?tab=${activeTab}`);
   };
 
   return (
@@ -155,80 +250,207 @@ export default function CategoryPage() {
       <style dangerouslySetInnerHTML={{ __html: listingStyles }} />
       <div className="min-h-screen listing-container bg-[#f8fafc]">
         {/* Hero */}
-        <section className="relative bg-[#0b3c5d] py-16 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-[#0b3c5d] via-[#072c44] to-[#0093cb]/20 py-12 lg:py-16 overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <svg width="100%" height="100%">
+              <pattern
+                id="dots"
+                width="40"
+                height="40"
+                patternUnits="userSpaceOnUse"
+              >
+                <circle cx="20" cy="20" r="1.5" fill="white" />
+              </pattern>
+              <rect width="100%" height="100%" fill="url(#dots)" />
+            </svg>
+          </div>
           <div className="relative max-w-7xl mx-auto px-6">
-            <nav className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/50 mb-8">
-              <Link href="/" className="hover:text-white flex items-center gap-1.5 transition-colors">
+            <nav className="flex items-center gap-2 text-xs uppercase tracking-wider text-white/60 mb-8 flex-wrap">
+              <Link
+                href="/"
+                className="hover:text-white flex items-center gap-1.5 transition-colors"
+              >
                 <Home className="w-3 h-3" /> Home
               </Link>
               <ChevronRight className="w-3 h-3" />
-              <span className="text-white">Shop</span>
+              <Link
+                href="/categories/all"
+                className="hover:text-white transition-colors"
+              >
+                Products
+              </Link>
               <ChevronRight className="w-3 h-3" />
-              <span className="text-white font-bold">{TABS.find(t => t.id === activeTab)?.label}</span>
+              <span className="text-white/80">
+                {TABS.find((t) => t.id === activeTab)?.label}
+              </span>
+              {!isAllProducts && currentCategory && (
+                <>
+                  <ChevronRight className="w-3 h-3" />
+                  <span
+                    className="font-medium"
+                    style={{ color: activeTabColor }}
+                  >
+                    {currentCategory.name}
+                  </span>
+                </>
+              )}
             </nav>
-            <h1 className="text-5xl font-serif italic text-white mb-4">
-              {isRootAll ? "Our Collections" : TABS.find(t => t.id === activeTab)?.label}
+            <h1 className="text-4xl lg:text-5xl font-serif italic text-white">
+              {isAllProducts
+                ? `All ${TABS.find((t) => t.id === activeTab)?.label}`
+                : currentCategory?.name}
             </h1>
-            <p className="text-white/60 max-w-xl">
-              {isRootAll 
-                ? "Browse through our specialized categories designed for professional corporate gifting."
-                : `Explore premium products within our ${activeTab} department.`}
+
+            <p className="text-white/60 mt-3 max-w-2xl">
+              {isAllProducts
+                ? `Explore our complete collection of ${TABS.find((t) => t.id === activeTab)?.label.toLowerCase()}`
+                : currentCategory?.description ||
+                  "Premium quality products for your needs"}
             </p>
           </div>
         </section>
 
+        {/* Content */}
         <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16">
-          <div className="flex flex-col lg:flex-row gap-12">
-            
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
             {/* Sidebar */}
             <aside className="lg:w-64 flex-shrink-0">
-              <div className="sticky top-[100px] space-y-8">
-                <div>
-                  <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-4">Navigation</h4>
-                  <div className="flex flex-col gap-1">
-                    {TABS.map((tab) => (
+              <div className="sticky top-[140px]">
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#6b7280]">
+                    Filter By
+                  </span>
+                  <div className="h-px flex-1 bg-gray-200" />
+                </div>
+
+                <div className="flex flex-col space-y-0.5 max-h-[calc(100vh-200px)] overflow-y-auto pr-2">
+                  {/* All Products */}
+                  <button
+                    onClick={() => router.push("/categories/all?tab=all")}
+                    className={`category-item group text-left py-3 px-4 rounded-xl transition-all ${
+                      isAllProducts && activeTab === "all"
+                        ? "font-semibold"
+                        : "text-[#6b7280] hover:text-[#0f172a] hover:bg-gray-100"
+                    }`}
+                    style={
+                      isAllProducts && activeTab === "all"
+                        ? { backgroundColor: "#F5A62320", color: "#0f172a" }
+                        : {}
+                    }
+                    type="button"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span>All Products</span>
+                      <span className="text-xs px-2 py-0.5 rounded-full text-white bg-[#F5A623]">
+                        <ArrowRight className="h-5 w-5" />
+                      </span>
+                    </div>
+                  </button>
+
+                  {/* Tab-level filters */}
+                  {TABS.filter((t) => t.id !== "all").map((tab) => {
+                    const tabProds = getCategoriesForTab(tab.id);
+                    const count = allProducts.filter((p) =>
+                      tabProds.some((cat) => cat.slug === p.category),
+                    ).length;
+
+                    return (
                       <button
                         key={tab.id}
                         onClick={() => handleTabChange(tab.id)}
-                        className={`flex items-center justify-between py-3 px-4 rounded-xl transition-all ${
-                          activeTab === tab.id ? "bg-white shadow-md font-bold text-black" : "text-gray-500 hover:bg-gray-100"
+                        className={`category-item group text-left py-3 px-4 rounded-xl transition-all ${
+                          activeTab === tab.id
+                            ? "font-semibold"
+                            : "text-[#6b7280] hover:text-[#0f172a] hover:bg-gray-100"
                         }`}
+                        style={
+                          activeTab === tab.id
+                            ? {
+                                backgroundColor: `${tab.color}20`,
+                                color: "#0f172a",
+                              }
+                            : {}
+                        }
+                        type="button"
                       >
-                        <span className="text-sm">{tab.label}</span>
-                        <ArrowRight size={14} className={activeTab === tab.id ? "opacity-100" : "opacity-0"} />
+                        <div className="flex items-center justify-between">
+                          <span>{tab.label}</span>
+                          <span
+                            className={`text-xs px-2 py-0.5 rounded-full transition-colors ${
+                              activeTab === tab.id
+                                ? "text-white"
+                                : "bg-gray-200 text-[#6b7280] group-hover:bg-gray-300"
+                            }`}
+                            style={
+                              activeTab === tab.id
+                                ? { backgroundColor: tab.color }
+                                : {}
+                            }
+                          >
+                            <ArrowRight className="h-5 w-5" />
+                          </span>
+                        </div>
                       </button>
-                    ))}
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
             </aside>
 
-            {/* Main Area */}
-            <main className="flex-1">
-              {isRootAll ? (
-                /* ── FLOW 1: SHOW TAB CARDS ── */
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                  {TABS.filter(t => t.id !== 'all').map((tab) => (
-                    <TabNavigationCard 
-                      key={tab.id} 
-                      tab={tab} 
-                      onClick={() => handleTabChange(tab.id)} 
-                    />
-                  ))}
+            {/* Listings */}
+            {/* Listings */}
+            <main className="flex-1 min-w-0">
+              {filteredProducts.length === 0 ? (
+                <div className="text-center py-20">
+                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
+                    <svg
+                      className="w-8 h-8 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M20 12H4M12 4v16"
+                      />
+                    </svg>
+                  </div>
+                  <p className="text-[#6b7280] text-lg">
+                    No products found in this category.
+                  </p>
+                  <button
+                    onClick={() =>
+                      router.push(`/categories/all?tab=${activeTab}`)
+                    }
+                    className="mt-4 text-sm font-medium px-4 py-2 rounded-full transition-colors"
+                    style={{ color: activeTabColor }}
+                    type="button"
+                  >
+                    View all {TABS.find((t) => t.id === activeTab)?.label}
+                  </button>
                 </div>
               ) : (
-                /* ── FLOW 2: SHOW PRODUCTS ── */
                 <>
-                  <div className="mb-8 flex items-center justify-between">
-                    <h2 className="text-2xl font-serif italic">
-                      {slug && slug !== 'all' ? slug.replace(/-/g, ' ') : `All ${activeTab}`}
-                    </h2>
-                    <p className="text-sm text-gray-400">{filteredProducts.length} Products</p>
+                  <div className="mb-6 flex items-center justify-between">
+                    <p className="text-sm text-[#6b7280]">
+                      Showing{" "}
+                      <span className="font-semibold text-[#0f172a]">
+                        {filteredProducts.length}
+                      </span>{" "}
+                      products
+                    </p>
                   </div>
-                  
-                  <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-6">
+
+                  {/* ── GRID LAYOUT ── */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
                     {filteredProducts.map((product) => (
-                      <ProductCard key={product.id} product={product} />
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        accentColor={activeTabColor}
+                      />
                     ))}
                   </div>
                 </>
