@@ -1,4 +1,3 @@
-/* ─── 3-Card Swipeable Gallery with Lightbox Modal ─── */
 "use client";
 
 import React, { useMemo } from "react";
@@ -13,6 +12,7 @@ import {
   Gift,
   Calendar,
   Smartphone,
+  type LucideIcon, // Import the type for safety
 } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -33,13 +33,14 @@ const listingStyles = `
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 `;
 
+// Updated TABS to store the Component reference, not the JSX
 const TABS = [
-  { id: "all", label: "All Products", color: "#F5A623", icon: <LayoutGrid /> },
-  { id: "categories", label: "Categories", color: "#F5A623", icon: <LayoutGrid /> },
-  { id: "therapy", label: "Therapy", color: "#10B981", icon: <Stethoscope /> },
-  { id: "personalized", label: "Personalized", color: "#8B5CF6", icon: <Gift /> },
-  { id: "occasion", label: "Occasions", color: "#EC4899", icon: <Calendar /> },
-  { id: "digital", label: "Digital", color: "#3B82F6", icon: <Smartphone /> },
+  { id: "all", label: "All Products", color: "#F5A623", icon: LayoutGrid },
+  { id: "categories", label: "Categories", color: "#F5A623", icon: LayoutGrid },
+  { id: "therapy", label: "Therapy", color: "#10B981", icon: Stethoscope },
+  { id: "personalized", label: "Personalized", color: "#8B5CF6", icon: Gift },
+  { id: "occasion", label: "Occasions", color: "#EC4899", icon: Calendar },
+  { id: "digital", label: "Digital", color: "#3B82F6", icon: Smartphone },
 ] as const;
 
 type TabId = (typeof TABS)[number]["id"];
@@ -58,18 +59,12 @@ const getCategoriesForTab = (tabId: TabId) => {
 ══════════════════════════════════════════ */
 
 function TabNavigationCard({ tab, onClick }: { tab: any; onClick: () => void }) {
-  // Find a representative image from the products in this tab
   const tabCats = getCategoriesForTab(tab.id);
   const sampleProduct = allProducts.find((p) => tabCats.some((c) => c.slug === p.category));
   const displayImage = sampleProduct?.image || "";
-
-  // Helper function to safely inject size into the Lucide icons
-  const renderIcon = (icon: React.ReactNode, size: number) => {
-    if (React.isValidElement(icon)) {
-      return React.cloneElement(icon as React.ReactElement<any>, { size });
-    }
-    return icon;
-  };
+  
+  // Get the component reference
+  const IconComponent = tab.icon as LucideIcon;
 
   return (
     <motion.div
@@ -82,14 +77,14 @@ function TabNavigationCard({ tab, onClick }: { tab: any; onClick: () => void }) 
           <Image src={displayImage} alt={tab.label} fill className="object-cover group-hover:scale-110 transition-transform duration-700" unoptimized />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-slate-50 text-slate-200">
-            {renderIcon(tab.icon, 48)}
+            <IconComponent size={48} />
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-4 left-5 text-white">
           <div className="flex items-center gap-2 mb-1">
             <span className="p-1.5 rounded-lg bg-white/20 backdrop-blur-md">
-              {renderIcon(tab.icon, 16)}
+              <IconComponent size={16} />
             </span>
             <span className="text-xs font-bold uppercase tracking-widest opacity-80">Explore</span>
           </div>
@@ -156,7 +151,6 @@ export default function CategoryPage() {
     <>
       <style dangerouslySetInnerHTML={{ __html: listingStyles }} />
       <div className="min-h-screen listing-container bg-[#f8fafc]">
-        {/* Hero */}
         <section className="relative bg-[#0b3c5d] py-16 overflow-hidden">
           <div className="relative max-w-7xl mx-auto px-6">
             <nav className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/50 mb-8">
@@ -181,8 +175,6 @@ export default function CategoryPage() {
 
         <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16">
           <div className="flex flex-col lg:flex-row gap-12">
-            
-            {/* Sidebar */}
             <aside className="lg:w-64 flex-shrink-0">
               <div className="sticky top-[100px] space-y-8">
                 <div>
@@ -205,7 +197,6 @@ export default function CategoryPage() {
               </div>
             </aside>
 
-            {/* Main Area */}
             <main className="flex-1">
               {isRootAll ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
