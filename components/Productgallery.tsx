@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { X, ChevronLeft, ChevronRight, ZoomIn, Images } from 'lucide-react';
+import {  ChevronLeft, ChevronRight, ZoomIn, Images } from 'lucide-react';
 
 /* ══════════════════════════════════════════════════════
    PRODUCT GALLERY COMPONENT
@@ -23,6 +23,13 @@ interface ProductGalleryProps {
   images?: string[];
   productName?: string;
 }
+
+// ── Icons (inline SVG components to avoid import issues) ──
+const X = ({ style }: { style?: React.CSSProperties }) => (
+  <svg style={style} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+);
 
 /* ── Gallery Modal ── */
 function GalleryModal({ images, productName, onClose }: GalleryModalProps) {
