@@ -75,14 +75,16 @@ function TabNavigationCard({ tab, onClick }: { tab: any; onClick: () => void }) 
           <Image src={displayImage} alt={tab.label} fill className="object-cover group-hover:scale-110 transition-transform duration-700" unoptimized />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-slate-50 text-slate-200">
-            {React.cloneElement(tab.icon as React.ReactElement, { size: 48 })}
+            {/* FIX: Cast ReactElement to accept 'size' prop */}
+            {React.cloneElement(tab.icon as React.ReactElement<any>, { size: 48 })}
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-4 left-5 text-white">
           <div className="flex items-center gap-2 mb-1">
             <span className="p-1.5 rounded-lg bg-white/20 backdrop-blur-md">
-              {React.cloneElement(tab.icon as React.ReactElement, { size: 16 })}
+              {/* FIX: Cast ReactElement to accept 'size' prop */}
+              {React.cloneElement(tab.icon as React.ReactElement<any>, { size: 16 })}
             </span>
             <span className="text-xs font-bold uppercase tracking-widest opacity-80">Explore</span>
           </div>
@@ -98,6 +100,7 @@ function TabNavigationCard({ tab, onClick }: { tab: any; onClick: () => void }) 
     </motion.div>
   );
 }
+
 
 function ProductCard({ product }: { product: any }) {
   return (
