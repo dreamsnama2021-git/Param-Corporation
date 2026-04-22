@@ -73,18 +73,17 @@ function GalleryModal({ images, productName, onClose }: GalleryModalProps) {
   const next = useCallback(() =>
     setActiveIndex(i => (i + 1) % images.length), [images.length]);
 
-  useEffect(() => {
-    const handler = (e) => {
-      if (e.key === "Escape") view === "single" ? setView("grid") : onClose();
-      if (view === "single") {
-        if (e.key === "ArrowLeft") prev();
-        if (e.key === "ArrowRight") next();
-      }
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [view, prev, next, onClose]);
-
+useEffect(() => {
+  const handler = (e: KeyboardEvent) => {
+    if (e.key === "Escape") view === "single" ? setView("grid") : onClose();
+    if (view === "single") {
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    }
+  };
+  window.addEventListener("keydown", handler);
+  return () => window.removeEventListener("keydown", handler);
+}, [view, prev, next, onClose]);
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
