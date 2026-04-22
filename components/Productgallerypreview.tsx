@@ -56,10 +56,15 @@ const DEMO_IMAGES = [
   "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&q=80",
 ];
 
-/* ══════════════════════════════════════════
-   GALLERY MODAL
-══════════════════════════════════════════ */
-function GalleryModal({ images, productName, onClose }) {
+// Add this interface before the GalleryModal component
+interface GalleryModalProps {
+  images: string[];
+  productName: string;
+  onClose: () => void;
+}
+
+function GalleryModal({ images, productName, onClose }: GalleryModalProps) {
+  // ... rest of the code remains the same
   const [view, setView] = useState("grid");
   const [activeIndex, setActiveIndex] = useState(0);
 
