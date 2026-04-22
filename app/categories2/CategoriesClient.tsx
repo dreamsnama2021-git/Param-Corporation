@@ -22,7 +22,7 @@ import {
   occasions,
   personalizedGifts,
   digitalGifts,
-} from "../../data";
+} from ".././data";
 
 const listingStyles = `
   .listing-container { font-family: system-ui, -apple-system, sans-serif; }
