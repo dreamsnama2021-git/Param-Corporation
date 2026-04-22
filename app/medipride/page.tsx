@@ -454,7 +454,9 @@ function ProductCard({ item }: { item: ProductItem }) {
 }
 
 export default function MediPrideLanding() {
-    const allProductImages = PRODUCT_DATA.flatMap(cat => cat.items.map(item => item.img));
+ const allProductImages: string[] = PRODUCT_DATA.flatMap(cat => 
+    cat.items.map(item => item.img)
+  );
   return (
     <div className="text-slate-800 font-sans scroll-smooth bg-white">
       {/* ── HERO ── */}

@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { X, ChevronLeft, ChevronRight, ZoomIn, Grid, Images } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ZoomIn, Images } from 'lucide-react';
 
 /* ══════════════════════════════════════════════════════
    PRODUCT GALLERY COMPONENT
@@ -12,12 +12,24 @@ import { X, ChevronLeft, ChevronRight, ZoomIn, Grid, Images } from 'lucide-react
    - Modal: grid view → single image lightbox (2-step)
 ══════════════════════════════════════════════════════ */
 
+/* ─── Type Definitions ───────────────────────────────────────────────────── */
+interface GalleryModalProps {
+  images: string[];
+  productName: string;
+  onClose: () => void;
+}
+
+interface ProductGalleryProps {
+  images?: string[];
+  productName?: string;
+}
+
 /* ── Gallery Modal ── */
-function GalleryModal({ images, productName, onClose }) {
-  const [view, setView] = useState('grid'); // 'grid' | 'single'
+function GalleryModal({ images, productName, onClose }: GalleryModalProps) {
+  const [view, setView] = useState<'grid' | 'single'>('grid');
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const openSingle = (idx) => {
+  const openSingle = (idx: number) => {
     setActiveIndex(idx);
     setView('single');
   };
@@ -28,7 +40,7 @@ function GalleryModal({ images, productName, onClose }) {
     setActiveIndex(i => (i + 1) % images.length), [images.length]);
 
   useEffect(() => {
-    const handler = (e) => {
+    const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         if (view === 'single') setView('grid');
         else onClose();
@@ -175,7 +187,7 @@ function GalleryModal({ images, productName, onClose }) {
                     margin: '0 auto',
                   }}
                 >
-                  {images.map((img, idx) => (
+                  {images.map((img: string, idx: number) => (
                     <motion.button
                       key={idx}
                       onClick={() => openSingle(idx)}
@@ -296,7 +308,7 @@ function GalleryModal({ images, productName, onClose }) {
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'center', gap: 8, overflowX: 'auto', scrollbarWidth: 'none' }}>
-                    {images.map((img, i) => (
+                    {images.map((img: string, i: number) => (
                       <button
                         key={i}
                         onClick={() => setActiveIndex(i)}
@@ -330,7 +342,7 @@ function GalleryModal({ images, productName, onClose }) {
 /* ══════════════════════════════════════════════════════
    MAIN: ProductGallery — 8-image front preview
 ══════════════════════════════════════════════════════ */
-export default function ProductGallery({ images = [], productName = 'Product' }) {
+export default function ProductGallery({ images = [], productName = 'Product' }: ProductGalleryProps) {
   const [modalOpen, setModalOpen] = useState(false);
 
   // Show max 8 images on front
@@ -353,7 +365,7 @@ export default function ProductGallery({ images = [], productName = 'Product' })
             overflow: 'hidden',
           }}
         >
-          {previewImages.map((img, idx) => (
+          {previewImages.map((img: string, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -453,7 +465,6 @@ export default function ProductGallery({ images = [], productName = 'Product' })
     </>
   );
 }
-
 
 /* ══════════════════════════════════════════════════════
    USAGE EXAMPLE (for reference)
