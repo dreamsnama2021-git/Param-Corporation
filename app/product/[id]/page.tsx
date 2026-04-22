@@ -17,7 +17,7 @@ import {
   Award,
   Users
 } from "lucide-react";
-import { allProducts, Product } from "../../data"; // Ensure Product type is imported
+import { allProducts, Product } from "../../data"; 
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -28,7 +28,7 @@ export default function ProductDetailPage() {
 
   // 1. Find Product
   const product = useMemo(() => {
-    return allProducts.find((p) => p.id.toString() === id) as Product | undefined;
+    return allProducts.find((p) => p.id.toString() === id) as any; // Using any temporarily to avoid interface conflicts
   }, [id]);
 
   // 2. Filter Related Products
@@ -48,9 +48,11 @@ export default function ProductDetailPage() {
     );
   }
 
-  // Safe Image Logic: Check if images array exists, otherwise fallback to singular image
-  const images: string[] = product.image && product.image.length > 0 
-    ? product.image
+  // FIXED IMAGE LOGIC: 
+  // Check for the plural 'images' array first. 
+  // If it doesn't exist, wrap the singular 'image' in an array.
+  const images: string[] = (product.images && Array.isArray(product.images) && product.images.length > 0)
+    ? product.images
     : [product.image].filter(Boolean);
 
   return (
@@ -115,7 +117,7 @@ export default function ProductDetailPage() {
 
             {/* Thumbnails */}
             <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide justify-center">
-              {images.map((img, idx) => (
+              {images.map((img: string, idx: number) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentImageIndex(idx)}
@@ -168,11 +170,11 @@ export default function ProductDetailPage() {
                 </ul>
               </div>
 
-              {/* Action */}
+              {/* Action Button */}
               <div className="pt-4">
                 <Link 
                   href={`/contact-us?product=${encodeURIComponent(product.name)}`}
-                  className="w-full bg-[#0b3c5d] hover:bg-[#072c44] text-white font-bold py-5 rounded-2xl transition-all flex items-center justify-center gap-3 shadow-xl"
+                  className="w-full bg-[#0b3c5d] hover:bg-[#072c44] text-white font-bold py-5 rounded-2xl transition-all flex items-center justify-center gap-3 shadow-xl shadow-blue-900/20 active:scale-[0.98]"
                 >
                   <MessageCircle size={20} />
                   Enquire About This Product
@@ -187,13 +189,12 @@ export default function ProductDetailPage() {
           <section className="mt-32">
             <h2 className="text-3xl font-serif text-slate-900 italic mb-10">Similar Collections</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {relatedProducts.map((rel) => (
+              {relatedProducts.map((rel: any) => (
                 <Link key={rel.id} href={`/product/${rel.id}`} className="group">
                   <div className="bg-white rounded-3xl p-3 shadow-sm border border-slate-100 hover:shadow-xl transition-all">
                     <div className="relative aspect-square rounded-2xl overflow-hidden bg-slate-50 mb-4">
                       <Image 
-                        // Fix for related products type check
-                        src={(rel as any).images?.[0] || rel.image} 
+                        src={rel.images?.[0] || rel.image} 
                         alt={rel.name} 
                         fill 
                         className="object-contain p-4 group-hover:scale-110 transition-transform duration-700" 

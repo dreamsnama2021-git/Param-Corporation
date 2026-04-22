@@ -173,7 +173,6 @@ function ProductCard({
   );
 }
 
-
 /* ══════════════════════════════════════════
    PAGE COMPONENT
 ══════════════════════════════════════════ */
@@ -302,9 +301,10 @@ export default function CategoryPage() {
             </nav>
             <h1 className="text-4xl lg:text-5xl font-serif italic text-white">
               {isAllProducts
-                ? ` ${TABS.find((t) => t.id === activeTab)?.label}`
+                ? `All ${TABS.find((t) => t.id === activeTab)?.label}`
                 : currentCategory?.name}
             </h1>
+
             <p className="text-white/60 mt-3 max-w-2xl">
               {isAllProducts
                 ? `Explore our complete collection of ${TABS.find((t) => t.id === activeTab)?.label.toLowerCase()}`
