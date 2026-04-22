@@ -49,8 +49,8 @@ export default function ProductDetailPage() {
   }
 
   // Safe Image Logic: Check if images array exists, otherwise fallback to singular image
-  const images: string[] = product.images && product.images.length > 0 
-    ? product.images 
+  const images: string[] = product.image && product.image.length > 0 
+    ? product.image
     : [product.image].filter(Boolean);
 
   return (
