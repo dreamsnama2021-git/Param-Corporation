@@ -357,7 +357,12 @@ useEffect(() => {
 /* ══════════════════════════════════════════
    PRODUCT GALLERY — 8-image front preview
 ══════════════════════════════════════════ */
-function ProductGallery({ images = [], productName = "Product" }) {
+interface ProductGalleryProps {
+  images?: string[];
+  productName?: string;
+}
+
+function ProductGallery({ images = [], productName = "Product" }: ProductGalleryProps) {
   const [modalOpen, setModalOpen] = useState(false);
 
   const previewImages = images.slice(0, 8);
