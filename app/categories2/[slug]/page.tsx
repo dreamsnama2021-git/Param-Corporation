@@ -1,7 +1,7 @@
 /* ─── 3-Card Swipeable Gallery with Lightbox Modal ─── */
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useMemo, Suspense } from "react";
 import Link from "next/link";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import {
@@ -101,7 +101,6 @@ function TabNavigationCard({ tab, onClick }: { tab: any; onClick: () => void }) 
   );
 }
 
-
 function ProductCard({ product }: { product: any }) {
   return (
     <Link href={`/product/${product.id}`} className="block group">
@@ -120,10 +119,35 @@ function ProductCard({ product }: { product: any }) {
 }
 
 /* ══════════════════════════════════════════
-   MAIN PAGE
+   LOADING FALLBACK
 ══════════════════════════════════════════ */
 
-export default function CategoryPage() {
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen listing-container bg-[#f8fafc]">
+      <section className="relative bg-[#0b3c5d] py-16 overflow-hidden">
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="h-4 w-32 bg-white/20 rounded animate-pulse mb-8" />
+          <div className="h-12 w-64 bg-white/20 rounded animate-pulse mb-4" />
+          <div className="h-4 w-96 bg-white/20 rounded animate-pulse" />
+        </div>
+      </section>
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="h-64 bg-gray-200 rounded-3xl animate-pulse" />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════
+   MAIN PAGE CONTENT
+══════════════════════════════════════════ */
+
+function CategoryPageContent() {
   const params = useParams();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -241,5 +265,17 @@ export default function CategoryPage() {
         </div>
       </div>
     </>
+  );
+}
+
+/* ══════════════════════════════════════════
+   EXPORT WITH SUSPENSE BOUNDARY
+══════════════════════════════════════════ */
+
+export default function CategoryPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <CategoryPageContent />
+    </Suspense>
   );
 }
