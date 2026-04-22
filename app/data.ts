@@ -35,7 +35,7 @@ export const industries: CategoryItem[] = [
 
 // 2. By Category - Product Categories
 export const categories: CategoryItem[] = [
-  { name: "Paperweights", slug: "paperweights", description: "Practical and widely used, ideal for doctor tables with strong branding visibility (₹25-₹30 range)" },
+  { name: "Paperweights", slug: "paperweights", description: "Practical and widely used, ideal for doctor tables with strong branding visibility" },
   { name: "Tabletops", slug: "tabletops", description: "Engaging and informative tabletop displays for clinics and consultation desks" },
   { name: "Desk Utility", slug: "desk-utility", description: "Functional items like pen stands, organizers, and multi-utility desk tools for gifting doctors" },
   { name: "3D Printed", slug: "3d-printed", description: "Innovative pharma branding 3D models to visually explain molecules, organs, or concepts" },
