@@ -186,7 +186,7 @@ export default function ProductDetailPage() {
 
         {/* --- BOTTOM: Related Products --- */}
         {relatedProducts.length > 0 && (
-          <section className="mt-32">
+          <section className="mt-18">
             <h2 className="text-3xl font-serif text-slate-900 italic mb-10">Similar Collections</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {relatedProducts.map((rel: any) => (
