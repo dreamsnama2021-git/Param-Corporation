@@ -279,6 +279,34 @@
 body {
   position: relative;
 }
+body {
+  font-family: var(--font-body), sans-serif;
+  background-color: var(--clr-bg-cream);
+  color: var(--clr-text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.ui-para {
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--para-size);
+  line-height: 1.7; /* Increased line-height for "breathing room" */
+  font-weight: 300; /* Lighter body text feels more minimal */
+  color: var(--clr-text-dark);
+}
+
+.ui-desc {
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--desc-size);
+  line-height: 1.6;
+  color: var(--clr-text-muted);
+  font-weight: 400;
+}
+.ui-h1, .ui-h2, .ui-h3 {
+  font-family: var(--font-display), serif;
+  font-weight: 500; /* Medium weight in Serif looks more expensive than Bold */
+  letter-spacing: -0.01em;
+  color: var(--clr-text-dark);
+}
 
 body::before {
   content: '';

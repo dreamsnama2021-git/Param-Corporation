@@ -2,19 +2,24 @@
 import type { ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackgroundDecoration from "@/components/BackgroundDecoration";
 
-const display = Playfair_Display({
+// Premium Serif for Headings
+const display = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-display",
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
-const body = DM_Sans({
+// Minimalist Sans for Body
+const body = Inter({
   subsets: ["latin"],
   variable: "--font-body",
+  weight: ["300", "400", "500"],
 });
 
 export const metadata = {
@@ -30,14 +35,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body className="bg-[var(--clr-bg-cream)] text-[var(--clr-text-dark)] font-sans">
+      <body className="bg-[var(--clr-bg-cream)] text-[var(--clr-text-dark)] font-sans antialiased selection:bg-black selection:text-white">
         {/* Grid pattern - lowest layer */}
         <BackgroundDecoration />
         
         {/* Content wrapper - sits above grid */}
-        <div className="relative z-10">
+        <div className="relative z-10 flex min-h-screen flex-col">
           <Navbar />
-          <main>{children}</main>
+          <main className="flex-grow">{children}</main>
           <Footer />
           <WhatsAppButton />
         </div>

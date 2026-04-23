@@ -56,9 +56,9 @@ export default function ProductDetailPage() {
     : [product.image].filter(Boolean);
 
   return (
-    <div className="min-h-screen bg-[#fcfdfe] pb-20">
+    <div className="min-h-screen bg-[#fcfdfe] pb-12">
       {/* --- Header Navigation --- */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-6 pt-16">
         <nav className="flex items-center gap-2 text-xs uppercase tracking-widest text-gray-400 mb-6">
           <Link href="/" className="hover:text-black flex items-center gap-1"><Home size={12}/> Home</Link>
           <ChevronRight size={12} />
@@ -78,14 +78,14 @@ export default function ProductDetailPage() {
           
           {/* --- LEFT: Image Gallery --- */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-white shadow-xl shadow-slate-200/50 group border border-slate-100">
+            <div className="relative  rounded-[2rem] overflow-hidden bg-white shadow-xl shadow-slate-200/50 group border border-slate-100">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentImageIndex}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="relative w-full h-full"
+                  className="relative w-full h-120 "
                 >
                   <Image
                     src={images[currentImageIndex] || "/placeholder.png"}
