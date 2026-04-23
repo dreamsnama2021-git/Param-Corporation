@@ -845,7 +845,7 @@ export default function MediPrideLanding() {
       <div>
         <BentoGrid />
         {/* ── NEW PRODUCT GALLERY (AFTER ABOUT) ── */}
-      <section className="py-12 bg-slate-50">
+      {/* <section className="py-12 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-[#00a65d] font-bold uppercase tracking-widest text-sm inline-block mb-2">Visual Portfolio</span>
@@ -854,7 +854,7 @@ export default function MediPrideLanding() {
           </div>
           <ProductGallery images={allProductImages} productName="MediPride Communications Portfolio" />
         </div>
-      </section>
+      </section> */}
       </div>
     </div>
   );

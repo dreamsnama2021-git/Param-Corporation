@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react";
 import { Phone, CheckCircle, ArrowUpRight } from "lucide-react";
 import { FileText, Users, Monitor, ShieldCheck, Lightbulb, Activity } from "lucide-react";
 import BentoGrid2 from "@/components/BentoGrid2";
+import ProductGallery from "@/components/Productgallery";
 
 const SERVICES = [
   { title: "Medical Writing", desc: "Scientifically accurate content creation reviewed by clinical experts for precision.", icon: <FileText size={28} /> },
@@ -74,8 +75,152 @@ function SwipeCarousel({ children, count, accentColor = "#0093cb" }: SwipeCarous
     </div>
   );
 }
-
+const PRODUCT_DATA = [
+  {
+    category: "BOOKS & MAGAZINES",
+    items: [
+      {
+        title: "Near Vision Chart",
+        desc: "Portable tool for quick and accurate near vision testing with standardized optotypes.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+      },
+      {
+        title: "Tooth Tales: A Visual Guide Book",
+        desc: "Illustrated dental education book that simplifies tooth structure and oral care for better patient understanding.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Tooth-tales.jpg",
+      },
+      {
+        title: "PCOS Book",
+        desc: "Simplified guide explaining PCOS, its causes, hormonal imbalance, and management strategies.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/PCOS.jpg",
+      },
+    ],
+  },
+  {
+    category: "FLIP CHART",
+    items: [
+      {
+        title: "Acute Coronary Syndrome (ACS) Flip Chart",
+        desc: "Visual clinical guide for understanding ACS with structured diagnosis and patient education support.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Acute.jpg",
+      },
+      {
+        title: "Type 2 Diabetes Risk Flip-chart",
+        desc: "Educational tool highlighting diabetes risk factors, prevention, and early lifestyle interventions.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Type-2-Diabites.jpg",
+      },
+      {
+        title: "Urinary Tract Flipchart",
+        desc: "Illustrated guide explaining urinary system anatomy, infections, and related clinical conditions.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Urinary-Track.jpg",
+      },
+    ],
+  },
+  {
+    category: "MATT (Laptop Mats)",
+    items: [
+      {
+        title: "Dosing & Administration Guide Laptop Mat",
+        desc: "Quick-reference tool for drug dosing, administration guidelines, and clinical safety information.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Dosage.jpg",
+      },
+      {
+        title: "Anatomical Dissections of the Human Ear Laptop Mat",
+        desc: "Detailed anatomical reference of the ear structure for fast clinical and educational use.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Ear.jpg",
+      },
+      {
+        title: "Stroke (NIHSS) Laptop Mat",
+        desc: "Compact guide covering stroke symptoms, classification, and NIHSS scoring for rapid assessment.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Strok.jpg",
+      },
+    ],
+  },
+  {
+    category: "PATIENT EDUCATION POSTERS",
+    items: [
+      {
+        title: "Epilepsy Poster",
+        desc: "Explains seizure types, warning signs, and first-aid steps for epilepsy management.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Epilipsy-1.jpg",
+      },
+      {
+        title: "Hearing Loss Poster",
+        desc: "Educational guide on hearing loss types, causes, and prevention for better auditory health awareness.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Hearning-loss.jpg",
+      },
+      {
+        title: "Breast Cancer Poster",
+        desc: "Highlights symptoms, risk factors, and early detection methods for improved awareness and prevention.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Strok-1.jpg",
+      },
+    ],
+  },
+  {
+    category: "SCALE",
+    items: [
+      {
+        title: "Joints WOMAC Scale",
+        desc: "Standard assessment tool for evaluating pain, stiffness, and joint function in osteoarthritis patients.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Ortho.jpg",
+      },
+      {
+        title: "GERD Ruler (Frequency Scale)",
+        desc: "Clinical scale used to measure severity and frequency of GERD symptoms for accurate classification.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Medipride-3D-Model.jpg",
+      },
+      {
+        title: "Major Cardiovascular Scale",
+        desc: "Risk assessment tool for evaluating cardiovascular conditions and guiding preventive clinical decisions.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Dosage-1.jpg",
+      },
+    ],
+  },
+  {
+    category: "WRITE & WIPE",
+    items: [
+      {
+        title: "Write & Wipe Edu Stand (Osteoporosis)",
+        desc: "Educational tool for osteoporosis and bone health education with write & wipe functionality.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Ortho-1.jpg",
+      },
+      {
+        title: "Write & Wipe Edu Stand (PCOS)",
+        desc: "Flipchart style materials explaining male/female reproductive systems and PCOS.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/PCOS-1.jpg",
+      },
+      {
+        title: "Write & Wipe Edu Stand (Diabetes)",
+        desc: "Multiple learning cards covering diabetes causes, symptoms, complications, and management.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Diabites.jpg",
+      },
+    ],
+  },
+  {
+    category: "TABLE TOPS",
+    items: [
+      {
+        title: "Facial Muscle Anatomy",
+        desc: "Anatomy display board for professional reference and clinic décor.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Facial-muscle-anotomy-glass-printing-1.jpg",
+      },
+      {
+        title: "Live Life Table Top",
+        desc: "Circular routine wheel addressing bladder health and urinary control.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/LLU-1.jpg",
+      },
+      {
+        title: "Benitowa PCOS Table Top",
+        desc: "Interactive display module for women's health clinics and educational environments.",
+        img: "https://medipride.org/wp-content/uploads/2025/11/Benitowa-PCOS-1.jpg",
+      },
+    ],
+  },
+];
 export default function KoruCommunications() {
+   const allProductImages: string[] = PRODUCT_DATA.flatMap(cat => 
+    cat.items.map(item => item.img)
+  );
   return (
     <div className="text-slate-800 font-sans scroll-smooth bg-white">
 
@@ -290,6 +435,16 @@ export default function KoruCommunications() {
 
       {/* ── BENTO GRID ── */}
       <BentoGrid2 />
+      <section className="py-12 bg-slate-50">
+              <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                <div className="text-center mb-16">
+                  <span className="text-[#00a65d] font-bold uppercase tracking-widest text-sm inline-block mb-2">Visual Portfolio</span>
+                  <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight">Our <span className="text-[#0093cb]">Gallery</span></h2>
+                  <p className="text-slate-500 mt-4 text-lg">A glimpse into our high-quality medical communication tools and educational materials.</p>
+                </div>
+                <ProductGallery images={allProductImages} productName="MediPride Communications Portfolio" />
+              </div>
+            </section>
     </div>
   );
 }

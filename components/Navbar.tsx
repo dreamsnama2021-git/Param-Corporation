@@ -16,11 +16,13 @@ export default function Navbar() {
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [mobileSubMenu, setMobileSubMenu] = useState<string | null>(null); // State for mobile accordions
+  const [mobileSubMenu, setMobileSubMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
   const [mounted, setMounted] = useState(false);
   const lastScrollY = useRef(0);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const leaveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -39,12 +41,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Reset mobile sub-menu when main mobile menu closes
   useEffect(() => {
     if (!mobileOpen) setMobileSubMenu(null);
   }, [mobileOpen]);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -55,6 +55,13 @@ export default function Navbar() {
     if (activeDropdown) document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
   }, [activeDropdown]);
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+      if (leaveTimeoutRef.current) clearTimeout(leaveTimeoutRef.current);
+    };
+  }, []);
 
   if (!mounted) return <div className="h-20 bg-[var(--clr-white)]" />;
 
@@ -73,6 +80,32 @@ export default function Navbar() {
     { title: "Occasion", data: occasions, tabId: 'occasion', color: '#EF4444' },
     { title: "Digital Gifts", data: digitalGifts, tabId: 'digital', color: '#3B82F6' },
   ];
+
+  const handleProductsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    router.push('/categories/all?tab=all');
+    setActiveDropdown(null);
+  };
+
+  const handleMouseEnter = () => {
+    if (leaveTimeoutRef.current) {
+      clearTimeout(leaveTimeoutRef.current);
+      leaveTimeoutRef.current = null;
+    }
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown("products");
+    }, 150);
+  };
+
+  const handleMouseLeave = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    leaveTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 200);
+  };
 
   const handleCategoryClick = (e: React.MouseEvent, tabId: string, categorySlug: string) => {
     e.preventDefault();
@@ -108,14 +141,25 @@ export default function Navbar() {
 
               {/* Desktop Menu */}
               <ul className="hidden lg:flex items-center gap-2">
-                <li className="relative mega-menu-container" onMouseEnter={() => setActiveDropdown("products")}>
-                  <button className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] transition">
+                <li 
+                  className="relative mega-menu-container" 
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <button 
+                    onClick={handleProductsClick}
+                    className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] transition cursor-pointer"
+                  >
                     Products
                     <ChevronDown className={`w-4 h-4 transition ${activeDropdown === "products" ? "rotate-180" : ""}`} />
                   </button>
 
                   {activeDropdown === "products" && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 w-[1000px] bg-white rounded-xl shadow-2xl border border-[var(--clr-border-light)] p-6 z-50" onMouseLeave={() => setActiveDropdown(null)}>
+                    <div 
+                      className="absolute top-full left-1/2 -translate-x-1/2 w-[1000px] bg-white rounded-xl shadow-2xl border border-[var(--clr-border-light)] p-6 z-50"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    >
                       <div className="grid grid-cols-5 gap-6">
                         {megaMenuColumns.map((column, idx) => (
                           <div key={idx}>
@@ -164,7 +208,16 @@ export default function Navbar() {
                   <input placeholder="Search products..." className="bg-transparent outline-none text-sm flex-1" />
                 </div>
 
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 px-2 mb-1">
+                {/* All Products Link */}
+                <Link
+                  href="/categories/all?tab=all"
+                  className="block px-4 py-3.5 text-sm font-bold text-[var(--clr-primary)] hover:bg-gray-50 rounded-xl border border-[var(--clr-primary)]/20 bg-[var(--clr-primary)]/5"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  View All Products →
+                </Link>
+
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 px-2 mb-1 mt-4">
                   Product Collections
                 </p>
 
