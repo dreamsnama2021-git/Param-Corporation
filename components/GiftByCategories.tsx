@@ -71,7 +71,7 @@ function GiftsByCategories() {
       <div className="max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="ui-h1 capitalize font-bold text-[#1a1a1a] tracking-tight mb-3">
-            Our <span className="text-[#0093cb]">Categories</span>
+            Our <span className="text-[#0093cb]">Products</span>
           </h2>
           <div className="flex justify-center">
             <div className="w-16 h-1 bg-[#0093cb] rounded-full" />
@@ -128,7 +128,7 @@ function TrendingProducts() {
       <div className="max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="ui-h1 capitalize font-bold text-black tracking-tight mb-3">
-            Trending <span className="text-[#0093cb]">Products</span>
+            Doctor's <span className="text-[#0093cb]">Favorite</span>
           </h2>
           <div className="flex justify-center">
             <div className="w-16 h-1 bg-[#0093cb] rounded-full" />

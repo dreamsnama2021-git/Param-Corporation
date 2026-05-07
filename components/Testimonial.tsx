@@ -69,6 +69,28 @@ const testimonials = [
     initials: "PS",
     avatarColor: "blue",
   },
+  
+  {
+    quote:
+      "Working with Param Corporation was a fantastic experience. They turned my concept into a practical solution, completing the Fluvir Dosage Scale with precision and dedication.",
+    name: "Samriddhi Pednekar",
+    role: "Product Management",
+    company: "Hetero Healthcare",
+    stat: "Concept to Reality",
+    initials: "SP",
+    avatarColor: "indigo",
+  },
+  {
+    quote:
+      "Their innovative solutions, prompt responses, and seamless communication stood out. Their creativity and professionalism ensured results aligned perfectly with client needs.",
+    logo: "https://paramcorp.in/wp-content/uploads/2025/01/Untitled-design.png",
+    name: "Divya Kumar",
+    role: "Marketing Head",
+    company: "Torrent Pharma",
+    stat: "Prompt & Creative",
+    initials: "DK",
+    avatarColor: "teal",
+  },
 ];
 
 const avatarStyles: Record<string, { bg: string; color: string }> = {

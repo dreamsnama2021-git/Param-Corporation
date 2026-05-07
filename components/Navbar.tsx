@@ -66,8 +66,8 @@ export default function Navbar() {
 
   const mainNavItems = [
     { label: "About Us", href: "/about-us" },
-    { label: "Koru", href: "/koru" },
-    { label: "Medipride", href: "/medipride" },
+    { label: "Koru", href: "/koru", isButton: true },
+    { label: "Medipride", href: "/medipride", isButton: true },
     { label: "Digital Gifts", href: "/digital-gifts" },
     { label: "Case Study", href: "/case-study" },
     { label: "Contact Us", href: "/contact-us" },
@@ -140,12 +140,12 @@ export default function Navbar() {
 
               {/* Desktop Menu */}
               <ul className="hidden lg:flex items-center gap-2">
-                <li 
-                  className="relative mega-menu-container" 
+                <li
+                  className="relative mega-menu-container"
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <button 
+                  <button
                     onClick={handleProductsClick}
                     className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] transition cursor-pointer"
                   >
@@ -154,7 +154,7 @@ export default function Navbar() {
                   </button>
 
                   {activeDropdown === "products" && (
-                    <div 
+                    <div
                       className="absolute top-full left-1/2 -translate-x-1/2 w-[900px] bg-white rounded-xl shadow-2xl border border-[var(--clr-border-light)] p-6 z-50"
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
@@ -183,7 +183,14 @@ export default function Navbar() {
 
                 {mainNavItems.map((item) => (
                   <li key={item.label}>
-                    <Link href={item.href} className="px-3 py-2 text-sm font-semibold text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] transition">
+                    <Link 
+                      href={item.href} 
+                      className={`text-sm font-semibold transition rounded-lg ${
+                        item.isButton 
+                          ? 'px-4 py-2 bg-[#0093cb] rounded-[20rem] text-white hover:bg-blue-700 shadow-sm' 
+                          : 'px-3 py-2 text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)]'
+                      }`}
+                    >
                       {item.label}
                     </Link>
                   </li>
@@ -233,7 +240,7 @@ export default function Navbar() {
                       </span>
                       <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${mobileSubMenu === column.tabId ? "rotate-180" : ""}`} />
                     </button>
-                    
+
                     {/* Collapsible Content */}
                     <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileSubMenu === column.tabId ? "max-h-[500px] opacity-100 mb-2" : "max-h-0 opacity-0"}`}>
                       <div className="grid grid-cols-1 gap-1 px-4 pb-2">
@@ -255,12 +262,15 @@ export default function Navbar() {
 
                 <div className="h-px bg-gray-100 my-4" />
 
-                {/* Main Nav Links */}
                 {mainNavItems.map((item) => (
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="block px-4 py-3.5 text-sm font-bold text-gray-800 hover:bg-gray-50 rounded-xl"
+                    className={`block px-4 py-3.5 text-sm font-bold rounded-xl ${
+                      item.isButton
+                        ? 'bg-[#0093cb] rounded-[20rem] text-white text-center hover:bg-blue-700 my-1'
+                        : 'text-gray-800 hover:bg-gray-50'
+                    }`}
                     onClick={() => setMobileOpen(false)}
                   >
                     {item.label}
