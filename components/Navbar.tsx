@@ -9,7 +9,6 @@ import {
   therapies,
   personalizedGifts,
   occasions,
-  digitalGifts,
 } from "@/app/data";
 
 export default function Navbar() {
@@ -69,6 +68,7 @@ export default function Navbar() {
     { label: "About Us", href: "/about-us" },
     { label: "Koru", href: "/koru" },
     { label: "Medipride", href: "/medipride" },
+    { label: "Digital Gifts", href: "/digital-gifts" },
     { label: "Case Study", href: "/case-study" },
     { label: "Contact Us", href: "/contact-us" },
   ];
@@ -78,7 +78,6 @@ export default function Navbar() {
     { title: "Therapy", data: therapies, tabId: 'therapy', color: '#10B981' },
     { title: "Personalized Gifts", data: personalizedGifts, tabId: 'personalized', color: '#8B5CF6' },
     { title: "Occasion", data: occasions, tabId: 'occasion', color: '#EF4444' },
-    { title: "Digital Gifts", data: digitalGifts, tabId: 'digital', color: '#3B82F6' },
   ];
 
   const handleProductsClick = (e: React.MouseEvent) => {
@@ -156,20 +155,20 @@ export default function Navbar() {
 
                   {activeDropdown === "products" && (
                     <div 
-                      className="absolute top-full left-1/2 -translate-x-1/2 w-[1000px] bg-white rounded-xl shadow-2xl border border-[var(--clr-border-light)] p-6 z-50"
+                      className="absolute top-full left-1/2 -translate-x-1/2 w-[900px] bg-white rounded-xl shadow-2xl border border-[var(--clr-border-light)] p-6 z-50"
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
                     >
-                      <div className="grid grid-cols-5 gap-6">
+                      <div className="grid grid-cols-4 gap-6">
                         {megaMenuColumns.map((column, idx) => (
                           <div key={idx}>
-                            <div className="flex items-center justify-between mb-3 border-b pb-2">
+                            <div className="flex items-center justify-between mb-2 border-b pb-2">
                               <h3 className="font-bold text-xs uppercase text-[var(--clr-text-dark)] tracking-wide">{column.title}</h3>
                             </div>
-                            <ul className="space-y-2">
-                              {column.data?.slice(0, 12).map((item: any) => (
+                            <ul className="space-y-1">
+                              {column.data?.slice(0, 15).map((item: any) => (
                                 <li key={item.slug}>
-                                  <a href={`/categories/${item.slug}?tab=${column.tabId}`} onClick={(e) => handleCategoryClick(e, column.tabId, item.slug)} className="text-xs text-gray-600 hover:text-[var(--clr-primary)] transition-all block py-0.5">
+                                  <a href={`/categories/${item.slug}?tab=${column.tabId}`} onClick={(e) => handleCategoryClick(e, column.tabId, item.slug)} className="text-[12px] text-gray-600 hover:text-[var(--clr-primary)] transition-all block ">
                                     {item.name}
                                   </a>
                                 </li>

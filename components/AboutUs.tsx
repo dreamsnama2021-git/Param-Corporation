@@ -153,7 +153,7 @@ const AboutUsPage: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="text-5xl font-extrabold tracking-tight lg:text-7xl leading-[1.1] animate-fade-up delay-100 text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500 pb-2">
+            <h2 className="text-3xl xl:text-5xl font-extrabold tracking-tight lg:text-7xl leading-[1.1] animate-fade-up delay-100 text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500 pb-2">
               Building trust, <br />
               <span className="text-[#0093cb]">one connection</span> <br />
               at a time.

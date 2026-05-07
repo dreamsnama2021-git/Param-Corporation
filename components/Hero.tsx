@@ -74,24 +74,25 @@ export default function HeroWithStats() {
   }, [next]);
 
   if (!mounted) {
-    return <div className="min-h-screen bg-[var(--clr-bg-cream)]" />;
+    return <div className="min-h-[50vh] md:min-h-[60vh] lg:min-h-screen bg-[var(--clr-bg-cream)]" />;
   }
 
   const slide = HERO_SLIDES[current];
 
   return (
-    <div className="md:h-auto flex flex-col overflow-hidden">
+    <div className="flex flex-col overflow-hidden">
 
       {/* ─── HERO ───────────────── */}
-      <section className="relative h-[70vh] sm:h-[70vh] lg:h-[80vh] 
-      bg-gradient-to-br from-[var(--clr-bg-cream)] via-[var(--clr-white)] to-[var(--clr-bg-gray)] overflow-hidden">
+      <section className="relative w-full overflow-hidden
+        h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[85vh]
+        bg-gradient-to-br from-[var(--clr-bg-cream)] via-[var(--clr-white)] to-[var(--clr-bg-gray)]">
 
         {/* overlay */}
         <div className="absolute top-0 right-0 w-full lg:w-[60%] h-full 
         bg-gradient-to-l from-[var(--clr-primary)/10] to-transparent" />
 
         {/* blur accent */}
-        <div className="absolute bottom-0 left-1/4 w-72 h-72 rounded-full 
+        <div className="absolute bottom-0 left-1/4 w-48 md:w-72 h-48 md:h-72 rounded-full 
         bg-[var(--clr-secondary)/10] blur-3xl" />
 
         {/* grid pattern */}
@@ -104,54 +105,54 @@ export default function HeroWithStats() {
           animating ? "opacity-0 scale-95" : "opacity-100 scale-100"
         }`}>
 
-       <a href={slide.href} className="relative block w-full h-full group">
+          <a href={slide.href} className="relative block w-full h-full group">
             <Image
               src={slide.image}
               alt={slide.alt}
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               priority
-              sizes="100vw"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
               unoptimized
             />
 
             {/* CTA */}
             <div className="absolute inset-0 flex items-center justify-center 
             bg-black/0 group-hover:bg-black/20 transition">
-
-              {/* <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 
-              bg-white text-[var(--clr-primary)] font-semibold px-6 py-3 rounded-full shadow-lg 
-              translate-y-4 group-hover:translate-y-0">
-                View Category
-              </span> */}
+              {/* CTA button commented out as in original */}
             </div>
           </a>
 
-          {/* arrows */}
+          {/* arrows - responsive sizing */}
           <button onClick={prev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 
+            w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 
             bg-white rounded-full shadow flex items-center justify-center 
-            hover:text-[var(--clr-primary)] transition">
-            <ChevronLeft />
+            hover:text-[var(--clr-primary)] transition"
+            aria-label="Previous slide">
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
           </button>
 
           <button onClick={next}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 
+            w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 
             bg-white rounded-full shadow flex items-center justify-center 
-            hover:text-[var(--clr-primary)] transition">
-            <ChevronRight />
+            hover:text-[var(--clr-primary)] transition"
+            aria-label="Next slide">
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
           </button>
 
-          {/* dots */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
+          {/* dots - responsive positioning */}
+          <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3">
             {HERO_SLIDES.map((_, i) => (
               <button key={i}
                 onClick={() => goTo(i)}
                 className={`rounded-full transition-all ${
                   i === current
-                    ? "w-8 h-2 bg-[var(--clr-primary)]"
+                    ? "w-6 sm:w-8 h-2 bg-[var(--clr-primary)]"
                     : "w-2 h-2 bg-white/80"
                 }`}
+                aria-label={`Go to slide ${i + 1}`}
               />
             ))}
           </div>
@@ -159,8 +160,7 @@ export default function HeroWithStats() {
       </section>
 
       {/* ─── STATS ───────────────── */}
-    
-
+      {/* Stats section preserved as is, commented out in original */}
     </div>
   );
 }

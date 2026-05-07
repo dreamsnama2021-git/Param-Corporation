@@ -59,15 +59,6 @@ export const priceRanges: CategoryItem[] = [
 
 // 4. By Occasion (Month-wise and key medical/corporate occasions)
 export const occasions: CategoryItem[] = [
-  { name: "Doctor's Day", slug: "doctors-day", description: "Special gifts to honor and appreciate doctors" },
-  { name: "Medical Conferences", slug: "medical-conferences", description: "Gifts for medical events and symposiums" },
-  { name: "Product Launches", slug: "product-launches", description: "Launch event giveaways and promotional items" },
-  { name: "Festive Gifting", slug: "festive-gifting", description: "Diwali, Christmas, and festival hampers" },
-  { name: "Brand Campaigns", slug: "brand-campaigns", description: "Campaign-specific promotional gifts" },
-  { name: "Seasonal Campaigns", slug: "seasonal-campaigns", description: "Season-specific gifting solutions" },
-  { name: "Product Promotions", slug: "product-promotions", description: "Promotional items for product visibility" },
-  { name: "Brand Milestones", slug: "brand-milestones", description: "Anniversary and achievement celebration gifts" },
-  { name: "Doctor Engagement Programs", slug: "doctor-engagement-programs", description: "Relationship-building gifts for doctors" },
   // Month-wise breakdown
   { name: "January", slug: "january", description: "New Year and Republic Day gifting" },
   { name: "February", slug: "february", description: "Valentine's Day and Cancer Awareness" },

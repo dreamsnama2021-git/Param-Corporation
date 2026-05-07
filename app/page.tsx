@@ -31,7 +31,7 @@ export default function Page() {
       {/* <Testimonial/> */}
       
       {/* New Editorial Variant */}
-      <TestimonialCardsVariant2/>
+      <TestimonialCardsVariant/>
       {/* <TestimonialCardsVariant/> */}
     </main>
   );
