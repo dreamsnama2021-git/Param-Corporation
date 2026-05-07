@@ -170,8 +170,6 @@ type Category = {
   items: Product[];
 };
 
-// ─── Modal ───────────────────────────────────────────────────────────────────
-
 function Modal({
   cat,
   onClose,
@@ -210,9 +208,23 @@ function Modal({
     setTimeout(onClose, 300);
   };
 
+  // Get category description (2 lines)
+  const getCategoryDescription = (category: string) => {
+    const descriptions: Record<string, string> = {
+      'Books & magazines': 'Professionally crafted educational publications featuring detailed medical illustrations and evidence-based content for healthcare professionals and patients.',
+      'Flip charts': 'Interactive visual teaching tools with dry-erase surfaces, designed for effective patient education and clinical demonstrations.',
+      'Laptop mats': 'Durable desk mats featuring quick-reference medical charts, dosing guides, and anatomical diagrams for daily clinical use.',
+      'Patient education posters': 'Large-format wall displays covering critical health topics, perfect for clinics, hospitals, and medical offices.',
+      Scales: 'Evidence-based clinical assessment tools and scoring systems for accurate patient evaluation and treatment planning.',
+      'Table tops': 'Premium glass-printed anatomical displays and interactive modules for professional reference and patient engagement.',
+      'Write & wipe': 'Reusable educational tools with dry-erase surfaces, ideal for explaining complex medical concepts to patients.',
+    };
+    return descriptions[category] || 'High-quality medical education tools designed for healthcare professionals and patient communication.';
+  };
+
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 transition-all duration-300 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 transition-all duration-300 ${
         isVisible
           ? 'bg-black/80 backdrop-blur-md'
           : 'bg-black/0 backdrop-blur-none'
@@ -220,96 +232,91 @@ function Modal({
       onClick={handleClose}
     >
       <div
-        className={`relative bg-white dark:bg-neutral-900 rounded-3xl w-full max-w-5xl max-h-[92vh] overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.4)] transition-all duration-300 ${
+        className={`relative bg-white dark:bg-neutral-900 rounded-2xl sm:rounded-3xl w-full max-w-5xl max-h-[92vh] overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.4)] transition-all duration-300 ${
           isVisible
             ? 'opacity-100 translate-y-0 scale-100'
             : 'opacity-0 translate-y-8 scale-95'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Decorative gradient orbs */}
-        {/* <div className="absolute -top-32 -right-32 w-80 h-80 bg-gradient-to-br from-sky-500/20 to-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-full blur-3xl pointer-events-none" /> */}
-
-        {/* Modal header */}
-        <div className="relative overflow-hidden">
-          {/* Gradient background */}
-          {/* <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-sky-50 dark:from-neutral-800 dark:via-neutral-900 dark:to-neutral-800" />
-          <div className="absolute inset-0 bg-gradient-to-r from-sky-500/5 via-transparent to-emerald-500/5" /> */}
-
-          {/* Header content */}
-          <div className="relative px-4 sm:px-4 pt-2 pb-5">
-            <div className="flex items-start justify-between">
-              <div className="flex items-center gap-4">
-               
-                <div>
-                 
-                  <h2 className="text-2xl sm:text-3xl font-semibold text-neutral-900 dark:text-white tracking-tight">
-                    {cat.category}
-                  </h2>
+        {/* Modal content */}
+        <div className="flex flex-col h-full">
+          {/* Header with title - optimized spacing for small laptops */}
+          <div className="relative px-4 sm:px-6 lg:px-5 pt-4 sm:pt-6 lg:pt-5 pb-3 sm:pb-4 lg:pb-3 flex-shrink-0">
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex-1 min-w-0">
+                {/* Category emoji and name - smaller on laptops */}
+                <div className="flex items-center gap-2 sm:gap-3 mb-1.5 sm:mb-2">
+                  <span className="text-xl sm:text-2xl lg:text-xl">{cat.emoji}</span>
+                  <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-full whitespace-nowrap">
+                    {cat.items.length} Products
+                  </span>
                 </div>
+                <h2 className="text-xl sm:text-2xl lg:text-xl xl:text-2xl font-bold text-neutral-900 dark:text-white tracking-tight truncate">
+                  {cat.category}
+                </h2>
               </div>
 
-              {/* Close button */}
+              {/* Close button - smaller on laptops */}
               <button
                 onClick={handleClose}
                 aria-label="Close modal"
-                className="group relative w-11 h-11 rounded-xl bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95"
+                className="group relative w-8 h-8 sm:w-10 sm:h-10 lg:w-8 lg:h-8 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 flex-shrink-0"
               >
-                <X className="w-4 h-4 text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors" />
+                <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-600 dark:text-neutral-400" />
               </button>
             </div>
+
+            {/* 2-line description - smaller text on laptops */}
+            <p className="mt-2 sm:mt-3 lg:mt-2 text-xs sm:text-sm lg:text-xs xl:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed line-clamp-2">
+              {getCategoryDescription(cat.category)}
+            </p>
           </div>
 
-          {/* Subtle border */}
-          <div className="h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-700 to-transparent" />
-        </div>
+          {/* Subtle divider */}
+          <div className="h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-700 to-transparent mx-4 sm:mx-6 lg:mx-5" />
 
-        {/* Product grid */}
-        <div className="overflow-y-auto flex-1 p-5 sm:p-6 custom-scrollbar">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {cat.items.map((item, idx) => (
-              <div
-                key={idx}
-                className={`group relative bg-white dark:bg-neutral-800/50 border border-neutral-100 dark:border-neutral-700/50 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-neutral-900/5 dark:hover:shadow-black/20 hover:-translate-y-1 transition-all duration-300 ${
-                  isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}
-                style={{ transitionDelay: `${idx * 75}ms` }}
-              >
-                {/* Product image container */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-neutral-50 dark:bg-neutral-800">
-                  <Image
-                    src={item.img}
-                    alt={item.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  {/* Number badge */}
-                  <div className="absolute top-3 left-3 w-8 h-8 bg-white/90 dark:bg-black/80 backdrop-blur-sm rounded-xl flex items-center justify-center text-xs font-semibold text-neutral-700 dark:text-neutral-200 shadow-sm border border-white/50 dark:border-white/10">
-                    {String(idx + 1).padStart(2, '0')}
+          {/* Product cards - optimized grid for small laptops */}
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-5 custom-scrollbar">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-3">
+              {cat.items.slice(0, 3).map((item, idx) => (
+                <div
+                  key={idx}
+                  className={`group relative bg-white dark:bg-neutral-800/50 border border-neutral-100 dark:border-neutral-700/50 rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ${
+                    isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}
+                  style={{ transitionDelay: `${idx * 75}ms` }}
+                >
+                  {/* Image container - smaller aspect ratio on laptops */}
+                  <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+                    <Image
+                      src={item.img}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1366px) 30vw, 33vw"
+                    />
+                    {/* Gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
-                  {/* Quick action button */}
-                  <button className="absolute top-3 right-3 w-9 h-9 bg-white/90 dark:bg-black/80 backdrop-blur-sm rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 shadow-sm border border-white/50 dark:border-white/10 hover:bg-white dark:hover:bg-black hover:scale-110 active:scale-95">
-                    <ArrowUpRight className="w-4 h-4 text-neutral-700 dark:text-neutral-200" />
-                  </button>
+                  {/* Content area - tighter padding on laptops */}
+                  <div className="p-3 sm:p-4 lg:p-3">
+                    <h3 className="font-semibold text-neutral-900 dark:text-white text-sm sm:text-base lg:text-sm xl:text-base leading-tight mb-1 line-clamp-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 line-clamp-2 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  {/* Hover border effect */}
+                  <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-sky-500/30 dark:group-hover:border-sky-500/20 transition-colors duration-300 pointer-events-none" />
                 </div>
-
-             
-
-                {/* Hover border effect */}
-                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-sky-500/30 dark:group-hover:border-sky-500/20 transition-colors duration-300 pointer-events-none" />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-
-
       </div>
     </div>
   );
@@ -334,7 +341,7 @@ function BentoCard({
       className={`group relative rounded-2xl overflow-hidden cursor-pointer border border-white/10 bg-neutral-200 dark:bg-neutral-800 transition-all duration-500 hover:-translate-y-1 ${
         /* Mobile/Tablet: 1 col | Laptop (lg): index 5 spans 2 cols */
         spanTwo ? 'col-span-1 lg:col-span-2' : 'col-span-1'
-      }`}
+        }`}
       onClick={onClick}
       role="button"
       tabIndex={0}
@@ -355,14 +362,14 @@ function BentoCard({
 
       <div className="absolute inset-0 p-4 lg:p-6 flex flex-col justify-between">
         <div className="flex items-end justify-end">
-        
+
           <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-[#8bde7a] flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300">
             <ArrowUpRight className="w-4 h-4 text-[#0093cb]" />
           </div>
         </div>
 
         <div className="space-y-1">
-        
+
           <h3 className="text-[#000000] text-sm sm:text-lg lg:text-xl font-bold leading-tight">
             {cat.category}
           </h3>
@@ -394,7 +401,7 @@ export default function ProductBentoGrid() {
                 Medical Solutions
               </span>
             </div>
-            
+
             <h1 className={`text-4xl lg:text-6xl font-black tracking-tighter text-[#0f172a] mb-4 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               Premium <span className="text-[#0093cb]">Portfolio</span>
             </h1>
@@ -406,9 +413,8 @@ export default function ProductBentoGrid() {
               - Laptop/Desktop: lg:grid-cols-4 (4 columns)
           */}
           <div
-            className={`grid gap-3 lg:gap-6 transition-all duration-700 delay-300 ${
-              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }
+            className={`grid gap-3 lg:gap-6 transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }
             grid-cols-2 
             lg:grid-cols-4
             auto-rows-[160px] 

@@ -9,40 +9,8 @@ import {
   Send,
   Sparkles,
   Clock,
-  ArrowUpRight,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-
-// Product data for the carousel
-const products = [
-  {
-    id: 1,
-    name: "crystal globe 60mm with Engraving",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/07/15-3.png",
-  },
-  {
-    id: 2,
-    name: "Crystal Cube 5 x 5 x 5 cm with Metallic Printing",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/09/9.png",
-  },
-  {
-    id: 3,
-    name: "Crystal Cube 4 x 4 x 6 cm with Engraving",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/09/8.png",
-  },
-  {
-    id: 4,
-    name: "Crystal Cube 5 x 5 x 8 cm with Engraving",
-    image: "https://www.bigimpex.com/wp-content/uploads/2024/09/7.png",
-  },
-  {
-    id: 5,
-    name: "Crystal Cube 5 x 5 x 8 cm with Metallic Printing",
-    image:
-      "https://www.bigimpex.com/wp-content/uploads/2025/10/WhatsApp-Image-2025-08-20-at-14.27.48_f1984dac-1199x1536.jpg",
-  },
-];
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -61,9 +29,8 @@ export default function ContactUs() {
 
   return (
     <div className="min-h-screen font-sans bg-[#f8fafc00]">
-      {/* Hero Section with hand-drawn elements */}
+      {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[#0b3c5d] via-[#072c44] to-[#0093cb]/20 min-h-[240px] md:min-h-[280px] flex items-end overflow-hidden">
-        {/* Background pattern */}
         <div className="absolute inset-0 opacity-10">
           <svg width="100%" height="100%">
             <pattern id="hero-pattern" width="60" height="60" patternUnits="userSpaceOnUse">
@@ -73,12 +40,10 @@ export default function ContactUs() {
           </svg>
         </div>
         
-        {/* Decorative blobs */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#0093cb]/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#00a65d]/10 rounded-full blur-3xl" />
         
         <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 md:pb-12">
-          {/* Hand-drawn squiggle */}
           <svg width="48" height="8" viewBox="0 0 48 8" fill="none" className="text-[#8bde7a] mb-4">
             <path d="M2 6C4 2 8 1 10 3C12 5 14 7 18 4C22 1 26 5 30 3C34 1 38 4 42 3C44 2 46 5 46 5" 
                   stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
@@ -112,156 +77,167 @@ export default function ContactUs() {
           <div className="absolute bottom-32 left-0 w-80 h-80 bg-[#00a65d]/5 rounded-full blur-3xl" />
         </div>
         
-        {/* Subtle grid */}
-        <div className="absolute inset-0 opacity-[0.015]">
-          <svg width="100%" height="100%">
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" />
-            </pattern>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
-
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-            {/* Left Column - Contact Info */}
-            <div className="space-y-6">
-              {/* Header */}
-              <div className="mb-8">
-                <div className="flex items-center gap-3 mb-3">
-                  <svg width="32" height="8" viewBox="0 0 32 8" fill="none" className="text-[#0093cb]">
-                    <path d="M2 6C4 2 8 1 10 3C12 5 14 7 18 4C22 1 26 5 30 3" 
-                          stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-                  </svg>
-                  <span className="text-[#0093cb] font-medium tracking-wider text-xs uppercase">
-                    Get In Touch
-                  </span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-serif italic text-[#0f172a] mb-3">
-                  Let’s Work {" "}
-                  <span className="relative inline-block">
-                    Together
-                    <svg className="absolute -bottom-1 left-0 w-full" height="5" viewBox="0 0 100 5" preserveAspectRatio="none">
-                      <path d="M0,3 Q25,0 50,3 Q75,6 100,3" stroke="#00a65d" strokeWidth="2" fill="none" strokeLinecap="round" />
-                    </svg>
-                  </span>
-                </h2>
-                <p className="text-[#6b7280] leading-relaxed">
-                From patient education tools to doctor engagement materials, our team collaborates closely with healthcare brands, pharma companies, and medical professionals to deliver meaningful solutions.
-                </p>
-              </div>
+          
+          {/* Centered Header Section */}
+          <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <svg width="32" height="8" viewBox="0 0 32 8" fill="none" className="text-[#0093cb]">
+                <path d="M2 6C4 2 8 1 10 3C12 5 14 7 18 4C22 1 26 5 30 3" 
+                      stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+              </svg>
+              <span className="text-[#0093cb] font-medium tracking-wider text-xs uppercase">
+                Get In Touch
+              </span>
+              <svg width="32" height="8" viewBox="0 0 32 8" fill="none" className="text-[#0093cb] rotate-180">
+                <path d="M2 6C4 2 8 1 10 3C12 5 14 7 18 4C22 1 26 5 30 3" 
+                      stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+              </svg>
+            </div>
+            
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic text-[#0f172a] mb-4">
+              Let’s Work{" "}
+              <span className="relative inline-block">
+                Together
+                <svg className="absolute -bottom-2 left-0 w-full" height="6" viewBox="0 0 100 6" preserveAspectRatio="none">
+                  <path d="M0,3 Q25,0 50,3 Q75,6 100,3" stroke="#00a65d" strokeWidth="2" fill="none" strokeLinecap="round" />
+                </svg>
+              </span>
+            </h2>
+            
+            <p className="text-[#6b7280] leading-relaxed text-base md:text-lg">
+              From patient education tools to doctor engagement materials, our team collaborates closely with healthcare brands, 
+              pharma companies, and medical professionals to deliver meaningful solutions.
+            </p>
+            {/* <p className="text-[#6b7280] leading-relaxed text-base md:text-lg mt-2">
+              Let us know how we can support your next medical communication initiative.
+            </p> */}
+          </div>
 
+          {/* Two Column Layout with equal height alignment */}
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+            
+            {/* Left Column - Address, Contact Cards & Map */}
+            <div className="flex flex-col h-full space-y-4">
               {/* Address Card */}
-              <div className="group relative bg-white rounded-2xl p-6 border border-[#eef2f7] hover:border-[#0093cb]/30 transition-all duration-500 hover:-translate-y-1 shadow-sm hover:shadow-lg">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#0093cb]/10 to-[#00a65d]/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <MapPin className="w-5 h-5 text-[#0093cb]" />
+              <div className="group relative bg-white rounded-2xl p-5 border border-[#eef2f7] hover:border-[#0093cb]/30 transition-all duration-500 hover:-translate-y-1 shadow-sm hover:shadow-lg">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#0093cb]/10 to-[#00a65d]/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <MapPin className="w-4 h-4 text-[#0093cb]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#0f172a] mb-2">Visit Our Office</h3>
-                    <p className="text-[#6b7280] text-sm leading-relaxed">
-                     101, KetkiPada Rd, near Timber Green Apartments,<br /> Diamond Industrial Estate,
+                    <h3 className="font-bold text-[#0f172a] mb-1 text-sm">Visit Our Office</h3>
+                    <p className="text-[#6b7280] text-xs leading-relaxed">
+                      101, KetkiPada Rd, near Timber Green Apartments,<br /> Diamond Industrial Estate,
                        Dahisar East,<br />
                       Mumbai, Maharashtra 400068
                     </p>
-                    <div className="mt-3 h-0.5 w-0 bg-gradient-to-r from-[#0093cb] to-[#00a65d] group-hover:w-12 transition-all duration-500" />
+                    <div className="mt-2 h-0.5 w-0 bg-gradient-to-r from-[#0093cb] to-[#00a65d] group-hover:w-10 transition-all duration-500" />
                   </div>
                 </div>
               </div>
 
-              {/* Contact Cards Grid */}
-              <div className="grid sm:grid-cols-2 gap-4">
+              {/* Contact Cards Grid - Reduced height */}
+              <div className="grid sm:grid-cols-2 gap-3">
                 {/* Phone Card */}
-                <div className="group relative bg-white rounded-2xl p-6 border border-[#eef2f7] hover:border-[#0093cb]/30 transition-all duration-500 hover:-translate-y-1 shadow-sm hover:shadow-lg">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#0093cb]/10 to-[#00a65d]/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Phone className="w-5 h-5 text-[#0093cb]" />
-                  </div>
-                  <h3 className="font-bold text-[#0f172a] mb-3">Call Us</h3>
-                  <div className="space-y-2">
-                    {["+91 98201 49950",].map((phone, i) => (
+                <div className="group relative bg-white rounded-2xl p-3.5 border border-[#eef2f7] hover:border-[#0093cb]/30 transition-all duration-500 hover:-translate-y-1 shadow-sm hover:shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-br from-[#0093cb]/10 to-[#00a65d]/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+                      <Phone className="w-3.5 h-3.5 text-[#0093cb]" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-[#0f172a] text-xs">Call Us</h3>
                       <a
-                        key={i}
-                        href={`tel:${phone.replace(/\s/g, "")}`}
-                        className="flex items-center gap-2 text-[#6b7280] hover:text-[#0093cb] text-sm transition-colors group/link"
+                        href="tel:+919820149950"
+                        className="flex items-center gap-1.5 text-[#6b7280] hover:text-[#0093cb] text-xs transition-colors group/link"
                       >
                         <span className="w-1 h-1 rounded-full bg-[#8bde7a] group-hover/link:scale-150 transition-transform" />
-                        {phone}
+                        +91 98201 49950
                       </a>
-                    ))}
+                    </div>
                   </div>
                 </div>
 
-                {/* Email & Hours Card */}
-                <div className="group relative bg-white rounded-2xl p-6 border border-[#eef2f7] hover:border-[#0093cb]/30 transition-all duration-500 hover:-translate-y-1 shadow-sm hover:shadow-lg">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#0093cb]/10 to-[#00a65d]/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Mail className="w-5 h-5 text-[#0093cb]" />
-                  </div>
-                  <h3 className="font-bold text-[#0f172a] mb-3">Email Us</h3>
-                  <a
-                    href="mailto:sales@bigimpex.com"
-                    className="flex items-center gap-2 text-[#6b7280] hover:text-[#0093cb] text-sm transition-colors mb-4 group/link"
-                  >
-                    <span className="w-1 h-1 rounded-full bg-[#8bde7a] group-hover/link:scale-150 transition-transform" />
-                   info@paramcorporation.com
-                  </a>
-                  
-                  <div className="pt-3 border-t border-[#eef2f7]">
-                    <div className="flex items-center gap-2 text-[#6b7280] text-sm">
-                      <Clock className="w-4 h-4 text-[#00a65d]" />
-                      <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
+                {/* Email Card */}
+                <div className="group relative bg-white rounded-2xl p-3.5 border border-[#eef2f7] hover:border-[#0093cb]/30 transition-all duration-500 hover:-translate-y-1 shadow-sm hover:shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-br from-[#0093cb]/10 to-[#00a65d]/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+                      <Mail className="w-3.5 h-3.5 text-[#0093cb]" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-[#0f172a] text-xs">Email Us</h3>
+                      <a
+                        href="mailto:info@paramcorporation.com"
+                        className="flex items-center gap-1.5 text-[#6b7280] hover:text-[#0093cb] text-xs transition-colors group/link"
+                      >
+                        <span className="w-1 h-1 rounded-full bg-[#8bde7a] group-hover/link:scale-150 transition-transform flex-shrink-0" />
+                        info@paramcorp.com
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Map */}
+              {/* Hours Card - Reduced height */}
+              <div className="group relative bg-white rounded-2xl p-3.5 border border-[#eef2f7] hover:border-[#0093cb]/30 transition-all duration-500 hover:-translate-y-1 shadow-sm hover:shadow-lg">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-gradient-to-br from-[#0093cb]/10 to-[#00a65d]/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+                    <Clock className="w-3.5 h-3.5 text-[#0093cb]" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#0f172a] text-xs">Business Hours</h3>
+                    <p className="text-[#6b7280] text-xs">Mon - Sat: 9:00 AM - 6:00 PM</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Map - Reduced height */}
               <div className="group relative bg-white rounded-2xl overflow-hidden border border-[#eef2f7] hover:border-[#0093cb]/30 transition-all duration-500 shadow-sm hover:shadow-lg">
-                <div className="relative w-full h-[280px]">
+                <div className="relative w-full h-[200px]">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.6107628816285!2d72.87117107580924!3d19.255788246302636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b0ed193f84d9%3A0x39987f619ffac374!2s101%2C%20KetkiPada%20Rd%2C%20Diamond%20Industrial%20Estate%2C%20Dahisar%20East%2C%20Mumbai%2C%20Maharashtra%20400068!5e0!3m2!1sen!2sin!4v1776512798656!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
-                    style={{ border: 0 }}
+                    style={{ border: 0, position: 'absolute', top: 0, left: 0 }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="BigImpex Location"
+                    title="Office Location"
                   />
                 </div>
-                {/* Corner accent */}
                 <div className="absolute top-0 right-0 w-12 h-12 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-br from-[#0093cb]/40 to-[#00a65d]/40 rotate-45" />
                 </div>
               </div>
             </div>
 
-            {/* Right Column - Contact Form */}
-            <div className="lg:sticky lg:top-24">
-              <div className="relative bg-white rounded-2xl p-8 border border-[#eef2f7] shadow-lg hover:shadow-xl transition-all duration-500">
+            {/* Right Column - Contact Form (Full height) */}
+            <div className="h-full">
+              <div className="relative bg-white rounded-2xl p-6 md:p-8 border border-[#eef2f7] shadow-lg hover:shadow-xl transition-all duration-500 h-full flex flex-col">
                 {/* Decorative elements */}
                 <div className="absolute -top-3 -right-3 w-8 h-8 bg-[#8bde7a] rounded-full opacity-20 blur-sm" />
                 <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-[#0093cb] rounded-full opacity-20 blur-sm" />
                 
                 {/* Form Header */}
-                <div className="text-center mb-8">
-                  <div className="inline-flex items-center gap-2 bg-[#f8fafc] rounded-full px-4 py-1.5 border border-[#eef2f7] mb-4">
-                    <Sparkles className="w-3.5 h-3.5 text-[#0093cb]" />
-                    <span className="text-xs font-medium text-[#6b7280] uppercase tracking-wider">
+                <div className="text-center mb-5">
+                  <div className="inline-flex items-center gap-2 bg-[#f8fafc] rounded-full px-3 py-1 border border-[#eef2f7] mb-3">
+                    <Sparkles className="w-3 h-3 text-[#0093cb]" />
+                    <span className="text-[10px] font-medium text-[#6b7280] uppercase tracking-wider">
                       Send a Message
                     </span>
                   </div>
-                  <h3 className="text-2xl font-serif italic text-[#0f172a]">
+                  <h3 className="text-xl md:text-2xl font-serif italic text-[#0f172a]">
                     Don&apos;t hesitate to{" "}
                     <span className="relative inline-block">
                       reach out
-                      <svg className="absolute -bottom-1 left-0 w-full" height="4" viewBox="0 0 100 4" preserveAspectRatio="none">
-                        <path d="M0,2 Q25,0 50,2 Q75,4 100,2" stroke="#00a65d" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+                      <svg className="absolute -bottom-1 left-0 w-full" height="3" viewBox="0 0 100 3" preserveAspectRatio="none">
+                        <path d="M0,1.5 Q25,0 50,1.5 Q75,3 100,1.5" stroke="#00a65d" strokeWidth="1.5" fill="none" strokeLinecap="round" />
                       </svg>
                     </span>
                   </h3>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-3 flex-1">
                   <div className="relative">
                     <input
                       type="text"
@@ -271,7 +247,7 @@ export default function ContactUs() {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       onFocus={() => setFocusedField("name")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-3.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280]"
+                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280]"
                     />
                     <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
                       focusedField === "name" ? "scale-x-100" : "scale-x-0"
@@ -287,7 +263,7 @@ export default function ContactUs() {
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       onFocus={() => setFocusedField("email")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-3.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280]"
+                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280]"
                     />
                     <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
                       focusedField === "email" ? "scale-x-100" : "scale-x-0"
@@ -302,7 +278,7 @@ export default function ContactUs() {
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       onFocus={() => setFocusedField("phone")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-3.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280]"
+                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280]"
                     />
                     <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
                       focusedField === "phone" ? "scale-x-100" : "scale-x-0"
@@ -313,12 +289,12 @@ export default function ContactUs() {
                     <textarea
                       placeholder="How can we help you?"
                       required
-                      rows={5}
+                      rows={3}
                       value={formData.query}
                       onChange={(e) => setFormData({ ...formData, query: e.target.value })}
                       onFocus={() => setFocusedField("query")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-3.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] resize-none"
+                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] resize-none"
                     />
                     <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
                       focusedField === "query" ? "scale-x-100" : "scale-x-0"
@@ -327,19 +303,17 @@ export default function ContactUs() {
 
                   <button
                     type="submit"
-                    className="group relative w-full bg-[#0093cb]  hover:bg-[#00a65d]  text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg overflow-hidden"
+                    className="group relative w-full bg-[#0093cb] hover:bg-[#00a65d] text-white px-8 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg overflow-hidden"
                   >
-                    <span className="relative z-10 flex items-center gap-2">
+                    <span className="relative z-10 flex items-center gap-2 text-sm">
                       Send Message
-                      <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      <Send className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </span>
-                    {/* Button shine effect */}
                     <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                   </button>
                 </form>
 
-                {/* Response time note */}
-                <p className="text-center text-xs text-[#6b7280] mt-5">
+                <p className="text-center text-[10px] text-[#6b7280] mt-3 pt-1">
                   We typically respond within 24 hours
                 </p>
               </div>

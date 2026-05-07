@@ -1,10 +1,10 @@
 // app/case-studies/page.tsx
 'use client';
 
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Home, ArrowRight, Calendar, Building2, Tag, ChevronRight } from 'lucide-react';
+import { Home, ArrowRight, Calendar, Building2, Tag, ChevronRight, Play, Pause } from 'lucide-react';
 
 const caseStudies = [
   {
@@ -14,7 +14,8 @@ const caseStudies = [
     client: "Leading Pharma Co.",
     date: "2024",
     description: "Developed comprehensive medical communication strategy for ENT portfolio, resulting in 40% increase in physician engagement and successful launch of 3 new products.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
+    videoUrl: "https://player.vimeo.com/external/458634952.sd.mp4?s=7b614e2d366e56e7e4ade0cafe166f541dde24b7&profile_id=164",
+    posterUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
     slug: "ent-strategy",
     stats: { engagement: "+40%", reach: "2.5M+", products: "3" }
   },
@@ -25,7 +26,8 @@ const caseStudies = [
     client: "Global Healthcare Brand",
     date: "2023",
     description: "Executed multi-channel digital campaign targeting cardiologists and diabetologists, featuring interactive content and KOL webinars that drove significant prescription growth.",
-    image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=600&fit=crop",
+    videoUrl: "https://player.vimeo.com/external/434045863.sd.mp4?s=8e7c2c9e8e3f6b1a5c7d9e0f1a2b3c4d5e6f7a8b&profile_id=164",
+    posterUrl: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=600&fit=crop",
     slug: "cardio-digital",
     stats: { engagement: "+65%", reach: "5M+", products: "2" },
     reverse: true
@@ -37,15 +39,146 @@ const caseStudies = [
     client: "Medical Device Company",
     date: "2024",
     description: "Comprehensive market analysis and launch strategy for orthopedic implants, including surgeon training programs and patient education materials.",
-    image: "https://images.unsplash.com/photo-1551076805-e1869023e561?w=800&h=600&fit=crop",
+    videoUrl: "https://player.vimeo.com/external/434045862.sd.mp4?s=7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d&profile_id=164",
+    posterUrl: "https://images.unsplash.com/photo-1551076805-e1869023e561?w=800&h=600&fit=crop",
     slug: "ortho-market-entry",
     stats: { engagement: "+120%", reach: "1.8M+", products: "5" }
   }
 ];
 
+// Video Player Component
+function VideoPlayer({ videoUrl, posterUrl, title }: { videoUrl: string; posterUrl: string; title: string }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const handleVideoEnd = () => {
+    setIsPlaying(false);
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+    }
+  };
+
+  return (
+    <div 
+      className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gray-900 cursor-pointer group"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
+      <video
+        ref={videoRef}
+        className="w-full h-full object-cover"
+        poster={posterUrl}
+        onClick={togglePlay}
+        onEnded={handleVideoEnd}
+        playsInline
+        preload="metadata"
+      >
+        <source src={videoUrl} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
+      {/* Gradient Overlay */}
+      <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-300 ${isHovering ? 'opacity-100' : 'opacity-0'}`} />
+      
+      {/* Play/Pause Button */}
+      <button
+        onClick={togglePlay}
+        className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${isHovering || !isPlaying ? 'opacity-100' : 'opacity-0'}`}
+      >
+        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl transform transition-transform duration-300 hover:scale-110">
+          {isPlaying ? (
+            <Pause className="w-6 h-6 md:w-8 md:h-8 text-gray-800 ml-0" />
+          ) : (
+            <Play className="w-6 h-6 md:w-8 md:h-8 text-gray-800 ml-1" />
+          )}
+        </div>
+      </button>
+
+      {/* Floating Stats Card - appears on hover */}
+      {/* <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-xl p-4 shadow-lg transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+        <div className="grid grid-cols-3 gap-4 text-center">
+          <div>
+            <div className="text-xl font-bold text-[var(--clr-primary)]">{caseStudies[0]?.stats.engagement || "+40%"}</div>
+            <div className="text-xs text-gray-500 uppercase tracking-wide">Engagement</div>
+          </div>
+          <div>
+            <div className="text-xl font-bold text-[var(--clr-primary)]">{caseStudies[0]?.stats.reach || "2.5M+"}</div>
+            <div className="text-xs text-gray-500 uppercase tracking-wide">Reach</div>
+          </div>
+          <div>
+            <div className="text-xl font-bold text-[var(--clr-primary)]">{caseStudies[0]?.stats.products || "3"}</div>
+            <div className="text-xs text-gray-500 uppercase tracking-wide">Products</div>
+          </div>
+        </div>
+      </div> */}
+    </div>
+  );
+}
+
+// Alternative: Auto-playing muted video (for better UX)
+function AutoVideoPlayer({ videoUrl, posterUrl, title }: { videoUrl: string; posterUrl: string; title: string }) {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  return (
+    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gray-900 group">
+      <video
+        ref={videoRef}
+        className="w-full h-full object-cover"
+        poster={posterUrl}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      >
+        <source src={videoUrl} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
+      {/* Overlay with sound/unmute indicator */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      
+      <button
+        onClick={togglePlay}
+        className="absolute bottom-4 right-4 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
+      >
+        {isPlaying ? (
+          <Pause className="w-3.5 h-3.5 text-white" />
+        ) : (
+          <Play className="w-3.5 h-3.5 text-white ml-0.5" />
+        )}
+      </button>
+    </div>
+  );
+}
+
 export default function CaseStudiesPage() {
   return (
-    <div className="min-h-screen  font-sans">
+    <div className="min-h-screen font-sans">
       
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] text-white py-20 lg:py-28 relative overflow-hidden">
@@ -75,7 +208,7 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* Case Studies List - Alternating Layout */}
+      {/* Case Studies List - Alternating Layout with Videos */}
       <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 lg:space-y-32">
         {caseStudies.map((study, index) => (
           <article 
@@ -84,37 +217,13 @@ export default function CaseStudiesPage() {
               study.reverse ? 'lg:grid-flow-dense' : ''
             }`}
           >
-            {/* Image Section */}
+            {/* Video Section - Using VideoPlayer component */}
             <div className={`relative group ${study.reverse ? 'lg:col-start-2' : ''}`}>
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gray-200">
-                <Image
-                  src={study.image}
-                  alt={study.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                {/* Floating Stats Card */}
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-xl p-4 shadow-lg transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="grid grid-cols-3 gap-4 text-center">
-                    <div>
-                      <div className="text-xl font-bold text-[var(--clr-primary)]">{study.stats.engagement}</div>
-                      <div className="text-xs text-gray-500 uppercase tracking-wide">Engagement</div>
-                    </div>
-                    <div>
-                      <div className="text-xl font-bold text-[var(--clr-primary)]">{study.stats.reach}</div>
-                      <div className="text-xs text-gray-500 uppercase tracking-wide">Reach</div>
-                    </div>
-                    <div>
-                      <div className="text-xl font-bold text-[var(--clr-primary)]">{study.stats.products}</div>
-                      <div className="text-xs text-gray-500 uppercase tracking-wide">Products</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <VideoPlayer 
+                videoUrl={study.videoUrl}
+                posterUrl={study.posterUrl}
+                title={study.title}
+              />
               
               {/* Decorative Element */}
               <div className={`absolute -z-10 w-full h-full rounded-2xl bg-[var(--clr-primary)]/10 top-4 ${study.reverse ? 'right-4' : 'left-4'}`} />
@@ -158,15 +267,23 @@ export default function CaseStudiesPage() {
                 ))}
               </ul>
 
-              {/* CTA Button */}
-              <Link 
-                href={`/case-studies/${study.slug}`}
-                className="inline-flex items-center gap-2 bg-[var(--clr-primary)] hover:bg-[var(--clr-secondary)] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 group/btn mt-4"
-              >
-                View Case Study
-                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-              </Link>
-            </div>
+              {/* Stats Row - Mobile friendly */}
+              {/* <div className="grid grid-cols-3 gap-4 p-4 bg-gray-50 rounded-xl lg:hidden">
+                <div className="text-center">
+                  <div className="text-xl font-bold text-[var(--clr-primary)]">{study.stats.engagement}</div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide">Engagement</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-xl font-bold text-[var(--clr-primary)]">{study.stats.reach}</div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide">Reach</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-xl font-bold text-[var(--clr-primary)]">{study.stats.products}</div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide">Products</div>
+                </div>
+              </div> */}
+
+                        </div>
           </article>
         ))}
       </section>

@@ -3,12 +3,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import {  ChevronLeft, ChevronRight, ZoomIn, Images } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ZoomIn, Images } from 'lucide-react';
 
 /* ══════════════════════════════════════════════════════
    PRODUCT GALLERY COMPONENT
-   - Front: 8-image masonry/grid preview
-   - One "View All" arrow button → opens full modal
+   - Front: Clean Bento Grid (2 rows, 4 cols total)
+   - Row 1: 4 cards (each 1 col each)
+   - Row 2: 3 cards (1col | 2cols | 1col)
+   - "View All" button → opens full modal
    - Modal: grid view → single image lightbox (2-step)
 ══════════════════════════════════════════════════════ */
 
@@ -347,71 +349,291 @@ function GalleryModal({ images, productName, onClose }: GalleryModalProps) {
 }
 
 /* ══════════════════════════════════════════════════════
-   MAIN: ProductGallery — 8-image front preview
+   MAIN: ProductGallery — Clean Bento Grid (2 rows, 4 cols)
+   Row 1: 4 cards (each 1 col)
+   Row 2: 3 cards (1col | 2cols | 1col)
 ══════════════════════════════════════════════════════ */
 export default function ProductGallery({ images = [], productName = 'Product' }: ProductGalleryProps) {
   const [modalOpen, setModalOpen] = useState(false);
 
-  // Show max 8 images on front
-  const previewImages = images.slice(0, 8);
-  const remaining = images.length - 8;
+  // Show max 7 images on front (since grid has 7 spots: 4 + 3)
+  const previewImages = images.slice(0, 7);
+  const remaining = images.length - 7;
 
   if (!images.length) return null;
 
+  // Define grid items: row 1 has 4 items (each span 1 col), row 2 has 3 items with custom spans
+  // Using grid-template-areas for clean layout
+  const gridAreas = `
+    "card0 card1 card2 card3"
+    "card4 card5 card5 card6"
+  `;
+
   return (
-    <>
+    <div>
       <div style={{ position: 'relative' }}>
-        {/* ── 8-Image Preview Grid ── */}
+        {/* ── Clean Bento Grid (2 rows, 4 columns) ── */}
         <div
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
-            gridTemplateRows: 'repeat(2, 1fr)',
-            gap: '8px',
-            borderRadius: '16px',
+            gridTemplateRows: 'auto auto',
+            gap: '12px',
+            borderRadius: '20px',
             overflow: 'hidden',
           }}
         >
-          {previewImages.map((img: string, idx: number) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: idx * 0.04, duration: 0.3 }}
-              style={{
-                position: 'relative',
-                aspectRatio: '1 / 1',
-                overflow: 'hidden',
-                background: '#f1f5f9',
-              }}
-              className="group"
-            >
-              <Image
-                src={img}
-                alt={`${productName} ${idx + 1}`}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                unoptimized
-              />
+          {/* Card 0 - Row 1, Col 1 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05, duration: 0.4 }}
+            style={{
+              position: 'relative',
+              aspectRatio: '1 / 1',
+              overflow: 'hidden',
+              borderRadius: '16px',
+              backgroundColor: '#f1f5f9',
+            }}
+            className="group"
+          >
+            {previewImages[0] && (
+              <>
+                <Image
+                  src={previewImages[0]}
+                  alt={`${productName} 1`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-sm rounded-full px-2 py-0.5 text-[10px] font-semibold text-white/80">
+                  01
+                </div>
+              </>
+            )}
+          </motion.div>
 
-              {idx === 7 && remaining > 0 && (
-                <div
-                  style={{
-                    position: 'absolute', inset: 0,
-                    background: 'rgba(0,0,0,0.55)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}
-                >
-                  <span style={{ color: 'white', fontSize: '18px', fontWeight: 800 }}>
+          {/* Card 1 - Row 1, Col 2 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
+            style={{
+              position: 'relative',
+              aspectRatio: '1 / 1',
+              overflow: 'hidden',
+              borderRadius: '16px',
+              backgroundColor: '#f1f5f9',
+            }}
+            className="group"
+          >
+            {previewImages[1] && (
+              <>
+                <Image
+                  src={previewImages[1]}
+                  alt={`${productName} 2`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-sm rounded-full px-2 py-0.5 text-[10px] font-semibold text-white/80">
+                  02
+                </div>
+              </>
+            )}
+          </motion.div>
+
+          {/* Card 2 - Row 1, Col 3 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.4 }}
+            style={{
+              position: 'relative',
+              aspectRatio: '1 / 1',
+              overflow: 'hidden',
+              borderRadius: '16px',
+              backgroundColor: '#f1f5f9',
+            }}
+            className="group"
+          >
+            {previewImages[2] && (
+              <>
+                <Image
+                  src={previewImages[2]}
+                  alt={`${productName} 3`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-sm rounded-full px-2 py-0.5 text-[10px] font-semibold text-white/80">
+                  03
+                </div>
+              </>
+            )}
+          </motion.div>
+
+          {/* Card 3 - Row 1, Col 4 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+            style={{
+              position: 'relative',
+              aspectRatio: '1 / 1',
+              overflow: 'hidden',
+              borderRadius: '16px',
+              backgroundColor: '#f1f5f9',
+            }}
+            className="group"
+          >
+            {previewImages[3] && (
+              <>
+                <Image
+                  src={previewImages[3]}
+                  alt={`${productName} 4`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-sm rounded-full px-2 py-0.5 text-[10px] font-semibold text-white/80">
+                  04
+                </div>
+              </>
+            )}
+          </motion.div>
+
+          {/* Card 4 - Row 2, Col 1 (1 col) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.4 }}
+            style={{
+              position: 'relative',
+              aspectRatio: '1 / 1',
+              overflow: 'hidden',
+              borderRadius: '16px',
+              backgroundColor: '#f1f5f9',
+            }}
+            className="group"
+          >
+            {previewImages[4] && (
+              <>
+                <Image
+                  src={previewImages[4]}
+                  alt={`${productName} 5`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-sm rounded-full px-2 py-0.5 text-[10px] font-semibold text-white/80">
+                  05
+                </div>
+              </>
+            )}
+          </motion.div>
+
+          {/* Card 5 - Row 2, Cols 2-3 (spans 2 cols) - Featured wide card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.4 }}
+            style={{
+              position: 'relative',
+              gridColumn: 'span 2',
+              aspectRatio: '2 / 1',
+              overflow: 'hidden',
+              borderRadius: '16px',
+              backgroundColor: '#f1f5f9',
+            }}
+            className="group"
+          >
+            {previewImages[5] && (
+              <>
+                <Image
+                  src={previewImages[5]}
+                  alt={`${productName} 6`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-sm rounded-full px-2 py-0.5 text-[10px] font-semibold text-white/80">
+                  06
+                </div>
+                {/* Optional: featured badge */}
+                <div className="absolute top-3 right-3 bg-amber-500/90 backdrop-blur-sm rounded-full px-2 py-0.5 text-[9px] font-bold text-black uppercase tracking-wide">
+                  Featured
+                </div>
+              </>
+            )}
+          </motion.div>
+
+          {/* Card 6 - Row 2, Col 4 (1 col) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.4 }}
+            style={{
+              position: 'relative',
+              aspectRatio: '1 / 1',
+              overflow: 'hidden',
+              borderRadius: '16px',
+              backgroundColor: '#f1f5f9',
+            }}
+            className="group"
+          >
+            {previewImages[6] ? (
+              <>
+                <Image
+                  src={previewImages[6]}
+                  alt={`${productName} 7`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-sm rounded-full px-2 py-0.5 text-[10px] font-semibold text-white/80">
+                  07
+                </div>
+              </>
+            ) : (
+              // Fallback if only 6 images exist (show remaining count)
+              <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
+                <span className="text-white text-2xl font-bold">+{remaining + (images.length - 7)}</span>
+              </div>
+            )}
+            {/* Show remaining overlay on top if this is the last card and there are extras */}
+            {previewImages[6] && remaining > 0 && (
+              <div
+                style={{
+                  position: 'absolute', inset: 0,
+                  background: 'rgba(0,0,0,0.55)',
+                  backdropFilter: 'blur(2px)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  zIndex: 5,
+                  borderRadius: '16px',
+                }}
+              >
+                <div className="text-center">
+                  <span style={{ color: 'white', fontSize: '28px', fontWeight: 800, lineHeight: 1 }}>
                     +{remaining}
                   </span>
+                  <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '11px', display: 'block', marginTop: 4 }}>
+                    more
+                  </span>
                 </div>
-              )}
-            </motion.div>
-          ))}
+              </div>
+            )}
+          </motion.div>
         </div>
 
-        {/* ── "View All" Arrow Button — Hidden when modalOpen is true ── */}
+        {/* ── "View All" Arrow Button ── */}
         <AnimatePresence>
           {!modalOpen && (
             <motion.button
@@ -420,38 +642,37 @@ export default function ProductGallery({ images = [], productName = 'Product' }:
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               onClick={() => setModalOpen(true)}
-              whileHover={{ scale: 1.06 }}
+              whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
               style={{
                 position: 'absolute',
-                bottom: 12,
-                right: 12,
+                bottom: 16,
+                right: 16,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 8,
-                padding: '8px 16px',
-                borderRadius: 99,
-                background: 'rgba(15, 23, 42, 0.85)',
-                backdropFilter: 'blur(8px)',
-                border: '1px solid rgba(255,255,255,0.15)',
+                padding: '8px 18px',
+                borderRadius: 40,
+                background: 'rgba(15, 23, 42, 0.9)',
+                backdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255,255,255,0.2)',
                 color: 'white',
                 fontSize: '12px',
-                fontWeight: 700,
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
+                fontWeight: 600,
+                letterSpacing: '0.02em',
                 cursor: 'pointer',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-                zIndex: 1,
+                boxShadow: '0 8px 20px rgba(0,0,0,0.3)',
+                zIndex: 10,
               }}
             >
               <Images style={{ width: 14, height: 14 }} />
               View All {images.length} Photos
               <span
                 style={{
-                  width: 22, height: 22, borderRadius: '50%',
+                  width: 24, height: 24, borderRadius: '50%',
                   background: '#F5A623',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  marginLeft: 2,
+                  marginLeft: 4,
                 }}
               >
                 <ChevronRight style={{ width: 12, height: 12, color: '#7a3e00' }} />
@@ -469,22 +690,6 @@ export default function ProductGallery({ images = [], productName = 'Product' }:
           onClose={() => setModalOpen(false)}
         />
       )}
-    </>
+    </div>
   );
 }
-
-/* ══════════════════════════════════════════════════════
-   USAGE EXAMPLE (for reference)
-══════════════════════════════════════════════════════ 
-
-import ProductGallery from '@/components/ProductGallery';
-
-const images = [
-  '/products/img1.png',
-  '/products/img2.png',
-  // ... up to N images
-];
-
-<ProductGallery images={images} productName="Crystal Paperweight" />
-
-*/

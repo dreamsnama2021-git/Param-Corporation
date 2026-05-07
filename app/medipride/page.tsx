@@ -811,7 +811,7 @@ export default function MediPrideLanding() {
       </section>
 
       {/* ── FOUNDER'S NOTE ── */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#3972b7] text-white">
+      {/* <section className="py-16 sm:py-20 lg:py-24 bg-[#3972b7] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 grid lg:grid-cols-2 gap-10 sm:gap-12 items-center">
           <div className="order-2 lg:order-1 h-[320px] sm:h-[420px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl border-4 sm:border-8 border-white/10">
             <img
@@ -840,7 +840,7 @@ export default function MediPrideLanding() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <div>
         <BentoGrid />

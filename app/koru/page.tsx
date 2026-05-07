@@ -434,7 +434,7 @@ export default function KoruCommunications() {
 
 
       {/* ── BENTO GRID ── */}
-      <BentoGrid2 />
+      {/* <BentoGrid2 /> */}
       <section className="py-12 bg-slate-50">
               <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="text-center mb-16">

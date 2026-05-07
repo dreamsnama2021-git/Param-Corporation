@@ -19,7 +19,7 @@ export interface TimelineItem {
 }
 
 // ─────────────────────────────────────────────────
-// EDITORIAL TIMELINE COMPONENT
+// EDITORIAL TIMELINE COMPONENT (PORTRAIT VERSION)
 // ─────────────────────────────────────────────────
 interface EditorialTimelineProps {
   items: TimelineItem[];
@@ -27,13 +27,13 @@ interface EditorialTimelineProps {
 
 export function EditorialTimeline({ items }: EditorialTimelineProps) {
   return (
-    <div className="relative max-w-6xl mx-auto px-6">
-      {/* Central Path */}
-      <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[1px] bg-[#0093cb] hidden md:block" />
+    <div className="relative max-w-4xl mx-auto px-6">
+      {/* Vertical Central Path */}
+      <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-blue-200 via-[#0093cb] to-blue-200 transform md:-translate-x-1/2" />
 
-      <div className="space-y-8 md:space-y-12 xl:space-y-32">
+      <div className="space-y-16 md:space-y-24">
         {items.map((item, index) => (
-          <EditorialRow key={index} item={item} index={index} />
+          <EditorialCard key={index} item={item} index={index} />
         ))}
       </div>
     </div>
@@ -41,87 +41,97 @@ export function EditorialTimeline({ items }: EditorialTimelineProps) {
 }
 
 // ─────────────────────────────────────────────────
-// EDITORIAL ROW COMPONENT
+// EDITORIAL CARD COMPONENT (PORTRAIT LAYOUT)
 // ─────────────────────────────────────────────────
-const EditorialRow = ({ item, index }: { item: TimelineItem; index: number }) => {
+const EditorialCard = ({ item, index }: { item: TimelineItem; index: number }) => {
   const isEven = index % 2 === 0;
   const Icon = item.icon;
 
   return (
-    <div className={`relative flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 lg:gap-24`}>
-      
-      {/* Visual Content */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="w-full md:w-1/2"
-      >
-        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group">
-          <Image 
-            src={item.image} 
-            alt={item.title} 
-            fill 
-            className="object-cover group-hover:scale-110 transition-transform duration-1000"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          <div className="absolute bottom-8 left-8">
-             <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white mb-4">
-                <Icon size={24} />
-             </div>
-             <p className="text-white/70 text-xs font-bold tracking-[0.2em] uppercase">{item.category}</p>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Center Connector (Desktop) */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block z-20">
-        <div className="relative flex items-center justify-center">
-            {/* The Node */}
-            <div className="w-4 h-4 rounded-full bg-[#0093cb]  " />
-            
-            {/* The Connecting Arm Line */}
-            <motion.div 
-                initial={{ width: 0 }}
-                whileInView={{ width: 100 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.4 }}
-                className={`absolute h-[1px] bg-[#0093cb] -z-10 ${isEven ? 'left-4' : 'right-4'}`}
-                style={{ originX: isEven ? 0 : 1 }}
-            />
-        </div>
+    <motion.div
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, delay: index * 0.1 }}
+      className="relative pl-16 md:pl-0"
+    >
+      {/* Timeline Node */}
+      <div className="absolute left-8 md:left-1/2 top-8 transform -translate-x-1/2 z-20">
+        <motion.div
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+          className="w-12 h-12 rounded-full bg-white border-4 border-[#0093cb] flex items-center justify-center shadow-lg"
+        >
+          <Icon size={20} className="text-[#0093cb]" />
+        </motion.div>
+        
+        {/* Connecting Arm to Content */}
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: isEven ? 30 : 30 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: index * 0.1 + 0.5 }}
+          className={`absolute top-1/2 h-[1px] bg-[#0093cb] -z-10 hidden md:block ${
+            isEven ? 'left-full' : 'right-full'
+          }`}
+          style={{ originX: isEven ? 0 : 1 }}
+        />
       </div>
 
-      {/* Text Content */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="w-full md:w-1/2 space-y-6"
-      >
-        <div className="flex items-baseline gap-4">
-            <span className="text-6xl font-black text-[#00a65d] tracking-tighter">{item.date}</span>
-            <div className="h-px flex-1 bg-slate-100 md:hidden" />
-        </div>
-        
-        <h3 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
-          {item.title}
-        </h3>
-        
-        <p className="text-lg text-slate-600 leading-relaxed max-w-md">
-          {item.description}
-        </p>
+      {/* Content Card */}
+      <div className={`w-full ${isEven ? 'md:pr-16 md:ml-auto md:w-[calc(50%-3rem)]' : 'md:pl-16 md:mr-auto md:w-[calc(50%-3rem)]'}`}>
+        <motion.div
+          whileHover={{ y: -5 }}
+          className="relative bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden group"
+        >
+          {/* Image Section */}
+          <div className="relative aspect-[16/9] overflow-hidden">
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              className="object-cover transition-transform duration-1000 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+            
+            {/* Date & Category Overlay */}
+            <div className="absolute bottom-6 left-6 space-y-2">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+                  <Icon size={18} className="text-white" />
+                </div>
+                <span className="text-white/90 text-sm font-bold uppercase tracking-widest">
+                  {item.category}
+                </span>
+              </div>
+              <span className="text-5xl md:text-6xl font-black text-white tracking-tighter block">
+                {item.date}
+              </span>
+            </div>
+          </div>
 
-        <div className="pt-4">
-            <button className="group flex items-center gap-2 text-sm font-bold text-slate-900 tracking-wider">
-                EXPLORE MILESTONE 
+          {/* Content Section */}
+          <div className="p-6 md:p-8 space-y-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">
+              {item.title}
+            </h3>
+            
+            <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+              {item.description}
+            </p>
+
+            <div className="pt-4 border-t border-slate-100">
+              <button className="group flex items-center gap-2 text-sm font-bold text-[#00a65d] hover:text-[#008c4e] transition-colors uppercase tracking-wider">
+                Explore Milestone
                 <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-        </div>
-      </motion.div>
-    </div>
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 };
 
