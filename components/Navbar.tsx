@@ -163,14 +163,30 @@ export default function Navbar() {
                         {megaMenuColumns.map((column, idx) => (
                           <div key={idx}>
                             <div className="flex items-center justify-between mb-2 border-b pb-2">
-                              <h3 className="font-bold text-xs uppercase text-[var(--clr-text-dark)] tracking-wide">{column.title}</h3>
+                              <h3 className="font-bold text-xs uppercase text-[var(--clr-text-dark)] tracking-wide">
+                                {column.title}
+                              </h3>
                             </div>
                             <ul className="space-y-1">
                               {column.data?.slice(0, 15).map((item: any) => (
                                 <li key={item.slug}>
-                                  <a href={`/categories/${item.slug}?tab=${column.tabId}`} onClick={(e) => handleCategoryClick(e, column.tabId, item.slug)} className="text-[12px] text-gray-600 hover:text-[var(--clr-primary)] transition-all block ">
-                                    {item.name}
-                                  </a>
+                                  {column.tabId === 'therapy' ? (
+                                    <Link
+                                      href="/medipride"
+                                      className="text-[12px] text-gray-600 hover:text-[var(--clr-primary)] transition-all block"
+                                      onClick={() => setActiveDropdown(null)}
+                                    >
+                                      {item.name}
+                                    </Link>
+                                  ) : (
+                                    <a
+                                      href={`/categories/${item.slug}?tab=${column.tabId}`}
+                                      onClick={(e) => handleCategoryClick(e, column.tabId, item.slug)}
+                                      className="text-[12px] text-gray-600 hover:text-[var(--clr-primary)] transition-all block"
+                                    >
+                                      {item.name}
+                                    </a>
+                                  )}
                                 </li>
                               ))}
                             </ul>
@@ -182,18 +198,18 @@ export default function Navbar() {
                 </li>
 
                 {mainNavItems.map((item) => (
-                  <li key={item.label}>
-                    <Link 
-                      href={item.href} 
-                      className={`text-sm font-semibold transition rounded-lg ${
-                        item.isButton 
-                          ? 'px-4 py-2 bg-[#0093cb] rounded-[20rem] text-white hover:bg-blue-700 shadow-sm' 
-                          : 'px-3 py-2 text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)]'
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className={`block px-4 py-1 text-sm font-bold rounded-full transition-all duration-300 ${
+                      item.isButton
+                        ? 'bg-[var(--clr-primary)] text-white text-center hover:bg-[var(--clr-secondary)] hover:shadow-lg hover:shadow-[var(--clr-primary)]/30 hover:-translate-y-0.5'
+                        : 'text-gray-800 hover:bg-gray-50 hover:text-[var(--clr-primary)]'
+                    }`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
                 ))}
               </ul>
 
@@ -244,17 +260,29 @@ export default function Navbar() {
                     {/* Collapsible Content */}
                     <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileSubMenu === column.tabId ? "max-h-[500px] opacity-100 mb-2" : "max-h-0 opacity-0"}`}>
                       <div className="grid grid-cols-1 gap-1 px-4 pb-2">
-                        {column.data?.map((item: any) => (
-                          <Link
-                            key={item.slug}
-                            href={`/categories/${item.slug}?tab=${column.tabId}`}
-                            onClick={() => setMobileOpen(false)}
-                            className="flex items-center justify-between px-6 py-2.5 text-sm text-gray-600 hover:text-[var(--clr-primary)] active:bg-gray-100 rounded-lg"
-                          >
-                            {item.name}
-                            <ChevronRight className="w-3 h-3 opacity-30" />
-                          </Link>
-                        ))}
+                        {column.data?.map((item: any) =>
+                          column.tabId === 'therapy' ? (
+                            <Link
+                              key={item.slug}
+                              href="/medipride"
+                              onClick={() => setMobileOpen(false)}
+                              className="flex items-center justify-between px-6 py-2.5 text-sm text-gray-600 hover:text-[var(--clr-primary)] active:bg-gray-100 rounded-lg"
+                            >
+                              {item.name}
+                              <ChevronRight className="w-3 h-3 opacity-30" />
+                            </Link>
+                          ) : (
+                            <Link
+                              key={item.slug}
+                              href={`/categories/${item.slug}?tab=${column.tabId}`}
+                              onClick={() => setMobileOpen(false)}
+                              className="flex items-center justify-between px-6 py-2.5 text-sm text-gray-600 hover:text-[var(--clr-primary)] active:bg-gray-100 rounded-lg"
+                            >
+                              {item.name}
+                              <ChevronRight className="w-3 h-3 opacity-30" />
+                            </Link>
+                          )
+                        )}
                       </div>
                     </div>
                   </div>
@@ -266,10 +294,10 @@ export default function Navbar() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`block px-4 py-3.5 text-sm font-bold rounded-xl ${
+                    className={`block px-5 py-3 text-sm font-bold rounded-full transition-all duration-300 ${
                       item.isButton
-                        ? 'bg-[#0093cb] rounded-[20rem] text-white text-center hover:bg-blue-700 my-1'
-                        : 'text-gray-800 hover:bg-gray-50'
+                        ? 'bg-[var(--clr-primary)] text-white text-center hover:bg-[var(--clr-secondary)] hover:shadow-lg hover:shadow-[var(--clr-primary)]/30 hover:-translate-y-0.5'
+                        : 'text-gray-800 hover:bg-gray-50 hover:text-[var(--clr-primary)]'
                     }`}
                     onClick={() => setMobileOpen(false)}
                   >

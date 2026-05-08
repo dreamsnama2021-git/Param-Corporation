@@ -14,6 +14,16 @@ import {
   Heart,
   Users,
   Sparkles,
+  Shield,
+  Package,
+  Headphones,
+  Leaf,
+  Languages,
+  BarChart,
+  Star,
+  Zap,
+  Percent,
+  Clipboard,  // <-- Add this import
 } from "lucide-react";
 import Image from "next/image";
 import {
@@ -140,67 +150,51 @@ const FloatingCard = ({ children, className, delay = 0 }: { children: React.Reac
   </motion.div>
 );
 
-
 const WhyUsSection = () => {
-  const reasons = [
-    {
-      title: "Pharma Expertise",
-      desc: "Specialized in pharmaceutical gifting with deep understanding of doctor preferences.",
-      icon: Pill,
-      color: "bg-amber-500",
-    },
-    {
-      title: "Pan-India Delivery",
-      desc: "Seamless delivery across India ensuring your gifts reach clinics anywhere.",
-      icon: Globe,
-      color: "bg-blue-500",
-    },
-    {
-      title: "90%+ Retention",
-      desc: "Consistent quality and reliable execution of annual gifting campaigns.",
-      icon: Heart,
-      color: "bg-rose-500",
-    },
-    {
-      title: "Therapy-Aligned",
-      desc: "Gifts aligned with cardiac, diabetic, and pediatric therapy areas.",
-      icon: Target,
-      color: "bg-emerald-500",
-    },
+  const row1Cards = [
+    { title: "Pharma Expertise", desc: "Specialized in pharmaceutical gifting with deep understanding of doctor preferences.", icon: Pill, color: "bg-amber-500" },
+    { title: "Pan-India Delivery", desc: "Seamless delivery across India ensuring your gifts reach clinics anywhere.", icon: Globe, color: "bg-blue-500" },
+    { title: "90%+ Retention", desc: "Consistent quality and reliable execution of annual gifting campaigns.", icon: Heart, color: "bg-rose-500" },
   ];
+  const row2Cards = [
+    { title: "Therapy-Aligned", desc: "Gifts aligned with cardiac, diabetic, and pediatric therapy areas.", icon: Target, color: "bg-emerald-500" },
+    { title: "Compliance Ready", desc: "All gifts meet regulatory guidelines for pharmaceutical promotions.", icon: Shield, color: "bg-violet-500" },
+    { title: "Custom Branding", desc: "Personalized packaging and branding options for your medical reps.", icon: Package, color: "bg-orange-500" },
+    { title: "24/7 Support", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Headphones, color: "bg-cyan-500" },
+  ];
+
+  const Card = ({ item }) => (
+    <div className="bg-white p-5 rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow">
+      <div className={`w-10 h-10 ${item.color} rounded-xl mb-4 flex items-center justify-center text-white`}>
+        <item.icon size={20} />
+      </div>
+      <h3 className="text-base font-bold mb-2">{item.title}</h3>
+      <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+    </div>
+  );
+
   return (
-    <section className="py-12 bg-slate-50 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-2">
-            Why Param
-          </p>
-          <h2 className="text-3xl md:text-4xl font-extrabold">
-            The <span className="text-[#0093cb]">Difference</span>
-          </h2>
+    <section className="py-12 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-6 space-y-4">
+        {/* Row 1: heading + 3 cards = 4 cols */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="flex flex-col justify-center">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-2">Why Param</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold leading-tight">
+              The <span className="text-[#0093cb]">Difference</span>
+            </h2>
+          </div>
+          {row1Cards.map((item, i) => <Card key={i} item={item} />)}
         </div>
-        <div className={scrollContainerStyles}>
-          {reasons.map((item, idx) => (
-            <div key={idx} className={scrollItemStyles}>
-              <div className="bg-white p-8 rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow">
-                <div
-                  className={`w-12 h-12 ${item.color} rounded-xl mb-6 flex items-center justify-center text-white`}
-                >
-                  <item.icon size={24} />
-                </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
-            </div>
-          ))}
+
+        {/* Row 2: 4 cards = 4 cols */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          {row2Cards.map((item, i) => <Card key={i} item={item} />)}
         </div>
       </div>
     </section>
   );
 };
-
 // ─── VISION & MISSION COMPONENTS ─────────────────────────────────────────────
 interface VisionMissionProps {
   children: React.ReactNode;
