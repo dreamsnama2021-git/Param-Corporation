@@ -163,7 +163,14 @@ const WhyUsSection = () => {
     { title: "24/7 Support", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Headphones, color: "bg-cyan-500" },
   ];
 
-  const Card = ({ item }) => (
+    interface CardItem {
+    title: string;
+    desc: string;
+    icon: React.ComponentType<{ size?: number }>;
+    color: string;
+  }
+
+  const Card = ({ item }: { item: CardItem }) => (
     <div className="bg-white p-5 rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow">
       <div className={`w-10 h-10 ${item.color} rounded-xl mb-4 flex items-center justify-center text-white`}>
         <item.icon size={20} />
