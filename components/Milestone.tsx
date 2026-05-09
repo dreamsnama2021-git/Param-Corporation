@@ -1,7 +1,5 @@
 "use client";
-// CompanyMilestone.tsx — Next.js + Tailwind CSS
-// Add to app/layout.tsx:
-// <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+// CompanyMilestone.tsx
 
 export default function CompanyMilestone() {
   const W = 900;
@@ -21,25 +19,25 @@ export default function CompanyMilestone() {
       x: 118, y: 475,
       year: "2019", tag: "FIRST STEPS",
       desc: "We launch our first advertising platform.",
-      side: "left",
+      side: "left" as const,
     },
     {
       x: 172, y: 350,
       year: "2020", tag: "LET'S DO IT",
       desc: "We introduce an online mapping service.",
-      side: "right",
+      side: "right" as const,
     },
     {
       x: 388, y: 102,
       year: "2022", tag: "KEEP GOING",
       desc: "We release a suite of productivity software.",
-      side: "left",
+      side: "left" as const,
     },
     {
       x: 750, y: 5,
       year: "2023", tag: "HERE WE ARE",
       desc: "Our software becomes the most popular operating systems.",
-      side: "right",
+      side: "right" as const,
     },
   ];
 
@@ -93,6 +91,7 @@ export default function CompanyMilestone() {
             const right = m.side === "right";
             const offset = 38;
             const lx = right ? m.x + offset : m.x - offset;
+            const anchor = right ? "start" as const : "end" as const;
 
             return (
               <g key={m.year}>
@@ -119,7 +118,7 @@ export default function CompanyMilestone() {
                 <text
                   x={lx}
                   y={m.y - 52}
-                  textAnchor={right ? "start" : "end"}
+                  textAnchor={anchor}
                   style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                   fontSize={30}
                   fill="#1a1a2e"
@@ -129,10 +128,10 @@ export default function CompanyMilestone() {
                 </text>
 
                 {/* Tag badge */}
-                <MilestoneBadge x={lx} y={m.y - 40} label={m.tag} anchor={right ? "start" : "end"} />
+                <MilestoneBadge x={lx} y={m.y - 40} label={m.tag} anchor={anchor} />
 
                 {/* Description */}
-                <WrappedText x={lx} y={m.y - 18} text={m.desc} anchor={right ? "start" : "end"} maxW={165} />
+                <WrappedText x={lx} y={m.y - 18} text={m.desc} anchor={anchor} maxW={165} />
               </g>
             );
           })}
@@ -142,7 +141,9 @@ export default function CompanyMilestone() {
   );
 }
 
-function MilestoneBadge({ x, y, label, anchor }: { x: number; y: number; label: string; anchor: string }) {
+type TextAnchor = "start" | "middle" | "end";
+
+function MilestoneBadge({ x, y, label, anchor }: { x: number; y: number; label: string; anchor: TextAnchor }) {
   const fontSize = 7.8;
   const padX = 8;
   const padY = 3;
@@ -169,7 +170,7 @@ function MilestoneBadge({ x, y, label, anchor }: { x: number; y: number; label: 
   );
 }
 
-function WrappedText({ x, y, text, anchor, maxW }: { x: number; y: number; text: string; anchor: string; maxW: number }) {
+function WrappedText({ x, y, text, anchor, maxW }: { x: number; y: number; text: string; anchor: TextAnchor; maxW: number }) {
   const words = text.split(" ");
   const lines: string[] = [];
   let cur = "";
