@@ -5,6 +5,7 @@ import { Phone, CheckCircle, ArrowUpRight } from "lucide-react";
 import { FileText, Users, Monitor, ShieldCheck, Lightbulb, Activity } from "lucide-react";
 import BentoGrid2 from "@/components/BentoGrid2";
 import ProductGallery from "@/components/Productgallery";
+import CaptureTheMoment from "@/components/CollageGallery";
 
 const SERVICES = [
   { title: "Medical Writing", desc: "Scientifically accurate content creation reviewed by clinical experts for precision.", icon: <FileText size={28} /> },
@@ -218,7 +219,7 @@ const PRODUCT_DATA = [
   },
 ];
 export default function KoruCommunications() {
-   const allProductImages: string[] = PRODUCT_DATA.flatMap(cat => 
+  const allProductImages: string[] = PRODUCT_DATA.flatMap(cat =>
     cat.items.map(item => item.img)
   );
   return (
@@ -436,15 +437,43 @@ export default function KoruCommunications() {
       {/* ── BENTO GRID ── */}
       {/* <BentoGrid2 /> */}
       <section className="py-12 bg-slate-50">
-              <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                <div className="text-center mb-16">
-                  <span className="text-[#00a65d] font-bold uppercase tracking-widest text-sm inline-block mb-2">Visual Portfolio</span>
-                  <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight">Our <span className="text-[#0093cb]">Gallery</span></h2>
-                  <p className="text-slate-500 mt-4 text-lg">A glimpse into our high-quality medical communication tools and educational materials.</p>
-                </div>
-                <ProductGallery images={allProductImages} productName="MediPride Communications Portfolio" />
-              </div>
-            </section>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-[#00a65d] font-bold uppercase tracking-widest text-sm inline-block mb-2">Visual Portfolio</span>
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight">Our <span className="text-[#0093cb]">Gallery</span></h2>
+            <p className="text-slate-500 mt-4 text-lg">A glimpse into our high-quality medical communication tools and educational materials.</p>
+          </div>
+          <ProductGallery images={allProductImages} productName="MediPride Communications Portfolio" />
+        </div>
+
+        <CaptureTheMoment
+          photos={[
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
+            // ... 18 photos total
+          ]}
+          location="SMK Wachid Hasyim 2"
+          date="06.06.2022"
+          caption={"Congrats buat kalian semua atas kelulusan ini.\nDoa terbaik, Sukses selalu."}
+          credit="created by rzqwahyuu"
+        />
+      </section>
     </div>
   );
 }

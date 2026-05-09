@@ -101,41 +101,23 @@ const avatarStyles: Record<string, { bg: string; color: string }> = {
   amber: { bg: "#FAEEDA", color: "#854F0B" },
 };
 
-// ─── Default Export: 3-Column Grid with Bottom-Right Navigation ──────────────────
+// ─── Default Export: 3-Column Grid with Content-Only Animation ──────────────────
 const TestimonialCards = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [direction, setDirection] = useState(1);
   const itemsPerPage = 3;
   const totalPages = Math.ceil(testimonials.length / itemsPerPage);
 
   const nextPage = () => {
-    setDirection(1);
     setCurrentPage((prev) => (prev + 1) % totalPages);
   };
 
   const prevPage = () => {
-    setDirection(-1);
     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
   };
 
   const getCurrentTestimonials = () => {
     const start = currentPage * itemsPerPage;
     return testimonials.slice(start, start + itemsPerPage);
-  };
-
-  const rowVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 300 : -300,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      x: direction > 0 ? -300 : 300,
-      opacity: 0,
-    }),
   };
 
   return (
@@ -172,66 +154,64 @@ const TestimonialCards = () => {
           </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
+        {/* Testimonials Grid - Container stays fixed */}
         <div className="relative">
-          <AnimatePresence initial={false} custom={direction} mode="wait">
-            <motion.div
-              key={currentPage}
-              custom={direction}
-              variants={rowVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 },
-              }}
-              className="grid md:grid-cols-3 overflow-hidden rounded-2xl"
-              style={{
-                gap: "1.5px",
-                background: "rgba(0,147,203,0.12)",
-                border: "1.5px solid rgba(0,147,203,0.12)",
-              }}
-            >
-              {getCurrentTestimonials().map((t, i) => (
-                <motion.div
-                  key={t.name}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="group relative flex flex-col gap-4 p-8 overflow-hidden cursor-default transition-colors duration-200 bg-white hover:bg-[#f0f9ff]"
-                >
-                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--clr-primary)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                  {t.logo && (
-                    <div className="w-24 h-14 p-2 flex items-center justify-center shrink-0">
-                      <img
-                        src={t.logo}
-                        alt={`${t.company} logo`}
-                        className="w-full h-full object-contain"
-                      />
+          <div
+            className="grid md:grid-cols-3 overflow-hidden rounded-2xl"
+            style={{
+              gap: "1.5px",
+              background: "rgba(0,147,203,0.12)",
+              border: "1.5px solid rgba(0,147,203,0.12)",
+            }}
+          >
+            {getCurrentTestimonials().map((t, i) => (
+              <div
+                key={`card-${i}`}
+                className="group relative flex flex-col gap-4 p-8 overflow-hidden cursor-default transition-colors duration-200 bg-white hover:bg-[#f0f9ff]"
+              >
+                <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--clr-primary)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                
+                {/* Animated content wrapper */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`${currentPage}-${i}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3, delay: i * 0.1 }}
+                    className="flex flex-col gap-4 flex-1"
+                  >
+                    {t.logo && (
+                      <div className="w-24 h-14 p-2 flex items-center justify-center shrink-0">
+                        <img
+                          src={t.logo}
+                          alt={`${t.company} logo`}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    )}
+                    <span className="text-5xl font-black leading-none select-none text-[var(--clr-primary)] opacity-15">
+                      "
+                    </span>
+                    <p className="text-[14px] leading-[1.75] flex-1 text-[#334155]">
+                      {t.quote}
+                    </p>
+                    <div className="flex flex-col gap-0.5 pt-4 border-t border-[rgba(0,147,203,0.12)]">
+                      <p className="text-[14px] font-bold text-[var(--clr-text-dark)]">
+                        {t.name}
+                      </p>
+                      <p className="text-[12px] text-[var(--clr-text-muted)]">
+                        {t.role}
+                      </p>
+                      <p className="text-[11px] font-semibold mt-0.5 text-[var(--clr-primary)]">
+                        {t.company}
+                      </p>
                     </div>
-                  )}
-                  <span className="text-5xl font-black leading-none select-none text-[var(--clr-primary)] opacity-15">
-                    "
-                  </span>
-                  <p className="text-[14px] leading-[1.75] flex-1 text-[#334155]">
-                    {t.quote}
-                  </p>
-                  <div className="flex flex-col gap-0.5 pt-4 border-t border-[rgba(0,147,203,0.12)]">
-                    <p className="text-[14px] font-bold text-[var(--clr-text-dark)]">
-                      {t.name}
-                    </p>
-                    <p className="text-[12px] text-[var(--clr-text-muted)]">
-                      {t.role}
-                    </p>
-                    <p className="text-[11px] font-semibold mt-0.5 text-[var(--clr-primary)]">
-                      {t.company}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
 
           {/* Navigation - Bottom Right */}
           {totalPages > 1 && (
@@ -262,20 +242,17 @@ const TestimonialCards = () => {
   );
 };
 
-// ─── Named Export: Premium Editorial Redesign (2x2 Grid with Bottom-Right Navigation) ──────────────────
+// ─── Named Export: Premium Editorial Redesign (2x2 Grid with Content-Only Animation) ──────────────────
 export const TestimonialCardsVariant = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [direction, setDirection] = useState(1);
   const itemsPerGroup = 4;
   const totalGroups = Math.ceil(testimonials.length / itemsPerGroup);
 
   const nextGroup = () => {
-    setDirection(1);
     setCurrentPage((prev) => (prev + 1) % totalGroups);
   };
 
   const prevGroup = () => {
-    setDirection(-1);
     setCurrentPage((prev) => (prev - 1 + totalGroups) % totalGroups);
   };
 
@@ -294,21 +271,6 @@ export const TestimonialCardsVariant = () => {
       group[3], // Row 2 Left (reversed display)
       group[2], // Row 2 Right (reversed display)
     ];
-  };
-
-  const gridVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 400 : -400,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      x: direction > 0 ? -400 : 400,
-      opacity: 0,
-    }),
   };
 
   return (
@@ -336,104 +298,101 @@ export const TestimonialCardsVariant = () => {
           </p>
         </motion.div>
 
-        {/* Grid */}
+        {/* Grid - Container stays fixed */}
         <div className="relative">
-          <AnimatePresence initial={false} custom={direction} mode="wait">
-            <motion.div
-              key={currentPage}
-              custom={direction}
-              variants={gridVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.3 },
-              }}
-              className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-2xl"
-              style={{
-                gap: "1.5px",
-                background: "rgba(99,153,34,0.12)",
-                border: "1.5px solid rgba(99,153,34,0.12)",
-              }}
-            >
-              {getCurrentTestimonials().map((t, i) => {
-                if (!t) return <div key={`empty-${i}`} className="bg-white p-8 md:p-10" />;
-                
-                const isSecondRow = i >= 2;
-                
-                return (
-                  <motion.div
-                    key={t.name}
-                    initial={{ opacity: 0, x: isSecondRow ? (i === 2 ? 40 : -40) : 0, y: 20 }}
-                    animate={{ opacity: 1, x: 0, y: 0 }}
-                    transition={{ 
-                      duration: 0.5, 
-                      delay: isSecondRow ? 0.3 + (i - 2) * 0.1 : i * 0.1 
-                    }}
-                    className="group relative bg-white hover:bg-[#e9f3e8] transition-colors duration-300 flex flex-col p-8 md:p-10"
-                  >
-                    <span
-                      className="absolute top-0 left-0 right-0 h-[3px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
-                      style={{ background: "#639922" }}
-                    />
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-2xl"
+            style={{
+              gap: "1.5px",
+              background: "rgba(99,153,34,0.12)",
+              border: "1.5px solid rgba(99,153,34,0.12)",
+            }}
+          >
+            {getCurrentTestimonials().map((t, i) => {
+              if (!t) return <div key={`empty-${i}`} className="bg-white p-8 md:p-10" />;
+              
+              const isSecondRow = i >= 2;
+              
+              return (
+                <div
+                  key={`card-${i}`}
+                  className="group relative bg-white hover:bg-[#e9f3e8] transition-colors duration-300 flex flex-col p-8 md:p-10"
+                >
+                  <span
+                    className="absolute top-0 left-0 right-0 h-[3px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+                    style={{ background: "#639922" }}
+                  />
 
-                    {t.logo && (
-                      <div className="w-24 h-14 p-2 scale-250 xl:scale-300 flex items-center justify-center mb-2 shrink-0">
-                        <img
-                          src={t.logo}
-                          alt={`${t.company} logo`}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                    )}
-
-                    <span
-                      className="text-[44px] leading-none select-none font-serif mb-2"
-                      style={{ color: "#639922", opacity: 0.2 }}
-                    >
-                      "
-                    </span>
-
-                    <p
-                      className="flex-1 leading-relaxed mb-8"
-                      style={{
-                        fontFamily: "Georgia, 'Times New Roman', serif",
-                        fontSize: "16px",
-                        color: "var(--clr-text-dark)",
-                        lineHeight: 1.7,
+                  {/* Animated content wrapper */}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`${currentPage}-${i}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ 
+                        duration: 0.4, 
+                        delay: isSecondRow ? 0.2 + (i - 2) * 0.1 : i * 0.1 
                       }}
+                      className="flex flex-col flex-1"
                     >
-                      {t.quote}
-                    </p>
+                      {t.logo && (
+                        <div className="w-24 h-14 p-2 scale-250 xl:scale-300 flex items-center justify-center mb-2 shrink-0">
+                          <img
+                            src={t.logo}
+                            alt={`${t.company} logo`}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      )}
 
-                    <div className="flex items-center gap-4">
-                      <div
-                        className="w-10 h-10 rounded-full flex items-center justify-center text-[12px] font-semibold shrink-0"
-                        style={avatarStyles[t.avatarColor]}
+                      <span
+                        className="text-[44px] leading-none select-none font-serif mb-2"
+                        style={{ color: "#639922", opacity: 0.2 }}
                       >
-                        {t.initials}
-                      </div>
-                      <div>
-                        <p className="text-[14px] font-bold text-[var(--clr-text-dark)] leading-tight">
-                          {t.name}
-                        </p>
-                        <p className="text-[12px] text-[var(--clr-text-muted)] mb-0.5">
-                          {t.role}
-                        </p>
-                        <p
-                          className="text-[10px] font-bold tracking-[0.05em] uppercase"
-                          style={{ color: "#3B6D11" }}
+                        "
+                      </span>
+
+                      <p
+                        className="flex-1 leading-relaxed mb-8"
+                        style={{
+                          fontFamily: "Georgia, 'Times New Roman', serif",
+                          fontSize: "16px",
+                          color: "var(--clr-text-dark)",
+                          lineHeight: 1.7,
+                        }}
+                      >
+                        {t.quote}
+                      </p>
+
+                      <div className="flex items-center gap-4">
+                        <div
+                          className="w-10 h-10 rounded-full flex items-center justify-center text-[12px] font-semibold shrink-0"
+                          style={avatarStyles[t.avatarColor]}
                         >
-                          {t.company}
-                        </p>
+                          {t.initials}
+                        </div>
+                        <div>
+                          <p className="text-[14px] font-bold text-[var(--clr-text-dark)] leading-tight">
+                            {t.name}
+                          </p>
+                          <p className="text-[12px] text-[var(--clr-text-muted)] mb-0.5">
+                            {t.role}
+                          </p>
+                          <p
+                            className="text-[10px] font-bold tracking-[0.05em] uppercase"
+                            style={{ color: "#3B6D11" }}
+                          >
+                            {t.company}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </AnimatePresence>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
 
           {/* Navigation - Bottom Right */}
           {totalGroups > 1 && (

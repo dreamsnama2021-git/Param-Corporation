@@ -30,6 +30,7 @@ import {
   EditorialTimeline,
   TimelineItem,
 } from "../../components/EditorialTImeline";
+import CompanyMilestone from "../../components/Milestone";
 
 // ─── DATA: TIMELINE ─────────────────────────────────────────────────────────
 const timelineItems: TimelineItem[] = [
@@ -482,6 +483,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
+<CompanyMilestone/>
       {/* Journey Section */}
       <section className="py-12 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center mb-16">
