@@ -483,9 +483,10 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-<CompanyMilestone/>
+
       {/* Journey Section */}
       <section className="py-12 bg-white">
+        <CompanyMilestone/>
         <div className="max-w-4xl mx-auto px-6 text-center mb-16">
           <span className="text-[#0093cb] font-bold text-xs uppercase tracking-widest">
             Our History

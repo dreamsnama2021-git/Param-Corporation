@@ -44,22 +44,53 @@ export default function CompanyMilestone() {
   return (
     <section
       style={{ fontFamily: "'DM Sans', sans-serif", background: "#fff", minHeight: "100vh" }}
-      className="px-6 py-10"
+      className="px-4 sm:px-6 py-6 sm:py-10"
     >
       {/* Header */}
-      <div style={{ maxWidth: 960, margin: "0 auto 0" }}>
-        <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.24em", color: "#9ca3af", textTransform: "uppercase", marginBottom: 4 }}>
+      <div style={{ maxWidth: 960, margin: "0 auto 0" }} className="mb-4 sm:mb-0">
+        <p className="text-[9px] sm:text-[11px] font-bold tracking-[0.24em] text-gray-400 uppercase mb-1">
           Really Great Site
         </p>
-        <h1 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(52px,8vw,82px)", letterSpacing: "0.02em", color: "#1a1a2e", lineHeight: 1, marginBottom: 8 }}>
+        <h1 
+          className="font-['Bebas_Neue',sans-serif] text-[36px] sm:text-[52px] md:text-[82px] tracking-[0.02em] text-[#1a1a2e] leading-none mb-2"
+          style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+        >
           Company Milestone
         </h1>
-        <p style={{ fontSize: 13, color: "#6b7280" }}>Re: Status Report Meeting</p>
-        <p style={{ fontSize: 13, fontWeight: 700, color: "#374151" }}>Date: January 12, 2023</p>
+        <p className="text-[11px] sm:text-[13px] text-gray-500">Re: Status Report Meeting</p>
+        <p className="text-[11px] sm:text-[13px] font-bold text-gray-700">Date: January 12, 2023</p>
       </div>
 
-      {/* SVG Road */}
-      <div style={{ maxWidth: 960, margin: "0 auto" }}>
+      {/* Mobile Timeline (visible on small screens) */}
+      <div className="block sm:hidden max-w-2xl mx-auto mt-8 space-y-8">
+        {milestones.map((m, index) => (
+          <div key={m.year} className="flex gap-4 items-start">
+            {/* Timeline line and dot */}
+            <div className="flex flex-col items-center">
+              <div className="w-3 h-3 rounded-full bg-[#5b7ab7] ring-2 ring-white ring-offset-2 ring-offset-[#5b7ab7]/20 flex-shrink-0" />
+              {index < milestones.length - 1 && (
+                <div className="w-0.5 h-full bg-[#5b7ab7]/30 mt-2" />
+              )}
+            </div>
+            
+            {/* Content */}
+            <div className="flex-1 pb-8">
+              <div className="font-['Bebas_Neue',sans-serif] text-2xl text-[#1a1a2e] tracking-wider mb-1">
+                {m.year}
+              </div>
+              <div className="inline-block bg-[#1e2a4a] text-white text-[10px] font-bold px-2 py-1 rounded-sm uppercase tracking-wider mb-2">
+                {m.tag}
+              </div>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                {m.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* SVG Road (visible on medium and larger screens) */}
+      <div className="hidden sm:block" style={{ maxWidth: 960, margin: "0 auto" }}>
         <svg
           viewBox={`0 0 ${W} ${H}`}
           width="100%"
