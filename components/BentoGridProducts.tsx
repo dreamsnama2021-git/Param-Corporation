@@ -4,7 +4,156 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ArrowUpRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// ─── Data (15 therapies with 3 products per category - 21 products per therapy) ───
+// ─── Unsplash Image URLs for Therapies ───
+
+const THERAPY_IMAGES: Record<string, string[]> = {
+  'Diabetes': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Blood glucose test
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Medical devices
+    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80', // Health monitoring
+  ],
+  'Cardio-Vascular': [
+    'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80', // Heart health
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical check
+    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80', // Cardiology
+  ],
+  'ENT & Respiratory': [
+    'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80', // Respiratory
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
+  ],
+  'Orthopedics/Rheumatology': [
+    'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80', // Orthopedic
+    'https://images.unsplash.com/photo-1580518337843-f959e992563b?w=800&q=80', // Bone health
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+  ],
+  'Gynaecology and Obstetrics': [
+    'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80', // Pregnancy
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
+  ],
+  'Gastroenterology': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Health
+    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80', // Science
+  ],
+  'Ophthalmology': [
+    'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=800&q=80', // Eye care
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
+  ],
+  'Dermatology': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Health
+    'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=80', // Skin care
+  ],
+  'Pediatrics': [
+    'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80', // Children health
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
+  ],
+  'Urology': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Health
+    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80', // Science
+  ],
+  'Neurology': [
+    'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80', // Brain health
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
+  ],
+  'Psychiatry': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
+    'https://images.unsplash.com/photo-1493836512293-7c2c1370e297?w=800&q=80', // Mental health
+  ],
+  'Dentistry': [
+    'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80', // Dental
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
+  ],
+  'Infectious Diseases': [
+    'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&q=80', // Virus research
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
+  ],
+  'Nutritional Deficiencies': [
+    'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80', // Nutrition
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
+  ],
+  'Endocrinology': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Health
+    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80', // Science
+  ],
+  'Nephrology': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Health
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
+  ],
+  'Hepatology': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Health
+    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80', // Science
+  ],
+  'Oncology': [
+    'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80', // Cancer research
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
+  ],
+  'General Wellness': [
+    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80', // Wellness
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
+  ],
+};
+
+// Category-specific product images from Unsplash
+const CATEGORY_IMAGES: Record<ProductCategory, string[]> = {
+  "BOOKS & MAGAZINES": [
+    'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80', // Books
+    'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80', // Library
+    'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&q=80', // Reading
+  ],
+  "FLIP CHART": [
+    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80', // Presentation
+    'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80', // Meeting
+    'https://images.unsplash.com/photo-1552581234-26160f608093?w=600&q=80', // Office
+  ],
+  "MATT (Desk Mats)": [
+    'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80', // Desk setup
+    'https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600&q=80', // Workspace
+    'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80', // Computer
+  ],
+  "POSTERS": [
+    'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80', // Wall art
+    'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80', // Art display
+    'https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&q=80', // Gallery
+  ],
+  "Medical SCALE": [
+    'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80', // Medical equipment
+    'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&q=80', // Scale
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80', // Medical
+  ],
+  "WRITE & WIPE": [
+    'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80', // Whiteboard
+    'https://images.unsplash.com/photo-1513258496099-48168024aec0?w=600&q=80', // Board
+    'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80', // Teaching
+  ],
+  "Tear off Pads": [
+    'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=600&q=80', // Notepad
+    'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&q=80', // Notes
+    'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80', // Writing
+  ],
+  "TABLE TOPS & SCIENTIFIC INPUTS": [
+    'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600&q=80', // Lab equipment
+    'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=600&q=80', // Scientific
+    'https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=600&q=80', // Research
+  ],
+};
+
+// ─── Data (20+ therapies with 3 products per category) ───
 
 const PRODUCT_CATEGORIES = [
   "BOOKS & MAGAZINES",
@@ -13,7 +162,8 @@ const PRODUCT_CATEGORIES = [
   "POSTERS",
   "Medical SCALE",
   "WRITE & WIPE",
-  "Tear off Pads"
+  "Tear off Pads",
+  "TABLE TOPS & SCIENTIFIC INPUTS"
 ] as const;
 
 type ProductCategory = typeof PRODUCT_CATEGORIES[number];
@@ -34,7 +184,7 @@ type Therapy = {
   items: Product[];
 };
 
-// Helper to generate 3 demo products for a specific therapy and category
+// Helper to generate 3 demo products for a specific therapy and category using real images
 const generateCategoryProducts = (therapyName: string, category: ProductCategory): Product[] => {
   const categoryDetails = {
     "BOOKS & MAGAZINES": {
@@ -71,38 +221,48 @@ const generateCategoryProducts = (therapyName: string, category: ProductCategory
       icon: "📋",
       titles: ["Tear-Off Prescription Pad", "Patient Instruction Pad", "Clinical Notes Pad"],
       descBase: "convenient tear-off pad with essential information for patient take-home use."
+    },
+    "TABLE TOPS & SCIENTIFIC INPUTS": {
+      icon: "🔬",
+      titles: ["Interactive Table Top Display", "Scientific Input Module", "Clinical Data Station"],
+      descBase: "interactive table top display with scientific inputs for clinical data analysis and patient education."
     }
   };
 
   const details = categoryDetails[category];
-  const colors = ["#0093cb", "#00a65d", "#ef4444"];
+  const categoryImages = CATEGORY_IMAGES[category];
 
   return [0, 1, 2].map((index) => ({
     title: `${therapyName}: ${details.titles[index]}`,
     desc: `${details.descBase} ${index === 0 ? 'Ideal for healthcare professionals.' : index === 1 ? 'Enhances clinical workflow and patient understanding.' : 'Trusted by medical facilities worldwide.'}`,
-    img: `https://placehold.co/600x400/${colors[index].slice(1)}/white?text=${encodeURIComponent(therapyName.slice(0, 4))}+${details.icon}`,
+    img: categoryImages[index] || 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80',
     category
   }));
 };
 
-// Generate all therapy data with 3 products per category (21 products per therapy)
+// Generate all therapy data
 const generateFullTherapyData = (): Therapy[] => {
   const therapies = [
-    { therapy: 'Cardiac Care', icon: '❤️', color: '#ef4444', bgColor: 'from-red-500/20 to-red-600/10', span: 2 },
-    { therapy: 'Diabetic Care', icon: '💉', color: '#3b82f6', bgColor: 'from-blue-500/20 to-blue-600/10', span: 1 },
-    { therapy: 'Pediatric', icon: '👶', color: '#8b5cf6', bgColor: 'from-purple-500/20 to-purple-600/10', span: 1 },
-    { therapy: 'General Wellness', icon: '🌟', color: '#10b981', bgColor: 'from-emerald-500/20 to-emerald-600/10', span: 1 },
-    { therapy: 'Dermatology', icon: '✨', color: '#f59e0b', bgColor: 'from-amber-500/20 to-amber-600/10', span: 1 },
-    { therapy: 'Nephrology', icon: '🫘', color: '#6366f1', bgColor: 'from-indigo-500/20 to-indigo-600/10', span: 2 },
-    { therapy: 'Nutrition', icon: '🥗', color: '#84cc16', bgColor: 'from-lime-500/20 to-lime-600/10', span: 1 },
-    { therapy: 'Pulmonology', icon: '🫁', color: '#06b6d4', bgColor: 'from-cyan-500/20 to-cyan-600/10', span: 1 },
-    { therapy: 'Hepatology', icon: '🫖', color: '#a855f7', bgColor: 'from-violet-500/20 to-violet-600/10', span: 2 },
+    { therapy: 'Diabetes', icon: '💉', color: '#3b82f6', bgColor: 'from-blue-500/20 to-blue-600/10', span: 2 },
+    { therapy: 'Cardio-Vascular', icon: '❤️', color: '#ef4444', bgColor: 'from-red-500/20 to-red-600/10', span: 1 },
+    { therapy: 'ENT & Respiratory', icon: '🫁', color: '#06b6d4', bgColor: 'from-cyan-500/20 to-cyan-600/10', span: 1 },
+    { therapy: 'Orthopedics/Rheumatology', icon: '🦴', color: '#f97316', bgColor: 'from-orange-500/20 to-orange-600/10', span: 1 },
+    { therapy: 'Gynaecology and Obstetrics', icon: '👶', color: '#ec4899', bgColor: 'from-pink-500/20 to-pink-600/10', span: 1 },
+    { therapy: 'Gastroenterology', icon: '🔬', color: '#84cc16', bgColor: 'from-lime-500/20 to-lime-600/10', span: 2 },
     { therapy: 'Ophthalmology', icon: '👁️', color: '#0ea5e9', bgColor: 'from-sky-500/20 to-sky-600/10', span: 1 },
-    { therapy: 'Gastroenterology', icon: '🔬', color: '#ec4899', bgColor: 'from-pink-500/20 to-pink-600/10', span: 2 },
-    { therapy: 'Urology', icon: '💧', color: '#14b8a6', bgColor: 'from-teal-500/20 to-teal-600/10', span: 2 },
-    { therapy: 'Orthopedics', icon: '🦴', color: '#f97316', bgColor: 'from-orange-500/20 to-orange-600/10', span: 1 },
+    { therapy: 'Dermatology', icon: '✨', color: '#f59e0b', bgColor: 'from-amber-500/20 to-amber-600/10', span: 1 },
+    { therapy: 'Pediatrics', icon: '🧸', color: '#8b5cf6', bgColor: 'from-purple-500/20 to-purple-600/10', span: 2 },
+    { therapy: 'Urology', icon: '💧', color: '#14b8a6', bgColor: 'from-teal-500/20 to-teal-600/10', span: 1 },
     { therapy: 'Neurology', icon: '🧠', color: '#7c3aed', bgColor: 'from-purple-600/20 to-purple-700/10', span: 1 },
-    { therapy: 'Oncology', icon: '🎗️', color: '#dc2626', bgColor: 'from-red-600/20 to-red-700/10', span: 1 }
+    { therapy: 'Psychiatry', icon: '🧠', color: '#a855f7', bgColor: 'from-purple-500/20 to-purple-600/10', span: 1 },
+    { therapy: 'Dentistry', icon: '🦷', color: '#6366f1', bgColor: 'from-indigo-500/20 to-indigo-600/10', span: 1 },
+    { therapy: 'Infectious Diseases', icon: '🦠', color: '#dc2626', bgColor: 'from-red-600/20 to-red-700/10', span: 2 },
+    { therapy: 'Nutritional Deficiencies', icon: '🥗', color: '#10b981', bgColor: 'from-emerald-500/20 to-emerald-600/10', span: 1 },
+    { therapy: 'Endocrinology', icon: '⚖️', color: '#06b6d4', bgColor: 'from-cyan-600/20 to-cyan-700/10', span: 1 },
+    { therapy: 'Nephrology', icon: '🫘', color: '#6366f1', bgColor: 'from-indigo-500/20 to-indigo-600/10', span: 1 },
+    { therapy: 'Hepatology', icon: '🫖', color: '#a855f7', bgColor: 'from-violet-500/20 to-violet-600/10', span: 1 },
+    { therapy: 'Oncology', icon: '🎗️', color: '#dc2626', bgColor: 'from-red-600/20 to-red-700/10', span: 2 },
+    { therapy: 'General Wellness', icon: '🌟', color: '#10b981', bgColor: 'from-emerald-500/20 to-emerald-600/10', span: 1 }
   ];
 
   return therapies.map(t => ({
@@ -113,7 +273,7 @@ const generateFullTherapyData = (): Therapy[] => {
 
 const THERAPY_DATA = generateFullTherapyData();
 
-// ─── Category Section Component with Working Horizontal Scroll ───
+// ─── Category Section Component with Horizontal Scroll ───
 
 function CategorySection({ category, products, therapyColor, therapyName }: { category: ProductCategory; products: Product[]; therapyColor: string; therapyName: string }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -123,7 +283,7 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
   const categoryDetails: Record<ProductCategory, { icon: string; title: string; description: string }> = {
     "BOOKS & MAGAZINES": {
       icon: "📚",
-      title: "Educational Books & Magazines",
+      title: "BOOKS & MAGAZINES",
       description: `Comprehensive written resources for ${therapyName} education. Includes detailed guides, clinical handbooks, and patient-friendly materials covering diagnosis, treatment options, and long-term management strategies.`
     },
     "FLIP CHART": {
@@ -155,6 +315,11 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
       icon: "📋",
       title: "Tear-Off Pads",
       description: `Convenient tear-off pads for ${therapyName} patient take-home information. Includes prescription pads, instruction sheets, and clinical notes for patient reference.`
+    },
+    "TABLE TOPS & SCIENTIFIC INPUTS": {
+      icon: "🔬",
+      title: "Table Tops & Scientific Inputs",
+      description: `Interactive table top displays and scientific input modules for ${therapyName}. These cutting-edge tools allow healthcare professionals to input clinical data, visualize patient metrics, and conduct real-time risk assessments. Features include touchscreen interfaces, data logging capabilities, and integration with EMR systems.`
     }
   };
 
@@ -173,21 +338,19 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
   const scroll = (direction: 'left' | 'right') => {
     const container = scrollContainerRef.current;
     if (container) {
-      const scrollAmount = 340;
-      const newScrollLeft = direction === 'left' 
-        ? container.scrollLeft - scrollAmount 
-        : container.scrollLeft + scrollAmount;
-      container.scrollTo({
-        left: newScrollLeft,
-        behavior: 'smooth'
-      });
+      const cardWidth = 340;
+      const scrollAmount = cardWidth;
+      if (direction === 'left') {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
     }
   };
 
-  // Handle wheel event for horizontal scrolling
   const handleWheel = (e: React.WheelEvent) => {
     const container = scrollContainerRef.current;
-    if (container && Math.abs(e.deltaY) > 0) {
+    if (container) {
       e.preventDefault();
       container.scrollLeft += e.deltaY;
     }
@@ -196,14 +359,11 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (container) {
-      // Initial check
-      setTimeout(checkScroll, 100);
-      
-      // Add event listeners
+      const timer = setTimeout(checkScroll, 100);
       container.addEventListener('scroll', checkScroll);
       window.addEventListener('resize', checkScroll);
-      
       return () => {
+        clearTimeout(timer);
         container.removeEventListener('scroll', checkScroll);
         window.removeEventListener('resize', checkScroll);
       };
@@ -211,8 +371,7 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
   }, [products]);
 
   return (
-    <div className="mb-12 last:mb-0 scroll-mt-20" id={`category-${category}`}>
-      {/* Category Header with Icon and Title */}
+    <div className="mb-12 last:mb-0" id={`category-${category}`}>
       <div className="mb-4">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-3xl">{details.icon}</span>
@@ -220,21 +379,15 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
             {details.title}
           </h3>
         </div>
-        {/* Category Description */}
         <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-4xl">
           {details.description}
         </p>
         <div className="flex items-center gap-2 mt-2">
           <div className="h-px flex-1 bg-gradient-to-r" style={{ background: `linear-gradient(90deg, ${therapyColor}40, transparent)` }} />
-          <span className="text-xs font-medium px-2 py-0.5 rounded-full" style={{ color: therapyColor, backgroundColor: `${therapyColor}10` }}>
-            {products.length} Products Available
-          </span>
         </div>
       </div>
 
-      {/* Horizontal Scrollable Products */}
       <div className="relative group mt-4">
-        {/* Left Arrow */}
         {showLeftArrow && (
           <button
             onClick={() => scroll('left')}
@@ -246,14 +399,15 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
           </button>
         )}
 
-        {/* Products Container - Horizontal Scroll */}
         <div
           ref={scrollContainerRef}
-          className="flex gap-5 overflow-x-auto pb-4 cursor-grab active:cursor-grabbing"
+          className="flex gap-5 overflow-x-auto pb-4"
           style={{ 
             scrollbarWidth: 'thin',
             scrollbarColor: `${therapyColor} #e5e5e5`,
-            WebkitOverflowScrolling: 'touch'
+            WebkitOverflowScrolling: 'touch',
+            overflowX: 'auto',
+            overflowY: 'hidden'
           }}
           onWheel={handleWheel}
         >
@@ -269,10 +423,11 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                   sizes="320px"
+                  unoptimized={item.img.includes('unsplash.com')}
                 />
                 <div className="absolute top-3 left-3">
                   <span className="text-[10px] font-semibold bg-black/60 backdrop-blur-sm rounded-full px-2.5 py-1 text-white uppercase tracking-wider">
-                    {category.split(' ')[0]}
+                    {category === "TABLE TOPS & SCIENTIFIC INPUTS" ? "SCIENTIFIC" : category.split(' ')[0]}
                   </span>
                 </div>
               </div>
@@ -283,19 +438,15 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
                 <p className="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-2 mb-3">
                   {item.desc}
                 </p>
-                <div className="flex items-center justify-between">
-                  <button className="text-xs font-semibold transition-colors flex items-center gap-1 group" style={{ color: therapyColor }}>
-                    View Details
-                    <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </button>
-                  <span className="text-[10px] text-neutral-400">Item {idx + 1}</span>
-                </div>
+                <button className="text-xs font-semibold transition-colors flex items-center gap-1 group" style={{ color: therapyColor }}>
+                  View Details
+                  <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </button>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Right Arrow */}
         {showRightArrow && (
           <button
             onClick={() => scroll('right')}
@@ -308,7 +459,6 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
         )}
       </div>
 
-      {/* Scroll Indicator Dots */}
       <div className="flex justify-center gap-1.5 mt-3">
         {products.map((_, idx) => (
           <button
@@ -347,7 +497,6 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
 
 function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) {
   const [isVisible, setIsVisible] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
   const modalContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -363,7 +512,6 @@ function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) 
 
   useEffect(() => {
     requestAnimationFrame(() => setIsVisible(true));
-    setTimeout(() => setIsLoaded(true), 100);
   }, []);
 
   const handleClose = () => {
@@ -387,131 +535,63 @@ function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) 
     "POSTERS",
     "Medical SCALE",
     "WRITE & WIPE",
-    "Tear off Pads"
+    "Tear off Pads",
+    "TABLE TOPS & SCIENTIFIC INPUTS"
   ];
 
-  const visibleCategories = categoryOrder.filter(cat => groupedItems[cat]?.length > 0);
-  const totalProducts = therapy.items.length;
-
-  const getTherapyDescription = (therapyName: string) => {
-    const descriptions: Record<string, string> = {
-      'Cardiac Care': 'Comprehensive tools for cardiovascular education, including ACS management, risk assessment scales, and stroke evaluation resources.',
-      'Diabetic Care': 'Educational materials covering Type 2 Diabetes risk factors, management strategies, and interactive learning tools.',
-      'Pediatric': 'Child-friendly educational resources including vision assessment, dental education, and anatomical displays.',
-      'General Wellness': 'Holistic health education tools covering lifestyle management, PCOS awareness, and preventive care.',
-      'Dermatology': 'Visual aids and educational materials for skin health, facial anatomy, and related conditions.',
-      'Nephrology': 'Kidney health education tools including urinary system anatomy and bladder health guides.',
-      'Nutrition': 'Dietary and lifestyle education resources for metabolic health and diabetes management.',
-      'Pulmonology': 'Respiratory health education materials including cardiovascular connections.',
-      'Hepatology': 'Liver and digestive health education tools including GERD assessment.',
-      'Ophthalmology': 'Vision care education materials including assessment charts and hearing health resources.',
-      'Gastroenterology': 'Digestive health education tools covering GERD and metabolic conditions.',
-      'Urology': 'Urinary system education materials with lifestyle guides and bladder health resources.',
-      'Orthopedics': 'Musculoskeletal education tools for osteoarthritis and osteoporosis management.',
-      'Neurology': 'Neurological health education covering epilepsy, stroke assessment, and emergency guides.',
-      'Oncology': 'Cancer awareness resources focusing on early detection and patient support.',
-    };
-    return descriptions[therapyName] || `Specialized medical education tools for healthcare professionals. Complete portfolio of 21 products across 7 categories.`;
-  };
-
-  const scrollToCategory = (category: ProductCategory) => {
-    const element = document.getElementById(`category-${category}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const categoryNavIcons: Record<ProductCategory, string> = {
-    "BOOKS & MAGAZINES": "📚",
-    "FLIP CHART": "📊",
-    "MATT (Desk Mats)": "🧩",
-    "POSTERS": "🖼️",
-    "Medical SCALE": "⚖️",
-    "WRITE & WIPE": "✏️",
-    "Tear off Pads": "📋"
-  };
-
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 transition-all duration-300 ${isVisible ? 'bg-black/80 backdrop-blur-md' : 'bg-black/0 backdrop-blur-none'}`} onClick={handleClose}>
-      <div className={`relative bg-white dark:bg-neutral-900 rounded-2xl sm:rounded-3xl w-full max-w-6xl max-h-[94vh] overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.4)] transition-all duration-300 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`} onClick={(e) => e.stopPropagation()}>
-        
-        {/* Header */}
-        <div className="relative px-5 sm:px-7 pt-5 sm:pt-6 pb-4 flex-shrink-0 border-b border-neutral-100 dark:border-neutral-800">
+    <div 
+      className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 transition-all duration-300 ${isVisible ? 'bg-black/80 backdrop-blur-md' : 'bg-black/0 backdrop-blur-none'}`} 
+      onClick={handleClose}
+    >
+      <div 
+        className={`relative bg-white lg:mt-10 dark:bg-neutral-900 rounded-2xl sm:rounded-3xl w-full max-w-6xl max-h-[90vh] overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.4)] flex flex-col transition-all duration-300 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`} 
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header - Fixed */}
+        <div className="relative px-5 sm:px-7 pt-5 sm:pt-4 pb-4 flex-shrink-0 border-b border-neutral-100 dark:border-neutral-800 bg-white dark:bg-neutral-900 z-10">
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2 flex-wrap">
                 <span className="text-2xl sm:text-3xl">{therapy.icon}</span>
-                <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style={{ color: therapy.color, backgroundColor: `${therapy.color}15` }}>
-                  {totalProducts} Products • 7 Categories
-                </span>
+                <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white tracking-tight">
+                  {therapy.therapy}
+                </h2>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white tracking-tight">{therapy.therapy}</h2>
-              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-3xl">{getTherapyDescription(therapy.therapy)}</p>
             </div>
-            <button onClick={handleClose} className="flex-shrink-0 w-9 h-9 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 flex items-center justify-center transition-all duration-200 hover:scale-105">
+            <button 
+              onClick={handleClose} 
+              className="flex-shrink-0 w-9 h-9 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 flex items-center justify-center transition-all duration-200 hover:scale-105"
+              aria-label="Close modal"
+            >
               <X className="w-4 h-4 text-neutral-600 dark:text-neutral-400" />
             </button>
           </div>
         </div>
 
-        {/* Category Quick Navigation */}
-        <div className="flex-shrink-0 px-5 sm:px-7 py-3 border-b border-neutral-100 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-800/30">
-          <div className="flex items-center gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: 'thin' }}>
-            <span className="text-xs font-medium text-neutral-500 mr-1">Jump to:</span>
-            {visibleCategories.map((category) => (
-              <button
+        {/* Content - Scrollable */}
+        <div 
+          ref={modalContentRef} 
+          className="flex-1 overflow-y-auto p-5 sm:p-7"
+          style={{ 
+            scrollbarWidth: 'thin',
+            scrollbarColor: `${therapy.color}40 #e5e5e5`
+          }}
+        >
+          {categoryOrder.map((category) => {
+            const products = groupedItems[category];
+            if (!products || products.length === 0) return null;
+            
+            return (
+              <CategorySection 
                 key={category}
-                onClick={() => scrollToCategory(category)}
-                className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 hover:scale-105"
-                style={{ 
-                  backgroundColor: `${therapy.color}10`,
-                  color: therapy.color,
-                  border: `1px solid ${therapy.color}20`
-                }}
-              >
-                <span>{categoryNavIcons[category]}</span>
-                <span>{category.split(' ')[0]}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Scrollable Content */}
-        <div ref={modalContentRef} className="flex-1 overflow-y-auto p-5 sm:p-7" style={{ scrollbarWidth: 'thin' }}>
-          {visibleCategories.map((category) => (
-            <CategorySection 
-              key={category}
-              category={category} 
-              products={groupedItems[category]} 
-              therapyColor={therapy.color}
-              therapyName={therapy.therapy}
-            />
-          ))}
-        </div>
-
-        {/* Footer */}
-        <div className="flex-shrink-0 border-t border-neutral-100 dark:border-neutral-800 p-4 bg-neutral-50/50 dark:bg-neutral-800/30">
-          <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
-            <div className="flex items-center gap-4">
-              <span className="text-neutral-500">Categories:</span>
-              <div className="flex gap-3">
-                {visibleCategories.map(cat => (
-                  <span key={cat} className="flex items-center gap-1">
-                    <span>{categoryNavIcons[cat]}</span>
-                    <span className="text-neutral-400">{groupedItems[cat]?.length || 0}</span>
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="flex gap-2">
-              <button className="px-4 py-1.5 border border-neutral-300 dark:border-neutral-700 hover:border-[#0093cb] text-neutral-700 dark:text-neutral-300 rounded-lg text-xs font-medium transition-colors">
-                Request Sample
-              </button>
-              <button className="px-4 py-1.5 bg-[#0093cb] hover:bg-[#007aad] text-white rounded-lg text-xs font-medium transition-colors">
-                Download Catalog
-              </button>
-            </div>
-          </div>
+                category={category} 
+                products={products} 
+                therapyColor={therapy.color}
+                therapyName={therapy.therapy}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
@@ -521,6 +601,10 @@ function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) 
 // ─── Collage Card Component ─────────────────────────────────────────────────
 
 function CollageCard({ therapy, onClick }: { therapy: Therapy; onClick: () => void }) {
+  // Get therapy-specific image for the collage card
+  const therapyImages = THERAPY_IMAGES[therapy.therapy] || THERAPY_IMAGES['General Wellness'];
+  const cardImage = therapyImages[0]; // Use first image for the card
+
   return (
     <article
       className={`group relative rounded-2xl overflow-hidden cursor-pointer border border-white/20 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl h-full min-h-[200px] sm:min-h-[220px] lg:min-h-[240px] ${
@@ -532,11 +616,12 @@ function CollageCard({ therapy, onClick }: { therapy: Therapy; onClick: () => vo
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick(); }}
     >
       <Image 
-        src={therapy.items[0]?.img || "https://placehold.co/800x600/0093cb/white?text=Therapy"} 
+        src={cardImage}
         alt={therapy.therapy} 
         fill
         className="object-cover transition-all duration-700 group-hover:scale-110"
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw" 
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+        unoptimized
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
       <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-between">
@@ -547,12 +632,7 @@ function CollageCard({ therapy, onClick }: { therapy: Therapy; onClick: () => vo
         </div>
         <div>
           <span className="text-2xl sm:text-3xl drop-shadow-lg block mb-2">{therapy.icon}</span>
-          <h3 className="text-white text-base sm:text-lg font-bold leading-tight drop-shadow-lg">{therapy.therapy}</h3>
-          <p className="text-white/80 text-xs mt-1.5 flex items-center gap-2">
-            <span>{therapy.items.length} Products</span>
-            <span className="w-1 h-1 rounded-full bg-white/50"></span>
-            <span>7 Categories</span>
-          </p>
+          <h3 className="text-white text-sm sm:text-base lg:text-lg font-bold leading-tight drop-shadow-lg">{therapy.therapy}</h3>
         </div>
       </div>
     </article>
@@ -567,13 +647,10 @@ export default function TherapyCollageGrid() {
 
   useEffect(() => { setIsLoaded(true); }, []);
 
-  const totalProducts = THERAPY_DATA.reduce((sum, t) => sum + t.items.length, 0);
-
   return (
     <>
       <section className="py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-br from-slate-50 via-white to-slate-50">
         <div className="relative max-w-[1600px] mx-auto">
-          {/* Header */}
           <div className="text-left mb-12 lg:mb-16">
             <div className={`flex items-center gap-3 mb-4 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <span className="w-12 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d]" />
@@ -583,21 +660,19 @@ export default function TherapyCollageGrid() {
               Premium <span className="bg-gradient-to-r from-[#0093cb] to-[#00a65d] bg-clip-text text-transparent">Therapy Portfolio</span>
             </h1>
             <p className={`text-neutral-600 max-w-2xl text-base sm:text-lg transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              Specialized medical education tools across 15+ therapeutic areas, featuring 7 product categories and {totalProducts}+ premium products.
+              Specialized medical education tools across 20+ therapeutic areas, featuring 8 product categories including Table Tops & Scientific Inputs.
             </p>
           </div>
 
-          {/* Collage Grid */}
           <div className={`transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            
-            {/* Mobile: 2 cols */}
+            {/* Mobile: 2 columns */}
             <div className="grid grid-cols-2 gap-3 sm:hidden">
               {THERAPY_DATA.map((therapy) => (
                 <CollageCard key={therapy.therapy} therapy={{...therapy, span: 1}} onClick={() => setSelected(therapy)} />
               ))}
             </div>
 
-            {/* Tablet: 3 cols */}
+            {/* Tablet: 3 columns */}
             <div className="hidden sm:grid lg:hidden grid-cols-3 gap-3 auto-rows-[200px]">
               {THERAPY_DATA.map((therapy) => (
                 <CollageCard 
@@ -608,33 +683,11 @@ export default function TherapyCollageGrid() {
               ))}
             </div>
 
-            {/* Desktop: 5 cols */}
+            {/* Desktop: 5 columns */}
             <div className="hidden lg:grid grid-cols-5 gap-3 auto-rows-[240px]">
               {THERAPY_DATA.map((therapy) => (
                 <CollageCard key={therapy.therapy} therapy={therapy} onClick={() => setSelected(therapy)} />
               ))}
-            </div>
-          </div>
-
-          {/* Stats Bar */}
-          <div className="mt-16 pt-8 border-t border-neutral-200/60">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-[#0093cb] to-[#00a65d] bg-clip-text text-transparent">{THERAPY_DATA.length}</div>
-                <div className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Therapy Areas</div>
-              </div>
-              <div>
-                <div className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-[#0093cb] to-[#00a65d] bg-clip-text text-transparent">{PRODUCT_CATEGORIES.length}</div>
-                <div className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Product Categories</div>
-              </div>
-              <div>
-                <div className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-[#0093cb] to-[#00a65d] bg-clip-text text-transparent">{totalProducts}</div>
-                <div className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Total Products</div>
-              </div>
-              <div>
-                <div className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-[#0093cb] to-[#00a65d] bg-clip-text text-transparent">21</div>
-                <div className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Per Therapy Area</div>
-              </div>
             </div>
           </div>
         </div>

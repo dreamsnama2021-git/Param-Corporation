@@ -764,51 +764,7 @@ export default function MediPrideLanding() {
         </div>
       </section>
 
-      {/* ── PRODUCTS ── */}
-      <section id="products" className="py-14 sm:py-16 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
-          <div className="text-center mb-10 sm:mb-14 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900">
-              Explore Our <span className="text-[#0093cb]">Product Range</span>
-            </h2>
-            <p className="text-slate-500 mt-3 sm:mt-4 max-w-xs sm:max-w-xl md:max-w-2xl mx-auto text-sm sm:text-base">
-              Visually rich and scientifically accurate tools designed to
-              educate and engage.
-            </p>
-          </div>
-
-          {PRODUCT_DATA.map((cat, idx) => (
-            <div key={idx} className="mb-12 sm:mb-14 lg:mb-20 last:mb-0">
-              {/* Category label */}
-              <div className="flex items-center space-x-3 sm:space-x-4 mb-5 sm:mb-7">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-black text-slate-800 whitespace-nowrap">
-                  {cat.category}
-                </h3>
-                <div className="h-[2px] bg-[#8bde7a] flex-grow rounded-full" />
-              </div>
-
-              {/* ── Mobile / tablet: swipe carousel ── */}
-              <SwipeCarousel count={cat.items.length} accentColor="#3972b7">
-                {cat.items.map((item, iidx) => (
-                  <div
-                    key={iidx}
-                    className="snap-center flex-shrink-0 w-[82vw] sm:w-[46vw]"
-                  >
-                    <ProductCard item={item} />
-                  </div>
-                ))}
-              </SwipeCarousel>
-
-              {/* ── Desktop: 3-column grid ── */}
-              <div className="hidden lg:grid grid-cols-3 gap-8">
-                {cat.items.map((item, iidx) => (
-                  <ProductCard key={iidx} item={item} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+    
 
       {/* ── FOUNDER'S NOTE ── */}
       {/* <section className="py-16 sm:py-20 lg:py-24 bg-[#3972b7] text-white">
