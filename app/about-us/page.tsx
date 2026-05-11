@@ -153,15 +153,15 @@ const FloatingCard = ({ children, className, delay = 0 }: { children: React.Reac
 
 const WhyUsSection = () => {
   const row1Cards = [
-    { title: "Pharma Expertise", desc: "Specialized in pharmaceutical gifting with deep understanding of doctor preferences.", icon: Pill, color: "bg-amber-500" },
+    { title: "End to End Solution", desc: "Specialized in pharmaceutical gifting with deep understanding of doctor preferences.", icon: Pill, color: "bg-amber-500" },
     { title: "Pan-India Delivery", desc: "Seamless delivery across India ensuring your gifts reach clinics anywhere.", icon: Globe, color: "bg-blue-500" },
-    { title: "90%+ Retention", desc: "Consistent quality and reliable execution of annual gifting campaigns.", icon: Heart, color: "bg-rose-500" },
+    { title: "In-House Manufaturing & R&D", desc: "Consistent quality and reliable execution of annual gifting campaigns.", icon: Heart, color: "bg-rose-500" },
   ];
   const row2Cards = [
-    { title: "Therapy-Aligned", desc: "Gifts aligned with cardiac, diabetic, and pediatric therapy areas.", icon: Target, color: "bg-emerald-500" },
-    { title: "Compliance Ready", desc: "All gifts meet regulatory guidelines for pharmaceutical promotions.", icon: Shield, color: "bg-violet-500" },
-    { title: "Custom Branding", desc: "Personalized packaging and branding options for your medical reps.", icon: Package, color: "bg-orange-500" },
-    { title: "24/7 Support", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Headphones, color: "bg-cyan-500" },
+    { title: "Param Expertise", desc: "Gifts aligned with cardiac, diabetic, and pediatric therapy areas.", icon: Target, color: "bg-emerald-500" },
+    { title: "Strong Vendor Ecosystem & Sourcing Method", desc: "All gifts meet regulatory guidelines for pharmaceutical promotions.", icon: Shield, color: "bg-violet-500" },
+    { title: "After Sales Service", desc: "Personalized packaging and branding options for your medical reps.", icon: Package, color: "bg-orange-500" },
+    { title: "We Maintain Confidentiality", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Headphones, color: "bg-cyan-500" },
   ];
 
     interface CardItem {
@@ -386,8 +386,8 @@ const TeamSection = () => {
       "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=600&fit=crop",
     },
     {
-      name: "Priya Mehta",
-      role: "Creative Director",
+      name: "Mr. Shanchay Dosi",
+      role: "Founder & CEO",
       image:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=600&fit=crop",
     },
