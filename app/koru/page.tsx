@@ -445,28 +445,42 @@ export default function KoruCommunications() {
           </div>
           <ProductGallery images={allProductImages} productName="MediPride Communications Portfolio" />
         </div>
-
-        <CaptureTheMoment
+<CaptureTheMoment
           photos={[
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg",
-            // ... 18 photos total
+            "/koru/Gemini_Generated_Image_2fsfu12fsfu12fsf.png",
+            "/koru/Gemini_Generated_Image_3yhd3a3yhd3a3yhd.png",
+            "/koru/Gemini_Generated_Image_5b2sp5b2sp5b2sp5.png",
+            "/koru/Gemini_Generated_Image_6a6ygg6a6ygg6a6y.png",
+            "/koru/Gemini_Generated_Image_6aivtn6aivtn6aiv.png",
+            "/koru/Gemini_Generated_Image_6ioffdd6ioffdd6ioff.png",
+            "/koru/Gemini_Generated_Image_6pad146pad146pad.png",
+            "/koru/Gemini_Generated_Image_6ycft46ycft46ycft.png",
+            "/koru/Gemini_Generated_Image_19afd819afd819af.png",
+            "/koru/Gemini_Generated_Image_21eb8h21eb8h21eb.png",
+            "/koru/Gemini_Generated_Image_a2q7fla2q7fla2q7 (1).png",
+            "/koru/Gemini_Generated_Image_a4k0aeh4k0aeh4.png",
+            "/koru/Gemini_Generated_Image_c2nd3yc2nd3yc2nd.png",
+            "/koru/Gemini_Generated_Image_qjtc7mqtc7mqtc.png",
+            "/koru/Gemini_Generated_Image_dtmca5dtmca5dtmc.png",
+            "/koru/Gemini_Generated_Image_eix5aqeix5aqeix5.png",
+            "/koru/Gemini_Generated_Image_g3paq2g3paq2g3pa.png",
+            "/koru/Gemini_Generated_Image_gsagj2gsagj2gsag6.png",
+            "/koru/Gemini_Generated_Image_i20mf4i20mf4i20m.png",
+            "/koru/Gemini_Generated_Image_ilqv13ilqv13ilqv.png",
+            "/koru/Gemini_Generated_Image_jxhg30jxhg30jxhg.png",
+            "/koru/Gemini_Generated_Image_ko7qveko7qveko7q.png",
+            "/koru/Gemini_Generated_Image_l1760pll760pll76.png",
+            "/koru/Gemini_Generated_Image_lm7emxm7emxm7emxm7e.png",
+            "/koru/Gemini_Generated_Image_lru77wlru77wlru7.png",
+            "/koru/Gemini_Generated_Image_mp0oaxmp0oaxmp0o.png",
+            "/koru/Gemini_Generated_Image_o5prz05prz05pr.png",
+            "/koru/Gemini_Generated_Image_pg19bjpg19bjpg19.png",
+            "/koru/Gemini_Generated_Image_psfvrfksfvrfksfv.png",
+            "/koru/Gemini_Generated_Image_rt1p1ort1p1ort1p.png",
+            "/koru/Gemini_Generated_Image_sqsdsjsqsdsjsqsds.png",
+            "/koru/Gemini_Generated_Image_t9ubcr9ubcr9ub.png",
+            "/koru/Gemini_Generated_Image_tny9ptny9ptny9.png",
+            "/koru/Gemini_Generated_Image_u9a097u9a097u9a0.png",
           ]}
           location="SMK Wachid Hasyim 2"
           date="06.06.2022"
