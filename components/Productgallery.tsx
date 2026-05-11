@@ -8,52 +8,52 @@ interface GalleryImage {
 }
 
 const koruImages: GalleryImage[] = [
-  { src: "/public/koru.png", colSpan: 2 },
-  { src: "/public/koru1.png", colSpan: 1 },
-  { src: "/public/koru2.png", colSpan: 1 },
-  { src: "/public/koru3.png", colSpan: 1 },
-  { src: "/public/koru4.png", colSpan: 1 },
-  { src: "/public/koru5.png", colSpan: 2 },
-  { src: "/public/koru6.png", colSpan: 1 },
-  { src: "/public/koru7.png", colSpan: 1 },
-  { src: "/public/koru8.png", colSpan: 1 },
-  { src: "/public/koru9.png", colSpan: 2 },
-  { src: "/public/koru10.png", colSpan: 1 },
-  { src: "/public/koru11.png", colSpan: 1 },
-  { src: "/public/koru12.png", colSpan: 1 },
-  { src: "/public/koru13.png", colSpan: 2 },
-  { src: "/public/koru14.png", colSpan: 1 },
-  { src: "/public/koru15.png", colSpan: 1 },
-  { src: "/public/koru16.png", colSpan: 1 },
-  { src: "/public/koru17.png", colSpan: 1 },
-  { src: "/public/koru18.png", colSpan: 1 },
-  { src: "/public/koru19.png", colSpan: 2 },
-  { src: "/public/koru20.png", colSpan: 1 },
-  { src: "/public/koru21.png", colSpan: 1 },
-  { src: "/public/koru22.png", colSpan: 1 },
-  { src: "/public/koru23.png", colSpan: 1 },
-  { src: "/public/koru24.png", colSpan: 2 },
-  { src: "/public/koru25.png", colSpan: 1 },
-  { src: "/public/koru26.png", colSpan: 1 },
-  { src: "/public/koru27.png", colSpan: 1 },
-  { src: "/public/koru28.png", colSpan: 2 },
-  { src: "/public/koru29.png", colSpan: 1 },
-  { src: "/public/koru30.png", colSpan: 1 },
-  { src: "/public/koru31.png", colSpan: 1 },
-  { src: "/public/koru32.png", colSpan: 1 },
-  { src: "/public/koru33.png", colSpan: 2 },
-  { src: "/public/koru34.png", colSpan: 1 },
-  { src: "/public/koru35.png", colSpan: 1 },
-  { src: "/public/koru36.png", colSpan: 1 },
-  { src: "/public/koru37.png", colSpan: 2 },
-  { src: "/public/koru38.png", colSpan: 1 },
-  { src: "/public/koru39.png", colSpan: 1 },
-  { src: "/public/koru40.png", colSpan: 1 },
-  { src: "/public/koru41.png", colSpan: 1 },
-  { src: "/public/koru42.png", colSpan: 2 },
-  { src: "/public/koru43.png", colSpan: 1 },
-  { src: "/public/koru44.png", colSpan: 1 },
-  { src: "/public/koru45.png", colSpan: 1 },
+  { src: "/koru/koru.png", colSpan: 2 },
+  { src: "/koru/koru1.png", colSpan: 1 },
+  { src: "/koru/koru2.png", colSpan: 1 },
+  { src: "/koru/koru3.png", colSpan: 1 },
+  { src: "/koru/koru4.png", colSpan: 1 },
+  { src: "/koru/koru5.png", colSpan: 2 },
+  { src: "/koru/koru6.png", colSpan: 1 },
+  { src: "/koru/koru7.png", colSpan: 1 },
+  { src: "/koru/koru8.png", colSpan: 1 },
+  { src: "/koru/koru9.png", colSpan: 2 },
+  { src: "/koru/koru10.png", colSpan: 1 },
+  { src: "/koru/koru11.png", colSpan: 1 },
+  { src: "/koru/koru12.png", colSpan: 1 },
+  { src: "/koru/koru13.png", colSpan: 2 },
+  { src: "/koru/koru14.png", colSpan: 1 },
+  { src: "/koru/koru15.png", colSpan: 1 },
+  { src: "/koru/koru16.png", colSpan: 1 },
+  { src: "/koru/koru17.png", colSpan: 1 },
+  { src: "/koru/koru18.png", colSpan: 1 },
+  { src: "/koru/koru19.png", colSpan: 2 },
+  { src: "/koru/koru20.png", colSpan: 1 },
+  { src: "/koru/koru21.png", colSpan: 2 },
+  { src: "/koru/koru22.png", colSpan: 1 },
+  { src: "/koru/koru23.png", colSpan: 1 },
+  { src: "/koru/koru24.png", colSpan: 2 },
+  { src: "/koru/koru25.png", colSpan: 1 },
+  { src: "/koru/koru26.png", colSpan: 1 },
+  { src: "/koru/koru27.png", colSpan: 1 },
+  { src: "/koru/koru28.png", colSpan: 2 },
+  { src: "/koru/koru29.png", colSpan: 1 },
+  { src: "/koru/koru30.png", colSpan: 1 },
+  { src: "/koru/koru31.png", colSpan: 1 },
+  { src: "/koru/koru32.png", colSpan: 1 },
+  { src: "/koru/koru33.png", colSpan: 2 },
+  { src: "/koru/koru34.png", colSpan: 1 },
+  { src: "/koru/koru35.png", colSpan: 1 },
+  { src: "/koru/koru36.png", colSpan: 1 },
+  { src: "/koru/koru37.png", colSpan: 2 },
+  { src: "/koru/koru38.png", colSpan: 1 },
+  { src: "/koru/koru39.png", colSpan: 1 },
+  { src: "/koru/koru40.png", colSpan: 1 },
+  { src: "/koru/koru41.png", colSpan: 1 },
+  { src: "/koru/koru42.png", colSpan: 1 },
+  { src: "/koru/koru43.png", colSpan: 1 },
+  { src: "/koru/koru44.png", colSpan: 1 },
+  // { src: "/koru/koru45.png", colSpan: 1 },
 ];
 
 export default function CollageGalleryManual() {
@@ -64,7 +64,7 @@ export default function CollageGalleryManual() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* 5 Column Grid with Manual Control - All Single Row */}
+      {/* 5 Column Grid with Manual Control */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-7xl mx-auto">
         {displayedImages.map((image, index) => (
           <div 
@@ -84,7 +84,7 @@ export default function CollageGalleryManual() {
         ))}
       </div>
 
-      {/* See All Button */}
+      {/* See All Button - Shows count of hidden images */}
       {hasMoreImages && (
         <div className="mt-8 text-center">
           {!showAll ? (

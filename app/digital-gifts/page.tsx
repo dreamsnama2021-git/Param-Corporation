@@ -1,344 +1,979 @@
-// app/digital-gifts/page.tsx
+// app/digital-services/page.tsx
 'use client';
 
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
-  Gift,
-  Smartphone,
-  Palette,
-  Zap,
-  Globe,
-  ShieldCheck,
-  Mail,
+  ArrowUpRight,
+  Monitor,
+  Users,
+  TrendingUp,
+  BookOpen,
+  Heart,
+  MessageCircle,
   Sparkles,
-  ArrowRight,
+  Zap,
   Check,
+  ChevronLeft,
+  ChevronRight,
+  Target,
+  Globe,
+  Shield,
+  Star,
+  Clock,
+  BarChart,
+  Grid3X3,
+  Eye,
 } from 'lucide-react';
 
-const benefits = [
+// ─── TYPES ──────────────────────────────────────────────────────────────────
+interface DigitalProduct {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  stat?: string;
+  statLabel?: string;
+}
+
+interface ServiceCategory {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  products: DigitalProduct[];
+}
+
+interface TableTopImage {
+  id: string;
+  src: string;
+  title: string;
+  category: string;
+}
+
+// ─── DATA ────────────────────────────────────────────────────────────────────
+const serviceCategories: ServiceCategory[] = [
   {
-    icon: Smartphone,
-    title: 'Instant Delivery',
-    desc: 'Reach doctors anywhere in India within seconds via email, WhatsApp, or SMS. No logistics, no delays.',
-    color: 'bg-blue-50 text-blue-600',
+    id: "tabletops",
+    number: "01",
+    title: "Hyperpersonalized Tabletops",
+    description: "Custom-designed displays that transform ordinary surfaces into engaging brand experiences with interactive scientific content tailored for each healthcare professional.",
+    icon: Monitor,
+    products: [
+      {
+        id: "cardiology",
+        title: "Cardiology Tabletop",
+        description: "Interactive cardiovascular display with 3D heart model and treatment pathway visualization for detailed HCP consultations.",
+        image: "/koru/koru.png",
+        tags: ["3D Heart Model", "Treatment Pathways", "Clinical Data"],
+        stat: "40+",
+        statLabel: "Therapy Areas"
+      },
+      {
+        id: "diabetes",
+        title: "Diabetes Management",
+        description: "Comprehensive diabetes care tabletop with glucose monitoring guides and lifestyle modification recommendations.",
+        image: "/koru/koru1.png",
+        tags: ["Glucose Tracker", "Diet Plans", "Complication Info"]
+      },
+      {
+        id: "oncology",
+        title: "Oncology Overview",
+        description: "Cancer care pathway tabletop showing treatment protocols and supportive care resources for oncology practices.",
+        image: "/koru/koru2.png",
+        tags: ["Treatment Options", "Side Effect Management", "Support Resources"]
+      },
+      {
+        id: "respiratory",
+        title: "Respiratory Health",
+        description: "Pulmonary function and respiratory disease management display with inhaler technique demonstrations.",
+        image: "/koru/koru3.png",
+        tags: ["Lung Models", "Inhaler Techniques", "Spirometry Data"]
+      },
+      {
+        id: "neurology",
+        title: "Neurology Insights",
+        description: "Brain function visualization and neurological disorder education tabletop for specialist consultations.",
+        image: "/koru/koru4.png",
+        tags: ["Brain Mapping", "Disease Progression", "Treatment Options"]
+      },
+      {
+        id: "gastroenterology",
+        title: "Gastroenterology",
+        description: "Digestive system anatomy and GI disorder management display with dietary planning tools.",
+        image: "/koru/koru5.png",
+        tags: ["Anatomy Views", "Dietary Guides", "Treatment Plans"]
+      }
+    ]
   },
   {
-    icon: Palette,
-    title: 'Therapy‑Aligned Personalization',
-    desc: 'Every digital gift is designed around the therapy area – cardiology, diabetology, pediatrics, and more.',
-    color: 'bg-emerald-50 text-emerald-600',
+    id: "services",
+    number: "02",
+    title: "Hyperpersonalized Services",
+    description: "Comprehensive patient support ecosystems including Payboard financial solutions and Patient Support Programs that create seamless, personalized healthcare journeys.",
+    icon: Users,
+    products: [
+      {
+        id: "payboard",
+        title: "Payboard Solutions",
+        description: "Financial assistance platform helping patients navigate treatment costs and insurance coverage with clarity.",
+        image: "/koru/koru6.png",
+        tags: ["Cost Calculator", "Insurance Check", "Payment Plans"],
+        stat: "24/7",
+        statLabel: "Support Available"
+      },
+      {
+        id: "psp",
+        title: "Patient Support Program",
+        description: "End-to-end patient support including medication adherence tracking and lifestyle counseling services.",
+        image: "/koru/koru7.png",
+        tags: ["24/7 Support", "Medication Reminders", "Progress Tracking"]
+      },
+      {
+        id: "care-coordination",
+        title: "Care Coordination",
+        description: "Multi-stakeholder platform connecting patients, physicians, and caregivers in a unified ecosystem.",
+        image: "/koru/koru8.png",
+        tags: ["Care Team Chat", "Appointment Sync", "Shared Records"]
+      },
+      {
+        id: "wellness",
+        title: "Wellness Programs",
+        description: "Personalized preventive care programs with goal setting and progress monitoring capabilities.",
+        image: "/koru/koru9.png",
+        tags: ["Goal Setting", "Activity Tracking", "Health Tips"]
+      },
+      {
+        id: "remote-monitoring",
+        title: "Remote Monitoring",
+        description: "Connected device integration for real-time health parameter tracking and trend analysis.",
+        image: "/koru/koru10.png",
+        tags: ["Device Sync", "Real-time Alerts", "Trend Analysis"]
+      },
+      {
+        id: "telehealth",
+        title: "Telehealth Integration",
+        description: "Virtual consultation platform with seamless electronic medical record integration.",
+        image: "/koru/koru11.png",
+        tags: ["Video Consult", "EMR Access", "Prescription Management"]
+      }
+    ]
   },
   {
-    icon: Zap,
-    title: 'High Engagement',
-    desc: 'Interactive elements like quizzes, animations, and doctor‑focused content boost recall and brand affinity.',
-    color: 'bg-amber-50 text-amber-600',
+    id: "campaigns",
+    number: "03",
+    title: "Digital Campaigns & HRA",
+    description: "Sophisticated digital campaigns featuring Health Risk Assessment calculations with measurable outcomes and compliance-ready reporting.",
+    icon: TrendingUp,
+    products: [
+      {
+        id: "hra-calculator",
+        title: "HRA Calculator",
+        description: "Interactive health risk assessment tool for cardiovascular and metabolic condition screening.",
+        image: "/koru/koru12.png",
+        tags: ["Risk Scoring", "Visual Reports", "Recommendations"],
+        stat: "85%",
+        statLabel: "Engagement Rate"
+      },
+      {
+        id: "email-campaigns",
+        title: "Email Campaigns",
+        description: "Targeted email marketing with personalized content delivery and automated follow-up sequences.",
+        image: "/koru/koru13.png",
+        tags: ["Segmentation", "A/B Testing", "Analytics"]
+      },
+      {
+        id: "social-media",
+        title: "Social Media Suite",
+        description: "Comprehensive social media campaign management tailored for pharmaceutical brands.",
+        image: "/koru/koru14.png",
+        tags: ["Content Calendar", "Engagement Tracking", "Compliance Check"]
+      },
+      {
+        id: "webinar",
+        title: "Webinar Platform",
+        description: "Interactive webinar hosting solution with live polling and audience engagement features.",
+        image: "/koru/koru15.png",
+        tags: ["Live Streaming", "Q&A Sessions", "Recording Archive"]
+      },
+      {
+        id: "analytics",
+        title: "Analytics Dashboard",
+        description: "Real-time campaign performance tracking with comprehensive ROI measurement tools.",
+        image: "/koru/koru16.png",
+        tags: ["Real-time Data", "Custom Reports", "ROI Calculator"]
+      },
+      {
+        id: "compliance",
+        title: "Compliance Manager",
+        description: "Automated compliance verification system for all digital campaign materials and assets.",
+        image: "/koru/koru17.png",
+        tags: ["Auto-review", "Regulatory Check", "Audit Trail"]
+      }
+    ]
   },
   {
-    icon: Globe,
-    title: 'Pan‑India Compliance',
-    desc: 'All digital gifts adhere to MCI/NMC guidelines, ensuring your promotions remain ethical and safe.',
-    color: 'bg-violet-50 text-violet-600',
+    id: "education",
+    number: "04",
+    title: "Patient Education Content",
+    description: "Evidence-based educational resources designed to empower patients with knowledge about their conditions, treatments, and wellness journeys in accessible formats.",
+    icon: BookOpen,
+    products: [
+      {
+        id: "disease-hub",
+        title: "Disease Information Hub",
+        description: "Comprehensive disease library featuring animated explainer videos and detailed infographics.",
+        image: "/koru/koru18.png",
+        tags: ["Video Library", "Infographics", "FAQ Section"],
+        stat: "15+",
+        statLabel: "Languages Available"
+      },
+      {
+        id: "treatment-guides",
+        title: "Treatment Guides",
+        description: "Step-by-step medication guides with side effect management and lifestyle recommendations.",
+        image: "/koru/koru19.png",
+        tags: ["Medication Info", "Side Effects", "Lifestyle Tips"]
+      },
+      {
+        id: "interactive-learning",
+        title: "Interactive Learning",
+        description: "Gamified education modules designed to improve patient engagement and information retention.",
+        image: "/koru/koru20.png",
+        tags: ["Quizzes", "Progress Tracking", "Certificates"]
+      },
+      {
+        id: "multilingual",
+        title: "Multi-language Content",
+        description: "Educational resources available in 15+ Indian languages for maximum accessibility and reach.",
+        image: "/koru/koru21.png",
+        tags: ["15+ Languages", "Voice-over", "Cultural Adaptation"]
+      },
+      {
+        id: "printable",
+        title: "Printable Resources",
+        description: "Downloadable PDF guides, worksheets, and checklists for offline patient reference.",
+        image: "/koru/koru22.png",
+        tags: ["PDF Downloads", "Worksheets", "Checklists"]
+      },
+      {
+        id: "video-library",
+        title: "Expert Video Library",
+        description: "Curated collection of expert-led video content covering diverse therapeutic areas.",
+        image: "/koru/koru23.png",
+        tags: ["Expert Videos", "Animations", "Patient Stories"]
+      }
+    ]
   },
   {
-    icon: ShieldCheck,
-    title: 'Trackable Analytics',
-    desc: 'Monitor open rates, click‑throughs, and engagement in real time to measure campaign ROI.',
-    color: 'bg-rose-50 text-rose-600',
+    id: "anatomy",
+    number: "05",
+    title: "Digital Anatomy",
+    description: "Advanced 3D anatomical models and visualizations that bring complex medical concepts to life for HCP education and patient counseling.",
+    icon: Heart,
+    products: [
+      {
+        id: "heart-3d",
+        title: "3D Heart Model",
+        description: "Fully interactive cardiac model displaying chambers, valves, and hemodynamic flow patterns.",
+        image: "/koru/koru24.png",
+        tags: ["360° Rotation", "Cross-section", "Pathology View"],
+        stat: "50+",
+        statLabel: "Anatomical Models"
+      },
+      {
+        id: "brain-atlas",
+        title: "Brain Atlas",
+        description: "Detailed neurological mapping with functional area visualization and pathology overlays.",
+        image: "/koru/koru25.png",
+        tags: ["Region Highlight", "Function Map", "Disorder Overlay"]
+      },
+      {
+        id: "skeletal",
+        title: "Skeletal System",
+        description: "Complete osteological model with joint mechanics and range-of-motion demonstrations.",
+        image: "/koru/koru26.png",
+        tags: ["Bone Layers", "Joint Movement", "Fracture Types"]
+      },
+      {
+        id: "muscular",
+        title: "Muscular System",
+        description: "Interactive muscle layer visualization with origin, insertion, and action demonstrations.",
+        image: "/koru/koru27.png",
+        tags: ["Layer Toggle", "Movement Demo", "Insertion Points"]
+      },
+      {
+        id: "nervous",
+        title: "Nervous System",
+        description: "Complete neural pathway mapping from central nervous system to peripheral innervation.",
+        image: "/koru/koru28.png",
+        tags: ["Pathway Trace", "Reflex Arcs", "Dermatome Map"]
+      },
+      {
+        id: "organs",
+        title: "Organ Systems",
+        description: "Multi-organ visualization platform with healthy-pathology comparison capabilities.",
+        image: "/koru/koru29.png",
+        tags: ["Multi-organ View", "Compare Tool", "Disease States"]
+      }
+    ]
   },
   {
-    icon: Mail,
-    title: 'Multi‑Channel Integration',
-    desc: 'Seamlessly integrate with your CRM, email systems, and MR reporting tools.',
-    color: 'bg-cyan-50 text-cyan-600',
-  },
+    id: "chatbots",
+    number: "06",
+    title: "AI Chatbots",
+    description: "Intelligent conversational agents powered by advanced AI providing instant, accurate support for patients and healthcare professionals 24/7.",
+    icon: MessageCircle,
+    products: [
+      {
+        id: "patient-bot",
+        title: "Patient Assistant Bot",
+        description: "Round-the-clock support chatbot handling medication queries and appointment scheduling.",
+        image: "/koru/koru30.png",
+        tags: ["Medication Info", "Appointment Booking", "Symptom Check"],
+        stat: "24/7",
+        statLabel: "Availability"
+      },
+      {
+        id: "hcp-bot",
+        title: "Clinical Knowledge Bot",
+        description: "Professional knowledge assistant delivering drug information and clinical guideline updates.",
+        image: "/koru/koru31.png",
+        tags: ["Drug Database", "Guidelines", "Research Updates"]
+      },
+      {
+        id: "diagnostic-bot",
+        title: "Diagnostic Support Bot",
+        description: "AI-powered diagnostic suggestion engine based on comprehensive symptom analysis.",
+        image: "/koru/koru32.png",
+        tags: ["Symptom Analysis", "Differential Diagnosis", "Test Suggestions"]
+      },
+      {
+        id: "wellness-bot",
+        title: "Wellness Coach Bot",
+        description: "Personalized health coaching bot delivering daily wellness tips and progress tracking.",
+        image: "/koru/koru33.png",
+        tags: ["Daily Tips", "Goal Tracking", "Motivation"]
+      },
+      {
+        id: "multilingual-bot",
+        title: "Multilingual Bot",
+        description: "Multi-language support system serving patients in their preferred regional language.",
+        image: "/koru/koru34.png",
+        tags: ["10+ Languages", "Voice Input", "Translation"]
+      },
+      {
+        id: "compliance-bot",
+        title: "Compliance Bot",
+        description: "Regulatory compliance verification bot for pharmaceutical marketing content review.",
+        image: "/koru/koru35.png",
+        tags: ["Auto-check", "Regulatory Updates", "Approval Workflow"]
+      }
+    ]
+  }
 ];
 
-const services = [
-  {
-    title: 'Digital Greeting Cards',
-    desc: 'Customized e‑cards for festivals, Doctor’s Day, and anniversaries featuring therapy‑specific artwork and personalised messages.',
-    image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&h=400&fit=crop',
-  },
-  {
-    title: 'Interactive E‑Detailing',
-    desc: 'Short, animated presentations that MRs can share during calls or virtual meetings, enriched with clinical data and brand stories.',
-    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop',
-  },
-  {
-    title: 'Virtual Gift Vouchers',
-    desc: 'Amazon, MakeMyTrip, or brand‑specific vouchers sent digitally, redeemable instantly. Ideal for CMEs, surveys, and loyalty programmes.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-  },
-  {
-    title: 'Digital Wellness Calendar',
-    desc: 'A month‑wise health awareness calendar with therapy‑related facts, tips, and doctor engagement prompts.',
-    image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600&h=400&fit=crop',
-  },
+// ─── TABLE TOP GALLERY DATA ──────────────────────────────────────────────────
+const tableTopImages: TableTopImage[] = [
+  { id: "tt-1", src: "/koru/koru.png", title: "Cardiology Display", category: "Cardiovascular" },
+  { id: "tt-2", src: "/koru/koru1.png", title: "Diabetes Management", category: "Endocrinology" },
+  { id: "tt-3", src: "/koru/koru2.png", title: "Oncology Overview", category: "Oncology" },
+  { id: "tt-4", src: "/koru/koru3.png", title: "Respiratory Health", category: "Pulmonology" },
+  { id: "tt-5", src: "/koru/koru4.png", title: "Neurology Insights", category: "Neurology" },
+  { id: "tt-6", src: "/koru/koru5.png", title: "Gastroenterology", category: "Gastroenterology" },
+  { id: "tt-7", src: "/koru/koru6.png", title: "Orthopedics Display", category: "Orthopedics" },
+  { id: "tt-8", src: "/koru/koru7.png", title: "Dermatology Guide", category: "Dermatology" },
 ];
 
-const steps = [
-  {
-    step: '01',
-    title: 'Brief Us',
-    desc: 'Tell us your therapy area, campaign goals, and preferred gift type.',
-  },
-  {
-    step: '02',
-    title: 'Design & Approve',
-    desc: 'Receive a custom digital gift prototype within 48 hours.',
-  },
-  {
-    step: '03',
-    title: 'Deliver Instantly',
-    desc: 'We handle distribution via email/SMS/WhatsApp – automated & trackable.',
-  },
-  {
-    step: '04',
-    title: 'Track Results',
-    desc: 'Real‑time dashboard shows opens, clicks, and doctor engagement.',
-  },
-];
+// ─── MAGNETIC BUTTON ─────────────────────────────────────────────────────────
+function MagneticButton({ children, className, onClick }: { children: React.ReactNode; className?: string; onClick?: () => void }) {
+  const ref = useRef<HTMLButtonElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
+  const handleMouse = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    const { left, top, width, height } = ref.current!.getBoundingClientRect();
+    setPosition({
+      x: (clientX - (left + width / 2)) * 0.3,
+      y: (clientY - (top + height / 2)) * 0.3,
+    });
+  };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
-export default function DigitalGiftsPage() {
   return (
-    <div className="min-h-screen bg-white font-sans">
-      {/* ── Hero ── */}
-      <section className="relative bg-gradient-to-br from-[#0a1e2f] via-[#0b3c5d] to-[#0093cb]/80 text-white py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-[#8bde7a] rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#00a65d] rounded-full blur-3xl" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+    <motion.button
+      ref={ref}
+      onMouseMove={handleMouse}
+      onMouseLeave={() => setPosition({ x: 0, y: 0 })}
+      animate={{ x: position.x, y: position.y }}
+      className={className}
+      onClick={onClick}
+    >
+      {children}
+    </motion.button>
+  );
+}
+
+// ─── SECTION BADGE ───────────────────────────────────────────────────────────
+function SectionBadge({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold ${className}`}>
+      {children}
+    </span>
+  );
+}
+
+// ─── PAGE ────────────────────────────────────────────────────────────────────
+export default function DigitalServicesPage() {
+  return (
+    <div className="min-h-screen bg-white">
+      <HeroBanner />
+      {serviceCategories.map((category, index) => (
+        <CategorySection key={category.id} category={category} index={index} />
+      ))}
+      <TableTopGallerySection />
+    </div>
+  );
+}
+
+// ─── HERO BANNER ─────────────────────────────────────────────────────────────
+function HeroBanner() {
+  return (
+    <section className="relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh] overflow-hidden">
+      <Image
+        src="/koru/koru.png"
+        alt="Digital Products & Services"
+        fill
+        className="object-cover"
+        priority
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 lg:p-14">
+        <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-medium">
-              <Sparkles size={16} /> The Future of Pharma Gifting
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-              Digital Gifts <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8bde7a] to-[#00a65d]">
-                That Doctors Love
-              </span>
-            </h1>
-            <p className="text-lg text-blue-100 max-w-xl">
-              Instantly deliver personalised, therapy‑aligned gifts to healthcare professionals across India. Track engagement, stay compliant, and build lasting relationships – all without physical inventory.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/contact-us"
-                className="inline-flex items-center gap-2 bg-[#8bde7a] text-gray-900 px-8 py-4 rounded-full font-bold hover:bg-[#00a65d] hover:text-white transition-all shadow-lg hover:shadow-[#8bde7a]/30"
-              >
-                Request a Demo <ArrowRight size={20} />
-              </Link>
-              <Link
-                href="#services"
-                className="inline-flex items-center gap-2 border border-white/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-all"
-              >
-                Explore Services
-              </Link>
-            </div>
+            <SectionBadge className="bg-white/10 backdrop-blur-md text-[#8bde7a] border border-white/20 mb-4">
+              <Sparkles size={16} />
+              Digital Transformation in Pharma
+            </SectionBadge>
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-4"
           >
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
+            Digital Products
+            <span className="block text-[#8bde7a]">& Services</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-lg md:text-xl text-white/80 max-w-2xl"
+          >
+            Empowering pharmaceutical companies with cutting-edge digital solutions
+            that enhance HCP engagement and deliver measurable healthcare outcomes.
+          </motion.p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+
+// ─── CATEGORY SECTION ────────────────────────────────────────────────────────
+function CategorySection({ category, index }: { category: ServiceCategory; index: number }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const Icon = category.icon;
+  const isEven = index % 2 === 0;
+
+  const updateScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 10);
+    }
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const card = scrollRef.current.querySelector('div');
+      const amount = (card?.offsetWidth || 360) + 24;
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -amount : amount,
+        behavior: 'smooth'
+      });
+      setTimeout(updateScroll, 400);
+    }
+  };
+
+  return (
+    <section className={`pt-8 2xl:py-24 ${isEven ? 'bg-white' : 'bg-gradient-to-br from-[#0093cb]/[0.02] via-white to-[#00a65d]/[0.02]'}`}>
+      <div className="max-w-7xl mx-auto px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          className=""
+        >
+          <div className="flex items-center gap-4 mb-2">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0093cb] bg-[#0093cb]/10 px-3 py-1.5 rounded-full">
+              {category.number}
+            </span>
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#0093cb] to-[#00a65d] flex items-center justify-center shadow-lg shadow-[#0093cb]/20">
+              <Icon size={22} className="text-white" />
+            </div>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+            {category.title}
+          </h2>
+          <p className="text-lg text-slate-600 max-w-2xl leading-relaxed">
+            {category.description}
+          </p>
+          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full" />
+        </motion.div>
+
+        <div className="relative">
+          <div className="flex justify-end gap-2 mb-2">
+            <button
+              onClick={() => scroll('left')}
+              disabled={!canScrollLeft}
+              className="w-11 h-11 rounded-full border-2 border-slate-200 flex items-center justify-center
+                       text-slate-400 hover:text-[#0093cb] hover:border-[#0093cb]
+                       disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => scroll('right')}
+              disabled={!canScrollRight}
+              className="w-11 h-11 rounded-full border-2 border-slate-200 flex items-center justify-center
+                       text-slate-400 hover:text-[#0093cb] hover:border-[#0093cb]
+                       disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+
+          <div
+            ref={scrollRef}
+            onScroll={updateScroll}
+            className="flex gap-6 2xl:gap-8 overflow-hidden pb-1"
+          >
+            {category.products.map((product, i) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="flex-shrink-0 w-[330px] sm:w-[370px] overflow-hidden lg:w-[280px]"
+              >
+                <ProductCard product={product} />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── PRODUCT CARD ────────────────────────────────────────────────────────────
+function ProductCard({ product }: { product: DigitalProduct }) {
+  return (
+    <article className="group bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-[#00a65d]/30 hover:shadow-2xl hover:shadow-[#00a65d]/10 transition-all duration-500 h-full flex flex-col relative">
+      {/* Glow effect overlay */}
+      <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"
+        style={{
+          background: 'radial-gradient(circle at center, rgba(0, 166, 93, 0.15) 0%, transparent 70%)',
+        }}
+      />
+      
+      <div className="relative h-72 overflow-hidden bg-slate-100">
+        <Image
+          src={product.image}
+          alt={product.title}
+          fill
+          className="object-fill transition-transform duration-700 ease-out group-hover:scale-110"
+          sizes="400px"
+        />
+      </div>
+
+      <div className="p-3 2xl:p-6 flex flex-col flex-1 relative z-20">
+        <h3 className="text-lg font-extrabold text-slate-900 mb-2 group-hover:text-[#00a65d] transition-colors duration-300">
+          {product.title}
+        </h3>
+        <p className="text-sm text-slate-600 leading-relaxed mb-5 flex-1 line-clamp-2">
+          {product.description}
+        </p>
+      </div>
+    </article>
+  );
+}
+
+// ─── TABLE TOP GALLERY SECTION ───────────────────────────────────────────────
+function TableTopGallerySection() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [selectedImage, setSelectedImage] = useState<TableTopImage | null>(null);
+
+  const updateScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 10);
+    }
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const card = scrollRef.current.querySelector('div');
+      const amount = ((card?.offsetWidth || 280) + 20) * 2; // scroll 2 cards at a time
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -amount : amount,
+        behavior: 'smooth'
+      });
+      setTimeout(updateScroll, 400);
+    }
+  };
+
+  return (
+    <section className="py-16 lg:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          className="mb-10"
+        >
+          <div className="flex items-center gap-4 mb-4">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#00a65d] bg-[#00a65d]/10 px-3 py-1.5 rounded-full">
+              Gallery
+            </span>
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#00a65d] to-[#8bde7a] flex items-center justify-center shadow-lg shadow-[#00a65d]/20">
+              <Grid3X3 size={22} className="text-white" />
+            </div>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+            Table Top Designs
+          </h2>
+          <p className="text-lg text-slate-600 max-w-2xl leading-relaxed">
+            Explore our collection of hyperpersonalized tabletop displays crafted for
+            various therapeutic areas. Each design is meticulously created to enhance
+            HCP engagement and deliver impactful brand experiences.
+          </p>
+          <div className="mt-4 w-20 h-1 bg-gradient-to-r from-[#00a65d] to-[#8bde7a] rounded-full" />
+        </motion.div>
+
+        {/* Gallery Grid - Visible on Desktop (4 images) */}
+        <div className="hidden lg:grid lg:grid-cols-4 gap-5 mb-8">
+          {tableTopImages.slice(0, 4).map((image, i) => (
+            <motion.div
+              key={image.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              onClick={() => setSelectedImage(image)}
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer bg-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500"
+            >
               <Image
-                src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&h=600&fit=crop"
-                alt="Digital Gifting Platform"
+                src={image.src}
+                alt={image.title}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 1024px) 50vw, 25vw"
+              />
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Category Badge */}
+              <div className="absolute top-3 left-3">
+                <span className="px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full text-[10px] font-bold uppercase tracking-wider text-[#0093cb]">
+                  {image.category}
+                </span>
+              </div>
+
+              {/* Hover Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <h4 className="text-white font-bold text-sm mb-1">{image.title}</h4>
+                <span className="inline-flex items-center gap-1 text-[#8bde7a] text-xs font-semibold">
+                  <Eye size={14} />
+                  View Full Size
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Carousel - Visible on Mobile/Tablet + shows all on desktop */}
+       
+
+        {/* Second Row of Grid - Desktop only (images 5-8) */}
+        <div className="hidden lg:grid lg:grid-cols-4 gap-5">
+          {tableTopImages.slice(4, 8).map((image, i) => (
+            <motion.div
+              key={image.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: (i + 4) * 0.1 }}
+              onClick={() => setSelectedImage(image)}
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer bg-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500"
+            >
+              <Image
+                src={image.src}
+                alt={image.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 1024px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="absolute top-3 left-3">
+                <span className="px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full text-[10px] font-bold uppercase tracking-wider text-[#0093cb]">
+                  {image.category}
+                </span>
+              </div>
+
+              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <h4 className="text-white font-bold text-sm mb-1">{image.title}</h4>
+                <span className="inline-flex items-center gap-1 text-[#8bde7a] text-xs font-semibold">
+                  <Eye size={14} />
+                  View Full Size
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* View All Button */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-10 text-center lg:hidden"
+        >
+          <button className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-full font-bold hover:bg-[#0093cb] transition-colors">
+            View All Designs <ArrowUpRight size={18} />
+          </button>
+        </motion.div>
+      </div>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div
+            className="relative max-w-5xl w-full max-h-[90vh] rounded-2xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative aspect-[4/3]">
+              <Image
+                src={selectedImage.src}
+                alt={selectedImage.title}
+                fill
+                className="object-contain"
               />
             </div>
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#8bde7a] rounded-full blur-2xl opacity-40" />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Benefits ── */}
-      <section className="py-16 lg:py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-2">
-              Why Digital?
-            </p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">
-              Smarter, Faster & <span className="text-[#0093cb]">Compliant</span>
-            </h2>
-          </div>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {benefits.map((benefit, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                className="group bg-white p-8 rounded-2xl border border-slate-200 hover:shadow-xl hover:border-[#0093cb]/30 transition-all duration-300"
-              >
-                <div className={`w-12 h-12 ${benefit.color} rounded-xl flex items-center justify-center mb-5`}>
-                  <benefit.icon size={24} />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{benefit.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{benefit.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Services ── */}
-      <section id="services" className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-2">
-              Our Solutions
-            </p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">
-              Digital Gifting <span className="text-[#0093cb]">Portfolio</span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((service, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="group bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all duration-300"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <h3 className="absolute bottom-4 left-4 text-white text-xl font-bold">
-                    {service.title}
-                  </h3>
-                </div>
-                <div className="p-6">
-                  <p className="text-slate-600 leading-relaxed">{service.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+            >
+              ✕
+            </button>
+            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+              <span className="text-[#8bde7a] text-xs font-bold uppercase tracking-wider">{selectedImage.category}</span>
+              <h3 className="text-white text-xl font-bold mt-1">{selectedImage.title}</h3>
+            </div>
           </div>
         </div>
-      </section>
+      )}
+    </section>
+  );
+}
 
-      {/* ── How It Works ── */}
-      <section className="py-16 lg:py-24 bg-slate-50 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#8bde7a]/20 rounded-full blur-3xl" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-2">
-              Simple Process
-            </p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">
-              How It <span className="text-[#0093cb]">Works</span>
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {steps.map((step, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="relative text-center"
-              >
-                <div className="w-16 h-16 bg-[#0093cb] text-white rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg">
-                  {step.step}
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{step.title}</h3>
-                <p className="text-slate-600">{step.desc}</p>
-                {idx < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-[#0093cb] to-transparent transform -translate-x-4" />
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+// ─── WHY DIGITAL SECTION ─────────────────────────────────────────────────────
+function WhyDigitalSection() {
+  const cards = [
+    {
+      title: "Pharma Expertise",
+      desc: "Specialized in pharmaceutical digital solutions with deep healthcare domain knowledge and regulatory understanding.",
+      icon: Target,
+      gradient: "from-[#0093cb] to-[#0082b5]"
+    },
+    {
+      title: "Pan-India Reach",
+      desc: "Seamless digital deployment across India reaching clinics and hospitals in every corner of the country.",
+      icon: Globe,
+      gradient: "from-[#00a65d] to-[#00934d]"
+    },
+    {
+      title: "Compliance Ready",
+      desc: "All digital solutions meet regulatory guidelines for pharmaceutical promotions and data privacy.",
+      icon: Shield,
+      gradient: "from-[#0093cb] to-[#00a65d]"
+    },
+    {
+      title: "24/7 Support",
+      desc: "Dedicated technical support team ensuring smooth digital campaign execution around the clock.",
+      icon: Clock,
+      gradient: "from-[#00a65d] to-[#8bde7a]"
+    },
+  ];
 
-      {/* ── Stats / Trust ── */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { number: '10,000+', label: 'Digital Gifts Sent' },
-            { number: '95%', label: 'Open Rate' },
-            { number: '48hrs', label: 'Turnaround Time' },
-            { number: '100%', label: 'Compliance' },
-          ].map((stat, idx) => (
+  return (
+    <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 via-white to-[#8bde7a]/5">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-14"
+        >
+          <SectionBadge className="bg-[#8bde7a]/10 text-[#00a65d] border border-[#8bde7a]/20 mb-4">
+            <Sparkles size={16} />
+            Why Choose Us
+          </SectionBadge>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900">
+            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Digital</span> Advantage
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {cards.map((card, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
+              className="group relative bg-white p-6 rounded-3xl border border-slate-200 hover:border-transparent hover:shadow-xl transition-all duration-500 overflow-hidden"
             >
-              <div className="text-4xl md:text-5xl font-extrabold text-[#0093cb]">{stat.number}</div>
-              <div className="text-slate-500 mt-2 text-sm uppercase tracking-wider">{stat.label}</div>
+              <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+              <div className={`relative w-12 h-12 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center text-white mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                <card.icon size={22} />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 mb-3">{card.title}</h3>
+              <p className="text-sm text-slate-500 leading-relaxed">{card.desc}</p>
+              <div className={`absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r ${card.gradient} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
             </motion.div>
           ))}
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      {/* ── Bottom CTA ── */}
-      <section className="py-16 lg:py-24 bg-gradient-to-r from-[#0b3c5d] to-[#0093cb] text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
-            Ready to Go Digital?
+// ─── TESTIMONIAL STRIP ──────────────────────────────────────────────────────
+function TestimonialStrip() {
+  return (
+    <section className="py-12 bg-gradient-to-r from-[#0093cb] to-[#00a65d] overflow-hidden relative">
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
+          backgroundSize: '30px 30px'
+        }} />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap items-center justify-between gap-8"
+        >
+          <div className="flex items-center gap-6">
+            <div className="flex -space-x-4">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white flex items-center justify-center text-white font-bold text-sm">
+                  {i}
+                </div>
+              ))}
+            </div>
+            <div>
+              <div className="text-white/80 text-sm font-medium">Trusted by</div>
+              <div className="text-white text-2xl font-extrabold">200+ Pharma Brands</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <Star key={star} className="w-6 h-6 text-[#8bde7a] fill-[#8bde7a]" />
+            ))}
+            <span className="text-white font-semibold ml-2">4.9/5 Rating</span>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── CTA SECTION ─────────────────────────────────────────────────────────────
+function CTASection() {
+  return (
+    <section className="relative py-20 lg:py-32 bg-slate-900 overflow-hidden">
+      <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-[#0093cb]/10 blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#00a65d]/10 blur-3xl" />
+      <div className="absolute inset-0 opacity-5" style={{
+        backgroundImage: `radial-gradient(circle, #8bde7a 1px, transparent 1px)`,
+        backgroundSize: '50px 50px'
+      }} />
+
+      <div className="relative max-w-4xl mx-auto px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="space-y-8"
+        >
+          <SectionBadge className="bg-white/10 text-[#8bde7a] border border-white/20 backdrop-blur-md">
+            <Sparkles className="w-4 h-4" />
+            Let's Build Together
+          </SectionBadge>
+
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+            Ready to Transform Your
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#0093cb] via-[#00a65d] to-[#8bde7a]">
+              Digital Healthcare Strategy?
+            </span>
           </h2>
-          <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join leading pharma companies already using Param’s digital gifting platform to strengthen doctor relationships and drive campaign success.
+
+          <p className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
+            Let's discuss how our digital products and services can enhance your
+            pharmaceutical marketing and patient engagement initiatives with measurable impact.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+
+          <div className="flex flex-wrap justify-center gap-4 pt-4">
+            <MagneticButton className="bg-gradient-to-r from-[#0093cb] to-[#00a65d] text-white px-8 py-4 rounded-full font-bold hover:shadow-lg hover:shadow-[#0093cb]/30 transition-all inline-flex items-center gap-2">
+              Schedule a Demo <ArrowUpRight size={20} />
+            </MagneticButton>
             <Link
-              href="/contact-us"
-              className="inline-flex items-center gap-2 bg-[#8bde7a] text-gray-900 px-8 py-4 rounded-full font-bold hover:bg-white hover:text-[#0093cb] transition-all shadow-lg"
+              href="/brochure"
+              className="px-8 py-4 rounded-full font-bold border-2 border-white/30 text-white hover:border-[#8bde7a] hover:text-[#8bde7a] transition-all"
             >
-              Get Started <ArrowRight size={20} />
-            </Link>
-            <Link
-              href="/case-study"
-              className="inline-flex items-center gap-2 border border-white/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-all"
-            >
-              View Success Stories
+              Download Brochure
             </Link>
           </div>
-        </div>
-      </section>
-    </div>
+        </motion.div>
+      </div>
+    </section>
   );
 }

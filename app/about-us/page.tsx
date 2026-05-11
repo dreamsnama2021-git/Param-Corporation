@@ -30,14 +30,13 @@ import {
   EditorialTimeline,
   TimelineItem,
 } from "../../components/EditorialTImeline";
-import CompanyMilestone from "../../components/Milestone";
 
 // ─── DATA: TIMELINE ─────────────────────────────────────────────────────────
 const timelineItems: TimelineItem[] = [
   {
     title: "The Beginning",
     description:
-      "Founded with a vision to create impactful corporate gifting solutions for the pharmaceutical industry.",
+      "Founded with a vision to create impactful corporate gifting solutions for the pharmaceutical industry. Our founding team combined healthcare marketing expertise with premium product design, recognizing an untapped opportunity to blend medical relevance with creative presentation. This deep industry insight became the cornerstone of our entire operation and continues to guide our decisions today.",
     date: "2019",
     category: "Foundation",
     icon: Rocket,
@@ -47,7 +46,7 @@ const timelineItems: TimelineItem[] = [
   {
     title: "Building Capabilities",
     description:
-      "Strengthened production infrastructure and expanded vendor network.",
+      "Strengthened production infrastructure and expanded vendor network to meet growing demand across multiple therapeutic segments. We invested in state-of-the-art manufacturing equipment and established rigorous quality control protocols. Our team grew to over fifty specialists across design, production, and client services, enabling us to handle increasingly complex projects while maintaining personalized attention.",
     date: "2020",
     category: "Growth",
     icon: Factory,
@@ -57,17 +56,17 @@ const timelineItems: TimelineItem[] = [
   {
     title: "Growing in Pharma",
     description:
-      "Expanded presence by working with leading pharmaceutical brands across India.",
+      "Expanded presence by working with leading pharmaceutical brands across India, establishing ourselves as a trusted partner in corporate gifting. Our portfolio grew to include top-tier companies who valued our understanding of regulatory compliance and ethical marketing. We developed specialized gifting categories for different medical specialties, ensuring each product served practical purposes while reinforcing brand messaging.",
     date: "2021",
     category: "Expansion",
     icon: Pill,
     image:
-      "https://images.unsplash.com/photo-1584308666744-3c0b9c22406f?w=800&q=80",
+      "https://cdn.expresspharma.in/wp-content/uploads/2021/11/12182826/Growth-1.jpg",
   },
   {
     title: "Focus on Innovation",
     description:
-      "Introduced customized and concept-driven gifting solutions aligned with brand campaigns.",
+      "Introduced customized and concept-driven gifting solutions aligned with brand campaigns, revolutionizing pharmaceutical engagement. Our innovation lab developed proprietary design methodologies that transformed ordinary medical utilities into memorable brand experiences. We pioneered augmented reality elements and sustainable materials, setting new industry standards that resonated strongly with healthcare professionals across the country.",
     date: "2022",
     category: "Innovation",
     icon: Lightbulb,
@@ -77,7 +76,7 @@ const timelineItems: TimelineItem[] = [
   {
     title: "Scaling Operations",
     description:
-      "Executed larger projects across India with improved efficiency and creative output.",
+      "Executed larger projects across India with improved efficiency handling multi-city simultaneous deployments with precision. We introduced dedicated project management teams, regional warehousing, and real-time tracking systems for unprecedented campaign visibility. Our lean management principles and digital automation reduced turnaround time by 40% while maintaining consistent quality across all product categories.",
     date: "2023",
     category: "Growth",
     icon: TrendingUp,
@@ -87,7 +86,7 @@ const timelineItems: TimelineItem[] = [
   {
     title: "Strengthening Partnerships",
     description:
-      "Achieved 90%+ client retention rate with repeat annual orders.",
+      "Achieved 90%+ client retention rate with repeat annual orders, reflecting our commitment to exceeding expectations consistently. We introduced dedicated relationship management programs providing strategic consultation beyond product delivery. Our feedback-driven improvement cycle ensures every campaign becomes more refined, creating increasing satisfaction and loyalty that forms the foundation for our next innovation phase.",
     date: "2025",
     category: "Achievement",
     icon: Users,
@@ -153,15 +152,15 @@ const FloatingCard = ({ children, className, delay = 0 }: { children: React.Reac
 
 const WhyUsSection = () => {
   const row1Cards = [
-    { title: "End to End Solution", desc: "Specialized in pharmaceutical gifting with deep understanding of doctor preferences.", icon: Pill, color: "bg-amber-500" },
+    { title: "Pharma Expertise", desc: "Specialized in pharmaceutical gifting with deep understanding of doctor preferences.", icon: Pill, color: "bg-amber-500" },
     { title: "Pan-India Delivery", desc: "Seamless delivery across India ensuring your gifts reach clinics anywhere.", icon: Globe, color: "bg-blue-500" },
-    { title: "In-House Manufaturing & R&D", desc: "Consistent quality and reliable execution of annual gifting campaigns.", icon: Heart, color: "bg-rose-500" },
+    { title: "90%+ Retention", desc: "Consistent quality and reliable execution of annual gifting campaigns.", icon: Heart, color: "bg-rose-500" },
   ];
   const row2Cards = [
-    { title: "Param Expertise", desc: "Gifts aligned with cardiac, diabetic, and pediatric therapy areas.", icon: Target, color: "bg-emerald-500" },
-    { title: "Strong Vendor Ecosystem & Sourcing Method", desc: "All gifts meet regulatory guidelines for pharmaceutical promotions.", icon: Shield, color: "bg-violet-500" },
-    { title: "After Sales Service", desc: "Personalized packaging and branding options for your medical reps.", icon: Package, color: "bg-orange-500" },
-    { title: "We Maintain Confidentiality", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Headphones, color: "bg-cyan-500" },
+    { title: "Therapy-Aligned", desc: "Gifts aligned with cardiac, diabetic, and pediatric therapy areas.", icon: Target, color: "bg-emerald-500" },
+    { title: "Compliance Ready", desc: "All gifts meet regulatory guidelines for pharmaceutical promotions.", icon: Shield, color: "bg-violet-500" },
+    { title: "Custom Branding", desc: "Personalized packaging and branding options for your medical reps.", icon: Package, color: "bg-orange-500" },
+    { title: "24/7 Support", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Headphones, color: "bg-cyan-500" },
   ];
 
     interface CardItem {
@@ -280,9 +279,7 @@ function VisionCard({ item }: { item: CardData }) {
         {item.desc}
       </p>
 
-      <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
-        <span className="text-[11px] text-slate-400">{item.estLabel}</span>
-      </div>
+      
     </div>
   );
 }
@@ -318,7 +315,7 @@ const VisionSection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white overflow-hidden">
+    <section className="py-12 2xl:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 text-[#0093cb]">
@@ -386,8 +383,8 @@ const TeamSection = () => {
       "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=600&fit=crop",
     },
     {
-      name: "Mr. Shanchay Dosi",
-      role: "Founder & CEO",
+      name: "Priya Mehta",
+      role: "Creative Director",
       image:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=600&fit=crop",
     },
@@ -400,7 +397,7 @@ const TeamSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-12 2xl:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-12 text-center">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-2">
@@ -426,8 +423,8 @@ export default function AboutUsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-8 lg:py-12 relative overflow-hidden flex items-center">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center py-20">
+      <section className="py-8 lg:pt-12 relative overflow-hidden flex items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center pt-20">
           <div className="space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -483,10 +480,8 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-
       {/* Journey Section */}
-      <section className="py-12 bg-white">
-        <CompanyMilestone/>
+      <section className="py-6 2xl:py-12 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center mb-16">
           <span className="text-[#0093cb] font-bold text-xs uppercase tracking-widest">
             Our History
