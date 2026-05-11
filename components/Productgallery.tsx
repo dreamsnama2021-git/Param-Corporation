@@ -7,35 +7,60 @@ interface GalleryImage {
   colSpan: number;
 }
 
-const galleryImages: GalleryImage[] = [
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Clear-Vision.jpg", colSpan: 2 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Tooth-tales.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/PCOS.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Acute.jpg", colSpan: 1},
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Type-2-Diabites.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Urinary-Track.jpg", colSpan: 2 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Dosage.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Ear.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Strok.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Epilipsy-1.jpg", colSpan: 2 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Hearning-loss.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Strok-1.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Ortho.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Medipride-3D-Model.jpg", colSpan: 2 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Dosage-1.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Ortho-1.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/PCOS-1.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Diabites.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Facial-muscle-anotomy-glass-printing-1.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/LLU-1.jpg", colSpan: 1 },
-  { src: "https://medipride.org/wp-content/uploads/2025/11/Benitowa-PCOS-1.jpg", colSpan: 1 },
+const koruImages: GalleryImage[] = [
+  { src: "/public/koru.png", colSpan: 2 },
+  { src: "/public/koru1.png", colSpan: 1 },
+  { src: "/public/koru2.png", colSpan: 1 },
+  { src: "/public/koru3.png", colSpan: 1 },
+  { src: "/public/koru4.png", colSpan: 1 },
+  { src: "/public/koru5.png", colSpan: 2 },
+  { src: "/public/koru6.png", colSpan: 1 },
+  { src: "/public/koru7.png", colSpan: 1 },
+  { src: "/public/koru8.png", colSpan: 1 },
+  { src: "/public/koru9.png", colSpan: 2 },
+  { src: "/public/koru10.png", colSpan: 1 },
+  { src: "/public/koru11.png", colSpan: 1 },
+  { src: "/public/koru12.png", colSpan: 1 },
+  { src: "/public/koru13.png", colSpan: 2 },
+  { src: "/public/koru14.png", colSpan: 1 },
+  { src: "/public/koru15.png", colSpan: 1 },
+  { src: "/public/koru16.png", colSpan: 1 },
+  { src: "/public/koru17.png", colSpan: 1 },
+  { src: "/public/koru18.png", colSpan: 1 },
+  { src: "/public/koru19.png", colSpan: 2 },
+  { src: "/public/koru20.png", colSpan: 1 },
+  { src: "/public/koru21.png", colSpan: 1 },
+  { src: "/public/koru22.png", colSpan: 1 },
+  { src: "/public/koru23.png", colSpan: 1 },
+  { src: "/public/koru24.png", colSpan: 2 },
+  { src: "/public/koru25.png", colSpan: 1 },
+  { src: "/public/koru26.png", colSpan: 1 },
+  { src: "/public/koru27.png", colSpan: 1 },
+  { src: "/public/koru28.png", colSpan: 2 },
+  { src: "/public/koru29.png", colSpan: 1 },
+  { src: "/public/koru30.png", colSpan: 1 },
+  { src: "/public/koru31.png", colSpan: 1 },
+  { src: "/public/koru32.png", colSpan: 1 },
+  { src: "/public/koru33.png", colSpan: 2 },
+  { src: "/public/koru34.png", colSpan: 1 },
+  { src: "/public/koru35.png", colSpan: 1 },
+  { src: "/public/koru36.png", colSpan: 1 },
+  { src: "/public/koru37.png", colSpan: 2 },
+  { src: "/public/koru38.png", colSpan: 1 },
+  { src: "/public/koru39.png", colSpan: 1 },
+  { src: "/public/koru40.png", colSpan: 1 },
+  { src: "/public/koru41.png", colSpan: 1 },
+  { src: "/public/koru42.png", colSpan: 2 },
+  { src: "/public/koru43.png", colSpan: 1 },
+  { src: "/public/koru44.png", colSpan: 1 },
+  { src: "/public/koru45.png", colSpan: 1 },
 ];
 
 export default function CollageGalleryManual() {
   const [showAll, setShowAll] = useState(false);
   
-  const displayedImages = showAll ? galleryImages : galleryImages.slice(0, 12);
-  const hasMoreImages = galleryImages.length > 12;
+  const displayedImages = showAll ? koruImages : koruImages.slice(0, 12);
+  const hasMoreImages = koruImages.length > 12;
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -50,7 +75,7 @@ export default function CollageGalleryManual() {
           >
             <Image
               src={image.src}
-              alt={`Gallery image ${index + 1}`}
+              alt={`Koru image ${index + 1}`}
               fill
               className="object-cover hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
@@ -68,7 +93,7 @@ export default function CollageGalleryManual() {
               className="px-8 py-3 bg-black text-white rounded-lg font-medium 
                        hover:bg-gray-800 transition-colors"
             >
-              See All ({galleryImages.length - 12}+ more)
+              See All ({koruImages.length - 12}+ more)
             </button>
           ) : (
             <button
