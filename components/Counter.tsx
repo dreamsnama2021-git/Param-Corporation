@@ -271,7 +271,7 @@ export default function CreativeStatsSection(): React.ReactElement {
             transition={{ delay: 0.1 }}
             className="ui-h1 font-extrabold capitalize tracking-tight mb-3 text-gray-900 mb-4"
           >
-            Trusted by <span className="text-[#0093cb]">Achieve Numbers</span>
+            Trusted by <span className="text-[#0093cb]"> Achieve Numbers </span>
           </motion.h2>
           
           <motion.p 
