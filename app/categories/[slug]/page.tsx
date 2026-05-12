@@ -1,111 +1,640 @@
-// Updated sidebar section of the listing page
-<div className="flex flex-col space-y-0.5 max-h-[calc(100vh-200px)] overflow-y-auto pr-2">
-  {/* All Products */}
-  <button
-    onClick={() => router.push("/categories/all?tab=all")}
-    className={`category-item group text-left py-3 px-4 rounded-xl transition-all ${
-      isAllProducts && activeTab === "all"
-        ? "font-semibold"
-        : "text-[#6b7280] hover:text-[#0f172a] hover:bg-gray-100"
-    }`}
-    style={
-      isAllProducts && activeTab === "all"
-        ? { backgroundColor: "#F5A62320", color: "#0f172a" }
-        : {}
-    }
-    type="button"
-  >
-    <div className="flex items-center justify-between">
-      <span>All Products</span>
-      <span className="text-xs px-2 py-0.5 rounded-full text-white bg-[#F5A623]">
-        <ArrowRight className="h-5 w-5" />
-      </span>
-    </div>
-  </button>
+/* ─── Category Page with Left Sidebar Dropdown + Subcategories ─── */
+"use client";
 
-  {/* Tab-level filters */}
-  {TABS.filter((t) => t.id !== "all").map((tab) => {
-    const tabProds = getCategoriesForTab(tab.id);
-    const count = allProducts.filter((p) =>
-      tabProds.some((cat) => cat.slug === p.category),
-    ).length;
+import React, {
+  useMemo,
+  useState,
+  useEffect,
+  useRef,
+} from "react";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import {
+  ArrowUpRight,
+  Home,
+  ChevronRight,
+  ChevronLeft,
+  X,
+  ZoomIn,
+  Grid3X3,
+  List,
+  ChevronDown,
+  Check,
+  Package,
+} from "lucide-react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  allProducts,
+  categories,
+  occasions,
+  personalizedGifts,
+} from "../../data";
 
-    return (
-      <React.Fragment key={tab.id}>
-        <button
-          onClick={() => handleTabChange(tab.id)}
-          className={`category-item group text-left py-3 px-4 rounded-xl transition-all ${
-            activeTab === tab.id
-              ? "font-semibold"
-              : "text-[#6b7280] hover:text-[#0f172a] hover:bg-gray-100"
-          }`}
-          style={
-            activeTab === tab.id
-              ? {
-                  backgroundColor: `${tab.color}20`,
-                  color: "#0f172a",
-                }
-              : {}
-          }
-          type="button"
-        >
-          <div className="flex items-center justify-between">
-            <span>{tab.label}</span>
-            <span
-              className={`text-xs px-2 py-0.5 rounded-full transition-colors ${
-                activeTab === tab.id
-                  ? "text-white"
-                  : "bg-gray-200 text-[#6b7280] group-hover:bg-gray-300"
-              }`}
-              style={
-                activeTab === tab.id
-                  ? { backgroundColor: tab.color }
-                  : {}
-              }
-            >
-              {count}
-            </span>
-          </div>
-        </button>
+const listingStyles = `
+  .listing-container { font-family: system-ui, -apple-system, sans-serif; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .product-card:hover .product-overlay { opacity: 1; }
+  .product-overlay { opacity: 0; transition: opacity 0.3s ease; }
+`;
 
-        {/* Show subcategories when this tab is active */}
-        {activeTab === tab.id && (
-          <div className="ml-4 space-y-0.5 border-l-2 border-gray-100 pl-3">
-            {tabProds.map((cat) => {
-              const catCount = allProducts.filter(
-                (p) => p.category === cat.slug
-              ).length;
-              return (
+/* Brand Colors */
+const BRAND = {
+  primary: "#0093cb",
+  secondary: "#00a65d",
+  accent: "#060706",
+};
+
+// Tab configuration with brand colors
+const TABS = [
+  { id: "all", label: "All Products", color: BRAND.primary },
+  { id: "categories", label: "Categories", color: BRAND.primary },
+  { id: "personalized", label: "Personalized", color: BRAND.secondary },
+  { id: "occasion", label: "Occasions", color: "#8B5CF6" },
+] as const;
+
+type TabId = (typeof TABS)[number]["id"];
+
+// Get categories based on active tab
+const getCategoriesForTab = (tabId: TabId) => {
+  if (tabId === "all") return [...categories, ...personalizedGifts, ...occasions];
+  if (tabId === "categories") return categories;
+  if (tabId === "personalized") return personalizedGifts;
+  if (tabId === "occasion") return occasions;
+  return [];
+};
+
+/* ══════════════════════════════════════════
+   SIDEBAR WITH DROPDOWN + SUBCATEGORIES
+══════════════════════════════════════════ */
+function SidebarWithSubcategories({
+  activeTab,
+  onSelect,
+}: {
+  activeTab: TabId;
+  onSelect: (tabId: TabId) => void;
+}) {
+  // Get subcategories for current active tab
+  const subCategories = useMemo(() => {
+    if (activeTab === "all") return [];
+    return getCategoriesForTab(activeTab);
+  }, [activeTab]);
+
+  const getCount = (tabId: TabId) => {
+    if (tabId === "all") return allProducts.length;
+    const cats = getCategoriesForTab(tabId);
+    return allProducts.filter((p) => cats.some((cat) => cat.slug === p.category)).length;
+  };
+
+  const getSubCategoryCount = (slug: string) => {
+    return allProducts.filter((p) => p.category === slug).length;
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* ─── FILTER BY HEADER ─── */}
+      <div>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
+            Filter By
+          </span>
+          <div className="h-px flex-1 bg-gray-200" />
+        </div>
+
+        {/* ─── MAIN TABS AS EXPANDABLE LIST ─── */}
+        <div className="bg-white rounded-xl border-2 border-gray-200 shadow-sm overflow-hidden">
+          {TABS.map((tab, index) => {
+            const count = getCount(tab.id);
+            const isSelected = activeTab === tab.id;
+            const hasSubcategories = tab.id !== "all";
+
+            return (
+              <div key={tab.id}>
+                {/* Main Tab Button */}
                 <button
-                  key={cat.slug}
-                  onClick={() => handleCategorySelect(cat.slug)}
-                  className={`category-item group text-left py-2 px-3 rounded-lg transition-all text-sm w-full ${
-                    slug === cat.slug
-                      ? "font-semibold"
-                      : "text-[#6b7280] hover:text-[#0f172a] hover:bg-gray-50"
-                  }`}
-                  style={
-                    slug === cat.slug
-                      ? {
-                          backgroundColor: `${activeTabColor}15`,
-                          color: "#0f172a",
-                        }
-                      : {}
-                  }
+                  onClick={() => onSelect(tab.id)}
+                  className={`w-full flex items-center justify-between py-3 px-4 text-left transition-colors relative ${
+                    isSelected
+                      ? "bg-gray-50"
+                      : "hover:bg-gray-50"
+                  } ${index !== TABS.length - 1 ? "border-b border-gray-100" : ""}`}
                   type="button"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="line-clamp-1">{cat.name}</span>
-                    <span className="text-[10px] text-gray-400 ml-1">
-                      {catCount}
+                  <div className="flex items-center gap-3">
+                    <span
+                      className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: tab.color }}
+                    />
+                    <span className={`text-sm ${
+                      isSelected 
+                        ? "font-semibold text-[#060706]" 
+                        : "text-gray-700"
+                    }`}>
+                      {tab.label}
                     </span>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-gray-400">{count}</span>
+                    {hasSubcategories && (
+                      <ChevronDown
+                        className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${
+                          isSelected ? "rotate-180" : ""
+                        }`}
+                      />
+                    )}
+                  </div>
                 </button>
-              );
-            })}
+
+                {/* Subcategories Dropdown */}
+                {isSelected && subCategories.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="bg-gray-50/50 border-t border-gray-100 overflow-hidden"
+                  >
+                    <div className="py-2 px-2 space-y-0.5 max-h-[50vh] overflow-y-auto scrollbar-hide">
+                      {subCategories.map((cat) => {
+                        const count = getSubCategoryCount(cat.slug);
+                        return (
+                          <a
+                            key={cat.slug}
+                            href={`#category-${cat.slug}`}
+                            className="group flex items-center justify-between py-2.5 px-3 rounded-lg text-sm text-gray-600 hover:text-[#060706] hover:bg-white transition-all"
+                          >
+                            <div className="flex items-center gap-2">
+                              <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#0093cb] transition-colors" />
+                              <span className="line-clamp-1">{cat.name}</span>
+                            </div>
+                            <span className="text-xs text-gray-400 ml-2 flex-shrink-0">
+                              {count}
+                            </span>
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════
+   PRODUCT CARD (Grid View)
+══════════════════════════════════════════ */
+function ProductCard({
+  product,
+  accentColor,
+}: {
+  product: any;
+  accentColor: string;
+}) {
+  const productImages = product.images || [product.image];
+  const productName = product.name || "Product";
+
+  return (
+    <Link href={`/product/${product.id}`} className="block">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-30px" }}
+        className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group h-full product-card border border-gray-100"
+      >
+        <div className="relative aspect-square overflow-hidden bg-gray-50">
+          {productImages[0] ? (
+            <Image
+              src={productImages[0]}
+              alt={productName}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              unoptimized
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <Package className="w-8 h-8 text-gray-300" />
+            </div>
+          )}
+          <div className="absolute inset-0 bg-[#0093cb]/0 group-hover:bg-[#0093cb]/10 transition-colors duration-300 flex items-center justify-center product-overlay">
+            <div className="w-10 h-10 rounded-full bg-white/95 flex items-center justify-center shadow-lg">
+              <ZoomIn className="w-4 h-4 text-[#0093cb]" />
+            </div>
+          </div>
+          {product.features && product.features.length > 0 && (
+            <div className="absolute top-2 left-2">
+              <span className="px-2 py-1 bg-white/90 backdrop-blur-sm rounded-full text-[10px] font-semibold text-[#060706] shadow-sm border border-gray-100">
+                {product.features[0]}
+              </span>
+            </div>
+          )}
+        </div>
+
+        <div className="p-3">
+          <p className="text-sm font-semibold text-[#060706] leading-tight line-clamp-2 mb-1 group-hover:text-[#0093cb] transition-colors">
+            {productName}
+          </p>
+          {product.tags && (
+            <div className="flex flex-wrap gap-1">
+              {product.tags.slice(0, 2).map((tag: string, idx: number) => (
+                <span
+                  key={idx}
+                  className="text-[10px] font-medium"
+                  style={{ color: accentColor }}
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </motion.div>
+    </Link>
+  );
+}
+
+/* ══════════════════════════════════════════
+   PRODUCT LIST ITEM (List View)
+══════════════════════════════════════════ */
+function ProductListItem({
+  product,
+  accentColor,
+}: {
+  product: any;
+  accentColor: string;
+}) {
+  const productImage = product.images?.[0] || product.image;
+
+  return (
+    <Link href={`/product/${product.id}`} className="block">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group flex gap-4 p-4 border border-gray-100"
+      >
+        <div className="relative w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden bg-gray-50">
+          {productImage ? (
+            <Image
+              src={productImage}
+              alt={product.name}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              unoptimized
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <Package className="w-6 h-6 text-gray-300" />
+            </div>
+          )}
+        </div>
+        <div className="flex-1 min-w-0">
+          <h3 className="text-sm font-bold text-[#060706] mb-1 group-hover:text-[#0093cb] transition-colors line-clamp-1">
+            {product.name}
+          </h3>
+          <p className="text-xs text-gray-500 mb-2 line-clamp-2">
+            {product.description}
+          </p>
+          {product.features && (
+            <div className="flex flex-wrap gap-1 mb-2">
+              {product.features.slice(0, 3).map((feature: string, idx: number) => (
+                <span
+                  key={idx}
+                  className="text-[10px] px-2 py-0.5 bg-[#0093cb]/5 text-[#0093cb] rounded-full font-medium"
+                >
+                  {feature}
+                </span>
+              ))}
+            </div>
+          )}
+          {product.tags && (
+            <div className="flex flex-wrap gap-1">
+              {product.tags.slice(0, 2).map((tag: string, idx: number) => (
+                <span key={idx} className="text-[10px] font-medium" style={{ color: accentColor }}>
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+        <ArrowUpRight className="w-5 h-5 text-gray-300 group-hover:text-[#0093cb] transition-colors flex-shrink-0 self-center" />
+      </motion.div>
+    </Link>
+  );
+}
+
+/* ══════════════════════════════════════════
+   LIGHTBOX MODAL
+══════════════════════════════════════════ */
+function LightboxModal({
+  product,
+  onClose,
+}: {
+  product: any;
+  onClose: () => void;
+}) {
+  const [currentImage, setCurrentImage] = useState(0);
+  const productImages = product.images || [product.image];
+
+  const nextImage = () => {
+    setCurrentImage((prev) => (prev + 1) % productImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImage((prev) => (prev - 1 + productImages.length) % productImages.length);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 bg-[#060706]/95 backdrop-blur-sm flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div
+        className="relative max-w-4xl w-full max-h-[90vh] rounded-2xl overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="relative aspect-square">
+          {productImages[currentImage] && (
+            <Image
+              src={productImages[currentImage]}
+              alt={product.name}
+              fill
+              className="object-contain"
+              unoptimized
+            />
+          )}
+        </div>
+
+        {productImages.length > 1 && (
+          <>
+            <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#0093cb]/30 transition-colors">
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#0093cb]/30 transition-colors">
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </>
+        )}
+
+        <button onClick={onClose} className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-colors">
+          <X className="w-5 h-5" />
+        </button>
+
+        {productImages.length > 1 && (
+          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-white text-xs">
+            {currentImage + 1} / {productImages.length}
           </div>
         )}
-      </React.Fragment>
-    );
-  })}
-</div>
+
+        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#060706]/90 to-transparent">
+          <h3 className="text-white text-xl font-bold">{product.name}</h3>
+          <p className="text-white/80 text-sm mt-1">{product.description}</p>
+          {product.tags && (
+            <div className="flex flex-wrap gap-1 mt-2">
+              {product.tags.map((tag: string, idx: number) => (
+                <span key={idx} className="text-xs px-2 py-0.5 bg-[#0093cb]/20 text-[#0093cb] rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+/* ══════════════════════════════════════════
+   PAGE COMPONENT
+══════════════════════════════════════════ */
+export default function CategoryPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const tabParam = searchParams.get("tab") as TabId | null;
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+
+  // Default to "all" if no tab specified
+  const activeTab: TabId = useMemo(() => {
+    if (tabParam && TABS.some((t) => t.id === tabParam)) return tabParam;
+    return "all";
+  }, [tabParam]);
+
+  const activeTabColor = TABS.find((t) => t.id === activeTab)?.color || BRAND.primary;
+  const tabCategories = useMemo(() => getCategoriesForTab(activeTab), [activeTab]);
+
+  // Group products by subcategory
+  const groupedProducts = useMemo(() => {
+    const groups: { categoryName: string; categorySlug: string; products: any[]; description?: string }[] = [];
+
+    tabCategories.forEach((cat) => {
+      const products = allProducts.filter((p) => p.category === cat.slug);
+      if (products.length > 0) {
+        groups.push({
+          categoryName: cat.name,
+          categorySlug: cat.slug,
+          products,
+          description: cat.description,
+        });
+      }
+    });
+
+    return groups;
+  }, [activeTab, tabCategories]);
+
+  const totalProducts = useMemo(() => {
+    return groupedProducts.reduce((sum, group) => sum + group.products.length, 0);
+  }, [groupedProducts]);
+
+  const handleTabSelect = (tabId: TabId) => {
+    router.push(`/categories/all?tab=${tabId}`, { scroll: false });
+  };
+
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: listingStyles }} />
+      <div className="min-h-screen listing-container bg-[#f8fafc]">
+        {/* Hero */}
+        <section className="relative bg-gradient-to-br from-[#060706] via-[#0b3c5d] to-[#0093cb]/30 py-12 lg:py-16 overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <svg width="100%" height="100%">
+              <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse">
+                <circle cx="20" cy="20" r="1.5" fill="white" />
+              </pattern>
+              <rect width="100%" height="100%" fill="url(#dots)" />
+            </svg>
+          </div>
+          <div className="relative max-w-7xl mx-auto px-6">
+            <nav className="flex items-center gap-2 text-xs uppercase tracking-wider text-white/60 mb-6">
+              <Link href="/" className="hover:text-white flex items-center gap-1.5 transition-colors">
+                <Home className="w-3 h-3" /> Home
+              </Link>
+              <ChevronRight className="w-3 h-3" />
+              <span className="text-white/80">Products</span>
+            </nav>
+
+            <h1 className="text-4xl lg:text-5xl font-serif italic text-white">
+              {TABS.find((t) => t.id === activeTab)?.label}
+            </h1>
+
+            <p className="text-white/60 mt-3 max-w-2xl text-lg">
+              {activeTab === "all"
+                ? "Explore our complete collection of premium pharmaceutical gifts and branding products"
+                : activeTab === "categories"
+                ? "Browse products by category including tabletops, paperweights, desk utilities and more"
+                : activeTab === "personalized"
+                ? "Discover personalized gifts with custom branding and doctor-specific details"
+                : "Find the perfect gifts for every occasion and medical event throughout the year"}
+            </p>
+
+            <div className="flex items-center gap-3 mt-4">
+              <span className="text-white/50 text-sm">{totalProducts} products</span>
+              <span className="w-1 h-1 rounded-full bg-white/30" />
+              <span className="text-white/50 text-sm">{groupedProducts.length} subcategories</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Main Content with Sidebar */}
+        <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+            {/* ─── LEFT SIDEBAR ─── */}
+            <aside className="lg:w-64 flex-shrink-0">
+              <div className="sticky top-[100px]">
+                <SidebarWithSubcategories activeTab={activeTab} onSelect={handleTabSelect} />
+
+                {/* View Toggle */}
+                <div className="mt-6">
+                  <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-3">
+                    View As
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setViewMode("grid")}
+                      className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all ${
+                        viewMode === "grid"
+                          ? "bg-[#060706] text-white shadow-lg"
+                          : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-50"
+                      }`}
+                      type="button"
+                    >
+                      <Grid3X3 className="w-4 h-4" />
+                      Grid
+                    </button>
+                    <button
+                      onClick={() => setViewMode("list")}
+                      className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all ${
+                        viewMode === "list"
+                          ? "bg-[#060706] text-white shadow-lg"
+                          : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-50"
+                      }`}
+                      type="button"
+                    >
+                      <List className="w-4 h-4" />
+                      List
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            {/* ─── RIGHT PRODUCT LISTING ─── */}
+            <main className="flex-1 min-w-0">
+              {groupedProducts.length === 0 ? (
+                <div className="text-center py-20">
+                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-[#0093cb]/5 flex items-center justify-center">
+                    <Package className="w-8 h-8 text-[#0093cb]/40" />
+                  </div>
+                  <p className="text-gray-500 text-lg">No products found.</p>
+                  <button
+                    onClick={() => router.push("/categories/all?tab=all")}
+                    className="mt-4 text-sm font-medium px-6 py-2.5 rounded-full text-white transition-all hover:shadow-lg"
+                    style={{ background: `linear-gradient(to right, ${BRAND.primary}, ${BRAND.secondary})` }}
+                    type="button"
+                  >
+                    View all products
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <div className="mb-8 flex items-center justify-between">
+                    <p className="text-sm text-gray-500">
+                      Showing <span className="font-semibold text-[#060706]">{totalProducts}</span> products
+                      in <span className="font-semibold text-[#060706]">{groupedProducts.length}</span> subcategories
+                    </p>
+                  </div>
+
+                  <div className="space-y-14">
+                    {groupedProducts.map((group) => (
+                      <section key={group.categorySlug} id={`category-${group.categorySlug}`}>
+                        <div className="mb-6">
+                          <div className="flex items-center gap-3 mb-2">
+                            <h2 className="text-xl lg:text-2xl font-bold text-[#060706]">
+                              {group.categoryName}
+                            </h2>
+                            <span className="text-sm text-gray-400 font-normal">
+                              ({group.products.length})
+                            </span>
+                          </div>
+                          {group.description && (
+                            <p className="text-sm text-gray-500">{group.description}</p>
+                          )}
+                          <div
+                            className="mt-3 w-16 h-1 rounded-full"
+                            style={{
+                              background: `linear-gradient(to right, ${BRAND.primary}, ${BRAND.secondary})`,
+                            }}
+                          />
+                        </div>
+
+                        {viewMode === "grid" ? (
+                          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                            {group.products.map((product) => (
+                              <ProductCard
+                                key={product.id}
+                                product={product}
+                                accentColor={activeTabColor}
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="flex flex-col gap-3">
+                            {group.products.map((product) => (
+                              <ProductListItem
+                                key={product.id}
+                                product={product}
+                                accentColor={activeTabColor}
+                              />
+                            ))}
+                          </div>
+                        )}
+                      </section>
+                    ))}
+                  </div>
+                </>
+              )}
+            </main>
+          </div>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {selectedProduct && (
+          <LightboxModal
+            product={selectedProduct}
+            onClose={() => setSelectedProduct(null)}
+          />
+        )}
+      </AnimatePresence>
+    </>
+  );
+}

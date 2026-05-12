@@ -9,7 +9,7 @@ import {
   priceRanges,
   occasions,
   therapies,
-} from "../app/data";
+} from "../app/FooterData";
 
 // Social Icon
 const SocialIcon = ({ children }: { children: React.ReactNode }) => (
