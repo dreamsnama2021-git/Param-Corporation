@@ -1,7 +1,7 @@
 // app/case-studies/page.tsx
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -15,9 +15,9 @@ import {
   Play, 
   Pause, 
   Eye, 
-  BookOpen, 
-  Clock, 
-  User, 
+  // BookOpen,  // Commented out since blogs tab is hidden
+  // Clock,     // Commented out since blogs tab is hidden
+  // User,      // Commented out since blogs tab is hidden
   ArrowUpRight,
   ExternalLink
 } from 'lucide-react';
@@ -37,6 +37,8 @@ interface CaseStudy {
   reverse?: boolean;
 }
 
+// BLOGS SECTION COMMENTED - WILL BE RE-ENABLED LATER
+/*
 interface Blog {
   id: number;
   title: string;
@@ -49,6 +51,7 @@ interface Blog {
   slug: string;
   tags: string[];
 }
+*/
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const caseStudies: CaseStudy[] = [
@@ -91,6 +94,8 @@ const caseStudies: CaseStudy[] = [
   }
 ];
 
+// BLOGS DATA COMMENTED - WILL BE RE-ENABLED LATER
+/*
 const blogs: Blog[] = [
   {
     id: 1,
@@ -165,6 +170,7 @@ const blogs: Blog[] = [
     tags: ["AI", "Medical Writing", "Technology"]
   }
 ];
+*/
 
 // ─── VIDEO PLAYER COMPONENT ─────────────────────────────────────────────────
 function VideoPlayer({ videoUrl, posterUrl, title }: { 
@@ -237,7 +243,7 @@ function VideoPlayer({ videoUrl, posterUrl, title }: {
 // ─── MAIN PAGE ──────────────────────────────────────────────────────────────
 export default function CaseStudiesPage() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<'watch' | 'read'>('watch');
+  // const [activeTab, setActiveTab] = useState<'watch' | 'read'>('watch'); // Commented - tab functionality hidden
 
   return (
     <div className="min-h-screen font-[family-name:var(--font-body)]">
@@ -269,7 +275,8 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* Tab Switcher */}
+      {/* TAB SWITCHER COMMENTED - WILL BE RE-ENABLED WHEN BLOGS ARE ADDED */}
+      {/*
       <section className="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-0">
@@ -298,84 +305,79 @@ export default function CaseStudiesPage() {
           </div>
         </div>
       </section>
+      */}
 
-      {/* Watch Tab - Case Studies */}
-      {activeTab === 'watch' && (
-        <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 lg:space-y-32">
-          {caseStudies.map((study, index) => (
-            <article 
-              key={study.id}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
-                study.reverse ? 'lg:grid-flow-dense' : ''
-              }`}
+      {/* Case Studies Grid - Always visible */}
+      <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 lg:space-y-32">
+        {caseStudies.map((study, index) => (
+          <article 
+            key={study.id}
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
+              study.reverse ? 'lg:grid-flow-dense' : ''
+            }`}
+          >
+            <div 
+              className={`relative group cursor-pointer ${study.reverse ? 'lg:col-start-2' : ''}`}
+              onClick={() => router.push(`/case-study/${study.slug}`)}
             >
-              <div 
-                className={`relative group cursor-pointer ${study.reverse ? 'lg:col-start-2' : ''}`}
-                onClick={() => router.push(`/case-studies/${study.slug}`)}
-              >
-                <VideoPlayer 
-                  videoUrl={study.videoUrl}
-                  posterUrl={study.posterUrl}
-                  title={study.title}
-                />
-                <div className={`absolute -z-10 w-full h-full rounded-2xl bg-[var(--clr-primary)]/10 top-4 ${study.reverse ? 'right-4' : 'left-4'}`} />
-                {/* Click overlay */}
-                <div className="absolute inset-0 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg flex items-center gap-2">
-                    <ExternalLink className="w-4 h-4 text-[var(--clr-primary)]" />
-                    <span className="text-sm font-semibold text-gray-900 font-[family-name:var(--font-display)]">View Details</span>
+              <VideoPlayer 
+                videoUrl={study.videoUrl}
+                posterUrl={study.posterUrl}
+                title={study.title}
+              />
+              <div className={`absolute -z-10 w-full h-full rounded-2xl bg-[var(--clr-primary)]/10 top-4 ${study.reverse ? 'right-4' : 'left-4'}`} />
+              {/* Click overlay */}
+              
+            </div>
+
+            <div className={`space-y-6 ${study.reverse ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
+              <div className="flex flex-wrap gap-3">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--clr-primary)]/10 text-[var(--clr-primary)] text-xs font-semibold font-[family-name:var(--font-display)]">
+                  <Tag className="w-3 h-3" />
+                  {study.category}
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium font-[family-name:var(--font-body)]">
+                  <Calendar className="w-3 h-3" />
+                  {study.date}
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium font-[family-name:var(--font-body)]">
+                  <Building2 className="w-3 h-3" />
+                  {study.client}
+                </span>
+              </div>
+
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-[family-name:var(--font-display)] font-bold text-gray-900 leading-tight">
+                {study.title}
+              </h2>
+
+              <p className="text-gray-600 leading-relaxed text-base md:text-lg font-[family-name:var(--font-body)] font-light">
+                {study.description}
+              </p>
+
+              {/* Quick Stats */}
+              <div className="flex gap-6">
+                {Object.entries(study.stats).map(([key, value]) => (
+                  <div key={key}>
+                    <div className="text-2xl font-bold text-[var(--clr-primary)] font-[family-name:var(--font-display)]">{value}</div>
+                    <div className="text-xs text-gray-500 capitalize font-[family-name:var(--font-body)]">{key}</div>
                   </div>
-                </div>
+                ))}
               </div>
 
-              <div className={`space-y-6 ${study.reverse ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
-                <div className="flex flex-wrap gap-3">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--clr-primary)]/10 text-[var(--clr-primary)] text-xs font-semibold font-[family-name:var(--font-display)]">
-                    <Tag className="w-3 h-3" />
-                    {study.category}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium font-[family-name:var(--font-body)]">
-                    <Calendar className="w-3 h-3" />
-                    {study.date}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium font-[family-name:var(--font-body)]">
-                    <Building2 className="w-3 h-3" />
-                    {study.client}
-                  </span>
-                </div>
+              <button
+                onClick={() => router.push(`/case-study/${study.slug}`)}
+                className="inline-flex items-center gap-2 text-[var(--clr-primary)] font-semibold hover:text-[var(--clr-secondary)] transition-colors group font-[family-name:var(--font-display)]"
+              >
+                View Full Case Study 
+                <ArrowUpRight className="w-5 h-5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </button>
+            </div>
+          </article>
+        ))}
+      </section>
 
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-[family-name:var(--font-display)] font-bold text-gray-900 leading-tight">
-                  {study.title}
-                </h2>
-
-                <p className="text-gray-600 leading-relaxed text-base md:text-lg font-[family-name:var(--font-body)] font-light">
-                  {study.description}
-                </p>
-
-                {/* Quick Stats */}
-                <div className="flex gap-6">
-                  {Object.entries(study.stats).map(([key, value]) => (
-                    <div key={key}>
-                      <div className="text-2xl font-bold text-[var(--clr-primary)] font-[family-name:var(--font-display)]">{value}</div>
-                      <div className="text-xs text-gray-500 capitalize font-[family-name:var(--font-body)]">{key}</div>
-                    </div>
-                  ))}
-                </div>
-
-                <button
-                  onClick={() => router.push(`/case-studies/${study.slug}`)}
-                  className="inline-flex items-center gap-2 text-[var(--clr-primary)] font-semibold hover:text-[var(--clr-secondary)] transition-colors group font-[family-name:var(--font-display)]"
-                >
-                  View Full Case Study 
-                  <ArrowUpRight className="w-5 h-5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </button>
-              </div>
-            </article>
-          ))}
-        </section>
-      )}
-
-      {/* Read Tab - Blogs */}
+      {/* BLOGS SECTION COMMENTED - WILL BE RE-ENABLED LATER */}
+      {/*
       {activeTab === 'read' && (
         <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -384,7 +386,6 @@ export default function CaseStudiesPage() {
                 key={blog.id}
                 className="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
-                {/* Blog Image */}
                 <Link href={`/blogs/${blog.slug}`} className="block relative aspect-[16/10] overflow-hidden">
                   <Image
                     src={blog.image}
@@ -395,15 +396,12 @@ export default function CaseStudiesPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
-                  {/* Category Badge */}
                   <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-xs font-semibold text-gray-900 font-[family-name:var(--font-display)]">
                     {blog.category}
                   </span>
                 </Link>
 
-                {/* Blog Content */}
                 <div className="p-6">
-                  {/* Meta Info */}
                   <div className="flex items-center gap-4 text-xs text-gray-500 mb-3 font-[family-name:var(--font-body)]">
                     <span className="flex items-center gap-1">
                       <User className="w-3 h-3" />
@@ -419,19 +417,16 @@ export default function CaseStudiesPage() {
                     </span>
                   </div>
 
-                  {/* Title */}
                   <Link href={`/blogs/${blog.slug}`}>
                     <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[var(--clr-primary)] transition-colors line-clamp-2 font-[family-name:var(--font-display)]">
                       {blog.title}
                     </h3>
                   </Link>
 
-                  {/* Excerpt */}
                   <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3 font-[family-name:var(--font-body)] font-light">
                     {blog.excerpt}
                   </p>
 
-                  {/* Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {blog.tags.map((tag) => (
                       <span key={tag} className="px-2 py-1 rounded-md bg-gray-100 text-gray-600 text-[11px] font-medium font-[family-name:var(--font-display)]">
@@ -440,7 +435,6 @@ export default function CaseStudiesPage() {
                     ))}
                   </div>
 
-                  {/* Read More Link */}
                   <Link 
                     href={`/blogs/${blog.slug}`}
                     className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--clr-primary)] hover:text-[var(--clr-secondary)] transition-colors font-[family-name:var(--font-display)]"
@@ -453,7 +447,6 @@ export default function CaseStudiesPage() {
             ))}
           </div>
 
-          {/* View All Blogs CTA */}
           <div className="text-center mt-12">
             <Link
               href="/blogs"
@@ -465,6 +458,7 @@ export default function CaseStudiesPage() {
           </div>
         </section>
       )}
+      */}
 
       {/* Bottom CTA Section */}
       <section className="py-16 lg:py-24 bg-white border-t border-gray-100">
@@ -473,7 +467,7 @@ export default function CaseStudiesPage() {
             Ready to Create Your Success Story?
           </h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto font-[family-name:var(--font-body)] font-light">
-            Let's discuss how Zexcel Medical Communications can help you achieve your marketing objectives with tailored medical communication strategies.
+            Let&apos;s discuss how Zexcel Medical Communications can help you achieve your marketing objectives with tailored medical communication strategies.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
