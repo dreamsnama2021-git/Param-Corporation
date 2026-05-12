@@ -17,7 +17,7 @@ const CASE_STUDIES = [
     image:
       "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop",
     slug: "pharma-strategy",
-    // stats: { growth: "+45%", reach: "2.8M+" },
+    stats: { growth: "+45%", reach: "2.8M+" },
   },
   {
     id: 2,
