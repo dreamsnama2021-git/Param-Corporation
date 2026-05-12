@@ -154,16 +154,16 @@ const AboutUsPage: React.FC = () => {
             </div>
 
             <h2 className="text-3xl xl:text-5xl font-extrabold tracking-tight lg:text-7xl leading-[1.1] animate-fade-up delay-100 text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500 pb-2">
-              Building trust, <br />
-              <span className="text-[#0093cb]">one connection</span> <br />
-              at a time.
+              Corporate Gifting For, <br />
+              <span className="text-[#0093cb]">Pharma Brands</span> <br />
+              In India.
             </h2>
 
             <p className="text-gray-500 text-lg leading-relaxed max-w-xl animate-fade-up delay-200 font-light">
-              We go beyond the surface to understand what truly drives success.
-              By blending innovative technology with genuine human connection,
-              we create experiences that aren't just efficient, but deeply
-              impactful. Considered support, uncommonly delivered.
+              At Param Corporation, we specialize in delivering strategic
+              corporate gifting & pharma marketing solutions tailored to different
+              industries. From doctor engagement kits to promotional
+              merchandise, we turn ideas into impactful brand experiences.
             </p>
             <div className="flex justify-center">
               <Link

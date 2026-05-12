@@ -152,15 +152,15 @@ const FloatingCard = ({ children, className, delay = 0 }: { children: React.Reac
 
 const WhyUsSection = () => {
   const row1Cards = [
-    { title: "Pharma Expertise", desc: "Specialized in pharmaceutical gifting with deep understanding of doctor preferences.", icon: Pill, color: "bg-amber-500" },
+    { title: "End to End Solutions", desc: "Specialized in pharmaceutical gifting with deep understanding of doctor preferences.", icon: Pill, color: "bg-amber-500" },
     { title: "Pan-India Delivery", desc: "Seamless delivery across India ensuring your gifts reach clinics anywhere.", icon: Globe, color: "bg-blue-500" },
-    { title: "90%+ Retention", desc: "Consistent quality and reliable execution of annual gifting campaigns.", icon: Heart, color: "bg-rose-500" },
+    { title: "In-House Manufacturing & R&D", desc: "Consistent quality and reliable execution of annual gifting campaigns.", icon: Heart, color: "bg-rose-500" },
   ];
   const row2Cards = [
-    { title: "Therapy-Aligned", desc: "Gifts aligned with cardiac, diabetic, and pediatric therapy areas.", icon: Target, color: "bg-emerald-500" },
-    { title: "Compliance Ready", desc: "All gifts meet regulatory guidelines for pharmaceutical promotions.", icon: Shield, color: "bg-violet-500" },
-    { title: "Custom Branding", desc: "Personalized packaging and branding options for your medical reps.", icon: Package, color: "bg-orange-500" },
-    { title: "24/7 Support", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Headphones, color: "bg-cyan-500" },
+    { title: "Pharma Expertise", desc: "Gifts aligned with cardiac, diabetic, and pediatric therapy areas.", icon: Target, color: "bg-emerald-500" },
+    { title: "Strong Vender Ecosystem & Sourcing", desc: "All gifts meet regulatory guidelines for pharmaceutical promotions.", icon: Shield, color: "bg-violet-500" },
+    { title: "After Sales Service", desc: "Personalized packaging and branding options for your medical reps.", icon: Package, color: "bg-orange-500" },
+    { title: "We Maintain Confidentiality", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Headphones, color: "bg-cyan-500" },
   ];
 
     interface CardItem {
@@ -288,9 +288,9 @@ const VisionSection = () => {
     {
       number: "01",
       label: "Vision",
-      title: "Transforming Pharma Gifting",
+      title: "Creating Meaningful Brand Connections",
       tagline: '"Every gift strengthens doctor relationships"',
-      desc: "To become the most trusted gifting partner for pharmaceutical brands by delivering innovative, therapy-aligned solutions that create lasting impressions.",
+      desc: "To become a trusted partner for corporates across industries by delivering innovative gifting solutions that create lasting impressions and real engagement.",
       icon: <Target size={20} />,
       iconBg: "bg-blue-50",
       iconColor: "text-[#0093cb]",
@@ -302,9 +302,9 @@ const VisionSection = () => {
     {
       number: "02",
       label: "Mission",
-      title: "Delivering Excellence Daily",
+      title: "Driven by Purpose. Focused on Results.",
       tagline: '"Quality, creativity, and reliability"',
-      desc: "To design and deliver high-quality, customized gifting solutions that add value to pharma campaigns and consistently exceed client expectations.",
+      desc: "Content:To design and deliver high-quality, customized gifting solutions that add value, improve brand communication, and consistently exceed client expectations.",
       icon: <Rocket size={20} />,
       iconBg: "bg-emerald-50",
       iconColor: "text-[#00a65d]",
