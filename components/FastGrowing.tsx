@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { TrendingUp, Building2, Sprout, Pill, Factory, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface Industry {
   id: string;
@@ -63,15 +64,23 @@ export default function FastestGrowing() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
-    <section className="relative py-12 2xl:py-16 bg-gradient-to-b from-gray-50 to-white">
+    <section className="relative py-8 2xl:py-16 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <h2 className="text-2xl lg:text-3xl font-bold text-[var(--clr-text-dark)] mb-8 lg:mb-10">
-          Industries We {" "}
-          <span className="bg-gradient-to-r from-[var(--clr-primary)] to-blue-600 bg-clip-text text-transparent">
-            Cater
-          </span>
-        </h2>
+        <div className="text-center mb-12 2xl:mb-20">
+               
+                 
+                 <motion.h2 
+                   initial={{ opacity: 0, y: 20 }}
+                   whileInView={{ opacity: 1, y: 0 }}
+                   viewport={{ once: true }}
+                   transition={{ delay: 0.1 }}
+                   className="ui-h1 font-extrabold capitalize tracking-tight mb-3 text-gray-900 mb-4"
+                 >
+                   Industry we<span className="text-[#0093cb]"> Cater</span>
+                 </motion.h2>
+                 
+               </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">

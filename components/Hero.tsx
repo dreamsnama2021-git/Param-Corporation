@@ -13,7 +13,6 @@ interface StatItem {
 
 interface HeroSlide {
   image: string;
-  href: string;
   alt: string;
 }
 
@@ -28,17 +27,14 @@ const STATS: StatItem[] = [
 const HERO_SLIDES: HeroSlide[] = [
   {
     image: "/banner/home.jpeg",
-    href: "/categories/all",
     alt: "Corporate Gifts",
   },
   {
-    image: "/banner/home.jpeg",
-    href: "/categories/all",
+    image: "/banner/home2.jpeg",
     alt: "Branding",
   },
   {
-    image: "/banner/home.jpeg",
-    href: "/categories/all",
+    image: "/banner/home3.jpeg",
     alt: "Pharmaceutical Gifts",
   },
 ];
@@ -46,121 +42,130 @@ const HERO_SLIDES: HeroSlide[] = [
 // ─── Component ───────────────────────────────────────
 export default function HeroWithStats() {
   const [current, setCurrent] = useState(0);
-  const [animating, setAnimating] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [direction, setDirection] = useState<'left' | 'right'>('right');
 
   useEffect(() => setMounted(true), []);
 
   const goTo = useCallback((index: number) => {
-    if (animating) return;
-    setAnimating(true);
-    setTimeout(() => {
-      setCurrent(index);
-      setAnimating(false);
-    }, 300);
-  }, [animating]);
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setDirection(index > current ? 'right' : 'left');
+    setCurrent(index);
+    setTimeout(() => setIsTransitioning(false), 700);
+  }, [current, isTransitioning]);
 
   const prev = useCallback(() => {
-    goTo((current - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+    const newIndex = (current - 1 + HERO_SLIDES.length) % HERO_SLIDES.length;
+    goTo(newIndex);
   }, [current, goTo]);
 
   const next = useCallback(() => {
-    goTo((current + 1) % HERO_SLIDES.length);
+    const newIndex = (current + 1) % HERO_SLIDES.length;
+    goTo(newIndex);
   }, [current, goTo]);
 
+  // Auto-advance slides
   useEffect(() => {
     const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
   }, [next]);
 
   if (!mounted) {
-    return <div className="min-h-[50vh] md:min-h-[60vh] lg:min-h-screen bg-[var(--clr-bg-cream)]" />;
+    return <div className="h-screen bg-[var(--clr-bg-cream)]" />;
   }
-
-  const slide = HERO_SLIDES[current];
 
   return (
     <div className="flex flex-col overflow-hidden">
+      
+      {/* ─── HERO - Full View with Smooth Slides ───────────────── */}
+      <section className="relative w-full h-[70vh] lg:h-[90vh] overflow-hidden bg-black">
+        
+        {/* Slides container */}
+        <div className="relative w-full h-full">
+          {HERO_SLIDES.map((slide, index) => {
+            let position = 'translate-x-0';
+            
+            if (index === current) {
+              position = 'translate-x-0';
+            } else if (index < current) {
+              position = '-translate-x-full';
+            } else {
+              position = 'translate-x-full';
+            }
 
-      {/* ─── HERO ───────────────── */}
-      <section className="relative w-full overflow-hidden
-        h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[85vh]
-        bg-gradient-to-br from-[var(--clr-bg-cream)] via-[var(--clr-white)] to-[var(--clr-bg-gray)]">
-
-        {/* overlay */}
-        <div className="absolute top-0 right-0 w-full lg:w-[60%] h-full 
-        bg-gradient-to-l from-[var(--clr-primary)/10] to-transparent" />
-
-        {/* blur accent */}
-        <div className="absolute bottom-0 left-1/4 w-48 md:w-72 h-48 md:h-72 rounded-full 
-        bg-[var(--clr-secondary)/10] blur-3xl" />
-
-        {/* grid pattern */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none 
-      [background-image:radial-gradient(circle,rgba(15,143,191,0.15) 1px,transparent 1px)]
-        [background-size:24px_24px]" />
-
-        {/* slider */}
-        <div className={`relative w-full h-full transition-all duration-300 ${
-          animating ? "opacity-0 scale-95" : "opacity-100 scale-100"
-        }`}>
-
-          <a href={slide.href} className="relative block w-full h-full group">
-            <Image
-              src={slide.image}
-              alt={slide.alt}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              priority
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
-              unoptimized
-            />
-
-            {/* CTA */}
-            <div className="absolute inset-0 flex items-center justify-center 
-            bg-black/0 group-hover:bg-black/20 transition">
-              {/* CTA button commented out as in original */}
-            </div>
-          </a>
-
-          {/* arrows - responsive sizing */}
-          <button onClick={prev}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 
-            w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 
-            bg-white rounded-full shadow flex items-center justify-center 
-            hover:text-[var(--clr-primary)] transition"
-            aria-label="Previous slide">
-            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-          </button>
-
-          <button onClick={next}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 
-            w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 
-            bg-white rounded-full shadow flex items-center justify-center 
-            hover:text-[var(--clr-primary)] transition"
-            aria-label="Next slide">
-            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-          </button>
-
-          {/* dots - responsive positioning */}
-          <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3">
-            {HERO_SLIDES.map((_, i) => (
-              <button key={i}
-                onClick={() => goTo(i)}
-                className={`rounded-full transition-all ${
-                  i === current
-                    ? "w-6 sm:w-8 h-2 bg-[var(--clr-primary)]"
-                    : "w-2 h-2 bg-white/80"
-                }`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
+            return (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-transform duration-700 ease-in-out ${position}`}
+                style={{
+                  transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
+              >
+                <Image
+                  src={slide.image}
+                  alt={slide.alt}
+                  fill
+                  className="object-fill"
+                  priority={index === 0}
+                  sizes="100vw"
+                  quality={100}
+                />
+              </div>
+            );
+          })}
         </div>
+
+        {/* Navigation arrows */}
+        <button 
+          onClick={prev}
+          className="absolute left-4 sm:left-6 md:left-8 top-1/2 -translate-y-1/2 
+          w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 
+          bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center 
+          text-white hover:bg-white/40 hover:scale-110 transition-all duration-300
+          border border-white/30 shadow-lg group z-10"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:-translate-x-1 transition-transform" />
+        </button>
+
+        <button 
+          onClick={next}
+          className="absolute right-4 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 
+          w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 
+          bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center 
+          text-white hover:bg-white/40 hover:scale-110 transition-all duration-300
+          border border-white/30 shadow-lg group z-10"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:translate-x-1 transition-transform" />
+        </button>
+
+        {/* Dots navigation */}
+        {/* <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+          {HERO_SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className={`rounded-full transition-all duration-300 ${
+                i === current
+                  ? "w-10 sm:w-12 h-3 bg-white shadow-lg"
+                  : "w-3 h-3 bg-white/60 hover:bg-white/80 hover:scale-110"
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div> */}
+
+        {/* Gradient overlays for better navigation visibility */}
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black/20 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
       </section>
 
-      {/* ─── STATS ───────────────── */}
-      {/* Stats section preserved as is, commented out in original */}
+      {/* ─── STATS - Overlapping effect ───────────────── */}
+     
     </div>
   );
 }

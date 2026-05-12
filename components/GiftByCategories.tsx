@@ -147,7 +147,7 @@ function GiftsByCategories() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent 
                 opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
-              
+
               <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
                 <h3 className="font-normal text-xl md:text-2xl mb-1 group-hover:translate-x-1 transition-transform duration-300">
                   {item.title}
@@ -189,7 +189,7 @@ function TrendingProducts() {
     }
 
     positionRef.current += speedRef.current;
-    
+
     const singleSetWidth = scrollRef.current.scrollWidth / 3;
     if (positionRef.current >= singleSetWidth) {
       positionRef.current -= singleSetWidth;
@@ -226,7 +226,8 @@ function TrendingProducts() {
           <span className="text-xs font-bold tracking-[0.3em] uppercase text-[#0093cb] mb-3 block">
             Trending Now
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0f172a] tracking-tight mb-3">
+
+          <h2 className="ui-h1 font-extrabold capitalize tracking-tight mb-3 text-[var(--clr-text-dark)]">
             Doctor's <span className="text-[#0093cb]">Favorite</span>
           </h2>
           <div className="flex justify-center items-center gap-3">
@@ -238,7 +239,7 @@ function TrendingProducts() {
 
         <div className="relative">
           {/* Marquee Container */}
-          <div 
+          <div
             className="overflow-hidden relative py-4"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -248,7 +249,7 @@ function TrendingProducts() {
             <div className="absolute right-0 top-0 bottom-0 w-24 lg:w-32 bg-gradient-to-l from-[#f8fafc] to-transparent z-10 pointer-events-none" />
 
             {/* Scrolling Content */}
-            <div 
+            <div
               ref={scrollRef}
               className="flex gap-4 lg:gap-5"
               style={{ willChange: 'transform' }}
@@ -276,7 +277,7 @@ function TrendingProducts() {
                     unoptimized
                     sizes="(max-width: 640px) 200px, (max-width: 1024px) 220px, 240px"
                   />
-                  
+
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent 
                     opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
@@ -294,7 +295,7 @@ function TrendingProducts() {
           </div>
         </div>
 
-    
+
       </div>
     </section>
   );
