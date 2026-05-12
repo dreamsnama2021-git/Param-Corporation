@@ -131,18 +131,18 @@ export const digitalGifts: CategoryItem[] = [
 
 export const allProducts: Product[] = [
   // Categories - Paperweights
-  { id: 1, name: "Paperweights1 Crystal Glass Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
-  { id: 2, name: "Paperweights2 Corporate Logo Paperweight", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
-  { id: 3, name: "Paperweights3 Metal Finish Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 32, name: "Paperweights4 Metal Finish Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 33, name: "Paperweights5 Metal Finish Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 34, name: "Paperweights6 Metal Finish Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 35, name: "Paperweights7 Metal Finish Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 36, name: "Paperweights1 Crystal Glass Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
-  { id: 37, name: "Paperweights2 Corporate Logo Paperweight", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
-  { id: 38, name: "Paperweights3 Metal Finish Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 39, name: "Paperweights4 Metal Finish Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 40, name: "Paperweights5 Metal Finish Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 1, name: "Paperweights1 Crystal Glass Paperweight", image: "/products/5 STAR THEME MAGNETIC PAPERWEIGHT 1.JPG", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
+  { id: 2, name: "Paperweights2 Corporate Logo Paperweight", image: "/products/BRISTOL STOOL CHART PAPERWEIGHT.jpg", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
+  { id: 3, name: "Paperweights3 Metal Finish Paperweight", image: "/products/CAPSULE ROCKING PAPERWEIGHT 3.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 32, name: "Paperweights4 Metal Finish Paperweight", image: "/products/CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 33, name: "Paperweights5 Metal Finish Paperweight", image: "/products/CUSTOMIZED APPLE SHAPED FRAGRANCE PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 34, name: "Paperweights6 Metal Finish Paperweight", image: "/products/5 STAR THEME MAGNETIC PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 35, name: "Paperweights7 Metal Finish Paperweight", image: "/products/BRISTOL STOOL CHART PAPERWEIGHT.jpg", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 36, name: "Paperweights1 Crystal Glass Paperweight", image: "/products/CAPSULE ROCKING PAPERWEIGHT 3.JPG", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
+  { id: 37, name: "Paperweights2 Corporate Logo Paperweight", image: "/products/CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT.JPG", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
+  { id: 38, name: "Paperweights3 Metal Finish Paperweight", image: "/products/CUSTOMIZED APPLE SHAPED FRAGRANCE PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 39, name: "Paperweights4 Metal Finish Paperweight", image: "/products/5 STAR THEME MAGNETIC PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 40, name: "Paperweights5 Metal Finish Paperweight", image: "/products/BRISTOL STOOL CHART PAPERWEIGHT.jpg", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   
   // Categories - Tabletops
   { id: 4, name: "Executive Desk Calendar", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
