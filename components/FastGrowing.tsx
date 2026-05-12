@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { TrendingUp, Building2, Sprout, Pill, Factory, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Industry {
   id: string;
@@ -12,6 +13,7 @@ interface Industry {
   color: string;
   bgColor: string;
   companies: string;
+  image: string;
 }
 
 const industries: Industry[] = [
@@ -22,7 +24,8 @@ const industries: Industry[] = [
     growth: "+32%",
     color: "from-emerald-500 to-teal-600",
     bgColor: "bg-emerald-50",
-    companies: "500+ Companies"
+    companies: "500+ Companies",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&h=400&fit=crop"
   },
   {
     id: "agro",
@@ -31,7 +34,8 @@ const industries: Industry[] = [
     growth: "+28%",
     color: "from-green-500 to-lime-600",
     bgColor: "bg-green-50",
-    companies: "350+ Companies"
+    companies: "350+ Companies",
+    image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=400&fit=crop"
   },
   {
     id: "manufacturing",
@@ -40,7 +44,8 @@ const industries: Industry[] = [
     growth: "+45%",
     color: "from-blue-500 to-indigo-600",
     bgColor: "bg-blue-50",
-    companies: "800+ Companies"
+    companies: "800+ Companies",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop"
   },
   {
     id: "construction",
@@ -49,7 +54,8 @@ const industries: Industry[] = [
     growth: "+38%",
     color: "from-orange-500 to-red-600",
     bgColor: "bg-orange-50",
-    companies: "600+ Companies"
+    companies: "600+ Companies",
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&h=400&fit=crop"
   }
 ];
 
@@ -57,22 +63,13 @@ export default function FastestGrowing() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
-    <section className="relative py-12 lg:py-16 bg-gradient-to-b from-gray-50 to-white">
+    <section className="relative py-12 2xl:py-16 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex items-center gap-3 mb-8 lg:mb-10">
-          <div className="flex items-center gap-2 bg-[var(--clr-primary)]/10 px-3 py-1.5 rounded-full">
-            <TrendingUp className="w-3.5 h-3.5 text-[var(--clr-primary)]" />
-            <span className="text-xs font-bold text-[var(--clr-primary)] uppercase tracking-wider">
-              Trending Now
-            </span>
-          </div>
-        </div>
-
         <h2 className="text-2xl lg:text-3xl font-bold text-[var(--clr-text-dark)] mb-8 lg:mb-10">
-          India's Fastest Growing{" "}
+          Industries We {" "}
           <span className="bg-gradient-to-r from-[var(--clr-primary)] to-blue-600 bg-clip-text text-transparent">
-            Industries
+            Cater
           </span>
         </h2>
 
@@ -86,39 +83,42 @@ export default function FastestGrowing() {
               onMouseLeave={() => setActiveCard(null)}
             >
               <Link href={`/categories/industry/${industry.id}`}>
-                <div className={`relative bg-white rounded-xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
-                  activeCard === index ? "shadow-lg -translate-y-1" : "shadow-sm"
+                <div className={`relative h-64 lg:h-72 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
+                  activeCard === index ? "shadow-xl -translate-y-1" : "shadow-sm"
                 }`}>
-                  {/* Top Gradient Bar */}
-                  <div className={`h-1.5 bg-gradient-to-r ${industry.color}`} />
-
-                  <div className="p-4 lg:p-5">
-                    {/* Icon & Growth Badge */}
-                    <div className="flex items-start justify-between mb-3">
-                      <div className={`p-2.5 rounded-lg ${industry.bgColor}`}>
-                        <div className={`bg-gradient-to-r ${industry.color} bg-clip-text text-transparent`}>
+                  {/* Background Image */}
+                  <Image
+                    src={industry.image}
+                    alt={industry.name}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                  
+                  {/* Gradient Overlays */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} opacity-20`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  
+                  {/* Content */}
+                  <div className="relative h-full flex flex-col justify-end p-4 lg:p-5">
+                    {/* Icon */}
+                    <div className="absolute top-4 left-4">
+                      <div className="p-2.5 rounded-lg bg-white/20 backdrop-blur-md">
+                        <div className="text-white">
                           {industry.icon}
                         </div>
                       </div>
-                      
-                      <span className={`px-2.5 py-1 rounded-full bg-gradient-to-r ${industry.color} text-white text-xs font-bold`}>
-                        {industry.growth}
-                      </span>
                     </div>
 
-                    {/* Name & Companies */}
-                    <h3 className="text-sm lg:text-base font-bold text-[var(--clr-text-dark)] mb-1">
-                      {industry.name}
-                    </h3>
-                    <p className="text-xs text-gray-500 mb-3">
-                      {industry.companies}
-                    </p>
-
-                    {/* CTA */}
-                    <div className="flex items-center gap-1 text-xs font-semibold text-[var(--clr-primary)] group-hover:gap-2 transition-all">
-                      Explore
-                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    {/* Bottom Content */}
+                    <div className="mb-2">
+                      <h3 className="text-lg 2xl:text-xl font-semibold text-white mb-1">
+                        {industry.name}
+                      </h3>
+                    
                     </div>
+
+                    
                   </div>
                 </div>
               </Link>

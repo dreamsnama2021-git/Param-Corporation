@@ -442,7 +442,7 @@ export default function DigitalServicesPage() {
 // ─── HERO BANNER ─────────────────────────────────────────────────────────────
 function HeroBanner() {
   return (
-    <section className="relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh] overflow-hidden">
+    <section className="relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh] lg:mb-8 overflow-hidden">
       <Image
         src="/koru/koru.png"
         alt="Digital Products & Services"
@@ -518,7 +518,7 @@ function CategorySection({ category, index }: { category: ServiceCategory; index
   };
 
   return (
-    <section className={`pt-8 2xl:py-24 ${isEven ? 'bg-white' : 'bg-gradient-to-br from-[#0093cb]/[0.02] via-white to-[#00a65d]/[0.02]'}`}>
+    <section className={`pt-8 2xl:py-14 ${isEven ? 'bg-white' : 'bg-gradient-to-br from-[#0093cb]/[0.02] via-white to-[#00a65d]/[0.02]'}`}>
       <div className="max-w-7xl mx-auto px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -526,17 +526,15 @@ function CategorySection({ category, index }: { category: ServiceCategory; index
           viewport={{ once: true, margin: "-60px" }}
           className=""
         >
-          <div className="flex items-center gap-4 mb-2">
+          <div className="flex items-center  gap-4 mb-2">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0093cb] bg-[#0093cb]/10 px-3 py-1.5 rounded-full">
               {category.number}
             </span>
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#0093cb] to-[#00a65d] flex items-center justify-center shadow-lg shadow-[#0093cb]/20">
-              <Icon size={22} className="text-white" />
-            </div>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
-            {category.title}
-          </h2>
+
+
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 ">
+              {category.title}
+            </h2> </div>
           <p className="text-lg text-slate-600 max-w-2xl leading-relaxed">
             {category.description}
           </p>
@@ -601,7 +599,7 @@ function ProductCard({ product }: { product: DigitalProduct }) {
           background: 'radial-gradient(circle at center, rgba(0, 166, 93, 0.15) 0%, transparent 70%)',
         }}
       />
-      
+
       <div className="relative h-72 overflow-hidden bg-slate-100">
         <Image
           src={product.image}
@@ -722,7 +720,7 @@ function TableTopGallerySection() {
         </div>
 
         {/* Carousel - Visible on Mobile/Tablet + shows all on desktop */}
-       
+
 
         {/* Second Row of Grid - Desktop only (images 5-8) */}
         <div className="hidden lg:grid lg:grid-cols-4 gap-5">
@@ -810,77 +808,6 @@ function TableTopGallerySection() {
   );
 }
 
-// ─── WHY DIGITAL SECTION ─────────────────────────────────────────────────────
-function WhyDigitalSection() {
-  const cards = [
-    {
-      title: "Pharma Expertise",
-      desc: "Specialized in pharmaceutical digital solutions with deep healthcare domain knowledge and regulatory understanding.",
-      icon: Target,
-      gradient: "from-[#0093cb] to-[#0082b5]"
-    },
-    {
-      title: "Pan-India Reach",
-      desc: "Seamless digital deployment across India reaching clinics and hospitals in every corner of the country.",
-      icon: Globe,
-      gradient: "from-[#00a65d] to-[#00934d]"
-    },
-    {
-      title: "Compliance Ready",
-      desc: "All digital solutions meet regulatory guidelines for pharmaceutical promotions and data privacy.",
-      icon: Shield,
-      gradient: "from-[#0093cb] to-[#00a65d]"
-    },
-    {
-      title: "24/7 Support",
-      desc: "Dedicated technical support team ensuring smooth digital campaign execution around the clock.",
-      icon: Clock,
-      gradient: "from-[#00a65d] to-[#8bde7a]"
-    },
-  ];
-
-  return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 via-white to-[#8bde7a]/5">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-14"
-        >
-          <SectionBadge className="bg-[#8bde7a]/10 text-[#00a65d] border border-[#8bde7a]/20 mb-4">
-            <Sparkles size={16} />
-            Why Choose Us
-          </SectionBadge>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900">
-            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Digital</span> Advantage
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {cards.map((card, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group relative bg-white p-6 rounded-3xl border border-slate-200 hover:border-transparent hover:shadow-xl transition-all duration-500 overflow-hidden"
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-              <div className={`relative w-12 h-12 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center text-white mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                <card.icon size={22} />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-3">{card.title}</h3>
-              <p className="text-sm text-slate-500 leading-relaxed">{card.desc}</p>
-              <div className={`absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r ${card.gradient} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 // ─── TESTIMONIAL STRIP ──────────────────────────────────────────────────────
 function TestimonialStrip() {

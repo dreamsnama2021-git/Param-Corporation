@@ -27,17 +27,17 @@ const STATS: StatItem[] = [
 
 const HERO_SLIDES: HeroSlide[] = [
   {
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWthWDpx0u3TYsbq0GOfSUi3XPvIY-_2eCMQ&s",
+    image: "/banner/home.jpeg",
     href: "/categories/all",
     alt: "Corporate Gifts",
   },
   {
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWthWDpx0u3TYsbq0GOfSUi3XPvIY-_2eCMQ&s",
+    image: "/banner/home.jpeg",
     href: "/categories/all",
     alt: "Branding",
   },
   {
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWthWDpx0u3TYsbq0GOfSUi3XPvIY-_2eCMQ&s",
+    image: "/banner/home.jpeg",
     href: "/categories/all",
     alt: "Pharmaceutical Gifts",
   },

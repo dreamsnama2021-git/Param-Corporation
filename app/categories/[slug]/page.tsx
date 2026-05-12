@@ -24,14 +24,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   allProducts,
   categories,
-  therapies,
   occasions,
   personalizedGifts,
   digitalGifts,
   getCategoryBySlug,
   getOccasionCategories,
   getMonthCategories,
-  getTherapyCategories,
 } from "../../data";
 
 const listingStyles = `
@@ -51,7 +49,7 @@ const listingStyles = `
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 `;
 
-// Tab configuration
+// Tab configuration - Removed therapy tab
 const TABS = [
   { id: "all", label: "All Products", color: "#F5A623", path: "/categories" },
   {
@@ -60,7 +58,6 @@ const TABS = [
     color: "#F5A623",
     path: "/categories",
   },
-  { id: "therapy", label: "Therapy", color: "#10B981", path: "/therapy" },
   {
     id: "personalized",
     label: "Personalized",
@@ -73,18 +70,16 @@ const TABS = [
 
 type TabId = (typeof TABS)[number]["id"];
 
-// Get categories based on active tab
+// Get categories based on active tab - Removed therapy references
 const getCategoriesForTab = (tabId: TabId) => {
   if (tabId === "all")
     return [
       ...categories,
-      ...therapies,
       ...personalizedGifts,
       ...occasions,
       ...digitalGifts,
     ];
   if (tabId === "categories") return categories;
-  if (tabId === "therapy") return therapies;
   if (tabId === "personalized") return personalizedGifts;
   if (tabId === "occasion") return occasions;
   if (tabId === "digital") return digitalGifts;
@@ -185,7 +180,6 @@ export default function CategoryPage() {
 
     if (slug) {
       if (categories.some((c) => c.slug === slug)) return "categories";
-      if (therapies.some((t) => t.slug === slug)) return "therapy";
       if (personalizedGifts.some((p) => p.slug === slug)) return "personalized";
       if (occasions.some((o) => o.slug === slug)) return "occasion";
       if (digitalGifts.some((d) => d.slug === slug)) return "digital";
@@ -215,7 +209,6 @@ export default function CategoryPage() {
         activeTab === "all"
           ? [
               ...categories,
-              ...therapies,
               ...personalizedGifts,
               ...occasions,
               ...digitalGifts,
@@ -347,7 +340,7 @@ export default function CategoryPage() {
                     </div>
                   </button>
 
-                  {/* Tab-level filters */}
+                  {/* Tab-level filters - Removed therapy */}
                   {TABS.filter((t) => t.id !== "all").map((tab) => {
                     const tabProds = getCategoriesForTab(tab.id);
                     const count = allProducts.filter((p) =>
@@ -397,7 +390,6 @@ export default function CategoryPage() {
               </div>
             </aside>
 
-            {/* Listings */}
             {/* Listings */}
             <main className="flex-1 min-w-0">
               {filteredProducts.length === 0 ? (

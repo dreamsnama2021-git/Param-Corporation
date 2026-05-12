@@ -19,7 +19,8 @@ const testimonials = [
   {
     quote:
       "Working with Param Corporation was a fantastic experience. They turned my concept into a practical solution, completing the Fluvir Dosage Scale with precision and dedication.",
-    name: "Samriddhi Pednekar",
+    logo:"https://paramcorp.in/wp-content/uploads/2025/01/HETERO_HEALTHCARE-1-e1737096475593.png",
+      name: "Samriddhi Pednekar",
     role: "Product Management",
     company: "Hetero Healthcare",
     stat: "Concept to Reality",
@@ -62,7 +63,8 @@ const testimonials = [
   {
     quote:
       "The quality and attention to detail exceeded our expectations. The team delivered exceptional results within our timeline and budget constraints.",
-    name: "Priya Sharma",
+    logo:"https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0012-scaled.jpg",
+      name: "Priya Sharma",
     role: "HR Director",
     company: "Cipla Ltd",
     stat: "Exceptional Quality",
@@ -73,7 +75,8 @@ const testimonials = [
   {
     quote:
       "Working with Param Corporation was a fantastic experience. They turned my concept into a practical solution, completing the Fluvir Dosage Scale with precision and dedication.",
-    name: "Samriddhi Pednekar",
+  logo:"https://paramcorp.in/wp-content/uploads/2025/01/HETERO_HEALTHCARE-1-e1737096475593.png",
+      name: "Samriddhi Pednekar",
     role: "Product Management",
     company: "Hetero Healthcare",
     stat: "Concept to Reality",

@@ -20,7 +20,7 @@ export default function Page() {
       {/* <BackgroundDecoration /> */}
       <Hero />
       <AboutUs />
-      <TagLine />
+      {/* <TagLine /> */}
       <ProductSections />
       <ClientSection/>
       <CaseStudy/>
