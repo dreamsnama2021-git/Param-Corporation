@@ -13,6 +13,7 @@ import CreativeStatsSection from "@/components/Counter";
 import BackgroundDecoration from "@/components/BackgroundDecoration";
 import AboutUs from "@/components/AboutUs";
 import FastestGrowing from "@/components/FastGrowing";
+import InstagramReels from "@/components/Instagram";
 
 export default function Page() {
   return (
@@ -23,6 +24,7 @@ export default function Page() {
       {/* <TagLine /> */}
       <ProductSections />
       <ClientSection/>
+      <InstagramReels />
       <CaseStudy/>
       <FastestGrowing/>
       <CreativeStatsSection/>
