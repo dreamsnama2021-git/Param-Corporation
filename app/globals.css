@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
@@ -6,7 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-body);
   --font-mono: var(--font-geist-mono);
   --radius: 20px;
 }
@@ -48,13 +48,14 @@
   /* Container Config */
   --container-padding: 1rem;
   --container-max: 100%;
+
+  /* Font Variables */
+  --font-display: "DM Sans", sans-serif;
+  --font-body: "Poppins", sans-serif;
 }
 
 /* =====================================================
    UI-SECTION BASE (Mobile First)
-   - Full width with consistent padding
-   - Auto margins for centering
-   - Max-width constraints on larger screens
 ===================================================== */
 .ui-section {
   width: 100%;
@@ -109,8 +110,6 @@
 
 /* =====================================================
    TABLET (768px - 1023px)
-   - Increases padding
-   - Wider max-width
 ===================================================== */
 @media (min-width: 768px) {
   :root {
@@ -150,8 +149,6 @@
 
 /* =====================================================
    DESKTOP (1280px - 1439px)
-   - Standard desktop container
-   - 15% margins effect (max-width 70% or fixed max-width)
 ===================================================== */
 @media (min-width: 1280px) {
   :root {
@@ -166,7 +163,6 @@
   
   .ui-section {
     max-width: var(--container-max);
-    /* Alternative for 15% margins: width: 70%; */
     padding: var(--space-2xl) var(--container-padding);
   }
 }
@@ -213,8 +209,6 @@
 
 /* =====================================================
    ULTRA-WIDE (1900px+)
-   - Optional: use 70% width for 15% margins
-   - Or keep max-width for readability
 ===================================================== */
 @media (min-width: 1900px) {
   :root {
@@ -228,20 +222,10 @@
     --space-2xl: 6rem;
   }
   
-  /* Option 1: Fixed max-width (recommended) */
   .ui-section {
     max-width: var(--container-max);
     padding: var(--space-2xl) var(--container-padding);
   }
-  
-  /* Option 2: Percentage-based (uncomment to use) */
-  /*
-  .ui-section {
-    width: 70%;
-    max-width: 1800px;
-    padding: var(--space-2xl) 0;
-  }
-  */
 }
 
 /* =====================================================
@@ -275,23 +259,55 @@
 /* =====================================================
    TYPOGRAPHY
 ===================================================== */
-/* Add to globals.css */
 body {
   position: relative;
-}
-body {
   font-family: var(--font-body), sans-serif;
   background-color: var(--clr-bg-cream);
   color: var(--clr-text-dark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.ui-h1, .ui-h2, .ui-h3, .ui-h4 {
+  font-family: var(--font-display), sans-serif;
+  color: var(--clr-text-dark);
+}
+
+.ui-h1 {
+  font-size: var(--h1-size);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-sm);
+}
+
+.ui-h2 {
+  font-size: var(--h2-size);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-sm);
+}
+
+.ui-h3 {
+  font-size: var(--h3-size);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.ui-h4 {
+  font-size: var(--h4-size);
+  line-height: 1.4;
+  font-weight: 600;
+}
+
 .ui-para {
   font-family: var(--font-body), sans-serif;
   font-size: var(--para-size);
-  line-height: 1.7; /* Increased line-height for "breathing room" */
-  font-weight: 300; /* Lighter body text feels more minimal */
+  line-height: 1.7;
+  font-weight: 300;
   color: var(--clr-text-dark);
+  margin-bottom: var(--space-sm);
 }
 
 .ui-desc {
@@ -300,14 +316,12 @@ body {
   line-height: 1.6;
   color: var(--clr-text-muted);
   font-weight: 400;
-}
-.ui-h1, .ui-h2, .ui-h3 {
-  font-family: var(--font-display), serif;
-  font-weight: 500; /* Medium weight in Serif looks more expensive than Bold */
-  letter-spacing: -0.01em;
-  color: var(--clr-text-dark);
+  max-width: 600px;
 }
 
+/* =====================================================
+   GRID BACKGROUND
+===================================================== */
 body::before {
   content: '';
   position: fixed;
@@ -327,60 +341,10 @@ body > * {
   position: relative;
   z-index: 1;
 }
-/* Add at the very end of globals.css */
 
 /* Force grid pattern visibility */
 .fixed.inset-0 {
   z-index: 0 !important;
-}
-
-body {
-  position: relative;
-}
-
-
-.ui-h1 {
-  font-size: var(--h1-size);
-  line-height: 1.1;
-  font-weight: 700;
-  /* color: var(--clr-text-dark); */
-  margin-bottom: var(--space-sm);
-}
-
-.ui-h2 {
-  font-size: var(--h2-size);
-  line-height: 1.2;
-  font-weight: 600;
-  color: var(--clr-text-dark);
-  margin-bottom: var(--space-sm);
-}
-
-.ui-h3 {
-  font-size: var(--h3-size);
-  line-height: 1.3;
-  font-weight: 600;
-  color: var(--clr-text-dark);
-}
-
-.ui-h4 {
-  font-size: var(--h4-size);
-  line-height: 1.4;
-  font-weight: 600;
-  color: var(--clr-text-dark);
-}
-
-.ui-para {
-  font-size: var(--para-size);
-  line-height: 1.65;
-  color: var(--clr-text-dark);
-  margin-bottom: var(--space-sm);
-}
-
-.ui-desc {
-  font-size: var(--desc-size);
-  line-height: 1.6;
-  color: var(--clr-text-muted);
-  max-width: 600px;
 }
 
 /* =====================================================
@@ -397,6 +361,7 @@ body {
   background: var(--clr-primary);
   border-radius: 9999px;
   line-height: 1;
+  font-family: var(--font-display), sans-serif;
 }
 
 .ui-btn {
@@ -412,6 +377,7 @@ body {
   cursor: pointer;
   border: none;
   text-decoration: none;
+  font-family: var(--font-display), sans-serif;
 }
 
 .ui-btn-primary {
@@ -435,6 +401,7 @@ body {
   color: var(--clr-text-dark);
   outline: none;
   transition: all 0.25s ease;
+  font-family: var(--font-body), sans-serif;
 }
 
 .ui-input {

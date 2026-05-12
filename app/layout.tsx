@@ -2,21 +2,20 @@
 import type { ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackgroundDecoration from "@/components/BackgroundDecoration";
 
-// Premium Serif for Headings
-const display = Cormorant_Garamond({
+// Primary Font for Headings
+const display = Poppins({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
+  weight: ["500", "600", "700"],
 });
 
-// Minimalist Sans for Body
-const body = Inter({
+// Secondary Font for Body
+const body = Poppins({
   subsets: ["latin"],
   variable: "--font-body",
   weight: ["300", "400", "500"],

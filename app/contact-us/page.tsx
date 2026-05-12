@@ -28,7 +28,7 @@ export default function ContactUs() {
   };
 
   return (
-    <div className="min-h-screen font-sans bg-[#f8fafc00]">
+    <div className="min-h-screen font-[family-name:var(--font-body)] bg-[#f8fafc00]">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[#0b3c5d] via-[#072c44] to-[#0093cb]/20 min-h-[240px] md:min-h-[280px] flex items-end overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -49,7 +49,7 @@ export default function ContactUs() {
                   stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
           </svg>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif italic text-white mb-3">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] font-bold text-white mb-3">
             Let&apos;s <span className="relative inline-block">
               Connect
               <svg className="absolute -bottom-2 left-0 w-full" height="6" viewBox="0 0 100 6" preserveAspectRatio="none">
@@ -86,7 +86,7 @@ export default function ContactUs() {
                 <path d="M2 6C4 2 8 1 10 3C12 5 14 7 18 4C22 1 26 5 30 3" 
                       stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
               </svg>
-              <span className="text-[#0093cb] font-medium tracking-wider text-xs uppercase">
+              <span className="text-[#0093cb] font-medium tracking-wider text-xs uppercase font-[family-name:var(--font-display)]">
                 Get In Touch
               </span>
               <svg width="32" height="8" viewBox="0 0 32 8" fill="none" className="text-[#0093cb] rotate-180">
@@ -95,8 +95,8 @@ export default function ContactUs() {
               </svg>
             </div>
             
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic text-[#0f172a] mb-4">
-              Let’s Work{" "}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-display)] font-bold text-[#0f172a] mb-4">
+              Let&apos;s Work{" "}
               <span className="relative inline-block">
                 Together
                 <svg className="absolute -bottom-2 left-0 w-full" height="6" viewBox="0 0 100 6" preserveAspectRatio="none">
@@ -105,13 +105,10 @@ export default function ContactUs() {
               </span>
             </h2>
             
-            <p className="text-[#6b7280] leading-relaxed text-base md:text-lg">
+            <p className="text-[#6b7280] leading-relaxed text-base md:text-lg font-[family-name:var(--font-body)] font-light">
               From patient education tools to doctor engagement materials, our team collaborates closely with healthcare brands, 
               pharma companies, and medical professionals to deliver meaningful solutions.
             </p>
-            {/* <p className="text-[#6b7280] leading-relaxed text-base md:text-lg mt-2">
-              Let us know how we can support your next medical communication initiative.
-            </p> */}
           </div>
 
           {/* Two Column Layout with equal height alignment */}
@@ -126,8 +123,8 @@ export default function ContactUs() {
                     <MapPin className="w-4 h-4 text-[#0093cb]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#0f172a] mb-1 text-sm">Visit Our Office</h3>
-                    <p className="text-[#6b7280] text-xs leading-relaxed">
+                    <h3 className="font-bold text-[#0f172a] mb-1 text-sm font-[family-name:var(--font-display)]">Visit Our Office</h3>
+                    <p className="text-[#6b7280] text-xs leading-relaxed font-[family-name:var(--font-body)] font-light">
                       101, KetkiPada Rd, near Timber Green Apartments,<br /> Diamond Industrial Estate,
                        Dahisar East,<br />
                       Mumbai, Maharashtra 400068
@@ -146,10 +143,10 @@ export default function ContactUs() {
                       <Phone className="w-3.5 h-3.5 text-[#0093cb]" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-[#0f172a] text-xs">Call Us</h3>
+                      <h3 className="font-bold text-[#0f172a] text-xs font-[family-name:var(--font-display)]">Call Us</h3>
                       <a
                         href="tel:+919820149950"
-                        className="flex items-center gap-1.5 text-[#6b7280] hover:text-[#0093cb] text-xs transition-colors group/link"
+                        className="flex items-center gap-1.5 text-[#6b7280] hover:text-[#0093cb] text-xs transition-colors group/link font-[family-name:var(--font-body)]"
                       >
                         <span className="w-1 h-1 rounded-full bg-[#8bde7a] group-hover/link:scale-150 transition-transform" />
                         +91 98201 49950
@@ -165,10 +162,10 @@ export default function ContactUs() {
                       <Mail className="w-3.5 h-3.5 text-[#0093cb]" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-[#0f172a] text-xs">Email Us</h3>
+                      <h3 className="font-bold text-[#0f172a] text-xs font-[family-name:var(--font-display)]">Email Us</h3>
                       <a
                         href="mailto:info@paramcorporation.com"
-                        className="flex items-center gap-1.5 text-[#6b7280] hover:text-[#0093cb] text-xs transition-colors group/link"
+                        className="flex items-center gap-1.5 text-[#6b7280] hover:text-[#0093cb] text-xs transition-colors group/link font-[family-name:var(--font-body)]"
                       >
                         <span className="w-1 h-1 rounded-full bg-[#8bde7a] group-hover/link:scale-150 transition-transform flex-shrink-0" />
                         info@paramcorp.com
@@ -185,8 +182,8 @@ export default function ContactUs() {
                     <Clock className="w-3.5 h-3.5 text-[#0093cb]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#0f172a] text-xs">Business Hours</h3>
-                    <p className="text-[#6b7280] text-xs">Mon - Sat: 9:00 AM - 6:00 PM</p>
+                    <h3 className="font-bold text-[#0f172a] text-xs font-[family-name:var(--font-display)]">Business Hours</h3>
+                    <p className="text-[#6b7280] text-xs font-[family-name:var(--font-body)] font-light">Mon - Sat: 9:00 AM - 6:00 PM</p>
                   </div>
                 </div>
               </div>
@@ -222,11 +219,11 @@ export default function ContactUs() {
                 <div className="text-center mb-5">
                   <div className="inline-flex items-center gap-2 bg-[#f8fafc] rounded-full px-3 py-1 border border-[#eef2f7] mb-3">
                     <Sparkles className="w-3 h-3 text-[#0093cb]" />
-                    <span className="text-[10px] font-medium text-[#6b7280] uppercase tracking-wider">
+                    <span className="text-[10px] font-medium text-[#6b7280] uppercase tracking-wider font-[family-name:var(--font-display)]">
                       Send a Message
                     </span>
                   </div>
-                  <h3 className="text-xl md:text-2xl font-serif italic text-[#0f172a]">
+                  <h3 className="text-xl md:text-2xl font-[family-name:var(--font-display)] font-bold text-[#0f172a]">
                     Don&apos;t hesitate to{" "}
                     <span className="relative inline-block">
                       reach out
@@ -247,7 +244,7 @@ export default function ContactUs() {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       onFocus={() => setFocusedField("name")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280]"
+                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] font-[family-name:var(--font-body)]"
                     />
                     <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
                       focusedField === "name" ? "scale-x-100" : "scale-x-0"
@@ -263,7 +260,7 @@ export default function ContactUs() {
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       onFocus={() => setFocusedField("email")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280]"
+                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] font-[family-name:var(--font-body)]"
                     />
                     <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
                       focusedField === "email" ? "scale-x-100" : "scale-x-0"
@@ -278,7 +275,7 @@ export default function ContactUs() {
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       onFocus={() => setFocusedField("phone")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280]"
+                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] font-[family-name:var(--font-body)]"
                     />
                     <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
                       focusedField === "phone" ? "scale-x-100" : "scale-x-0"
@@ -294,7 +291,7 @@ export default function ContactUs() {
                       onChange={(e) => setFormData({ ...formData, query: e.target.value })}
                       onFocus={() => setFocusedField("query")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] resize-none"
+                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] resize-none font-[family-name:var(--font-body)]"
                     />
                     <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
                       focusedField === "query" ? "scale-x-100" : "scale-x-0"
@@ -303,7 +300,7 @@ export default function ContactUs() {
 
                   <button
                     type="submit"
-                    className="group relative w-full bg-[#0093cb] hover:bg-[#00a65d] text-white px-8 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg overflow-hidden"
+                    className="group relative w-full bg-[#0093cb] hover:bg-[#00a65d] text-white px-8 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg overflow-hidden font-[family-name:var(--font-display)]"
                   >
                     <span className="relative z-10 flex items-center gap-2 text-sm">
                       Send Message
@@ -313,7 +310,7 @@ export default function ContactUs() {
                   </button>
                 </form>
 
-                <p className="text-center text-[10px] text-[#6b7280] mt-3 pt-1">
+                <p className="text-center text-[10px] text-[#6b7280] mt-3 pt-1 font-[family-name:var(--font-body)] font-light">
                   We typically respond within 24 hours
                 </p>
               </div>

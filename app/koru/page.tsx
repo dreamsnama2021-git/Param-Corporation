@@ -355,7 +355,7 @@ export default function KoruCommunications() {
               </svg>
               <span className="text-[#0093cb] font-medium tracking-wider text-xs sm:text-sm uppercase">What We Do Best</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-serif italic text-[#0f172a]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl text-[#0f172a]">
               Expert{" "}
               <span className="relative inline-block">
                 Services
