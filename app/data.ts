@@ -95,20 +95,20 @@ export const therapies: CategoryItem[] = [
 
 // 6. Personalized Gifts (Customized items with doctor name, clinic branding, etc.)
 export const personalizedGifts: CategoryItem[] = [
-  { name: "Doctor Name Personalization", slug: "doctor-name-personalization", description: "Gifts with doctor's name engraved or printed" },
-  { name: "Clinic Branding", slug: "clinic-branding", description: "Items customized with clinic logo and details" },
-  { name: "Custom Packaging", slug: "custom-packaging", description: "Branded packaging solutions for gifts" },
+  { name: "Photo Frames", slug: "doctor-name-personalization", description: "Gifts with doctor's name engraved or printed" },
+  { name: "Momentos", slug: "clinic-branding", description: "Items customized with clinic logo and details" },
+  { name: "Trophies", slug: "custom-packaging", description: "Branded packaging solutions for gifts" },
   { name: "Brand-Specific Messaging", slug: "brand-specific-messaging", description: "Personalized messages and brand communication" },
-  { name: "Engraved Pens", slug: "engraved-pens", description: "Personalized writing instruments" },
-  { name: "Custom Mugs", slug: "custom-mugs", description: "Printed and personalized coffee mugs" },
-  { name: "Photo Gifts", slug: "photo-gifts", description: "Personalized photo items and collages" },
-  { name: "Custom Stationery", slug: "custom-stationery", description: "Branded and personalized stationery sets" },
-  { name: "Embossed Leather", slug: "embossed-leather", description: "Personalized leather goods and accessories" },
-  { name: "Engraved Keychains", slug: "engraved-keychains", description: "Custom metal and wooden keychains" },
-  { name: "Custom Apparel", slug: "custom-apparel", description: "Personalized T-shirts, caps and clothing" },
-  { name: "Personalized Diaries", slug: "personalized-diaries", description: "Custom notebooks and planners" },
-  { name: "Custom Drinkware", slug: "custom-drinkware", description: "Personalized bottles and sippers" },
-  { name: "Engraved Awards", slug: "engraved-awards", description: "Custom trophies and recognition awards" },
+  { name: "Persanalized Hampers", slug: "engraved-pens", description: "Personalized writing instruments" },
+  { name: "Star Map", slug: "custom-mugs", description: "Printed and personalized coffee mugs" },
+  { name: "Name Plate", slug: "photo-gifts", description: "Personalized photo items and collages" },
+  { name: "3D Printed Plates", slug: "custom-stationery", description: "Branded and personalized stationery sets" },
+  { name: "Personalized Desk Utility", slug: "embossed-leather", description: "Personalized leather goods and accessories" },
+  { name: "Personalized Gifts", slug: "engraved-keychains", description: "Custom metal and wooden keychains" },
+  // { name: "Custom Apparel", slug: "custom-apparel", description: "Personalized T-shirts, caps and clothing" },
+  // { name: "Personalized Diaries", slug: "personalized-diaries", description: "Custom notebooks and planners" },
+  // { name: "Custom Drinkware", slug: "custom-drinkware", description: "Personalized bottles and sippers" },
+  // { name: "Engraved Awards", slug: "engraved-awards", description: "Custom trophies and recognition awards" },
 ];
 
 // 7. Digital Gifts (Tech and electronic items)
@@ -131,9 +131,18 @@ export const digitalGifts: CategoryItem[] = [
 
 export const allProducts: Product[] = [
   // Categories - Paperweights
-  { id: 1, name: "Crystal Glass Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
-  { id: 2, name: "Corporate Logo Paperweight", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
-  { id: 3, name: "Metal Finish Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 1, name: "Paperweights1 Crystal Glass Paperweight", image: "/products/5 STAR THEME MAGNETIC PAPERWEIGHT 1.JPG", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
+  { id: 2, name: "Paperweights2 Corporate Logo Paperweight", image: "/products/BRISTOL STOOL CHART PAPERWEIGHT.jpg", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
+  { id: 3, name: "Paperweights3 Metal Finish Paperweight", image: "/products/CAPSULE ROCKING PAPERWEIGHT 3.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 32, name: "Paperweights4 Metal Finish Paperweight", image: "/products/CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 33, name: "Paperweights5 Metal Finish Paperweight", image: "/products/CUSTOMIZED APPLE SHAPED FRAGRANCE PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 34, name: "Paperweights6 Metal Finish Paperweight", image: "/products/5 STAR THEME MAGNETIC PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 35, name: "Paperweights7 Metal Finish Paperweight", image: "/products/BRISTOL STOOL CHART PAPERWEIGHT.jpg", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 36, name: "Paperweights1 Crystal Glass Paperweight", image: "/products/CAPSULE ROCKING PAPERWEIGHT 3.JPG", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
+  { id: 37, name: "Paperweights2 Corporate Logo Paperweight", image: "/products/CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT.JPG", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
+  { id: 38, name: "Paperweights3 Metal Finish Paperweight", image: "/products/CUSTOMIZED APPLE SHAPED FRAGRANCE PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 39, name: "Paperweights4 Metal Finish Paperweight", image: "/products/5 STAR THEME MAGNETIC PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 40, name: "Paperweights5 Metal Finish Paperweight", image: "/products/BRISTOL STOOL CHART PAPERWEIGHT.jpg", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   
   // Categories - Tabletops
   { id: 4, name: "Executive Desk Calendar", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },

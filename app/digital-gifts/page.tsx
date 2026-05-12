@@ -166,6 +166,59 @@ const serviceCategories: ServiceCategory[] = [
   {
     id: "campaigns",
     number: "03",
+    title: "Patient Support Programs (PSP)",
+    description: "Sophisticated digital campaigns featuring Health Risk Assessment calculations with measurable outcomes and compliance-ready reporting.",
+    icon: TrendingUp,
+    products: [
+      {
+        id: "hra-calculator",
+        title: "HRA Calculator",
+        description: "Interactive health risk assessment tool for cardiovascular and metabolic condition screening.",
+        image: "/koru/koru12.png",
+        tags: ["Risk Scoring", "Visual Reports", "Recommendations"],
+        stat: "85%",
+        statLabel: "Engagement Rate"
+      },
+      {
+        id: "email-campaigns",
+        title: "Email Campaigns",
+        description: "Targeted email marketing with personalized content delivery and automated follow-up sequences.",
+        image: "/koru/koru13.png",
+        tags: ["Segmentation", "A/B Testing", "Analytics"]
+      },
+      {
+        id: "social-media",
+        title: "Social Media Suite",
+        description: "Comprehensive social media campaign management tailored for pharmaceutical brands.",
+        image: "/koru/koru14.png",
+        tags: ["Content Calendar", "Engagement Tracking", "Compliance Check"]
+      },
+      {
+        id: "webinar",
+        title: "Webinar Platform",
+        description: "Interactive webinar hosting solution with live polling and audience engagement features.",
+        image: "/koru/koru15.png",
+        tags: ["Live Streaming", "Q&A Sessions", "Recording Archive"]
+      },
+      {
+        id: "analytics",
+        title: "Analytics Dashboard",
+        description: "Real-time campaign performance tracking with comprehensive ROI measurement tools.",
+        image: "/koru/koru16.png",
+        tags: ["Real-time Data", "Custom Reports", "ROI Calculator"]
+      },
+      {
+        id: "compliance",
+        title: "Compliance Manager",
+        description: "Automated compliance verification system for all digital campaign materials and assets.",
+        image: "/koru/koru17.png",
+        tags: ["Auto-review", "Regulatory Check", "Audit Trail"]
+      }
+    ]
+  },
+  {
+    id: "campaigns",
+    number: "04",
     title: "Digital Campaigns & HRA",
     description: "Sophisticated digital campaigns featuring Health Risk Assessment calculations with measurable outcomes and compliance-ready reporting.",
     icon: TrendingUp,
@@ -217,8 +270,61 @@ const serviceCategories: ServiceCategory[] = [
     ]
   },
   {
+    id: "campaigns",
+    number: "05",
+    title: "HR Calculators",
+    description: "Sophisticated digital campaigns featuring Health Risk Assessment calculations with measurable outcomes and compliance-ready reporting.",
+    icon: TrendingUp,
+    products: [
+      {
+        id: "hra-calculator",
+        title: "HRA Calculator",
+        description: "Interactive health risk assessment tool for cardiovascular and metabolic condition screening.",
+        image: "/koru/koru12.png",
+        tags: ["Risk Scoring", "Visual Reports", "Recommendations"],
+        stat: "85%",
+        statLabel: "Engagement Rate"
+      },
+      {
+        id: "email-campaigns",
+        title: "Email Campaigns",
+        description: "Targeted email marketing with personalized content delivery and automated follow-up sequences.",
+        image: "/koru/koru13.png",
+        tags: ["Segmentation", "A/B Testing", "Analytics"]
+      },
+      {
+        id: "social-media",
+        title: "Social Media Suite",
+        description: "Comprehensive social media campaign management tailored for pharmaceutical brands.",
+        image: "/koru/koru14.png",
+        tags: ["Content Calendar", "Engagement Tracking", "Compliance Check"]
+      },
+      {
+        id: "webinar",
+        title: "Webinar Platform",
+        description: "Interactive webinar hosting solution with live polling and audience engagement features.",
+        image: "/koru/koru15.png",
+        tags: ["Live Streaming", "Q&A Sessions", "Recording Archive"]
+      },
+      {
+        id: "analytics",
+        title: "Analytics Dashboard",
+        description: "Real-time campaign performance tracking with comprehensive ROI measurement tools.",
+        image: "/koru/koru16.png",
+        tags: ["Real-time Data", "Custom Reports", "ROI Calculator"]
+      },
+      {
+        id: "compliance",
+        title: "Compliance Manager",
+        description: "Automated compliance verification system for all digital campaign materials and assets.",
+        image: "/koru/koru17.png",
+        tags: ["Auto-review", "Regulatory Check", "Audit Trail"]
+      }
+    ]
+  },
+  {
     id: "education",
-    number: "04",
+    number: "06",
     title: "Patient Education Content",
     description: "Evidence-based educational resources designed to empower patients with knowledge about their conditions, treatments, and wellness journeys in accessible formats.",
     icon: BookOpen,
@@ -271,7 +377,7 @@ const serviceCategories: ServiceCategory[] = [
   },
   {
     id: "anatomy",
-    number: "05",
+    number: "07",
     title: "Digital Anatomy",
     description: "Advanced 3D anatomical models and visualizations that bring complex medical concepts to life for HCP education and patient counseling.",
     icon: Heart,
@@ -324,7 +430,7 @@ const serviceCategories: ServiceCategory[] = [
   },
   {
     id: "chatbots",
-    number: "06",
+    number: "08",
     title: "AI Chatbots",
     description: "Intelligent conversational agents powered by advanced AI providing instant, accurate support for patients and healthcare professionals 24/7.",
     icon: MessageCircle,
