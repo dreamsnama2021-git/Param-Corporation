@@ -26,11 +26,11 @@ interface EditorialTimelineProps {
 
 export function EditorialTimeline({ items }: EditorialTimelineProps) {
   return (
-    <div className="relative max-w-6xl ">
+    <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Central Path */}
       <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[1px] bg-[#0093cb] hidden md:block" />
 
-      <div className="space-y-8 md:space-y-12 lg:space-y-12 2xl:space-y-32">
+      <div className="space-y-8 md:space-y-12 lg:space-y-16">
         {items.map((item, index) => (
           <EditorialRow key={index} item={item} index={index} />
         ))}
@@ -47,7 +47,7 @@ const EditorialRow = ({ item, index }: { item: TimelineItem; index: number }) =>
   const Icon = item.icon;
 
   return (
-    <div className={`relative grid grid-cols-1 md:grid-cols-2 items-center gap-8 lg:gap-16`}>
+    <div className="relative grid grid-cols-1 md:grid-cols-2 items-center gap-6 md:gap-8 lg:gap-12">
       
       {/* Visual Content */}
       <motion.div 
@@ -55,9 +55,9 @@ const EditorialRow = ({ item, index }: { item: TimelineItem; index: number }) =>
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        className={`w-full flex ${isEven ? 'md:justify-end' : 'md:justify-start md:order-2'}`}
+        className={`w-full flex justify-center ${isEven ? 'md:justify-end md:pr-8 lg:pr-16' : 'md:justify-start md:pl-8 lg:pl-16 md:order-2'}`}
       >
-        <div className="relative aspect-[4/3] w-full max-w-[380px] lg:max-w-[420px] rounded-2xl overflow-hidden shadow-2xl group">
+        <div className="relative aspect-[4/3] w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[400px] rounded-2xl overflow-hidden shadow-2xl group">
           <Image 
             src={item.image} 
             alt={item.title} 
@@ -68,7 +68,7 @@ const EditorialRow = ({ item, index }: { item: TimelineItem; index: number }) =>
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-6">
+          <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6">
              <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white mb-3">
                 <Icon size={20} />
              </div>
@@ -83,27 +83,26 @@ const EditorialRow = ({ item, index }: { item: TimelineItem; index: number }) =>
             <div className="w-4 h-4 rounded-full bg-[#0093cb]" />
             <motion.div 
                 initial={{ width: 0 }}
-                whileInView={{ width: 100 }}
+                whileInView={{ width: 80 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.4 }}
-                className={`absolute h-[1px] bg-[#0093cb] -z-10 ${isEven ? 'left-4' : 'right-4'}`}
-                style={{ originX: isEven ? 0 : 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className={`absolute h-[1px] bg-[#0093cb] -z-10 ${isEven ? 'left-full' : 'right-full'}`}
             />
         </div>
       </div>
 
-      {/* Text Content - Increased to accommodate 50-100 more words */}
+      {/* Text Content */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className={`w-full flex ${isEven ? 'md:justify-start md:order-2' : 'md:justify-end md:order-1'}`}
+        className={`w-full flex justify-center ${isEven ? 'md:justify-start md:pl-8 lg:pl-16 md:order-2' : 'md:justify-end md:pr-8 lg:pr-16 md:order-1'}`}
       >
-        <div className="max-w-[380px] lg:max-w-[420px] space-y-4">
+        <div className="w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[400px] space-y-3 sm:space-y-4">
           {/* Date */}
           <div className="flex items-center gap-3">
-            <span className="text-5xl 2xl:text-6xl font-black text-[#00a65d] tracking-tighter leading-none">
+            <span className="text-4xl sm:text-5xl lg:text-5xl font-black text-[#00a65d] tracking-tighter leading-none">
               {item.date}
             </span>
             <span className="text-xs font-bold tracking-[0.2em] uppercase text-slate-400 md:hidden">
@@ -111,14 +110,14 @@ const EditorialRow = ({ item, index }: { item: TimelineItem; index: number }) =>
             </span>
           </div>
           
-          {/* Title - 1-2 lines */}
-          <h3 className="text-2xl md:text-3xl 2xl:text-4xl font-bold text-slate-900 leading-tight">
+          {/* Title */}
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 leading-tight">
             {item.title}
           </h3>
           
-          {/* Description - Now allows 50-100 more words (shows 5-7 lines with line-clamp-5) */}
-          <p className="text-base 2xl:text-lg text-slate-600 leading-relaxed 
-                       line-clamp-5">
+          {/* Description */}
+          <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed 
+                       line-clamp-5 md:line-clamp-none lg:line-clamp-6">
             {item.description}
           </p>
         </div>

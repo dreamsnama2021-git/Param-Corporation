@@ -257,7 +257,7 @@ interface CardData {
 
 function VisionCard({ item }: { item: CardData }) {
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col min-h-[280px] hover:border-slate-300 hover:shadow-sm transition-all duration-200">
+    <div className="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col min-h-[250px] hover:border-slate-300 hover:shadow-sm transition-all duration-200">
       <div className="flex items-center gap-3 mb-5">
         <span className="text-[11px] font-medium uppercase tracking-widest text-slate-400">
           {item.number} / {item.label}
@@ -274,7 +274,6 @@ function VisionCard({ item }: { item: CardData }) {
       <h3 className="text-[17px] font-semibold text-slate-900 mb-2">
         {item.title}
       </h3>
-      <p className="text-[13px] italic text-slate-400 mb-3">{item.tagline}</p>
       <p className="text-[13px] text-slate-500 leading-relaxed flex-1">
         {item.desc}
       </p>
