@@ -117,7 +117,7 @@ export default function Footer() {
           <div>
             <h3 className="text-white text-lg font-medium mb-4 pb-2 
             border-b-2 border-[var(--clr-primary)] inline-block">
-              By Industry
+              By Personalized Gifts
             </h3>
 
             <ul className="space-y-2">
