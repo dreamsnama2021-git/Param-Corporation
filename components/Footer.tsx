@@ -9,6 +9,7 @@ import {
   priceRanges,
   occasions,
   therapies,
+  personalizedGifts,
 } from "../app/FooterData";
 
 // Social Icon
@@ -24,23 +25,6 @@ const SocialIcon = ({ children }: { children: React.ReactNode }) => (
 );
 
 export default function Footer() {
-  const displayCategories = categories.slice(0, 12
-
-    
-  );
-  const displayIndustries = industries.slice(0, 12
-
-    
-  );
-  const displayTherapies = therapies.slice(0, 12
-
-    
-  );
-  const displayOccasions = occasions.slice(0, 12
-
-    
-  );
-
   return (
     <footer className="bg-[var(--clr-bg-dark-deep)] text-gray-300 pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -98,56 +82,10 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-2">
-              {displayCategories.map((item) => (
+              {categories.map((item) => (
                 <li key={item.slug}>
                   <Link
                     href={`/categories/${item.slug}`}
-                    className="flex items-center gap-2 text-sm 
-                    hover:text-[var(--clr-primary)] group"
-                  >
-                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1 transition-transform" />
-                    <span>{item.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* BY INDUSTRY */}
-          <div>
-            <h3 className="text-white text-lg font-medium mb-4 pb-2 
-            border-b-2 border-[var(--clr-primary)] inline-block">
-              By Industry
-            </h3>
-
-            <ul className="space-y-2">
-              {displayIndustries.map((item) => (
-                <li key={item.slug}>
-                  <Link
-                    href={`/industry/${item.slug}`}
-                    className="flex items-center gap-2 text-sm 
-                    hover:text-[var(--clr-primary)] group"
-                  >
-                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1 transition-transform" />
-                    <span>{item.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* BY OCCASION */}
-          <div>
-            <h3 className="text-white text-lg font-medium mb-4 pb-2 
-            border-b-2 border-[var(--clr-primary)] inline-block">
-              By Occasion
-            </h3>
-
-            <ul className="space-y-2">
-              {displayOccasions.map((item) => (
-                <li key={item.slug}>
-                  <Link
-                    href={`/occasion/${item.slug}`}
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >
@@ -167,7 +105,7 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-2">
-              {displayTherapies.map((item) => (
+              {therapies.map((item) => (
                 <li key={item.slug}>
                   <Link
                     href={`/therapy/${item.slug}`}
@@ -181,7 +119,55 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-        </div>
+
+          {/* PERSONALIZED GIFTS */}
+          <div>
+            <h3 className="text-white text-lg font-medium mb-4 pb-2 
+            border-b-2 border-[var(--clr-primary)] inline-block">
+              Personalized Gifts
+            </h3>
+
+            <ul className="space-y-2">
+              {personalizedGifts.map((item) => (
+                <li key={item.slug}>
+                  <Link
+                    href={`/categories/${item.slug}`}
+                    className="flex items-center gap-2 text-sm 
+                    hover:text-[var(--clr-primary)] group"
+                  >
+                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1 transition-transform" />
+                    <span>{item.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* BY OCCASION */}
+          <div>
+            <h3 className="text-white text-lg font-medium mb-4 pb-2 
+            border-b-2 border-[var(--clr-primary)] inline-block">
+              By Occasion
+            </h3>
+
+            <ul className="space-y-2">
+              {occasions.map((item) => (
+                <li key={item.slug}>
+                  <Link
+                    href={`/occasion/${item.slug}`}
+                    className="flex items-center gap-2 text-sm 
+                    hover:text-[var(--clr-primary)] group"
+                  >
+                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1 transition-transform" />
+                    <span>{item.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* BY INDUSTRY */}
+          
 
         {/* BOTTOM */}
         <div className="mt-8 pt-4 text-center border-t border-[var(--clr-border-light)]">
