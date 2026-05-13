@@ -83,31 +83,10 @@ export default function Footer() {
 
             {/* SOCIAL */}
             <div className="flex gap-2 mt-4">
-              <a
-                  href="https://www.facebook.com/parampromotion?mibextid=ZbWKwL"
-                  aria-label="Facebook"
-                  className="hover:text-blue-500 transition-colors duration-150"
-                >
-                  <Facebook size={20} />
-                </a>
-              <a
-                  href="https://www.instagram.com/paramcorporation_official/"
-                  aria-label="Instagram"
-                  className="hover:text-pink-500 transition-colors duration-150"
-                >
-                  <Instagram size={20} />
-               </a>
-               <a
-                   href="https://www.linkedin.com/in/param-corporation-316392184/"
-                  aria-label="LinkedIn"
-                  className="hover:text-blue-300 transition-colors duration-150"
-                 >
-                   <Linkedin size={20} />
-              </a>
-              {/* <SocialIcon>f</SocialIcon>
+              <SocialIcon>f</SocialIcon>
               <SocialIcon>in</SocialIcon>
               <SocialIcon>▶</SocialIcon>
-              <SocialIcon>📷</SocialIcon> */}
+              <SocialIcon>📷</SocialIcon>
             </div>
           </div>
 
