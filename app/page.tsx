@@ -24,10 +24,10 @@ export default function Page() {
       {/* <TagLine /> */}
       <ProductSections />
       <ClientSection/>
-      <InstagramReels />
       <CaseStudy/>
       <FastestGrowing/>
       <CreativeStatsSection/>
+      <InstagramReels />
       {/* <SubCategory /> */}
       {/* <TrendingChits/> */}
       

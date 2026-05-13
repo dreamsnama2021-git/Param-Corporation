@@ -9,7 +9,6 @@ const InstagramReels = () => {
       id: 1,
       title: "Luxury Gift Hampers",
       reelUrl: "https://www.instagram.com/reel/DYE4z25I96H/",
-      // Using oembed endpoint for clean media only
       embedUrl: "https://www.instagram.com/reel/DYE4z25I96H/embed/"
     },
     {
@@ -33,28 +32,20 @@ const InstagramReels = () => {
   ];
 
   return (
-    <section className="w-full py-16 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50">
+    <section className="w-full py-16 bg-[var(--clr-white)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <InstagramLogoIcon className="w-8 h-8 text-pink-600" />
-            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Follow Our Journey
+            <InstagramLogoIcon className="w-8 h-8 text-[var(--clr-primary)]" />
+            <h2 className="text-3xl md:text-4xl font-bold" style={{ color: 'var(--clr-accent)' }}>
+               Our Journey
             </h2>
           </div>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Discover the art of corporate gifting through our Instagram reels
+          <p className="text-[var(--clr-text-muted)] text-lg max-w-2xl mx-auto">
+            Discover the art of corporate gifting through our Instagram.
           </p>
-          <a
-            href="https://www.instagram.com/paramcorporation_official"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-4 text-pink-600 hover:text-pink-700 font-semibold transition-colors"
-          >
-            @paramcorporation_official
-            <ExternalLink className="w-4 h-4" />
-          </a>
+          
         </div>
 
         {/* Reels Grid - Clean Embeds without captions/likes */}
@@ -64,38 +55,39 @@ const InstagramReels = () => {
               key={reel.id}
               className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
             >
-              {/* Instagram Reel Iframe - Clean Version */}
-              <div className="relative aspect-[9/16] bg-black">
+              {/* Instagram Reel Iframe - Clean Version with minimal UI */}
+              <div className="relative lg:h-[75vh] 2xl:h-[40vh] bg-black">
                 <iframe
-                  src={`${reel.embedUrl}?hidecaption=true`}
+                  src={`${reel.embedUrl}?hidecaption=true&omitscript=true`}
                   className="w-full h-full"
                   frameBorder="0"
                   scrolling="no"
                   allowFullScreen
                   title={reel.title}
+                  loading="lazy"
                 />
               </div>
 
-              {/* Hover Overlay with Play Button */}
-              <a
+              {/* Custom Instagram-style Overlay with Brand Colors */}
+              {/* <a
                 href={reel.reelUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center"
+                className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center"
               >
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-110">
-                  <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center">
-                    <svg className="w-8 h-8 text-pink-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <div className="w-16 h-16 bg-white/95 rounded-full flex items-center justify-center shadow-xl">
+                    <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24" style={{ color: 'var(--clr-primary)' }}>
                       <path d="M8 5v14l11-7z"/>
                     </svg>
                   </div>
                 </div>
-              </a>
+              </a> */}
 
               {/* Instagram Icon Badge */}
               <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="bg-white/90 backdrop-blur-sm rounded-full p-2">
-                  <InstagramLogoIcon className="w-4 h-4 text-pink-600" />
+                <div className="bg-white/95 backdrop-blur-sm rounded-full p-2 shadow-lg">
+                  <InstagramLogoIcon className="w-4 h-4" style={{ color: 'var(--clr-primary)' }} />
                 </div>
               </div>
             </div>
@@ -108,10 +100,14 @@ const InstagramReels = () => {
             href="https://www.instagram.com/paramcorporation_official"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+            style={{ 
+              backgroundColor: 'var(--clr-primary)',
+              color: 'var(--clr-white)'
+            }}
           >
             <InstagramLogoIcon className="w-5 h-5" />
-            Follow @paramcorporation_official
+            Follow Us
           </a>
         </div>
       </div>

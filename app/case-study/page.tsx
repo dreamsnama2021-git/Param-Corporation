@@ -1,7 +1,7 @@
 // app/case-studies/page.tsx
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -12,12 +12,7 @@ import {
   Building2, 
   Tag, 
   ChevronRight, 
-  Play, 
-  Pause, 
-  Eye, 
-  // BookOpen,  // Commented out since blogs tab is hidden
-  // Clock,     // Commented out since blogs tab is hidden
-  // User,      // Commented out since blogs tab is hidden
+  Eye,
   ArrowUpRight,
   ExternalLink
 } from 'lucide-react';
@@ -30,31 +25,25 @@ interface CaseStudy {
   client: string;
   date: string;
   description: string;
-  videoUrl: string;
-  posterUrl: string;
+  imageUrl: string;
   slug: string;
   stats: { engagement: string; reach: string; products: string };
   reverse?: boolean;
 }
 
-// BLOGS SECTION COMMENTED - WILL BE RE-ENABLED LATER
-/*
-interface Blog {
-  id: number;
-  title: string;
-  category: string;
-  author: string;
-  date: string;
-  readTime: string;
-  excerpt: string;
-  image: string;
-  slug: string;
-  tags: string[];
-}
-*/
-
-// ─── DATA ────────────────────────────────────────────────────────────────────
+// app/case-studies/page.tsx (update the caseStudies array)
 const caseStudies: CaseStudy[] = [
+  {
+    id: 4,
+    title: "Diabetic Retinopathy Patient Awareness Tool",
+    category: "Patient Education",
+    client: "Leading Pharmaceutical Brand",
+    date: "2024",
+    description: "Designed and developed an innovative patient awareness solution featuring visual education tools and simulation goggles that helped diabetic patients understand the serious consequences of unmanaged diabetes.",
+    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
+    slug: "diabetic-retinopathy-tool",
+    stats: { engagement: "+85%", reach: "50K+", products: "1" }
+  },
   {
     id: 1,
     title: "Transforming ENT Product Line Strategy",
@@ -62,8 +51,7 @@ const caseStudies: CaseStudy[] = [
     client: "Leading Pharma Co.",
     date: "2024",
     description: "Developed comprehensive medical communication strategy for ENT portfolio, resulting in 40% increase in physician engagement and successful launch of 3 new products.",
-    videoUrl: "https://player.vimeo.com/external/458634952.sd.mp4?s=7b614e2d366e56e7e4ade0cafe166f541dde24b7&profile_id=164",
-    posterUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
     slug: "ent-strategy",
     stats: { engagement: "+40%", reach: "2.5M+", products: "3" }
   },
@@ -74,8 +62,7 @@ const caseStudies: CaseStudy[] = [
     client: "Global Healthcare Brand",
     date: "2023",
     description: "Executed multi-channel digital campaign targeting cardiologists and diabetologists, featuring interactive content and KOL webinars that drove significant prescription growth.",
-    videoUrl: "https://player.vimeo.com/external/434045863.sd.mp4?s=8e7c2c9e8e3f6b1a5c7d9e0f1a2b3c4d5e6f7a8b&profile_id=164",
-    posterUrl: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=600&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=600&fit=crop",
     slug: "cardio-digital",
     stats: { engagement: "+65%", reach: "5M+", products: "2" },
     reverse: true
@@ -87,155 +74,46 @@ const caseStudies: CaseStudy[] = [
     client: "Medical Device Company",
     date: "2024",
     description: "Comprehensive market analysis and launch strategy for orthopedic implants, including surgeon training programs and patient education materials.",
-    videoUrl: "https://player.vimeo.com/external/434045862.sd.mp4?s=7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d&profile_id=164",
-    posterUrl: "https://images.unsplash.com/photo-1551076805-e1869023e561?w=800&h=600&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1551076805-e1869023e561?w=800&h=600&fit=crop",
     slug: "ortho-market-entry",
     stats: { engagement: "+120%", reach: "1.8M+", products: "5" }
   }
 ];
 
-// BLOGS DATA COMMENTED - WILL BE RE-ENABLED LATER
-/*
-const blogs: Blog[] = [
-  {
-    id: 1,
-    title: "The Future of Medical Communications in Pharma",
-    category: "Industry Trends",
-    author: "Dr. Sarah Chen",
-    date: "2024",
-    readTime: "8 min read",
-    excerpt: "Explore how digital transformation is reshaping medical communications and what pharma companies need to do to stay ahead of the curve.",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=500&fit=crop",
-    slug: "future-medical-communications",
-    tags: ["Digital Health", "Pharma Marketing", "Innovation"]
-  },
-  {
-    id: 2,
-    title: "Building Effective KOL Engagement Strategies",
-    category: "Strategy",
-    author: "Mark Thompson",
-    date: "2024",
-    readTime: "6 min read",
-    excerpt: "Learn the key principles of building and maintaining strong relationships with Key Opinion Leaders in the healthcare industry.",
-    image: "https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?w=800&h=500&fit=crop",
-    slug: "kol-engagement-strategies",
-    tags: ["KOL Management", "Healthcare", "Strategy"]
-  },
-  {
-    id: 3,
-    title: "Compliance in Pharmaceutical Marketing: A 2024 Guide",
-    category: "Compliance",
-    author: "Lisa Rodriguez",
-    date: "2024",
-    readTime: "10 min read",
-    excerpt: "Navigate the complex landscape of pharmaceutical marketing compliance with our comprehensive guide to regulations and best practices.",
-    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=500&fit=crop",
-    slug: "pharma-marketing-compliance",
-    tags: ["Compliance", "Regulations", "Best Practices"]
-  },
-  {
-    id: 4,
-    title: "Data-Driven Decision Making in Medical Affairs",
-    category: "Data & Analytics",
-    author: "Dr. James Wilson",
-    date: "2024",
-    readTime: "7 min read",
-    excerpt: "Discover how medical affairs teams can leverage data analytics to drive better outcomes and demonstrate value to stakeholders.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
-    slug: "data-driven-medical-affairs",
-    tags: ["Data Analytics", "Medical Affairs", "ROI"]
-  },
-  {
-    id: 5,
-    title: "Patient-Centric Communication Strategies",
-    category: "Patient Engagement",
-    author: "Emily Chang",
-    date: "2024",
-    readTime: "5 min read",
-    excerpt: "Why putting patients at the center of your communication strategy leads to better health outcomes and stronger brand loyalty.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=500&fit=crop",
-    slug: "patient-centric-communication",
-    tags: ["Patient Care", "Communication", "Healthcare"]
-  },
-  {
-    id: 6,
-    title: "The Role of AI in Medical Writing",
-    category: "Technology",
-    author: "Dr. Robert Kim",
-    date: "2024",
-    readTime: "9 min read",
-    excerpt: "Artificial intelligence is transforming medical writing. Here's what it means for accuracy, efficiency, and the future of the profession.",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=500&fit=crop",
-    slug: "ai-medical-writing",
-    tags: ["AI", "Medical Writing", "Technology"]
-  }
-];
-*/
-
-// ─── VIDEO PLAYER COMPONENT ─────────────────────────────────────────────────
-function VideoPlayer({ videoUrl, posterUrl, title }: { 
-  videoUrl: string; 
-  posterUrl: string; 
-  title: string;
-}) {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const togglePlay = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  const handleVideoEnd = () => {
-    setIsPlaying(false);
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-    }
-  };
+// ─── IMAGE CARD COMPONENT ─────────────────────────────────────────────────
+function ImageCard({ imageUrl, title }: { imageUrl: string; title: string }) {
+  const [isHovered, setIsHovered] = React.useState(false);
 
   return (
     <div 
-      className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gray-900 group"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
+      className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gray-100 group"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <video
-        ref={videoRef}
-        className="w-full h-full object-cover"
-        poster={posterUrl}
-        onClick={togglePlay}
-        onEnded={handleVideoEnd}
-        playsInline
-        preload="metadata"
-        title={title}
-      >
-        <source src={videoUrl} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <Image
+        src={imageUrl}
+        alt={title}
+        fill
+        className="object-cover transition-transform duration-700 group-hover:scale-105"
+        sizes="(max-width: 768px) 100vw, 50vw"
+      />
       
-      <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-300 ${isHovering ? 'opacity-100' : isPlaying ? 'opacity-0' : 'opacity-60'}`} />
+      {/* Overlay gradient */}
+      <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-300 ${
+        isHovered ? 'opacity-100' : 'opacity-60'
+      }`} />
       
-      <button
-        onClick={togglePlay}
-        className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${isHovering || !isPlaying ? 'opacity-100' : 'opacity-0'}`}
-      >
-        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl transform transition-transform duration-300 hover:scale-110">
-          {isPlaying ? (
-            <Pause className="w-6 h-6 md:w-8 md:h-8 text-gray-800" />
-          ) : (
-            <Play className="w-6 h-6 md:w-8 md:h-8 text-gray-800 ml-1" />
-          )}
+      {/* View case study overlay on hover */}
+      <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
+        isHovered ? 'opacity-100' : 'opacity-0'
+      }`}>
+        <div className="flex items-center gap-2 px-6 py-3 bg-white/90 backdrop-blur-sm rounded-full shadow-xl transform transition-transform duration-300 hover:scale-105">
+          <Eye className="w-5 h-5 text-gray-800" />
+          <span className="text-sm font-semibold text-gray-800 font-[family-name:var(--font-display)]">
+            View Case Study
+          </span>
         </div>
-      </button>
+      </div>
     </div>
   );
 }
@@ -243,7 +121,6 @@ function VideoPlayer({ videoUrl, posterUrl, title }: {
 // ─── MAIN PAGE ──────────────────────────────────────────────────────────────
 export default function CaseStudiesPage() {
   const router = useRouter();
-  // const [activeTab, setActiveTab] = useState<'watch' | 'read'>('watch'); // Commented - tab functionality hidden
 
   return (
     <div className="min-h-screen font-[family-name:var(--font-body)]">
@@ -275,39 +152,7 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      {/* TAB SWITCHER COMMENTED - WILL BE RE-ENABLED WHEN BLOGS ARE ADDED */}
-      {/*
-      <section className="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-0">
-            <button
-              onClick={() => setActiveTab('watch')}
-              className={`flex items-center gap-2 px-6 py-4 font-semibold text-sm transition-all duration-200 border-b-2 font-[family-name:var(--font-display)] ${
-                activeTab === 'watch'
-                  ? 'border-[var(--clr-primary)] text-[var(--clr-primary)]'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
-            >
-              <Eye className="w-4 h-4" />
-              Watch Case Studies
-            </button>
-            <button
-              onClick={() => setActiveTab('read')}
-              className={`flex items-center gap-2 px-6 py-4 font-semibold text-sm transition-all duration-200 border-b-2 font-[family-name:var(--font-display)] ${
-                activeTab === 'read'
-                  ? 'border-[var(--clr-primary)] text-[var(--clr-primary)]'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
-            >
-              <BookOpen className="w-4 h-4" />
-              Read Blogs
-            </button>
-          </div>
-        </div>
-      </section>
-      */}
-
-      {/* Case Studies Grid - Always visible */}
+      {/* Case Studies Grid */}
       <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 lg:space-y-32">
         {caseStudies.map((study, index) => (
           <article 
@@ -320,14 +165,14 @@ export default function CaseStudiesPage() {
               className={`relative group cursor-pointer ${study.reverse ? 'lg:col-start-2' : ''}`}
               onClick={() => router.push(`/case-study/${study.slug}`)}
             >
-              <VideoPlayer 
-                videoUrl={study.videoUrl}
-                posterUrl={study.posterUrl}
+              <ImageCard 
+                imageUrl={study.imageUrl}
                 title={study.title}
               />
-              <div className={`absolute -z-10 w-full h-full rounded-2xl bg-[var(--clr-primary)]/10 top-4 ${study.reverse ? 'right-4' : 'left-4'}`} />
-              {/* Click overlay */}
-              
+              {/* Decorative background element */}
+              <div className={`absolute -z-10 w-full h-full rounded-2xl bg-[var(--clr-primary)]/10 top-4 ${
+                study.reverse ? 'right-4' : 'left-4'
+              }`} />
             </div>
 
             <div className={`space-y-6 ${study.reverse ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
@@ -354,15 +199,7 @@ export default function CaseStudiesPage() {
                 {study.description}
               </p>
 
-              {/* Quick Stats */}
-              <div className="flex gap-6">
-                {Object.entries(study.stats).map(([key, value]) => (
-                  <div key={key}>
-                    <div className="text-2xl font-bold text-[var(--clr-primary)] font-[family-name:var(--font-display)]">{value}</div>
-                    <div className="text-xs text-gray-500 capitalize font-[family-name:var(--font-body)]">{key}</div>
-                  </div>
-                ))}
-              </div>
+              
 
               <button
                 onClick={() => router.push(`/case-study/${study.slug}`)}
@@ -376,116 +213,7 @@ export default function CaseStudiesPage() {
         ))}
       </section>
 
-      {/* BLOGS SECTION COMMENTED - WILL BE RE-ENABLED LATER */}
-      {/*
-      {activeTab === 'read' && (
-        <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogs.map((blog) => (
-              <article 
-                key={blog.id}
-                className="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                <Link href={`/blogs/${blog.slug}`} className="block relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={blog.image}
-                    alt={blog.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-xs font-semibold text-gray-900 font-[family-name:var(--font-display)]">
-                    {blog.category}
-                  </span>
-                </Link>
-
-                <div className="p-6">
-                  <div className="flex items-center gap-4 text-xs text-gray-500 mb-3 font-[family-name:var(--font-body)]">
-                    <span className="flex items-center gap-1">
-                      <User className="w-3 h-3" />
-                      {blog.author}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      {blog.date}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      {blog.readTime}
-                    </span>
-                  </div>
-
-                  <Link href={`/blogs/${blog.slug}`}>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[var(--clr-primary)] transition-colors line-clamp-2 font-[family-name:var(--font-display)]">
-                      {blog.title}
-                    </h3>
-                  </Link>
-
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3 font-[family-name:var(--font-body)] font-light">
-                    {blog.excerpt}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {blog.tags.map((tag) => (
-                      <span key={tag} className="px-2 py-1 rounded-md bg-gray-100 text-gray-600 text-[11px] font-medium font-[family-name:var(--font-display)]">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <Link 
-                    href={`/blogs/${blog.slug}`}
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--clr-primary)] hover:text-[var(--clr-secondary)] transition-colors font-[family-name:var(--font-display)]"
-                  >
-                    Read Article
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              href="/blogs"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 font-[family-name:var(--font-display)]"
-            >
-              View All Articles
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </section>
-      )}
-      */}
-
-      {/* Bottom CTA Section */}
-      <section className="py-16 lg:py-24 bg-white border-t border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-display)] font-bold text-gray-900 mb-4">
-            Ready to Create Your Success Story?
-          </h2>
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto font-[family-name:var(--font-body)] font-light">
-            Let&apos;s discuss how Zexcel Medical Communications can help you achieve your marketing objectives with tailored medical communication strategies.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-[var(--clr-primary)] hover:bg-[var(--clr-secondary)] text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 font-[family-name:var(--font-display)]"
-            >
-              Start Your Project
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link 
-              href="/services"
-              className="inline-flex items-center justify-center gap-2 border-2 border-gray-200 hover:border-[var(--clr-primary)] text-gray-700 hover:text-[var(--clr-primary)] px-8 py-4 rounded-lg font-semibold transition-all duration-300 font-[family-name:var(--font-display)]"
-            >
-              View Our Services
-            </Link>
-          </div>
-        </div>
-      </section>
+      
     </div>
   );
 }
