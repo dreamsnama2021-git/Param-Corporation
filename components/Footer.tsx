@@ -104,13 +104,6 @@ export default function Footer() {
                  >
                    <Linkedin size={20} />
               </a>
-              <a
-                   href="https://in.pinterest.com/paramcorporationmumbai/_created/"
-                  aria-label="Pinterest"
-                  className="hover:text-blue-300 transition-colors duration-150"
-                 >
-                   <Linkedin size={20} />
-              </a>
               {/* <SocialIcon>f</SocialIcon>
               <SocialIcon>in</SocialIcon>
               <SocialIcon>▶</SocialIcon>
