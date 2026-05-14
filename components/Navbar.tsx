@@ -132,7 +132,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 md:h-18">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <img src="/public/banner/logo final for param .png" alt="Param Logo" className="h-10 md:h-14 object-contain" />
+              <img src="/banner/logo final for param .png" alt="Param Logo" className="h-10 md:h-14 object-contain" />
             </Link>
 
             {/* Desktop Menu */}
