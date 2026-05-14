@@ -157,9 +157,16 @@ export const allProducts: Product[] = [
   { id: 52, name: "TYPES OF KIDNEY STONES ANATOMICAL PAPERWEIGHT", image: "/Paperweights/TYPES OF KIDNEY STONES ANATOMICAL PAPERWEIGHT.jpg", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   
   // Categories - Tabletops
-  { id: 4, name: "Executive Desk Calendar", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
-  { id: 5, name: "Brass Table Decor", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹899", category: "tabletops", categoryName: "Tabletops", description: "Traditional brass decorative piece" },
-  { id: 6, name: "Anatomy Display Board", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 4, name: "CUSTOMIZED 1 LAKH DOSES MOMENTO", image: "/TableTop/CUSTOMIZED 1 LAKH DOSES MOMENTO 1.JPG", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
+  { id: 5, name: "CUSTOMIZED 15 YEARS MOMENTO", image: "/TableTop/CUSTOMIZED 15 YEARS MOMENTO.JPG", price: "₹899", category: "tabletops", categoryName: "Tabletops", description: "Traditional brass decorative piece" },
+  { id: 6, name: "CUSTOMIZED BRAIN & GUTT CONNECTION WOODEN FRAME WITH CLOCK", image: "/TableTop/CUSTOMIZED BRAIN & GUTT CONNECTION WOODEN FRAME WITH CLOCK.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 53, name: "CUSTOMIZED DESK CLOCK", image: "/TableTop/CUSTOMIZED DESK CLOCK.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 54, name: "CUSTOMIZED HEART SHAPE COASTER SET", image: "/TableTop/CUSTOMIZED HEART SHAPE COASTER SET 2.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 55, name: "CUSTOMIZED MAGNETIC DETAILER", image: "/TableTop/CUSTOMIZED MAGNETIC DETAILER 1.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 56, name: "CUSTOMIZED MNEMONIC SLANT PEN HOLDER", image: "/TableTop/CUSTOMIZED MNEMONIC SLANT PEN HOLDER 2.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 57, name: "CUSTOMIZED MOBILE HOLDER", image: "/TableTop/CUSTOMIZED MOBILE HOLDER.jpg", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 58, name: "CUSTOMIZED YOGA THEME DESK CLOCK", image: "/TableTop/CUSTOMIZED YOGA THEME DESK CLOCK.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 59, name: "EAR MODEL WITH SAMPLE DESPENSER", image: "/TableTop/EAR MODEL WITH SAMPLE DESPENSER.jpg", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
   
   // Categories - Desk Utility
   { id: 7, name: "Pen Stand with Clock", image: "https://images.unsplash.com/photo-1516961642265-531546e84af2?w=400", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "Multi-functional desk organizer" },
