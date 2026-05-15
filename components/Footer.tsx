@@ -36,10 +36,11 @@ export default function Footer() {
 
           {/* ABOUT / LOCATION */}
           <div>
-            <h3 className="bg-white rounded-2xl z-1 p-1 text-lg font-medium mb-2 
+            {/* <h3 className="bg-white rounded-2xl z-1 p-1 text-lg font-medium mb-2 
             border-b-2 border-[var(--clr-primary)] inline-block">
-            <img  src="/param-logo.png" alt="Param Corporation" className="scale-110 h-10 md:h-14" />
-            </h3>
+            <img  src="/logo final param white .png" alt="Param Corporation" className="scale-110 h-10 md:h-14" />
+            </h3> */}
+            <img  src="/logo final param white .png" alt="Param Corporation" className="scale-110 h-18 md:h-25" />
 
             <p className="text-sm leading-relaxed mb-4 text-gray-400">
               101, KetkiPada Rd, near Timber Green Apartments,
