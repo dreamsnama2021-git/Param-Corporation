@@ -96,7 +96,7 @@ export default function Footer() {
               {categories.map((item) => (
                 <li key={item.slug}>
                   <Link
-                    href={`/categories/${item.slug}?tab=categories`}
+                    href={`/categories/all?tab=categories#category-${item.slug}`}
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >
@@ -142,7 +142,7 @@ export default function Footer() {
               {personalizedGifts.map((item) => (
                 <li key={item.slug}>
                   <Link
-                    href={`/categories/${item.slug}?tab=personalized`}
+                    href={`/categories/all?tab=personalized#category-${item.slug}`}
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >
@@ -165,7 +165,7 @@ export default function Footer() {
               {occasions.map((item) => (
                 <li key={item.slug}>
                   <Link
-                    href={`/categories/${item.slug}?tab=occasion`}
+                    href={`/categories/all?tab=occasion#category-${item.slug}`}
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >

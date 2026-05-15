@@ -7,19 +7,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowUpRight,
-  Monitor,
+  LayoutDashboard,
+  BarChart3,
+  HeartPulse,
   Users,
-  TrendingUp,
-  BookOpen,
-  Heart,
-  MessageCircle,
+  Globe,
+  Smartphone,
+  Video,
+  Database,
   Sparkles,
   Zap,
   Check,
   ChevronLeft,
   ChevronRight,
   Target,
-  Globe,
   Shield,
   Star,
   Clock,
@@ -58,426 +59,426 @@ interface TableTopImage {
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const serviceCategories: ServiceCategory[] = [
   {
-    id: "tabletops",
+    id: "customized-dashboard",
     number: "01",
-    title: "Hyperpersonalized Tabletops",
-    description: "Custom-designed displays that transform ordinary surfaces into engaging brand experiences with interactive scientific content tailored for each healthcare professional.",
-    icon: Monitor,
+    title: "Customized Dashboard",
+    description: "Tailored analytics dashboards providing real-time insights and KPIs for pharmaceutical sales and marketing teams with role-based access.",
+    icon: LayoutDashboard,
     products: [
       {
-        id: "cardiology",
-        title: "Cardiology Tabletop",
-        description: "Interactive cardiovascular display with 3D heart model and treatment pathway visualization for detailed HCP consultations.",
+        id: "sales-dashboard",
+        title: "Sales Performance Dashboard",
+        description: "Real-time visualization of sales metrics, target achievements, and field force performance across territories.",
         image: "/koru/koru.png",
-        tags: ["3D Heart Model", "Treatment Pathways", "Clinical Data"],
-        stat: "40+",
-        statLabel: "Therapy Areas"
+        tags: ["Real-time KPIs", "Territory Mapping", "Target Tracking"],
+        stat: "45%",
+        statLabel: "Faster Decisions"
       },
       {
-        id: "diabetes",
-        title: "Diabetes Management",
-        description: "Comprehensive diabetes care tabletop with glucose monitoring guides and lifestyle modification recommendations.",
+        id: "marketing-dashboard",
+        title: "Marketing Analytics Dashboard",
+        description: "Campaign performance tracking with ROI measurement and HCP engagement metrics in one unified view.",
         image: "/koru/koru1.png",
-        tags: ["Glucose Tracker", "Diet Plans", "Complication Info"]
+        tags: ["Campaign ROI", "HCP Engagement", "Channel Analytics"]
       },
       {
-        id: "oncology",
-        title: "Oncology Overview",
-        description: "Cancer care pathway tabletop showing treatment protocols and supportive care resources for oncology practices.",
+        id: "executive-dashboard",
+        title: "Executive Summary Dashboard",
+        description: "High-level business overview with drill-down capabilities for senior management decision support.",
         image: "/koru/koru2.png",
-        tags: ["Treatment Options", "Side Effect Management", "Support Resources"]
+        tags: ["Business Overview", "Trend Analysis", "Alert System"]
       },
       {
-        id: "respiratory",
-        title: "Respiratory Health",
-        description: "Pulmonary function and respiratory disease management display with inhaler technique demonstrations.",
+        id: "compliance-dashboard",
+        title: "Compliance Monitoring Dashboard",
+        description: "Regulatory compliance tracking with automated alerts and audit-ready reporting capabilities.",
         image: "/koru/koru3.png",
-        tags: ["Lung Models", "Inhaler Techniques", "Spirometry Data"]
+        tags: ["Audit Trail", "Regulatory Alerts", "Document Control"]
       },
       {
-        id: "neurology",
-        title: "Neurology Insights",
-        description: "Brain function visualization and neurological disorder education tabletop for specialist consultations.",
+        id: "inventory-dashboard",
+        title: "Inventory & Supply Chain Dashboard",
+        description: "Stock level monitoring with predictive analytics for demand forecasting and distribution optimization.",
         image: "/koru/koru4.png",
-        tags: ["Brain Mapping", "Disease Progression", "Treatment Options"]
+        tags: ["Stock Alerts", "Demand Forecast", "Distribution Map"]
       },
       {
-        id: "gastroenterology",
-        title: "Gastroenterology",
-        description: "Digestive system anatomy and GI disorder management display with dietary planning tools.",
+        id: "patient-dashboard",
+        title: "Patient Program Dashboard",
+        description: "Patient support program metrics including adherence rates, enrollment, and outcome measurements.",
         image: "/koru/koru5.png",
-        tags: ["Anatomy Views", "Dietary Guides", "Treatment Plans"]
+        tags: ["Adherence Tracking", "Enrollment Data", "Outcome Metrics"]
       }
     ]
   },
   {
-    id: "services",
+    id: "customized-analytics",
     number: "02",
-    title: "Hyperpersonalized Services",
-    description: "Comprehensive patient support ecosystems including Payboard financial solutions and Patient Support Programs that create seamless, personalized healthcare journeys.",
+    title: "Customized Analytics",
+    description: "Advanced pharmaceutical analytics solutions delivering deep insights into prescription patterns, market trends, and HCP behavior.",
+    icon: BarChart3,
+    products: [
+      {
+        id: "prescription-analytics",
+        title: "Prescription Pattern Analysis",
+        description: "Deep dive into prescribing behaviors with AI-powered pattern recognition and trend forecasting.",
+        image: "/koru/koru6.png",
+        tags: ["Rx Trends", "AI Predictions", "Segment Analysis"],
+        stat: "92%",
+        statLabel: "Accuracy Rate"
+      },
+      {
+        id: "market-analytics",
+        title: "Market Intelligence Platform",
+        description: "Competitive landscape analysis with market share tracking and opportunity identification tools.",
+        image: "/koru/koru7.png",
+        tags: ["Market Share", "Competitor Analysis", "Growth Opportunities"]
+      },
+      {
+        id: "hcp-profiling",
+        title: "HCP Segmentation & Profiling",
+        description: "Advanced healthcare professional segmentation based on prescribing patterns and engagement potential.",
+        image: "/koru/koru8.png",
+        tags: ["Behavioral Segments", "Potential Scoring", "Target Lists"]
+      },
+      {
+        id: "territory-optimization",
+        title: "Territory Optimization",
+        description: "Data-driven territory alignment and resource allocation for maximum field force effectiveness.",
+        image: "/koru/koru9.png",
+        tags: ["Alignment Tools", "Resource Planning", "Coverage Maps"]
+      },
+      {
+        id: "roi-analytics",
+        title: "ROI Measurement Suite",
+        description: "Comprehensive return on investment tracking across all marketing and sales initiatives.",
+        image: "/koru/koru10.png",
+        tags: ["Cost Analysis", "Revenue Attribution", "Efficiency Metrics"]
+      },
+      {
+        id: "predictive-modeling",
+        title: "Predictive Analytics Engine",
+        description: "Machine learning models for demand forecasting, churn prediction, and launch planning.",
+        image: "/koru/koru11.png",
+        tags: ["ML Models", "Forecasting", "Risk Scoring"]
+      }
+    ]
+  },
+  {
+    id: "health-risk-calculators",
+    number: "03",
+    title: "Health Risk Calculators",
+    description: "Interactive health risk assessment tools that engage patients and HCPs while generating valuable health insights and leads.",
+    icon: HeartPulse,
+    products: [
+      {
+        id: "cardiac-risk",
+        title: "Cardiovascular Risk Calculator",
+        description: "Comprehensive heart disease risk assessment incorporating lifestyle, genetic, and clinical parameters.",
+        image: "/koru/koru12.png",
+        tags: ["Heart Score", "Lifestyle Factors", "Risk Stratification"],
+        stat: "85%",
+        statLabel: "Engagement Rate"
+      },
+      {
+        id: "diabetes-risk",
+        title: "Diabetes Risk Assessment",
+        description: "Type 2 diabetes prediction tool with personalized prevention recommendations and lifestyle guidance.",
+        image: "/koru/koru13.png",
+        tags: ["Glucose Risk", "BMI Analysis", "Diet Recommendations"]
+      },
+      {
+        id: "respiratory-risk",
+        title: "Respiratory Health Calculator",
+        description: "Lung function and respiratory disease risk evaluation with environmental factor analysis.",
+        image: "/koru/koru14.png",
+        tags: ["Lung Function", "COPD Risk", "Asthma Control"]
+      },
+      {
+        id: "osteoporosis-risk",
+        title: "Osteoporosis Risk Tool",
+        description: "Bone health assessment incorporating age, lifestyle, and nutritional factors for fracture risk prediction.",
+        image: "/koru/koru15.png",
+        tags: ["Bone Density", "Fracture Risk", "Calcium Assessment"]
+      },
+      {
+        id: "mental-health",
+        title: "Mental Wellness Screener",
+        description: "Standardized mental health screening tools with confidential results and resource recommendations.",
+        image: "/koru/koru16.png",
+        tags: ["Depression Scale", "Anxiety Score", "Wellness Tips"]
+      },
+      {
+        id: "cancer-risk",
+        title: "Cancer Risk Evaluator",
+        description: "Evidence-based cancer risk assessment with family history and lifestyle factor integration.",
+        image: "/koru/koru17.png",
+        tags: ["Family History", "Lifestyle Score", "Screening Guide"]
+      }
+    ]
+  },
+  {
+    id: "patient-support-programs",
+    number: "04",
+    title: "Patient Support Programs",
+    description: "Comprehensive digital patient support ecosystems including medication adherence, education, and 24/7 assistance platforms.",
     icon: Users,
     products: [
       {
-        id: "payboard",
-        title: "Payboard Solutions",
-        description: "Financial assistance platform helping patients navigate treatment costs and insurance coverage with clarity.",
-        image: "/koru/koru6.png",
-        tags: ["Cost Calculator", "Insurance Check", "Payment Plans"],
-        stat: "24/7",
-        statLabel: "Support Available"
-      },
-      {
-        id: "psp",
-        title: "Patient Support Program",
-        description: "End-to-end patient support including medication adherence tracking and lifestyle counseling services.",
-        image: "/koru/koru7.png",
-        tags: ["24/7 Support", "Medication Reminders", "Progress Tracking"]
-      },
-      {
-        id: "care-coordination",
-        title: "Care Coordination",
-        description: "Multi-stakeholder platform connecting patients, physicians, and caregivers in a unified ecosystem.",
-        image: "/koru/koru8.png",
-        tags: ["Care Team Chat", "Appointment Sync", "Shared Records"]
-      },
-      {
-        id: "wellness",
-        title: "Wellness Programs",
-        description: "Personalized preventive care programs with goal setting and progress monitoring capabilities.",
-        image: "/koru/koru9.png",
-        tags: ["Goal Setting", "Activity Tracking", "Health Tips"]
-      },
-      {
-        id: "remote-monitoring",
-        title: "Remote Monitoring",
-        description: "Connected device integration for real-time health parameter tracking and trend analysis.",
-        image: "/koru/koru10.png",
-        tags: ["Device Sync", "Real-time Alerts", "Trend Analysis"]
-      },
-      {
-        id: "telehealth",
-        title: "Telehealth Integration",
-        description: "Virtual consultation platform with seamless electronic medical record integration.",
-        image: "/koru/koru11.png",
-        tags: ["Video Consult", "EMR Access", "Prescription Management"]
-      }
-    ]
-  },
-  {
-    id: "campaigns",
-    number: "03",
-    title: "Patient Support Programs (PSP)",
-    description: "Sophisticated digital campaigns featuring Health Risk Assessment calculations with measurable outcomes and compliance-ready reporting.",
-    icon: TrendingUp,
-    products: [
-      {
-        id: "hra-calculator",
-        title: "HRA Calculator",
-        description: "Interactive health risk assessment tool for cardiovascular and metabolic condition screening.",
-        image: "/koru/koru12.png",
-        tags: ["Risk Scoring", "Visual Reports", "Recommendations"],
-        stat: "85%",
-        statLabel: "Engagement Rate"
-      },
-      {
-        id: "email-campaigns",
-        title: "Email Campaigns",
-        description: "Targeted email marketing with personalized content delivery and automated follow-up sequences.",
-        image: "/koru/koru13.png",
-        tags: ["Segmentation", "A/B Testing", "Analytics"]
-      },
-      {
-        id: "social-media",
-        title: "Social Media Suite",
-        description: "Comprehensive social media campaign management tailored for pharmaceutical brands.",
-        image: "/koru/koru14.png",
-        tags: ["Content Calendar", "Engagement Tracking", "Compliance Check"]
-      },
-      {
-        id: "webinar",
-        title: "Webinar Platform",
-        description: "Interactive webinar hosting solution with live polling and audience engagement features.",
-        image: "/koru/koru15.png",
-        tags: ["Live Streaming", "Q&A Sessions", "Recording Archive"]
-      },
-      {
-        id: "analytics",
-        title: "Analytics Dashboard",
-        description: "Real-time campaign performance tracking with comprehensive ROI measurement tools.",
-        image: "/koru/koru16.png",
-        tags: ["Real-time Data", "Custom Reports", "ROI Calculator"]
-      },
-      {
-        id: "compliance",
-        title: "Compliance Manager",
-        description: "Automated compliance verification system for all digital campaign materials and assets.",
-        image: "/koru/koru17.png",
-        tags: ["Auto-review", "Regulatory Check", "Audit Trail"]
-      }
-    ]
-  },
-  {
-    id: "campaigns",
-    number: "04",
-    title: "Digital Campaigns & HRA",
-    description: "Sophisticated digital campaigns featuring Health Risk Assessment calculations with measurable outcomes and compliance-ready reporting.",
-    icon: TrendingUp,
-    products: [
-      {
-        id: "hra-calculator",
-        title: "HRA Calculator",
-        description: "Interactive health risk assessment tool for cardiovascular and metabolic condition screening.",
-        image: "/koru/koru12.png",
-        tags: ["Risk Scoring", "Visual Reports", "Recommendations"],
-        stat: "85%",
-        statLabel: "Engagement Rate"
-      },
-      {
-        id: "email-campaigns",
-        title: "Email Campaigns",
-        description: "Targeted email marketing with personalized content delivery and automated follow-up sequences.",
-        image: "/koru/koru13.png",
-        tags: ["Segmentation", "A/B Testing", "Analytics"]
-      },
-      {
-        id: "social-media",
-        title: "Social Media Suite",
-        description: "Comprehensive social media campaign management tailored for pharmaceutical brands.",
-        image: "/koru/koru14.png",
-        tags: ["Content Calendar", "Engagement Tracking", "Compliance Check"]
-      },
-      {
-        id: "webinar",
-        title: "Webinar Platform",
-        description: "Interactive webinar hosting solution with live polling and audience engagement features.",
-        image: "/koru/koru15.png",
-        tags: ["Live Streaming", "Q&A Sessions", "Recording Archive"]
-      },
-      {
-        id: "analytics",
-        title: "Analytics Dashboard",
-        description: "Real-time campaign performance tracking with comprehensive ROI measurement tools.",
-        image: "/koru/koru16.png",
-        tags: ["Real-time Data", "Custom Reports", "ROI Calculator"]
-      },
-      {
-        id: "compliance",
-        title: "Compliance Manager",
-        description: "Automated compliance verification system for all digital campaign materials and assets.",
-        image: "/koru/koru17.png",
-        tags: ["Auto-review", "Regulatory Check", "Audit Trail"]
-      }
-    ]
-  },
-  {
-    id: "campaigns",
-    number: "05",
-    title: "HR Calculators",
-    description: "Sophisticated digital campaigns featuring Health Risk Assessment calculations with measurable outcomes and compliance-ready reporting.",
-    icon: TrendingUp,
-    products: [
-      {
-        id: "hra-calculator",
-        title: "HRA Calculator",
-        description: "Interactive health risk assessment tool for cardiovascular and metabolic condition screening.",
-        image: "/koru/koru12.png",
-        tags: ["Risk Scoring", "Visual Reports", "Recommendations"],
-        stat: "85%",
-        statLabel: "Engagement Rate"
-      },
-      {
-        id: "email-campaigns",
-        title: "Email Campaigns",
-        description: "Targeted email marketing with personalized content delivery and automated follow-up sequences.",
-        image: "/koru/koru13.png",
-        tags: ["Segmentation", "A/B Testing", "Analytics"]
-      },
-      {
-        id: "social-media",
-        title: "Social Media Suite",
-        description: "Comprehensive social media campaign management tailored for pharmaceutical brands.",
-        image: "/koru/koru14.png",
-        tags: ["Content Calendar", "Engagement Tracking", "Compliance Check"]
-      },
-      {
-        id: "webinar",
-        title: "Webinar Platform",
-        description: "Interactive webinar hosting solution with live polling and audience engagement features.",
-        image: "/koru/koru15.png",
-        tags: ["Live Streaming", "Q&A Sessions", "Recording Archive"]
-      },
-      {
-        id: "analytics",
-        title: "Analytics Dashboard",
-        description: "Real-time campaign performance tracking with comprehensive ROI measurement tools.",
-        image: "/koru/koru16.png",
-        tags: ["Real-time Data", "Custom Reports", "ROI Calculator"]
-      },
-      {
-        id: "compliance",
-        title: "Compliance Manager",
-        description: "Automated compliance verification system for all digital campaign materials and assets.",
-        image: "/koru/koru17.png",
-        tags: ["Auto-review", "Regulatory Check", "Audit Trail"]
-      }
-    ]
-  },
-  {
-    id: "education",
-    number: "06",
-    title: "Patient Education Content",
-    description: "Evidence-based educational resources designed to empower patients with knowledge about their conditions, treatments, and wellness journeys in accessible formats.",
-    icon: BookOpen,
-    products: [
-      {
-        id: "disease-hub",
-        title: "Disease Information Hub",
-        description: "Comprehensive disease library featuring animated explainer videos and detailed infographics.",
+        id: "medication-adherence",
+        title: "Medication Adherence Program",
+        description: "Smart reminder system with progress tracking and healthcare provider notification capabilities.",
         image: "/koru/koru18.png",
-        tags: ["Video Library", "Infographics", "FAQ Section"],
-        stat: "15+",
-        statLabel: "Languages Available"
+        tags: ["Smart Reminders", "Progress Charts", "HCP Alerts"],
+        stat: "78%",
+        statLabel: "Adherence Improvement"
       },
       {
-        id: "treatment-guides",
-        title: "Treatment Guides",
-        description: "Step-by-step medication guides with side effect management and lifestyle recommendations.",
+        id: "patient-education",
+        title: "Patient Education Platform",
+        description: "Interactive disease and treatment education with multimedia content and knowledge assessments.",
         image: "/koru/koru19.png",
-        tags: ["Medication Info", "Side Effects", "Lifestyle Tips"]
+        tags: ["Video Library", "Interactive Modules", "Knowledge Quiz"]
       },
       {
-        id: "interactive-learning",
-        title: "Interactive Learning",
-        description: "Gamified education modules designed to improve patient engagement and information retention.",
+        id: "tele-support",
+        title: "24/7 Patient Helpline",
+        description: "Round-the-clock patient assistance with medication queries, side effect management, and emotional support.",
         image: "/koru/koru20.png",
-        tags: ["Quizzes", "Progress Tracking", "Certificates"]
+        tags: ["24/7 Access", "Expert Counselors", "Multi-language"]
       },
       {
-        id: "multilingual",
-        title: "Multi-language Content",
-        description: "Educational resources available in 15+ Indian languages for maximum accessibility and reach.",
+        id: "financial-support",
+        title: "Financial Assistance Program",
+        description: "Treatment cost management with insurance verification, co-pay assistance, and payment plan options.",
         image: "/koru/koru21.png",
-        tags: ["15+ Languages", "Voice-over", "Cultural Adaptation"]
+        tags: ["Insurance Check", "Co-pay Help", "Payment Plans"]
       },
       {
-        id: "printable",
-        title: "Printable Resources",
-        description: "Downloadable PDF guides, worksheets, and checklists for offline patient reference.",
+        id: "wellness-program",
+        title: "Wellness & Lifestyle Program",
+        description: "Holistic health management with diet planning, exercise tracking, and stress management tools.",
         image: "/koru/koru22.png",
-        tags: ["PDF Downloads", "Worksheets", "Checklists"]
+        tags: ["Diet Plans", "Activity Tracking", "Stress Management"]
       },
       {
-        id: "video-library",
-        title: "Expert Video Library",
-        description: "Curated collection of expert-led video content covering diverse therapeutic areas.",
+        id: "caregiver-support",
+        title: "Caregiver Support Network",
+        description: "Resources and community support for patient caregivers including training and respite information.",
         image: "/koru/koru23.png",
-        tags: ["Expert Videos", "Animations", "Patient Stories"]
+        tags: ["Training Resources", "Support Groups", "Respite Care"]
       }
     ]
   },
   {
-    id: "anatomy",
-    number: "07",
-    title: "Digital Anatomy",
-    description: "Advanced 3D anatomical models and visualizations that bring complex medical concepts to life for HCP education and patient counseling.",
-    icon: Heart,
+    id: "mini-websites",
+    number: "05",
+    title: "Mini Websites",
+    description: "Dedicated micro-sites and landing pages for pharmaceutical brands, products, and disease awareness campaigns.",
+    icon: Globe,
     products: [
       {
-        id: "heart-3d",
-        title: "3D Heart Model",
-        description: "Fully interactive cardiac model displaying chambers, valves, and hemodynamic flow patterns.",
+        id: "product-launch",
+        title: "Product Launch Microsite",
+        description: "Dedicated launch platform with product information, clinical data, and HCP resources in one place.",
         image: "/koru/koru24.png",
-        tags: ["360° Rotation", "Cross-section", "Pathology View"],
-        stat: "50+",
-        statLabel: "Anatomical Models"
+        tags: ["Product Info", "Clinical Data", "HCP Portal"],
+        stat: "48hrs",
+        statLabel: "Launch Time"
       },
       {
-        id: "brain-atlas",
-        title: "Brain Atlas",
-        description: "Detailed neurological mapping with functional area visualization and pathology overlays.",
+        id: "disease-awareness",
+        title: "Disease Awareness Portal",
+        description: "Educational microsite focused on disease state awareness with symptom checker and doctor locator.",
         image: "/koru/koru25.png",
-        tags: ["Region Highlight", "Function Map", "Disorder Overlay"]
+        tags: ["Symptom Check", "Doctor Finder", "Patient Stories"]
       },
       {
-        id: "skeletal",
-        title: "Skeletal System",
-        description: "Complete osteological model with joint mechanics and range-of-motion demonstrations.",
+        id: "hcp-portal",
+        title: "HCP Resource Hub",
+        description: "Professional portal with clinical resources, CME modules, and peer discussion forums for doctors.",
         image: "/koru/koru26.png",
-        tags: ["Bone Layers", "Joint Movement", "Fracture Types"]
+        tags: ["Clinical Papers", "CME Credits", "Discussion Forum"]
       },
       {
-        id: "muscular",
-        title: "Muscular System",
-        description: "Interactive muscle layer visualization with origin, insertion, and action demonstrations.",
+        id: "campaign-landing",
+        title: "Campaign Landing Pages",
+        description: "High-conversion landing pages for digital marketing campaigns with A/B testing capabilities.",
         image: "/koru/koru27.png",
-        tags: ["Layer Toggle", "Movement Demo", "Insertion Points"]
+        tags: ["A/B Testing", "Lead Capture", "Analytics Integration"]
       },
       {
-        id: "nervous",
-        title: "Nervous System",
-        description: "Complete neural pathway mapping from central nervous system to peripheral innervation.",
+        id: "event-microsite",
+        title: "Medical Event Microsite",
+        description: "Conference and symposium websites with registration, agenda, and virtual attendance features.",
         image: "/koru/koru28.png",
-        tags: ["Pathway Trace", "Reflex Arcs", "Dermatome Map"]
+        tags: ["Registration", "Live Stream", "Networking Tools"]
       },
       {
-        id: "organs",
-        title: "Organ Systems",
-        description: "Multi-organ visualization platform with healthy-pathology comparison capabilities.",
+        id: "patient-community",
+        title: "Patient Community Platform",
+        description: "Moderated patient community with discussion forums, expert Q&A, and shared experiences.",
         image: "/koru/koru29.png",
-        tags: ["Multi-organ View", "Compare Tool", "Disease States"]
+        tags: ["Forums", "Expert Sessions", "Support Groups"]
       }
     ]
   },
   {
-    id: "chatbots",
-    number: "08",
-    title: "AI Chatbots",
-    description: "Intelligent conversational agents powered by advanced AI providing instant, accurate support for patients and healthcare professionals 24/7.",
-    icon: MessageCircle,
+    id: "customized-apps",
+    number: "06",
+    title: "Customized Apps",
+    description: "Native and cross-platform mobile applications tailored for pharmaceutical sales reps, HCPs, and patient engagement.",
+    icon: Smartphone,
     products: [
       {
-        id: "patient-bot",
-        title: "Patient Assistant Bot",
-        description: "Round-the-clock support chatbot handling medication queries and appointment scheduling.",
+        id: "sales-rep-app",
+        title: "Sales Force Automation App",
+        description: "Mobile CRM with e-detailing, visit planning, and real-time reporting for field representatives.",
         image: "/koru/koru30.png",
-        tags: ["Medication Info", "Appointment Booking", "Symptom Check"],
-        stat: "24/7",
-        statLabel: "Availability"
+        tags: ["Visit Planner", "E-detailing", "Offline Mode"],
+        stat: "4.8/5",
+        statLabel: "User Rating"
       },
       {
-        id: "hcp-bot",
-        title: "Clinical Knowledge Bot",
-        description: "Professional knowledge assistant delivering drug information and clinical guideline updates.",
+        id: "hcp-reference-app",
+        title: "HCP Reference App",
+        description: "Quick-reference medical app with drug database, clinical guidelines, and interaction checker.",
         image: "/koru/koru31.png",
-        tags: ["Drug Database", "Guidelines", "Research Updates"]
+        tags: ["Drug Database", "Guidelines", "Interaction Check"]
       },
       {
-        id: "diagnostic-bot",
-        title: "Diagnostic Support Bot",
-        description: "AI-powered diagnostic suggestion engine based on comprehensive symptom analysis.",
+        id: "patient-wellness-app",
+        title: "Patient Wellness Tracker",
+        description: "Personal health companion app with medication tracking, symptom diary, and progress visualization.",
         image: "/koru/koru32.png",
-        tags: ["Symptom Analysis", "Differential Diagnosis", "Test Suggestions"]
+        tags: ["Med Tracker", "Symptom Log", "Health Trends"]
       },
       {
-        id: "wellness-bot",
-        title: "Wellness Coach Bot",
-        description: "Personalized health coaching bot delivering daily wellness tips and progress tracking.",
+        id: "event-app",
+        title: "Medical Event App",
+        description: "Conference companion with schedule builder, speaker profiles, and networking features.",
         image: "/koru/koru33.png",
-        tags: ["Daily Tips", "Goal Tracking", "Motivation"]
+        tags: ["Schedule", "Networking", "Live Polling"]
       },
       {
-        id: "multilingual-bot",
-        title: "Multilingual Bot",
-        description: "Multi-language support system serving patients in their preferred regional language.",
+        id: "training-app",
+        title: "Training & Assessment App",
+        description: "Mobile learning platform with micro-learning modules, quizzes, and certification tracking.",
         image: "/koru/koru34.png",
-        tags: ["10+ Languages", "Voice Input", "Translation"]
+        tags: ["Micro-learning", "Certifications", "Progress Track"]
       },
       {
-        id: "compliance-bot",
-        title: "Compliance Bot",
-        description: "Regulatory compliance verification bot for pharmaceutical marketing content review.",
+        id: "telemedicine-app",
+        title: "Telemedicine Platform",
+        description: "Secure video consultation app with appointment scheduling and digital prescription capabilities.",
         image: "/koru/koru35.png",
-        tags: ["Auto-check", "Regulatory Updates", "Approval Workflow"]
+        tags: ["Video Consult", "E-Prescription", "Secure Chat"]
+      }
+    ]
+  },
+  {
+    id: "video-production",
+    number: "07",
+    title: "Video Production & Editing",
+    description: "Professional medical video production services including 3D animations, MOA videos, and HCP testimonial content.",
+    icon: Video,
+    products: [
+      {
+        id: "moa-videos",
+        title: "Mechanism of Action Videos",
+        description: "Scientifically accurate 3D animations explaining drug mechanisms with stunning visual clarity.",
+        image: "/koru/koru.png",
+        tags: ["3D Animation", "Scientific Accuracy", "Multi-language"],
+        stat: "500+",
+        statLabel: "Videos Produced"
+      },
+      {
+        id: "kol-interviews",
+        title: "KOL Interview Series",
+        description: "Professional filming and editing of key opinion leader interviews and expert discussions.",
+        image: "/koru/koru1.png",
+        tags: ["Studio Quality", "Multi-camera", "Post Production"]
+      },
+      {
+        id: "patient-stories",
+        title: "Patient Journey Documentaries",
+        description: "Emotive patient story filming capturing real experiences with sensitivity and authenticity.",
+        image: "/koru/koru2.png",
+        tags: ["Real Stories", "Consent Managed", "Emotive Content"]
+      },
+      {
+        id: "training-videos",
+        title: "Training & Educational Videos",
+        description: "Instructional content for sales teams, HCPs, and patients with clear visual demonstrations.",
+        image: "/koru/koru3.png",
+        tags: ["Step-by-step", "Assessments", "Interactive"]
+      },
+      {
+        id: "product-demos",
+        title: "Product Demonstration Videos",
+        description: "Detailed product usage and device demonstration videos for HCP and patient education.",
+        image: "/koru/koru4.png",
+        tags: ["Device Usage", "Technique Demo", "Safety Info"]
+      },
+      {
+        id: "corporate-videos",
+        title: "Corporate & Brand Films",
+        description: "Brand storytelling through cinematic corporate films that communicate vision and values.",
+        image: "/koru/koru5.png",
+        tags: ["Cinematic", "Brand Story", "Multi-purpose"]
+      }
+    ]
+  },
+  {
+    id: "variable-data",
+    number: "08",
+    title: "Variable Data Collection & Printing",
+    description: "Intelligent variable data solutions for personalized pharmaceutical marketing materials with automated data integration.",
+    icon: Database,
+    products: [
+      {
+        id: "personalized-print",
+        title: "Personalized Print Materials",
+        description: "Mass customization of visual aids, leave-behind cards, and brochures with HCP-specific content.",
+        image: "/koru/koru6.png",
+        tags: ["HCP Personalization", "Variable Content", "QR Integration"],
+        stat: "3.2x",
+        statLabel: "Response Rate"
+      },
+      {
+        id: "digital-print",
+        title: "Digital-to-Print Automation",
+        description: "Automated workflow from digital campaigns to personalized physical mailers and follow-ups.",
+        image: "/koru/koru7.png",
+        tags: ["Workflow Automation", "Trigger-based", "Multi-channel"]
+      },
+      {
+        id: "qr-codes",
+        title: "Smart QR & PURL Generation",
+        description: "Dynamic QR codes and personalized URLs for tracking engagement and campaign attribution.",
+        image: "/koru/koru8.png",
+        tags: ["Dynamic QR", "Trackable Links", "Analytics"]
+      },
+      {
+        id: "data-collection",
+        title: "Field Data Collection System",
+        description: "Mobile data capture tools for field force to collect and sync HCP preferences and feedback.",
+        image: "/koru/koru9.png",
+        tags: ["Mobile Capture", "Real-time Sync", "Validation Rules"]
+      },
+      {
+        id: "crm-integration",
+        title: "CRM Integration Suite",
+        description: "Seamless integration with major CRM platforms for automated data flow and campaign triggers.",
+        image: "/koru/koru10.png",
+        tags: ["CRM Sync", "API Integration", "Auto-updates"]
+      },
+      {
+        id: "compliance-printing",
+        title: "Compliance-Verified Printing",
+        description: "Regulatory-compliant variable printing with automated approval workflows and audit trails.",
+        image: "/koru/koru11.png",
+        tags: ["Auto-approval", "Version Control", "Audit Ready"]
       }
     ]
   }
@@ -485,14 +486,14 @@ const serviceCategories: ServiceCategory[] = [
 
 // ─── TABLE TOP GALLERY DATA ──────────────────────────────────────────────────
 const tableTopImages: TableTopImage[] = [
-  { id: "tt-1", src: "/koru/koru.png", title: "Cardiology Display", category: "Cardiovascular" },
-  { id: "tt-2", src: "/koru/koru1.png", title: "Diabetes Management", category: "Endocrinology" },
-  { id: "tt-3", src: "/koru/koru2.png", title: "Oncology Overview", category: "Oncology" },
-  { id: "tt-4", src: "/koru/koru3.png", title: "Respiratory Health", category: "Pulmonology" },
-  { id: "tt-5", src: "/koru/koru4.png", title: "Neurology Insights", category: "Neurology" },
-  { id: "tt-6", src: "/koru/koru5.png", title: "Gastroenterology", category: "Gastroenterology" },
-  { id: "tt-7", src: "/koru/koru6.png", title: "Orthopedics Display", category: "Orthopedics" },
-  { id: "tt-8", src: "/koru/koru7.png", title: "Dermatology Guide", category: "Dermatology" },
+  { id: "tt-1", src: "/koru/koru.png", title: "Custom Dashboard Interface", category: "Dashboard" },
+  { id: "tt-2", src: "/koru/koru1.png", title: "Analytics Visualization", category: "Analytics" },
+  { id: "tt-3", src: "/koru/koru2.png", title: "Health Risk Calculator", category: "HRA Tools" },
+  { id: "tt-4", src: "/koru/koru3.png", title: "Patient Support Portal", category: "Patient Programs" },
+  { id: "tt-5", src: "/koru/koru4.png", title: "Mini Website Design", category: "Websites" },
+  { id: "tt-6", src: "/koru/koru5.png", title: "Mobile App Interface", category: "Apps" },
+  { id: "tt-7", src: "/koru/koru6.png", title: "Video Production Still", category: "Video" },
+  { id: "tt-8", src: "/koru/koru7.png", title: "Variable Data Print Sample", category: "Print" },
 ];
 
 // ─── MAGNETIC BUTTON ─────────────────────────────────────────────────────────
@@ -575,8 +576,8 @@ function HeroBanner() {
             transition={{ delay: 0.3 }}
             className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-4"
           >
-            Digital Products
-            <span className="block text-[#8bde7a]">& Services</span>
+            Digital
+            <span className="block text-[#8bde7a]">Services</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -592,8 +593,6 @@ function HeroBanner() {
     </section>
   );
 }
-
-
 
 // ─── CATEGORY SECTION ────────────────────────────────────────────────────────
 function CategorySection({ category, index }: { category: ServiceCategory; index: number }) {
@@ -632,15 +631,14 @@ function CategorySection({ category, index }: { category: ServiceCategory; index
           viewport={{ once: true, margin: "-60px" }}
           className=""
         >
-          <div className="flex items-center  gap-4 mb-2">
+          <div className="flex items-center gap-4 mb-2">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0093cb] bg-[#0093cb]/10 px-3 py-1.5 rounded-full">
               {category.number}
             </span>
-
-
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 ">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">
               {category.title}
-            </h2> </div>
+            </h2>
+          </div>
           <p className="text-lg text-slate-600 max-w-2xl leading-relaxed">
             {category.description}
           </p>
@@ -699,7 +697,6 @@ function CategorySection({ category, index }: { category: ServiceCategory; index
 function ProductCard({ product }: { product: DigitalProduct }) {
   return (
     <article className="group bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-[#00a65d]/30 hover:shadow-2xl hover:shadow-[#00a65d]/10 transition-all duration-500 h-full flex flex-col relative">
-      {/* Glow effect overlay */}
       <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"
         style={{
           background: 'radial-gradient(circle at center, rgba(0, 166, 93, 0.15) 0%, transparent 70%)',
@@ -746,7 +743,7 @@ function TableTopGallerySection() {
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const card = scrollRef.current.querySelector('div');
-      const amount = ((card?.offsetWidth || 280) + 20) * 2; // scroll 2 cards at a time
+      const amount = ((card?.offsetWidth || 280) + 20) * 2;
       scrollRef.current.scrollBy({
         left: direction === 'left' ? -amount : amount,
         behavior: 'smooth'
@@ -758,7 +755,6 @@ function TableTopGallerySection() {
   return (
     <section className="py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -774,17 +770,16 @@ function TableTopGallerySection() {
             </div>
           </div>
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
-            Table Top Designs
+            Digital Services Gallery
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl leading-relaxed">
-            Explore our collection of hyperpersonalized tabletop displays crafted for
-            various therapeutic areas. Each design is meticulously created to enhance
-            HCP engagement and deliver impactful brand experiences.
+            Explore our collection of digital service interfaces and solutions crafted for
+            pharmaceutical companies. Each design is meticulously created to enhance
+            user engagement and deliver impactful digital experiences.
           </p>
           <div className="mt-4 w-20 h-1 bg-gradient-to-r from-[#00a65d] to-[#8bde7a] rounded-full" />
         </motion.div>
 
-        {/* Gallery Grid - Visible on Desktop (4 images) */}
         <div className="hidden lg:grid lg:grid-cols-4 gap-5 mb-8">
           {tableTopImages.slice(0, 4).map((image, i) => (
             <motion.div
@@ -803,17 +798,12 @@ function TableTopGallerySection() {
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                 sizes="(max-width: 1024px) 50vw, 25vw"
               />
-              {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Category Badge */}
               <div className="absolute top-3 left-3">
                 <span className="px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full text-[10px] font-bold uppercase tracking-wider text-[#0093cb]">
                   {image.category}
                 </span>
               </div>
-
-              {/* Hover Content */}
               <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                 <h4 className="text-white font-bold text-sm mb-1">{image.title}</h4>
                 <span className="inline-flex items-center gap-1 text-[#8bde7a] text-xs font-semibold">
@@ -825,10 +815,6 @@ function TableTopGallerySection() {
           ))}
         </div>
 
-        {/* Carousel - Visible on Mobile/Tablet + shows all on desktop */}
-
-
-        {/* Second Row of Grid - Desktop only (images 5-8) */}
         <div className="hidden lg:grid lg:grid-cols-4 gap-5">
           {tableTopImages.slice(4, 8).map((image, i) => (
             <motion.div
@@ -848,13 +834,11 @@ function TableTopGallerySection() {
                 sizes="(max-width: 1024px) 50vw, 25vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
               <div className="absolute top-3 left-3">
                 <span className="px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full text-[10px] font-bold uppercase tracking-wider text-[#0093cb]">
                   {image.category}
                 </span>
               </div>
-
               <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                 <h4 className="text-white font-bold text-sm mb-1">{image.title}</h4>
                 <span className="inline-flex items-center gap-1 text-[#8bde7a] text-xs font-semibold">
@@ -866,7 +850,6 @@ function TableTopGallerySection() {
           ))}
         </div>
 
-        {/* View All Button */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -879,7 +862,6 @@ function TableTopGallerySection() {
         </motion.div>
       </div>
 
-      {/* Lightbox Modal */}
       {selectedImage && (
         <div
           className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
@@ -910,103 +892,6 @@ function TableTopGallerySection() {
           </div>
         </div>
       )}
-    </section>
-  );
-}
-
-
-// ─── TESTIMONIAL STRIP ──────────────────────────────────────────────────────
-function TestimonialStrip() {
-  return (
-    <section className="py-12 bg-gradient-to-r from-[#0093cb] to-[#00a65d] overflow-hidden relative">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
-          backgroundSize: '30px 30px'
-        }} />
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap items-center justify-between gap-8"
-        >
-          <div className="flex items-center gap-6">
-            <div className="flex -space-x-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white flex items-center justify-center text-white font-bold text-sm">
-                  {i}
-                </div>
-              ))}
-            </div>
-            <div>
-              <div className="text-white/80 text-sm font-medium">Trusted by</div>
-              <div className="text-white text-2xl font-extrabold">200+ Pharma Brands</div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <Star key={star} className="w-6 h-6 text-[#8bde7a] fill-[#8bde7a]" />
-            ))}
-            <span className="text-white font-semibold ml-2">4.9/5 Rating</span>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-// ─── CTA SECTION ─────────────────────────────────────────────────────────────
-function CTASection() {
-  return (
-    <section className="relative py-20 lg:py-32 bg-slate-900 overflow-hidden">
-      <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-[#0093cb]/10 blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#00a65d]/10 blur-3xl" />
-      <div className="absolute inset-0 opacity-5" style={{
-        backgroundImage: `radial-gradient(circle, #8bde7a 1px, transparent 1px)`,
-        backgroundSize: '50px 50px'
-      }} />
-
-      <div className="relative max-w-4xl mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="space-y-8"
-        >
-          <SectionBadge className="bg-white/10 text-[#8bde7a] border border-white/20 backdrop-blur-md">
-            <Sparkles className="w-4 h-4" />
-            Let's Build Together
-          </SectionBadge>
-
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
-            Ready to Transform Your
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#0093cb] via-[#00a65d] to-[#8bde7a]">
-              Digital Healthcare Strategy?
-            </span>
-          </h2>
-
-          <p className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-            Let's discuss how our digital products and services can enhance your
-            pharmaceutical marketing and patient engagement initiatives with measurable impact.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-4 pt-4">
-            <MagneticButton className="bg-gradient-to-r from-[#0093cb] to-[#00a65d] text-white px-8 py-4 rounded-full font-bold hover:shadow-lg hover:shadow-[#0093cb]/30 transition-all inline-flex items-center gap-2">
-              Schedule a Demo <ArrowUpRight size={20} />
-            </MagneticButton>
-            <Link
-              href="/brochure"
-              className="px-8 py-4 rounded-full font-bold border-2 border-white/30 text-white hover:border-[#8bde7a] hover:text-[#8bde7a] transition-all"
-            >
-              Download Brochure
-            </Link>
-          </div>
-        </motion.div>
-      </div>
     </section>
   );
 }

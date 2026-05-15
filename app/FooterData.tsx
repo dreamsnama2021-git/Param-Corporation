@@ -45,8 +45,11 @@ export const categories: CategoryItem[] = [
   { name: "Indoor Plants", slug: "indoor-plants", description: "Aesthetic and thoughtful doctor gifts that stay long and build daily recall" },
   { name: "Calendars", slug: "calendars", description: "Medical-focused calendars designed as per medical relevance and brand messaging" },
   { name: "Photo Frames", slug: "photo-frames", description: "Personalized and professional frames with pharma branding for clinics and offices" },
+  { name: "Pharma Launch Kits", slug: "pharma-launch-kits", description: "Comprehensive branding kits for pharmaceutical product launches and promotions" },
+  { name: "Custom Doctor Kits", slug: "custom-doctor-kits", description: "Personalized gift kits tailored for doctors with pharma branding and utilities" },
+  { name: "Surgical Tools", slug: "surgical-tools", description: "Branded surgical instruments and tools for medical professionals and hospitals" },
+  { name: "Custom Training Models", slug: "custom-training-models", description: "Educational medical models customized for pharma training and demonstrations" },
 ];
-
 // 3. By Price
 export const priceRanges: CategoryItem[] = [
   { name: "Corporate Gifts Under ₹100", slug: "under-100", description: "Budget-friendly gifts under ₹100" },

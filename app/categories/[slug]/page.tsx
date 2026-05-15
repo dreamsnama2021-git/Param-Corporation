@@ -6,6 +6,7 @@ import React, {
   useState,
   useEffect,
   useRef,
+  Suspense,
 } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -37,6 +38,36 @@ const listingStyles = `
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
   .product-card:hover .product-overlay { opacity: 1; }
   .product-overlay { opacity: 0; transition: opacity 0.3s ease; }
+  
+  /* Category highlight animation */
+  .category-section {
+    transition: all 0.3s ease;
+    border-radius: 1rem;
+    padding: 1rem;
+    scroll-margin-top: 100px;
+  }
+  
+  .category-section.highlight-category {
+    animation: highlightPulse 0.8s ease-in-out 3;
+    background-color: rgba(0, 147, 203, 0.03);
+    box-shadow: 0 0 30px 5px rgba(0, 147, 203, 0.1);
+  }
+  
+  @keyframes highlightPulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(0, 147, 203, 0);
+      background-color: rgba(0, 147, 203, 0.01);
+    }
+    50% {
+      box-shadow: 0 0 20px 4px rgba(0, 147, 203, 0.15);
+      background-color: rgba(0, 147, 203, 0.05);
+    }
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
 `;
 
 /* Brand Colors */
@@ -89,6 +120,23 @@ function SidebarWithSubcategories({
 
   const getSubCategoryCount = (slug: string) => {
     return allProducts.filter((p) => p.category === slug).length;
+  };
+
+  const handleSubCategoryClick = (slug: string) => {
+    const element = document.getElementById(`category-${slug}`);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start',
+        inline: 'nearest'
+      });
+      
+      // Add highlight effect
+      element.classList.add('highlight-category');
+      setTimeout(() => {
+        element.classList.remove('highlight-category');
+      }, 3000);
+    }
   };
 
   return (
@@ -147,36 +195,39 @@ function SidebarWithSubcategories({
                 </button>
 
                 {/* Subcategories Dropdown */}
-                {isSelected && subCategories.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="bg-gray-50/50 border-t border-gray-100 overflow-hidden"
-                  >
-                    <div className="py-2 px-2 space-y-0.5 max-h-[50vh] overflow-y-auto scrollbar-hide">
-                      {subCategories.map((cat) => {
-                        const count = getSubCategoryCount(cat.slug);
-                        return (
-                          <a
-                            key={cat.slug}
-                            href={`#category-${cat.slug}`}
-                            className="group flex items-center justify-between py-2.5 px-3 rounded-lg text-sm text-gray-600 hover:text-[#060706] hover:bg-white transition-all"
-                          >
-                            <div className="flex items-center gap-2">
-                              <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#0093cb] transition-colors" />
-                              <span className="line-clamp-1">{cat.name}</span>
-                            </div>
-                            <span className="text-xs text-gray-400 ml-2 flex-shrink-0">
-                              {count}
-                            </span>
-                          </a>
-                        );
-                      })}
-                    </div>
-                  </motion.div>
-                )}
+                <AnimatePresence>
+                  {isSelected && subCategories.length > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="bg-gray-50/50 border-t border-gray-100 overflow-hidden"
+                    >
+                      <div className="py-2 px-2 space-y-0.5 max-h-[50vh] overflow-y-auto scrollbar-hide">
+                        {subCategories.map((cat) => {
+                          const count = getSubCategoryCount(cat.slug);
+                          return (
+                            <button
+                              key={cat.slug}
+                              onClick={() => handleSubCategoryClick(cat.slug)}
+                              className="w-full group flex items-center justify-between py-2.5 px-3 rounded-lg text-sm text-gray-600 hover:text-[#060706] hover:bg-white transition-all text-left"
+                              type="button"
+                            >
+                              <div className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#0093cb] transition-colors" />
+                                <span className="line-clamp-1">{cat.name}</span>
+                              </div>
+                              <span className="text-xs text-gray-400 ml-2 flex-shrink-0">
+                                {count}
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}
@@ -413,15 +464,16 @@ function LightboxModal({
 }
 
 /* ══════════════════════════════════════════
-   PAGE COMPONENT
+   MAIN PAGE COMPONENT WITH SCROLL LOGIC
 ══════════════════════════════════════════ */
-export default function CategoryPage() {
+function CategoryPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
   const tabParam = searchParams.get("tab") as TabId | null;
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [highlightedCategory, setHighlightedCategory] = useState<string | null>(null);
 
   // Default to "all" if no tab specified
   const activeTab: TabId = useMemo(() => {
@@ -431,6 +483,34 @@ export default function CategoryPage() {
 
   const activeTabColor = TABS.find((t) => t.id === activeTab)?.color || BRAND.primary;
   const tabCategories = useMemo(() => getCategoriesForTab(activeTab), [activeTab]);
+
+  // Handle hash scrolling and highlighting on mount
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#category-')) {
+      const categorySlug = hash.replace('#category-', '');
+      setHighlightedCategory(categorySlug);
+      
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        const element = document.getElementById(`category-${categorySlug}`);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start',
+            inline: 'nearest'
+          });
+          
+          // Add highlight effect temporarily
+          element.classList.add('highlight-category');
+          setTimeout(() => {
+            element.classList.remove('highlight-category');
+            setHighlightedCategory(null);
+          }, 3000);
+        }
+      }, 500);
+    }
+  }, [activeTab]); // Re-run when tab changes
 
   // Group products by subcategory
   const groupedProducts = useMemo(() => {
@@ -463,7 +543,7 @@ export default function CategoryPage() {
     <>
       <style dangerouslySetInnerHTML={{ __html: listingStyles }} />
       <div className="min-h-screen listing-container bg-[#f8fafc]">
-        {/* Hero */}
+        {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-[#060706] via-[#0b3c5d] to-[#0093cb]/30 py-12 lg:py-16 overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <svg width="100%" height="100%">
@@ -575,7 +655,13 @@ export default function CategoryPage() {
 
                   <div className="space-y-14">
                     {groupedProducts.map((group) => (
-                      <section key={group.categorySlug} id={`category-${group.categorySlug}`}>
+                      <section 
+                        key={group.categorySlug} 
+                        id={`category-${group.categorySlug}`}
+                        className={`category-section ${
+                          highlightedCategory === group.categorySlug ? 'highlight-category' : ''
+                        }`}
+                      >
                         <div className="mb-6">
                           <div className="flex items-center gap-3 mb-2">
                             <h2 className="text-xl lg:text-2xl font-bold text-[#060706]">
@@ -636,5 +722,20 @@ export default function CategoryPage() {
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+/* ══════════════════════════════════════════
+   EXPORT WITH SUSPENSE BOUNDARY
+══════════════════════════════════════════ */
+export default function CategoryPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-[#0093cb] border-t-transparent rounded-full animate-spin" />
+      </div>
+    }>
+      <CategoryPageContent />
+    </Suspense>
   );
 }
