@@ -13,9 +13,11 @@ import {
 } from "../app/FooterData";
 
 // Social Icon
-const SocialIcon = ({ children }: { children: React.ReactNode }) => (
+const SocialIcon = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <a
-    href="#"
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     className="w-8 h-8 rounded-full flex items-center justify-center 
     border border-[var(--clr-border-light)] 
     hover:bg-[var(--clr-primary)] transition"
@@ -47,12 +49,12 @@ export default function Footer() {
             </p>
 
             <div className="space-y-2 text-sm">
-              <a className="flex items-center gap-2 hover:text-[var(--clr-primary)]">
+              <a href="tel:+919820149950" className="flex items-center gap-2 hover:text-[var(--clr-primary)]">
                 <Phone size={14} className="text-[var(--clr-primary)]" />
                 <span>+91 98201 49950</span>
               </a>
 
-              <a className="flex items-center gap-2 hover:text-[var(--clr-primary)]">
+              <a href="mailto:info@paramcorporation.com" className="flex items-center gap-2 hover:text-[var(--clr-primary)]">
                 <Mail size={14} className="text-[var(--clr-primary)]" />
                 <span>info@paramcorporation.com</span>
               </a>
@@ -67,10 +69,18 @@ export default function Footer() {
 
             {/* SOCIAL */}
             <div className="flex gap-2 mt-4">
-              <SocialIcon>f</SocialIcon>
-              <SocialIcon>in</SocialIcon>
-              <SocialIcon>▶</SocialIcon>
-              <SocialIcon>📷</SocialIcon>
+              <SocialIcon href="https://www.facebook.com/parampromotion?mibextid=ZbWKwL">
+                f
+              </SocialIcon>
+              <SocialIcon href="https://in.pinterest.com/paramcorporationmumbai/_created/">
+                pin
+              </SocialIcon>
+              <SocialIcon href="https://www.linkedin.com/in/param-corporation-316392184/">
+                in
+              </SocialIcon>
+              <SocialIcon href="https://www.youtube.com/@ParamCorporation-j3f">
+                ▶
+              </SocialIcon>
             </div>
           </div>
 
@@ -85,7 +95,7 @@ export default function Footer() {
               {categories.map((item) => (
                 <li key={item.slug}>
                   <Link
-                    href={`/categories/${item.slug}`}
+                    href={`/categories/${item.slug}?tab=categories`}
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >
@@ -108,7 +118,7 @@ export default function Footer() {
               {therapies.map((item) => (
                 <li key={item.slug}>
                   <Link
-                    href={`/therapy/${item.slug}`}
+                    href="/medipride"
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >
@@ -131,7 +141,7 @@ export default function Footer() {
               {personalizedGifts.map((item) => (
                 <li key={item.slug}>
                   <Link
-                    href={`/categories/${item.slug}`}
+                    href={`/categories/${item.slug}?tab=personalized`}
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >
@@ -154,7 +164,7 @@ export default function Footer() {
               {occasions.map((item) => (
                 <li key={item.slug}>
                   <Link
-                    href={`/occasion/${item.slug}`}
+                    href={`/categories/${item.slug}?tab=occasion`}
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >
