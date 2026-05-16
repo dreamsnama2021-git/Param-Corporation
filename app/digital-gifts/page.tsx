@@ -1,7 +1,7 @@
 // app/digital-services/page.tsx
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,10 +16,7 @@ import {
   Video,
   Database,
   Sparkles,
-  ChevronLeft,
-  ChevronRight,
   Eye,
-  X,
   Zap,
 } from 'lucide-react';
 
@@ -30,7 +27,6 @@ interface ServiceCategory {
   title: string;
   description: string;
   icon: React.ElementType;
-  image: string;
   gradient: string;
 }
 
@@ -49,7 +45,6 @@ const serviceCategories: ServiceCategory[] = [
     title: "Customized Dashboard",
     description: "Tailored analytics dashboards providing real-time insights and KPIs for pharmaceutical sales and marketing teams with role-based access.",
     icon: LayoutDashboard,
-    image: "/koru/koru.png",
     gradient: "from-blue-500 to-cyan-400",
   },
   {
@@ -58,7 +53,6 @@ const serviceCategories: ServiceCategory[] = [
     title: "Customized Analytics",
     description: "Advanced pharmaceutical analytics solutions delivering deep insights into prescription patterns, market trends, and HCP behavior.",
     icon: BarChart3,
-    image: "/koru/koru6.png",
     gradient: "from-purple-500 to-pink-400",
   },
   {
@@ -67,7 +61,6 @@ const serviceCategories: ServiceCategory[] = [
     title: "Health Risk Calculators",
     description: "Interactive health risk assessment tools that engage patients and HCPs while generating valuable health insights and leads.",
     icon: HeartPulse,
-    image: "/koru/koru12.png",
     gradient: "from-red-500 to-orange-400",
   },
   {
@@ -76,7 +69,6 @@ const serviceCategories: ServiceCategory[] = [
     title: "Patient Support Programs",
     description: "Comprehensive digital patient support ecosystems including medication adherence, education, and 24/7 assistance platforms.",
     icon: Users,
-    image: "/koru/koru18.png",
     gradient: "from-green-500 to-emerald-400",
   },
   {
@@ -85,7 +77,6 @@ const serviceCategories: ServiceCategory[] = [
     title: "Mini Websites",
     description: "Dedicated micro-sites and landing pages for pharmaceutical brands, products, and disease awareness campaigns.",
     icon: Globe,
-    image: "/koru/koru24.png",
     gradient: "from-indigo-500 to-blue-400",
   },
   {
@@ -94,7 +85,6 @@ const serviceCategories: ServiceCategory[] = [
     title: "Customized Apps",
     description: "Native and cross-platform mobile applications tailored for pharmaceutical sales reps, HCPs, and patient engagement.",
     icon: Smartphone,
-    image: "/koru/koru30.png",
     gradient: "from-teal-500 to-green-400",
   },
   {
@@ -103,7 +93,6 @@ const serviceCategories: ServiceCategory[] = [
     title: "Video Production & Editing",
     description: "Professional medical video production services including 3D animations, MOA videos, and HCP testimonial content.",
     icon: Video,
-    image: "/koru/koru1.png",
     gradient: "from-orange-500 to-yellow-400",
   },
   {
@@ -112,7 +101,6 @@ const serviceCategories: ServiceCategory[] = [
     title: "Variable Data Collection & Printing",
     description: "Intelligent variable data solutions for personalized pharmaceutical marketing materials with automated data integration.",
     icon: Database,
-    image: "/koru/koru11.png",
     gradient: "from-rose-500 to-pink-400",
   },
 ];
@@ -233,7 +221,7 @@ function HyperPersonalizedServices() {
         {/* Service Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {serviceCategories.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
+            <FlipCard key={service.id} service={service} index={index} />
           ))}
         </div>
       </div>
@@ -241,8 +229,9 @@ function HyperPersonalizedServices() {
   );
 }
 
-// ─── SERVICE CARD ────────────────────────────────────────────────────────────
-function ServiceCard({ service, index }: { service: ServiceCategory; index: number }) {
+// ─── FLIP CARD ───────────────────────────────────────────────────────────────
+function FlipCard({ service, index }: { service: ServiceCategory; index: number }) {
+  const [isFlipped, setIsFlipped] = useState(false);
   const Icon = service.icon;
 
   return (
@@ -251,62 +240,114 @@ function ServiceCard({ service, index }: { service: ServiceCategory; index: numb
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      whileHover={{ y: -8 }}
-      className="group relative bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-[#00a65d]/40 shadow-lg hover:shadow-2xl hover:shadow-[#00a65d]/10 transition-all duration-500 cursor-pointer"
+      className="relative h-[320px] perspective-1000"
+      onMouseEnter={() => setIsFlipped(true)}
+      onMouseLeave={() => setIsFlipped(false)}
     >
-      {/* Gradient Overlay on Hover */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10 rounded-3xl"
-        style={{
-          background: 'radial-gradient(circle at center, rgba(0, 166, 93, 0.08) 0%, transparent 70%)',
-        }}
-      />
+      <motion.div
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+        className="relative w-full h-full preserve-3d"
+        style={{ transformStyle: 'preserve-3d' }}
+      >
+        {/* Front Face */}
+        <div
+          className="absolute inset-0 backface-hidden rounded-3xl border border-slate-200 bg-white shadow-lg flex flex-col items-center justify-center p-8 cursor-pointer group"
+          style={{ backfaceVisibility: 'hidden' }}
+        >
+          {/* Gradient Background on Hover */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
+            style={{
+              background: 'radial-gradient(circle at center, rgba(0, 166, 93, 0.06) 0%, transparent 70%)',
+            }}
+          />
 
-      {/* Image Section */}
-      <div className="relative h-48 overflow-hidden bg-slate-100">
-        <Image
-          src={service.image}
-          alt={service.title}
-          fill
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-        />
-        {/* Number Badge */}
-        <div className="absolute top-4 left-4 z-20">
-          <span className="text-xs font-bold text-white bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">
-            {service.number}
-          </span>
-        </div>
-        {/* Icon */}
-        <div className="absolute top-4 right-4 z-20 w-10 h-10 rounded-xl bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
-          <Icon size={20} className="text-[#0093cb]" />
-        </div>
-      </div>
+          {/* Number Badge */}
+          <div className="absolute top-4 left-4">
+            <span className="text-xs font-bold text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">
+              {service.number}
+            </span>
+          </div>
 
-      {/* Content Section */}
-      <div className="p-6 relative z-20">
-        <h3 className="text-lg font-extrabold text-slate-900 mb-3 group-hover:text-[#00a65d] transition-colors duration-300">
-          {service.title}
-        </h3>
-        <p className="text-sm text-slate-600 leading-relaxed line-clamp-3 mb-4">
-          {service.description}
-        </p>
-        
-        {/* Learn More Link */}
-        <div className="flex items-center gap-2 text-sm font-semibold text-[#0093cb] group-hover:text-[#00a65d] transition-colors duration-300">
-          <span>Explore Service</span>
-          <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </div>
-      </div>
+          {/* Icon Container */}
+          <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-500 relative z-10`}>
+            <Icon size={36} className="text-white" />
+          </div>
 
-      {/* Bottom Accent Line */}
-      <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
+          {/* Title */}
+          <h3 className="text-xl font-extrabold text-slate-900 text-center mb-3 group-hover:text-[#00a65d] transition-colors duration-300 relative z-10">
+            {service.title}
+          </h3>
+
+          {/* Brief Description - 1-2 lines */}
+          <p className="text-sm text-slate-500 text-center leading-relaxed line-clamp-2 relative z-10">
+            {service.description.split('.')[0]}.
+          </p>
+
+          {/* Hover Hint */}
+          <div className="absolute bottom-6 flex items-center gap-1.5 text-xs text-slate-400 group-hover:text-[#0093cb] transition-colors duration-300">
+            <span>Hover to explore</span>
+            <motion.svg
+              animate={{ rotate: isFlipped ? 180 : 0 }}
+              className="w-3 h-3"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </motion.svg>
+          </div>
+        </div>
+
+        {/* Back Face */}
+        <div
+          className="absolute inset-0 backface-hidden rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-2xl flex flex-col items-center justify-center p-8"
+          style={{ 
+            backfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg)',
+          }}
+        >
+          {/* Gradient Overlay */}
+          <div className={`absolute inset-0 opacity-10 rounded-3xl bg-gradient-to-br ${service.gradient}`} />
+
+          {/* Number Badge */}
+          <div className="absolute top-4 left-4">
+            <span className="text-xs font-bold text-[#8bde7a] bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
+              {service.number}
+            </span>
+          </div>
+
+          {/* Icon */}
+          <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-5 shadow-lg relative z-10`}>
+            <Icon size={28} className="text-white" />
+          </div>
+
+          {/* Title */}
+          <h3 className="text-lg font-extrabold text-white text-center mb-3 relative z-10">
+            {service.title}
+          </h3>
+
+          {/* Full Description */}
+          <p className="text-sm text-slate-300 text-center leading-relaxed relative z-10 mb-6">
+            {service.description}
+          </p>
+
+          {/* CTA */}
+          {/* <div className="flex items-center gap-2 text-sm font-semibold text-[#8bde7a] group/cta cursor-pointer relative z-10">
+            <span>Explore Service</span>
+            <ArrowUpRight size={16} className="transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
+          </div> */}
+
+          {/* Bottom Accent */}
+          <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient}`} />
+        </div>
+      </motion.div>
     </motion.div>
   );
 }
 
 // ─── GALLERY SECTION ─────────────────────────────────────────────────────────
 function GallerySection() {
-  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>('All');
 
   const filters = ['All', 'Dashboard', 'Analytics', 'HRA Tools', 'Patient Programs', 'Websites', 'Apps', 'Video', 'Print'];
@@ -344,7 +385,7 @@ function GallerySection() {
         </motion.div>
 
         {/* Filter Buttons */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -363,9 +404,9 @@ function GallerySection() {
               {filter}
             </button>
           ))}
-        </motion.div>
+        </motion.div> */}
 
-        {/* Gallery Grid */}
+        {/* Gallery Grid - Images Only, Not Clickable */}
         <motion.div
           layout
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
@@ -378,34 +419,15 @@ function GallerySection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05, duration: 0.4 }}
-              onClick={() => setSelectedImage(image)}
-              className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer bg-slate-100 shadow-lg hover:shadow-2xl transition-all duration-500"
+              className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 shadow-md group"
             >
               <Image
                 src={image.src}
                 alt={image.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
               />
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Category Badge */}
-              <div className="absolute top-3 left-3">
-                <span className="px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full text-[10px] font-bold uppercase tracking-wider text-[#0093cb]">
-                  {image.category}
-                </span>
-              </div>
-
-              {/* Title on Hover */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <h4 className="text-white font-bold text-sm mb-1">{image.title}</h4>
-                <span className="inline-flex items-center gap-1 text-[#8bde7a] text-xs font-semibold">
-                  <Eye size={14} />
-                  View Full Size
-                </span>
-              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -426,52 +448,6 @@ function GallerySection() {
           </Link>
         </motion.div>
       </div>
-
-      {/* Lightbox Modal */}
-      {selectedImage && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            className="relative max-w-5xl w-full max-h-[90vh] rounded-2xl overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="relative aspect-[4/3]">
-              <Image
-                src={selectedImage.src}
-                alt={selectedImage.title}
-                fill
-                className="object-contain"
-              />
-            </div>
-            
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-            >
-              <X size={20} />
-            </button>
-
-            {/* Image Info */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-              <span className="text-[#8bde7a] text-xs font-bold uppercase tracking-wider">
-                {selectedImage.category}
-              </span>
-              <h3 className="text-white text-xl font-bold mt-1">
-                {selectedImage.title}
-              </h3>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
     </section>
   );
 }

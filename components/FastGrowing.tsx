@@ -164,25 +164,25 @@ export default function IndustriesWeCater() {
                 href={`/categories/industry/${industry.id}`}
                 className="flex-shrink-0 group"
               >
-                <div className="relative w-64 h-40 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 shadow-sm">
+                <div className="relative w-48 h-48 lg:w-56 lg:h-56 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 shadow-sm">
                   {/* Background Image */}
                   <Image
                     src={industry.image}
                     alt={industry.name}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="256px"
+                    sizes="(max-width: 768px) 192px, 224px"
                   />
                   
                   {/* Gradient Overlays */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} opacity-20`} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   
                   {/* Content */}
-                  <div className="relative h-full flex flex-col justify-end p-4">
+                  <div className="relative h-full flex flex-col justify-end p-5">
                     {/* Icon */}
-                    <div className="absolute top-3 left-3">
-                      <div className="p-2 rounded-lg bg-white/20 backdrop-blur-md">
+                    <div className="absolute top-4 left-4">
+                      <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-md border border-white/20">
                         <div className="text-white">
                           {industry.icon}
                         </div>
@@ -191,7 +191,7 @@ export default function IndustriesWeCater() {
 
                     {/* Name */}
                     <div>
-                      <h3 className="text-sm font-semibold text-white">
+                      <h3 className="text-base lg:text-lg font-bold text-white">
                         {industry.name}
                       </h3>
                     </div>
@@ -209,25 +209,25 @@ export default function IndustriesWeCater() {
                 href={`/categories/industry/${industry.id}`}
                 className="flex-shrink-0 group"
               >
-                <div className="relative w-64 h-70 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 shadow-sm">
+                <div className="relative w-48 h-48 lg:w-56 lg:h-56 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 shadow-sm">
                   {/* Background Image */}
                   <Image
                     src={industry.image}
                     alt={industry.name}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="256px"
+                    sizes="(max-width: 768px) 192px, 224px"
                   />
                   
                   {/* Gradient Overlays */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} opacity-20`} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   
                   {/* Content */}
-                  <div className="relative h-full flex flex-col justify-end p-4">
+                  <div className="relative h-full flex flex-col justify-end p-5">
                     {/* Icon */}
-                    <div className="absolute top-3 left-3">
-                      <div className="p-2 rounded-lg bg-white/20 backdrop-blur-md">
+                    <div className="absolute top-4 left-4">
+                      <div className="p-2.5 rounded-xl bg-white/20 backdrop-blur-md border border-white/20">
                         <div className="text-white">
                           {industry.icon}
                         </div>
@@ -236,7 +236,7 @@ export default function IndustriesWeCater() {
 
                     {/* Name */}
                     <div>
-                      <h3 className="text-sm font-semibold text-white">
+                      <h3 className="text-base lg:text-lg font-bold text-white">
                         {industry.name}
                       </h3>
                     </div>
