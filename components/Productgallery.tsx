@@ -55,32 +55,32 @@ const koruImages: GalleryImage[] = [
 ];
 
 /**
- * Fixed 3-column grid pattern — 9 images per block, all blocks identical.
- * Tall images (rowSpan 3) in col1 and col3 create dramatic vertical anchors.
+ * Fixed 4-column grid pattern — 16 images per block, all blocks identical.
+ * Maintains the same dramatic vertical anchors concept with tall images.
  *
  * Grid layout:
- * ┌──────┬──────┬──────┐
- * │      │      │      │
- * │  A   │  B   │  C   │  Row 1 (B, C span 2)
- * │      │      │      │
- * │      ├──────┼──────┤
- * │ 3r   │      │      │
- * │      │  D   │  E   │  Row 2 (E spans 2)
- * │      │      │      │
- * │      │  3r  │      │
- * ├──────┤      ├──────┤
- * │      │      │      │
- * │  F   │      │  G   │  Row 3 (G spans 3)
- * │      │      │      │
- * │  2r  │      │  3r  │
- * ├──────┼──────┤      │
- * │      │      │      │
- * │  H   │  I   │      │  Row 4-5
- * │      │      │      │
- * │  2r  │  2r  │      │
- * └──────┴──────┴──────┘
+ * ┌──────┬──────┬──────┬──────┐
+ * │      │      │      │      │
+ * │  A   │  B   │  C   │  D   │  Row 1 (B, C, D span 2)
+ * │      │      │      │      │
+ * │      ├──────┼──────┼──────┤
+ * │      │      │      │      │
+ * │ 3r   │  E   │  F   │  G   │  Row 2 (F, G span 2)
+ * │      │      │      │      │
+ * │      │  3r  │      │      │
+ * ├──────┤      ├──────┼──────┤
+ * │      │      │      │      │
+ * │  H   │      │  I   │  J   │  Row 3 (J spans 3)
+ * │      │      │      │      │
+ * │  2r  │      │  3r  │  3r  │
+ * ├──────┼──────┤      │      │
+ * │      │      │      │      │
+ * │  K   │  L   │      │      │  Row 4-5
+ * │      │      │      │      │
+ * │  2r  │  2r  │      │      │
+ * └──────┴──────┴──────┴──────┘
  *
- * Images per block: 9
+ * Images per block: 12
  * Total rows per block: 5
  */
 
@@ -95,35 +95,46 @@ function buildBlock(srcs: string[]): GridItem[] {
   const s = (i: number) => srcs[i] ?? srcs[srcs.length - 1];
 
   return [
-    // Row 1-3
+    // Row 1-3: Tall image in col 1
     { src: s(0), colStart: 1, colSpan: 1, rowSpan: 3 }, // A - tall (3 rows)
+    
+    // Row 1-2: Three images in cols 2-4
     { src: s(1), colStart: 2, colSpan: 1, rowSpan: 2 }, // B
     { src: s(2), colStart: 3, colSpan: 1, rowSpan: 2 }, // C
-    // Row 2-4
-    { src: s(3), colStart: 2, colSpan: 1, rowSpan: 3 }, // D - tall (3 rows)
-    { src: s(4), colStart: 3, colSpan: 1, rowSpan: 2 }, // E
-    // Row 3-4
-    { src: s(5), colStart: 1, colSpan: 1, rowSpan: 2 }, // F
-    // Row 3-5
-    { src: s(6), colStart: 3, colSpan: 1, rowSpan: 3 }, // G - tall (3 rows)
-    // Row 5
+    { src: s(3), colStart: 4, colSpan: 1, rowSpan: 2 }, // D
+    
+    // Row 2-4: Tall image in col 2
+    { src: s(4), colStart: 2, colSpan: 1, rowSpan: 3 }, // E - tall (3 rows)
+    
+    // Row 2-3: Two images in cols 3-4
+    { src: s(5), colStart: 3, colSpan: 1, rowSpan: 2 }, // F
+    { src: s(6), colStart: 4, colSpan: 1, rowSpan: 2 }, // G
+    
+    // Row 3-4: Image in col 1
     { src: s(7), colStart: 1, colSpan: 1, rowSpan: 2 }, // H
-    { src: s(8), colStart: 2, colSpan: 1, rowSpan: 2 }, // I
+    
+    // Row 3-5: Tall images in cols 3-4
+    { src: s(8), colStart: 3, colSpan: 1, rowSpan: 3 }, // I - tall (3 rows)
+    { src: s(9), colStart: 4, colSpan: 1, rowSpan: 3 }, // J - tall (3 rows)
+    
+    // Row 5: Two images in cols 1-2
+    { src: s(10), colStart: 1, colSpan: 1, rowSpan: 2 }, // K
+    { src: s(11), colStart: 2, colSpan: 1, rowSpan: 2 }, // L
   ];
 }
 
 function buildGridItems(images: GalleryImage[]): GridItem[] {
   const items: GridItem[] = [];
 
-  for (let i = 0; i < images.length; i += 9) {
-    const srcs = images.slice(i, i + 9).map((img) => img.src);
+  for (let i = 0; i < images.length; i += 12) {
+    const srcs = images.slice(i, i + 12).map((img) => img.src);
     items.push(...buildBlock(srcs));
   }
 
   return items;
 }
 
-const INITIAL_COUNT = 18; // 2 blocks × 9 images
+const INITIAL_COUNT = 24; // 2 blocks × 12 images
 
 export default function CollageGalleryManual() {
   const [showAll, setShowAll] = useState(false);
@@ -145,7 +156,7 @@ export default function CollageGalleryManual() {
       <div className="gap-4 2xl:gap-6"
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: 'repeat(4, 1fr)',
           gridAutoRows: '160px',
        
         }}
@@ -183,7 +194,7 @@ export default function CollageGalleryManual() {
               alt={`Koru image ${index + 1}`}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
-              sizes="(max-width: 640px) 66vw, (max-width: 1024px) 50vw, 33vw"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
 
             {/* Image number badge */}

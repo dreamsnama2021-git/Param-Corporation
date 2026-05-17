@@ -371,7 +371,7 @@ export const getAllCategoryGroups = () => [
   { title: "Therapy-Based", data: therapies, path: "/therapy" },
   { title: "Occasions", data: occasions.filter(o => !o.slug.match(/^(january|february|march|april|may|june|july|august|september|october|november|december)$/)), path: "/occasion" },
   { title: "Personalized Gifts", data: personalizedGifts, path: "/personalized-gifts" },
-  { title: "Digital Gifts", data: digitalGifts, path: "/digital-gifts" },
+  { title: "Digital Inputs", data: digitalGifts, path: "/digital-gifts" },
 ];
 
 // Helper function to get combined categories for filtering (all types)

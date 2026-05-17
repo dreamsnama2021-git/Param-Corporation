@@ -68,7 +68,7 @@ export default function Navbar() {
     { label: "About Us", href: "/about-us" },
     { label: "Koru", href: "/koru", isButton: true },
     { label: "Medipride", href: "/medipride", isButton: true },
-    { label: "Digital Gifts", href: "/digital-gifts" },
+    { label: "Digital Inputs", href: "/digital-gifts" },
     { label: "Case Study", href: "/case-study" },
     { label: "Contact Us", href: "/contact-us" },
   ];

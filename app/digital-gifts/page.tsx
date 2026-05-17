@@ -105,7 +105,7 @@ const serviceCategories: ServiceCategory[] = [
   },
 ];
 
-const galleryImages: GalleryImage[] = [
+const koruGalleryImages: GalleryImage[] = [
   { id: "g-1", src: "/koru/koru.png", title: "Custom Dashboard Interface", category: "Dashboard" },
   { id: "g-2", src: "/koru/koru1.png", title: "Analytics Visualization", category: "Analytics" },
   { id: "g-3", src: "/koru/koru2.png", title: "Health Risk Calculator", category: "HRA Tools" },
@@ -118,7 +118,55 @@ const galleryImages: GalleryImage[] = [
   { id: "g-10", src: "/koru/koru9.png", title: "Territory Analytics", category: "Analytics" },
   { id: "g-11", src: "/koru/koru10.png", title: "Risk Assessment Tool", category: "HRA Tools" },
   { id: "g-12", src: "/koru/koru12.png", title: "Patient App Screen", category: "Patient Programs" },
+  { id: "g-13", src: "/koru/koru13.png", title: "Dashboard Analytics", category: "Dashboard" },
+  { id: "g-14", src: "/koru/koru14.png", title: "Report Interface", category: "Analytics" },
+  { id: "g-15", src: "/koru/koru15.png", title: "Health Assessment", category: "HRA Tools" },
+  { id: "g-16", src: "/koru/koru16.png", title: "Patient Dashboard", category: "Patient Programs" },
+  { id: "g-17", src: "/koru/koru17.png", title: "Web Design", category: "Websites" },
+  { id: "g-18", src: "/koru/koru18.png", title: "Mobile Dashboard", category: "Apps" },
+  { id: "g-19", src: "/koru/koru19.png", title: "Video Frame", category: "Video" },
+  { id: "g-20", src: "/koru/koru20.png", title: "Print Design", category: "Print" },
+  { id: "g-21", src: "/koru/koru21.png", title: "Dashboard UI", category: "Dashboard" },
+  { id: "g-22", src: "/koru/koru22.png", title: "Charts View", category: "Analytics" },
+  { id: "g-23", src: "/koru/koru23.png", title: "Risk Tool", category: "HRA Tools" },
+  { id: "g-24", src: "/koru/koru24.png", title: "Patient App", category: "Patient Programs" },
 ];
+
+// ─── COLLAGE GRID HELPERS ────────────────────────────────────────────────────
+type GridItem = {
+  src: string;
+  colStart: number;
+  colSpan: number;
+  rowSpan: number;
+};
+
+function buildBlock(srcs: string[]): GridItem[] {
+  const s = (i: number) => srcs[i] ?? srcs[srcs.length - 1];
+
+  return [
+    { src: s(0), colStart: 1, colSpan: 1, rowSpan: 3 },
+    { src: s(1), colStart: 2, colSpan: 1, rowSpan: 2 },
+    { src: s(2), colStart: 3, colSpan: 1, rowSpan: 2 },
+    { src: s(3), colStart: 4, colSpan: 1, rowSpan: 2 },
+    { src: s(4), colStart: 2, colSpan: 1, rowSpan: 3 },
+    { src: s(5), colStart: 3, colSpan: 1, rowSpan: 2 },
+    { src: s(6), colStart: 4, colSpan: 1, rowSpan: 2 },
+    { src: s(7), colStart: 1, colSpan: 1, rowSpan: 2 },
+    { src: s(8), colStart: 3, colSpan: 1, rowSpan: 3 },
+    { src: s(9), colStart: 4, colSpan: 1, rowSpan: 3 },
+    { src: s(10), colStart: 1, colSpan: 1, rowSpan: 2 },
+    { src: s(11), colStart: 2, colSpan: 1, rowSpan: 2 },
+  ];
+}
+
+function buildGridItems(images: GalleryImage[]): GridItem[] {
+  const items: GridItem[] = [];
+  for (let i = 0; i < images.length; i += 12) {
+    const srcs = images.slice(i, i + 12).map((img) => img.src);
+    items.push(...buildBlock(srcs));
+  }
+  return items;
+}
 
 // ─── SECTION BADGE ───────────────────────────────────────────────────────────
 function SectionBadge({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -135,7 +183,7 @@ export default function DigitalServicesPage() {
     <div className="min-h-screen bg-white">
       <HeroBanner />
       <HyperPersonalizedServices />
-      <GallerySection />
+      <CollageGallerySection />
     </div>
   );
 }
@@ -193,7 +241,6 @@ function HyperPersonalizedServices() {
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-b from-white to-slate-50">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -218,7 +265,6 @@ function HyperPersonalizedServices() {
           <div className="mt-6 w-24 h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full mx-auto" />
         </motion.div>
 
-        {/* Service Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {serviceCategories.map((service, index) => (
             <FlipCard key={service.id} service={service} index={index} />
@@ -255,36 +301,25 @@ function FlipCard({ service, index }: { service: ServiceCategory; index: number 
           className="absolute inset-0 backface-hidden rounded-3xl border border-slate-200 bg-white shadow-lg flex flex-col items-center justify-center p-8 cursor-pointer group"
           style={{ backfaceVisibility: 'hidden' }}
         >
-          {/* Gradient Background on Hover */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
             style={{
               background: 'radial-gradient(circle at center, rgba(0, 166, 93, 0.06) 0%, transparent 70%)',
             }}
           />
-
-          {/* Number Badge */}
           <div className="absolute top-4 left-4">
             <span className="text-xs font-bold text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">
               {service.number}
             </span>
           </div>
-
-          {/* Icon Container */}
           <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-500 relative z-10`}>
             <Icon size={36} className="text-white" />
           </div>
-
-          {/* Title */}
           <h3 className="text-xl font-extrabold text-slate-900 text-center mb-3 group-hover:text-[#00a65d] transition-colors duration-300 relative z-10">
             {service.title}
           </h3>
-
-          {/* Brief Description - 1-2 lines */}
           <p className="text-sm text-slate-500 text-center leading-relaxed line-clamp-2 relative z-10">
             {service.description.split('.')[0]}.
           </p>
-
-          {/* Hover Hint */}
           <div className="absolute bottom-6 flex items-center gap-1.5 text-xs text-slate-400 group-hover:text-[#0093cb] transition-colors duration-300">
             <span>Hover to explore</span>
             <motion.svg
@@ -307,38 +342,21 @@ function FlipCard({ service, index }: { service: ServiceCategory; index: number 
             transform: 'rotateY(180deg)',
           }}
         >
-          {/* Gradient Overlay */}
           <div className={`absolute inset-0 opacity-10 rounded-3xl bg-gradient-to-br ${service.gradient}`} />
-
-          {/* Number Badge */}
           <div className="absolute top-4 left-4">
             <span className="text-xs font-bold text-[#8bde7a] bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
               {service.number}
             </span>
           </div>
-
-          {/* Icon */}
           <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-5 shadow-lg relative z-10`}>
             <Icon size={28} className="text-white" />
           </div>
-
-          {/* Title */}
           <h3 className="text-lg font-extrabold text-white text-center mb-3 relative z-10">
             {service.title}
           </h3>
-
-          {/* Full Description */}
           <p className="text-sm text-slate-300 text-center leading-relaxed relative z-10 mb-6">
             {service.description}
           </p>
-
-          {/* CTA */}
-          {/* <div className="flex items-center gap-2 text-sm font-semibold text-[#8bde7a] group/cta cursor-pointer relative z-10">
-            <span>Explore Service</span>
-            <ArrowUpRight size={16} className="transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
-          </div> */}
-
-          {/* Bottom Accent */}
           <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient}`} />
         </div>
       </motion.div>
@@ -346,18 +364,17 @@ function FlipCard({ service, index }: { service: ServiceCategory; index: number 
   );
 }
 
-// ─── GALLERY SECTION ─────────────────────────────────────────────────────────
-function GallerySection() {
-  const [activeFilter, setActiveFilter] = useState<string>('All');
-
-  const filters = ['All', 'Dashboard', 'Analytics', 'HRA Tools', 'Patient Programs', 'Websites', 'Apps', 'Video', 'Print'];
-
-  const filteredImages = activeFilter === 'All' 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === activeFilter);
+// ─── COLLAGE GALLERY SECTION ─────────────────────────────────────────────────
+function CollageGallerySection() {
+  const INITIAL_COUNT = 12;
+  const [showAll, setShowAll] = useState(false);
+  
+  const source = showAll ? koruGalleryImages : koruGalleryImages.slice(0, INITIAL_COUNT);
+  const gridItems = buildGridItems(source);
+  const hasMoreImages = koruGalleryImages.length > INITIAL_COUNT;
 
   return (
-    <section className="py-16 lg:py-24 bg-white">
+    <section className="py-16 lg:py-24" style={{ background: 'linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 50%, #f8faf8 100%)' }}>
       <div className="max-w-7xl mx-auto px-6">
         {/* Gallery Header */}
         <motion.div
@@ -371,7 +388,7 @@ function GallerySection() {
             Portfolio Showcase
           </SectionBadge>
           <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">
-            Digital Services
+            Digital Input
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#00a65d] to-[#8bde7a]">
               Gallery
             </span>
@@ -384,69 +401,151 @@ function GallerySection() {
           <div className="mt-6 w-24 h-1 bg-gradient-to-r from-[#00a65d] to-[#8bde7a] rounded-full mx-auto" />
         </motion.div>
 
-        {/* Filter Buttons */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-2 mb-10"
-        >
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                activeFilter === filter
-                  ? 'bg-slate-900 text-white shadow-lg shadow-slate-900/20'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
-        </motion.div> */}
-
-        {/* Gallery Grid - Images Only, Not Clickable */}
-        <motion.div
+        {/* Collage Grid */}
+        <motion.div 
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+          className="gap-4 2xl:gap-6"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gridAutoRows: '160px',
+          }}
         >
-          {filteredImages.map((image, index) => (
+          {gridItems.map((item, index) => (
             <motion.div
-              key={image.id}
+              key={index}
               layout
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.05, duration: 0.4 }}
-              className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 shadow-md group"
+              transition={{ delay: index * 0.03, duration: 0.4 }}
+              className="relative overflow-hidden group"
+              style={{
+                gridColumn: `${item.colStart} / span ${item.colSpan}`,
+                gridRow: `span ${item.rowSpan}`,
+                borderRadius: '12px',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+              }}
             >
-              <Image
-                src={image.src}
-                alt={image.title}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+              {/* Brand Accent Overlay */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(0,147,203,0.15) 0%, rgba(0,166,93,0.1) 100%)',
+                  borderRadius: '12px',
+                }}
               />
+              
+              {/* Subtle border glow on hover */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none rounded-xl"
+                style={{
+                  boxShadow: 'inset 0 0 0 2px rgba(0,147,203,0.3)',
+                }}
+              />
+
+              <Image
+                src={item.src}
+                alt={`Gallery image ${index + 1}`}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              />
+
+              {/* Image number badge */}
+              <div 
+                className="absolute top-2 left-2 z-20 text-xs font-bold px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ 
+                  backgroundColor: '#060706',
+                  color: '#ffffff'
+                }}
+              >
+                {index + 1}
+              </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* View All Button */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <Link
-            href="/portfolio"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-full font-bold hover:bg-[#0093cb] transition-all duration-300 hover:shadow-lg hover:shadow-[#0093cb]/20 group"
+        {/* See More / See Less Button */}
+        {hasMoreImages && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mt-10 text-center"
           >
-            View Complete Portfolio
-            <ArrowUpRight size={18} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
-        </motion.div>
+            {!showAll ? (
+              <button
+                onClick={() => setShowAll(true)}
+                className="relative px-10 py-3.5 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg active:scale-95"
+                style={{
+                  backgroundColor: '#0093cb',
+                  boxShadow: '0 4px 14px rgba(0,147,203,0.3)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#007ba8';
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,147,203,0.4)';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#0093cb';
+                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(0,147,203,0.3)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <span className="flex items-center gap-2">
+                  See All ({koruGalleryImages.length - INITIAL_COUNT}+ more)
+                  <svg 
+                    className="w-4 h-4" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </button>
+            ) : (
+              <button
+                onClick={() => setShowAll(false)}
+                className="relative px-10 py-3.5 font-semibold rounded-full transition-all duration-300 hover:shadow-md active:scale-95"
+                style={{
+                  backgroundColor: '#f0fdf4',
+                  color: '#00a65d',
+                  border: '2px solid #00a65d',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#00a65d';
+                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f0fdf4';
+                  e.currentTarget.style.color = '#00a65d';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <span className="flex items-center gap-2">
+                  Show Less
+                  <svg 
+                    className="w-4 h-4" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                  </svg>
+                </span>
+              </button>
+            )}
+          </motion.div>
+        )}
+
+        {/* View All Portfolio Button */}
+      
+
+        {/* Brand Footer Accent */}
+      
       </div>
     </section>
   );
