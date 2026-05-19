@@ -106,7 +106,7 @@ const serviceCategories: ServiceCategory[] = [
 ];
 
 const koruGalleryImages: GalleryImage[] = [
-  { id: "g-1", src: "/koru/koru.png", title: "Custom Dashboard Interface", category: "Dashboard" },
+  { id: "g-1", src: "/New Product Images/10.png", title: "Custom Dashboard Interface", category: "Dashboard" },
   { id: "g-2", src: "/koru/koru1.png", title: "Analytics Visualization", category: "Analytics" },
   { id: "g-3", src: "/koru/koru2.png", title: "Health Risk Calculator", category: "HRA Tools" },
   { id: "g-4", src: "/koru/koru3.png", title: "Patient Support Portal", category: "Patient Programs" },
