@@ -172,21 +172,204 @@ export const allProducts: Product[] = [
   { id: 58, name: "CUSTOMIZED YOGA THEME DESK CLOCK", image: "/TableTop/CUSTOMIZED YOGA THEME DESK CLOCK.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
   { id: 59, name: "EAR MODEL WITH SAMPLE DESPENSER", image: "/TableTop/EAR MODEL WITH SAMPLE DESPENSER.jpg", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
   
-  // Categories - Desk Utility
-  { id: 7, name: "Pen Stand with Clock", image: "https://images.unsplash.com/photo-1516961642265-531546e84af2?w=400", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "Multi-functional desk organizer" },
-  { id: 8, name: "Document Tray Set", image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=400", price: "₹699", category: "desk-utility", categoryName: "Desk Utility", description: "3-tier document organizer" },
-  { id: 9, name: "Multi-Utility Desk Tool", image: "https://images.unsplash.com/photo-1516961642265-531546e84af2?w=400", price: "₹399", category: "desk-utility", categoryName: "Desk Utility", description: "All-in-one desk organizer with phone stand" },
+
+// Categories - Desk Utility
+  { id: 7, name: "CUSTOMIZED 3 IN 1 DESK ORGANIZER", image: "/Desk Utility/CUSTOMIZED 3 IN 1 DESK ORGANIZER 1.JPG", price: "₹599", category: "desk-utility", categoryName: "Desk Utility", description: "Multi-functional 3-in-1 desk organizer for pens, mobile, and stationery", images: [
+    "/Desk Utility/CUSTOMIZED 3 IN 1 DESK ORGANIZER 1.JPG",
+    "/Desk Utility/CUSTOMIZED 3 IN 1 DESK ORGANIZER 2.JPG"
+  ] },
   
+  { id: 8, name: "CUSTOMIZED AMBULANCE SHAPED FIRST AID KIT", image: "/Desk Utility/CUSTOMIZED AMBULANCE SHAPED FIRST AID KIT 1.JPG", price: "₹899", category: "desk-utility", categoryName: "Desk Utility", description: "Unique ambulance-shaped first aid kit with branding options", images: [
+    "/Desk Utility/CUSTOMIZED AMBULANCE SHAPED FIRST AID KIT 1.JPG",
+    "/Desk Utility/CUSTOMIZED AMBULANCE SHAPED FIRST AID KIT 2.JPG"
+  ] },
+  
+  { id: 9, name: "CUSTOMIZED CHIT CONTAINER", image: "/Desk Utility/CUSTOMIZED CHIT CONTAINER 1.JPG", price: "₹349", category: "desk-utility", categoryName: "Desk Utility", description: "Elegant chit/note container for desk organization", images: [
+    "/Desk Utility/CUSTOMIZED CHIT CONTAINER 1.JPG",
+    "/Desk Utility/CUSTOMIZED CHIT CONTAINER 2.JPG"
+  ] },
+  
+  { id: 10, name: "CUSTOMIZED CHIT CONTAINER WITH PEN STAND", image: "/Desk Utility/CUSTOMIZED CHIT CONTAINER WITH PEN STAND.JPG", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "Combination chit container and pen stand", images: [
+    "/Desk Utility/CUSTOMIZED CHIT CONTAINER WITH PEN STAND.JPG"
+  ] },
+  
+  { id: 11, name: "CUSTOMIZED CHIT HOLDER", image: "/Desk Utility/CUSTOMIZED CHIT HOLDER 1.JPG", price: "₹299", category: "desk-utility", categoryName: "Desk Utility", description: "Simple and elegant chit/note holder", images: [
+    "/Desk Utility/CUSTOMIZED CHIT HOLDER 1.JPG",
+    "/Desk Utility/CUSTOMIZED CHIT HOLDER 2.JPG"
+  ] },
+  
+  { id: 12, name: "CUSTOMIZED CHIT HOLDER WITH MOBILE HOLDER", image: "/Desk Utility/CUSTOMIZED CHIT HOLDER WITH MOBILE HOLDER 1.JPG", price: "₹499", category: "desk-utility", categoryName: "Desk Utility", description: "2-in-1 chit holder with mobile phone stand", images: [
+    "/Desk Utility/CUSTOMIZED CHIT HOLDER WITH MOBILE HOLDER 1.JPG",
+    "/Desk Utility/CUSTOMIZED CHIT HOLDER WITH MOBILE HOLDER 2.JPG"
+  ] },
+  
+  { id: 13, name: "CUSTOMIZED FLOWER SHAPE PAPERWEIGHT", image: "/Desk Utility/CUSTOMIZED FLOWER SHAPE PAPERWEIGHT 1.JPG", price: "₹399", category: "desk-utility", categoryName: "Desk Utility", description: "Beautiful flower-shaped decorative paperweight", images: [
+    "/Desk Utility/CUSTOMIZED FLOWER SHAPE PAPERWEIGHT 1.JPG",
+    "/Desk Utility/CUSTOMIZED FLOWER SHAPE PAPERWEIGHT 2.JPG"
+  ] },
+  
+  { id: 14, name: "CUSTOMIZED FOLDABLE CHIT PAD & PEN HOLDER", image: "/Desk Utility/CUSTOMIZED FOLDABLE CHIT PAD & PEN HOLDER TABLE TOP 1.JPG", price: "₹649", category: "desk-utility", categoryName: "Desk Utility", description: "Foldable desk organizer with chit pad and pen holder", images: [
+    "/Desk Utility/CUSTOMIZED FOLDABLE CHIT PAD & PEN HOLDER TABLE TOP 1.JPG",
+    "/Desk Utility/CUSTOMIZED FOLDABLE CHIT PAD & PEN HOLDER TABLE TOP TO 2.JPG"
+  ] },
+  
+  { id: 15, name: "CUSTOMIZED FOLDABLE MOBILE HOLDER", image: "/Desk Utility/CUSTOMIZED FOLDABLE MOBILE HOLDER 1.JPG", price: "₹299", category: "desk-utility", categoryName: "Desk Utility", description: "Portable foldable mobile phone stand", images: [
+    "/Desk Utility/CUSTOMIZED FOLDABLE MOBILE HOLDER 1.JPG",
+    "/Desk Utility/CUSTOMIZED FOLDABLE MOBILE HOLDER 2.JPG"
+  ] },
+  
+  { id: 16, name: "CUSTOMIZED LED CHIT HOLDER", image: "/Desk Utility/CUSTOMIZED LED CHIT HOLDER 1.JPG", price: "₹549", category: "desk-utility", categoryName: "Desk Utility", description: "Illuminated LED chit holder for enhanced visibility", images: [
+    "/Desk Utility/CUSTOMIZED LED CHIT HOLDER 1.JPG",
+    "/Desk Utility/CUSTOMIZED LED CHIT HOLDER 2.JPG"
+  ] },
+  
+  { id: 17, name: "CUSTOMIZED MOBILE CHARGER STAND", image: "/Desk Utility/CUSTOMIZED MOBILE CHARGER STAND 1.JPG", price: "₹399", category: "desk-utility", categoryName: "Desk Utility", description: "Stand for mobile phone while charging", images: [
+    "/Desk Utility/CUSTOMIZED MOBILE CHARGER STAND 1.JPG",
+    "/Desk Utility/CUSTOMIZED MOBILE CHARGER STAND 2.JPG",
+    "/Desk Utility/CUSTOMIZED MOBILE CHARGER STAND 3.JPG"
+  ] },
+  
+  { id: 18, name: "CUSTOMIZED MOBILE CHARGING STAND", image: "/Desk Utility/CUSTOMIZED MOBILE CHARGING STAND 4.JPG", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "Ergonomic stand for charging mobile phones", images: [
+    "/Desk Utility/CUSTOMIZED MOBILE CHARGING STAND 4.JPG",
+    "/Desk Utility/CUSTOMIZED MOBILE CHARGING STAND 5.JPG",
+    "/Desk Utility/CUSTOMIZED MOBILE CHARGING STAND 6.JPG"
+  ] },
+  
+  { id: 19, name: "CUSTOMIZED MOBILE HOLDER KEY CHAIN", image: "/Desk Utility/CUSTOMIZED MOBILE HOLDER KEY CHAIN 1.JPG", price: "₹249", category: "desk-utility", categoryName: "Desk Utility", description: "Portable mobile holder that doubles as keychain", images: [
+    "/Desk Utility/CUSTOMIZED MOBILE HOLDER KEY CHAIN 1.JPG",
+    "/Desk Utility/CUSTOMIZED MOBILE HOLDER KEY CHAIN 2.JPG",
+    "/Desk Utility/CUSTOMIZED MOBILE HOLDER KEY CHAIN 3.JPG"
+  ] },
+  
+  { id: 20, name: "CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER", image: "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER 1.JPG", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "2-in-1 mobile stand with integrated pen holder", images: [
+    "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER 1.JPG",
+    "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER 2.JPG",
+    "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER 3.JPG"
+  ] },
+  
+  { id: 21, name: "CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER", image: "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER 1.JPG", price: "₹499", category: "desk-utility", categoryName: "Desk Utility", description: "Multi-functional mobile stand with business card holder", images: [
+    "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER 1.JPG",
+    "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER 2.JPG",
+    "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER 3.JPG"
+  ] },
+  
+  { id: 22, name: "CUSTOMIZED PEN HOLDER", image: "/Desk Utility/CUSTOMIZED PEN HOLDER 1.JPG", price: "₹199", category: "desk-utility", categoryName: "Desk Utility", description: "Simple and elegant pen holder for desk", images: [
+    "/Desk Utility/CUSTOMIZED PEN HOLDER 1.JPG",
+    "/Desk Utility/CUSTOMIZED PEN HOLDER 2.JPG"
+  ] },
+  
+  { id: 23, name: "CUSTOMIZED PORTABLE MIRROR", image: "/Desk Utility/CUSTOMIZED PORTABLE MIRROR 1.JPG", price: "₹299", category: "desk-utility", categoryName: "Desk Utility", description: "Portable mirror for desk or travel use", images: [
+    "/Desk Utility/CUSTOMIZED PORTABLE MIRROR 1.JPG",
+    "/Desk Utility/CUSTOMIZED PORTABLE MIRROR 2.JPG"
+  ] },
+  
+  { id: 24, name: "MULTI BRANDING DUAL UTILITY PAPERWEIGHT", image: "/Desk Utility/MULTI BRANDING DUAL UTILITY PAPERWEIGHT.JPG", price: "₹599", category: "desk-utility", categoryName: "Desk Utility", description: "Paperweight with dual branding options and multi-utility", images: [
+    "/Desk Utility/MULTI BRANDING DUAL UTILITY PAPERWEIGHT.JPG"
+  ] },
+  
+  { id: 25, name: "MULTI BRANDING PAPERWEIGHT", image: "/Desk Utility/MULTI BRANDING PAPERWEIGHT.JPG", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "Elegant paperweight with multi-branding capability", images: [
+    "/Desk Utility/MULTI BRANDING PAPERWEIGHT.JPG"
+  ] },
+  
+  { id: 26, name: "MULTI BRANDING ROTATING PEN STAND", image: "/Desk Utility/MULTI BRANDING ROTATING PEN STAND 1.JPG", price: "₹699", category: "desk-utility", categoryName: "Desk Utility", description: "360-degree rotating pen stand with branding space", images: [
+    "/Desk Utility/MULTI BRANDING ROTATING PEN STAND 1.JPG",
+    "/Desk Utility/MULTI BRANDING ROTATING PEN STAND 2.JPG"
+  ] },
+  
+  { id: 27, name: "MULTI UTILITY DESK CLOCK", image: "/Desk Utility/MULTI UTILITY DESK CLOCK 1.JPG", price: "₹799", category: "desk-utility", categoryName: "Desk Utility", description: "Desk clock with multiple utility features", images: [
+    "/Desk Utility/MULTI UTILITY DESK CLOCK 1.JPG",
+    "/Desk Utility/MULTI UTILITY DESK CLOCK 2.JPG"
+  ] },
+  
+  { id: 28, name: "MULTIBRANDING PAPERWEIGHT WITH MOBILE HOLDER", image: "/Desk Utility/MULTIBRANDING PAPERWEIGHT WITH MOBILE HOLDER.JPG", price: "₹549", category: "desk-utility", categoryName: "Desk Utility", description: "2-in-1 paperweight and mobile holder with multi-branding", images: [
+    "/Desk Utility/MULTIBRANDING PAPERWEIGHT WITH MOBILE HOLDER.JPG"
+  ] },
+
   // Categories - 3D Printed
-  { id: 10, name: "3D Printed Name Plate", image: "https://images.unsplash.com/photo-1631541909061-71e349d1f203?w=400", price: "₹799", category: "3d-printed", categoryName: "3D Printed", description: "Custom 3D printed desk name plate" },
-  { id: 11, name: "3D Molecule Model", image: "https://images.unsplash.com/photo-1631541909061-71e349d1f203?w=400", price: "₹1499", category: "3d-printed", categoryName: "3D Printed", description: "Pharma branding 3D molecule visualization" },
-  { id: 12, name: "3D Organ Model", image: "https://images.unsplash.com/photo-1631541909061-71e349d1f203?w=400", price: "₹1999", category: "3d-printed", categoryName: "3D Printed", description: "Educational 3D printed organ model" },
+  { id: 10, name: "AESTHETIC HEART SHAPED FLOWER VASE", image: "/3dprinted/AESTHETIC HEART SHAPED FLOWER VASE 1.JPG", price: "₹799", category: "3d-printed", categoryName: "3D Printed", description: "Custom 3D printed desk name plate" },
+  { id: 11, name: "BRAIN ANATOMY PUZZLE", image: "/3dprinted/BRAIN ANATOMY PUZZLE 1.jpg", price: "₹1499", category: "3d-printed", categoryName: "3D Printed", description: "Pharma branding 3D molecule visualization" },
+  { id: 12, name: "CUSTOMIZED BRAND NAME DUAL UTILITY TABLE TOP", image: "/3dprinted/CUSTOMIWS BRAND NAME DUAL UTILITY TABLE TOP.JPG", price: "₹1999", category: "3d-printed", categoryName: "3D Printed", description: "Educational 3D printed organ model" },
+  { id: 13, name: "CUSTOMIZED BRAND NAME SHEET HOLDER", image: "/3dprinted/CUSTOMIZED BRAND NAME SHEET HOLDER 1.JPG", price: "₹899", category: "3d-printed", categoryName: "3D Printed", description: "Custom sheet holder with branding" },
+  { id: 14, name: "CUSTOMIZED G SHAPED SHEET HOLDER", image: "/3dprinted/CUSTOMIZED G SHAPED SHEET HOLDER 1.JPG", price: "₹899", category: "3d-printed", categoryName: "3D Printed", description: "Elegant G-shaped document holder" },
+  { id: 15, name: "GUTT BRAIN CONNECTION CONCEPTUALISED FRAME", image: "/3dprinted/GUTT BRAIN CONNECTION CONCEPTUALISED FRAME 1.JPG", price: "₹2499", category: "3d-printed", categoryName: "3D Printed", description: "Conceptual gut-brain connection art frame" },
+  { id: 16, name: "INFINITY MIRROR", image: "/3dprinted/INFINITY MIRROR 1.JPG", price: "₹1299", category: "3d-printed", categoryName: "3D Printed", description: "Mesmerizing infinity mirror effect" },
+  { id: 17, name: "INTESTINE SHAPED PEN STAND", image: "/3dprinted/INTESTINE SHAPED PEN STAND 1.JPG", price: "₹699", category: "3d-printed", categoryName: "3D Printed", description: "Unique intestine design pen holder" },
+  { id: 18, name: "KIDNEY SHAPED PEN STAND", image: "/3dprinted/KIDNEY SHAPED PEN STAND 1.JPG", price: "₹699", category: "3d-printed", categoryName: "3D Printed", description: "Anatomy-inspired kidney pen holder" },
+  { id: 20, name: "MITOCHONDRIA PAPERWEIGHT", image: "/3dprinted/MITOCHONDRIA PAPERWEIGHT.JPG", price: "₹599", category: "3d-printed", categoryName: "3D Printed", description: "Cell biology mitochondria paperweight" },
+  { id: 21, name: "MITOCHONDRIA PUZZLE PAPERWEIGHT", image: "/3dprinted/MITOCHONDRIA PUZZLE PAPERWEIGHT.JPG", price: "₹699", category: "3d-printed", categoryName: "3D Printed", description: "Interactive puzzle-style mitochondria" },
+  { id: 22, name: "MOTHER BABY TABLE TOP", image: "/3dprinted/MOTHER BABY TABLE TOP.JPG", price: "₹1599", category: "3d-printed", categoryName: "3D Printed", description: "Heartwarming mother-child figurine" },
+  { id: 23, name: "PINEAPPLE SHAPE STATIONARY HOLDER", image: "/3dprinted/PINEAPPLE SHAPE STATIONARY HOLDER 1.JPG", price: "₹799", category: "3d-printed", categoryName: "3D Printed", description: "Tropical pineapple desk organizer" },
+  { id: 24, name: "REUMEN MODEL", image: "/3dprinted/REUMEN MODEL 1.JPG", price: "₹1999", category: "3d-printed", categoryName: "3D Printed", description: "Detailed anatomical model" },
+
+
+ // Categories - Fibre and Resin Products
+  { id: 13, name: "4 STAGE ENDODONTIC TREATMENT MODEL", image: "/Fibre & Resin/4 STAGE ENDODONTIC TREATMENT MODEL 1.jpg", price: "₹2499", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Detailed 4-stage endodontic treatment demonstration model for dental education", images: [
+    "/Fibre & Resin/4 STAGE ENDODONTIC TREATMENT MODEL 1.jpg",
+    "/Fibre & Resin/4 STAGE ENDODONTIC TREATMENT MODEL 2.jpg"
+  ] },
   
-  // Categories - Fibre and Resin
-  { id: 13, name: "Resin Art Coaster Set", image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=400", price: "₹649", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Handcrafted resin coasters" },
-  { id: 14, name: "Fibre Glass Trophy", image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400", price: "₹1299", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Modern fibre glass award trophy" },
-  { id: 15, name: "Resin Doctor Figurine", image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=400", price: "₹899", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Premium resin doctor appreciation gift" },
+  { id: 14, name: "CUSTOMIZED DOCTOR COAT SHAPED PEN STAND", image: "/Fibre & Resin/CUSTOMIZED DOCTOR COAT SHAPED PEN STAND 1.JPG", price: "₹599", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Unique doctor coat shaped pen stand - perfect medical desk accessory", images: [
+    "/Fibre & Resin/CUSTOMIZED DOCTOR COAT SHAPED PEN STAND 1.JPG",
+    "/Fibre & Resin/CUSTOMIZED DOCTOR COAT SHAPED PEN STAND 2.JPG",
+    "/Fibre & Resin/CUSTOMIZED DOCTOR COAT SHAPED PEN STAND 3.JPG"
+  ] },
   
+  { id: 15, name: "CUSTOMIZED FIBRE BURGER PAPERWEIGHT", image: "/Fibre & Resin/CUSTOMIZED FIBRE BURGER PAPERWEIGHT.JPG", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Fun burger-shaped fibre paperweight for desk decor", images: [
+    "/Fibre & Resin/CUSTOMIZED FIBRE BURGER PAPERWEIGHT.JPG"
+  ] },
+  
+  { id: 16, name: "CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT", image: "/Fibre & Resin/CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT 1.JPG", price: "₹399", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Unique samosa-shaped fibre paperweight - quirky desk accessory", images: [
+    "/Fibre & Resin/CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT 1.JPG",
+    "/Fibre & Resin/CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT 2.JPG"
+  ] },
+  
+  { id: 17, name: "CUSTOMIZED FIBRE TEA CUP PAPERWEIGHT", image: "/Fibre & Resin/CUSTOMIZED FIBRE TEA CUP PAPERWEIGHT.JPG", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Tea cup shaped fibre paperweight for desk decor", images: [
+    "/Fibre & Resin/CUSTOMIZED FIBRE TEA CUP PAPERWEIGHT.JPG"
+  ] },
+  
+  { id: 18, name: "CUSTOMIZED FIBRE TEA GLASS PAPERWEIGHT", image: "/Fibre & Resin/CUSTOMIZED FIBRE TEA GLASS PAPERWEIGHT.JPG", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Traditional tea glass shaped fibre paperweight", images: [
+    "/Fibre & Resin/CUSTOMIZED FIBRE TEA GLASS PAPERWEIGHT.JPG"
+  ] },
+  
+  { id: 19, name: "CUSTOMIZED FIBRE VADA PAV PAPERWEIGHT", image: "/Fibre & Resin/CUSTOMIZED FIBRE VADA PAV PAPERWEIGHT 1.JPG", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Mumbai-style vada pav shaped fibre paperweight", images: [
+    "/Fibre & Resin/CUSTOMIZED FIBRE VADA PAV PAPERWEIGHT 1.JPG",
+    "/Fibre & Resin/CUSTOMIZED FIBRE VADA PAV PAPERWEIGHT 2.JPG"
+  ] },
+  
+  { id: 20, name: "CUSTOMIZED NUMBER SHAPE PAPERWEIGHT", image: "/Fibre & Resin/CUSTOMIZED NUMBER SHAPE PAPERWEIGHT 1.JPG", price: "₹499", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Customizable number-shaped paperweight - perfect for birthdays and anniversaries", images: [
+    "/Fibre & Resin/CUSTOMIZED NUMBER SHAPE PAPERWEIGHT 1.JPG",
+    "/Fibre & Resin/CUSTOMIZED NUMBER SHAPE PAPERWEIGHT 2.JPG"
+  ] },
+  
+  { id: 21, name: "FINGER EXERCISE MODEL", image: "/Fibre & Resin/FINGER EXERCISE MODEL 1.jpg", price: "₹1299", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Therapeutic finger exercise model for rehabilitation", images: [
+    "/Fibre & Resin/FINGER EXERCISE MODEL 1.jpg",
+    "/Fibre & Resin/FINGER EXERCISE MODEL 2.jpg"
+  ] },
+  
+  { id: 22, name: "INTESTINE SHAPED PEN STAND", image: "/Fibre & Resin/INTESTINE SHAPED PEN STAND 1.JPG", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
+    "/Fibre & Resin/INTESTINE SHAPED PEN STAND 1.JPG",
+    "/Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
+  ] },
+  
+  { id: 23, name: "MOTHER-BABY FIBRE TABLE TOP", image: "/Fibre & Resin/MOTHER-BABY FIBRE TABLE TOP.JPG", price: "₹1599", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Heartwarming mother-baby fibre figurine for tabletop decor", images: [
+    "/Fibre & Resin/MOTHER-BABY FIBRE TABLE TOP.JPG"
+  ] },
+  
+  { id: 24, name: "ORANGE PEN STAND", image: "/Fibre & Resin/ORANGE PEN STAND 1.JPG", price: "₹399", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Fruit-shaped orange pen stand for colorful desk organization", images: [
+    "/Fibre & Resin/ORANGE PEN STAND 1.JPG",
+    "/Fibre & Resin/ORANGE PEN STAND 2.JPG"
+  ] },
+  
+  { id: 25, name: "ORGANS AFFECTED BY DIABETES PEN STAND", image: "/Fibre & Resin/ORGANS AFFECTED BY DIABETES PEN STAND 1.JPG", price: "₹899", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Educational pen stand showing organs affected by diabetes - perfect for clinics", images: [
+    "/Fibre & Resin/ORGANS AFFECTED BY DIABETES PEN STAND 1.JPG",
+    "/Fibre & Resin/ORGANS AFFECTED BY DIABETES PEN STAND 2.JPG"
+  ] },
+  
+  { id: 26, name: "TOOTH DECAY REPAIR MODEL", image: "/Fibre & Resin/TOOTH DECAY REPAIR MODEL 1.JPG", price: "₹1999", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Dental education model showing tooth decay and repair process", images: [
+    "/Fibre & Resin/TOOTH DECAY REPAIR MODEL 1.JPG",
+    "/Fibre & Resin/TOOTH DECAY REPAIR MODEL 2.JPG"
+  ] },
+
   // Categories - Eco Friendly
   { id: 16, name: "Bamboo Cutlery Set", image: "https://images.unsplash.com/photo-1584622651921-47e0e8043693?w=400", price: "₹499", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Sustainable bamboo utensils" },
   { id: 17, name: "Seed Paper Diary", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹399", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Plantable seed paper notebook" },
@@ -194,10 +377,65 @@ export const allProducts: Product[] = [
   { id: 19, name: "Recycled Material Planter", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹299", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Sustainable desk planter made from recycled materials" },
   
   // Categories - LED Tabletops
-  { id: 20, name: "LED Desk Lamp", image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400", price: "₹1599", category: "led-tabletops", categoryName: "LED Tabletops", description: "Smart LED table lamp with touch control" },
-  { id: 21, name: "Illuminated Globe", image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=400", price: "₹2499", category: "led-tabletops", categoryName: "LED Tabletops", description: "World globe with LED lighting" },
-  { id: 22, name: "LED Branded Display", image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated pharma branding display" },
+  { id: 20, name: "CARDIO LED TABLE TOP", image: "/LED INPUTS/CARDIO LED TABLE TOP.jpg", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated cardio-themed LED tabletop display for medical branding", images: [
+    "/LED INPUTS/CARDIO LED TABLE TOP.jpg",
+    "/LED INPUTS/CARDIO LED TABLE TOP (2).jpg"
+  ] },
   
+  { id: 21, name: "CUSTOMIZED LED THUNDER TABLE TOP", image: "/LED INPUTS/CUSTOMIZED LED THUNDER TABLE TOP 1.JPG", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Dynamic thunder-shaped LED tabletop with customization options", images: [
+    "/LED INPUTS/CUSTOMIZED LED THUNDER TABLE TOP 1.JPG",
+    "/LED INPUTS/CUSTOMIZED LED THUNDER TABLE TOP 2.JPG",
+    "/LED INPUTS/CUSTOMIZED LED THUNDER TABLE TOP 3.JPG"
+  ] },
+  
+  { id: 22, name: "HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP", image: "/LED INPUTS/HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP.jpg", price: "₹2499", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display comparing healthy and infected kidney anatomy", images: [
+    "/LED INPUTS/HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP.jpg"
+  ] },
+  
+  { id: 23, name: "IUI & IVF PROCEDURE LED TABLE TOP", image: "/LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg", price: "₹2999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated educational display showing IUI and IVF procedures", images: [
+    "/LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg"
+  ] },
+  
+  { id: 24, name: "LED DOCTOR IN-OUT BOX", image: "/LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG", price: "₹1599", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated doctor availability status board", images: [
+    "/LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG",
+    "/LED INPUTS/LED DOCTOR IN-OUT BOX 2.JPG"
+  ] },
+  
+  { id: 25, name: "STAGES OF OSTEOPOROSIS LED TABLE TOP", image: "/LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG", price: "₹2299", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display showing progressive stages of osteoporosis", images: [
+    "/LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG",
+    "/LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 2.JPG"
+  ] },
+  
+  { id: 26, name: "415 LED TABLE TOP", image: "/LED INPUTS/415.jpg", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated tabletop with 415 design", images: [
+    "/LED INPUTS/415.jpg"
+  ] },
+  
+  { id: 27, name: "LED TABLE TOP DISPLAY", image: "/LED INPUTS/IMG_0328.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Premium LED illuminated tabletop display", images: [
+    "/LED INPUTS/IMG_0328.JPG",
+    "/LED INPUTS/IMG_0330.JPG"
+  ] },
+  
+  { id: 28, name: "PREMIUM LED TABLE TOP", image: "/LED INPUTS/IMG_6995.JPG", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "High-quality LED illuminated tabletop with branding options", images: [
+    "/LED INPUTS/IMG_6995.JPG",
+    "/LED INPUTS/IMG_7003.JPG"
+  ] },
+  
+  { id: 29, name: "DECORATIVE LED TABLE TOP", image: "/LED INPUTS/IMG_7390.JPG", price: "₹1699", category: "led-tabletops", categoryName: "LED Tabletops", description: "Decorative LED tabletop for modern desk setup", images: [
+    "/LED INPUTS/IMG_7390.JPG",
+    "/LED INPUTS/IMG_7394.JPG"
+  ] },
+  
+  { id: 30, name: "LED BRANDING TABLE TOP", image: "/LED INPUTS/IMG_8393.JPG", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Customizable LED tabletop for brand promotion", images: [
+    "/LED INPUTS/IMG_8393.JPG",
+    "/LED INPUTS/IMG_8397.JPG",
+    "/LED INPUTS/IMG_8406.JPG",
+    "/LED INPUTS/IMG_8414.JPG"
+  ] },
+  
+  { id: 31, name: "MODERN LED TABLE TOP", image: "/LED INPUTS/IMG_9720.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Modern sleek LED illuminated tabletop display", images: [
+    "/LED INPUTS/IMG_9720.JPG",
+    "/LED INPUTS/IMG_9724.JPG"
+  ] },
   // Categories - Indoor Plants
   { id: 23, name: "Succulent Set with Pot", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
   { id: 24, name: "Lucky Bamboo Plant", image: "https://images.unsplash.com/photo-1599598425947-d35301f7c396?w=400", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
@@ -208,11 +446,97 @@ export const allProducts: Product[] = [
   { id: 27, name: "Wall Calendar with Health Tips", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹399", category: "calendars", categoryName: "Calendars", description: "Monthly calendar with wellness messages" },
   { id: 28, name: "Planner Diary Combo", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹599", category: "calendars", categoryName: "Calendars", description: "Year planner with monthly calendar" },
   
-  // Categories - Photo Frames
-  { id: 29, name: "Digital Photo Frame 7 inch", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹3499", category: "photo-frames", categoryName: "Photo Frames", description: "Electronic photo display frame" },
-  { id: 30, name: "Collage Photo Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹799", category: "photo-frames", categoryName: "Photo Frames", description: "Multi-photo wooden frame" },
-  { id: 31, name: "Branded Photo Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹599", category: "photo-frames", categoryName: "Photo Frames", description: "Clinic branding photo frame" },
+ // Categories - Photo Frames
+  { id: 29, name: "BABIES RESIN ART FRAME", image: "/Photo Frames/BABIES RESIN ART FRAME 1.JPG", price: "₹1299", category: "photo-frames", categoryName: "Photo Frames", description: "Beautiful resin art frame featuring baby designs - perfect for pediatric clinics", images: [
+    "/Photo Frames/BABIES RESIN ART FRAME 1.JPG",
+    "/Photo Frames/BABIES RESIN ART FRAME 2.JPG",
+    "/Photo Frames/BABIES RESIN ART FRAME 3.JPG",
+    "/Photo Frames/BABIES RESIN ART FRAME 4.JPG"
+  ] },
   
+  { id: 30, name: "BRAIN RESIN ART FRAME", image: "/Photo Frames/BRAIN RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Neurology-themed resin art frame with brain anatomy design", images: [
+    "/Photo Frames/BRAIN RESIN ART FRAME 1.JPG",
+    "/Photo Frames/BRAIN RESIN ART FRAME 2.JPG"
+  ] },
+  
+  { id: 31, name: "CUSTOMIZED DOCTOR'S PRAYER FRAME", image: "/Photo Frames/CUSTOMIZED DOCTOR_S PRAYER FRAME.JPG", price: "₹999", category: "photo-frames", categoryName: "Photo Frames", description: "Customizable prayer frame for doctors' clinics", images: [
+    "/Photo Frames/CUSTOMIZED DOCTOR_S PRAYER FRAME.JPG"
+  ] },
+  
+  { id: 32, name: "DENTAL ANATOMICAL PAINTINGS SERIES", image: "/Photo Frames/DENTAL ANATOMICAL PAINTINGS SERIES.jpg", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Educational dental anatomy painting series for clinic decor", images: [
+    "/Photo Frames/DENTAL ANATOMICAL PAINTINGS SERIES.jpg"
+  ] },
+  
+  { id: 33, name: "DIABETIC FOOT CONCEPTUALIZED FRAME", image: "/Photo Frames/DIABETIC FOOT CONCEPTUALIZED FRAME.jpg", price: "₹1399", category: "photo-frames", categoryName: "Photo Frames", description: "Conceptual frame illustrating diabetic foot conditions", images: [
+    "/Photo Frames/DIABETIC FOOT CONCEPTUALIZED FRAME.jpg"
+  ] },
+  
+  { id: 34, name: "DIABETIC FOOT RESIN ART FRAME", image: "/Photo Frames/DIABETIC FOOT RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Resin art frame depicting diabetic foot anatomy", images: [
+    "/Photo Frames/DIABETIC FOOT RESIN ART FRAME 1.JPG",
+    "/Photo Frames/DIABETIC FOOT RESIN ART FRAME 2.JPG"
+  ] },
+  
+  { id: 35, name: "EAR ANATOMY FRAME", image: "/Photo Frames/EAR ANATOMY FRAME.jpg", price: "₹1299", category: "photo-frames", categoryName: "Photo Frames", description: "Educational ear anatomy frame for ENT specialists", images: [
+    "/Photo Frames/EAR ANATOMY FRAME.jpg"
+  ] },
+  
+  { id: 36, name: "EMOTION RESIN ART FRAME", image: "/Photo Frames/EMOTION RESIN ART FRAME 1.JPG", price: "₹1199", category: "photo-frames", categoryName: "Photo Frames", description: "Artistic resin frame depicting human emotions", images: [
+    "/Photo Frames/EMOTION RESIN ART FRAME 1.JPG",
+    "/Photo Frames/EMOTION RESIN ART FRAME 2.JPG"
+  ] },
+  
+  { id: 37, name: "EXCLUSIVE BONE ANATOMY CHALK BOARD STYLE FRAME", image: "/Photo Frames/EXCLUSIVE BONE ANATOMY CHAL BOARD STYLE FRAME.jpg", price: "₹1699", category: "photo-frames", categoryName: "Photo Frames", description: "Unique chalkboard-style bone anatomy frame", images: [
+    "/Photo Frames/EXCLUSIVE BONE ANATOMY CHAL BOARD STYLE FRAME.jpg"
+  ] },
+  
+  { id: 38, name: "EXCLUSIVE BRAIN FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE BRAIN FLORAL PAINTING FRAME.jpg", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Beautiful brain anatomy with floral painting design", images: [
+    "/Photo Frames/EXCLUSIVE BRAIN FLORAL PAINTING FRAME.jpg"
+  ] },
+  
+  { id: 39, name: "EXCLUSIVE LIVER FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Liver anatomy with artistic floral painting", images: [
+    "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG",
+    "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 2.JPG"
+  ] },
+  
+  { id: 40, name: "EXCLUSIVE TEETH ANATOMY PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Dental anatomy painting frame for clinics", images: [
+    "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG",
+    "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 2.JPG"
+  ] },
+  
+  { id: 41, name: "EXCLUSIVE UTERUS FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Uterus anatomy with elegant floral painting", images: [
+    "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG",
+    "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 2.JPG"
+  ] },
+  
+  { id: 42, name: "FEMALE PELVIS RESIN ART FRAME", image: "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Female pelvis anatomy resin art frame", images: [
+    "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG",
+    "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 2.JPG"
+  ] },
+  
+  { id: 43, name: "FERTILIZATION RESIN ART FRAME", image: "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG", price: "₹1699", category: "photo-frames", categoryName: "Photo Frames", description: "Educational fertilization process resin art frame", images: [
+    "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG",
+    "/Photo Frames/FERTILIZATION RESIN ART FRAME 2.JPG"
+  ] },
+  
+  { id: 44, name: "MOTHER-BABY ART FRAME", image: "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG", price: "₹1399", category: "photo-frames", categoryName: "Photo Frames", description: "Heartwarming mother-baby art frame for maternity clinics", images: [
+    "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG",
+    "/Photo Frames/MOTHER-BABY ART FRAME 2.JPG"
+  ] },
+  
+  { id: 45, name: "OVARIES RESIN ART FRAME", image: "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Ovary anatomy resin art frame for gynecology clinics", images: [
+    "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG",
+    "/Photo Frames/OVARIES RESIN ART FRAME 2.JPG",
+    "/Photo Frames/OVARIES RESIN ART FRAME 3.JPG"
+  ] },
+  
+  { id: 46, name: "SPINAL CORD RESIN ART FRAME WITH CLOCK", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG", price: "₹1899", category: "photo-frames", categoryName: "Photo Frames", description: "Spinal cord resin art frame with integrated clock", images: [
+    "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG",
+    "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 2.JPG"
+  ] },
+  
+  { id: 47, name: "SPINAL CORD RESIN ART FRAME", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME.jpg", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Spinal cord anatomy resin art frame", images: [
+    "/Photo Frames/SPINAL CORD RESIN ART FRAME.jpg"
+  ] },
   // ==========================================
   // THERAPIES - Therapy-Based Gifting
   // ==========================================

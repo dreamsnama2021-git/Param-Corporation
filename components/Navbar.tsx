@@ -68,7 +68,7 @@ export default function Navbar() {
     { label: "About Us", href: "/about-us" },
     { label: "Koru", href: "/koru", isButton: true },
     { label: "Medipride", href: "/medipride", isButton: true },
-     { label: "Digital Inputs", href: "/digital-gifts", isButton: true },
+    { label: "Digital Inputs", href: "/digital-gifts", isButton: true },
     { label: "Case Study", href: "/case-study" },
     { label: "Contact Us", href: "/contact-us" },
   ];
@@ -84,6 +84,24 @@ export default function Navbar() {
     e.preventDefault();
     router.push('/categories/all?tab=all');
     setActiveDropdown(null);
+  };
+
+  const handleCategoryClick = (e: React.MouseEvent, tabId: string, categorySlug: string) => {
+    e.preventDefault();
+    // Match the footer navigation pattern
+    if (tabId === 'categories') {
+      router.push(`/categories/all?tab=categories#category-${categorySlug}`);
+    } else if (tabId === 'personalized') {
+      router.push(`/categories/all?tab=personalized#category-${categorySlug}`);
+    } else if (tabId === 'occasion') {
+      router.push(`/categories/all?tab=occasion#category-${categorySlug}`);
+    } else if (tabId === 'therapy') {
+      router.push(`/medipride?therapy=${categorySlug}`);
+    } else {
+      router.push(`/categories/${categorySlug}?tab=${tabId}`);
+    }
+    setActiveDropdown(null);
+    setMobileOpen(false);
   };
 
   const handleMouseEnter = () => {
@@ -104,13 +122,6 @@ export default function Navbar() {
     leaveTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
     }, 200);
-  };
-
-  const handleCategoryClick = (e: React.MouseEvent, tabId: string, categorySlug: string) => {
-    e.preventDefault();
-    router.push(`/categories/${categorySlug}?tab=${tabId}`);
-    setActiveDropdown(null);
-    setMobileOpen(false);
   };
 
   const toggleMobileSubMenu = (id: string) => {
@@ -169,7 +180,7 @@ export default function Navbar() {
                               <li key={item.slug}>
                                 {column.tabId === 'therapy' ? (
                                   <Link
-                                    href="/medipride"
+                                    href={`/medipride?therapy=${item.slug}`}
                                     className="text-[12px] text-gray-600 hover:text-[var(--clr-primary)] transition-all block"
                                     onClick={() => setActiveDropdown(null)}
                                   >
@@ -177,7 +188,7 @@ export default function Navbar() {
                                   </Link>
                                 ) : (
                                   <a
-                                    href={`/categories/${item.slug}?tab=${column.tabId}`}
+                                    href={`/categories/all?tab=${column.tabId}#category-${item.slug}`}
                                     onClick={(e) => handleCategoryClick(e, column.tabId, item.slug)}
                                     className="text-[12px] text-gray-600 hover:text-[var(--clr-primary)] transition-all block"
                                   >
@@ -220,7 +231,7 @@ export default function Navbar() {
         {/* MOBILE MENU */}
         {mobileOpen && (
           <div className="lg:hidden border-t border-gray-200 bg-white/98 backdrop-blur-xl max-h-[85vh] overflow-y-auto">
-            <div className="px-6 max-w-[1550px] mx-auto space-y-2">
+            <div className="px-6 max-w-[1550px] mx-auto space-y-2 pb-6">
               {/* Search */}
               <div className="flex items-center gap-2 bg-gray-100 rounded-xl px-4 py-3 mb-4">
                 <Search className="w-4 h-4 text-gray-400" />
@@ -257,11 +268,11 @@ export default function Navbar() {
                   {/* Collapsible Content */}
                   <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileSubMenu === column.tabId ? "max-h-[500px] opacity-100 mb-2" : "max-h-0 opacity-0"}`}>
                     <div className="grid grid-cols-1 gap-1 px-4 pb-2">
-                      {column.data?.map((item: any) =>
+                      {column.data?.map((item: any) => (
                         column.tabId === 'therapy' ? (
                           <Link
                             key={item.slug}
-                            href="/medipride"
+                            href={`/medipride?therapy=${item.slug}`}
                             onClick={() => setMobileOpen(false)}
                             className="flex items-center justify-between px-6 py-2.5 text-sm text-gray-600 hover:text-[var(--clr-primary)] active:bg-gray-100 rounded-lg"
                           >
@@ -271,7 +282,7 @@ export default function Navbar() {
                         ) : (
                           <Link
                             key={item.slug}
-                            href={`/categories/${item.slug}?tab=${column.tabId}`}
+                            href={`/categories/all?tab=${column.tabId}#category-${item.slug}`}
                             onClick={() => setMobileOpen(false)}
                             className="flex items-center justify-between px-6 py-2.5 text-sm text-gray-600 hover:text-[var(--clr-primary)] active:bg-gray-100 rounded-lg"
                           >
@@ -279,7 +290,7 @@ export default function Navbar() {
                             <ChevronRight className="w-3 h-3 opacity-30" />
                           </Link>
                         )
-                      )}
+                      ))}
                     </div>
                   </div>
                 </div>
