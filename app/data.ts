@@ -10,12 +10,14 @@ export interface Product {
   id: number;
   name: string;
   image: string;
+  images?: string[];  // Add this line for multiple images
   price?: string;
   category: string;
   categoryName: string;
   description?: string;
   tags?: string[];
 }
+
 
 // 1. By Industry
 export const industries: CategoryItem[] = [
