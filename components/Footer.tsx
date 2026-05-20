@@ -9,12 +9,15 @@ import {
   priceRanges,
   occasions,
   therapies,
-} from "../app/data";
+  personalizedGifts,
+} from "../app/FooterData";
 
 // Social Icon
-const SocialIcon = ({ children }: { children: React.ReactNode }) => (
+const SocialIcon = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <a
-    href="#"
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     className="w-8 h-8 rounded-full flex items-center justify-center 
     border border-[var(--clr-border-light)] 
     hover:bg-[var(--clr-primary)] transition"
@@ -24,36 +27,20 @@ const SocialIcon = ({ children }: { children: React.ReactNode }) => (
 );
 
 export default function Footer() {
-  const displayCategories = categories.slice(0, 12
-
-    
-  );
-  const displayIndustries = industries.slice(0, 12
-
-    
-  );
-  const displayTherapies = therapies.slice(0, 12
-
-    
-  );
-  const displayOccasions = occasions.slice(0, 12
-
-    
-  );
-
   return (
     <footer className="bg-[var(--clr-bg-dark-deep)] text-gray-300 pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ─── MAIN GRID ───────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-14 mb-10">
 
           {/* ABOUT / LOCATION */}
           <div>
-            <h3 className="bg-white rounded-2xl z-1 p-1 text-lg font-medium mb-2 
+            {/* <h3 className="bg-white rounded-2xl z-1 p-1 text-lg font-medium mb-2 
             border-b-2 border-[var(--clr-primary)] inline-block">
-            <img  src="/param-logo.png" alt="Param Corporation" className="scale-110 h-10 md:h-14" />
-            </h3>
+            <img  src="/logo final param white .png" alt="Param Corporation" className="scale-110 h-10 md:h-14" />
+            </h3> */}
+            <img  src="/logo final param white .png" alt="Param Corporation" className="scale-110 h-18 md:h-25" />
 
             <p className="text-sm leading-relaxed mb-4 text-gray-400">
               101, KetkiPada Rd, near Timber Green Apartments,
@@ -63,12 +50,12 @@ export default function Footer() {
             </p>
 
             <div className="space-y-2 text-sm">
-              <a className="flex items-center gap-2 hover:text-[var(--clr-primary)]">
+              <a href="tel:+919820149950" className="flex items-center gap-2 hover:text-[var(--clr-primary)]">
                 <Phone size={14} className="text-[var(--clr-primary)]" />
                 <span>+91 98201 49950</span>
               </a>
 
-              <a className="flex items-center gap-2 hover:text-[var(--clr-primary)]">
+              <a href="mailto:info@paramcorporation.com" className="flex items-center gap-2 hover:text-[var(--clr-primary)]">
                 <Mail size={14} className="text-[var(--clr-primary)]" />
                 <span>info@paramcorporation.com</span>
               </a>
@@ -83,10 +70,18 @@ export default function Footer() {
 
             {/* SOCIAL */}
             <div className="flex gap-2 mt-4">
-              <SocialIcon>f</SocialIcon>
-              <SocialIcon>in</SocialIcon>
-              <SocialIcon>▶</SocialIcon>
-              <SocialIcon>📷</SocialIcon>
+              <SocialIcon href="https://www.facebook.com/parampromotion?mibextid=ZbWKwL">
+                f
+              </SocialIcon>
+              <SocialIcon href="https://in.pinterest.com/paramcorporationmumbai/_created/">
+                pin
+              </SocialIcon>
+              <SocialIcon href="https://www.linkedin.com/in/param-corporation-316392184/">
+                in
+              </SocialIcon>
+              <SocialIcon href="https://www.youtube.com/@ParamCorporation-j3f">
+                ▶
+              </SocialIcon>
             </div>
           </div>
 
@@ -98,56 +93,10 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-2">
-              {displayCategories.map((item) => (
+              {categories.map((item) => (
                 <li key={item.slug}>
                   <Link
-                    href={`/categories/${item.slug}`}
-                    className="flex items-center gap-2 text-sm 
-                    hover:text-[var(--clr-primary)] group"
-                  >
-                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1 transition-transform" />
-                    <span>{item.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* BY INDUSTRY */}
-          <div>
-            <h3 className="text-white text-lg font-medium mb-4 pb-2 
-            border-b-2 border-[var(--clr-primary)] inline-block">
-              By Industry
-            </h3>
-
-            <ul className="space-y-2">
-              {displayIndustries.map((item) => (
-                <li key={item.slug}>
-                  <Link
-                    href={`/industry/${item.slug}`}
-                    className="flex items-center gap-2 text-sm 
-                    hover:text-[var(--clr-primary)] group"
-                  >
-                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1 transition-transform" />
-                    <span>{item.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* BY OCCASION */}
-          <div>
-            <h3 className="text-white text-lg font-medium mb-4 pb-2 
-            border-b-2 border-[var(--clr-primary)] inline-block">
-              By Occasion
-            </h3>
-
-            <ul className="space-y-2">
-              {displayOccasions.map((item) => (
-                <li key={item.slug}>
-                  <Link
-                    href={`/occasion/${item.slug}`}
+                    href={`/categories/all?tab=categories#category-${item.slug}`}
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >
@@ -167,10 +116,10 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-2">
-              {displayTherapies.map((item) => (
+              {therapies.map((item) => (
                 <li key={item.slug}>
                   <Link
-                    href={`/therapy/${item.slug}`}
+                    href="/medipride"
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >
@@ -181,6 +130,53 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+
+          {/* PERSONALIZED GIFTS */}
+          <div>
+            <h3 className="text-white text-lg font-medium mb-4 pb-2 
+            border-b-2 border-[var(--clr-primary)] inline-block">
+              Personalized Gifts
+            </h3>
+
+            <ul className="space-y-2">
+              {personalizedGifts.map((item) => (
+                <li key={item.slug}>
+                  <Link
+                    href={`/categories/all?tab=personalized#category-${item.slug}`}
+                    className="flex items-center gap-2 text-sm 
+                    hover:text-[var(--clr-primary)] group"
+                  >
+                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1 transition-transform" />
+                    <span>{item.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* BY OCCASION */}
+          <div>
+            <h3 className="text-white text-lg font-medium mb-4 pb-2 
+            border-b-2 border-[var(--clr-primary)] inline-block">
+              By Occasion
+            </h3>
+
+            <ul className="space-y-2">
+              {occasions.map((item) => (
+                <li key={item.slug}>
+                  <Link
+                    href={`/categories/all?tab=occasion#category-${item.slug}`}
+                    className="flex items-center gap-2 text-sm 
+                    hover:text-[var(--clr-primary)] group"
+                  >
+                    <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1 transition-transform" />
+                    <span>{item.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
 
         {/* BOTTOM */}

@@ -2,165 +2,289 @@
 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 
 // ─── Types & Data ─────────────────────────────────────
-interface StatItem {
-  icon: string;
-  value: string;
-  label: string;
-}
-
 interface HeroSlide {
   image: string;
-  href: string;
   alt: string;
 }
 
-const STATS: StatItem[] = [
-  { icon: "🏆", value: "21+", label: "Years in Business" },
-  { icon: "📦", value: "10,000+", label: "Products" },
-  { icon: "🏢", value: "300+", label: "Corporate Customers" },
-  { icon: "📋", value: "1,000+", label: "Corporate Orders Annually" },
-  { icon: "👥", value: "100+", label: "Experienced Employees" },
-];
-
 const HERO_SLIDES: HeroSlide[] = [
   {
-    image: "/WhatsApp Image 2026-04-16 at 5.04.08 PM.jpeg",
-    href: "/categories/all",
+    image: "/banner/home.jpeg",
     alt: "Corporate Gifts",
   },
   {
-    image: "/WhatsApp Image 2026-04-16 at 5.04.08 PM.jpeg",
-    href: "/categories/all",
+    image: "/banner/home2.jpeg",
     alt: "Branding",
   },
   {
-    image: "/WhatsApp Image 2026-04-16 at 5.04.08 PM.jpeg",
-    href: "/categories/all",
+    image: "/banner/home3.jpeg",
     alt: "Pharmaceutical Gifts",
   },
 ];
 
 // ─── Component ───────────────────────────────────────
 export default function HeroWithStats() {
-  const [current, setCurrent] = useState(0);
-  const [animating, setAnimating] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+  const mountedRef = useRef(true);
 
-  useEffect(() => setMounted(true), []);
+  // Create infinite array by duplicating slides 3 times
+  const infiniteSlides = [...HERO_SLIDES, ...HERO_SLIDES, ...HERO_SLIDES];
+  const originalLength = HERO_SLIDES.length;
+  const middleStart = originalLength;
+  const middleEnd = originalLength * 2;
 
-  const goTo = useCallback((index: number) => {
-    if (animating) return;
-    setAnimating(true);
+  // Get current visible slide (actual index without the infinite wrapper)
+  const getRealIndex = useCallback((displayIndex: number) => {
+    return ((displayIndex - middleStart) % originalLength + originalLength) % originalLength;
+  }, [originalLength, middleStart]);
+
+  const [displayIndex, setDisplayIndex] = useState(middleStart);
+  const realIndex = getRealIndex(displayIndex);
+
+  // Jump to middle without animation when needed
+  const resetPosition = useCallback((newDisplayIndex: number) => {
+    setIsTransitioning(false);
+    setDisplayIndex(newDisplayIndex);
+    // Force reflow then re-enable transition
     setTimeout(() => {
-      setCurrent(index);
-      setAnimating(false);
-    }, 300);
-  }, [animating]);
+      if (mountedRef.current) {
+        setIsTransitioning(true);
+      }
+    }, 50);
+  }, []);
 
-  const prev = useCallback(() => {
-    goTo((current - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
-  }, [current, goTo]);
+  // Navigate to next slide
+  const nextSlide = useCallback(() => {
+    const newIndex = displayIndex + 1;
+    setDisplayIndex(newIndex);
+    
+    // Check if we need to reset position
+    if (newIndex >= middleEnd) {
+      setTimeout(() => {
+        if (mountedRef.current) {
+          resetPosition(middleStart);
+        }
+      }, 700);
+    }
+  }, [displayIndex, middleStart, middleEnd, resetPosition]);
 
-  const next = useCallback(() => {
-    goTo((current + 1) % HERO_SLIDES.length);
-  }, [current, goTo]);
+  // Navigate to previous slide
+  const prevSlide = useCallback(() => {
+    const newIndex = displayIndex - 1;
+    setDisplayIndex(newIndex);
+    
+    // Check if we need to reset position
+    if (newIndex < middleStart - 1) {
+      setTimeout(() => {
+        if (mountedRef.current) {
+          resetPosition(middleEnd - 1);
+        }
+      }, 700);
+    }
+  }, [displayIndex, middleStart, middleEnd, resetPosition]);
 
+  // Auto-play
+  const startAutoPlay = useCallback(() => {
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    autoPlayRef.current = setInterval(() => {
+      nextSlide();
+    }, 5000);
+  }, [nextSlide]);
+
+  const stopAutoPlay = useCallback(() => {
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+      autoPlayRef.current = null;
+    }
+  }, []);
+
+  // Handle drag/swipe
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    stopAutoPlay();
+    setIsDragging(true);
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    setStartX(clientX);
+    setIsTransitioning(false);
+  };
+
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging) return;
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const diff = clientX - startX;
+    setTranslateX(diff);
+  };
+
+  const handleDragEnd = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging) {
+      startAutoPlay();
+      return;
+    }
+    
+    setIsDragging(false);
+    setIsTransitioning(true);
+    
+    const clientX = 'touches' in e ? e.changedTouches[0].clientX : e.clientX;
+    const diff = clientX - startX;
+    
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        prevSlide();
+      } else {
+        nextSlide();
+      }
+    }
+    
+    setTranslateX(0);
+    startAutoPlay();
+  };
+
+  // Set up auto-play on mount
   useEffect(() => {
-    const timer = setInterval(next, 5000);
-    return () => clearInterval(timer);
-  }, [next]);
+    mountedRef.current = true;
+    startAutoPlay();
+    
+    return () => {
+      mountedRef.current = false;
+      stopAutoPlay();
+    };
+  }, [startAutoPlay, stopAutoPlay]);
 
-  if (!mounted) {
-    return <div className="min-h-screen bg-[var(--clr-bg-cream)]" />;
-  }
-
-  const slide = HERO_SLIDES[current];
+  // Calculate transform style
+  const getTransformStyle = () => {
+    if (isDragging) {
+      return `translateX(calc(-${displayIndex * 100}% + ${translateX}px))`;
+    }
+    return `translateX(-${displayIndex * 100}%)`;
+  };
 
   return (
-    <div className="md:h-auto flex flex-col overflow-hidden">
-
-      {/* ─── HERO ───────────────── */}
-      <section className="relative h-[70vh] sm:h-[70vh] lg:h-[80vh] 
-      bg-gradient-to-br from-[var(--clr-bg-cream)] via-[var(--clr-white)] to-[var(--clr-bg-gray)] overflow-hidden">
-
-        {/* overlay */}
-        <div className="absolute top-0 right-0 w-full lg:w-[60%] h-full 
-        bg-gradient-to-l from-[var(--clr-primary)/10] to-transparent" />
-
-        {/* blur accent */}
-        <div className="absolute bottom-0 left-1/4 w-72 h-72 rounded-full 
-        bg-[var(--clr-secondary)/10] blur-3xl" />
-
-        {/* grid pattern */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none 
-      [background-image:radial-gradient(circle,rgba(15,143,191,0.15) 1px,transparent 1px)]
-        [background-size:24px_24px]" />
-
-        {/* slider */}
-        <div className={`relative w-full h-full transition-all duration-300 ${
-          animating ? "opacity-0 scale-95" : "opacity-100 scale-100"
-        }`}>
-
-       <a href={slide.href} className="relative block w-full h-full group">
-            <Image
-              src={slide.image}
-              alt={slide.alt}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              priority
-              sizes="100vw"
-              unoptimized
-            />
-
-            {/* CTA */}
-            <div className="absolute inset-0 flex items-center justify-center 
-            bg-black/0 group-hover:bg-black/20 transition">
-
-              {/* <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 
-              bg-white text-[var(--clr-primary)] font-semibold px-6 py-3 rounded-full shadow-lg 
-              translate-y-4 group-hover:translate-y-0">
-                View Category
-              </span> */}
-            </div>
-          </a>
-
-          {/* arrows */}
-          <button onClick={prev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 
-            bg-white rounded-full shadow flex items-center justify-center 
-            hover:text-[var(--clr-primary)] transition">
-            <ChevronLeft />
-          </button>
-
-          <button onClick={next}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 
-            bg-white rounded-full shadow flex items-center justify-center 
-            hover:text-[var(--clr-primary)] transition">
-            <ChevronRight />
-          </button>
-
-          {/* dots */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
-            {HERO_SLIDES.map((_, i) => (
-              <button key={i}
-                onClick={() => goTo(i)}
-                className={`rounded-full transition-all ${
-                  i === current
-                    ? "w-8 h-2 bg-[var(--clr-primary)]"
-                    : "w-2 h-2 bg-white/80"
-                }`}
+    <div className="flex flex-col overflow-hidden">
+      <section 
+        className="relative w-full h-[70vh] lg:h-[90vh] overflow-hidden bg-black"
+        onMouseEnter={stopAutoPlay}
+        onMouseLeave={startAutoPlay}
+      >
+        {/* Slides Container */}
+        <div 
+          ref={containerRef}
+          className="relative w-full h-full flex"
+          style={{
+            transform: getTransformStyle(),
+            transition: isTransitioning && !isDragging ? 'transform 700ms cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
+            cursor: isDragging ? 'grabbing' : 'grab',
+          }}
+          onMouseDown={handleDragStart}
+          onMouseMove={handleDragMove}
+          onMouseUp={handleDragEnd}
+          onMouseLeave={handleDragEnd}
+          onTouchStart={handleDragStart}
+          onTouchMove={handleDragMove}
+          onTouchEnd={handleDragEnd}
+        >
+          {infiniteSlides.map((slide, idx) => (
+            <div
+              key={`${idx}-${slide.image}`}
+              className="relative w-full h-full flex-shrink-0"
+            >
+              <Image
+                src={slide.image}
+                alt={slide.alt}
+                fill
+                className="object-cover pointer-events-none"
+                priority={idx >= middleStart && idx < middleStart + 2}
+                sizes="100vw"
+                quality={100}
               />
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
+
+        {/* Preload all images */}
+        <div className="hidden">
+          {HERO_SLIDES.map((slide, idx) => (
+            <Image
+              key={`preload-${idx}`}
+              src={slide.image}
+              alt="preload"
+              width={1}
+              height={1}
+              priority
+            />
+          ))}
+        </div>
+
+        {/* Navigation arrows */}
+        <button 
+          onClick={(e) => {
+            e.stopPropagation();
+            stopAutoPlay();
+            prevSlide();
+            startAutoPlay();
+          }}
+          className="absolute left-4 sm:left-6 md:left-8 top-1/2 -translate-y-1/2 
+          w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 
+          bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center 
+          text-white hover:bg-white/40 hover:scale-110 transition-all duration-300
+          border border-white/30 shadow-lg group z-20"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:-translate-x-1 transition-transform" />
+        </button>
+
+        <button 
+          onClick={(e) => {
+            e.stopPropagation();
+            stopAutoPlay();
+            nextSlide();
+            startAutoPlay();
+          }}
+          className="absolute right-4 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 
+          w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 
+          bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center 
+          text-white hover:bg-white/40 hover:scale-110 transition-all duration-300
+          border border-white/30 shadow-lg group z-20"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:translate-x-1 transition-transform" />
+        </button>
+
+        {/* Dots navigation */}
+        <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+          {HERO_SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={(e) => {
+                e.stopPropagation();
+                stopAutoPlay();
+                const targetIndex = middleStart + i;
+                setDisplayIndex(targetIndex);
+                setIsTransitioning(true);
+                startAutoPlay();
+              }}
+              className={`rounded-full transition-all duration-300 ${
+                realIndex === i
+                  ? "w-10 sm:w-12 h-3 bg-white shadow-lg"
+                  : "w-3 h-3 bg-white/60 hover:bg-white/80 hover:scale-110"
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Gradient overlays */}
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black/20 to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black/20 to-transparent pointer-events-none z-10" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/30 to-transparent pointer-events-none z-10" />
       </section>
-
-      {/* ─── STATS ───────────────── */}
-    
-
     </div>
   );
 }

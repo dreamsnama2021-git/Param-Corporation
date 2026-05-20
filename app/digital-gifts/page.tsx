@@ -1,0 +1,552 @@
+// app/digital-services/page.tsx
+'use client';
+
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import {
+  ArrowUpRight,
+  LayoutDashboard,
+  BarChart3,
+  HeartPulse,
+  Users,
+  Globe,
+  Smartphone,
+  Video,
+  Database,
+  Sparkles,
+  Eye,
+  Zap,
+} from 'lucide-react';
+
+// ─── TYPES ──────────────────────────────────────────────────────────────────
+interface ServiceCategory {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  gradient: string;
+}
+
+interface GalleryImage {
+  id: string;
+  src: string;
+  title: string;
+  category: string;
+}
+
+// ─── DATA ────────────────────────────────────────────────────────────────────
+const serviceCategories: ServiceCategory[] = [
+  {
+    id: "customized-dashboard",
+    number: "01",
+    title: "Customized Dashboard",
+    description: "Tailored analytics dashboards providing real-time insights and KPIs for pharmaceutical sales and marketing teams with role-based access.",
+    icon: LayoutDashboard,
+    gradient: "from-blue-500 to-cyan-400",
+  },
+  {
+    id: "customized-analytics",
+    number: "02",
+    title: "Customized Analytics",
+    description: "Advanced pharmaceutical analytics solutions delivering deep insights into prescription patterns, market trends, and HCP behavior.",
+    icon: BarChart3,
+    gradient: "from-purple-500 to-pink-400",
+  },
+  {
+    id: "health-risk-calculators",
+    number: "03",
+    title: "Health Risk Calculators",
+    description: "Interactive health risk assessment tools that engage patients and HCPs while generating valuable health insights and leads.",
+    icon: HeartPulse,
+    gradient: "from-red-500 to-orange-400",
+  },
+  {
+    id: "patient-support-programs",
+    number: "04",
+    title: "Patient Support Programs",
+    description: "Comprehensive digital patient support ecosystems including medication adherence, education, and 24/7 assistance platforms.",
+    icon: Users,
+    gradient: "from-green-500 to-emerald-400",
+  },
+  {
+    id: "mini-websites",
+    number: "05",
+    title: "Mini Websites",
+    description: "Dedicated micro-sites and landing pages for pharmaceutical brands, products, and disease awareness campaigns.",
+    icon: Globe,
+    gradient: "from-indigo-500 to-blue-400",
+  },
+  {
+    id: "customized-apps",
+    number: "06",
+    title: "Customized Apps",
+    description: "Native and cross-platform mobile applications tailored for pharmaceutical sales reps, HCPs, and patient engagement.",
+    icon: Smartphone,
+    gradient: "from-teal-500 to-green-400",
+  },
+  {
+    id: "video-production",
+    number: "07",
+    title: "Video Production & Editing",
+    description: "Professional medical video production services including 3D animations, MOA videos, and HCP testimonial content.",
+    icon: Video,
+    gradient: "from-orange-500 to-yellow-400",
+  },
+  {
+    id: "variable-data",
+    number: "08",
+    title: "Variable Data Collection & Printing",
+    description: "Intelligent variable data solutions for personalized pharmaceutical marketing materials with automated data integration.",
+    icon: Database,
+    gradient: "from-rose-500 to-pink-400",
+  },
+];
+
+const koruGalleryImages: GalleryImage[] = [
+  { id: "g-1", src: "/New Product Images/10.png", title: "Custom Dashboard Interface", category: "Dashboard" },
+  { id: "g-2", src: "/New Product Images/9.png", title: "Analytics Visualization", category: "Analytics" },
+  { id: "g-3", src: "/New Product Images/52.png", title: "Health Risk Calculator", category: "HRA Tools" },
+  { id: "g-4", src: "/New Product Images/68.png", title: "Patient Support Portal", category: "Patient Programs" },
+  { id: "g-5", src: "/koru/koru4.png", title: "Mini Website Design", category: "Websites" },
+  { id: "g-6", src: "/koru/koru5.png", title: "Mobile App Interface", category: "Apps" },
+  { id: "g-7", src: "/koru/koru6.png", title: "Video Production Still", category: "Video" },
+  { id: "g-8", src: "/koru/koru7.png", title: "Variable Data Print Sample", category: "Print" },
+  { id: "g-9", src: "/koru/koru8.png", title: "Sales Dashboard View", category: "Dashboard" },
+  { id: "g-10", src: "/koru/koru9.png", title: "Territory Analytics", category: "Analytics" },
+  { id: "g-11", src: "/koru/koru10.png", title: "Risk Assessment Tool", category: "HRA Tools" },
+  { id: "g-12", src: "/koru/koru12.png", title: "Patient App Screen", category: "Patient Programs" },
+  { id: "g-13", src: "/koru/koru13.png", title: "Dashboard Analytics", category: "Dashboard" },
+  { id: "g-14", src: "/koru/koru14.png", title: "Report Interface", category: "Analytics" },
+  { id: "g-15", src: "/koru/koru15.png", title: "Health Assessment", category: "HRA Tools" },
+  { id: "g-16", src: "/koru/koru16.png", title: "Patient Dashboard", category: "Patient Programs" },
+  { id: "g-17", src: "/koru/koru17.png", title: "Web Design", category: "Websites" },
+  { id: "g-18", src: "/koru/koru18.png", title: "Mobile Dashboard", category: "Apps" },
+  { id: "g-19", src: "/koru/koru19.png", title: "Video Frame", category: "Video" },
+  { id: "g-20", src: "/koru/koru20.png", title: "Print Design", category: "Print" },
+  { id: "g-21", src: "/koru/koru21.png", title: "Dashboard UI", category: "Dashboard" },
+  { id: "g-22", src: "/koru/koru22.png", title: "Charts View", category: "Analytics" },
+  { id: "g-23", src: "/koru/koru23.png", title: "Risk Tool", category: "HRA Tools" },
+  { id: "g-24", src: "/koru/koru24.png", title: "Patient App", category: "Patient Programs" },
+];
+
+// ─── COLLAGE GRID HELPERS ────────────────────────────────────────────────────
+type GridItem = {
+  src: string;
+  colStart: number;
+  colSpan: number;
+  rowSpan: number;
+};
+
+function buildBlock(srcs: string[]): GridItem[] {
+  const s = (i: number) => srcs[i] ?? srcs[srcs.length - 1];
+
+  return [
+    { src: s(0), colStart: 1, colSpan: 1, rowSpan: 3 },
+    { src: s(1), colStart: 2, colSpan: 1, rowSpan: 2 },
+    { src: s(2), colStart: 3, colSpan: 1, rowSpan: 2 },
+    { src: s(3), colStart: 4, colSpan: 1, rowSpan: 2 },
+    { src: s(4), colStart: 2, colSpan: 1, rowSpan: 3 },
+    { src: s(5), colStart: 3, colSpan: 1, rowSpan: 2 },
+    { src: s(6), colStart: 4, colSpan: 1, rowSpan: 2 },
+    { src: s(7), colStart: 1, colSpan: 1, rowSpan: 2 },
+    { src: s(8), colStart: 3, colSpan: 1, rowSpan: 3 },
+    { src: s(9), colStart: 4, colSpan: 1, rowSpan: 3 },
+    { src: s(10), colStart: 1, colSpan: 1, rowSpan: 2 },
+    { src: s(11), colStart: 2, colSpan: 1, rowSpan: 2 },
+  ];
+}
+
+function buildGridItems(images: GalleryImage[]): GridItem[] {
+  const items: GridItem[] = [];
+  for (let i = 0; i < images.length; i += 12) {
+    const srcs = images.slice(i, i + 12).map((img) => img.src);
+    items.push(...buildBlock(srcs));
+  }
+  return items;
+}
+
+// ─── SECTION BADGE ───────────────────────────────────────────────────────────
+function SectionBadge({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold ${className}`}>
+      {children}
+    </span>
+  );
+}
+
+// ─── PAGE ────────────────────────────────────────────────────────────────────
+export default function DigitalServicesPage() {
+  return (
+    <div className="min-h-screen bg-white">
+      <HeroBanner />
+      <HyperPersonalizedServices />
+      <CollageGallerySection />
+    </div>
+  );
+}
+
+// ─── HERO BANNER ─────────────────────────────────────────────────────────────
+function HeroBanner() {
+  return (
+    <section className="relative w-full h-[45vh] md:h-[55vh] lg:h-[65vh] overflow-hidden">
+      <Image
+        src="/koru/koru.png"
+        alt="Digital Products & Services"
+        fill
+        className="object-cover"
+        priority
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 lg:p-14">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <SectionBadge className="bg-white/10 backdrop-blur-md text-[#8bde7a] border border-white/20 mb-4">
+              <Sparkles size={16} />
+              Digital Transformation in Pharma
+            </SectionBadge>
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-4"
+          >
+            Digital
+            <span className="block text-[#8bde7a]">Services</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-lg md:text-xl text-white/80 max-w-2xl"
+          >
+            Empowering pharmaceutical companies with cutting-edge digital solutions
+            that enhance HCP engagement and deliver measurable healthcare outcomes.
+          </motion.p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── HYPERPERSONALIZED SERVICES SECTION ──────────────────────────────────────
+function HyperPersonalizedServices() {
+  return (
+    <section className="py-16 lg:py-24 bg-gradient-to-b from-white to-slate-50">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          className="text-center mb-16"
+        >
+          <SectionBadge className="bg-[#0093cb]/10 text-[#0093cb] border border-[#0093cb]/20 mb-4">
+            <Zap size={16} />
+            Tailored Solutions
+          </SectionBadge>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6">
+            Hyperpersonalized
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#0093cb] to-[#00a65d]">
+              Services
+            </span>
+          </h2>
+          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            We craft bespoke digital solutions that adapt to your unique pharmaceutical
+            brand needs. Each service is meticulously personalized to drive engagement,
+            compliance, and measurable outcomes.
+          </p>
+          <div className="mt-6 w-24 h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full mx-auto" />
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {serviceCategories.map((service, index) => (
+            <FlipCard key={service.id} service={service} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── FLIP CARD ───────────────────────────────────────────────────────────────
+function FlipCard({ service, index }: { service: ServiceCategory; index: number }) {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const Icon = service.icon;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+      className="relative h-[320px] perspective-1000"
+      onMouseEnter={() => setIsFlipped(true)}
+      onMouseLeave={() => setIsFlipped(false)}
+    >
+      <motion.div
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+        className="relative w-full h-full preserve-3d"
+        style={{ transformStyle: 'preserve-3d' }}
+      >
+        {/* Front Face */}
+        <div
+          className="absolute inset-0 backface-hidden rounded-3xl border border-slate-200 bg-white shadow-lg flex flex-col items-center justify-center p-8 cursor-pointer group"
+          style={{ backfaceVisibility: 'hidden' }}
+        >
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
+            style={{
+              background: 'radial-gradient(circle at center, rgba(0, 166, 93, 0.06) 0%, transparent 70%)',
+            }}
+          />
+          <div className="absolute top-4 left-4">
+            <span className="text-xs font-bold text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">
+              {service.number}
+            </span>
+          </div>
+          <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-500 relative z-10`}>
+            <Icon size={36} className="text-white" />
+          </div>
+          <h3 className="text-xl font-extrabold text-slate-900 text-center mb-3 group-hover:text-[#00a65d] transition-colors duration-300 relative z-10">
+            {service.title}
+          </h3>
+          <p className="text-sm text-slate-500 text-center leading-relaxed line-clamp-2 relative z-10">
+            {service.description.split('.')[0]}.
+          </p>
+          <div className="absolute bottom-6 flex items-center gap-1.5 text-xs text-slate-400 group-hover:text-[#0093cb] transition-colors duration-300">
+            <span>Hover to explore</span>
+            <motion.svg
+              animate={{ rotate: isFlipped ? 180 : 0 }}
+              className="w-3 h-3"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </motion.svg>
+          </div>
+        </div>
+
+        {/* Back Face */}
+        <div
+          className="absolute inset-0 backface-hidden rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-2xl flex flex-col items-center justify-center p-8"
+          style={{ 
+            backfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg)',
+          }}
+        >
+          <div className={`absolute inset-0 opacity-10 rounded-3xl bg-gradient-to-br ${service.gradient}`} />
+          <div className="absolute top-4 left-4">
+            <span className="text-xs font-bold text-[#8bde7a] bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
+              {service.number}
+            </span>
+          </div>
+          <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-5 shadow-lg relative z-10`}>
+            <Icon size={28} className="text-white" />
+          </div>
+          <h3 className="text-lg font-extrabold text-white text-center mb-3 relative z-10">
+            {service.title}
+          </h3>
+          <p className="text-sm text-slate-300 text-center leading-relaxed relative z-10 mb-6">
+            {service.description}
+          </p>
+          <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient}`} />
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+// ─── COLLAGE GALLERY SECTION ─────────────────────────────────────────────────
+function CollageGallerySection() {
+  const INITIAL_COUNT = 12;
+  const [showAll, setShowAll] = useState(false);
+  
+  const source = showAll ? koruGalleryImages : koruGalleryImages.slice(0, INITIAL_COUNT);
+  const gridItems = buildGridItems(source);
+  const hasMoreImages = koruGalleryImages.length > INITIAL_COUNT;
+
+  return (
+    <section className="py-16 lg:py-24" style={{ background: 'linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 50%, #f8faf8 100%)' }}>
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Gallery Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          className="text-center mb-12"
+        >
+          <SectionBadge className="bg-[#00a65d]/10 text-[#00a65d] border border-[#00a65d]/20 mb-4">
+            <Eye size={16} />
+            Portfolio Showcase
+          </SectionBadge>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">
+            Digital Input
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#00a65d] to-[#8bde7a]">
+              Gallery
+            </span>
+          </h2>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            Explore our collection of digital service interfaces and solutions crafted for
+            pharmaceutical companies. Each design is meticulously created to enhance
+            user engagement and deliver impactful digital experiences.
+          </p>
+          <div className="mt-6 w-24 h-1 bg-gradient-to-r from-[#00a65d] to-[#8bde7a] rounded-full mx-auto" />
+        </motion.div>
+
+        {/* Collage Grid */}
+        <motion.div 
+          layout
+          className="gap-4 2xl:gap-6"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gridAutoRows: '160px',
+          }}
+        >
+          {gridItems.map((item, index) => (
+            <motion.div
+              key={index}
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.03, duration: 0.4 }}
+              className="relative overflow-hidden group"
+              style={{
+                gridColumn: `${item.colStart} / span ${item.colSpan}`,
+                gridRow: `span ${item.rowSpan}`,
+                borderRadius: '12px',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+              }}
+            >
+              {/* Brand Accent Overlay */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(0,147,203,0.15) 0%, rgba(0,166,93,0.1) 100%)',
+                  borderRadius: '12px',
+                }}
+              />
+              
+              {/* Subtle border glow on hover */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none rounded-xl"
+                style={{
+                  boxShadow: 'inset 0 0 0 2px rgba(0,147,203,0.3)',
+                }}
+              />
+
+              <Image
+                src={item.src}
+                alt={`Gallery image ${index + 1}`}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              />
+
+              {/* Image number badge */}
+              <div 
+                className="absolute top-2 left-2 z-20 text-xs font-bold px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ 
+                  backgroundColor: '#060706',
+                  color: '#ffffff'
+                }}
+              >
+                {index + 1}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* See More / See Less Button */}
+        {hasMoreImages && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mt-10 text-center"
+          >
+            {!showAll ? (
+              <button
+                onClick={() => setShowAll(true)}
+                className="relative px-10 py-3.5 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg active:scale-95"
+                style={{
+                  backgroundColor: '#0093cb',
+                  boxShadow: '0 4px 14px rgba(0,147,203,0.3)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#007ba8';
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,147,203,0.4)';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#0093cb';
+                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(0,147,203,0.3)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <span className="flex items-center gap-2">
+                  See All ({koruGalleryImages.length - INITIAL_COUNT}+ more)
+                  <svg 
+                    className="w-4 h-4" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </button>
+            ) : (
+              <button
+                onClick={() => setShowAll(false)}
+                className="relative px-10 py-3.5 font-semibold rounded-full transition-all duration-300 hover:shadow-md active:scale-95"
+                style={{
+                  backgroundColor: '#f0fdf4',
+                  color: '#00a65d',
+                  border: '2px solid #00a65d',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#00a65d';
+                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f0fdf4';
+                  e.currentTarget.style.color = '#00a65d';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <span className="flex items-center gap-2">
+                  Show Less
+                  <svg 
+                    className="w-4 h-4" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                  </svg>
+                </span>
+              </button>
+            )}
+          </motion.div>
+        )}
+
+        {/* View All Portfolio Button */}
+      
+
+        {/* Brand Footer Accent */}
+      
+      </div>
+    </section>
+  );
+}

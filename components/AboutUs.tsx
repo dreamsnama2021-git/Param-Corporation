@@ -145,7 +145,7 @@ const AboutUsPage: React.FC = () => {
           </div>
 
           {/* RIGHT COLUMN: Staggered Text Content */}
-          <div className="flex flex-wrap gap-8 text-gray-800 lg:pl-10">
+          <div className="flex flex-wrap gap-3 2xl:gap-6 text-gray-800 2xl:pl-10">
             <div className="animate-fade-up">
               <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#00a65d]/10 border border-[#00a65d]/20 text-[#00a65d] text-xs font-black uppercase tracking-[0.25em] backdrop-blur-md shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00a65d] animate-pulse"></span>
@@ -153,17 +153,17 @@ const AboutUsPage: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="text-5xl font-extrabold tracking-tight lg:text-7xl leading-[1.1] animate-fade-up delay-100 text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500 pb-2">
-              Building trust, <br />
-              <span className="text-[#0093cb]">one connection</span> <br />
-              at a time.
+            <h2 className="text-3xl xl:text-4xl font-extrabold tracking-tight lg:text-7xl leading-[1.1] animate-fade-up delay-100 text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500 pb-2">
+              Corporate Gifting For, <br />
+              <span className="text-[#0093cb]">Pharma Brands  In India.</span> <br />
+             
             </h2>
 
-            <p className="text-gray-500 text-lg leading-relaxed max-w-xl animate-fade-up delay-200 font-light">
-              We go beyond the surface to understand what truly drives success.
-              By blending innovative technology with genuine human connection,
-              we create experiences that aren't just efficient, but deeply
-              impactful. Considered support, uncommonly delivered.
+            <p className="text-gray-500 text-lg leading-relaxed max-w-xl animate-fade-up delay-200 font-light pb-2">
+              At Param Corporation, we specialize in delivering strategic
+              corporate gifting & pharma marketing solutions tailored to different
+              industries. From doctor engagement kits to promotional
+              merchandise, we turn ideas into impactful brand experiences.
             </p>
             <div className="flex justify-center">
               <Link

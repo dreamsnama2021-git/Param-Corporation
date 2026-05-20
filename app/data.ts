@@ -45,6 +45,10 @@ export const categories: CategoryItem[] = [
   { name: "Indoor Plants", slug: "indoor-plants", description: "Aesthetic and thoughtful doctor gifts that stay long and build daily recall" },
   { name: "Calendars", slug: "calendars", description: "Medical-focused calendars designed as per medical relevance and brand messaging" },
   { name: "Photo Frames", slug: "photo-frames", description: "Personalized and professional frames with pharma branding for clinics and offices" },
+  { name: "Pharma Launch Kits", slug: "pharma-launch-kits", description: "Comprehensive branding kits for pharmaceutical product launches and promotions" },
+  { name: "Custom Doctor Kits", slug: "custom-doctor-kits", description: "Personalized gift kits tailored for doctors with pharma branding and utilities" },
+  { name: "Surgical Tools", slug: "surgical-tools", description: "Branded surgical instruments and tools for medical professionals and hospitals" },
+  { name: "Custom Training Models", slug: "custom-training-models", description: "Educational medical models customized for pharma training and demonstrations" },
 ];
 
 // 3. By Price
@@ -59,15 +63,6 @@ export const priceRanges: CategoryItem[] = [
 
 // 4. By Occasion (Month-wise and key medical/corporate occasions)
 export const occasions: CategoryItem[] = [
-  { name: "Doctor's Day", slug: "doctors-day", description: "Special gifts to honor and appreciate doctors" },
-  { name: "Medical Conferences", slug: "medical-conferences", description: "Gifts for medical events and symposiums" },
-  { name: "Product Launches", slug: "product-launches", description: "Launch event giveaways and promotional items" },
-  { name: "Festive Gifting", slug: "festive-gifting", description: "Diwali, Christmas, and festival hampers" },
-  { name: "Brand Campaigns", slug: "brand-campaigns", description: "Campaign-specific promotional gifts" },
-  { name: "Seasonal Campaigns", slug: "seasonal-campaigns", description: "Season-specific gifting solutions" },
-  { name: "Product Promotions", slug: "product-promotions", description: "Promotional items for product visibility" },
-  { name: "Brand Milestones", slug: "brand-milestones", description: "Anniversary and achievement celebration gifts" },
-  { name: "Doctor Engagement Programs", slug: "doctor-engagement-programs", description: "Relationship-building gifts for doctors" },
   // Month-wise breakdown
   { name: "January", slug: "january", description: "New Year and Republic Day gifting" },
   { name: "February", slug: "february", description: "Valentine's Day and Cancer Awareness" },
@@ -104,20 +99,20 @@ export const therapies: CategoryItem[] = [
 
 // 6. Personalized Gifts (Customized items with doctor name, clinic branding, etc.)
 export const personalizedGifts: CategoryItem[] = [
-  { name: "Doctor Name Personalization", slug: "doctor-name-personalization", description: "Gifts with doctor's name engraved or printed" },
-  { name: "Clinic Branding", slug: "clinic-branding", description: "Items customized with clinic logo and details" },
-  { name: "Custom Packaging", slug: "custom-packaging", description: "Branded packaging solutions for gifts" },
+  { name: "Photo Frames", slug: "doctor-name-personalization", description: "Gifts with doctor's name engraved or printed" },
+  { name: "Momentos", slug: "clinic-branding", description: "Items customized with clinic logo and details" },
+  { name: "Trophies", slug: "custom-packaging", description: "Branded packaging solutions for gifts" },
   { name: "Brand-Specific Messaging", slug: "brand-specific-messaging", description: "Personalized messages and brand communication" },
-  { name: "Engraved Pens", slug: "engraved-pens", description: "Personalized writing instruments" },
-  { name: "Custom Mugs", slug: "custom-mugs", description: "Printed and personalized coffee mugs" },
-  { name: "Photo Gifts", slug: "photo-gifts", description: "Personalized photo items and collages" },
-  { name: "Custom Stationery", slug: "custom-stationery", description: "Branded and personalized stationery sets" },
-  { name: "Embossed Leather", slug: "embossed-leather", description: "Personalized leather goods and accessories" },
-  { name: "Engraved Keychains", slug: "engraved-keychains", description: "Custom metal and wooden keychains" },
-  { name: "Custom Apparel", slug: "custom-apparel", description: "Personalized T-shirts, caps and clothing" },
-  { name: "Personalized Diaries", slug: "personalized-diaries", description: "Custom notebooks and planners" },
-  { name: "Custom Drinkware", slug: "custom-drinkware", description: "Personalized bottles and sippers" },
-  { name: "Engraved Awards", slug: "engraved-awards", description: "Custom trophies and recognition awards" },
+  { name: "Persanalized Hampers", slug: "engraved-pens", description: "Personalized writing instruments" },
+  { name: "Star Map", slug: "custom-mugs", description: "Printed and personalized coffee mugs" },
+  { name: "Name Plate", slug: "photo-gifts", description: "Personalized photo items and collages" },
+  { name: "3D Printed Plates", slug: "custom-stationery", description: "Branded and personalized stationery sets" },
+  { name: "Personalized Desk Utility", slug: "embossed-leather", description: "Personalized leather goods and accessories" },
+  { name: "Personalized Gifts", slug: "engraved-keychains", description: "Custom metal and wooden keychains" },
+  // { name: "Custom Apparel", slug: "custom-apparel", description: "Personalized T-shirts, caps and clothing" },
+  // { name: "Personalized Diaries", slug: "personalized-diaries", description: "Custom notebooks and planners" },
+  // { name: "Custom Drinkware", slug: "custom-drinkware", description: "Personalized bottles and sippers" },
+  // { name: "Engraved Awards", slug: "engraved-awards", description: "Custom trophies and recognition awards" },
 ];
 
 // 7. Digital Gifts (Tech and electronic items)
@@ -140,14 +135,42 @@ export const digitalGifts: CategoryItem[] = [
 
 export const allProducts: Product[] = [
   // Categories - Paperweights
-  { id: 1, name: "Crystal Glass Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
-  { id: 2, name: "Corporate Logo Paperweight", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
-  { id: 3, name: "Metal Finish Paperweight", image: "/products/CUSTOMIZED PAPER WEIGHT.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 1, name: "5 STAR THEME MAGNETIC PAPERWEIGHT", image: "/Paperweights/5 STAR THEME MAGNETIC PAPERWEIGHT 1.JPG", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
+  { id: 2, name: "ACID REFLUX DETAILER PAPERWEIGHT", image: "/Paperweights/ACID REFLUX DETAILER PAPERWEIGHT 1.JPG", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
+  { id: 3, name: "BEPLEX TABLET COMPARISON PAPERWEIGHT", image: "/Paperweights/BEPLEX TABLET COMPARISON PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 32, name: "BLADDER PUZZLE PAPERWEIGHT", image: "/Paperweights/BLADDER PUZZLE PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 33, name: "BRISTOL STOOL CHART PAPERWEIGHT", image: "/Paperweights/BRISTOL STOOL CHART PAPERWEIGHT.jpg", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 34, name: "CAPSULE ROCKING PAPERWEIGHT", image: "/Paperweights/CAPSULE ROCKING PAPERWEIGHT 2.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 35, name: "CLEAR THEME PAPERWEIGHT", image: "/Paperweights/CLEAR THEME PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 36, name: "CUSTOMIZED APPLE SHAPED FRAGRANCE PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED APPLE SHAPED FRAGRANCE PAPERWEIGHT 1.JPG", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
+  { id: 37, name: "CUSTOMIZED BOOK SHAPED PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED BOOK SHAPED PAPERWEIGHT 2.JPG", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
+  { id: 38, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 39, name: "CUSTOMIZED DENTAL MIRROR PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED DENTAL MIRROR PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 40, name: "CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 41, name: "CUSTOMIZED LUBIMOIST PACK SHOT SHAPE PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED LUBIMOIST PACK SHOT SHAPE PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 42, name: "CUSTOMIZED MNEMONIC ROCKING PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED MNEMONIC ROCKING PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 43, name: "CUSTOMIZED Q PIN SHAPED PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED Q PIN SHAPED PAPERWEIGHT 2.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 44, name: "CUSTOMIZED TRIPLE LAYER TABLET PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED TRIPLE LAYER TABLET PAPERWEIGHT 3.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 45, name: "ENSURE BOTTLE SHAPED PAPERWEIGHT", image: "/Paperweights/ENSURE BOTTLE SHAPED PAPERWEIGHT.jpg", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 46, name: "LIPID PROFILER SHAPE PAPERWEIGHT", image: "/Paperweights/LIPID PROFILER SHAPE PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 47, name: "MOLECULE COMBINATION PAPERWEIGHT", image: "/Paperweights/MOLECULE COMBINATION PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 48, name: "STAGES OF DIABETIC FOOT ULCERS PAPERWEIGHT", image: "/Paperweights/STAGES OF DIABETIC FOOT ULCERS PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 49, name: "STOMACH PELLET PAPERWEIGHT", image: "/Paperweights/STOMACH PELLET PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 50, name: "SYRUP BOTTLE SHAPE PAPERWEIGHT", image: "/Paperweights/SYRUP BOTTLE SHAPE PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 51, name: "TYPES OD TENDONITIS CUBE SHAPED PAPERWEIGHT", image: "/Paperweights/TYPES OD TENDONITIS CUBE SHAPED PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 52, name: "TYPES OF KIDNEY STONES ANATOMICAL PAPERWEIGHT", image: "/Paperweights/TYPES OF KIDNEY STONES ANATOMICAL PAPERWEIGHT.jpg", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   
   // Categories - Tabletops
-  { id: 4, name: "Executive Desk Calendar", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
-  { id: 5, name: "Brass Table Decor", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹899", category: "tabletops", categoryName: "Tabletops", description: "Traditional brass decorative piece" },
-  { id: 6, name: "Anatomy Display Board", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 4, name: "CUSTOMIZED 1 LAKH DOSES MOMENTO", image: "/TableTop/CUSTOMIZED 1 LAKH DOSES MOMENTO 1.JPG", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
+  { id: 5, name: "CUSTOMIZED 15 YEARS MOMENTO", image: "/TableTop/CUSTOMIZED 15 YEARS MOMENTO.JPG", price: "₹899", category: "tabletops", categoryName: "Tabletops", description: "Traditional brass decorative piece" },
+  { id: 6, name: "CUSTOMIZED BRAIN & GUTT CONNECTION WOODEN FRAME WITH CLOCK", image: "/TableTop/CUSTOMIZED BRAIN & GUTT CONNECTION WOODEN FRAME WITH CLOCK.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 53, name: "CUSTOMIZED DESK CLOCK", image: "/TableTop/CUSTOMIZED DESK CLOCK.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 54, name: "CUSTOMIZED HEART SHAPE COASTER SET", image: "/TableTop/CUSTOMIZED HEART SHAPE COASTER SET 2.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 55, name: "CUSTOMIZED MAGNETIC DETAILER", image: "/TableTop/CUSTOMIZED MAGNETIC DETAILER 1.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 56, name: "CUSTOMIZED MNEMONIC SLANT PEN HOLDER", image: "/TableTop/CUSTOMIZED MNEMONIC SLANT PEN HOLDER 2.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 57, name: "CUSTOMIZED MOBILE HOLDER", image: "/TableTop/CUSTOMIZED MOBILE HOLDER.jpg", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 58, name: "CUSTOMIZED YOGA THEME DESK CLOCK", image: "/TableTop/CUSTOMIZED YOGA THEME DESK CLOCK.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 59, name: "EAR MODEL WITH SAMPLE DESPENSER", image: "/TableTop/EAR MODEL WITH SAMPLE DESPENSER.jpg", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
   
   // Categories - Desk Utility
   { id: 7, name: "Pen Stand with Clock", image: "https://images.unsplash.com/photo-1516961642265-531546e84af2?w=400", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "Multi-functional desk organizer" },

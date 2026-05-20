@@ -460,42 +460,23 @@ export default function MediPrideLanding() {
   return (
     <div className="text-slate-800 font-sans scroll-smooth bg-white">
       {/* ── HERO ── */}
-      <header className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 md:pt-44 md:pb-24 lg:pt-56 lg:pb-40 overflow-hidden xl:h-[60vh] flex items-center">
-        <picture className="absolute inset-0 z-0">
-          <source
-            media="(min-width: 1024px)"
-            srcSet="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=2000"
-          />
-          <source
-            media="(min-width: 640px)"
-            srcSet="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=800"
-            alt="Medical Research Background"
-            className="w-full h-full object-cover"
-          />
-        </picture>
-        <div className="absolute inset-0 bg-white/40 lg:bg-white/20 z-[1]" />
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10 w-full">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#3972b7] mb-4 sm:mb-6 leading-tight">
-            Where Medical Accuracy Meets <br className="hidden sm:block" />
-            <span className="text-slate-900">Creative Communication</span>
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-slate-800 mb-8 sm:mb-10 max-w-xs sm:max-w-xl md:max-w-2xl mx-auto font-medium">
-            Transforming complex medical information into clear, engaging, and
-            impactful communication for pharma and healthcare brands.
-          </p>
-          <a
-            href="#contact"
-            className="inline-flex items-center space-x-2 sm:space-x-3 bg-[#3972b7] text-white px-7 sm:px-10 py-3.5 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:shadow-2xl hover:bg-blue-700 transition transform hover:-translate-y-1"
-          >
-            <Phone size={18} />
-            <span>Let's Work Together</span>
-          </a>
-        </div>
-      </header>
+     <header className="relative h-[50vh] sm:h-[60vh] lg:h-[70vh] overflow-hidden">
+  <picture className="absolute inset-0 z-0">
+    <source
+      media="(min-width: 1024px)"
+      srcSet="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=2000"
+    />
+    <source
+      media="(min-width: 640px)"
+      srcSet="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200"
+    />
+    <img
+      src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=800"
+      alt="Medical Research Background"
+      className="w-full h-full object-cover"
+    />
+  </picture>
+</header>
 
       {/* ── ABOUT ── */}
       <section
@@ -764,54 +745,10 @@ export default function MediPrideLanding() {
         </div>
       </section>
 
-      {/* ── PRODUCTS ── */}
-      <section id="products" className="py-14 sm:py-16 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
-          <div className="text-center mb-10 sm:mb-14 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900">
-              Explore Our <span className="text-[#0093cb]">Product Range</span>
-            </h2>
-            <p className="text-slate-500 mt-3 sm:mt-4 max-w-xs sm:max-w-xl md:max-w-2xl mx-auto text-sm sm:text-base">
-              Visually rich and scientifically accurate tools designed to
-              educate and engage.
-            </p>
-          </div>
-
-          {PRODUCT_DATA.map((cat, idx) => (
-            <div key={idx} className="mb-12 sm:mb-14 lg:mb-20 last:mb-0">
-              {/* Category label */}
-              <div className="flex items-center space-x-3 sm:space-x-4 mb-5 sm:mb-7">
-                <h3 className="text-lg sm:text-xl md:text-2xl font-black text-slate-800 whitespace-nowrap">
-                  {cat.category}
-                </h3>
-                <div className="h-[2px] bg-[#8bde7a] flex-grow rounded-full" />
-              </div>
-
-              {/* ── Mobile / tablet: swipe carousel ── */}
-              <SwipeCarousel count={cat.items.length} accentColor="#3972b7">
-                {cat.items.map((item, iidx) => (
-                  <div
-                    key={iidx}
-                    className="snap-center flex-shrink-0 w-[82vw] sm:w-[46vw]"
-                  >
-                    <ProductCard item={item} />
-                  </div>
-                ))}
-              </SwipeCarousel>
-
-              {/* ── Desktop: 3-column grid ── */}
-              <div className="hidden lg:grid grid-cols-3 gap-8">
-                {cat.items.map((item, iidx) => (
-                  <ProductCard key={iidx} item={item} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+    
 
       {/* ── FOUNDER'S NOTE ── */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#3972b7] text-white">
+      {/* <section className="py-16 sm:py-20 lg:py-24 bg-[#3972b7] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 grid lg:grid-cols-2 gap-10 sm:gap-12 items-center">
           <div className="order-2 lg:order-1 h-[320px] sm:h-[420px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl border-4 sm:border-8 border-white/10">
             <img
@@ -840,7 +777,7 @@ export default function MediPrideLanding() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <div>
         <BentoGrid />

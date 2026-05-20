@@ -5,6 +5,8 @@ import { Phone, CheckCircle, ArrowUpRight } from "lucide-react";
 import { FileText, Users, Monitor, ShieldCheck, Lightbulb, Activity } from "lucide-react";
 import BentoGrid2 from "@/components/BentoGrid2";
 import ProductGallery from "@/components/Productgallery";
+import CaptureTheMoment from "@/components/CollageGallery";
+import ImageGallery from "@/components/Productgallery";
 
 const SERVICES = [
   { title: "Medical Writing", desc: "Scientifically accurate content creation reviewed by clinical experts for precision.", icon: <FileText size={28} /> },
@@ -218,7 +220,7 @@ const PRODUCT_DATA = [
   },
 ];
 export default function KoruCommunications() {
-   const allProductImages: string[] = PRODUCT_DATA.flatMap(cat => 
+  const allProductImages: string[] = PRODUCT_DATA.flatMap(cat =>
     cat.items.map(item => item.img)
   );
   return (
@@ -353,7 +355,7 @@ export default function KoruCommunications() {
               </svg>
               <span className="text-[#0093cb] font-medium tracking-wider text-xs sm:text-sm uppercase">What We Do Best</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-serif italic text-[#0f172a]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl text-[#0f172a]">
               Expert{" "}
               <span className="relative inline-block">
                 Services
@@ -434,17 +436,18 @@ export default function KoruCommunications() {
 
 
       {/* ── BENTO GRID ── */}
-      <BentoGrid2 />
+      {/* <BentoGrid2 /> */}
       <section className="py-12 bg-slate-50">
-              <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                <div className="text-center mb-16">
-                  <span className="text-[#00a65d] font-bold uppercase tracking-widest text-sm inline-block mb-2">Visual Portfolio</span>
-                  <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight">Our <span className="text-[#0093cb]">Gallery</span></h2>
-                  <p className="text-slate-500 mt-4 text-lg">A glimpse into our high-quality medical communication tools and educational materials.</p>
-                </div>
-                <ProductGallery images={allProductImages} productName="MediPride Communications Portfolio" />
-              </div>
-            </section>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-6">
+            <span className="text-[#00a65d] font-bold uppercase tracking-widest text-sm inline-block mb-2">Visual Portfolio</span>
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight">Our <span className="text-[#0093cb]">Gallery</span></h2>
+            <p className="text-slate-500 mt-4 text-lg">A glimpse into our high-quality medical communication tools and educational materials.</p>
+          </div>
+          <ImageGallery  />
+        </div>
+
+      </section>
     </div>
   );
 }
