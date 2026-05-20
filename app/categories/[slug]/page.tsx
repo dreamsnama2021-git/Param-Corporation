@@ -22,6 +22,7 @@ import {
   ChevronDown,
   Check,
   Package,
+  Eye,
 } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -68,6 +69,15 @@ const listingStyles = `
   html {
     scroll-behavior: smooth;
   }
+  
+  /* View More Button Styles */
+  .view-more-btn {
+    transition: all 0.3s ease;
+  }
+  
+  .view-more-btn:hover {
+    transform: translateY(-2px);
+  }
 `;
 
 /* Brand Colors */
@@ -95,6 +105,9 @@ const getCategoriesForTab = (tabId: TabId) => {
   if (tabId === "occasion") return occasions;
   return [];
 };
+
+// Maximum products to show per subcategory
+const MAX_PRODUCTS_PER_CATEGORY = 10;
 
 /* ══════════════════════════════════════════
    SIDEBAR WITH DROPDOWN + SUBCATEGORIES
@@ -464,6 +477,138 @@ function LightboxModal({
 }
 
 /* ══════════════════════════════════════════
+   CATEGORY SECTION WITH VIEW MORE
+══════════════════════════════════════════ */
+function CategorySection({
+  group,
+  viewMode,
+  activeTabColor,
+  onViewAll,
+}: {
+  group: any;
+  viewMode: "grid" | "list";
+  activeTabColor: string;
+  onViewAll: (categorySlug: string, categoryName: string) => void;
+}) {
+  const [showAll, setShowAll] = useState(false);
+  const displayedProducts = showAll 
+    ? group.products 
+    : group.products.slice(0, MAX_PRODUCTS_PER_CATEGORY);
+  const hasMore = group.products.length > MAX_PRODUCTS_PER_CATEGORY;
+
+  const handleViewMore = () => {
+    if (showAll) {
+      // Scroll to top of section when collapsing
+      const element = document.getElementById(`category-${group.categorySlug}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+    setShowAll(!showAll);
+  };
+
+  const handleViewAllProducts = () => {
+    onViewAll(group.categorySlug, group.categoryName);
+  };
+
+  return (
+    <section 
+      id={`category-${group.categorySlug}`}
+      className="category-section"
+    >
+      <div className="mb-6">
+        <div className="flex items-center justify-between flex-wrap gap-3">
+          <div>
+            <div className="flex items-center gap-3 mb-2">
+              <h2 className="text-xl lg:text-2xl font-bold text-[#060706]">
+                {group.categoryName}
+              </h2>
+              <span className="text-sm text-gray-400 font-normal">
+                ({group.products.length})
+              </span>
+            </div>
+            {group.description && (
+              <p className="text-sm text-gray-500">{group.description}</p>
+            )}
+            <div
+              className="mt-3 w-16 h-1 rounded-full"
+              style={{
+                background: `linear-gradient(to right, ${BRAND.primary}, ${BRAND.secondary})`,
+              }}
+            />
+          </div>
+          
+          {/* View All Button */}
+          <button
+            onClick={handleViewAllProducts}
+            className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all view-more-btn"
+            style={{
+              backgroundColor: `${BRAND.primary}10`,
+              color: BRAND.primary,
+              border: `1px solid ${BRAND.primary}20`,
+            }}
+            type="button"
+          >
+            <Eye className="w-4 h-4" />
+            View All Products
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      {viewMode === "grid" ? (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {displayedProducts.map((product: any) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              accentColor={activeTabColor}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col gap-3">
+          {displayedProducts.map((product: any) => (
+            <ProductListItem
+              key={product.id}
+              product={product}
+              accentColor={activeTabColor}
+            />
+          ))}
+        </div>
+      )}
+
+      {hasMore && (
+        <div className="mt-6 text-center">
+          <button
+            onClick={handleViewMore}
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-all view-more-btn"
+            style={{
+              backgroundColor: showAll ? `${BRAND.secondary}10` : `${BRAND.primary}10`,
+              color: showAll ? BRAND.secondary : BRAND.primary,
+              border: `1px solid ${showAll ? BRAND.secondary : BRAND.primary}20`,
+            }}
+            type="button"
+          >
+            {showAll ? (
+              <>
+                Show Less
+                <ChevronDown className="w-4 h-4" />
+              </>
+            ) : (
+              <>
+                Show More ({group.products.length - MAX_PRODUCTS_PER_CATEGORY} more)
+                <ChevronDown className="w-4 h-4" />
+              </>
+            )}
+          </button>
+        </div>
+      )}
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════
    MAIN PAGE COMPONENT WITH SCROLL LOGIC
 ══════════════════════════════════════════ */
 function CategoryPageContent() {
@@ -539,6 +684,11 @@ function CategoryPageContent() {
     router.push(`/categories/all?tab=${tabId}`, { scroll: false });
   };
 
+  const handleViewAllProducts = (categorySlug: string, categoryName: string) => {
+    // Navigate to category-specific page or filter view
+    router.push(`/categories/all?tab=${activeTab}&category=${categorySlug}`);
+  };
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: listingStyles }} />
@@ -553,7 +703,7 @@ function CategoryPageContent() {
               <rect width="100%" height="100%" fill="url(#dots)" />
             </svg>
           </div>
-          <div className="relative max-w-7xl mx-auto px-6">
+          <div className="relative max-w-[1550px] mx-auto px-6">
             <nav className="flex items-center gap-2 text-xs uppercase tracking-wider text-white/60 mb-6">
               <Link href="/" className="hover:text-white flex items-center gap-1.5 transition-colors">
                 <Home className="w-3 h-3" /> Home
@@ -585,7 +735,7 @@ function CategoryPageContent() {
         </section>
 
         {/* Main Content with Sidebar */}
-        <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16">
+        <div className="max-w-[1550px] mx-auto px-6 py-12 lg:py-16">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
             {/* ─── LEFT SIDEBAR ─── */}
             <aside className="lg:w-64 flex-shrink-0">
@@ -655,55 +805,13 @@ function CategoryPageContent() {
 
                   <div className="space-y-14">
                     {groupedProducts.map((group) => (
-                      <section 
-                        key={group.categorySlug} 
-                        id={`category-${group.categorySlug}`}
-                        className={`category-section ${
-                          highlightedCategory === group.categorySlug ? 'highlight-category' : ''
-                        }`}
-                      >
-                        <div className="mb-6">
-                          <div className="flex items-center gap-3 mb-2">
-                            <h2 className="text-xl lg:text-2xl font-bold text-[#060706]">
-                              {group.categoryName}
-                            </h2>
-                            <span className="text-sm text-gray-400 font-normal">
-                              ({group.products.length})
-                            </span>
-                          </div>
-                          {group.description && (
-                            <p className="text-sm text-gray-500">{group.description}</p>
-                          )}
-                          <div
-                            className="mt-3 w-16 h-1 rounded-full"
-                            style={{
-                              background: `linear-gradient(to right, ${BRAND.primary}, ${BRAND.secondary})`,
-                            }}
-                          />
-                        </div>
-
-                        {viewMode === "grid" ? (
-                          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                            {group.products.map((product) => (
-                              <ProductCard
-                                key={product.id}
-                                product={product}
-                                accentColor={activeTabColor}
-                              />
-                            ))}
-                          </div>
-                        ) : (
-                          <div className="flex flex-col gap-3">
-                            {group.products.map((product) => (
-                              <ProductListItem
-                                key={product.id}
-                                product={product}
-                                accentColor={activeTabColor}
-                              />
-                            ))}
-                          </div>
-                        )}
-                      </section>
+                      <CategorySection
+                        key={group.categorySlug}
+                        group={group}
+                        viewMode={viewMode}
+                        activeTabColor={activeTabColor}
+                        onViewAll={handleViewAllProducts}
+                      />
                     ))}
                   </div>
                 </>

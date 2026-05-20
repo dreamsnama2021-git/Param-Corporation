@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Suspense } from "react";
 import { Phone, CheckCircle, Wand2 } from "lucide-react";
 import { FileText, Users, Monitor, Activity, Presentation } from "lucide-react";
 import TherapyCollageGrid from "@/components/BentoGridProducts";
@@ -12,8 +12,8 @@ import {
   Lightbulb,
 } from "lucide-react";
 import Image from "next/image";
-// import ProductGallery from "@/components/Productgallery";
 import { useSearchParams } from "next/navigation";
+
 // Brand Colors (Mapped from your CSS)
 const BRAND = {
   primary: "#0093cb",
@@ -33,7 +33,7 @@ const features = [
       "Every project is reviewed by doctors and subject-matter experts to ensure clinical reliability and scientific accuracy at every level.",
     icon: HeartPulse,
     iconColor: "text-[#0093cb]",
-    iconBg: "bg-[#0093cb]/10", // Primary with 10% opacity
+    iconBg: "bg-[#0093cb]/10",
     colSpan: "lg:col-span-2 md:col-span-1",
   },
   {
@@ -43,7 +43,7 @@ const features = [
       "We simplify complex medical data into patient-friendly, visually engaging content that drives understanding, adherence, and better outcomes.",
     icon: Brain,
     iconColor: "text-[#00a65d]",
-    iconBg: "bg-[#00a65d]/10", // Secondary with 10% opacity
+    iconBg: "bg-[#00a65d]/10",
     colSpan: "lg:col-span-2 md:col-span-1",
   },
   {
@@ -53,7 +53,7 @@ const features = [
       "Pharma companies, hospitals, and HCPs trust MediPride for consistent, high-quality communication that strengthens brand credibility.",
     icon: ShieldCheck,
     iconColor: "text-[#8bde7a]",
-    iconBg: "bg-[#8bde7a]/20", // Accent with 20% opacity for better visibility
+    iconBg: "bg-[#8bde7a]/20",
     colSpan: "lg:col-span-2 md:col-span-1",
   },
   {
@@ -63,8 +63,8 @@ const features = [
       "Our work is designed with the end user in mind — helping patients better understand their condition, treatment, and health journey to improve awareness and outcomes.",
     icon: Target,
     iconColor: "text-[#0b3c5d]",
-    iconBg: "bg-[#0b3c5d]/10", // Dark bg with 10% opacity
-    colSpan: "lg:col-span-3 md:col-span-2", // Spans half the width on bottom row
+    iconBg: "bg-[#0b3c5d]/10",
+    colSpan: "lg:col-span-3 md:col-span-2",
   },
   {
     id: 5,
@@ -74,11 +74,10 @@ const features = [
     icon: Wand2,
     iconColor: "text-[#0093cb]",
     iconBg: "bg-[#0093cb]/10",
-    colSpan: "lg:col-span-3 md:col-span-2", // Spans half the width on bottom row
+    colSpan: "lg:col-span-3 md:col-span-2",
   },
 ];
 
-// FIXED: Explicitly typed and used 'as const' to prevent string widening
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -87,8 +86,6 @@ const containerVariants: Variants = {
   },
 };
 
-// Replace lines 78-86 with this corrected version:
-
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -96,10 +93,11 @@ const itemVariants: Variants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [0.25, 0.1, 0.25, 1.0], // Using cubic-bezier array instead of string
+      ease: [0.25, 0.1, 0.25, 1.0],
     },
   },
 };
+
 const PRODUCT_DATA = [
   {
     category: "BOOKS & MAGAZINES",
@@ -288,6 +286,7 @@ interface ProductItem {
   desc: string;
   img: string;
 }
+
 // ─── Reusable swipe carousel (mobile + tablet only) with animations ───────────────────────────
 function SwipeCarousel({
   children,
@@ -453,16 +452,27 @@ function ProductCard({ item }: { item: ProductItem }) {
   );
 }
 
-export default function MediPrideLanding() {
+// ─── Loading Fallback Component ─────────────────────────────────────────────────────────────
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-12 h-12 border-4 border-[#0093cb] border-t-transparent rounded-full animate-spin"></div>
+        <p className="text-slate-600 font-medium">Loading...</p>
+      </div>
+    </div>
+  );
+}
+
+// ─── Main Content Component (uses useSearchParams) ─────────────────────────────────────────────────────────────
+function MediPrideContent() {
   const searchParams = useSearchParams();
   const therapyParam = searchParams.get("therapy");
 
-  // State to pass selected therapy to TherapyCollageGrid
   const [selectedTherapyFromFooter, setSelectedTherapyFromFooter] = useState<
     string | null
   >(null);
 
-  // Handle therapy param from URL
   useEffect(() => {
     if (therapyParam) {
       setSelectedTherapyFromFooter(therapyParam);
@@ -495,10 +505,7 @@ export default function MediPrideLanding() {
         id="about"
         className="relative py-16 sm:py-20 lg:py-24 overflow-hidden"
       >
-        {/* Background Blob 1 - Added z-0 to ensure it stays at the bottom of the stack */}
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-[#8bde7a]/10 rounded-full blur-3xl pointer-events-none z-0" />
-
-        {/* Background Blob 2 - Added z-0 */}
         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-56 sm:w-72 h-56 sm:h-72 bg-[#0093cb]/10 rounded-full blur-3xl pointer-events-none z-0" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
@@ -575,7 +582,6 @@ export default function MediPrideLanding() {
       {/* why choose Us */}
       <section className="py-20 lg:py-28 bg-[#f8fafc] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Header & Hero Image Section */}
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center mb-16 lg:mb-24">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -613,7 +619,6 @@ export default function MediPrideLanding() {
               </div>
             </motion.div>
 
-            {/* Hero Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -621,9 +626,7 @@ export default function MediPrideLanding() {
               transition={{ duration: 0.7 }}
               className="lg:w-1/2 w-full relative"
             >
-              {/* Using your custom shadow scale here */}
               <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-[0_30px_60px_rgba(11,60,93,0.25)] border-8 border-white group">
-                {/* Replace src with your actual image */}
                 <Image
                   src="https://i.pinimg.com/webp70/1200x/22/19/11/221911e521f752260dfa32c2665c7258.webp"
                   alt="Doctor consulting with a patient"
@@ -634,13 +637,11 @@ export default function MediPrideLanding() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b3c5d]/40 to-transparent pointer-events-none"></div>
               </div>
 
-              {/* Decorative Element */}
               <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-[#8bde7a] rounded-full blur-3xl opacity-30 -z-10"></div>
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-[#0093cb] rounded-full blur-3xl opacity-20 -z-10"></div>
             </motion.div>
           </div>
 
-          {/* Feature Grid (Balanced 6-column math) */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -657,7 +658,6 @@ export default function MediPrideLanding() {
                   variants={itemVariants}
                   className={`group bg-white rounded-3xl p-8 transition-all duration-300 border border-gray-100 flex flex-col h-full hover:-translate-y-1.5 shadow-[0_10px_30px_rgba(15,143,191,0.05)] hover:shadow-[0_10px_30px_rgba(15,143,191,0.15)] relative overflow-hidden ${feature.colSpan}`}
                 >
-                  {/* Subtle top border accent on hover */}
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                   <div
@@ -708,7 +708,6 @@ export default function MediPrideLanding() {
             </h2>
           </div>
 
-          {/* Mobile / tablet: swipe carousel */}
           <SwipeCarousel count={SERVICES.length} accentColor="#0093cb">
             {SERVICES.map((service, index) => (
               <div
@@ -728,7 +727,6 @@ export default function MediPrideLanding() {
             ))}
           </SwipeCarousel>
 
-          {/* Desktop: 3-column grid with staggered animations */}
           <div className="hidden lg:grid grid-cols-3 gap-8">
             {SERVICES.map((service, index) => (
               <div
@@ -760,54 +758,20 @@ export default function MediPrideLanding() {
         </div>
       </section>
 
-      {/* ── FOUNDER'S NOTE ── */}
-      {/* <section className="py-16 sm:py-20 lg:py-24 bg-[#3972b7] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 grid lg:grid-cols-2 gap-10 sm:gap-12 items-center">
-          <div className="order-2 lg:order-1 h-[320px] sm:h-[420px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl border-4 sm:border-8 border-white/10">
-            <img
-              src="https://medipride.org/wp-content/uploads/2025/11/IMG-20251106-WA0063-Edited-768x1024.jpg"
-              alt="Founder Ms. Saakshi Dosi"
-              className="w-full h-full object-cover object-top"
-            />
-          </div>
-          <div className="order-1 lg:order-2 space-y-4 sm:space-y-6">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
-              Founder's Note
-            </h2>
-            <p className="text-base sm:text-lg lg:text-xl leading-relaxed text-blue-50">
-              MediPride believes that great medical communication goes beyond
-              information—it builds trust, empowers patients, and improves
-              lives. We are committed to delivering solutions that not only
-              communicate but also create meaningful impact in healthcare.
-            </p>
-            <div className="pt-3 sm:pt-6">
-              <h4 className="text-2xl sm:text-3xl font-bold">
-                Ms. Saakshi Dosi
-              </h4>
-              <p className="text-blue-200 text-sm sm:text-base">
-                Founder, MediPride Communications
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
       <div>
         <TherapyCollageGrid
           initialSelectedTherapy={selectedTherapyFromFooter}
         />
-        {/* ── NEW PRODUCT GALLERY (AFTER ABOUT) ── */}
-        {/* <section className="py-12 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-[#00a65d] font-bold uppercase tracking-widest text-sm inline-block mb-2">Visual Portfolio</span>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight">Our <span className="text-[#0093cb]">Gallery</span></h2>
-            <p className="text-slate-500 mt-4 text-lg">A glimpse into our high-quality medical communication tools and educational materials.</p>
-          </div>
-          <ProductGallery images={allProductImages} productName="MediPride Communications Portfolio" />
-        </div>
-      </section> */}
       </div>
     </div>
+  );
+}
+
+// ─── Main Page Component with Suspense Wrapper ─────────────────────────────────────────────────────────────
+export default function MediPridePage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <MediPrideContent />
+    </Suspense>
   );
 }
