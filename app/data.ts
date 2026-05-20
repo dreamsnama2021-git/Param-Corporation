@@ -466,7 +466,7 @@ export const allProducts: Product[] = [
   ] },
   
   { id: 32, name: "DENTAL ANATOMICAL PAINTINGS SERIES", image: "/Photo Frames/DENTAL ANATOMICAL PAINTINGS SERIES.jpg", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Educational dental anatomy painting series for clinic decor", images: [
-    "/Photo Frames/DENTAL ANATOMICAL PAINTINGS SERIES.jpg"
+    "/Photo Frames/DENTAL ANATOMICAL PAINTINGS  SERIES.jpg"
   ] },
   
   { id: 33, name: "DIABETIC FOOT CONCEPTUALIZED FRAME", image: "/Photo Frames/DIABETIC FOOT CONCEPTUALIZED FRAME.jpg", price: "₹1399", category: "photo-frames", categoryName: "Photo Frames", description: "Conceptual frame illustrating diabetic foot conditions", images: [
@@ -482,9 +482,9 @@ export const allProducts: Product[] = [
     "/Photo Frames/EAR ANATOMY FRAME.jpg"
   ] },
   
-  { id: 36, name: "EMOTION RESIN ART FRAME", image: "/Photo Frames/EMOTION RESIN ART FRAME 1.JPG", price: "₹1199", category: "photo-frames", categoryName: "Photo Frames", description: "Artistic resin frame depicting human emotions", images: [
-    "/Photo Frames/EMOTION RESIN ART FRAME 1.JPG",
-    "/Photo Frames/EMOTION RESIN ART FRAME 2.JPG"
+  { id: 36, name: "EMOTION RESIN ART FRAME", image: "/Photo Frames/EMOTICON RESIN ART FRAME 1.JPG", price: "₹1199", category: "photo-frames", categoryName: "Photo Frames", description: "Artistic resin frame depicting human emotions", images: [
+    "/Photo Frames/EMOTICON RESIN ART FRAME 1.JPG",
+    "/Photo Frames/EMOTICON RESIN ART FRAME 2.JPG"
   ] },
   
   { id: 37, name: "EXCLUSIVE BONE ANATOMY CHALK BOARD STYLE FRAME", image: "/Photo Frames/EXCLUSIVE BONE ANATOMY CHAL BOARD STYLE FRAME.jpg", price: "₹1699", category: "photo-frames", categoryName: "Photo Frames", description: "Unique chalkboard-style bone anatomy frame", images: [
