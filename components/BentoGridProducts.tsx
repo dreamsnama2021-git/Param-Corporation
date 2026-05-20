@@ -3,158 +3,9 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ArrowUpRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { createPortal } from 'react-dom';
 
-// ─── Unsplash Image URLs for Therapies ───
-
-const THERAPY_IMAGES: Record<string, string[]> = {
-  'Diabetes': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Blood glucose test
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Medical devices
-    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80', // Health monitoring
-  ],
-  'Cardio-Vascular': [
-    'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80', // Heart health
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical check
-    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80', // Cardiology
-  ],
-  'ENT & Respiratory': [
-    'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80', // Respiratory
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
-  ],
-  'Orthopedics/Rheumatology': [
-    'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80', // Orthopedic
-    'https://images.unsplash.com/photo-1580518337843-f959e992563b?w=800&q=80', // Bone health
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-  ],
-  'Gynaecology and Obstetrics': [
-    'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80', // Pregnancy
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
-  ],
-  'Gastroenterology': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Health
-    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80', // Science
-  ],
-  'Ophthalmology': [
-    'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=800&q=80', // Eye care
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
-  ],
-  'Dermatology': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Health
-    'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=80', // Skin care
-  ],
-  'Pediatrics': [
-    'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80', // Children health
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
-  ],
-  'Urology': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Health
-    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80', // Science
-  ],
-  'Neurology': [
-    'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80', // Brain health
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
-  ],
-  'Psychiatry': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
-    'https://images.unsplash.com/photo-1493836512293-7c2c1370e297?w=800&q=80', // Mental health
-  ],
-  'Dentistry': [
-    'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80', // Dental
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
-  ],
-  'Infectious Diseases': [
-    'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&q=80', // Virus research
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
-  ],
-  'Nutritional Deficiencies': [
-    'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80', // Nutrition
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
-  ],
-  'Endocrinology': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Health
-    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80', // Science
-  ],
-  'Nephrology': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Health
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
-  ],
-  'Hepatology': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80', // Health
-    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80', // Science
-  ],
-  'Oncology': [
-    'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80', // Cancer research
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
-  ],
-  'General Wellness': [
-    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80', // Wellness
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80', // Medical
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80', // Healthcare
-  ],
-};
-
-// Category-specific product images from Unsplash
-const CATEGORY_IMAGES: Record<ProductCategory, string[]> = {
-  "BOOKS & MAGAZINES": [
-    'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80', // Books
-    'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80', // Library
-    'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&q=80', // Reading
-  ],
-  "FLIP CHART": [
-    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80', // Presentation
-    'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80', // Meeting
-    'https://images.unsplash.com/photo-1552581234-26160f608093?w=600&q=80', // Office
-  ],
-  "MATT (Desk Mats)": [
-    'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80', // Desk setup
-    'https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600&q=80', // Workspace
-    'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80', // Computer
-  ],
-  "POSTERS": [
-    'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80', // Wall art
-    'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80', // Art display
-    'https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&q=80', // Gallery
-  ],
-  "Medical SCALE": [
-    'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80', // Medical equipment
-    'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&q=80', // Scale
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80', // Medical
-  ],
-  "WRITE & WIPE": [
-    'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80', // Whiteboard
-    'https://images.unsplash.com/photo-1513258496099-48168024aec0?w=600&q=80', // Board
-    'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80', // Teaching
-  ],
-  "Tear off Pads": [
-    'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=600&q=80', // Notepad
-    'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&q=80', // Notes
-    'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80', // Writing
-  ],
-  "TABLE TOPS & SCIENTIFIC INPUTS": [
-    'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600&q=80', // Lab equipment
-    'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=600&q=80', // Scientific
-    'https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=600&q=80', // Research
-  ],
-};
-
-// ─── Data (20+ therapies with 3 products per category) ───
-
+// ─── Types (MUST be defined before use) ───
 const PRODUCT_CATEGORIES = [
   "BOOKS & MAGAZINES",
   "FLIP CHART",
@@ -184,9 +35,157 @@ type Therapy = {
   items: Product[];
 };
 
-// Helper to generate 3 demo products for a specific therapy and category using real images
+// ─── Unsplash Image URLs for Therapies ───
+const THERAPY_IMAGES: Record<string, string[]> = {
+  'Diabetes': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
+    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
+  ],
+  'Cardio-Vascular': [
+    'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80',
+  ],
+  'ENT & Respiratory': [
+    'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
+  ],
+  'Orthopedics/Rheumatology': [
+    'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80',
+    'https://images.unsplash.com/photo-1580518337843-f959e992563b?w=800&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+  ],
+  'Gynaecology and Obstetrics': [
+    'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
+  ],
+  'Gastroenterology': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
+    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80',
+  ],
+  'Ophthalmology': [
+    'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=800&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
+  ],
+  'Dermatology': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
+    'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=80',
+  ],
+  'Pediatrics': [
+    'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
+  ],
+  'Urology': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
+    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80',
+  ],
+  'Neurology': [
+    'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
+  ],
+  'Psychiatry': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
+    'https://images.unsplash.com/photo-1493836512293-7c2c1370e297?w=800&q=80',
+  ],
+  'Dentistry': [
+    'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
+  ],
+  'Infectious Diseases': [
+    'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
+  ],
+  'Nutritional Deficiencies': [
+    'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
+  ],
+  'Endocrinology': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
+    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80',
+  ],
+  'Nephrology': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
+  ],
+  'Hepatology': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
+    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80',
+  ],
+  'Oncology': [
+    'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
+  ],
+  'General Wellness': [
+    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
+  ],
+};
+
+// Category-specific product images from Unsplash (now ProductCategory is defined)
+const CATEGORY_IMAGES: Record<ProductCategory, string[]> = {
+  "BOOKS & MAGAZINES": [
+    'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80',
+    'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80',
+    'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&q=80',
+  ],
+  "FLIP CHART": [
+    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80',
+    'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80',
+    'https://images.unsplash.com/photo-1552581234-26160f608093?w=600&q=80',
+  ],
+  "MATT (Desk Mats)": [
+    'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80',
+    'https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600&q=80',
+    'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80',
+  ],
+  "POSTERS": [
+    'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80',
+    'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80',
+    'https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&q=80',
+  ],
+  "Medical SCALE": [
+    'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80',
+    'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&q=80',
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80',
+  ],
+  "WRITE & WIPE": [
+    'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80',
+    'https://images.unsplash.com/photo-1513258496099-48168024aec0?w=600&q=80',
+    'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80',
+  ],
+  "Tear off Pads": [
+    'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=600&q=80',
+    'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&q=80',
+    'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80',
+  ],
+  "TABLE TOPS & SCIENTIFIC INPUTS": [
+    'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600&q=80',
+    'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=600&q=80',
+    'https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=600&q=80',
+  ],
+};
+
+// ─── Helper to generate demo products ───
 const generateCategoryProducts = (therapyName: string, category: ProductCategory): Product[] => {
-  const categoryDetails = {
+  const categoryDetails: Record<ProductCategory, { icon: string; titles: string[]; descBase: string }> = {
     "BOOKS & MAGAZINES": {
       icon: "📚",
       titles: ["Comprehensive Guide", "Clinical Handbook", "Patient Education Book"],
@@ -240,7 +239,7 @@ const generateCategoryProducts = (therapyName: string, category: ProductCategory
   }));
 };
 
-// Generate all therapy data
+// ─── Generate all therapy data ───
 const generateFullTherapyData = (): Therapy[] => {
   const therapies = [
     { therapy: 'Diabetes', icon: '💉', color: '#3b82f6', bgColor: 'from-blue-500/20 to-blue-600/10', span: 2 },
@@ -273,8 +272,7 @@ const generateFullTherapyData = (): Therapy[] => {
 
 const THERAPY_DATA = generateFullTherapyData();
 
-// ─── Category Section Component with Horizontal Scroll ───
-
+// ─── Category Section Component ───
 function CategorySection({ category, products, therapyColor, therapyName }: { category: ProductCategory; products: Product[]; therapyColor: string; therapyName: string }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -284,86 +282,70 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
     "BOOKS & MAGAZINES": {
       icon: "📚",
       title: "BOOKS & MAGAZINES",
-      description: `Comprehensive written resources for ${therapyName} education. Includes detailed guides, clinical handbooks, and patient-friendly materials covering diagnosis, treatment options, and long-term management strategies.`
+      description: `Comprehensive written resources for ${therapyName} education.`
     },
     "FLIP CHART": {
       icon: "📊",
       title: "Clinical Flip Charts",
-      description: `Visual teaching aids designed for ${therapyName} patient education. These easy-to-use flip charts feature clear illustrations and step-by-step guides for effective communication between healthcare providers and patients.`
+      description: `Visual teaching aids designed for ${therapyName} patient education.`
     },
     "MATT (Desk Mats)": {
       icon: "🧩",
       title: "Desk Reference Mats",
-      description: `Durable, wipe-clean desk mats for ${therapyName} clinical reference. Perfect for quick access to essential protocols, medication guides, and assessment tools right at your workspace.`
+      description: `Durable, wipe-clean desk mats for ${therapyName} clinical reference.`
     },
     "POSTERS": {
       icon: "🖼️",
       title: "Educational Posters",
-      description: `High-resolution, laminated posters for ${therapyName} education. Ideal for clinic walls, exam rooms, and waiting areas to enhance patient understanding and awareness.`
+      description: `High-resolution, laminated posters for ${therapyName} education.`
     },
     "Medical SCALE": {
       icon: "⚖️",
       title: "Clinical Assessment Scales",
-      description: `Evidence-based assessment tools for ${therapyName} evaluation. Includes scoring systems, risk calculators, and monitoring tools for accurate patient assessment.`
+      description: `Evidence-based assessment tools for ${therapyName} evaluation.`
     },
     "WRITE & WIPE": {
       icon: "✏️",
       title: "Write & Wipe Tools",
-      description: `Reusable dry-erase surfaces for ${therapyName} care planning. Perfect for interactive patient education, treatment tracking, and care coordination.`
+      description: `Reusable dry-erase surfaces for ${therapyName} care planning.`
     },
     "Tear off Pads": {
       icon: "📋",
       title: "Tear-Off Pads",
-      description: `Convenient tear-off pads for ${therapyName} patient take-home information. Includes prescription pads, instruction sheets, and clinical notes for patient reference.`
+      description: `Convenient tear-off pads for ${therapyName} patient take-home information.`
     },
     "TABLE TOPS & SCIENTIFIC INPUTS": {
       icon: "🔬",
       title: "Table Tops & Scientific Inputs",
-      description: `Interactive table top displays and scientific input modules for ${therapyName}. These cutting-edge tools allow healthcare professionals to input clinical data, visualize patient metrics, and conduct real-time risk assessments. Features include touchscreen interfaces, data logging capabilities, and integration with EMR systems.`
+      description: `Interactive table top displays and scientific input modules for ${therapyName}.`
     }
   };
 
   const details = categoryDetails[category];
 
+  // Rest of CategorySection component remains the same...
   const checkScroll = () => {
     const container = scrollContainerRef.current;
     if (container) {
-      const scrollLeft = container.scrollLeft;
-      const maxScroll = container.scrollWidth - container.clientWidth;
-      setShowLeftArrow(scrollLeft > 10);
-      setShowRightArrow(scrollLeft < maxScroll - 10);
+      setShowLeftArrow(container.scrollLeft > 10);
+      setShowRightArrow(container.scrollLeft < container.scrollWidth - container.clientWidth - 10);
     }
   };
 
   const scroll = (direction: 'left' | 'right') => {
     const container = scrollContainerRef.current;
     if (container) {
-      const cardWidth = 340;
-      const scrollAmount = cardWidth;
-      if (direction === 'left') {
-        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      } else {
-        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
-    }
-  };
-
-  const handleWheel = (e: React.WheelEvent) => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      e.preventDefault();
-      container.scrollLeft += e.deltaY;
+      container.scrollBy({ left: direction === 'left' ? -340 : 340, behavior: 'smooth' });
     }
   };
 
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (container) {
-      const timer = setTimeout(checkScroll, 100);
+      checkScroll();
       container.addEventListener('scroll', checkScroll);
       window.addEventListener('resize', checkScroll);
       return () => {
-        clearTimeout(timer);
         container.removeEventListener('scroll', checkScroll);
         window.removeEventListener('resize', checkScroll);
       };
@@ -371,7 +353,7 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
   }, [products]);
 
   return (
-    <div className="mb-12 last:mb-0" id={`category-${category}`}>
+    <div className="mb-12 last:mb-0">
       <div className="mb-4">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-3xl">{details.icon}</span>
@@ -379,139 +361,56 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
             {details.title}
           </h3>
         </div>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-4xl">
-          {details.description}
-        </p>
-        <div className="flex items-center gap-2 mt-2">
-          <div className="h-px flex-1 bg-gradient-to-r" style={{ background: `linear-gradient(90deg, ${therapyColor}40, transparent)` }} />
-        </div>
+        <p className="text-sm text-neutral-600 leading-relaxed max-w-4xl">{details.description}</p>
       </div>
 
       <div className="relative group mt-4">
         {showLeftArrow && (
-          <button
-            onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white dark:bg-neutral-800 shadow-xl border border-neutral-200 dark:border-neutral-700 flex items-center justify-center hover:scale-110 transition-all duration-200 -ml-2 opacity-0 group-hover:opacity-100"
-            style={{ boxShadow: `0 0 15px ${therapyColor}30` }}
-            aria-label="Scroll left"
-          >
+          <button onClick={() => scroll('left')}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-xl border flex items-center justify-center hover:scale-110 transition-all -ml-2 opacity-0 group-hover:opacity-100">
             <ChevronLeft className="w-5 h-5" style={{ color: therapyColor }} />
           </button>
         )}
 
-        <div
-          ref={scrollContainerRef}
-          className="flex gap-5 overflow-x-auto pb-4"
-          style={{ 
-            scrollbarWidth: 'thin',
-            scrollbarColor: `${therapyColor} #e5e5e5`,
-            WebkitOverflowScrolling: 'touch',
-            overflowX: 'auto',
-            overflowY: 'hidden'
-          }}
-          onWheel={handleWheel}
-        >
+        <div ref={scrollContainerRef} className="flex gap-5 overflow-x-auto pb-4"
+          style={{ scrollbarWidth: 'thin', scrollbarColor: `${therapyColor} #e5e5e5` }}>
           {products.map((item, idx) => (
-            <div
-              key={idx}
-              className="flex-shrink-0 w-[280px] sm:w-[320px] bg-white dark:bg-neutral-800/50 border border-neutral-100 dark:border-neutral-700/50 rounded-xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-neutral-100 to-neutral-200 dark:from-neutral-800 dark:to-neutral-700">
-                <Image
-                  src={item.img}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  sizes="320px"
-                  unoptimized={item.img.includes('unsplash.com')}
-                />
-                <div className="absolute top-3 left-3">
-                  <span className="text-[10px] font-semibold bg-black/60 backdrop-blur-sm rounded-full px-2.5 py-1 text-white uppercase tracking-wider">
-                    {category === "TABLE TOPS & SCIENTIFIC INPUTS" ? "SCIENTIFIC" : category.split(' ')[0]}
-                  </span>
-                </div>
-              </div>
-              <div className="p-4">
-                <h4 className="font-semibold text-neutral-900 dark:text-white text-sm leading-tight mb-1 line-clamp-2">
-                  {item.title}
-                </h4>
-                <p className="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-2 mb-3">
-                  {item.desc}
-                </p>
-                <button className="text-xs font-semibold transition-colors flex items-center gap-1 group" style={{ color: therapyColor }}>
-                  View Details
-                  <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </button>
+            <div key={idx} className="flex-shrink-0 w-[280px] sm:w-[320px] bg-white  rounded-xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image src={item.img} alt={item.title} fill className="object-cover" sizes="320px" unoptimized />
               </div>
             </div>
           ))}
         </div>
 
         {showRightArrow && (
-          <button
-            onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white dark:bg-neutral-800 shadow-xl border border-neutral-200 dark:border-neutral-700 flex items-center justify-center hover:scale-110 transition-all duration-200 -mr-2 opacity-0 group-hover:opacity-100"
-            style={{ boxShadow: `0 0 15px ${therapyColor}30` }}
-            aria-label="Scroll right"
-          >
+          <button onClick={() => scroll('right')}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-xl border flex items-center justify-center hover:scale-110 transition-all -mr-2 opacity-0 group-hover:opacity-100">
             <ChevronRight className="w-5 h-5" style={{ color: therapyColor }} />
           </button>
         )}
-      </div>
-
-      <div className="flex justify-center gap-1.5 mt-3">
-        {products.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => {
-              const container = scrollContainerRef.current;
-              if (container) {
-                const cardWidth = 340;
-                container.scrollTo({
-                  left: idx * cardWidth,
-                  behavior: 'smooth'
-                });
-              }
-            }}
-            className="h-1 rounded-full transition-all duration-300 hover:scale-125"
-            style={{
-              width: '16px',
-              backgroundColor: `${therapyColor}40`,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = therapyColor;
-              e.currentTarget.style.width = '24px';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = `${therapyColor}40`;
-              e.currentTarget.style.width = '16px';
-            }}
-          />
-        ))}
       </div>
     </div>
   );
 }
 
-// ─── Modal Component ─────────────────────────────────────────────────────────
-
+// ─── Modal Component with Portal ───
 function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) {
   const [isVisible, setIsVisible] = useState(false);
-  const modalContentRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => setIsVisible(true));
+    
     const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') handleClose(); };
     document.addEventListener('keydown', handler);
-    return () => document.removeEventListener('keydown', handler);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
-  }, []);
-
-  useEffect(() => {
-    requestAnimationFrame(() => setIsVisible(true));
+    
+    return () => {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handler);
+    };
   }, []);
 
   const handleClose = () => {
@@ -519,69 +418,67 @@ function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) 
     setTimeout(onClose, 300);
   };
 
-  // Group items by category
   const groupedItems = therapy.items.reduce((acc, item) => {
-    if (!acc[item.category]) {
-      acc[item.category] = [];
-    }
+    if (!acc[item.category]) acc[item.category] = [];
     acc[item.category].push(item);
     return acc;
   }, {} as Record<ProductCategory, Product[]>);
 
-  const categoryOrder: ProductCategory[] = [
-    "BOOKS & MAGAZINES",
-    "FLIP CHART",
-    "MATT (Desk Mats)",
-    "POSTERS",
-    "Medical SCALE",
-    "WRITE & WIPE",
-    "Tear off Pads",
-    "TABLE TOPS & SCIENTIFIC INPUTS"
-  ];
-
-  return (
+  const modalContent = (
     <div 
-      className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 transition-all duration-300 ${isVisible ? 'bg-black/80 backdrop-blur-md' : 'bg-black/0 backdrop-blur-none'}`} 
+      style={{ 
+        position: 'fixed',
+        inset: 0,
+        zIndex: 99999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '1rem',
+        backgroundColor: isVisible ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0)',
+        backdropFilter: isVisible ? 'blur(12px)' : 'none',
+        transition: 'all 0.3s ease'
+      }}
       onClick={handleClose}
     >
       <div 
-        className={`relative bg-white lg:mt-10 dark:bg-neutral-900 rounded-2xl sm:rounded-3xl w-full max-w-6xl max-h-[90vh] overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.4)] flex flex-col transition-all duration-300 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`} 
+        style={{
+          position: 'relative',
+          backgroundColor: 'white',
+          borderRadius: '1.5rem',
+          width: '100%',
+          maxWidth: '72rem',
+          maxHeight: '90vh',
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(2rem) scale(0.95)',
+          transition: 'all 0.3s ease',
+          boxShadow: '0 25px 50px -12px rgba(0,0,0,0.4)'
+        }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header - Fixed */}
-        <div className="relative px-5 sm:px-7 pt-5 sm:pt-4 pb-4 flex-shrink-0 border-b border-neutral-100 dark:border-neutral-800 bg-white dark:bg-neutral-900 z-10">
+        {/* Header */}
+        <div className="px-5 sm:px-7 pt-5 pb-4 border-b bg-white flex-shrink-0">
           <div className="flex items-start justify-between gap-3">
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-2 flex-wrap">
-                <span className="text-2xl sm:text-3xl">{therapy.icon}</span>
-                <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white tracking-tight">
-                  {therapy.therapy}
-                </h2>
-              </div>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl sm:text-3xl">{therapy.icon}</span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900">
+                {therapy.therapy}
+              </h2>
             </div>
-            <button 
-              onClick={handleClose} 
-              className="flex-shrink-0 w-9 h-9 rounded-full bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 flex items-center justify-center transition-all duration-200 hover:scale-105"
-              aria-label="Close modal"
-            >
-              <X className="w-4 h-4 text-neutral-600 dark:text-neutral-400" />
+            <button onClick={handleClose} 
+              className="w-9 h-9 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center transition-all">
+              <X className="w-4 h-4 text-neutral-600" />
             </button>
           </div>
         </div>
 
-        {/* Content - Scrollable */}
-        <div 
-          ref={modalContentRef} 
-          className="flex-1 overflow-y-auto p-5 sm:p-7"
-          style={{ 
-            scrollbarWidth: 'thin',
-            scrollbarColor: `${therapy.color}40 #e5e5e5`
-          }}
-        >
-          {categoryOrder.map((category) => {
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto p-5 sm:p-7">
+          {PRODUCT_CATEGORIES.map((category) => {
             const products = groupedItems[category];
             if (!products || products.length === 0) return null;
-            
             return (
               <CategorySection 
                 key={category}
@@ -596,18 +493,19 @@ function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) 
       </div>
     </div>
   );
+
+  if (!mounted) return null;
+  return createPortal(modalContent, document.body);
 }
 
-// ─── Collage Card Component ─────────────────────────────────────────────────
-
+// ─── Collage Card Component ───
 function CollageCard({ therapy, onClick }: { therapy: Therapy; onClick: () => void }) {
-  // Get therapy-specific image for the collage card
   const therapyImages = THERAPY_IMAGES[therapy.therapy] || THERAPY_IMAGES['General Wellness'];
-  const cardImage = therapyImages[0]; // Use first image for the card
+  const cardImage = therapyImages[0];
 
   return (
     <article
-      className={`group relative rounded-2xl overflow-hidden cursor-pointer border border-white/20 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl h-full min-h-[200px] sm:min-h-[220px] lg:min-h-[240px] ${
+      className={`group relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl h-full min-h-[200px] sm:min-h-[220px] lg:min-h-[240px] ${
         therapy.span === 2 ? 'col-span-2' : 'col-span-1'
       }`}
       onClick={onClick}
@@ -639,13 +537,60 @@ function CollageCard({ therapy, onClick }: { therapy: Therapy; onClick: () => vo
   );
 }
 
-// ─── Main Component ─────────────────────────────────────────────────────────
+// ─── Therapy Slug Mapping ───
+const THERAPY_SLUG_MAP: Record<string, string> = {
+  'cardiac-care': 'Cardio-Vascular',
+  'diabetic-care': 'Diabetes',
+  'pediatric': 'Pediatrics',
+  'general-wellness': 'General Wellness',
+  'dermatology': 'Dermatology',
+  'nephrology': 'Nephrology',
+  'nutrition': 'Nutritional Deficiencies',
+  'pulmonology': 'ENT & Respiratory',
+  'hepatology': 'Hepatology',
+  'ophthalmology': 'Ophthalmology',
+  'gastroenterology': 'Gastroenterology',
+  'urology': 'Urology',
+  'orthopedics': 'Orthopedics/Rheumatology',
+  'neurology': 'Neurology',
+  'oncology': 'Oncology',
+};
 
-export default function TherapyCollageGrid() {
+// ─── Main Component ───
+export default function TherapyCollageGrid({ 
+  initialSelectedTherapy 
+}: { 
+  initialSelectedTherapy?: string | null 
+}) {
   const [selected, setSelected] = useState<Therapy | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => { setIsLoaded(true); }, []);
+  const createSlug = (name: string) => {
+    return name
+      .toLowerCase()
+      .replace(/[&]/g, 'and')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  };
+
+  useEffect(() => { 
+    setIsLoaded(true); 
+  }, []);
+
+  useEffect(() => {
+    console.log('initialSelectedTherapy:', initialSelectedTherapy);
+    if (initialSelectedTherapy) {
+      const mappedName = THERAPY_SLUG_MAP[initialSelectedTherapy];
+      console.log('mappedName:', mappedName);
+      const therapy = THERAPY_DATA.find(
+        t => t.therapy === mappedName || createSlug(t.therapy) === initialSelectedTherapy
+      );
+      console.log('found therapy:', therapy?.therapy);
+      if (therapy) {
+        setSelected(therapy);
+      }
+    }
+  }, [initialSelectedTherapy]);
 
   return (
     <>
@@ -675,11 +620,7 @@ export default function TherapyCollageGrid() {
             {/* Tablet: 3 columns */}
             <div className="hidden sm:grid lg:hidden grid-cols-3 gap-3 auto-rows-[200px]">
               {THERAPY_DATA.map((therapy) => (
-                <CollageCard 
-                  key={therapy.therapy} 
-                  therapy={therapy.span === 2 ? {...therapy, span: 2} : {...therapy, span: 1}} 
-                  onClick={() => setSelected(therapy)} 
-                />
+                <CollageCard key={therapy.therapy} therapy={therapy.span === 2 ? {...therapy, span: 2} : {...therapy, span: 1}} onClick={() => setSelected(therapy)} />
               ))}
             </div>
 

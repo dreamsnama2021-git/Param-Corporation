@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Phone, CheckCircle, Wand2 } from "lucide-react";
 import { FileText, Users, Monitor, Activity, Presentation } from "lucide-react";
-import BentoGrid from "@/components/BentoGridProducts";
+import TherapyCollageGrid from "@/components/BentoGridProducts";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import {
   HeartPulse,
@@ -12,8 +12,8 @@ import {
   Lightbulb,
 } from "lucide-react";
 import Image from "next/image";
-import ProductGallery from "@/components/Productgallery";
-
+// import ProductGallery from "@/components/Productgallery";
+import { useSearchParams } from "next/navigation";
 // Brand Colors (Mapped from your CSS)
 const BRAND = {
   primary: "#0093cb",
@@ -91,13 +91,13 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.5, 
-      ease: [0.25, 0.1, 0.25, 1.0] // Using cubic-bezier array instead of string
-    } 
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1.0], // Using cubic-bezier array instead of string
+    },
   },
 };
 const PRODUCT_DATA = [
@@ -454,37 +454,52 @@ function ProductCard({ item }: { item: ProductItem }) {
 }
 
 export default function MediPrideLanding() {
- const allProductImages: string[] = PRODUCT_DATA.flatMap(cat => 
-    cat.items.map(item => item.img)
-  );
+  const searchParams = useSearchParams();
+  const therapyParam = searchParams.get("therapy");
+
+  // State to pass selected therapy to TherapyCollageGrid
+  const [selectedTherapyFromFooter, setSelectedTherapyFromFooter] = useState<
+    string | null
+  >(null);
+
+  // Handle therapy param from URL
+  useEffect(() => {
+    if (therapyParam) {
+      setSelectedTherapyFromFooter(therapyParam);
+    }
+  }, [therapyParam]);
+
   return (
     <div className="text-slate-800 font-sans scroll-smooth bg-white">
       {/* ── HERO ── */}
-     <header className="relative h-[50vh] sm:h-[60vh] lg:h-[70vh] overflow-hidden">
-  <picture className="absolute inset-0 z-0">
-    <source
-      media="(min-width: 1024px)"
-      srcSet="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=2000"
-    />
-    <source
-      media="(min-width: 640px)"
-      srcSet="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200"
-    />
-    <img
-      src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=800"
-      alt="Medical Research Background"
-      className="w-full h-full object-cover"
-    />
-  </picture>
-</header>
+      <header className="relative h-[50vh] sm:h-[60vh] lg:h-[70vh] overflow-hidden">
+        <picture className="absolute inset-0 z-0">
+          <source
+            media="(min-width: 1024px)"
+            srcSet="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=2000"
+          />
+          <source
+            media="(min-width: 640px)"
+            srcSet="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=800"
+            alt="Medical Research Background"
+            className="w-full h-full object-cover"
+          />
+        </picture>
+      </header>
 
       {/* ── ABOUT ── */}
       <section
         id="about"
         className="relative py-16 sm:py-20 lg:py-24 overflow-hidden"
       >
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-[#8bde7a]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-56 sm:w-72 h-56 sm:h-72 bg-[#0093cb]/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Background Blob 1 - Added z-0 to ensure it stays at the bottom of the stack */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-[#8bde7a]/10 rounded-full blur-3xl pointer-events-none z-0" />
+
+        {/* Background Blob 2 - Added z-0 */}
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-56 sm:w-72 h-56 sm:h-72 bg-[#0093cb]/10 rounded-full blur-3xl pointer-events-none z-0" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-24 items-center">
@@ -508,10 +523,10 @@ export default function MediPrideLanding() {
 
             <div className="lg:col-span-7 space-y-6 sm:space-y-8 mt-6 lg:mt-0">
               <div>
-                <span className="inline-block px-4 py-1.5 mb-3 sm:mb-4 text-xs sm:text-sm font-bold tracking-wider text-[#00a65d] uppercase bg-[#00a65d]/10 rounded-full">
+                <span className="inline-block z-10 px-4 py-1.5 mb-3 sm:mb-4 text-xs sm:text-sm font-bold tracking-wider text-[#00a65d] uppercase bg-[#00a65d]/10 rounded-full">
                   About MediPride
                 </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 leading-tight">
+                <h2 className="text-3xl z-10 sm:text-4xl md:text-5xl font-black text-slate-900 leading-tight">
                   Bridging the gap between <br className="hidden md:block" />
                   <span className="text-[#0093cb]">
                     Clinical Knowledge &amp; Real-World Understanding
@@ -745,8 +760,6 @@ export default function MediPrideLanding() {
         </div>
       </section>
 
-    
-
       {/* ── FOUNDER'S NOTE ── */}
       {/* <section className="py-16 sm:py-20 lg:py-24 bg-[#3972b7] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 grid lg:grid-cols-2 gap-10 sm:gap-12 items-center">
@@ -780,9 +793,11 @@ export default function MediPrideLanding() {
       </section> */}
 
       <div>
-        <BentoGrid />
+        <TherapyCollageGrid
+          initialSelectedTherapy={selectedTherapyFromFooter}
+        />
         {/* ── NEW PRODUCT GALLERY (AFTER ABOUT) ── */}
-      {/* <section className="py-12 bg-slate-50">
+        {/* <section className="py-12 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-[#00a65d] font-bold uppercase tracking-widest text-sm inline-block mb-2">Visual Portfolio</span>

@@ -36,10 +36,6 @@ export default function Footer() {
 
           {/* ABOUT / LOCATION */}
           <div>
-            {/* <h3 className="bg-white rounded-2xl z-1 p-1 text-lg font-medium mb-2 
-            border-b-2 border-[var(--clr-primary)] inline-block">
-            <img  src="/logo final param white .png" alt="Param Corporation" className="scale-110 h-10 md:h-14" />
-            </h3> */}
             <img  src="/logo final param white .png" alt="Param Corporation" className="scale-110 h-18 md:h-25" />
 
             <p className="text-sm leading-relaxed mb-4 text-gray-400">
@@ -99,6 +95,7 @@ export default function Footer() {
                     href={`/categories/all?tab=categories#category-${item.slug}`}
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
+                       scroll={false} // Prevent scroll to top
                   >
                     <ChevronRight size={12} className="text-[var(--clr-primary)] group-hover:translate-x-1 transition-transform" />
                     <span>{item.name}</span>
@@ -119,7 +116,7 @@ export default function Footer() {
               {therapies.map((item) => (
                 <li key={item.slug}>
                   <Link
-                    href="/medipride"
+                   href={`/medipride?therapy=${item.slug}`}
                     className="flex items-center gap-2 text-sm 
                     hover:text-[var(--clr-primary)] group"
                   >

@@ -68,7 +68,7 @@ export default function Navbar() {
     { label: "About Us", href: "/about-us" },
     { label: "Koru", href: "/koru", isButton: true },
     { label: "Medipride", href: "/medipride", isButton: true },
-    { label: "Digital Inputs", href: "/digital-gifts" },
+     { label: "Digital Inputs", href: "/digital-gifts", isButton: true },
     { label: "Case Study", href: "/case-study" },
     { label: "Contact Us", href: "/contact-us" },
   ];
@@ -128,7 +128,7 @@ export default function Navbar() {
             : "bg-white/70 backdrop-blur-md"
         }`}
       >
-        <div className="px-6">
+        <div className="px-6 max-w-[1550px] mx-auto">
           <div className="flex items-center justify-between h-16 md:h-18">
             {/* Logo */}
             <Link href="/" className="flex items-center">
@@ -220,7 +220,7 @@ export default function Navbar() {
         {/* MOBILE MENU */}
         {mobileOpen && (
           <div className="lg:hidden border-t border-gray-200 bg-white/98 backdrop-blur-xl max-h-[85vh] overflow-y-auto">
-            <div className="p-4 space-y-2">
+            <div className="px-6 max-w-[1550px] mx-auto space-y-2">
               {/* Search */}
               <div className="flex items-center gap-2 bg-gray-100 rounded-xl px-4 py-3 mb-4">
                 <Search className="w-4 h-4 text-gray-400" />
