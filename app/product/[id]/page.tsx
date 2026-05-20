@@ -134,7 +134,7 @@ export default function ProductDetailPage() {
           {/* --- RIGHT: Details & Content --- */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
-              <span className="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded-full uppercase tracking-tighter">
+              <span className="px-3 py-2 bg-orange-100 text-orange-700 text-xs font-bold rounded-full uppercase tracking-tighter">
                 {product.categoryName}
               </span>
               <h1 className="text-4xl font-serif text-slate-900 leading-tight">
