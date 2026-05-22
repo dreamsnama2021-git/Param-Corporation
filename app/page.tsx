@@ -20,7 +20,7 @@ export default function Page() {
     <main className="overflow-x-hidden">
       {/* <BackgroundDecoration /> */}
       <Hero />
-      <AboutUs />
+      <AboruutUs />
       {/* <TagLine /> */}
       <ProductSections />
       <ClientSection/>

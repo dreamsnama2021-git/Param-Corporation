@@ -23,7 +23,7 @@ import {
   Star,
   Zap,
   Percent,
-  Clipboard,  // <-- Add this import
+  Clipboard,
 } from "lucide-react";
 import Image from "next/image";
 import {
@@ -97,9 +97,9 @@ const timelineItems: TimelineItem[] = [
 
 // ─── HELPER STYLES FOR SWIPING ──────────────────────────────────────────────
 const scrollContainerStyles =
-  "flex lg:grid lg:grid-cols-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide gap-6 pb-8 -mx-6 px-6";
+  "flex lg:grid lg:grid-cols-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide gap-4 sm:gap-6 pb-6 sm:pb-8 -mx-4 sm:-mx-6 px-4 sm:px-6";
 const scrollItemStyles =
-  "flex-shrink-0 w-[85vw] sm:w-[450px] lg:w-auto snap-center lg:snap-align-none";
+  "flex-shrink-0 w-[85vw] sm:w-[400px] md:w-[420px] lg:w-auto snap-center lg:snap-align-none";
 
 // ─── REUSABLE COMPONENTS ─────────────────────────────────────────────────────
 
@@ -138,12 +138,12 @@ const FloatingCard = ({ children, className, delay = 0 }: { children: React.Reac
     initial={{ opacity: 0, y: 20 }} 
     animate={{ opacity: 1, y: 0 }} 
     transition={{ duration: 0.6, delay }} 
-    className={className} // This carries the w-80 h-96 from the hero
+    className={className}
   >
     <motion.div 
       animate={{ y: [0, -8, 0] }} 
       transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay }}
-      className="h-full w-full relative" // ADDED THIS LINE
+      className="h-full w-full relative"
     >
       {children}
     </motion.div>
@@ -163,7 +163,7 @@ const WhyUsSection = () => {
     { title: "We Maintain Confidentiality", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Headphones, color: "bg-cyan-500" },
   ];
 
-    interface CardItem {
+  interface CardItem {
     title: string;
     desc: string;
     icon: React.ComponentType<{ size?: number }>;
@@ -171,23 +171,23 @@ const WhyUsSection = () => {
   }
 
   const Card = ({ item }: { item: CardItem }) => (
-    <div className="bg-white p-5 rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow">
-      <div className={`w-10 h-10 ${item.color} rounded-xl mb-4 flex items-center justify-center text-white`}>
-        <item.icon size={20} />
+    <div className="bg-white p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow">
+      <div className={`w-8 h-8 sm:w-10 sm:h-10 ${item.color} rounded-lg sm:rounded-xl mb-3 sm:mb-4 flex items-center justify-center text-white`}>
+        <item.icon size={18} className="sm:size-5" />
       </div>
-      <h3 className="text-base font-bold mb-2">{item.title}</h3>
+      <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2">{item.title}</h3>
       <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
     </div>
   );
 
   return (
-    <section className="py-12 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6 space-y-4">
+    <section className="py-8 sm:py-10 md:py-12 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-3 sm:space-y-4">
         {/* Row 1: heading + 3 cards = 4 cols */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-4">
           <div className="flex flex-col justify-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-2">Why Param</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold leading-tight">
+            <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-1.5 sm:mb-2">Why Param</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
               The <span className="text-[#0093cb]">Difference</span>
             </h2>
           </div>
@@ -195,13 +195,14 @@ const WhyUsSection = () => {
         </div>
 
         {/* Row 2: 4 cards = 4 cols */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {row2Cards.map((item, i) => <Card key={i} item={item} />)}
         </div>
       </div>
     </section>
   );
 };
+
 // ─── VISION & MISSION COMPONENTS ─────────────────────────────────────────────
 interface VisionMissionProps {
   children: React.ReactNode;
@@ -224,15 +225,15 @@ function VisionSwipeCarousel({ children, count }: VisionMissionProps) {
       <div
         ref={trackRef}
         onScroll={handleScroll}
-        className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
+        className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 sm:pb-6 snap-x snap-mandatory scrollbar-hide"
       >
         {children}
       </div>
-      <div className="flex justify-center gap-2">
+      <div className="flex justify-center gap-1.5 sm:gap-2">
         {Array.from({ length: count }).map((_, i) => (
           <div
             key={i}
-            className={`h-1.5 rounded-full transition-all duration-300 ${i === activeIdx ? "w-6 bg-[#0093cb]" : "w-1.5 bg-gray-300"}`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${i === activeIdx ? "w-5 sm:w-6 bg-[#0093cb]" : "w-1.5 bg-gray-300"}`}
           />
         ))}
       </div>
@@ -257,24 +258,24 @@ interface CardData {
 
 function VisionCard({ item }: { item: CardData }) {
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col min-h-[250px] hover:border-slate-300 hover:shadow-sm transition-all duration-200">
-      <div className="flex items-center gap-3 mb-5">
-        <span className="text-[11px] font-medium uppercase tracking-widest text-slate-400">
+    <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-200 p-5 sm:p-7 flex flex-col min-h-[220px] sm:min-h-[250px] hover:border-slate-300 hover:shadow-sm transition-all duration-200">
+      <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+        <span className="text-[10px] sm:text-[11px] font-medium uppercase tracking-widest text-slate-400">
           {item.number} / {item.label}
         </span>
         <div className="flex-1 h-px bg-slate-100" />
       </div>
 
       <div
-        className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${item.iconBg}`}
+        className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 ${item.iconBg}`}
       >
         <span className={item.iconColor}>{item.icon}</span>
       </div>
 
-      <h3 className="text-[17px] font-semibold text-slate-900 mb-2">
+      <h3 className="text-sm sm:text-base lg:text-[17px] font-semibold text-slate-900 mb-1.5 sm:mb-2">
         {item.title}
       </h3>
-      <p className="text-[13px] text-slate-500 leading-relaxed flex-1">
+      <p className="text-xs sm:text-sm lg:text-[13px] text-slate-500 leading-relaxed flex-1">
         {item.desc}
       </p>
 
@@ -291,7 +292,7 @@ const VisionSection = () => {
       title: "Creating Meaningful Brand Connections",
       tagline: '"Every gift strengthens doctor relationships"',
       desc: "To become a trusted partner for corporates across industries by delivering innovative gifting solutions that create lasting impressions and real engagement.",
-      icon: <Target size={20} />,
+      icon: <Target size={18} className="sm:size-5" />,
       iconBg: "bg-blue-50",
       iconColor: "text-[#0093cb]",
       showCta: true,
@@ -304,8 +305,8 @@ const VisionSection = () => {
       label: "Mission",
       title: "Driven by Purpose. Focused on Results.",
       tagline: '"Quality, creativity, and reliability"',
-      desc: "Content:To design and deliver high-quality, customized gifting solutions that add value, improve brand communication, and consistently exceed client expectations.",
-      icon: <Rocket size={20} />,
+      desc: "To design and deliver high-quality, customized gifting solutions that add value, improve brand communication, and consistently exceed client expectations.",
+      icon: <Rocket size={18} className="sm:size-5" />,
       iconBg: "bg-emerald-50",
       iconColor: "text-[#00a65d]",
       showCta: false,
@@ -314,13 +315,13 @@ const VisionSection = () => {
   ];
 
   return (
-    <section className="py-12 2xl:py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 text-[#0093cb]">
+    <section className="py-8 sm:py-10 md:py-12 2xl:py-24 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 text-[#0093cb]">
             Our Purpose
           </p>
-          <h2 className="text-3xl md:text-4xl font-black text-slate-900">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900">
             Vision & <span className="text-[#0093cb]">Mission</span>
           </h2>
         </div>
@@ -331,7 +332,7 @@ const VisionSection = () => {
             </div>
           ))}
         </VisionSwipeCarousel>
-        <div className="hidden md:grid md:grid-cols-2 gap-6">
+        <div className="hidden md:grid md:grid-cols-2 gap-4 sm:gap-6">
           {data.map((item, idx) => (
             <VisionCard key={idx} item={item} />
           ))}
@@ -340,6 +341,7 @@ const VisionSection = () => {
     </section>
   );
 };
+
 // ─── TEAM SECTION ────────────────────────────────────────────────────────────
 interface TeamMember {
   name: string;
@@ -348,7 +350,7 @@ interface TeamMember {
 }
 
 const TeamCard = ({ member }: { member: TeamMember }) => (
-  <div className="relative aspect-[3/4] rounded-3xl overflow-hidden group shadow-lg cursor-pointer bg-slate-100">
+  <div className="relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden group shadow-lg cursor-pointer bg-slate-100">
     {/* Image: Scales slightly on hover */}
     <Image
       src={member.image}
@@ -359,13 +361,13 @@ const TeamCard = ({ member }: { member: TeamMember }) => (
     />
 
     {/* Hover Overlay: Opacity 0 by default, 100 on group-hover */}
-    <div className="absolute inset-0 bg-black/20 flex flex-col justify-end p-6 sm:p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
+    <div className="absolute inset-0 bg-black/20 flex flex-col justify-end p-4 sm:p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
       {/* Animated Text: Slides up from the bottom */}
       <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-        <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
+        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1">
           {member.name}
         </h3>
-        <p className="text-[#8bde7a] font-semibold text-sm sm:text-base uppercase tracking-wider">
+        <p className="text-[#8bde7a] font-semibold text-xs sm:text-sm md:text-base uppercase tracking-wider">
           {member.role}
         </p>
       </div>
@@ -396,18 +398,18 @@ const TeamSection = () => {
   ];
 
   return (
-    <section className="py-12 2xl:py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-12 text-center">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-2">
+    <section className="py-8 sm:py-10 md:py-12 2xl:py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="mb-8 sm:mb-10 md:mb-12 text-center">
+          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-1.5 sm:mb-2">
             Our People
           </p>
-          <h2 className="text-3xl md:text-4xl font-black">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black">
             The <span className="text-[#0093cb]">Leadership</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {team.map((member, idx) => (
             <TeamCard key={idx} member={member} />
           ))}
@@ -422,57 +424,57 @@ export default function AboutUsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-8 lg:pt-12 relative overflow-hidden flex items-center">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center pt-20">
-          <div className="space-y-8">
+      <section className="py-6 sm:py-8 lg:pt-8 xl:pt-10 2xl:pt-12 relative overflow-hidden flex items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center pt-12 sm:pt-16 lg:pt-20">
+          <div className="space-y-5 sm:space-y-6 lg:space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs sm:text-sm font-medium"
             >
-              <Sparkles size={16} />{" "}
+              <Sparkles size={14} className="sm:size-4" />{" "}
               <span>Trusted Pharma Partner Since 2019</span>
             </motion.div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-7xl font-extrabold text-slate-900 leading-tight">
               We create <br />{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
                 meaningful
               </span>{" "}
               <br /> doctor connections
             </h1>
-            <p className="text-xl text-slate-600 max-w-lg">
+            <p className="text-base sm:text-lg lg:text-base xl:text-lg 2xl:text-xl text-slate-600 max-w-lg">
               Transforming pharma brand communication through thoughtfully
               designed gifting solutions.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <MagneticButton className="bg-[#0093cb] text-white px-8 py-4 rounded-full font-semibold flex items-center gap-2">
-                Explore Solutions <ArrowUpRight size={20} />
+            <div className="flex flex-wrap gap-3 sm:gap-4">
+              <MagneticButton className="bg-[#0093cb] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold flex items-center gap-2 text-sm sm:text-base">
+                Explore Solutions <ArrowUpRight size={18} className="sm:size-5" />
               </MagneticButton>
             </div>
           </div>
-          <div className="relative hidden lg:block h-[600px]">
+          <div className="relative hidden lg:block h-[400px] lg:h-[450px] xl:h-[500px] 2xl:h-[600px]">
             <FloatingCard
               delay={0.2}
-              className="absolute top-0 right-0 w-full h-120 rounded-2xl overflow-hidden shadow-2xl"
+              className="absolute top-0 right-0 w-full h-full lg:h-96 xl:h-110 2xl:h-120 rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl"
             >
               <Image
                 src="https://i.pinimg.com/736x/91/98/75/91987514f02a4b93700a7cd1a5b67a18.jpg"
                 alt="Premium Corporate Gifting"
                 fill
-                className="object-cover   transition-all duration-700"
+                className="object-cover transition-all duration-700"
                 priority
               />
             </FloatingCard>
             <FloatingCard
               delay={0.4}
-              className="absolute top-40 left-0 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4"
+              className="absolute top-32 sm:top-36 lg:top-40 left-0 bg-white p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl border border-slate-100 flex items-center gap-3 sm:gap-4"
             >
-              <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                <Heart size={24} />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                <Heart size={20} className="sm:size-6" />
               </div>
               <div>
-                <div className="text-2xl font-bold">90%</div>
-                <div className="text-sm text-slate-500">Retention</div>
+                <div className="text-xl sm:text-2xl font-bold">90%</div>
+                <div className="text-xs sm:text-sm text-slate-500">Retention</div>
               </div>
             </FloatingCard>
           </div>
@@ -480,12 +482,12 @@ export default function AboutUsPage() {
       </section>
 
       {/* Journey Section */}
-      <section className="py-6 2xl:py-12 bg-white">
-        <div className="max-w-4xl mx-auto px-6 text-center mb-16">
-          <span className="text-[#0093cb] font-bold text-xs uppercase tracking-widest">
+      <section className="py-6 sm:py-8 md:py-10 2xl:py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center mb-10 sm:mb-12 md:mb-16">
+          <span className="text-[#0093cb] font-bold text-[10px] sm:text-xs uppercase tracking-widest">
             Our History
           </span>
-          <h2 className="text-4xl font-black mt-2">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mt-1.5 sm:mt-2">
             A Legacy of <span className="text-[#0093cb]">Excellence</span>
           </h2>
         </div>

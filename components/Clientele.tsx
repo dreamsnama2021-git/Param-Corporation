@@ -76,7 +76,7 @@ const ClientSection = () => {
   const tripleClients = [...clients, ...clients, ...clients];
 
   return (
-    <section className="py-10 overflow-hidden">
+    <section className="py-6 sm:py-8 md:py-10 overflow-hidden">
       <div className="ui-container">
         {/* Header */}
         <motion.div
@@ -84,17 +84,17 @@ const ClientSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-10 md:mb-12"
         >
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 flex items-center justify-center gap-2 text-[var(--clr-primary)]">
-            <span className="inline-block w-6 h-[1.5px] bg-[var(--clr-primary)]" />
+          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[var(--clr-primary)]">
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[var(--clr-primary)]" />
             Our clients
-            <span className="inline-block w-6 h-[1.5px] bg-[var(--clr-primary)]" />
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[var(--clr-primary)]" />
           </p>
-          <h2 className="ui-h1 font-extrabold capitalize tracking-tight mb-3 text-[var(--clr-text-dark)]">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-[var(--clr-text-dark)]">
             Trusted by <span className="text-[#0093cb]">industry leader</span>
           </h2>
-          <p className="text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)]">
+          <p className="text-xs sm:text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
             Trusted by pharmaceutical brands nationwide. Supporting impactful
             doctor engagement solutions. Our clients trust us to deliver
             results. We deliver with precision and consistency.
@@ -108,9 +108,9 @@ const ClientSection = () => {
           {tripleClients.map((c, i) => (
             <div
               key={i}
-              className="flex-shrink-0 flex items-center  justify-center px-12  border-r border-[rgba(0,147,203,0.12)]"
+              className="flex-shrink-0 flex items-center justify-center px-6 sm:px-8 md:px-10 lg:px-12 border-r border-[rgba(0,147,203,0.12)]"
             >
-              <div className="relative h-30 w-28  transition-all duration-300">
+              <div className="relative h-20 sm:h-24 md:h-28 lg:h-30 w-20 sm:w-22 md:w-24 lg:w-28 transition-all duration-300">
                 <Image
                   src={c.logo}
                   alt={c.name}

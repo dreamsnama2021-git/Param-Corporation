@@ -124,21 +124,21 @@ const TestimonialCards = () => {
   };
 
   return (
-    <section className="py-10 md:py-10 bg-white">
+    <section className="py-6 sm:py-8 md:py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-10 md:mb-12"
         >
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 flex items-center justify-center gap-2 text-[#639922]">
-            <span className="inline-block w-6 h-[1.5px] bg-[#639922]" />
+          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#639922]">
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#639922]" />
             Client testimonials
-            <span className="inline-block w-6 h-[1.5px] bg-[#639922]" />
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#639922]" />
           </p>
-          <h2 className="ui-h1 font-extrabold tracking-tight mb-3 text-[var(--clr-text-dark)]">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-2 sm:mb-3 text-[var(--clr-text-dark)]">
             Trusted by{" "}
             <span
               style={{
@@ -151,7 +151,7 @@ const TestimonialCards = () => {
             </span>{" "}
             enterprises
           </h2>
-          <p className="text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)]">
+          <p className="text-xs sm:text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
             Procurement leaders and HR directors rely on us to deliver curated
             gifting — at scale, without compromise.
           </p>
@@ -160,7 +160,7 @@ const TestimonialCards = () => {
         {/* Testimonials Grid - Container stays fixed */}
         <div className="relative">
           <div
-            className="grid md:grid-cols-3 overflow-hidden rounded-2xl"
+            className="grid md:grid-cols-3 overflow-hidden rounded-xl sm:rounded-2xl"
             style={{
               gap: "1.5px",
               background: "rgba(0,147,203,0.12)",
@@ -170,7 +170,7 @@ const TestimonialCards = () => {
             {getCurrentTestimonials().map((t, i) => (
               <div
                 key={`card-${i}`}
-                className="group relative flex flex-col gap-4 p-8 overflow-hidden cursor-default transition-colors duration-200 bg-white hover:bg-[#f0f9ff]"
+                className="group relative flex flex-col gap-3 sm:gap-4 p-5 sm:p-6 md:p-8 overflow-hidden cursor-default transition-colors duration-200 bg-white hover:bg-[#f0f9ff]"
               >
                 <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--clr-primary)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 
@@ -182,10 +182,10 @@ const TestimonialCards = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3, delay: i * 0.1 }}
-                    className="flex flex-col gap-4 flex-1"
+                    className="flex flex-col gap-3 sm:gap-4 flex-1"
                   >
                     {t.logo && (
-                      <div className="w-24 h-14 p-2 flex items-center justify-center shrink-0">
+                      <div className="w-20 sm:w-22 md:w-24 h-10 sm:h-12 md:h-14 p-1.5 sm:p-2 flex items-center justify-center shrink-0">
                         <img
                           src={t.logo}
                           alt={`${t.company} logo`}
@@ -193,20 +193,20 @@ const TestimonialCards = () => {
                         />
                       </div>
                     )}
-                    <span className="text-5xl font-black leading-none select-none text-[var(--clr-primary)] opacity-15">
+                    <span className="text-4xl sm:text-5xl font-black leading-none select-none text-[var(--clr-primary)] opacity-15">
                       "
                     </span>
-                    <p className="text-[14px] leading-[1.75] flex-1 text-[#334155]">
+                    <p className="text-xs sm:text-sm md:text-[14px] leading-[1.6] sm:leading-[1.75] flex-1 text-[#334155]">
                       {t.quote}
                     </p>
-                    <div className="flex flex-col gap-0.5 pt-4 border-t border-[rgba(0,147,203,0.12)]">
-                      <p className="text-[14px] font-bold text-[var(--clr-text-dark)]">
+                    <div className="flex flex-col gap-0.5 pt-3 sm:pt-4 border-t border-[rgba(0,147,203,0.12)]">
+                      <p className="text-xs sm:text-sm md:text-[14px] font-bold text-[var(--clr-text-dark)]">
                         {t.name}
                       </p>
-                      <p className="text-[12px] text-[var(--clr-text-muted)]">
+                      <p className="text-[10px] sm:text-[12px] text-[var(--clr-text-muted)]">
                         {t.role}
                       </p>
-                      <p className="text-[11px] font-semibold mt-0.5 text-[var(--clr-primary)]">
+                      <p className="text-[9px] sm:text-[11px] font-semibold mt-0.5 text-[var(--clr-primary)]">
                         {t.company}
                       </p>
                     </div>
@@ -218,24 +218,24 @@ const TestimonialCards = () => {
 
           {/* Navigation - Bottom Right */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-end gap-3 mt-6">
+            <div className="flex items-center justify-end gap-2 sm:gap-3 mt-4 sm:mt-6">
               <button
                 onClick={prevPage}
-                className="w-10 h-10 md:w-11 md:h-11 rounded-full border-2 border-gray-200 
+                className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border-2 border-gray-200 
                   flex items-center justify-center hover:border-[var(--clr-primary)] 
                   hover:bg-[var(--clr-primary)] hover:text-white transition-all duration-300 group"
                 aria-label="Previous testimonials"
               >
-                <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
+                <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
               </button>
               <button
                 onClick={nextPage}
-                className="w-10 h-10 md:w-11 md:h-11 rounded-full border-2 border-gray-200 
+                className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border-2 border-gray-200 
                   flex items-center justify-center hover:border-[var(--clr-primary)] 
                   hover:bg-[var(--clr-primary)] hover:text-white transition-all duration-300 group"
                 aria-label="Next testimonials"
               >
-                <ChevronRight className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
+                <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
               </button>
             </div>
           )}
@@ -277,25 +277,25 @@ export const TestimonialCardsVariant = () => {
   };
 
   return (
-    <section className="py-16">
+    <section className="py-10 sm:py-12 md:py-14 lg:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-10 md:mb-12"
         >
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] mb-3 flex items-center justify-center gap-2 text-[#639922]">
-            <span className="inline-block w-6 h-[1.5px] bg-[#0093cb]" />
+          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#639922]">
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
             Client testimonials
-            <span className="inline-block w-6 h-[1.5px] bg-[#0093cb]" />
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
           </p>
-          <h2 className="ui-h1 font-extrabold capitalize tracking-tight mb-3 text-[var(--clr-text-dark)]">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-[var(--clr-text-dark)]">
             Trusted by <span className="text-[#0093cb]">India's largest</span>{" "}
             enterprises
           </h2>
-          <p className="text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)]">
+          <p className="text-xs sm:text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
             Procurement leaders and HR directors rely on us to deliver curated
             gifting — at scale, without compromise
           </p>
@@ -304,7 +304,7 @@ export const TestimonialCardsVariant = () => {
         {/* Grid - Container stays fixed */}
         <div className="relative">
           <div
-            className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-2xl"
+            className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-xl sm:rounded-2xl"
             style={{
               gap: "1.5px",
               background: "rgba(99,153,34,0.12)",
@@ -312,14 +312,14 @@ export const TestimonialCardsVariant = () => {
             }}
           >
             {getCurrentTestimonials().map((t, i) => {
-              if (!t) return <div key={`empty-${i}`} className="bg-white p-8 md:p-10" />;
+              if (!t) return <div key={`empty-${i}`} className="bg-white p-6 sm:p-8 md:p-10" />;
               
               const isSecondRow = i >= 2;
               
               return (
                 <div
                   key={`card-${i}`}
-                  className="group relative bg-white hover:bg-[#e9f3e8] transition-colors duration-300 flex flex-col p-8 md:p-10"
+                  className="group relative bg-white hover:bg-[#e9f3e8] transition-colors duration-300 flex flex-col p-6 sm:p-8 md:p-10"
                 >
                   <span
                     className="absolute top-0 left-0 right-0 h-[3px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
@@ -340,7 +340,7 @@ export const TestimonialCardsVariant = () => {
                       className="flex flex-col flex-1"
                     >
                       {t.logo && (
-                        <div className="w-24 h-14 p-2 scale-250 xl:scale-300 flex items-center justify-center mb-2 shrink-0">
+                        <div className="w-20 sm:w-22 md:w-24 h-10 sm:h-12 md:h-14 p-1.5 sm:p-2 flex items-center justify-center mb-2 shrink-0">
                           <img
                             src={t.logo}
                             alt={`${t.company} logo`}
@@ -350,14 +350,14 @@ export const TestimonialCardsVariant = () => {
                       )}
 
                       <span
-                        className="text-[44px] leading-none select-none font-serif mb-2"
+                        className="text-3xl sm:text-4xl md:text-[44px] leading-none select-none font-serif mb-1 sm:mb-2"
                         style={{ color: "#639922", opacity: 0.2 }}
                       >
                         "
                       </span>
 
                       <p
-                        className="flex-1 leading-relaxed mb-8"
+                        className="flex-1 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base"
                         style={{
                           fontFamily: "Georgia, 'Times New Roman', serif",
                           fontSize: "16px",
@@ -368,22 +368,22 @@ export const TestimonialCardsVariant = () => {
                         {t.quote}
                       </p>
 
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-3 sm:gap-4">
                         <div
-                          className="w-10 h-10 rounded-full flex items-center justify-center text-[12px] font-semibold shrink-0"
+                          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-[10px] sm:text-[12px] font-semibold shrink-0"
                           style={avatarStyles[t.avatarColor]}
                         >
                           {t.initials}
                         </div>
                         <div>
-                          <p className="text-[14px] font-bold text-[var(--clr-text-dark)] leading-tight">
+                          <p className="text-xs sm:text-sm md:text-[14px] font-bold text-[var(--clr-text-dark)] leading-tight">
                             {t.name}
                           </p>
-                          <p className="text-[12px] text-[var(--clr-text-muted)] mb-0.5">
+                          <p className="text-[10px] sm:text-[12px] text-[var(--clr-text-muted)] mb-0.5">
                             {t.role}
                           </p>
                           <p
-                            className="text-[10px] font-bold tracking-[0.05em] uppercase"
+                            className="text-[8px] sm:text-[10px] font-bold tracking-[0.05em] uppercase"
                             style={{ color: "#3B6D11" }}
                           >
                             {t.company}
@@ -399,24 +399,24 @@ export const TestimonialCardsVariant = () => {
 
           {/* Navigation - Bottom Right */}
           {totalGroups > 1 && (
-            <div className="flex items-center justify-end gap-3 mt-6">
+            <div className="flex items-center justify-end gap-2 sm:gap-3 mt-4 sm:mt-6">
               <button
                 onClick={prevGroup}
-                className="w-10 h-10 md:w-11 md:h-11 rounded-full border-2 border-gray-200 
+                className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border-2 border-gray-200 
                   flex items-center justify-center hover:border-[#639922] 
                   hover:bg-[#639922] hover:text-white transition-all duration-300 group"
                 aria-label="Previous testimonials"
               >
-                <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
+                <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
               </button>
               <button
                 onClick={nextGroup}
-                className="w-10 h-10 md:w-11 md:h-11 rounded-full border-2 border-gray-200 
+                className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border-2 border-gray-200 
                   flex items-center justify-center hover:border-[#639922] 
                   hover:bg-[#639922] hover:text-white transition-all duration-300 group"
                 aria-label="Next testimonials"
               >
-                <ChevronRight className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
+                <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
               </button>
             </div>
           )}

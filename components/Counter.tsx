@@ -162,34 +162,34 @@ const TiltCard = ({ stat, index }: TiltCardProps): React.ReactElement => {
       }}
       className="relative group perspective-1000"
     >
-      <div className={`relative bg-white/70 backdrop-blur-xl rounded-3xl p-6 md:p-8 
+      <div className={`relative bg-white/70 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 
         border border-white/50 shadow-xl hover:shadow-2xl 
         transition-all duration-500 hover:border-[${stat.accent}]/30
-        ${stat.position === 'center' ? 'lg:mt-12' : ''}`}
+        ${stat.position === 'center' ? 'lg:mt-8 xl:mt-12' : ''}`}
         style={{
           boxShadow: `0 25px 50px -12px ${stat.accent}20`
         }}
       >
         {/* Floating Gradient Orb */}
-        <div className={`absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br ${stat.gradient} 
+        <div className={`absolute -top-8 sm:-top-10 -right-8 sm:-right-10 w-24 sm:w-28 md:w-32 h-24 sm:h-28 md:h-32 bg-gradient-to-br ${stat.gradient} 
           rounded-full opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-700`} />
         
         {/* Glass Shine Effect */}
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/40 via-transparent to-transparent 
+        <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white/40 via-transparent to-transparent 
           opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
         {/* Top Row: Icon & Trend */}
-        <div className="flex justify-between items-start mb-6 relative z-10">
-          <div className={`p-3 rounded-2xl bg-gradient-to-br ${stat.gradient} text-white 
+        <div className="flex justify-between items-start mb-4 sm:mb-6 relative z-10">
+          <div className={`p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-gradient-to-br ${stat.gradient} text-white 
             shadow-lg transform group-hover:scale-110 transition-transform duration-300
             group-hover:rotate-3`}>
-            <Icon className="w-6 h-6 md:w-7 md:h-7" strokeWidth={1.5} />
+            <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" strokeWidth={1.5} />
           </div>
           
           {/* Fixed: Only render trend percentage on client side to prevent hydration mismatch */}
-          <div className="flex items-center gap-1 text-xs font-medium text-gray-400 
+          <div className="flex items-center gap-1 text-[10px] sm:text-xs font-medium text-gray-400 
             opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
-            <TrendingUp className="w-3 h-3 text-green-500" />
+            <TrendingUp className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-green-500" />
             {isClient && (
               <span className="text-green-600">+{trendPercentage}%</span>
             )}
@@ -198,7 +198,7 @@ const TiltCard = ({ stat, index }: TiltCardProps): React.ReactElement => {
 
         {/* Number Display */}
         <div className="relative mb-2">
-          <h3 className={`text-5xl md:text-6xl font-black tracking-tighter bg-gradient-to-r ${stat.gradient} 
+          <h3 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter bg-gradient-to-r ${stat.gradient} 
             bg-clip-text text-transparent tabular-nums`}>
             {displayValue}{stat.suffix}
           </h3>
@@ -214,18 +214,18 @@ const TiltCard = ({ stat, index }: TiltCardProps): React.ReactElement => {
 
         {/* Label */}
         <div className="relative z-10">
-          <h4 className="text-gray-900 font-bold text-lg md:text-xl mb-1 group-hover:text-gray-800 transition-colors">
+          <h4 className="text-gray-900 font-bold text-sm sm:text-base md:text-lg lg:text-xl mb-1 group-hover:text-gray-800 transition-colors">
             {stat.label}
           </h4>
-          <p className="text-gray-500 text-sm flex items-center gap-1">
+          <p className="text-gray-500 text-xs sm:text-sm flex items-center gap-1">
             {stat.subtext}
-            <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <ArrowUpRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
           </p>
         </div>
 
         {/* Bottom Accent Line */}
         <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${stat.gradient} 
-          transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-b-3xl`} />
+          transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-b-2xl sm:rounded-b-3xl`} />
       </div>
     </motion.div>
   );
@@ -258,24 +258,24 @@ export default function CreativeStatsSection(): React.ReactElement {
   }, []);
 
   return (
-    <section className="relative w-full py-8 md:py-10 overflow-hidden bg-[#fafafa00]">
+    <section className="relative w-full py-6 sm:py-8 md:py-10 overflow-hidden bg-[#fafafa00]">
       {/* Animated Background Elements */}
-      <FloatingShape delay={0} color="#0093cb" className="w-96 h-96 -top-20 -left-20" />
-      <FloatingShape delay={2} color="#00a65d" className="w-80 h-80 top-1/2 right-0" />
-      <FloatingShape delay={4} color="#8bde7a" className="w-64 h-64 bottom-20 left-1/3" />
+      <FloatingShape delay={0} color="#0093cb" className="w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 -top-20 -left-20" />
+      <FloatingShape delay={2} color="#00a65d" className="w-56 sm:w-64 md:w-80 h-56 sm:h-64 md:h-80 top-1/2 right-0" />
+      <FloatingShape delay={4} color="#8bde7a" className="w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 bottom-20 left-1/3" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-16 md:mb-20">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16 lg:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-md border border-gray-100 mb-6"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white shadow-md border border-gray-100 mb-4 sm:mb-6"
           >
-            <Sparkles className="w-4 h-4 text-[#0093cb]" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-[#0093cb] to-[#00a65d] bg-clip-text text-transparent">
+            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-[#0093cb]" />
+            <span className="text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#0093cb] to-[#00a65d] bg-clip-text text-transparent">
               Our Impact in Numbers
             </span>
           </motion.div>
@@ -285,7 +285,7 @@ export default function CreativeStatsSection(): React.ReactElement {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-extrabold capitalize tracking-tight mb-3 text-gray-900 mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 md:mb-4 text-gray-900"
           >
             Achieved <span className="text-[#0093cb]">Numbers</span>
           </motion.h2>
@@ -295,14 +295,14 @@ export default function CreativeStatsSection(): React.ReactElement {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-600 text-lg max-w-2xl mx-auto"
+            className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto"
           >
             Delivering measurable impact through healthcare communication.
           </motion.p>
         </div>
 
         {/* Stats Grid - Staggered Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {stats.map((stat, index) => (
             <TiltCard key={stat.id} stat={stat} index={index} />
           ))}

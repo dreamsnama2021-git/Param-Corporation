@@ -11,124 +11,176 @@ interface HeroSlide {
 }
 
 const HERO_SLIDES: HeroSlide[] = [
-  { image: "/banner/home.jpeg",  alt: "Corporate Gifts"       },
-  { image: "/banner/home2.jpeg", alt: "Branding"              },
-  { image: "/banner/home3.jpeg", alt: "Pharmaceutical Gifts"  },
+  {
+    image: "/banner/home.jpeg",
+    alt: "Corporate Gifts",
+  },
+  {
+    image: "/banner/home2.jpeg",
+    alt: "Branding",
+  },
+  {
+    image: "/banner/home3.jpeg",
+    alt: "Pharmaceutical Gifts",
+  },
 ];
 
 // ─── Component ───────────────────────────────────────
 export default function HeroWithStats() {
-  const [isDragging, setIsDragging]           = useState(false);
-  const [startX, setStartX]                   = useState(0);
-  const [translateX, setTranslateX]           = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+  const mountedRef = useRef(true);
 
-  const containerRef  = useRef<HTMLDivElement>(null);
-  const autoPlayRef   = useRef<NodeJS.Timeout | null>(null);
-  const mountedRef    = useRef(true);
-
-  const originalLength = HERO_SLIDES.length;
-  const middleStart    = originalLength;
-  const middleEnd      = originalLength * 2;
-
-  // Infinite array: 3× the slides
+  // Create infinite array by duplicating slides 3 times
   const infiniteSlides = [...HERO_SLIDES, ...HERO_SLIDES, ...HERO_SLIDES];
+  const originalLength = HERO_SLIDES.length;
+  const middleStart = originalLength;
+  const middleEnd = originalLength * 2;
+
+  // Get current visible slide (actual index without the infinite wrapper)
+  const getRealIndex = useCallback((displayIndex: number) => {
+    return ((displayIndex - middleStart) % originalLength + originalLength) % originalLength;
+  }, [originalLength, middleStart]);
 
   const [displayIndex, setDisplayIndex] = useState(middleStart);
-
-  const getRealIndex = useCallback(
-    (idx: number) =>
-      ((idx - middleStart) % originalLength + originalLength) % originalLength,
-    [originalLength, middleStart]
-  );
   const realIndex = getRealIndex(displayIndex);
 
-  const resetPosition = useCallback((newIdx: number) => {
+  // Jump to middle without animation when needed
+  const resetPosition = useCallback((newDisplayIndex: number) => {
     setIsTransitioning(false);
-    setDisplayIndex(newIdx);
-    setTimeout(() => { if (mountedRef.current) setIsTransitioning(true); }, 50);
+    setDisplayIndex(newDisplayIndex);
+    // Force reflow then re-enable transition
+    setTimeout(() => {
+      if (mountedRef.current) {
+        setIsTransitioning(true);
+      }
+    }, 50);
   }, []);
 
+  // Navigate to next slide
   const nextSlide = useCallback(() => {
-    const newIdx = displayIndex + 1;
-    setDisplayIndex(newIdx);
-    if (newIdx >= middleEnd) {
-      setTimeout(() => { if (mountedRef.current) resetPosition(middleStart); }, 700);
+    const newIndex = displayIndex + 1;
+    setDisplayIndex(newIndex);
+    
+    // Check if we need to reset position
+    if (newIndex >= middleEnd) {
+      setTimeout(() => {
+        if (mountedRef.current) {
+          resetPosition(middleStart);
+        }
+      }, 700);
     }
   }, [displayIndex, middleStart, middleEnd, resetPosition]);
 
+  // Navigate to previous slide
   const prevSlide = useCallback(() => {
-    const newIdx = displayIndex - 1;
-    setDisplayIndex(newIdx);
-    if (newIdx < middleStart - 1) {
-      setTimeout(() => { if (mountedRef.current) resetPosition(middleEnd - 1); }, 700);
+    const newIndex = displayIndex - 1;
+    setDisplayIndex(newIndex);
+    
+    // Check if we need to reset position
+    if (newIndex < middleStart - 1) {
+      setTimeout(() => {
+        if (mountedRef.current) {
+          resetPosition(middleEnd - 1);
+        }
+      }, 700);
     }
   }, [displayIndex, middleStart, middleEnd, resetPosition]);
 
+  // Auto-play
   const startAutoPlay = useCallback(() => {
     if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-    autoPlayRef.current = setInterval(nextSlide, 5000);
+    autoPlayRef.current = setInterval(() => {
+      nextSlide();
+    }, 5000);
   }, [nextSlide]);
 
   const stopAutoPlay = useCallback(() => {
-    if (autoPlayRef.current) { clearInterval(autoPlayRef.current); autoPlayRef.current = null; }
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+      autoPlayRef.current = null;
+    }
   }, []);
 
-  // ── Drag handlers ──
+  // Handle drag/swipe
   const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
     stopAutoPlay();
     setIsDragging(true);
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
     setStartX(clientX);
     setIsTransitioning(false);
   };
 
   const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDragging) return;
-    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-    setTranslateX(clientX - startX);
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const diff = clientX - startX;
+    setTranslateX(diff);
   };
 
   const handleDragEnd = (e: React.MouseEvent | React.TouchEvent) => {
-    if (!isDragging) { startAutoPlay(); return; }
+    if (!isDragging) {
+      startAutoPlay();
+      return;
+    }
+    
     setIsDragging(false);
     setIsTransitioning(true);
-    const clientX = "touches" in e ? e.changedTouches[0].clientX : e.clientX;
+    
+    const clientX = 'touches' in e ? e.changedTouches[0].clientX : e.clientX;
     const diff = clientX - startX;
-    if (Math.abs(diff) > 50) diff > 0 ? prevSlide() : nextSlide();
+    
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        prevSlide();
+      } else {
+        nextSlide();
+      }
+    }
+    
     setTranslateX(0);
     startAutoPlay();
   };
 
+  // Set up auto-play on mount
   useEffect(() => {
     mountedRef.current = true;
     startAutoPlay();
-    return () => { mountedRef.current = false; stopAutoPlay(); };
+    
+    return () => {
+      mountedRef.current = false;
+      stopAutoPlay();
+    };
   }, [startAutoPlay, stopAutoPlay]);
 
-  const getTransformStyle = () =>
-    isDragging
-      ? `translateX(calc(-${displayIndex * 100}% + ${translateX}px))`
-      : `translateX(-${displayIndex * 100}%)`;
+  // Calculate transform style
+  const getTransformStyle = () => {
+    if (isDragging) {
+      return `translateX(calc(-${displayIndex * 100}% + ${translateX}px))`;
+    }
+    return `translateX(-${displayIndex * 100}%)`;
+  };
 
   return (
     <div className="flex flex-col overflow-hidden">
-      <section
-        className="relative ui-w-full overflow-hidden bg-black"
-        style={{ height: "clamp(55vh, 70vw, 90vh)" }}
+      <section 
+        className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] overflow-hidden bg-black"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
       >
-        {/* ── Slides track ── */}
-        <div
+        {/* Slides Container */}
+        <div 
           ref={containerRef}
-          className="relative ui-w-full h-full flex"
+          className="relative w-full h-full flex"
           style={{
-            transform:  getTransformStyle(),
-            transition: isTransitioning && !isDragging
-              ? "transform 700ms cubic-bezier(0.4, 0, 0.2, 1)"
-              : "none",
-            cursor: isDragging ? "grabbing" : "grab",
+            transform: getTransformStyle(),
+            transition: isTransitioning && !isDragging ? 'transform 700ms cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
+            cursor: isDragging ? 'grabbing' : 'grab',
           }}
           onMouseDown={handleDragStart}
           onMouseMove={handleDragMove}
@@ -139,7 +191,10 @@ export default function HeroWithStats() {
           onTouchEnd={handleDragEnd}
         >
           {infiniteSlides.map((slide, idx) => (
-            <div key={`${idx}-${slide.image}`} className="relative ui-w-full h-full flex-shrink-0">
+            <div
+              key={`${idx}-${slide.image}`}
+              className="relative w-full h-full flex-shrink-0"
+            >
               <Image
                 src={slide.image}
                 alt={slide.alt}
@@ -153,69 +208,82 @@ export default function HeroWithStats() {
           ))}
         </div>
 
-        {/* Preload hidden images */}
+        {/* Preload all images */}
         <div className="hidden">
           {HERO_SLIDES.map((slide, idx) => (
-            <Image key={`preload-${idx}`} src={slide.image} alt="preload" width={1} height={1} priority />
+            <Image
+              key={`preload-${idx}`}
+              src={slide.image}
+              alt="preload"
+              width={1}
+              height={1}
+              priority
+            />
           ))}
         </div>
 
-        {/* ── Prev arrow ── */}
-        <button
-          onClick={(e) => { e.stopPropagation(); stopAutoPlay(); prevSlide(); startAutoPlay(); }}
-          className="absolute left-[clamp(1rem,3vw,2rem)] top-1/2 -translate-y-1/2
-            bg-white/20 backdrop-blur-md ui-rounded-full ui-flex-center
-            text-white hover:bg-white/40 hover:scale-110
-            transition-all duration-300 border border-white/30 ui-shadow-soft group z-20"
-          style={{ width: "clamp(2.75rem,5vw,4rem)", height: "clamp(2.75rem,5vw,4rem)" }}
+        {/* Navigation arrows */}
+        <button 
+          onClick={(e) => {
+            e.stopPropagation();
+            stopAutoPlay();
+            prevSlide();
+            startAutoPlay();
+          }}
+          className="absolute left-2 sm:left-4 md:left-6 lg:left-8 top-1/2 -translate-y-1/2 
+          w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 
+          bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center 
+          text-white hover:bg-white/40 hover:scale-110 transition-all duration-300
+          border border-white/30 shadow-lg group z-20"
           aria-label="Previous slide"
         >
-          <ChevronLeft style={{ width: "clamp(1.25rem,2.5vw,2rem)", height: "clamp(1.25rem,2.5vw,2rem)" }}
-            className="group-hover:-translate-x-1 transition-transform" />
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 group-hover:-translate-x-1 transition-transform" />
         </button>
 
-        {/* ── Next arrow ── */}
-        <button
-          onClick={(e) => { e.stopPropagation(); stopAutoPlay(); nextSlide(); startAutoPlay(); }}
-          className="absolute right-[clamp(1rem,3vw,2rem)] top-1/2 -translate-y-1/2
-            bg-white/20 backdrop-blur-md ui-rounded-full ui-flex-center
-            text-white hover:bg-white/40 hover:scale-110
-            transition-all duration-300 border border-white/30 ui-shadow-soft group z-20"
-          style={{ width: "clamp(2.75rem,5vw,4rem)", height: "clamp(2.75rem,5vw,4rem)" }}
+        <button 
+          onClick={(e) => {
+            e.stopPropagation();
+            stopAutoPlay();
+            nextSlide();
+            startAutoPlay();
+          }}
+          className="absolute right-2 sm:right-4 md:right-6 lg:right-8 top-1/2 -translate-y-1/2 
+          w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 
+          bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center 
+          text-white hover:bg-white/40 hover:scale-110 transition-all duration-300
+          border border-white/30 shadow-lg group z-20"
           aria-label="Next slide"
         >
-          <ChevronRight style={{ width: "clamp(1.25rem,2.5vw,2rem)", height: "clamp(1.25rem,2.5vw,2rem)" }}
-            className="group-hover:translate-x-1 transition-transform" />
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 group-hover:translate-x-1 transition-transform" />
         </button>
 
-        {/* ── Dot indicators ── */}
-        <div className="absolute left-1/2 -translate-x-1/2 flex ui-gap-sm z-20"
-          style={{ bottom: "clamp(1.25rem,3vw,2.5rem)" }}>
+        {/* Dots navigation */}
+        <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 lg:bottom-10 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-20">
           {HERO_SLIDES.map((_, i) => (
             <button
               key={i}
               onClick={(e) => {
                 e.stopPropagation();
                 stopAutoPlay();
-                setDisplayIndex(middleStart + i);
+                const targetIndex = middleStart + i;
+                setDisplayIndex(targetIndex);
                 setIsTransitioning(true);
                 startAutoPlay();
               }}
-              className={`ui-rounded-full transition-all duration-300 ${
+              className={`rounded-full transition-all duration-300 ${
                 realIndex === i
-                  ? "h-3 bg-white ui-shadow-soft"
-                  : "w-3 h-3 bg-white/60 hover:bg-white/80 hover:scale-110"
+                  ? "w-6 sm:w-8 md:w-10 lg:w-12 h-2 sm:h-2.5 md:h-3 bg-white shadow-lg"
+                  : "w-2 sm:w-2.5 md:w-3 h-2 sm:h-2.5 md:h-3 bg-white/60 hover:bg-white/80 hover:scale-110"
               }`}
-              style={realIndex === i ? { width: "clamp(2rem,4vw,3rem)" } : undefined}
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}
         </div>
 
-        {/* ── Gradient vignettes ── */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black/20 to-transparent pointer-events-none z-10" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black/20 to-transparent pointer-events-none z-10" />
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/30 to-transparent pointer-events-none z-10" />
+        {/* Gradient overlays */}
+        <div className="absolute inset-y-0 left-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-black/20 to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-black/20 to-transparent pointer-events-none z-10" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 md:h-32 bg-gradient-to-t from-black/30 to-transparent pointer-events-none z-10" />
       </section>
     </div>
   );
