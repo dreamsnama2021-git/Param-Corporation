@@ -117,6 +117,15 @@ const TiltCard = ({ stat, index }: TiltCardProps): React.ReactElement => {
 
   const Icon = stat.icon;
   const [displayValue, setDisplayValue] = useState<number>(0);
+  // Fix hydration error: use client-side only rendering for random number
+  const [trendPercentage, setTrendPercentage] = useState<number>(0);
+  const [isClient, setIsClient] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    // Generate random percentage only on client side
+    setTrendPercentage(Math.floor(Math.random() * 15 + 5));
+  }, []);
 
   useEffect(() => {
     if (isInView) {
@@ -155,7 +164,7 @@ const TiltCard = ({ stat, index }: TiltCardProps): React.ReactElement => {
     >
       <div className={`relative bg-white/70 backdrop-blur-xl rounded-3xl p-6 md:p-8 
         border border-white/50 shadow-xl hover:shadow-2xl 
-        transition-all duration-500 hover:border-${stat.accent}/30
+        transition-all duration-500 hover:border-[${stat.accent}]/30
         ${stat.position === 'center' ? 'lg:mt-12' : ''}`}
         style={{
           boxShadow: `0 25px 50px -12px ${stat.accent}20`
@@ -177,10 +186,13 @@ const TiltCard = ({ stat, index }: TiltCardProps): React.ReactElement => {
             <Icon className="w-6 h-6 md:w-7 md:h-7" strokeWidth={1.5} />
           </div>
           
+          {/* Fixed: Only render trend percentage on client side to prevent hydration mismatch */}
           <div className="flex items-center gap-1 text-xs font-medium text-gray-400 
             opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
             <TrendingUp className="w-3 h-3 text-green-500" />
-            <span className="text-green-600">+{Math.floor(Math.random() * 15 + 5)}%</span>
+            {isClient && (
+              <span className="text-green-600">+{trendPercentage}%</span>
+            )}
           </div>
         </div>
 
@@ -239,6 +251,12 @@ const FloatingShape = ({ delay, color, className }: FloatingShapeProps): React.R
 );
 
 export default function CreativeStatsSection(): React.ReactElement {
+  const [isClient, setIsClient] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <section className="relative w-full py-8 md:py-10 overflow-hidden bg-[#fafafa00]">
       {/* Animated Background Elements */}
@@ -246,8 +264,6 @@ export default function CreativeStatsSection(): React.ReactElement {
       <FloatingShape delay={2} color="#00a65d" className="w-80 h-80 top-1/2 right-0" />
       <FloatingShape delay={4} color="#8bde7a" className="w-64 h-64 bottom-20 left-1/3" />
       
-      {/* Grid Pattern Overlay */}
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
@@ -269,9 +285,9 @@ export default function CreativeStatsSection(): React.ReactElement {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="ui-h1 font-extrabold capitalize tracking-tight mb-3 text-gray-900 mb-4"
+            className="text-3xl md:text-4xl lg:text-5xl font-extrabold capitalize tracking-tight mb-3 text-gray-900 mb-4"
           >
-          Achieved   <span className="text-[#0093cb]">  Numbers </span>
+            Achieved <span className="text-[#0093cb]">Numbers</span>
           </motion.h2>
           
           <motion.p 
