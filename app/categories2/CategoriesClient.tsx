@@ -152,7 +152,7 @@ export function CategoriesClient() {
       <div className="min-h-screen listing-container bg-[#f8fafc]">
         {/* Hero */}
         <section className="relative bg-[#0b3c5d] py-16 overflow-hidden">
-          <div className="relative max-w-7xl mx-auto px-6">
+          <div className="relative max-w-[1500px] mx-auto px-6">
             <nav className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/50 mb-8">
               <Link href="/" className="hover:text-white flex items-center gap-1.5 transition-colors">
                 <Home className="w-3 h-3" /> Home
@@ -173,7 +173,7 @@ export function CategoriesClient() {
           </div>
         </section>
 
-        <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16">
+        <div className="max-w-[1500px] mx-auto px-6 py-12 lg:py-16">
           <div className="flex flex-col lg:flex-row gap-12">
             
             {/* Sidebar */}

@@ -169,7 +169,7 @@ export default function ProductDetailPage() {
     <>
       <div className="min-h-screen bg-[#fcfdfe] pb-12">
         {/* --- Header Navigation --- */}
-        <div className="max-w-7xl mx-auto px-6 pt-16">
+        <div className="max-w-[1500px] mx-auto px-6 pt-16">
           <nav className="flex items-center gap-2 text-xs uppercase tracking-widest text-gray-400 mb-6">
             <Link href="/" className="hover:text-black flex items-center gap-1"><Home size={12}/> Home</Link>
             <ChevronRight size={12} />
@@ -184,7 +184,7 @@ export default function ProductDetailPage() {
           </button>
         </div>
 
-        <main className="max-w-7xl mx-auto px-6">
+        <main className="max-w-[1500px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
             {/* --- LEFT: Image Gallery --- */}

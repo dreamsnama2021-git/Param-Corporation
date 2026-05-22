@@ -132,7 +132,7 @@ export default function CaseStudiesPage() {
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-[var(--clr-secondary)] rounded-full blur-3xl" />
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 text-sm text-gray-400 mb-6">
               <Link href="/" className="hover:text-white flex items-center gap-1 transition-colors">
@@ -153,7 +153,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Case Studies Grid */}
-      <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 lg:space-y-32">
+      <section className="py-16 lg:py-24 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 space-y-24 lg:space-y-32">
         {caseStudies.map((study, index) => (
           <article 
             key={study.id}

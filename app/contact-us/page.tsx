@@ -43,7 +43,7 @@ export default function ContactUs() {
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#0093cb]/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#00a65d]/10 rounded-full blur-3xl" />
         
-        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 md:pb-12">
+        <div className="relative w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 pb-8 md:pb-12">
           <svg width="48" height="8" viewBox="0 0 48 8" fill="none" className="text-[#8bde7a] mb-4">
             <path d="M2 6C4 2 8 1 10 3C12 5 14 7 18 4C22 1 26 5 30 3C34 1 38 4 42 3C44 2 46 5 46 5" 
                   stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
@@ -77,7 +77,7 @@ export default function ContactUs() {
           <div className="absolute bottom-32 left-0 w-80 h-80 bg-[#00a65d]/5 rounded-full blur-3xl" />
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Centered Header Section */}
           <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">

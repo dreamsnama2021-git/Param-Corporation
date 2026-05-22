@@ -76,7 +76,7 @@ export default function GiftsByIndustry() {
     <section className="w-full bg-[var(--clr-bg-cream)] py-12 sm:py-16 lg:py-20">
 
       {/* ─── INTRO ───────────────── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 mb-12">
 
         <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-bold text-center 
         text-[var(--clr-text-dark)] mb-6">
@@ -101,7 +101,7 @@ export default function GiftsByIndustry() {
       </div>
 
       {/* ─── HEADER ───────────────── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="flex items-center justify-between mb-8">
 

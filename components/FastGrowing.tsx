@@ -117,7 +117,7 @@ const industries: Industry[] = [
 export default function IndustriesWeCater() {
   return (
     <section className="relative py-6 sm:py-8 md:py-10 lg:py-12 2xl:py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      <div className="max-w-[1550px] mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10 md:mb-12">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10 md:mb-12">
         {/* Header */}
         <div className="text-center">
           <motion.h2 
@@ -143,7 +143,7 @@ export default function IndustriesWeCater() {
       </div>
 
       {/* Grid Container - 6 Columns */}
-      <div className="max-w-[1550px] mx-auto px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 lg:gap-4">
           {industries.map((industry, index) => (
             <motion.div

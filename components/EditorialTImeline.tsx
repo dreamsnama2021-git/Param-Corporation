@@ -25,7 +25,7 @@ interface EditorialTimelineProps {
 
 export function EditorialTimeline({ items }: EditorialTimelineProps) {
   return (
-    <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
       {/* Central Path */}
       <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[1px] bg-[#0093cb] hidden md:block" />
 

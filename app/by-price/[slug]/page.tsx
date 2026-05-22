@@ -132,7 +132,7 @@ export default function PricePage() {
   return (
     <div className="min-h-screen bg-white font-sans">
       <section className="bg-[#1a1a1a] text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-2xl md:text-3xl font-bold mb-2">{priceRange.name}</h1>
           <div className="flex items-center gap-2 text-sm text-gray-400">
             <Link href="/" className="hover:text-white flex items-center gap-1">
@@ -144,7 +144,7 @@ export default function PricePage() {
         </div>
       </section>
 
-      <section className="py-12 max-w-7xl mx-auto px-4">
+      <section className="py-12 max-w-[1500px] mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product) => (
             <div key={product.id} className="group cursor-pointer">

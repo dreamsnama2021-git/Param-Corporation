@@ -336,7 +336,7 @@ export default async function CaseStudyDetailPage({
 
   return (
     <article className="min-h-screen w-full bg-[var(--clr-white)] text-[var(--clr-text-dark)]">
-      <div className="mx-auto max-w-[1550px] px-6 pb-8">
+      <div className="mx-auto max-w-[1500px] px-6 pb-8">
         
         {/* Hero Section */}
         <div className="pt-8 lg:pt-8">

@@ -32,7 +32,7 @@ const InstagramReels = () => {
 
   return (
     <section className="w-full py-10 sm:py-12 md:py-14 lg:py-16 bg-[var(--clr-white)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">

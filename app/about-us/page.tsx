@@ -182,7 +182,7 @@ const WhyUsSection = () => {
 
   return (
     <section className="py-8 sm:py-10 md:py-12 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-3 sm:space-y-4">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 space-y-3 sm:space-y-4">
         {/* Row 1: heading + 3 cards = 4 cols */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-4">
           <div className="flex flex-col justify-center">
@@ -316,7 +316,7 @@ const VisionSection = () => {
 
   return (
     <section className="py-8 sm:py-10 md:py-12 2xl:py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
         <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 text-[#0093cb]">
             Our Purpose
@@ -399,7 +399,7 @@ const TeamSection = () => {
 
   return (
     <section className="py-8 sm:py-10 md:py-12 2xl:py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
         <div className="mb-8 sm:mb-10 md:mb-12 text-center">
           <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-1.5 sm:mb-2">
             Our People
@@ -425,7 +425,7 @@ export default function AboutUsPage() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="py-6 sm:py-8 lg:pt-8 xl:pt-10 2xl:pt-12 relative overflow-hidden flex items-center">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center pt-12 sm:pt-16 lg:pt-20">
+        <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center pt-12 sm:pt-16 lg:pt-20">
           <div className="space-y-5 sm:space-y-6 lg:space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

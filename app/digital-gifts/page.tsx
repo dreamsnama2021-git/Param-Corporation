@@ -171,7 +171,7 @@ function buildGridItems(images: GalleryImage[]): GridItem[] {
 // ─── SECTION BADGE ───────────────────────────────────────────────────────────
 function SectionBadge({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold ${className}`}>
+    <span className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold ${className}`}>
       {children}
     </span>
   );
@@ -191,7 +191,7 @@ export default function DigitalServicesPage() {
 // ─── HERO BANNER ─────────────────────────────────────────────────────────────
 function HeroBanner() {
   return (
-    <section className="relative w-full h-[45vh] md:h-[55vh] lg:h-[65vh] overflow-hidden">
+    <section className="relative w-full h-[35vh] sm:h-[40vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] 2xl:h-[65vh] overflow-hidden">
       <Image
         src="/koru/koru.png"
         alt="Digital Products & Services"
@@ -200,15 +200,15 @@ function HeroBanner() {
         priority
       />
       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 lg:p-14">
-        <div className="max-w-7xl mx-auto">
+      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-14">
+        <div className="max-w-[1500px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <SectionBadge className="bg-white/10 backdrop-blur-md text-[#8bde7a] border border-white/20 mb-4">
-              <Sparkles size={16} />
+            <SectionBadge className="bg-white/10 backdrop-blur-md text-[#8bde7a] border border-white/20 mb-3 sm:mb-4">
+              <Sparkles size={14} className="sm:size-4" />
               Digital Transformation in Pharma
             </SectionBadge>
           </motion.div>
@@ -216,7 +216,7 @@ function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.1] mb-3 sm:mb-4"
           >
             Digital
             <span className="block text-[#8bde7a]">Services</span>
@@ -225,7 +225,7 @@ function HeroBanner() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-lg md:text-xl text-white/80 max-w-2xl"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 max-w-2xl"
           >
             Empowering pharmaceutical companies with cutting-edge digital solutions
             that enhance HCP engagement and deliver measurable healthcare outcomes.
@@ -239,33 +239,33 @@ function HeroBanner() {
 // ─── HYPERPERSONALIZED SERVICES SECTION ──────────────────────────────────────
 function HyperPersonalizedServices() {
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-b from-white to-slate-50">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-10 sm:py-12 md:py-14 lg:py-18 xl:py-20 2xl:py-24 bg-gradient-to-b from-white to-slate-50">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 md:mb-14 lg:mb-16"
         >
-          <SectionBadge className="bg-[#0093cb]/10 text-[#0093cb] border border-[#0093cb]/20 mb-4">
-            <Zap size={16} />
+          <SectionBadge className="bg-[#0093cb]/10 text-[#0093cb] border border-[#0093cb]/20 mb-3 sm:mb-4">
+            <Zap size={14} className="sm:size-4" />
             Tailored Solutions
           </SectionBadge>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-slate-900 mb-4 sm:mb-5 md:mb-6">
             Hyperpersonalized
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#0093cb] to-[#00a65d]">
               Services
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             We craft bespoke digital solutions that adapt to your unique pharmaceutical
             brand needs. Each service is meticulously personalized to drive engagement,
             compliance, and measurable outcomes.
           </p>
-          <div className="mt-6 w-24 h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full mx-auto" />
+          <div className="mt-5 sm:mt-6 w-20 sm:w-24 h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full mx-auto" />
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
           {serviceCategories.map((service, index) => (
             <FlipCard key={service.id} service={service} index={index} />
           ))}
@@ -286,7 +286,7 @@ function FlipCard({ service, index }: { service: ServiceCategory; index: number 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="relative h-[320px] perspective-1000"
+      className="relative h-[280px] sm:h-[300px] md:h-[310px] lg:h-[300px] xl:h-[320px] perspective-1000"
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
     >
@@ -298,33 +298,33 @@ function FlipCard({ service, index }: { service: ServiceCategory; index: number 
       >
         {/* Front Face */}
         <div
-          className="absolute inset-0 backface-hidden rounded-3xl border border-slate-200 bg-white shadow-lg flex flex-col items-center justify-center p-8 cursor-pointer group"
+          className="absolute inset-0 backface-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-lg flex flex-col items-center justify-center p-6 sm:p-8 cursor-pointer group"
           style={{ backfaceVisibility: 'hidden' }}
         >
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl sm:rounded-3xl"
             style={{
               background: 'radial-gradient(circle at center, rgba(0, 166, 93, 0.06) 0%, transparent 70%)',
             }}
           />
-          <div className="absolute top-4 left-4">
-            <span className="text-xs font-bold text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">
+          <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
+            <span className="text-[10px] sm:text-xs font-bold text-slate-400 bg-slate-100 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full">
               {service.number}
             </span>
           </div>
-          <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-500 relative z-10`}>
-            <Icon size={36} className="text-white" />
+          <div className={`w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-xl sm:rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-4 sm:mb-5 md:mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-500 relative z-10`}>
+            <Icon size={28} className="sm:size-8 md:size-9 text-white" />
           </div>
-          <h3 className="text-xl font-extrabold text-slate-900 text-center mb-3 group-hover:text-[#00a65d] transition-colors duration-300 relative z-10">
+          <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 text-center mb-2 sm:mb-3 group-hover:text-[#00a65d] transition-colors duration-300 relative z-10">
             {service.title}
           </h3>
-          <p className="text-sm text-slate-500 text-center leading-relaxed line-clamp-2 relative z-10">
+          <p className="text-xs sm:text-sm text-slate-500 text-center leading-relaxed line-clamp-2 relative z-10">
             {service.description.split('.')[0]}.
           </p>
-          <div className="absolute bottom-6 flex items-center gap-1.5 text-xs text-slate-400 group-hover:text-[#0093cb] transition-colors duration-300">
+          <div className="absolute bottom-4 sm:bottom-6 flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs text-slate-400 group-hover:text-[#0093cb] transition-colors duration-300">
             <span>Hover to explore</span>
             <motion.svg
               animate={{ rotate: isFlipped ? 180 : 0 }}
-              className="w-3 h-3"
+              className="w-2.5 h-2.5 sm:w-3 sm:h-3"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -336,25 +336,25 @@ function FlipCard({ service, index }: { service: ServiceCategory; index: number 
 
         {/* Back Face */}
         <div
-          className="absolute inset-0 backface-hidden rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-2xl flex flex-col items-center justify-center p-8"
+          className="absolute inset-0 backface-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-2xl flex flex-col items-center justify-center p-6 sm:p-8"
           style={{ 
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',
           }}
         >
-          <div className={`absolute inset-0 opacity-10 rounded-3xl bg-gradient-to-br ${service.gradient}`} />
-          <div className="absolute top-4 left-4">
-            <span className="text-xs font-bold text-[#8bde7a] bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
+          <div className={`absolute inset-0 opacity-10 rounded-2xl sm:rounded-3xl bg-gradient-to-br ${service.gradient}`} />
+          <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
+            <span className="text-[10px] sm:text-xs font-bold text-[#8bde7a] bg-white/10 backdrop-blur-sm px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full">
               {service.number}
             </span>
           </div>
-          <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-5 shadow-lg relative z-10`}>
-            <Icon size={28} className="text-white" />
+          <div className={`w-12 h-12 sm:w-13 sm:h-13 md:w-14 md:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-4 sm:mb-5 shadow-lg relative z-10`}>
+            <Icon size={24} className="sm:size-6 md:size-7 text-white" />
           </div>
-          <h3 className="text-lg font-extrabold text-white text-center mb-3 relative z-10">
+          <h3 className="text-base sm:text-lg font-extrabold text-white text-center mb-2 sm:mb-3 relative z-10">
             {service.title}
           </h3>
-          <p className="text-sm text-slate-300 text-center leading-relaxed relative z-10 mb-6">
+          <p className="text-xs sm:text-sm text-slate-300 text-center leading-relaxed relative z-10 mb-4 sm:mb-6">
             {service.description}
           </p>
           <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient}`} />
@@ -374,41 +374,41 @@ function CollageGallerySection() {
   const hasMoreImages = koruGalleryImages.length > INITIAL_COUNT;
 
   return (
-    <section className="py-16 lg:py-24" style={{ background: 'linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 50%, #f8faf8 100%)' }}>
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-10 sm:py-12 md:py-14 lg:py-18 xl:py-20 2xl:py-24" style={{ background: 'linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 50%, #f8faf8 100%)' }}>
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
         {/* Gallery Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-10 md:mb-12"
         >
-          <SectionBadge className="bg-[#00a65d]/10 text-[#00a65d] border border-[#00a65d]/20 mb-4">
-            <Eye size={16} />
+          <SectionBadge className="bg-[#00a65d]/10 text-[#00a65d] border border-[#00a65d]/20 mb-3 sm:mb-4">
+            <Eye size={14} className="sm:size-4" />
             Portfolio Showcase
           </SectionBadge>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 sm:mb-5 md:mb-6">
             Digital Input
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#00a65d] to-[#8bde7a]">
               Gallery
             </span>
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Explore our collection of digital service interfaces and solutions crafted for
             pharmaceutical companies. Each design is meticulously created to enhance
             user engagement and deliver impactful digital experiences.
           </p>
-          <div className="mt-6 w-24 h-1 bg-gradient-to-r from-[#00a65d] to-[#8bde7a] rounded-full mx-auto" />
+          <div className="mt-5 sm:mt-6 w-20 sm:w-24 h-1 bg-gradient-to-r from-[#00a65d] to-[#8bde7a] rounded-full mx-auto" />
         </motion.div>
 
         {/* Collage Grid */}
         <motion.div 
           layout
-          className="gap-4 2xl:gap-6"
+          className="gap-2 sm:gap-3 md:gap-4 2xl:gap-6"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
-            gridAutoRows: '160px',
+            gridAutoRows: '120px',
           }}
         >
           {gridItems.map((item, index) => (
@@ -454,7 +454,7 @@ function CollageGallerySection() {
 
               {/* Image number badge */}
               <div 
-                className="absolute top-2 left-2 z-20 text-xs font-bold px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute top-1.5 sm:top-2 left-1.5 sm:left-2 z-20 text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{ 
                   backgroundColor: '#060706',
                   color: '#ffffff'
@@ -472,12 +472,12 @@ function CollageGallerySection() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="mt-10 text-center"
+            className="mt-8 sm:mt-10 text-center"
           >
             {!showAll ? (
               <button
                 onClick={() => setShowAll(true)}
-                className="relative px-10 py-3.5 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg active:scale-95"
+                className="relative px-8 sm:px-10 py-3 sm:py-3.5 text-white font-semibold text-sm sm:text-base rounded-full transition-all duration-300 hover:shadow-lg active:scale-95"
                 style={{
                   backgroundColor: '#0093cb',
                   boxShadow: '0 4px 14px rgba(0,147,203,0.3)',
@@ -496,7 +496,7 @@ function CollageGallerySection() {
                 <span className="flex items-center gap-2">
                   See All ({koruGalleryImages.length - INITIAL_COUNT}+ more)
                   <svg 
-                    className="w-4 h-4" 
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -508,7 +508,7 @@ function CollageGallerySection() {
             ) : (
               <button
                 onClick={() => setShowAll(false)}
-                className="relative px-10 py-3.5 font-semibold rounded-full transition-all duration-300 hover:shadow-md active:scale-95"
+                className="relative px-8 sm:px-10 py-3 sm:py-3.5 font-semibold text-sm sm:text-base rounded-full transition-all duration-300 hover:shadow-md active:scale-95"
                 style={{
                   backgroundColor: '#f0fdf4',
                   color: '#00a65d',
@@ -528,7 +528,7 @@ function CollageGallerySection() {
                 <span className="flex items-center gap-2">
                   Show Less
                   <svg 
-                    className="w-4 h-4" 
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -540,12 +540,6 @@ function CollageGallerySection() {
             )}
           </motion.div>
         )}
-
-        {/* View All Portfolio Button */}
-      
-
-        {/* Brand Footer Accent */}
-      
       </div>
     </section>
   );

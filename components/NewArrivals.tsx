@@ -91,7 +91,7 @@ function PharmaSection() {
   return (
     <section className="py-16 bg-[var(--clr-bg-cream)]">
 
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
+      <div className="max-w-[1500px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
 
         {/* LEFT TITLE */}
         <div>

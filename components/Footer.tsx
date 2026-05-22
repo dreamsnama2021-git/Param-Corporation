@@ -35,7 +35,7 @@ const SocialIcon = ({
 export default function Footer() {
   return (
     <footer className="bg-[var(--clr-bg-dark-deep)] text-gray-300 pt-12 pb-6">
-      <div className="max-w-[1550px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* ─── MAIN GRID ───────────────── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-14 mb-10">
           {/* ABOUT / LOCATION */}

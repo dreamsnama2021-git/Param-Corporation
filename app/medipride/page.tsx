@@ -379,7 +379,7 @@ function SwipeCarousel({
       <div
         ref={trackRef}
         onScroll={handleScroll}
-        className="swipe-track flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory scroll-smooth"
+        className="swipe-track flex gap-3 sm:gap-4 overflow-x-auto pb-3 snap-x snap-mandatory scroll-smooth"
       >
         {React.Children.map(children, (child, index) => (
           <div
@@ -396,7 +396,7 @@ function SwipeCarousel({
 
       {count > 1 && (
         <div
-          className="flex justify-center gap-2 mt-4"
+          className="flex justify-center gap-1.5 sm:gap-2 mt-3 sm:mt-4"
           style={{
             animation: isVisible
               ? "slideUpFade 0.6s ease-out 0.3s forwards"
@@ -415,7 +415,7 @@ function SwipeCarousel({
               }}
               className={`rounded-full hover:scale-110 ${
                 i === activeIdx
-                  ? "w-6 h-2 dot-active"
+                  ? "w-5 sm:w-6 h-2 dot-active"
                   : "w-2 h-2 hover:bg-opacity-80"
               }`}
             />
@@ -429,19 +429,19 @@ function SwipeCarousel({
 // ─── Product card ─────────────────────────────────────────────────────────────
 function ProductCard({ item }: { item: ProductItem }) {
   return (
-    <div className="group p-3 sm:p-4 bg-white rounded-[24px] sm:rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(0,147,203,0.15)] transition-all duration-500 border border-slate-100 flex flex-col h-full">
-      <div className="relative h-48 sm:h-52 w-full rounded-[16px] sm:rounded-[20px] overflow-hidden mb-4 sm:mb-5">
+    <div className="group p-3 sm:p-4 bg-white rounded-[20px] sm:rounded-[24px] lg:rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(0,147,203,0.15)] transition-all duration-500 border border-slate-100 flex flex-col h-full">
+      <div className="relative h-44 sm:h-48 md:h-52 w-full rounded-[14px] sm:rounded-[16px] lg:rounded-[20px] overflow-hidden mb-3 sm:mb-4 md:mb-5">
         <img
           src={item.img}
           alt={item.title}
           className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
         />
-        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[9px] font-bold text-[#3972b7] uppercase">
+        <div className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-white/90 backdrop-blur-sm px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[8px] sm:text-[9px] font-bold text-[#3972b7] uppercase">
           MediPride
         </div>
       </div>
-      <div className="px-2 sm:px-3 pb-3 sm:pb-4 flex flex-col flex-grow">
-        <h4 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 leading-tight">
+      <div className="px-1.5 sm:px-2 md:px-3 pb-2 sm:pb-3 md:pb-4 flex flex-col flex-grow">
+        <h4 className="text-sm sm:text-base md:text-lg font-bold text-slate-900 mb-1 sm:mb-1.5 leading-tight">
           {item.title}
         </h4>
         <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
@@ -456,9 +456,9 @@ function ProductCard({ item }: { item: ProductItem }) {
 function LoadingFallback() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-12 h-12 border-4 border-[#0093cb] border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-slate-600 font-medium">Loading...</p>
+      <div className="flex flex-col items-center gap-3 sm:gap-4">
+        <div className="w-10 h-10 sm:w-12 sm:h-12 border-3 sm:border-4 border-[#0093cb] border-t-transparent rounded-full animate-spin"></div>
+        <p className="text-slate-600 text-sm sm:text-base font-medium">Loading...</p>
       </div>
     </div>
   );
@@ -482,7 +482,7 @@ function MediPrideContent() {
   return (
     <div className="text-slate-800 font-sans scroll-smooth bg-white">
       {/* ── HERO ── */}
-      <header className="relative h-[50vh] sm:h-[60vh] lg:h-[70vh] overflow-hidden">
+      <header className="relative h-[40vh] sm:h-[50vh] md:h-[55vh] lg:h-[60vh] xl:h-[70vh] overflow-hidden">
         <picture className="absolute inset-0 z-0">
           <source
             media="(min-width: 1024px)"
@@ -503,45 +503,45 @@ function MediPrideContent() {
       {/* ── ABOUT ── */}
       <section
         id="about"
-        className="relative py-16 sm:py-20 lg:py-24 overflow-hidden"
+        className="relative py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24 overflow-hidden"
       >
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-[#8bde7a]/10 rounded-full blur-3xl pointer-events-none z-0" />
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-56 sm:w-72 h-56 sm:h-72 bg-[#0093cb]/10 rounded-full blur-3xl pointer-events-none z-0" />
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 bg-[#8bde7a]/10 rounded-full blur-3xl pointer-events-none z-0" />
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-40 sm:w-56 md:w-72 h-40 sm:h-56 md:h-72 bg-[#0093cb]/10 rounded-full blur-3xl pointer-events-none z-0" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-24 items-center">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 xl:gap-24 items-center">
             <div className="lg:col-span-5 relative">
-              <div className="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl border-4 sm:border-8 border-white transform -rotate-1 sm:-rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div className="relative z-10 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-xl sm:shadow-2xl border-4 sm:border-6 lg:border-8 border-white transform -rotate-1 sm:-rotate-2 hover:rotate-0 transition-transform duration-500">
                 <img
                   src="https://medipride.org/wp-content/uploads/2025/10/medical-banner-with-stethoscope-1-768x768.jpg"
                   alt="About MediPride"
-                  className="w-full h-[280px] sm:h-[380px] lg:h-[500px] object-cover"
+                  className="w-full h-[250px] sm:h-[320px] md:h-[380px] lg:h-[420px] xl:h-[500px] object-cover"
                 />
               </div>
-              <div className="absolute -bottom-4 sm:-bottom-6 -right-2 sm:-right-6 bg-white p-4 sm:p-6 rounded-2xl shadow-xl z-20 flex flex-col items-center justify-center border-b-4 border-[#00a65d]">
-                <span className="text-xs sm:text-sm font-bold text-slate-400 uppercase tracking-widest">
+              <div className="absolute -bottom-3 sm:-bottom-4 md:-bottom-6 -right-1 sm:-right-2 md:-right-4 lg:-right-6 bg-white p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl z-20 flex flex-col items-center justify-center border-b-4 border-[#00a65d]">
+                <span className="text-[10px] sm:text-xs md:text-sm font-bold text-slate-400 uppercase tracking-widest">
                   Founded in
                 </span>
-                <span className="text-2xl sm:text-3xl font-black text-[#0093cb]">
+                <span className="text-xl sm:text-2xl md:text-3xl font-black text-[#0093cb]">
                   2022
                 </span>
               </div>
             </div>
 
-            <div className="lg:col-span-7 space-y-6 sm:space-y-8 mt-6 lg:mt-0">
+            <div className="lg:col-span-7 space-y-5 sm:space-y-6 md:space-y-8 mt-4 sm:mt-6 lg:mt-0">
               <div>
-                <span className="inline-block z-10 px-4 py-1.5 mb-3 sm:mb-4 text-xs sm:text-sm font-bold tracking-wider text-[#00a65d] uppercase bg-[#00a65d]/10 rounded-full">
+                <span className="inline-block z-10 px-3 sm:px-4 py-1 sm:py-1.5 mb-2 sm:mb-3 md:mb-4 text-xs sm:text-sm font-bold tracking-wider text-[#00a65d] uppercase bg-[#00a65d]/10 rounded-full">
                   About MediPride
                 </span>
-                <h2 className="text-3xl z-10 sm:text-4xl md:text-5xl font-black text-slate-900 leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl z-10 font-black text-slate-900 leading-tight">
                   Bridging the gap between <br className="hidden md:block" />
                   <span className="text-[#0093cb]">
                     Clinical Knowledge &amp; Real-World Understanding
                   </span>
                 </h2>
               </div>
-              <div className="space-y-4 sm:space-y-6">
-                <p className="text-lg sm:text-xl leading-relaxed text-slate-700 font-medium">
+              <div className="space-y-3 sm:space-y-4 md:space-y-6">
+                <p className="text-base sm:text-lg lg:text-base xl:text-lg 2xl:text-xl leading-relaxed text-slate-700 font-medium">
                   <span className="text-[#0093cb] font-bold">
                     MediPride Communications
                   </span>{" "}
@@ -549,26 +549,26 @@ function MediPrideContent() {
                   simplifying complex scientific information into meaningful,
                   easy-to-understand content.
                 </p>
-                <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+                <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed">
                   With a strong foundation in medical accuracy and creative
                   storytelling, MediPride helps brands connect effectively with
                   doctors, empower patients, and improve overall healthcare
                   communication.
                 </p>
               </div>
-              <div className="grid grid-cols-1 xs:grid-cols-2 gap-3 sm:gap-6 pt-2 sm:pt-4">
+              <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6 pt-1 sm:pt-2 md:pt-4">
                 {[
                   "Accurate",
                   "Visually engaging",
                   "Easy to understand",
                   "Result-driven",
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center space-x-3">
+                  <div key={i} className="flex items-center space-x-2 sm:space-x-3">
                     <CheckCircle
-                      size={18}
-                      className="text-[#00a65d] flex-shrink-0"
+                      size={16}
+                      className="sm:size-4 md:size-4.5 text-[#00a65d] flex-shrink-0"
                     />
-                    <span className="font-medium text-slate-700 text-sm sm:text-base">
+                    <span className="font-medium text-slate-700 text-xs sm:text-sm md:text-base">
                       {item}
                     </span>
                   </div>
@@ -580,30 +580,30 @@ function MediPrideContent() {
       </section>
 
       {/* why choose Us */}
-      <section className="py-20 lg:py-28 bg-[#f8fafc] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center mb-16 lg:mb-24">
+      <section className="py-14 sm:py-16 md:py-18 lg:py-22 xl:py-28 bg-[#f8fafc] overflow-hidden">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
+          <div className="flex flex-col lg:flex-row gap-10 sm:gap-12 lg:gap-16 xl:gap-20 items-center mb-12 sm:mb-14 md:mb-16 lg:mb-20 xl:mb-24">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7 }}
-              className="lg:w-1/2 space-y-6"
+              className="lg:w-1/2 space-y-4 sm:space-y-5 md:space-y-6"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#eef2f7] border border-gray-200 text-[#0b3c5d] text-sm font-bold tracking-widest uppercase shadow-sm">
-                <span className="relative flex h-2 w-2">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#eef2f7] border border-gray-200 text-[#0b3c5d] text-xs sm:text-sm font-bold tracking-widest uppercase shadow-sm">
+                <span className="relative flex h-1.5 sm:h-2 w-1.5 sm:w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0093cb] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0093cb]"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 sm:h-2 w-1.5 sm:w-2 bg-[#0093cb]"></span>
                 </span>
                 Our Advantage
               </div>
 
-              <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[#0f172a] leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-serif font-bold text-[#0f172a] leading-tight">
                 Why Choose <span className="text-[#0093cb]">MediPride?</span>
               </h2>
 
-              <div className="space-y-4">
-                <p className="text-lg text-[#6b7280] leading-relaxed">
+              <div className="space-y-3 sm:space-y-4">
+                <p className="text-base sm:text-lg text-[#6b7280] leading-relaxed">
                   At{" "}
                   <strong className="text-[#0f172a] font-semibold">
                     MediPride
@@ -611,7 +611,7 @@ function MediPrideContent() {
                   , we combine medical expertise with creative storytelling to
                   deliver communication that makes a measurable difference.
                 </p>
-                <p className="text-lg text-[#6b7280] leading-relaxed">
+                <p className="text-base sm:text-lg text-[#6b7280] leading-relaxed">
                   Our team ensures every message is accurate, visually
                   compelling, and tailored to its audience — whether for
                   patients, healthcare professionals, or global brands.
@@ -626,7 +626,7 @@ function MediPrideContent() {
               transition={{ duration: 0.7 }}
               className="lg:w-1/2 w-full relative"
             >
-              <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-[0_30px_60px_rgba(11,60,93,0.25)] border-8 border-white group">
+              <div className="relative aspect-[4/3] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-[0_20px_40px_rgba(11,60,93,0.25)] lg:shadow-[0_30px_60px_rgba(11,60,93,0.25)] border-4 sm:border-6 lg:border-8 border-white group">
                 <Image
                   src="https://i.pinimg.com/webp70/1200x/22/19/11/221911e521f752260dfa32c2665c7258.webp"
                   alt="Doctor consulting with a patient"
@@ -637,8 +637,8 @@ function MediPrideContent() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b3c5d]/40 to-transparent pointer-events-none"></div>
               </div>
 
-              <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-[#8bde7a] rounded-full blur-3xl opacity-30 -z-10"></div>
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-[#0093cb] rounded-full blur-3xl opacity-20 -z-10"></div>
+              <div className="absolute -bottom-5 -left-5 sm:-bottom-6 sm:-left-6 w-20 h-20 sm:w-24 sm:h-24 bg-[#8bde7a] rounded-full blur-3xl opacity-30 -z-10"></div>
+              <div className="absolute -top-5 -right-5 sm:-top-6 sm:-right-6 w-24 h-24 sm:w-28 md:w-32 md:h-32 bg-[#0093cb] rounded-full blur-3xl opacity-20 -z-10"></div>
             </motion.div>
           </div>
 
@@ -647,7 +647,7 @@ function MediPrideContent() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 xl:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-5 md:gap-6 xl:gap-8"
           >
             {features.map((feature) => {
               const Icon = feature.icon;
@@ -656,21 +656,21 @@ function MediPrideContent() {
                 <motion.div
                   key={feature.id}
                   variants={itemVariants}
-                  className={`group bg-white rounded-3xl p-8 transition-all duration-300 border border-gray-100 flex flex-col h-full hover:-translate-y-1.5 shadow-[0_10px_30px_rgba(15,143,191,0.05)] hover:shadow-[0_10px_30px_rgba(15,143,191,0.15)] relative overflow-hidden ${feature.colSpan}`}
+                  className={`group bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-7 lg:p-8 transition-all duration-300 border border-gray-100 flex flex-col h-full hover:-translate-y-1.5 shadow-[0_10px_30px_rgba(15,143,191,0.05)] hover:shadow-[0_10px_30px_rgba(15,143,191,0.15)] relative overflow-hidden ${feature.colSpan}`}
                 >
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                   <div
-                    className={`w-14 h-14 rounded-2xl ${feature.iconBg} ${feature.iconColor} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 ease-out`}
+                    className={`w-12 h-12 sm:w-13 sm:h-13 md:w-14 md:h-14 rounded-xl sm:rounded-2xl ${feature.iconBg} ${feature.iconColor} flex items-center justify-center mb-4 sm:mb-5 md:mb-6 group-hover:scale-110 transition-transform duration-500 ease-out`}
                   >
-                    <Icon className="w-7 h-7" strokeWidth={1.5} />
+                    <Icon className="w-6 h-6 sm:w-6.5 sm:h-6.5 md:w-7 md:h-7" strokeWidth={1.5} />
                   </div>
 
-                  <h3 className="text-xl font-bold text-[#0f172a] mb-3 leading-tight group-hover:text-[#0093cb] transition-colors">
+                  <h3 className="text-lg sm:text-xl font-bold text-[#0f172a] mb-2 sm:mb-3 leading-tight group-hover:text-[#0093cb] transition-colors">
                     {feature.title}
                   </h3>
 
-                  <p className="text-[#6b7280] leading-relaxed flex-grow text-base">
+                  <p className="text-[#6b7280] leading-relaxed flex-grow text-sm sm:text-base">
                     {feature.description}
                   </p>
                 </motion.div>
@@ -681,22 +681,22 @@ function MediPrideContent() {
       </section>
 
       {/* service */}
-      <section className="py-12 sm:py-16 bg-slate-50 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
+      <section className="py-10 sm:py-12 md:py-14 lg:py-16 bg-slate-50 overflow-hidden">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
           <div
-            className="text-center mb-8 sm:mb-12 lg:mb-16"
+            className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16"
             data-aos="fade-up"
             data-aos-duration="800"
           >
             <span
-              className="text-[#00a65d] font-bold uppercase tracking-widest text-xs sm:text-sm inline-block"
+              className="text-[#00a65d] font-bold uppercase tracking-widest text-[10px] sm:text-xs md:text-sm inline-block"
               data-aos="fade-down"
               data-aos-delay="100"
             >
               Core Offerings
             </span>
             <h2
-              className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mt-2"
+              className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mt-1.5 sm:mt-2"
               data-aos="fade-up"
               data-aos-delay="200"
             >
@@ -712,26 +712,26 @@ function MediPrideContent() {
             {SERVICES.map((service, index) => (
               <div
                 key={index}
-                className="snap-center flex-shrink-0 w-[82vw] sm:w-[46vw] bg-white rounded-3xl p-6 text-center shadow-sm border border-slate-100 card-hover-effect"
+                className="snap-center flex-shrink-0 w-[82vw] sm:w-[46vw] bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 text-center shadow-sm border border-slate-100 card-hover-effect"
               >
-                <div className="w-14 h-14 bg-[#0093cb]/10 rounded-2xl flex items-center justify-center text-[#0093cb] mx-auto mb-5 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#0093cb]/10 rounded-xl sm:rounded-2xl flex items-center justify-center text-[#0093cb] mx-auto mb-4 sm:mb-5 group-hover:scale-110 transition-transform duration-300">
                   {service.icon}
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-[#0093cb] transition-colors duration-300">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 sm:mb-2 group-hover:text-[#0093cb] transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-slate-500 leading-relaxed text-sm">
+                <p className="text-slate-500 leading-relaxed text-xs sm:text-sm">
                   {service.desc}
                 </p>
               </div>
             ))}
           </SwipeCarousel>
 
-          <div className="hidden lg:grid grid-cols-3 gap-8">
+          <div className="hidden lg:grid grid-cols-3 gap-6 lg:gap-8">
             {SERVICES.map((service, index) => (
               <div
                 key={index}
-                className="group relative bg-white rounded-3xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100"
+                className="group relative bg-white rounded-2xl xl:rounded-3xl p-6 xl:p-8 text-center shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100"
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
                 data-aos-duration="600"
@@ -740,15 +740,15 @@ function MediPrideContent() {
                   opacity: 0,
                 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0093cb]/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0093cb]/5 to-transparent rounded-2xl xl:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-16 h-16 bg-[#0093cb]/10 rounded-2xl flex items-center justify-center text-[#0093cb] mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <div className="w-14 h-14 xl:w-16 xl:h-16 bg-[#0093cb]/10 rounded-xl xl:rounded-2xl flex items-center justify-center text-[#0093cb] mx-auto mb-5 xl:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#0093cb] transition-colors duration-300">
+                  <h3 className="text-lg xl:text-xl font-bold text-slate-900 mb-2 xl:mb-3 group-hover:text-[#0093cb] transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-slate-500 leading-relaxed">
+                  <p className="text-slate-500 leading-relaxed text-sm xl:text-base">
                     {service.desc}
                   </p>
                 </div>

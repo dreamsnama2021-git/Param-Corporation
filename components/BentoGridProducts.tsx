@@ -139,7 +139,7 @@ const THERAPY_IMAGES: Record<string, string[]> = {
   ],
 };
 
-// Category-specific product images from Unsplash (now ProductCategory is defined)
+// ─── Rest of the component remains the same ───
 const CATEGORY_IMAGES: Record<ProductCategory, string[]> = {
   "BOOKS & MAGAZINES": [
     'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80',
@@ -183,7 +183,6 @@ const CATEGORY_IMAGES: Record<ProductCategory, string[]> = {
   ],
 };
 
-// ─── Helper to generate demo products ───
 const generateCategoryProducts = (therapyName: string, category: ProductCategory): Product[] => {
   const categoryDetails: Record<ProductCategory, { icon: string; titles: string[]; descBase: string }> = {
     "BOOKS & MAGAZINES": {
@@ -239,7 +238,6 @@ const generateCategoryProducts = (therapyName: string, category: ProductCategory
   }));
 };
 
-// ─── Generate all therapy data ───
 const generateFullTherapyData = (): Therapy[] => {
   const therapies = [
     { therapy: 'Diabetes', icon: '💉', color: '#3b82f6', bgColor: 'from-blue-500/20 to-blue-600/10', span: 2 },
@@ -272,7 +270,6 @@ const generateFullTherapyData = (): Therapy[] => {
 
 const THERAPY_DATA = generateFullTherapyData();
 
-// ─── Category Section Component ───
 function CategorySection({ category, products, therapyColor, therapyName }: { category: ProductCategory; products: Product[]; therapyColor: string; therapyName: string }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -323,7 +320,6 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
 
   const details = categoryDetails[category];
 
-  // Rest of CategorySection component remains the same...
   const checkScroll = () => {
     const container = scrollContainerRef.current;
     if (container) {
@@ -353,31 +349,31 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
   }, [products]);
 
   return (
-    <div className="mb-12 last:mb-0">
-      <div className="mb-4">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-3xl">{details.icon}</span>
-          <h3 className="text-xl font-bold" style={{ color: therapyColor }}>
+    <div className="mb-8 sm:mb-10 md:mb-12 last:mb-0">
+      <div className="mb-3 sm:mb-4">
+        <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
+          <span className="text-2xl sm:text-3xl">{details.icon}</span>
+          <h3 className="text-lg sm:text-xl font-bold" style={{ color: therapyColor }}>
             {details.title}
           </h3>
         </div>
-        <p className="text-sm text-neutral-600 leading-relaxed max-w-4xl">{details.description}</p>
+        <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-4xl">{details.description}</p>
       </div>
 
-      <div className="relative group mt-4">
+      <div className="relative group mt-3 sm:mt-4">
         {showLeftArrow && (
           <button onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-xl border flex items-center justify-center hover:scale-110 transition-all -ml-2 opacity-0 group-hover:opacity-100">
-            <ChevronLeft className="w-5 h-5" style={{ color: therapyColor }} />
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-xl border flex items-center justify-center hover:scale-110 transition-all -ml-1 sm:-ml-2 opacity-0 group-hover:opacity-100">
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: therapyColor }} />
           </button>
         )}
 
-        <div ref={scrollContainerRef} className="flex gap-5 overflow-x-auto pb-4"
+        <div ref={scrollContainerRef} className="flex gap-3 sm:gap-4 md:gap-5 overflow-x-auto pb-3 sm:pb-4"
           style={{ scrollbarWidth: 'thin', scrollbarColor: `${therapyColor} #e5e5e5` }}>
           {products.map((item, idx) => (
-            <div key={idx} className="flex-shrink-0 w-[280px] sm:w-[320px] bg-white  rounded-xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div key={idx} className="flex-shrink-0 w-[240px] sm:w-[280px] md:w-[300px] lg:w-[320px] bg-white rounded-lg sm:rounded-xl overflow-hidden hover:shadow-lg sm:hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="relative aspect-[4/3] overflow-hidden">
-                <Image src={item.img} alt={item.title} fill className="object-cover" sizes="320px" unoptimized />
+                <Image src={item.img} alt={item.title} fill className="object-cover" sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 320px" unoptimized />
               </div>
             </div>
           ))}
@@ -385,8 +381,8 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
 
         {showRightArrow && (
           <button onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-xl border flex items-center justify-center hover:scale-110 transition-all -mr-2 opacity-0 group-hover:opacity-100">
-            <ChevronRight className="w-5 h-5" style={{ color: therapyColor }} />
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-xl border flex items-center justify-center hover:scale-110 transition-all -mr-1 sm:-mr-2 opacity-0 group-hover:opacity-100">
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: therapyColor }} />
           </button>
         )}
       </div>
@@ -394,7 +390,6 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
   );
 }
 
-// ─── Modal Component with Portal ───
 function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) {
   const [isVisible, setIsVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -433,7 +428,7 @@ function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) 
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '1rem',
+        padding: '0.75rem',
         backgroundColor: isVisible ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0)',
         backdropFilter: isVisible ? 'blur(12px)' : 'none',
         transition: 'all 0.3s ease'
@@ -444,7 +439,7 @@ function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) 
         style={{
           position: 'relative',
           backgroundColor: 'white',
-          borderRadius: '1.5rem',
+          borderRadius: '1.25rem',
           width: '100%',
           maxWidth: '72rem',
           maxHeight: '90vh',
@@ -459,23 +454,23 @@ function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) 
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-5 sm:px-7 pt-5 pb-4 border-b bg-white flex-shrink-0">
-          <div className="flex items-start justify-between gap-3">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl sm:text-3xl">{therapy.icon}</span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900">
+        <div className="px-4 sm:px-5 md:px-7 pt-4 sm:pt-5 pb-3 sm:pb-4 border-b bg-white flex-shrink-0">
+          <div className="flex items-start justify-between gap-2 sm:gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="text-xl sm:text-2xl md:text-3xl">{therapy.icon}</span>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-900">
                 {therapy.therapy}
               </h2>
             </div>
             <button onClick={handleClose} 
-              className="w-9 h-9 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center transition-all">
-              <X className="w-4 h-4 text-neutral-600" />
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center transition-all">
+              <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-600" />
             </button>
           </div>
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-5 sm:p-7">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-5 md:p-7">
           {PRODUCT_CATEGORIES.map((category) => {
             const products = groupedItems[category];
             if (!products || products.length === 0) return null;
@@ -498,14 +493,13 @@ function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) 
   return createPortal(modalContent, document.body);
 }
 
-// ─── Collage Card Component ───
 function CollageCard({ therapy, onClick }: { therapy: Therapy; onClick: () => void }) {
   const therapyImages = THERAPY_IMAGES[therapy.therapy] || THERAPY_IMAGES['General Wellness'];
   const cardImage = therapyImages[0];
 
   return (
     <article
-      className={`group relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl h-full min-h-[200px] sm:min-h-[220px] lg:min-h-[240px] ${
+      className={`group relative rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl h-full min-h-[180px] sm:min-h-[200px] md:min-h-[220px] lg:min-h-[240px] ${
         therapy.span === 2 ? 'col-span-2' : 'col-span-1'
       }`}
       onClick={onClick}
@@ -522,22 +516,21 @@ function CollageCard({ therapy, onClick }: { therapy: Therapy; onClick: () => vo
         unoptimized
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
-      <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-between">
+      <div className="absolute inset-0 p-3 sm:p-4 md:p-5 flex flex-col justify-between">
         <div className="flex justify-end">
-          <div className="w-9 h-9 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110">
-            <ArrowUpRight className="w-4 h-4 text-white" />
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110">
+            <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
           </div>
         </div>
         <div>
-          <span className="text-2xl sm:text-3xl drop-shadow-lg block mb-2">{therapy.icon}</span>
-          <h3 className="text-white text-sm sm:text-base lg:text-lg font-bold leading-tight drop-shadow-lg">{therapy.therapy}</h3>
+          <span className="text-xl sm:text-2xl md:text-3xl drop-shadow-lg block mb-1.5 sm:mb-2">{therapy.icon}</span>
+          <h3 className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-bold leading-tight drop-shadow-lg">{therapy.therapy}</h3>
         </div>
       </div>
     </article>
   );
 }
 
-// ─── Therapy Slug Mapping ───
 const THERAPY_SLUG_MAP: Record<string, string> = {
   'cardiac-care': 'Cardio-Vascular',
   'diabetic-care': 'Diabetes',
@@ -556,7 +549,6 @@ const THERAPY_SLUG_MAP: Record<string, string> = {
   'oncology': 'Oncology',
 };
 
-// ─── Main Component ───
 export default function TherapyCollageGrid({ 
   initialSelectedTherapy 
 }: { 
@@ -578,14 +570,11 @@ export default function TherapyCollageGrid({
   }, []);
 
   useEffect(() => {
-    console.log('initialSelectedTherapy:', initialSelectedTherapy);
     if (initialSelectedTherapy) {
       const mappedName = THERAPY_SLUG_MAP[initialSelectedTherapy];
-      console.log('mappedName:', mappedName);
       const therapy = THERAPY_DATA.find(
         t => t.therapy === mappedName || createSlug(t.therapy) === initialSelectedTherapy
       );
-      console.log('found therapy:', therapy?.therapy);
       if (therapy) {
         setSelected(therapy);
       }
@@ -594,38 +583,38 @@ export default function TherapyCollageGrid({
 
   return (
     <>
-      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-br from-slate-50 via-white to-slate-50">
+      <section className="py-12 sm:py-16 md:py-18 lg:py-20 xl:py-24 px-4 sm:px-6 bg-gradient-to-br from-slate-50 via-white to-slate-50">
         <div className="relative max-w-[1600px] mx-auto">
-          <div className="text-left mb-12 lg:mb-16">
-            <div className={`flex items-center gap-3 mb-4 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <span className="w-12 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d]" />
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#0093cb]">Therapy Areas</span>
+          <div className="text-left mb-8 sm:mb-10 md:mb-12 lg:mb-14 xl:mb-16">
+            <div className={`flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <span className="w-10 sm:w-12 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d]" />
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-[#0093cb]">Therapy Areas</span>
             </div>
-            <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter text-[#0f172a] mb-4 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-[#0f172a] mb-3 sm:mb-4 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               Premium <span className="bg-gradient-to-r from-[#0093cb] to-[#00a65d] bg-clip-text text-transparent">Therapy Portfolio</span>
             </h1>
-            <p className={`text-neutral-600 max-w-2xl text-base sm:text-lg transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <p className={`text-neutral-600 max-w-2xl text-sm sm:text-base md:text-lg transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               Specialized medical education tools across 20+ therapeutic areas, featuring 8 product categories including Table Tops & Scientific Inputs.
             </p>
           </div>
 
           <div className={`transition-all duration-700 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Mobile: 2 columns */}
-            <div className="grid grid-cols-2 gap-3 sm:hidden">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:hidden">
               {THERAPY_DATA.map((therapy) => (
                 <CollageCard key={therapy.therapy} therapy={{...therapy, span: 1}} onClick={() => setSelected(therapy)} />
               ))}
             </div>
 
             {/* Tablet: 3 columns */}
-            <div className="hidden sm:grid lg:hidden grid-cols-3 gap-3 auto-rows-[200px]">
+            <div className="hidden sm:grid lg:hidden grid-cols-3 gap-2 sm:gap-3 auto-rows-[180px] sm:auto-rows-[200px]">
               {THERAPY_DATA.map((therapy) => (
                 <CollageCard key={therapy.therapy} therapy={therapy.span === 2 ? {...therapy, span: 2} : {...therapy, span: 1}} onClick={() => setSelected(therapy)} />
               ))}
             </div>
 
             {/* Desktop: 5 columns */}
-            <div className="hidden lg:grid grid-cols-5 gap-3 auto-rows-[240px]">
+            <div className="hidden lg:grid grid-cols-5 gap-2 sm:gap-3 auto-rows-[220px] xl:auto-rows-[240px]">
               {THERAPY_DATA.map((therapy) => (
                 <CollageCard key={therapy.therapy} therapy={therapy} onClick={() => setSelected(therapy)} />
               ))}

@@ -703,7 +703,7 @@ function CategoryPageContent() {
               <rect width="100%" height="100%" fill="url(#dots)" />
             </svg>
           </div>
-          <div className="relative max-w-[1550px] mx-auto px-6">
+          <div className="relative max-w-[1500px] mx-auto px-6">
             <nav className="flex items-center gap-2 text-xs uppercase tracking-wider text-white/60 mb-6">
               <Link href="/" className="hover:text-white flex items-center gap-1.5 transition-colors">
                 <Home className="w-3 h-3" /> Home
@@ -735,7 +735,7 @@ function CategoryPageContent() {
         </section>
 
         {/* Main Content with Sidebar */}
-        <div className="max-w-[1550px] mx-auto px-6 py-12 lg:py-16">
+        <div className="max-w-[1500px] mx-auto px-6 py-12 lg:py-16">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
             {/* ─── LEFT SIDEBAR ─── */}
             <aside className="lg:w-64 flex-shrink-0">

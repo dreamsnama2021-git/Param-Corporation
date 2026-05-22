@@ -264,7 +264,7 @@ export default function CreativeStatsSection(): React.ReactElement {
       <FloatingShape delay={2} color="#00a65d" className="w-56 sm:w-64 md:w-80 h-56 sm:h-64 md:h-80 top-1/2 right-0" />
       <FloatingShape delay={4} color="#8bde7a" className="w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 bottom-20 left-1/3" />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-12 md:mb-16 lg:mb-20">

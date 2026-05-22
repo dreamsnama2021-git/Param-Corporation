@@ -347,7 +347,7 @@ export default function  BentoGrid2() {
   return (
     <>
       <section className="relative py-12 lg:py-24 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+        <div className="max-w-[1500px] mx-auto px-4 lg:px-8">
           
           <div className="mb-10 lg:mb-16 relative">
             <span className="text-[#00a65d] text-xs font-black uppercase tracking-[0.4em] block mb-2">

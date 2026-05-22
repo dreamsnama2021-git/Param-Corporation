@@ -271,7 +271,7 @@ export default function KoruCommunications() {
 
       {/* ── ABOUT ── */}
       <section id="about" className="py-10 sm:py-12 md:py-14 lg:py-12 bg-[#f8fafc] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
           <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-10 md:gap-12 lg:gap-14 xl:gap-20 2xl:gap-24">
 
             {/* Image block */}
@@ -342,7 +342,7 @@ export default function KoruCommunications() {
           </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative">
 
           {/* Header */}
           <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16 relative">
@@ -434,7 +434,7 @@ export default function KoruCommunications() {
 
       {/* ── BENTO GRID ── */}
       <section className="py-8 sm:py-10 md:py-12 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-4 sm:mb-5 md:mb-6">
             <span className="text-[#00a65d] font-bold uppercase tracking-widest text-xs sm:text-sm inline-block mb-1.5 sm:mb-2">Visual Portfolio</span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">Our <span className="text-[#0093cb]">Gallery</span></h2>
