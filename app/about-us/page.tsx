@@ -18,6 +18,12 @@ import {
   Package,
   Headphones,
   ChevronRight,
+  Workflow,
+  Truck,
+  FlaskConical,
+  Network,
+  Wrench,
+  Lock,
 } from "lucide-react";
 import Image from "next/image";
 import {
@@ -151,7 +157,7 @@ const PageBanner = () => (
   <div className="relative w-full h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px] overflow-hidden">
     {/* Background image */}
     <Image
-      src="/banner/about.jpeg"
+      src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80"
       alt="About Us Banner"
       fill
       className="object-cover object-center"
@@ -160,7 +166,7 @@ const PageBanner = () => (
     />
 
     {/* Gradient overlay: dark at bottom/left for text legibility */}
-    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-black/5" />
+    <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
     {/* Content */}
@@ -182,13 +188,20 @@ const PageBanner = () => (
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-3xl sm:text-4xl md:text-4xl xl:text-5xl font-extrabold text-white leading-tight"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight"
       >
         About Us
       </motion.h1>
 
       {/* Subtitle */}
-    
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.35 }}
+        className="mt-2 sm:mt-3 text-white/75 text-sm sm:text-base md:text-lg max-w-xl"
+      >
+        Trusted pharma gifting partner since 2019 — creating meaningful doctor connections across India.
+      </motion.p>
 
       {/* Accent line */}
       <motion.div
@@ -205,15 +218,22 @@ const PageBanner = () => (
 // ─── WHY US SECTION ───────────────────────────────────────────────────────────
 const WhyUsSection = () => {
   const row1Cards = [
-    { title: "End to End Solutions", desc: "Specialized in pharmaceutical gifting with deep understanding of doctor preferences.", icon: Pill, color: "bg-amber-500" },
-    { title: "Pan-India Delivery", desc: "Seamless delivery across India ensuring your gifts reach clinics anywhere.", icon: Globe, color: "bg-blue-500" },
-    { title: "In-House Manufacturing & R&D", desc: "Consistent quality and reliable execution of annual gifting campaigns.", icon: Heart, color: "bg-rose-500" },
+    // Workflow = end-to-end process flow
+    { title: "End to End Solutions", desc: "Specialized in pharmaceutical gifting with deep understanding of doctor preferences.", icon: Workflow, color: "bg-amber-500" },
+    // Truck = delivery / logistics
+    { title: "Pan-India Delivery", desc: "Seamless delivery across India ensuring your gifts reach clinics anywhere.", icon: Truck, color: "bg-blue-500" },
+    // FlaskConical = manufacturing / R&D / lab
+    { title: "In-House Manufacturing & R&D", desc: "Consistent quality and reliable execution of annual gifting campaigns.", icon: FlaskConical, color: "bg-rose-500" },
   ];
   const row2Cards = [
-    { title: "Pharma Expertise", desc: "Gifts aligned with cardiac, diabetic, and pediatric therapy areas.", icon: Target, color: "bg-emerald-500" },
-    { title: "Strong Vendor Ecosystem & Sourcing", desc: "All gifts meet regulatory guidelines for pharmaceutical promotions.", icon: Shield, color: "bg-violet-500" },
-    { title: "After Sales Service", desc: "Personalized packaging and branding options for your medical reps.", icon: Package, color: "bg-orange-500" },
-    { title: "We Maintain Confidentiality", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Headphones, color: "bg-cyan-500" },
+    // Pill = pharma / medicine
+    { title: "Pharma Expertise", desc: "Gifts aligned with cardiac, diabetic, and pediatric therapy areas.", icon: Pill, color: "bg-emerald-500" },
+    // Network = vendor ecosystem / supply chain
+    { title: "Strong Vendor Ecosystem & Sourcing", desc: "All gifts meet regulatory guidelines for pharmaceutical promotions.", icon: Network, color: "bg-violet-500" },
+    // Wrench = after-sales / support / service
+    { title: "After Sales Service", desc: "Personalized packaging and branding options for your medical reps.", icon: Wrench, color: "bg-orange-500" },
+    // Lock = confidentiality / privacy
+    { title: "We Maintain Confidentiality", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Lock, color: "bg-cyan-500" },
   ];
 
   interface CardItem {

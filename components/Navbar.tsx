@@ -76,7 +76,19 @@ export default function Navbar() {
     };
   }, []);
 
-  if (!mounted) return <div className="h-16 md:h-20 bg-white/80" />;
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileOpen]);
+
+  if (!mounted) return <div className="h-14 bg-white" />;
 
   const mainNavItems = [
     { label: "About Us", href: "/about-us" },
@@ -142,171 +154,190 @@ export default function Navbar() {
   };
 
   return (
-    <div
-      className={`sticky top-0 left-0 right-0 z-40 transition-all duration-500 ease-in-out ${
-        visible ? "translate-y-0" : "-translate-y-full"
-      }`}
-    >
-      <nav
-        ref={navRef}
-        className={`w-full transition-all duration-300 ${
-          scrolled
-            ? "bg-white/70 backdrop-blur-lg shadow-lg"
-            : "bg-white/70 backdrop-blur-md"
+    <>
+      {/* Navbar */}
+      <div
+        className={`sticky top-0 left-0 right-0 z-40 transition-all duration-500 ease-in-out ${
+          visible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="px-4 md:px-6 max-w-[1500px] mx-auto">
-          <div className="flex items-center justify-between h-16 md:h-18">
-            {/* Logo */}
-            <Link href="/" className="flex items-center shrink-0">
-              <img
-                src="/banner/logo final for param .png"
-                alt="Param Logo"
-                className="h-14 md:h-20 lg:h-24 object-contain"
+        <nav
+          ref={navRef}
+          className={`w-full transition-all duration-300 ${
+            scrolled
+              ? "bg-white/70 backdrop-blur-lg shadow-lg"
+              : "bg-white/70 backdrop-blur-md"
+          } border-b border-gray-100`}
+        >
+          <div className="px-4 max-w-[1500px] mx-auto">
+            <div className="flex items-center justify-between h-14">
+              {/* Logo */}
+              <Link href="/" className="flex items-center shrink-0">
+                <img
+                  src="/banner/logo final for param .png"
+                  alt="Param Logo"
+                  className="h-10 object-contain"
+                />
+              </Link>
+
+              {/* Desktop Menu */}
+              <ul className="hidden lg:flex items-center gap-1">
+                <li
+                  className="relative mega-menu-container"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <button
+                    onClick={handleProductsClick}
+                    className="flex items-center gap-1 px-3 py-1.5 text-sm font-semibold text-gray-700 hover:text-[var(--clr-primary)] transition"
+                  >
+                    Products
+                    <ChevronDown className="w-3.5 h-3.5 transition" />
+                  </button>
+                </li>
+
+                {mainNavItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className={`px-3 py-1.5 text-sm font-semibold rounded-full transition ${
+                      item.isButton
+                        ? "bg-[var(--clr-primary)] text-white hover:bg-[var(--clr-secondary)]"
+                        : "text-gray-700 hover:text-[var(--clr-primary)]"
+                    }`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </ul>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setMobileOpen(true)}
+                className="lg:hidden p-2 text-gray-700 bg-white rounded-lg shadow-sm border border-gray-200"
+                aria-label="Open menu"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      {mobileOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-50 lg:hidden"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
+      {/* Mobile Menu Drawer */}
+      <div
+        className={`fixed top-0 right-0 bottom-0 w-[85%] max-w-[320px] bg-white shadow-2xl z-50 transition-transform duration-300 ease-in-out lg:hidden ${
+          mobileOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 border-b border-gray-200">
+          <img
+            src="/banner/logo final for param .png"
+            alt="Logo"
+            className="h-8 object-contain"
+          />
+          <button
+            onClick={() => setMobileOpen(false)}
+            className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto h-[calc(100%-60px)] pb-20">
+          <div className="p-4 space-y-4">
+            {/* Search */}
+            <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
+              <Search className="w-4 h-4 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search products..."
+                className="bg-transparent outline-none text-sm flex-1"
               />
+            </div>
+
+            {/* All Products Link */}
+            <Link
+              href="/categories/all?tab=all"
+              className="block px-3 py-2 text-sm font-bold text-center text-[var(--clr-primary)] border border-[var(--clr-primary)]/20 bg-[var(--clr-primary)]/5 rounded-lg"
+              onClick={() => setMobileOpen(false)}
+            >
+              View All Products →
             </Link>
 
-            {/* Desktop Menu */}
-            <ul className="hidden lg:flex items-center gap-1 xl:gap-2">
-              {/* Products with Mega Menu */}
-              <li
-                className="relative mega-menu-container"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
+            {/* Divider */}
+            <div className="pt-2">
+              <p className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                Product Collections
+              </p>
+            </div>
+
+            {/* Menu Sections */}
+            {megaMenuColumns.map((column) => (
+              <div key={column.tabId} className="border-b border-gray-100 pb-2">
                 <button
-                  onClick={handleProductsClick}
-                  className="flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base font-semibold text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] transition cursor-pointer whitespace-nowrap"
+                  onClick={() => toggleMobileSubMenu(column.tabId)}
+                  className="flex items-center justify-between w-full py-2 text-sm font-semibold text-gray-700"
                 >
-                  Products
+                  <span className="flex items-center gap-2">
+                    <div
+                      className="w-2 h-2 rounded-full"
+                      style={{ backgroundColor: column.color }}
+                    />
+                    {column.title}
+                  </span>
                   <ChevronDown
-                    className={`w-4 h-4 transition ${
-                      activeDropdown === "products" ? "rotate-180" : ""
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      mobileSubMenu === column.tabId ? "rotate-180" : ""
                     }`}
                   />
                 </button>
-              </li>
 
-              {mainNavItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className={`block px-3 xl:px-4 py-1 text-sm xl:text-base font-bold rounded-full transition-all duration-300 whitespace-nowrap ${
-                    item.isButton
-                      ? "bg-[var(--clr-primary)] text-white text-center hover:bg-[var(--clr-secondary)] hover:shadow-lg hover:shadow-[var(--clr-primary)]/30 hover:-translate-y-0.5"
-                      : "text-gray-800 hover:bg-white/80 hover:text-[var(--clr-primary)]"
-                  }`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </ul>
-
-            {/* Mobile Toggle */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-[var(--clr-text-dark)]"
-            >
-              {mobileOpen ? <X /> : <Menu />}
-            </button>
-          </div>
-        </div>
-
-        {/* MOBILE MENU */}
-        {mobileOpen && (
-          <div className="lg:hidden border-t border-gray-200 bg-white/98 backdrop-blur-xl max-h-[85vh] overflow-y-auto">
-            <div className="px-4 md:px-6 max-w-[1500px] mx-auto space-y-2 pb-6">
-              {/* Search */}
-              <div className="flex items-center gap-2 bg-gray-100 rounded-xl px-4 py-3 mb-4">
-                <Search className="w-4 h-4 text-gray-400" />
-                <input
-                  placeholder="Search products..."
-                  className="bg-transparent outline-none text-sm flex-1"
-                />
-              </div>
-
-              {/* All Products Link */}
-              <Link
-                href="/categories/all?tab=all"
-                className="block px-4 py-3.5 text-sm font-bold text-[var(--clr-primary)] hover:bg-gray-50 rounded-xl border border-[var(--clr-primary)]/20 bg-[var(--clr-primary)]/5"
-                onClick={() => setMobileOpen(false)}
-              >
-                View All Products →
-              </Link>
-
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 px-2 mb-1 mt-4">
-                Product Collections
-              </p>
-
-              {/* Mobile Accordion Sections */}
-              {megaMenuColumns.map((column) => (
-                <div key={column.tabId} className="border-b border-gray-100 last:border-0">
-                  <button
-                    onClick={() => toggleMobileSubMenu(column.tabId)}
-                    className="flex items-center justify-between w-full px-4 py-4 text-sm font-semibold text-gray-700 hover:bg-gray-50 rounded-xl transition-all"
-                  >
-                    <span className="flex items-center gap-3">
-                      <div
-                        className="w-1.5 h-1.5 rounded-full"
-                        style={{ backgroundColor: column.color }}
-                      />
-                      {column.title}
-                    </span>
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-300 ${
-                        mobileSubMenu === column.tabId ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-
-                  {/* Collapsible Content */}
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      mobileSubMenu === column.tabId
-                        ? "max-h-[500px] opacity-100 mb-2"
-                        : "max-h-0 opacity-0"
-                    }`}
-                  >
-                    <div className="grid grid-cols-1 gap-1 px-4 pb-2">
-                      {column.data?.map((item: any) =>
-                        column.tabId === "therapy" ? (
-                          <Link
-                            key={item.slug}
-                            href={`/medipride?therapy=${item.slug}`}
-                            onClick={() => setMobileOpen(false)}
-                            className="flex items-center justify-between px-6 py-2.5 text-sm text-gray-600 hover:text-[var(--clr-primary)] active:bg-gray-100 rounded-lg"
-                          >
-                            {item.name}
-                            <ChevronRight className="w-3 h-3 opacity-30" />
-                          </Link>
-                        ) : (
-                          <Link
-                            key={item.slug}
-                            href={`/categories/all?tab=${column.tabId}#category-${item.slug}`}
-                            onClick={() => setMobileOpen(false)}
-                            className="flex items-center justify-between px-6 py-2.5 text-sm text-gray-600 hover:text-[var(--clr-primary)] active:bg-gray-100 rounded-lg"
-                          >
-                            {item.name}
-                            <ChevronRight className="w-3 h-3 opacity-30" />
-                          </Link>
-                        )
-                      )}
-                    </div>
+                {mobileSubMenu === column.tabId && (
+                  <div className="ml-4 mt-1 space-y-1">
+                    {column.data?.slice(0, 8).map((item: any) => (
+                      <Link
+                        key={item.slug}
+                        href={
+                          column.tabId === "therapy"
+                            ? `/medipride?therapy=${item.slug}`
+                            : `/categories/all?tab=${column.tabId}#category-${item.slug}`
+                        }
+                        onClick={() => setMobileOpen(false)}
+                        className="flex items-center justify-between px-3 py-2 text-sm text-gray-600 hover:text-[var(--clr-primary)] rounded-lg"
+                      >
+                        {item.name}
+                        <ChevronRight className="w-3.5 h-3.5 opacity-40" />
+                      </Link>
+                    ))}
                   </div>
-                </div>
-              ))}
+                )}
+              </div>
+            ))}
 
-              <div className="h-px bg-gray-200 my-4" />
+            <div className="h-px bg-gray-200 my-2" />
 
+            {/* Main Nav Items */}
+            <div className="space-y-2">
               {mainNavItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`block px-5 py-3 text-sm font-bold rounded-full transition-all duration-300 ${
+                  className={`block px-3 py-2 text-sm font-semibold rounded-lg ${
                     item.isButton
-                      ? "bg-[var(--clr-primary)] text-white text-center hover:bg-[var(--clr-secondary)] hover:shadow-lg hover:shadow-[var(--clr-primary)]/30 hover:-translate-y-0.5"
-                      : "text-gray-800 hover:bg-gray-50 hover:text-[var(--clr-primary)]"
+                      ? "bg-[var(--clr-primary)] text-white text-center"
+                      : "text-gray-700 hover:bg-gray-50"
                   }`}
                   onClick={() => setMobileOpen(false)}
                 >
@@ -315,37 +346,35 @@ export default function Navbar() {
               ))}
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      </div>
 
-      {/* ─── MEGA MENU DROPDOWN (fixed, full-width, outside nav) ─── */}
+      {/* Mega Menu Dropdown */}
       {activeDropdown === "products" && (
         <div
-          className="mega-menu-dropdown fixed left-0 right-0 z-50 px-4 md:px-8 xl:px-16"
+          className="fixed left-0 right-0 z-40 bg-white shadow-xl border-t border-gray-200"
           style={{ top: `${navHeight}px` }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="max-w-[1500px] mx-auto bg-white/98 backdrop-blur-xl shadow-2xl border border-t-0 border-gray-200 rounded-b-2xl px-4 md:px-6 py-4 xl:py-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 xl:gap-6">
+          <div className="max-w-[1500px] mx-auto px-4 py-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {megaMenuColumns.map((column, idx) => (
                 <div key={idx}>
-                  <div className="flex items-center gap-2 mb-2 border-b pb-2">
+                  <h3 className="font-bold text-xs uppercase text-gray-700 mb-2 flex items-center gap-2">
                     <div
-                      className="w-2 h-2 rounded-full shrink-0"
+                      className="w-2 h-2 rounded-full"
                       style={{ backgroundColor: column.color }}
                     />
-                    <h3 className="font-bold text-[11px] xl:text-xs uppercase text-[var(--clr-text-dark)] tracking-wide">
-                      {column.title}
-                    </h3>
-                  </div>
+                    {column.title}
+                  </h3>
                   <ul className="space-y-1">
-                    {column.data?.slice(0, 12).map((item: any) => (
+                    {column.data?.slice(0, 10).map((item: any) => (
                       <li key={item.slug}>
                         {column.tabId === "therapy" ? (
                           <Link
                             href={`/medipride?therapy=${item.slug}`}
-                            className="text-[11px] xl:text-[12px] text-gray-600 hover:text-[var(--clr-primary)] transition-all block truncate"
+                            className="text-xs text-gray-600 hover:text-[var(--clr-primary)] block"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {item.name}
@@ -354,7 +383,7 @@ export default function Navbar() {
                           <a
                             href={`/categories/all?tab=${column.tabId}#category-${item.slug}`}
                             onClick={(e) => handleCategoryClick(e, column.tabId, item.slug)}
-                            className="text-[11px] xl:text-[12px] text-gray-600 hover:text-[var(--clr-primary)] transition-all block truncate"
+                            className="text-xs text-gray-600 hover:text-[var(--clr-primary)] block"
                           >
                             {item.name}
                           </a>
@@ -368,6 +397,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

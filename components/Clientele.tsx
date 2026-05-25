@@ -133,7 +133,7 @@ const ClientSection = () => {
           }
         }
         .animate-scroll {
-          animation: scroll 20s linear infinite;
+          animation: scroll 30s linear infinite;
           width: max-content;
         }
       `}</style>
