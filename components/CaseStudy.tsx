@@ -107,7 +107,7 @@ function CaseStudiesSection() {
             Real results for growing brands
           </h2>
 
-          <p className="text-xs sm:text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
+          <p className="text-xs sm:text-sm xl:text-[16px] leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
             Explore how companies increased client retention, boosted employee
             engagement, and strengthened brand loyalty through thoughtfully
             curated gifting campaigns.
@@ -243,7 +243,7 @@ function CaseStudiesGrid() {
             Real results for <span className="text-[#0093cb]">growing brands</span>
           </h2>
 
-          <p className="text-xs lg:text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
+          <p className="text-xs lg:text-sm xl:text-[16px] leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
             Explore how companies increased client retention, boosted employee
             engagement, and strengthened brand loyalty through thoughtfully
             curated gifting campaigns.

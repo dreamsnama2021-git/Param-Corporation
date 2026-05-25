@@ -19,8 +19,8 @@ const testimonials = [
   {
     quote:
       "Working with Param Corporation was a fantastic experience. They turned my concept into a practical solution, completing the Fluvir Dosage Scale with precision and dedication.",
-    logo:"https://paramcorp.in/wp-content/uploads/2025/01/HETERO_HEALTHCARE-1-e1737096475593.png",
-      name: "Samriddhi Pednekar",
+    logo: "https://paramcorp.in/wp-content/uploads/2025/01/HETERO_HEALTHCARE-1-e1737096475593.png",
+    name: "Samriddhi Pednekar",
     role: "Product Management",
     company: "Hetero Healthcare",
     stat: "Concept to Reality",
@@ -63,36 +63,13 @@ const testimonials = [
   {
     quote:
       "The quality and attention to detail exceeded our expectations. The team delivered exceptional results within our timeline and budget constraints.",
-    logo:"https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0012-scaled.jpg",
-      name: "Priya Sharma",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0012-scaled.jpg",
+    name: "Priya Sharma",
     role: "HR Director",
     company: "Cipla Ltd",
     stat: "Exceptional Quality",
     initials: "PS",
     avatarColor: "blue",
-  },
-  
-  {
-    quote:
-      "Working with Param Corporation was a fantastic experience. They turned my concept into a practical solution, completing the Fluvir Dosage Scale with precision and dedication.",
-  logo:"https://paramcorp.in/wp-content/uploads/2025/01/HETERO_HEALTHCARE-1-e1737096475593.png",
-      name: "Samriddhi Pednekar",
-    role: "Product Management",
-    company: "Hetero Healthcare",
-    stat: "Concept to Reality",
-    initials: "SP",
-    avatarColor: "indigo",
-  },
-  {
-    quote:
-      "Their innovative solutions, prompt responses, and seamless communication stood out. Their creativity and professionalism ensured results aligned perfectly with client needs.",
-    logo: "https://paramcorp.in/wp-content/uploads/2025/01/Untitled-design.png",
-    name: "Divya Kumar",
-    role: "Marketing Head",
-    company: "Torrent Pharma",
-    stat: "Prompt & Creative",
-    initials: "DK",
-    avatarColor: "teal",
   },
 ];
 
@@ -124,21 +101,21 @@ const TestimonialCards = () => {
   };
 
   return (
-    <section className="py-6 sm:py-8 md:py-10 bg-white">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-6 sm:py-8 md:py-10 lg:py-12 bg-white">
+      <div className="max-w-[1500px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="text-center mb-8 sm:mb-10 md:mb-12"
+          className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12"
         >
-          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#639922]">
-            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#639922]" />
+          <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#639922]">
+            <span className="inline-block w-3 sm:w-4 md:w-5 h-[1.5px] bg-[#639922]" />
             Client testimonials
-            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#639922]" />
+            <span className="inline-block w-3 sm:w-4 md:w-5 h-[1.5px] bg-[#639922]" />
           </p>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-2 sm:mb-3 text-[var(--clr-text-dark)]">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight mb-2 sm:mb-3 text-[var(--clr-text-dark)]">
             Trusted by{" "}
             <span
               style={{
@@ -151,7 +128,7 @@ const TestimonialCards = () => {
             </span>{" "}
             enterprises
           </h2>
-          <p className="text-xs sm:text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
+          <p className="text-[11px] sm:text-xs md:text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
             Procurement leaders and HR directors rely on us to deliver curated
             gifting — at scale, without compromise.
           </p>
@@ -160,17 +137,17 @@ const TestimonialCards = () => {
         {/* Testimonials Grid - Container stays fixed */}
         <div className="relative">
           <div
-            className="grid md:grid-cols-3 overflow-hidden rounded-xl sm:rounded-2xl"
+            className="grid md:grid-cols-3 overflow-hidden rounded-lg sm:rounded-xl"
             style={{
-              gap: "1.5px",
+              gap: "1px",
               background: "rgba(0,147,203,0.12)",
-              border: "1.5px solid rgba(0,147,203,0.12)",
+              border: "1px solid rgba(0,147,203,0.12)",
             }}
           >
             {getCurrentTestimonials().map((t, i) => (
               <div
                 key={`card-${i}`}
-                className="group relative flex flex-col gap-3 sm:gap-4 p-5 sm:p-6 md:p-8 overflow-hidden cursor-default transition-colors duration-200 bg-white hover:bg-[#f0f9ff]"
+                className="group relative flex flex-col gap-2 sm:gap-3 p-4 sm:p-5 md:p-6 overflow-hidden cursor-default transition-colors duration-200 bg-white hover:bg-[#f0f9ff]"
               >
                 <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--clr-primary)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 
@@ -182,10 +159,10 @@ const TestimonialCards = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3, delay: i * 0.1 }}
-                    className="flex flex-col gap-3 sm:gap-4 flex-1"
+                    className="flex flex-col gap-2 sm:gap-3 flex-1"
                   >
                     {t.logo && (
-                      <div className="w-20 sm:w-22 md:w-24 h-10 sm:h-12 md:h-14 p-1.5 sm:p-2 flex items-center justify-center shrink-0">
+                      <div className="w-14 sm:w-16 md:w-20 h-7 sm:h-8 md:h-10 p-1 sm:p-1.5 flex items-center justify-center shrink-0">
                         <img
                           src={t.logo}
                           alt={`${t.company} logo`}
@@ -193,20 +170,20 @@ const TestimonialCards = () => {
                         />
                       </div>
                     )}
-                    <span className="text-4xl sm:text-5xl font-black leading-none select-none text-[var(--clr-primary)] opacity-15">
+                    <span className="text-3xl sm:text-4xl font-black leading-none select-none text-[var(--clr-primary)] opacity-15">
                       "
                     </span>
-                    <p className="text-xs sm:text-sm md:text-[14px] leading-[1.6] sm:leading-[1.75] flex-1 text-[#334155]">
+                    <p className="text-[11px] sm:text-xs md:text-[13px] leading-[1.5] sm:leading-[1.6] flex-1 text-[#334155] line-clamp-4">
                       {t.quote}
                     </p>
-                    <div className="flex flex-col gap-0.5 pt-3 sm:pt-4 border-t border-[rgba(0,147,203,0.12)]">
-                      <p className="text-xs sm:text-sm md:text-[14px] font-bold text-[var(--clr-text-dark)]">
+                    <div className="flex flex-col gap-0.5 pt-2 sm:pt-3 border-t border-[rgba(0,147,203,0.12)]">
+                      <p className="text-xs sm:text-sm font-bold text-[var(--clr-text-dark)]">
                         {t.name}
                       </p>
-                      <p className="text-[10px] sm:text-[12px] text-[var(--clr-text-muted)]">
+                      <p className="text-[9px] sm:text-[11px] text-[var(--clr-text-muted)]">
                         {t.role}
                       </p>
-                      <p className="text-[9px] sm:text-[11px] font-semibold mt-0.5 text-[var(--clr-primary)]">
+                      <p className="text-[8px] sm:text-[10px] font-semibold mt-0.5 text-[var(--clr-primary)]">
                         {t.company}
                       </p>
                     </div>
@@ -218,24 +195,24 @@ const TestimonialCards = () => {
 
           {/* Navigation - Bottom Right */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-end gap-2 sm:gap-3 mt-4 sm:mt-6">
+            <div className="flex items-center justify-end gap-1.5 sm:gap-2 mt-3 sm:mt-4">
               <button
                 onClick={prevPage}
-                className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border-2 border-gray-200 
+                className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full border border-gray-200 
                   flex items-center justify-center hover:border-[var(--clr-primary)] 
                   hover:bg-[var(--clr-primary)] hover:text-white transition-all duration-300 group"
                 aria-label="Previous testimonials"
               >
-                <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
+                <ChevronLeft className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:scale-110 transition-transform" />
               </button>
               <button
                 onClick={nextPage}
-                className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border-2 border-gray-200 
+                className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full border border-gray-200 
                   flex items-center justify-center hover:border-[var(--clr-primary)] 
                   hover:bg-[var(--clr-primary)] hover:text-white transition-all duration-300 group"
                 aria-label="Next testimonials"
               >
-                <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
+                <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:scale-110 transition-transform" />
               </button>
             </div>
           )}
@@ -277,25 +254,25 @@ export const TestimonialCardsVariant = () => {
   };
 
   return (
-    <section className="py-10 sm:py-12 md:py-14 lg:py-16">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-8 sm:py-10 md:py-12 lg:py-14 xl:py-16 bg-white">
+      <div className="max-w-[1500px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="text-center mb-8 sm:mb-10 md:mb-12"
+          className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12"
         >
-          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#639922]">
-            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+          <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#639922]">
+            <span className="inline-block w-3 sm:w-4 md:w-5 h-[1.5px] bg-[#0093cb]" />
             Client testimonials
-            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+            <span className="inline-block w-3 sm:w-4 md:w-5 h-[1.5px] bg-[#0093cb]" />
           </p>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-[var(--clr-text-dark)]">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-[var(--clr-text-dark)]">
             Trusted by <span className="text-[#0093cb]">India's largest</span>{" "}
             enterprises
           </h2>
-          <p className="text-xs sm:text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
+          <p className="text-[11px] sm:text-xs md:text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
             Procurement leaders and HR directors rely on us to deliver curated
             gifting — at scale, without compromise
           </p>
@@ -304,25 +281,25 @@ export const TestimonialCardsVariant = () => {
         {/* Grid - Container stays fixed */}
         <div className="relative">
           <div
-            className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-xl sm:rounded-2xl"
+            className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-lg sm:rounded-xl"
             style={{
-              gap: "1.5px",
+              gap: "1px",
               background: "rgba(99,153,34,0.12)",
-              border: "1.5px solid rgba(99,153,34,0.12)",
+              border: "1px solid rgba(99,153,34,0.12)",
             }}
           >
             {getCurrentTestimonials().map((t, i) => {
-              if (!t) return <div key={`empty-${i}`} className="bg-white p-6 sm:p-8 md:p-10" />;
+              if (!t) return <div key={`empty-${i}`} className="bg-white p-4 sm:p-5 md:p-6" />;
               
               const isSecondRow = i >= 2;
               
               return (
                 <div
                   key={`card-${i}`}
-                  className="group relative bg-white hover:bg-[#e9f3e8] transition-colors duration-300 flex flex-col p-6 sm:p-8 md:p-10"
+                  className="group relative bg-white hover:bg-[#e9f3e8] transition-colors duration-300 flex flex-col p-4 sm:p-5 md:p-6 lg:p-8"
                 >
                   <span
-                    className="absolute top-0 left-0 right-0 h-[3px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+                    className="absolute top-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
                     style={{ background: "#639922" }}
                   />
 
@@ -340,7 +317,7 @@ export const TestimonialCardsVariant = () => {
                       className="flex flex-col flex-1"
                     >
                       {t.logo && (
-                        <div className="w-20 sm:w-22 md:w-24 h-10 sm:h-12 md:h-14 p-1.5 sm:p-2 flex items-center justify-center mb-2 shrink-0">
+                        <div className="w-14 sm:w-16 md:w-20 h-7 sm:h-8 md:h-10 p-1 sm:p-1.5 flex items-center justify-center mb-2 shrink-0">
                           <img
                             src={t.logo}
                             alt={`${t.company} logo`}
@@ -350,40 +327,39 @@ export const TestimonialCardsVariant = () => {
                       )}
 
                       <span
-                        className="text-3xl sm:text-4xl md:text-[44px] leading-none select-none font-serif mb-1 sm:mb-2"
+                        className="text-2xl sm:text-3xl md:text-4xl leading-none select-none font-serif mb-1 sm:mb-2"
                         style={{ color: "#639922", opacity: 0.2 }}
                       >
                         "
                       </span>
 
                       <p
-                        className="flex-1 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base"
+                        className="flex-1 leading-relaxed mb-4 sm:mb-5 md:mb-6 text-[11px] sm:text-xs md:text-sm"
                         style={{
                           fontFamily: "Georgia, 'Times New Roman', serif",
-                          fontSize: "16px",
                           color: "var(--clr-text-dark)",
-                          lineHeight: 1.7,
+                          lineHeight: 1.6,
                         }}
                       >
                         {t.quote}
                       </p>
 
-                      <div className="flex items-center gap-3 sm:gap-4">
+                      <div className="flex items-center gap-2 sm:gap-3">
                         <div
-                          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-[10px] sm:text-[12px] font-semibold shrink-0"
+                          className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center text-[9px] sm:text-[11px] font-semibold shrink-0"
                           style={avatarStyles[t.avatarColor]}
                         >
                           {t.initials}
                         </div>
                         <div>
-                          <p className="text-xs sm:text-sm md:text-[14px] font-bold text-[var(--clr-text-dark)] leading-tight">
+                          <p className="text-xs sm:text-sm font-bold text-[var(--clr-text-dark)] leading-tight">
                             {t.name}
                           </p>
-                          <p className="text-[10px] sm:text-[12px] text-[var(--clr-text-muted)] mb-0.5">
+                          <p className="text-[9px] sm:text-[11px] text-[var(--clr-text-muted)] mb-0.5">
                             {t.role}
                           </p>
                           <p
-                            className="text-[8px] sm:text-[10px] font-bold tracking-[0.05em] uppercase"
+                            className="text-[7px] sm:text-[9px] font-bold tracking-[0.05em] uppercase"
                             style={{ color: "#3B6D11" }}
                           >
                             {t.company}
@@ -399,24 +375,24 @@ export const TestimonialCardsVariant = () => {
 
           {/* Navigation - Bottom Right */}
           {totalGroups > 1 && (
-            <div className="flex items-center justify-end gap-2 sm:gap-3 mt-4 sm:mt-6">
+            <div className="flex items-center justify-end gap-1.5 sm:gap-2 mt-3 sm:mt-4">
               <button
                 onClick={prevGroup}
-                className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border-2 border-gray-200 
+                className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full border border-gray-200 
                   flex items-center justify-center hover:border-[#639922] 
                   hover:bg-[#639922] hover:text-white transition-all duration-300 group"
                 aria-label="Previous testimonials"
               >
-                <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
+                <ChevronLeft className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:scale-110 transition-transform" />
               </button>
               <button
                 onClick={nextGroup}
-                className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border-2 border-gray-200 
+                className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full border border-gray-200 
                   flex items-center justify-center hover:border-[#639922] 
                   hover:bg-[#639922] hover:text-white transition-all duration-300 group"
                 aria-label="Next testimonials"
               >
-                <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
+                <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:scale-110 transition-transform" />
               </button>
             </div>
           )}
