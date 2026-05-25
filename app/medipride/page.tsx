@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect, Suspense } from "react";
-import { Phone, CheckCircle, Wand2 } from "lucide-react";
+import { Phone, CheckCircle, Wand2, ChevronRight } from "lucide-react";
 import { FileText, Users, Monitor, Activity, Presentation } from "lucide-react";
 import TherapyCollageGrid from "@/components/BentoGridProducts";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -463,7 +463,61 @@ function LoadingFallback() {
     </div>
   );
 }
+// ─── PAGE BANNER ─────────────────────────────────────────────────────────────
+const PageBanner = () => (
+  <div className="relative w-full h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px] overflow-hidden">
+    {/* Background image */}
+    <Image
+      src="/banner/medipride.jpeg"
+      alt="About Us Banner"
+      fill
+      className="object-cover object-center"
+      priority
+      unoptimized
+    />
 
+    {/* Gradient overlay: dark at bottom/left for text legibility */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-black/5" />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+    {/* Content */}
+    <div className="absolute inset-0 flex flex-col justify-end pb-8 sm:pb-10 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1500px] mx-auto left-0 right-0">
+      {/* Breadcrumb */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="flex items-center gap-1.5 text-white/60 text-xs sm:text-sm font-medium mb-3 sm:mb-4"
+      >
+        <span>Home</span>
+        <ChevronRight size={14} />
+        <span className="text-white">Medipride</span>
+      </motion.div>
+
+      {/* Page Title */}
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-3xl sm:text-4xl md:text-4xl xl:text-5xl font-extrabold text-white leading-tight"
+      >
+        Medipride
+      </motion.h1>
+
+      {/* Subtitle */}
+    
+
+      {/* Accent line */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+        style={{ originX: 0 }}
+        className="mt-4 sm:mt-5 h-1 w-16 sm:w-20 bg-[#0093cb] rounded-full"
+      />
+    </div>
+  </div>
+);
 // ─── Main Content Component (uses useSearchParams) ─────────────────────────────────────────────────────────────
 function MediPrideContent() {
   const searchParams = useSearchParams();
@@ -482,23 +536,7 @@ function MediPrideContent() {
   return (
     <div className="text-slate-800 font-sans scroll-smooth bg-white">
       {/* ── HERO ── */}
-      <header className="relative h-[40vh] sm:h-[50vh] md:h-[55vh] lg:h-[60vh] xl:h-[70vh] overflow-hidden">
-        <picture className="absolute inset-0 z-0">
-          <source
-            media="(min-width: 1024px)"
-            srcSet="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=2000"
-          />
-          <source
-            media="(min-width: 640px)"
-            srcSet="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=800"
-            alt="Medical Research Background"
-            className="w-full h-full object-cover"
-          />
-        </picture>
-      </header>
+    <PageBanner/>
 
       {/* ── ABOUT ── */}
       <section

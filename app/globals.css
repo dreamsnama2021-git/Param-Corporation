@@ -13,90 +13,75 @@
 
 /* =====================================================
    DESIGN TOKENS & BASE VARIABLES
-   Brand: Primary Blue #0093cb + Accent Green #00a65d
-   Pill-geometry system with polarity-flipped dark bands
 ===================================================== */
 :root {
-  /* ── Brand Colors (Two-Colour System) ── */
-  --clr-primary: #0093cb;           /* Signal Blue — every primary CTA pill, footer, dark bands */
-  --clr-primary-hover: #0079a5;     /* Primary elevated — hover states */
-  --clr-primary-pressed: #b3dcec;   /* Surface pressed — active/pressed fill tint */
-  --clr-accent: #00a65d;            /* Success Green — confirmation, availability, ONE per page */
-  --clr-accent-hover: #008c4a;      /* Accent hover */
-
-  /* ── Surfaces ── */
-  --clr-canvas: #ffffff;            /* Default page background */
-  --clr-canvas-soft: #f0f7fa;       /* Cool-tinted gray — category chips, form rows, subtle pills */
-  --clr-canvas-softer: #f5fafc;     /* Nested-input fill on white surfaces */
-  --clr-canvas-warm: #f2faf5;       /* Green-tinted surface — accent-highlighted cards only */
-
-  /* ── Text ── */
-  --clr-ink: #1a1d1f;               /* Headings + body on light surfaces (cool off-black) */
-  --clr-body: #4d5559;              /* Secondary text — captions, sub-headings */
-  --clr-hairline-mid: #3f474b;      /* Muted links — footer columns, breadcrumbs */
-  --clr-mute: #8c969b;              /* Lightest text — placeholders, fine print */
-  --clr-on-dark: #ffffff;           /* All text on dark surfaces */
-  --clr-link: #0000ee;              /* Browser-default blue — legal/footer inline links */
-
-  /* ── Background Dark Bands ── */
-  --clr-bg-dark: #0093cb;           /* Primary dark band (replaces old #0b3c5d) */
-  --clr-bg-dark-deep: #0079a5;      /* Deeper primary for stacked dark surfaces */
-
-  /* ── Shadows (Elevation Scale) ── */
-  --shadow-level-0: none;                              /* Level 0 — Flat (default) */
-  --shadow-level-1: 0px 4px 16px 0px rgba(0,0,0,0.12); /* Level 1 — Subtle drop (promo cards) */
-  --shadow-level-2: 0px 4px 16px 0px rgba(0,0,0,0.16); /* Level 2 — Card drop (request-form) */
-  --shadow-level-3: 0px 2px 8px 0px rgba(0,0,0,0.16);  /* Level 3 — Pill float */
-  --shadow-soft: var(--shadow-level-1);
-  --shadow-strong: var(--shadow-level-2);
-  --shadow-accent: 0px 8px 24px 0px rgba(0,166,93,0.25); /* Accent-specific glow */
-
-  /* ── Spacing Scale (4px base unit) ── */
-  --space-xxs: 0.25rem;   /* 4px */
-  --space-xs: 0.5rem;     /* 8px */
-  --space-sm: 0.75rem;    /* 12px */
-  --space-md: 1rem;       /* 16px */
-  --space-lg: 1.5rem;     /* 24px */
-  --space-xl: 2rem;       /* 32px */
-  --space-2xl: 3rem;      /* 48px */
-  --space-3xl: 4rem;      /* 64px */
-
-  /* ── Border Radius Scale ── */
-  --rounded-none: 0px;
-  --rounded-md: 8px;       /* Form-input fields */
-  --rounded-lg: 12px;      /* Smaller secondary card chrome */
-  --rounded-xl: 16px;      /* Canonical card radius — promo, content, request-form, showcase */
-  --rounded-pill: 999px;   /* Signature interactive shape — every pill button, chip, app pill */
-  --rounded-pill-tab: 36px;/* Off-shape tab-toggle pill */
-  --rounded-full: 9999px;  /* Circular icon containers */
-
-  /* ── Container Config ── */
+  /* Brand Colors */
+  --clr-primary: #0093cb;
+  --clr-secondary: #00a65d;
+  --clr-accent: #060706;
+  
+  /* Text */
+  --clr-text-dark: #0f172a;
+  --clr-text-muted: #6b7280;
+  
+  /* Backgrounds */
+  --clr-bg-cream: #f8fafc;
+  --clr-bg-gray: #eef2f7;
+  --clr-white: #ffffff;
+  --clr-bg-dark: #0b3c5d;
+  --clr-bg-dark-deep: #072c44;
+  
+  /* Shadows */
+  --shadow-soft: 0 10px 30px rgba(15, 143, 191, 0.15);
+  --shadow-strong: 0 30px 60px rgba(11, 60, 93, 0.25);
+  --shadow-accent: 0 8px 24px rgba(46, 196, 166, 0.25);
+  
+  /* Spacing Scale */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  
+  /* Container Config */
   --container-padding: 1rem;
   --container-max: 100%;
-  --grid-max: 1200px;      /* Canonical max-width from brand system */
 
-  /* ── Font Variables (Two-Face System) ── */
-  --font-display: "DM Sans", sans-serif;   /* Weight 700 only — all headlines, sentence-case */
-  --font-body: "Poppins", sans-serif;       /* Weights 400 / 500 — body, buttons, links */
+  /* Font Variables */
+  --font-display: "DM Sans", sans-serif;
+  --font-body: "Poppins", sans-serif;
 }
 
 /* =====================================================
-   RESPONSIVE TYPOGRAPHY SCALE
-   32px ceiling at ≤ 1240px | 10px floor for captions
+   BASE STYLES - NO ROOT FONT SIZE OVERRIDE
+   (Let the browser handle default font size)
+===================================================== */
+
+/* =====================================================
+   UI-SECTION BASE (Mobile First)
+===================================================== */
+.ui-section {
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-md) var(--container-padding);
+  position: relative;
+  overflow: visible;
+}
+
+/* =====================================================
+   MOBILE BREAKPOINTS (350px - 767px)
 ===================================================== */
 @media (min-width: 350px) {
   :root {
     --container-padding: 1rem;
-    /* Display sizes (weight 700, sentence-case, no tracking) */
-    --h1-size: clamp(1.375rem, 6vw, 1.625rem);   /* 22–26px */
-    --h2-size: clamp(1.125rem, 5vw, 1.375rem);    /* 18–22px */
-    --h3-size: clamp(1rem, 4vw, 1.25rem);         /* 16–20px */
-    --h4-size: 0.875rem;                          /* 14px */
-    /* Body sizes (weights 400 / 500) */
-    --para-size: clamp(0.8125rem, 3.5vw, 0.875rem); /* 13–14px */
-    --desc-size: clamp(0.6875rem, 3vw, 0.75rem);    /* 11–12px */
-    --caption-size: 0.625rem;                       /* 10px floor */
-    --button-label: 0.75rem;                        /* 12px */
+    --h1-size: clamp(1.5rem, 6vw, 2rem);
+    --h2-size: clamp(1.25rem, 5vw, 1.75rem);
+    --h3-size: clamp(1.1rem, 4vw, 1.5rem);
+    --h4-size: 1rem;
+    --para-size: clamp(0.875rem, 3.5vw, 1rem);
+    --desc-size: clamp(0.8rem, 3vw, 0.9rem);
   }
   
   .ui-section {
@@ -107,9 +92,8 @@
 @media (min-width: 411px) {
   :root {
     --container-padding: 1.25rem;
-    --h1-size: clamp(1.5rem, 5vw, 1.75rem);       /* 24–28px */
-    --h2-size: clamp(1.25rem, 4vw, 1.625rem);      /* 20–26px */
-    --button-label: 0.8125rem;                     /* 13px */
+    --h1-size: clamp(1.75rem, 5vw, 2.25rem);
+    --h2-size: clamp(1.5rem, 4vw, 2rem);
   }
   
   .ui-section {
@@ -121,8 +105,6 @@
   :root {
     --container-padding: 1.5rem;
     --container-max: 600px;
-    --h1-size: clamp(1.625rem, 4.5vw, 2rem);       /* 26–32px */
-    --para-size: 0.875rem;                          /* 14px */
   }
   
   .ui-section {
@@ -131,19 +113,17 @@
   }
 }
 
-/* Tablet (768px - 1023px) */
+/* =====================================================
+   TABLET (768px - 1023px)
+===================================================== */
 @media (min-width: 768px) {
   :root {
     --container-padding: 2rem;
     --container-max: 720px;
-    --h1-size: clamp(1.75rem, 3.5vw, 2rem);        /* 28–32px (capped) */
-    --h2-size: clamp(1.5rem, 3vw, 1.75rem);         /* 24–28px */
-    --h3-size: clamp(1.25rem, 2.5vw, 1.5rem);       /* 20–24px */
-    --h4-size: 1rem;                                 /* 16px */
-    --para-size: 0.875rem;                           /* 14px */
-    --desc-size: 0.75rem;                            /* 12px */
-    --caption-size: 0.625rem;                        /* 10px */
-    --button-label: 0.8125rem;                       /* 13px */
+    --h1-size: clamp(2rem, 4vw, 2.75rem);
+    --h2-size: clamp(1.75rem, 3.5vw, 2.25rem);
+    --h3-size: clamp(1.5rem, 2.5vw, 1.875rem);
+    --para-size: clamp(1rem, 2vw, 1.125rem);
   }
   
   .ui-section {
@@ -152,19 +132,19 @@
   }
 }
 
-/* Small Laptop (1024px - 1239px) */
-@media (min-width: 1024px) and (max-width: 1239px) {
+/* =====================================================
+   SMALL LAPTOP (1024px - 1279px)
+===================================================== */
+@media (min-width: 1024px) and (max-width: 1279px) {
   :root {
     --container-padding: 1.5rem;
     --container-max: 960px;
-    --h1-size: clamp(1.75rem, 2.8vw, 2rem);         /* 28–32px (capped) */
-    --h2-size: clamp(1.5rem, 2.2vw, 1.75rem);        /* 24–28px */
-    --h3-size: clamp(1.25rem, 1.8vw, 1.5rem);        /* 20–24px */
-    --h4-size: clamp(0.875rem, 1.2vw, 1rem);         /* 14–16px */
-    --para-size: 0.875rem;                            /* 14px */
-    --desc-size: 0.75rem;                             /* 12px */
-    --caption-size: 0.625rem;                         /* 10px */
-    --button-label: 0.8125rem;                        /* 13px */
+    --h1-size: clamp(2rem, 3vw, 2.5rem);
+    --h2-size: clamp(1.75rem, 2.2vw, 2.25rem);
+    --h3-size: clamp(1.35rem, 1.8vw, 1.75rem);
+    --h4-size: clamp(1rem, 1.2vw, 1.125rem);
+    --para-size: 0.9375rem;
+    --desc-size: 0.875rem;
     --space-2xl: 3rem;
   }
   
@@ -173,7 +153,7 @@
     padding: var(--space-2xl) var(--container-padding);
   }
   
-  /* Mega Menu fixes for 1024px */
+  /* Mega Menu specific fixes for 1024px - ONLY affects mega menu */
   .mega-menu-container > div {
     width: 85vw !important;
     max-width: 880px !important;
@@ -188,15 +168,16 @@
   }
   
   .mega-menu-container h3 {
-    font-size: 0.6875rem !important;
+    font-size: 0.7rem !important;
     margin-bottom: 0.5rem !important;
   }
   
   .mega-menu-container a {
-    font-size: 0.6875rem !important;
+    font-size: 0.7rem !important;
     line-height: 1.3 !important;
   }
   
+  /* Navbar link adjustments - keep navbar visible */
   nav .lg\:flex a {
     font-size: 0.75rem !important;
   }
@@ -208,19 +189,17 @@
   }
 }
 
-/* Desktop (1240px - 1439px) — 32px ceiling applies */
-@media (min-width: 1240px) and (max-width: 1439px) {
+/* =====================================================
+   DESKTOP (1280px - 1439px)
+===================================================== */
+@media (min-width: 1280px) and (max-width: 1439px) {
   :root {
     --container-padding: 2.5rem;
     --container-max: 1100px;
-    --h1-size: 2rem;                 /* 32px — ceiling */
-    --h2-size: 1.75rem;              /* 28px */
-    --h3-size: 1.5rem;               /* 24px */
-    --h4-size: 1.125rem;             /* 18px */
-    --para-size: 1rem;               /* 16px */
-    --desc-size: 0.875rem;           /* 14px */
-    --caption-size: 0.6875rem;       /* 11px */
-    --button-label: 0.875rem;        /* 14px */
+    --h1-size: clamp(2.25rem, 2.8vw, 3rem);
+    --h2-size: clamp(1.875rem, 2.2vw, 2.5rem);
+    --h3-size: clamp(1.5rem, 1.8vw, 2rem);
+    --para-size: 1rem;
     --space-2xl: 3.5rem;
   }
   
@@ -234,19 +213,17 @@
   }
 }
 
-/* Large Desktop (1440px - 1599px) — optional scale-up above 32px allowed */
+/* =====================================================
+   LARGE DESKTOP (1440px - 1599px)
+===================================================== */
 @media (min-width: 1440px) and (max-width: 1599px) {
   :root {
     --container-padding: 3rem;
     --container-max: 1280px;
-    --h1-size: 2.25rem;              /* 36px — above 32px ceiling, breathing room */
-    --h2-size: 2rem;                 /* 32px */
-    --h3-size: 1.75rem;              /* 28px */
-    --h4-size: 1.25rem;              /* 20px */
-    --para-size: 1.0625rem;          /* 17px */
-    --desc-size: 0.9375rem;          /* 15px */
-    --caption-size: 0.75rem;         /* 12px */
-    --button-label: 0.9375rem;       /* 15px */
+    --h1-size: clamp(2.5rem, 2.5vw, 3.25rem);
+    --h2-size: clamp(2rem, 2vw, 2.75rem);
+    --h3-size: clamp(1.625rem, 1.6vw, 2.25rem);
+    --para-size: 1.0625rem;
     --space-2xl: 4rem;
   }
   
@@ -256,19 +233,19 @@
   }
 }
 
-/* XL Desktop (1600px - 1899px) */
+/* =====================================================
+   XL DESKTOP (1600px - 1899px)
+===================================================== */
 @media (min-width: 1600px) and (max-width: 1899px) {
   :root {
     --container-padding: 4rem;
     --container-max: 1400px;
-    --h1-size: 2.5rem;               /* 40px */
-    --h2-size: 2.25rem;              /* 36px */
-    --h3-size: 2rem;                 /* 32px */
-    --h4-size: 1.375rem;             /* 22px */
-    --para-size: 1.125rem;           /* 18px */
-    --desc-size: 1rem;               /* 16px */
-    --caption-size: 0.8125rem;       /* 13px */
-    --button-label: 1rem;            /* 16px */
+    --h1-size: clamp(2.75rem, 2vw, 3.5rem);
+    --h2-size: clamp(2.25rem, 1.8vw, 3rem);
+    --h3-size: clamp(1.75rem, 1.5vw, 2.5rem);
+    --h4-size: clamp(1.25rem, 1vw, 1.375rem);
+    --para-size: 1.125rem;
+    --desc-size: 1rem;
     --space-2xl: 5rem;
   }
   
@@ -278,19 +255,19 @@
   }
 }
 
-/* Ultra-Wide (1900px+) */
+/* =====================================================
+   ULTRA-WIDE (1900px+)
+===================================================== */
 @media (min-width: 1900px) {
   :root {
     --container-padding: 5rem;
     --container-max: 1600px;
-    --h1-size: 3.25rem;              /* 52px — original brand scale for wide viewports */
-    --h2-size: 2.75rem;              /* 44px */
-    --h3-size: 2.5rem;               /* 40px */
-    --h4-size: 1.5rem;               /* 24px */
-    --para-size: 1.25rem;            /* 20px */
-    --desc-size: 1.125rem;           /* 18px */
-    --caption-size: 0.875rem;        /* 14px */
-    --button-label: 1.0625rem;       /* 17px */
+    --h1-size: 3.5rem;
+    --h2-size: 3rem;
+    --h3-size: 2.5rem;
+    --h4-size: 1.5rem;
+    --para-size: 1.25rem;
+    --desc-size: 1.125rem;
     --space-2xl: 6rem;
   }
   
@@ -301,11 +278,11 @@
 }
 
 /* =====================================================
-   UI-CONTAINER (Inner wrapper — matches grid-max)
+   UI-CONTAINER (Inner wrapper)
 ===================================================== */
 .ui-container {
   width: 100%;
-  max-width: var(--grid-max);
+  max-width: 1280px;
   margin: 0 auto;
   position: relative;
   padding-left: var(--container-padding);
@@ -331,95 +308,70 @@
 }
 
 /* =====================================================
-   TYPOGRAPHY — Two-Face, Two-Role System
-   Display (DM Sans 700) for headlines | Body (Poppins 400/500) for text
+   TYPOGRAPHY
 ===================================================== */
 body {
   position: relative;
   font-family: var(--font-body), sans-serif;
-  font-weight: 400;
-  background-color: var(--clr-canvas);
-  color: var(--clr-ink);
+  background-color: var(--clr-bg-cream);
+  color: var(--clr-text-dark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.5;
 }
 
-/* ── Display Headlines (weight 700, sentence-case, no tracking) ── */
 .ui-h1, .ui-h2, .ui-h3, .ui-h4 {
   font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  color: var(--clr-ink);
-  letter-spacing: 0;            /* Brand rule: never letter-space the display face */
-  text-transform: none;         /* Sentence-case — no all-caps headlines */
+  color: var(--clr-text-dark);
 }
 
 .ui-h1 {
   font-size: var(--h1-size);
-  line-height: 1.22;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   margin-bottom: var(--space-sm);
 }
 
 .ui-h2 {
   font-size: var(--h2-size);
-  line-height: 1.25;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   margin-bottom: var(--space-sm);
 }
 
 .ui-h3 {
   font-size: var(--h3-size);
   line-height: 1.3;
+  font-weight: 600;
 }
 
 .ui-h4 {
   font-size: var(--h4-size);
   line-height: 1.4;
+  font-weight: 600;
 }
 
-/* ── Body Text (weights 400 / 500) ── */
 .ui-para {
   font-family: var(--font-body), sans-serif;
   font-size: var(--para-size);
-  font-weight: 400;
   line-height: 1.7;
-  color: var(--clr-ink);
+  font-weight: 300;
+  color: var(--clr-text-dark);
   margin-bottom: var(--space-sm);
-}
-
-.ui-para-strong {
-  font-weight: 500;            /* body-md-strong equivalent */
 }
 
 .ui-desc {
   font-family: var(--font-body), sans-serif;
   font-size: var(--desc-size);
-  font-weight: 400;
   line-height: 1.6;
-  color: var(--clr-body);      /* Secondary text role */
+  color: var(--clr-text-muted);
+  font-weight: 400;
   max-width: 600px;
 }
 
-.ui-caption {
-  font-family: var(--font-body), sans-serif;
-  font-size: var(--caption-size);
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--clr-mute);      /* Lightest text role */
-}
-
-/* ── Eyebrow (rare exception — uppercase allowed) ── */
-.ui-eyebrow {
-  font-family: var(--font-body), sans-serif;
-  font-size: var(--desc-size);
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--clr-body);
-  margin-bottom: var(--space-xs);
-}
-
 /* =====================================================
-   GRID BACKGROUND (Subtle — preserved from original)
+   GRID BACKGROUND
 ===================================================== */
 body::before {
   content: '';
@@ -441,240 +393,86 @@ body > * {
   z-index: 1;
 }
 
+/* Force grid pattern visibility */
 .fixed.inset-0 {
   z-index: 0 !important;
 }
 
 /* =====================================================
-   COMPONENTS — Pill-Geometry + Two-Colour System
+   COMPONENTS
 ===================================================== */
-
-/* ── Badge / Chip ── */
 .ui-badge {
   display: inline-flex;
   align-items: center;
   padding: 0.5rem 1rem;
-  font-size: var(--caption-size);
-  font-weight: 500;
-  letter-spacing: 0;
-  color: var(--clr-on-dark);
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--clr-white);
   background: var(--clr-primary);
-  border-radius: var(--rounded-pill);   /* 999px — signature pill shape */
+  border-radius: 9999px;
   line-height: 1;
-  font-family: var(--font-body), sans-serif;
-  white-space: nowrap;
+  font-family: var(--font-display), sans-serif;
 }
 
-/* Accent badge — single green exception per page */
-.ui-badge-accent {
-  background: var(--clr-accent);
-  color: var(--clr-on-dark);
-}
-
-/* Subtle badge — gray pill for tertiary */
-.ui-badge-subtle {
-  background: var(--clr-canvas-soft);
-  color: var(--clr-ink);
-}
-
-/* ── Buttons (Pill System) ── */
 .ui-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;                     /* 12px 24px */
-  font-size: var(--button-label);
-  font-weight: 500;                              /* button-md-strong */
-  border-radius: var(--rounded-pill);            /* 999px — brand signature */
+  padding: 0.75rem 1.5rem;
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  font-weight: 600;
+  border-radius: 12px;
   transition: all 0.25s ease;
   cursor: pointer;
   border: none;
   text-decoration: none;
-  font-family: var(--font-body), sans-serif;
-  letter-spacing: 0;                             /* No tracking flourish */
-  line-height: 1.4;
-  min-height: 44px;                              /* WCAG AAA touch target */
+  font-family: var(--font-display), sans-serif;
 }
 
-/* Primary — Blue pill (the conversion anchor) */
 .ui-btn-primary {
-  background: var(--clr-primary);
-  color: var(--clr-on-dark);
-  box-shadow: var(--shadow-level-0);             /* Flat by default */
+  background: var(--clr-secondary);
+  color: var(--clr-white);
+  box-shadow: var(--shadow-soft);
 }
 
 .ui-btn-primary:hover {
-  background: var(--clr-primary-hover);
-  transform: translateY(-1px);
-}
-
-.ui-btn-primary:active {
-  background: var(--clr-primary-pressed);
-  transform: translateY(0);
-}
-
-/* Secondary — White pill paired with blue primary */
-.ui-btn-secondary {
-  background: var(--clr-canvas);
-  color: var(--clr-ink);
-  box-shadow: var(--shadow-level-1);
-}
-
-.ui-btn-secondary:hover {
-  box-shadow: var(--shadow-level-2);
-  transform: translateY(-1px);
-}
-
-.ui-btn-secondary:active {
-  background: var(--clr-canvas-soft);
-  transform: translateY(0);
-}
-
-/* Subtle — Gray pill for tertiary actions */
-.ui-btn-subtle {
-  background: var(--clr-canvas-soft);
-  color: var(--clr-ink);
-  box-shadow: var(--shadow-level-0);
-}
-
-.ui-btn-subtle:hover {
-  background: #e8f0f4;
-}
-
-/* Floating — White pill with Level 3 shadow over dark/photographic surfaces */
-.ui-btn-floating {
-  background: var(--clr-canvas);
-  color: var(--clr-ink);
-  box-shadow: var(--shadow-level-3);
-}
-
-.ui-btn-floating:hover {
+  background: var(--clr-primary);
+  box-shadow: var(--shadow-strong);
   transform: translateY(-2px);
-  box-shadow: 0px 4px 16px 0px rgba(0,0,0,0.20);
 }
 
-/* Accent — Green pill (confirmation target, ONE per page, never competes with blue primary) */
-.ui-btn-accent {
-  background: var(--clr-accent);
-  color: var(--clr-on-dark);
-  box-shadow: var(--shadow-level-0);
-}
-
-.ui-btn-accent:hover {
-  background: var(--clr-accent-hover);
-  box-shadow: var(--shadow-accent);
-  transform: translateY(-1px);
-}
-
-/* Large Rounded — The exception: 16px radius for form-flow CTAs */
-.ui-btn-large {
-  padding: 1rem 1.5rem;                         /* 16px 24px */
-  font-size: calc(var(--button-label) + 0.0625rem);
-  border-radius: var(--rounded-xl);              /* 16px — not pill */
-  min-height: 56px;
-}
-
-/* Tab Toggle — 36px radius off-shape pill */
-.ui-btn-tab {
-  border-radius: var(--rounded-pill-tab);        /* 36px */
-  background: var(--clr-canvas);
-  color: var(--clr-ink);
-  font-weight: 500;
-}
-
-.ui-btn-tab:hover {
-  background: var(--clr-primary-hover);
-  color: var(--clr-on-dark);
-}
-
-/* ── Inputs & Forms ── */
 .ui-input,
 .ui-textarea {
   width: 100%;
-  background: var(--clr-canvas-soft);            /* Cool-tinted gray fill */
-  border: 1px solid transparent;
-  border-radius: var(--rounded-md);              /* 8px */
-  color: var(--clr-ink);
+  background: #f7f7f7;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  color: var(--clr-text-dark);
   outline: none;
   transition: all 0.25s ease;
   font-family: var(--font-body), sans-serif;
-  font-size: var(--para-size);
-  font-weight: 400;
 }
 
 .ui-input {
   height: 48px;
   padding: 0 1rem;
+  font-size: var(--para-size);
 }
 
 .ui-textarea {
   min-height: 120px;
   padding: 1rem;
+  font-size: var(--para-size);
   resize: vertical;
 }
 
 .ui-input:focus,
 .ui-textarea:focus {
-  background: var(--clr-canvas);
+  background: #ffffff;
   border-color: var(--clr-primary);
-  box-shadow: 0 0 0 3px rgba(0, 147, 203, 0.1);  /* Primary blue focus ring */
-}
-
-/* Nested input on white card (lighter fill) */
-.ui-input-on-soft {
-  background: var(--clr-canvas-softer);
-}
-
-/* ── Cards (16px radius system) ── */
-.ui-card {
-  background: var(--clr-canvas);
-  color: var(--clr-ink);
-  border-radius: var(--rounded-xl);              /* 16px */
-  padding: var(--space-lg);                      /* 24px interior */
-  box-shadow: var(--shadow-level-0);             /* Flat by default */
-}
-
-.ui-card-elevated {
-  box-shadow: var(--shadow-level-1);             /* Subtle drop */
-}
-
-.ui-card-soft {
-  background: var(--clr-canvas-soft);            /* Cool-tinted */
-}
-
-.ui-card-warm {
-  background: var(--clr-canvas-warm);            /* Green-tinted — accent card */
-}
-
-/* Dark promo card — polarity-flipped */
-.ui-card-dark {
-  background: var(--clr-primary);                /* Blue dark band */
-  color: var(--clr-on-dark);
-  box-shadow: var(--shadow-level-0);
-}
-
-/* Accent promo card — rare green band */
-.ui-card-accent {
-  background: var(--clr-accent);
-  color: var(--clr-on-dark);
-}
-
-/* Request-form card — Level 2 shadow */
-.ui-card-form {
-  background: var(--clr-canvas);
-  color: var(--clr-ink);
-  border-radius: var(--rounded-xl);
-  padding: var(--space-md);                      /* 16px — compact */
-  box-shadow: var(--shadow-level-2);
-}
-
-/* Showcase card — giant annual-showcase */
-.ui-card-showcase {
-  background: var(--clr-primary);
-  color: var(--clr-on-dark);
-  border-radius: var(--rounded-xl);
-  padding: var(--space-2xl);
+  box-shadow: 0 0 0 3px rgba(0, 147, 203, 0.1);
 }
 
 /* =====================================================
@@ -694,6 +492,7 @@ body > * {
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
+/* Touch device optimization for mega menu */
 @media (hover: none) and (pointer: coarse) {
   .mega-menu-container > div {
     display: none;
@@ -703,36 +502,6 @@ body > * {
   .mega-menu-container button:focus + div {
     display: block;
   }
-}
-
-/* =====================================================
-   FOOTER — Primary Blue Fill
-===================================================== */
-.ui-footer {
-  background: var(--clr-primary);                /* Deep blue, not black */
-  color: var(--clr-on-dark);
-  padding: var(--space-2xl) var(--container-padding);
-  font-family: var(--font-body), sans-serif;
-}
-
-.ui-footer a {
-  color: var(--clr-on-dark);
-  font-size: var(--desc-size);
-  font-weight: 400;
-  text-decoration: none;
-}
-
-.ui-footer a:hover {
-  text-decoration: underline;
-}
-
-.ui-footer .ui-footer-mute {
-  color: var(--clr-hairline-mid);
-}
-
-.ui-footer .ui-footer-soft {
-  color: var(--clr-mute);
-  font-size: var(--caption-size);
 }
 
 /* =====================================================
@@ -747,11 +516,13 @@ body > * {
   scrollbar-width: none;
 }
 
+/* Responsive image handling */
 img {
   max-width: 100%;
   height: auto;
 }
 
+/* Logo sizing - ensure logo doesn't overflow */
 nav img {
   max-height: 3.5rem;
   width: auto;
@@ -767,67 +538,4 @@ nav img {
   nav img {
     max-height: 4.5rem;
   }
-}
-
-/* ── Category chip row (horizontal scroll) ── */
-.ui-chip-row {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: var(--space-sm);                          /* 12px between chips */
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.ui-chip-row::-webkit-scrollbar {
-  display: none;
-}
-
-/* ── App download pill (dark pill) ── */
-.ui-app-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--clr-primary);
-  color: var(--clr-on-dark);
-  font-family: var(--font-body), sans-serif;
-  font-size: var(--button-label);
-  font-weight: 500;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--rounded-pill);
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.ui-app-pill:hover {
-  background: var(--clr-primary-hover);
-}
-
-/* ── FAQ row (hairline divider, no card chrome) ── */
-.ui-faq-row {
-  padding: var(--space-md) 0;
-  border-bottom: 1px solid var(--clr-canvas-soft);
-  font-family: var(--font-body), sans-serif;
-  font-size: var(--para-size);
-  font-weight: 500;
-  color: var(--clr-ink);
-}
-
-/* ── Icon button circular ── */
-.ui-icon-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: var(--rounded-full);            /* 9999px — circle */
-  background: var(--clr-canvas-soft);
-  color: var(--clr-ink);
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.ui-icon-btn:hover {
-  background: #e8f0f4;
 }

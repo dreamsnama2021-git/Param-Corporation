@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { Phone, CheckCircle, ArrowUpRight } from "lucide-react";
+import { Phone, CheckCircle, ArrowUpRight, ChevronRight } from "lucide-react";
 import { FileText, Users, Monitor, ShieldCheck, Lightbulb, Activity } from "lucide-react";
 import ImageGallery from "@/components/Productgallery";
-
+import Image from "next/image";
+import { motion } from "framer-motion";
 const SERVICES = [
   { title: "Medical Writing", desc: "Scientifically accurate content creation reviewed by clinical experts for precision.", icon: <FileText size={28} /> },
   { title: "Patient Education", desc: "Simplifying complex clinical data into engaging stories patients can understand.", icon: <Users size={28} /> },
@@ -215,7 +216,61 @@ const PRODUCT_DATA = [
     ],
   },
 ];
+// ─── PAGE BANNER ─────────────────────────────────────────────────────────────
+const PageBanner = () => (
+  <div className="relative w-full h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px] overflow-hidden">
+    {/* Background image */}
+    <Image
+      src="/banner/koru.jpeg"
+      alt="About Us Banner"
+      fill
+      className="object-cover object-center"
+      priority
+      unoptimized
+    />
 
+    {/* Gradient overlay: dark at bottom/left for text legibility */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-black/5" />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+    {/* Content */}
+    <div className="absolute inset-0 flex flex-col justify-end pb-8 sm:pb-10 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1500px] mx-auto left-0 right-0">
+      {/* Breadcrumb */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="flex items-center gap-1.5 text-white/60 text-xs sm:text-sm font-medium mb-3 sm:mb-4"
+      >
+        <span>Home</span>
+        <ChevronRight size={14} />
+        <span className="text-white">Koru</span>
+      </motion.div>
+
+      {/* Page Title */}
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-3xl sm:text-4xl md:text-4xl xl:text-5xl font-extrabold text-white leading-tight"
+      >
+        Koru
+      </motion.h1>
+
+      {/* Subtitle */}
+    
+
+      {/* Accent line */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+        style={{ originX: 0 }}
+        className="mt-4 sm:mt-5 h-1 w-16 sm:w-20 bg-[#0093cb] rounded-full"
+      />
+    </div>
+  </div>
+);
 export default function KoruCommunications() {
   const allProductImages: string[] = PRODUCT_DATA.flatMap(cat =>
     cat.items.map(item => item.img)
@@ -224,49 +279,7 @@ export default function KoruCommunications() {
     <div className="text-slate-800 font-sans scroll-smooth bg-white">
 
       {/* ── HERO ── */}
-      <header className="relative pt-20 sm:pt-28 md:pt-36 lg:pt-44 xl:pt-56 pb-12 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-48 overflow-hidden lg:h-[60vh] xl:h-[70vh] flex items-center bg-[#f8fafc]">
-        <picture className="absolute inset-0 z-0 overflow-hidden">
-          <source media="(min-width: 1024px)" srcSet="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=2000" />
-          <source media="(min-width: 640px)" srcSet="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200" />
-          <img src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=800" alt="Clinical Excellence Background" className="w-full h-full object-cover scale-105 opacity-80" />
-        </picture>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f8fafc] via-[#f8fafc]/90 to-transparent z-[1]" />
-        <div className="absolute inset-0 bg-[#0b3c5d]/5 z-[1]" />
-
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 w-full">
-          <div className="flex items-center justify-center space-x-2 sm:space-x-3 mb-4 sm:mb-5 md:mb-6">
-            <div className="h-[1px] w-4 sm:w-6 md:w-8 bg-[#00a65d]" />
-            <span className="text-[9px] sm:text-[10px] md:text-xs font-bold tracking-[0.3em] sm:tracking-[0.4em] text-[#00a65d] uppercase">Koru Communications</span>
-            <div className="h-[1px] w-4 sm:w-6 md:w-8 bg-[#00a65d]" />
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-[#0f172a] mb-4 sm:mb-6 md:mb-8 leading-[1.05] tracking-tight">
-            Scientific Precision. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Visual Growth.</span>
-          </h1>
-
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[#6b7280] mb-6 sm:mb-8 md:mb-12 max-w-xs sm:max-w-xl md:max-w-3xl mx-auto font-medium leading-relaxed">
-            Translating complex clinical data into intuitive visual narratives. We bridge the gap between breakthrough science and patient understanding through strategic communication.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-            <a href="#contact" className="group inline-flex items-center space-x-2 sm:space-x-3 bg-[#0093cb] text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-sm font-bold text-xs sm:text-sm uppercase tracking-widest hover:bg-[#0b3c5d] transition-all duration-300 shadow-[0_10px_30px_rgba(0,147,203,0.2)] active:scale-95 w-full sm:w-auto justify-center">
-              <Phone size={14} className="sm:size-4 group-hover:rotate-12 transition-transform flex-shrink-0" />
-              <span>Collaborate With Us</span>
-            </a>
-            <a href="#products" className="inline-flex items-center space-x-2 sm:space-x-3 bg-white border border-slate-200 text-[#0f172a] px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-sm font-bold text-xs sm:text-sm uppercase tracking-widest hover:border-[#00a65d] hover:text-[#00a65d] transition-all duration-300 active:scale-95 shadow-sm w-full sm:w-auto justify-center">
-              <span>View Portfolio</span>
-              <ArrowUpRight size={14} className="sm:size-4" />
-            </a>
-          </div>
-
-          <div className="mt-8 sm:mt-12 md:mt-16 lg:mt-20">
-            <p className="text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] sm:tracking-[0.6em] text-[#0f172a] opacity-30">
-              Simplifying Science • Empowering Patients
-            </p>
-          </div>
-        </div>
-      </header>
+      <PageBanner/>
 
 
       {/* ── ABOUT ── */}

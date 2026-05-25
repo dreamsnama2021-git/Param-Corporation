@@ -17,13 +17,7 @@ import {
   Shield,
   Package,
   Headphones,
-  Leaf,
-  Languages,
-  BarChart,
-  Star,
-  Zap,
-  Percent,
-  Clipboard,
+  ChevronRight,
 } from "lucide-react";
 import Image from "next/image";
 import {
@@ -95,12 +89,6 @@ const timelineItems: TimelineItem[] = [
   },
 ];
 
-// ─── HELPER STYLES FOR SWIPING ──────────────────────────────────────────────
-const scrollContainerStyles =
-  "flex lg:grid lg:grid-cols-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory scrollbar-hide gap-4 sm:gap-6 pb-6 sm:pb-8 -mx-4 sm:-mx-6 px-4 sm:px-6";
-const scrollItemStyles =
-  "flex-shrink-0 w-[85vw] sm:w-[400px] md:w-[420px] lg:w-auto snap-center lg:snap-align-none";
-
 // ─── REUSABLE COMPONENTS ─────────────────────────────────────────────────────
 
 const MagneticButton = ({
@@ -133,15 +121,23 @@ const MagneticButton = ({
   );
 };
 
-const FloatingCard = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 20 }} 
-    animate={{ opacity: 1, y: 0 }} 
-    transition={{ duration: 0.6, delay }} 
+const FloatingCard = ({
+  children,
+  className,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay }}
     className={className}
   >
-    <motion.div 
-      animate={{ y: [0, -8, 0] }} 
+    <motion.div
+      animate={{ y: [0, -8, 0] }}
       transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay }}
       className="h-full w-full relative"
     >
@@ -150,6 +146,63 @@ const FloatingCard = ({ children, className, delay = 0 }: { children: React.Reac
   </motion.div>
 );
 
+// ─── PAGE BANNER ─────────────────────────────────────────────────────────────
+const PageBanner = () => (
+  <div className="relative w-full h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px] overflow-hidden">
+    {/* Background image */}
+    <Image
+      src="/banner/about.jpeg"
+      alt="About Us Banner"
+      fill
+      className="object-cover object-center"
+      priority
+      unoptimized
+    />
+
+    {/* Gradient overlay: dark at bottom/left for text legibility */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-black/5" />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+    {/* Content */}
+    <div className="absolute inset-0 flex flex-col justify-end pb-8 sm:pb-10 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1500px] mx-auto left-0 right-0">
+      {/* Breadcrumb */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="flex items-center gap-1.5 text-white/60 text-xs sm:text-sm font-medium mb-3 sm:mb-4"
+      >
+        <span>Home</span>
+        <ChevronRight size={14} />
+        <span className="text-white">About Us</span>
+      </motion.div>
+
+      {/* Page Title */}
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-3xl sm:text-4xl md:text-4xl xl:text-5xl font-extrabold text-white leading-tight"
+      >
+        About Us
+      </motion.h1>
+
+      {/* Subtitle */}
+    
+
+      {/* Accent line */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+        style={{ originX: 0 }}
+        className="mt-4 sm:mt-5 h-1 w-16 sm:w-20 bg-[#0093cb] rounded-full"
+      />
+    </div>
+  </div>
+);
+
+// ─── WHY US SECTION ───────────────────────────────────────────────────────────
 const WhyUsSection = () => {
   const row1Cards = [
     { title: "End to End Solutions", desc: "Specialized in pharmaceutical gifting with deep understanding of doctor preferences.", icon: Pill, color: "bg-amber-500" },
@@ -158,7 +211,7 @@ const WhyUsSection = () => {
   ];
   const row2Cards = [
     { title: "Pharma Expertise", desc: "Gifts aligned with cardiac, diabetic, and pediatric therapy areas.", icon: Target, color: "bg-emerald-500" },
-    { title: "Strong Vender Ecosystem & Sourcing", desc: "All gifts meet regulatory guidelines for pharmaceutical promotions.", icon: Shield, color: "bg-violet-500" },
+    { title: "Strong Vendor Ecosystem & Sourcing", desc: "All gifts meet regulatory guidelines for pharmaceutical promotions.", icon: Shield, color: "bg-violet-500" },
     { title: "After Sales Service", desc: "Personalized packaging and branding options for your medical reps.", icon: Package, color: "bg-orange-500" },
     { title: "We Maintain Confidentiality", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Headphones, color: "bg-cyan-500" },
   ];
@@ -170,20 +223,19 @@ const WhyUsSection = () => {
     color: string;
   }
 
-const Card = ({ item }: { item: CardItem }) => (
-  <div className="bg-white p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow">
-    <div className={`w-8 h-8 sm:w-10 sm:h-10 ${item.color} rounded-lg sm:rounded-xl mb-3 sm:mb-4 flex items-center justify-center text-white`}>
-      <item.icon size={18} /> {/* Remove className prop */}
+  const Card = ({ item }: { item: CardItem }) => (
+    <div className="bg-white p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow">
+      <div className={`w-8 h-8 sm:w-10 sm:h-10 ${item.color} rounded-lg sm:rounded-xl mb-3 sm:mb-4 flex items-center justify-center text-white`}>
+        <item.icon size={18} />
+      </div>
+      <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2">{item.title}</h3>
+      <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
     </div>
-    <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2">{item.title}</h3>
-    <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
-  </div>
-);
+  );
 
   return (
     <section className="py-8 sm:py-10 md:py-12 bg-slate-50">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 space-y-3 sm:space-y-4">
-        {/* Row 1: heading + 3 cards = 4 cols */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-4">
           <div className="flex flex-col justify-center">
             <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-1.5 sm:mb-2">Why Param</p>
@@ -193,8 +245,6 @@ const Card = ({ item }: { item: CardItem }) => (
           </div>
           {row1Cards.map((item, i) => <Card key={i} item={item} />)}
         </div>
-
-        {/* Row 2: 4 cards = 4 cols */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {row2Cards.map((item, i) => <Card key={i} item={item} />)}
         </div>
@@ -203,7 +253,7 @@ const Card = ({ item }: { item: CardItem }) => (
   );
 };
 
-// ─── VISION & MISSION COMPONENTS ─────────────────────────────────────────────
+// ─── VISION & MISSION ────────────────────────────────────────────────────────
 interface VisionMissionProps {
   children: React.ReactNode;
   count: number;
@@ -265,21 +315,15 @@ function VisionCard({ item }: { item: CardData }) {
         </span>
         <div className="flex-1 h-px bg-slate-100" />
       </div>
-
-      <div
-        className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 ${item.iconBg}`}
-      >
+      <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 ${item.iconBg}`}>
         <span className={item.iconColor}>{item.icon}</span>
       </div>
-
       <h3 className="text-sm sm:text-base lg:text-[17px] font-semibold text-slate-900 mb-1.5 sm:mb-2">
         {item.title}
       </h3>
       <p className="text-xs sm:text-sm lg:text-[13px] text-slate-500 leading-relaxed flex-1">
         {item.desc}
       </p>
-
-      
     </div>
   );
 }
@@ -351,7 +395,6 @@ interface TeamMember {
 
 const TeamCard = ({ member }: { member: TeamMember }) => (
   <div className="relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden group shadow-lg cursor-pointer bg-slate-100">
-    {/* Image: Scales slightly on hover */}
     <Image
       src={member.image}
       alt={member.name}
@@ -359,10 +402,7 @@ const TeamCard = ({ member }: { member: TeamMember }) => (
       className="object-cover transition-transform duration-700 group-hover:scale-105"
       unoptimized
     />
-
-    {/* Hover Overlay: Opacity 0 by default, 100 on group-hover */}
     <div className="absolute inset-0 bg-black/20 flex flex-col justify-end p-4 sm:p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-      {/* Animated Text: Slides up from the bottom */}
       <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
         <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1">
           {member.name}
@@ -380,20 +420,17 @@ const TeamSection = () => {
     {
       name: "Rajesh Kumar",
       role: "Operations Head",
-      image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=600&fit=crop",
     },
     {
       name: "Priya Mehta",
       role: "Creative Director",
-      image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=600&fit=crop",
     },
     {
       name: "Ms. Saakshi Dosi",
       role: "Founder & CEO",
-      image:
-        "https://medipride.org/wp-content/uploads/2025/11/IMG-20251106-WA0063-Edited-768x1024.jpg",
+      image: "https://medipride.org/wp-content/uploads/2025/11/IMG-20251106-WA0063-Edited-768x1024.jpg",
     },
   ];
 
@@ -408,7 +445,6 @@ const TeamSection = () => {
             The <span className="text-[#0093cb]">Leadership</span>
           </h2>
         </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {team.map((member, idx) => (
             <TeamCard key={idx} member={member} />
@@ -419,69 +455,18 @@ const TeamSection = () => {
   );
 };
 
-// ─── MAIN PAGE ──────────────────────────────────────────────────────────────
+// ─── MAIN PAGE ───────────────────────────────────────────────────────────────
 export default function AboutUsPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="py-6 sm:py-8 lg:pt-8 xl:pt-10 2xl:pt-12 relative overflow-hidden flex items-center">
-        <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center pt-12 sm:pt-16 lg:pt-20">
-          <div className="space-y-5 sm:space-y-6 lg:space-y-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs sm:text-sm font-medium"
-            >
-              <Sparkles size={14} className="sm:size-4" />{" "}
-              <span>Trusted Pharma Partner Since 2019</span>
-            </motion.div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-7xl font-extrabold text-slate-900 leading-tight">
-              We create <br />{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
-                meaningful
-              </span>{" "}
-              <br /> doctor connections
-            </h1>
-            <p className="text-base sm:text-lg lg:text-base xl:text-lg 2xl:text-xl text-slate-600 max-w-lg">
-              Transforming pharma brand communication through thoughtfully
-              designed gifting solutions.
-            </p>
-            <div className="flex flex-wrap gap-3 sm:gap-4">
-              <MagneticButton className="bg-[#0093cb] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold flex items-center gap-2 text-sm sm:text-base">
-                Explore Solutions <ArrowUpRight size={18} className="sm:size-5" />
-              </MagneticButton>
-            </div>
-          </div>
-          <div className="relative hidden lg:block h-[400px] lg:h-[450px] xl:h-[500px] 2xl:h-[600px]">
-            <FloatingCard
-              delay={0.2}
-              className="absolute top-0 right-0 w-full h-full lg:h-96 xl:h-110 2xl:h-120 rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl"
-            >
-              <Image
-                src="https://i.pinimg.com/736x/91/98/75/91987514f02a4b93700a7cd1a5b67a18.jpg"
-                alt="Premium Corporate Gifting"
-                fill
-                className="object-cover transition-all duration-700"
-                priority
-              />
-            </FloatingCard>
-            <FloatingCard
-              delay={0.4}
-              className="absolute top-32 sm:top-36 lg:top-40 left-0 bg-white p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl border border-slate-100 flex items-center gap-3 sm:gap-4"
-            >
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
-                <Heart size={20} className="sm:size-6" />
-              </div>
-              <div>
-                <div className="text-xl sm:text-2xl font-bold">90%</div>
-                <div className="text-xs sm:text-sm text-slate-500">Retention</div>
-              </div>
-            </FloatingCard>
-          </div>
-        </div>
-      </section>
 
-      {/* Journey Section */}
+      {/* ── BANNER ── */}
+      <PageBanner />
+
+      {/* ── HERO / INTRO ── */}
+     
+
+      {/* ── JOURNEY / TIMELINE ── */}
       <section className="py-6 sm:py-8 md:py-10 2xl:py-12 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center mb-10 sm:mb-12 md:mb-16">
           <span className="text-[#0093cb] font-bold text-[10px] sm:text-xs uppercase tracking-widest">
@@ -499,13 +484,8 @@ export default function AboutUsPage() {
       <TeamSection />
 
       <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
     </div>
   );

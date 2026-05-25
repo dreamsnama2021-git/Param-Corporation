@@ -249,7 +249,61 @@ function SidebarWithSubcategories({
     </div>
   );
 }
+// ─── PAGE BANNER ─────────────────────────────────────────────────────────────
+const PageBanner = () => (
+  <div className="relative w-full h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px] overflow-hidden">
+    {/* Background image */}
+    <Image
+      src="/banner/product.jpeg"
+      alt="About Us Banner"
+      fill
+      className="object-cover object-center"
+      priority
+      unoptimized
+    />
 
+    {/* Gradient overlay: dark at bottom/left for text legibility */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-black/5" />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+    {/* Content */}
+    <div className="absolute inset-0 flex flex-col justify-end pb-8 sm:pb-10 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1500px] mx-auto left-0 right-0">
+      {/* Breadcrumb */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="flex items-center gap-1.5 text-white/60 text-xs sm:text-sm font-medium mb-3 sm:mb-4"
+      >
+        <span>Home</span>
+        <ChevronRight size={14} />
+        <span className="text-white">Products</span>
+      </motion.div>
+
+      {/* Page Title */}
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-3xl sm:text-4xl md:text-4xl xl:text-5xl font-extrabold text-white leading-tight"
+      >
+        Products
+      </motion.h1>
+
+      {/* Subtitle */}
+    
+
+      {/* Accent line */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+        style={{ originX: 0 }}
+        className="mt-4 sm:mt-5 h-1 w-16 sm:w-20 bg-[#0093cb] rounded-full"
+      />
+    </div>
+  </div>
+);
 /* ══════════════════════════════════════════
    PRODUCT CARD (Grid View)
 ══════════════════════════════════════════ */
@@ -694,45 +748,7 @@ function CategoryPageContent() {
       <style dangerouslySetInnerHTML={{ __html: listingStyles }} />
       <div className="min-h-screen listing-container bg-[#f8fafc]">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-[#060706] via-[#0b3c5d] to-[#0093cb]/30 py-12 lg:py-16 overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <svg width="100%" height="100%">
-              <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse">
-                <circle cx="20" cy="20" r="1.5" fill="white" />
-              </pattern>
-              <rect width="100%" height="100%" fill="url(#dots)" />
-            </svg>
-          </div>
-          <div className="relative max-w-[1500px] mx-auto px-6">
-            <nav className="flex items-center gap-2 text-xs uppercase tracking-wider text-white/60 mb-6">
-              <Link href="/" className="hover:text-white flex items-center gap-1.5 transition-colors">
-                <Home className="w-3 h-3" /> Home
-              </Link>
-              <ChevronRight className="w-3 h-3" />
-              <span className="text-white/80">Products</span>
-            </nav>
-
-            <h1 className="text-4xl lg:text-5xl font-serif italic text-white">
-              {TABS.find((t) => t.id === activeTab)?.label}
-            </h1>
-
-            <p className="text-white/60 mt-3 max-w-2xl text-lg">
-              {activeTab === "all"
-                ? "Explore our complete collection of premium pharmaceutical gifts and branding products"
-                : activeTab === "categories"
-                ? "Browse products by category including tabletops, paperweights, desk utilities and more"
-                : activeTab === "personalized"
-                ? "Discover personalized gifts with custom branding and doctor-specific details"
-                : "Find the perfect gifts for every occasion and medical event throughout the year"}
-            </p>
-
-            <div className="flex items-center gap-3 mt-4">
-              <span className="text-white/50 text-sm">{totalProducts} products</span>
-              <span className="w-1 h-1 rounded-full bg-white/30" />
-              <span className="text-white/50 text-sm">{groupedProducts.length} subcategories</span>
-            </div>
-          </div>
-        </section>
+      <PageBanner/>
 
         {/* Main Content with Sidebar */}
         <div className="max-w-[1500px] mx-auto px-6 py-12 lg:py-16">
