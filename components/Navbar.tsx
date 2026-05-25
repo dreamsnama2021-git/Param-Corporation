@@ -88,7 +88,6 @@ export default function Navbar() {
 
   const handleCategoryClick = (e: React.MouseEvent, tabId: string, categorySlug: string) => {
     e.preventDefault();
-    // Match the footer navigation pattern
     if (tabId === 'categories') {
       router.push(`/categories/all?tab=categories#category-${categorySlug}`);
     } else if (tabId === 'personalized') {
@@ -139,15 +138,15 @@ export default function Navbar() {
             : "bg-white/70 backdrop-blur-md"
         }`}
       >
-        <div className="px-6 max-w-[1500px] mx-auto">
+        <div className="px-4 md:px-6 max-w-[1500px] mx-auto">
           <div className="flex items-center justify-between h-16 md:h-18">
             {/* Logo */}
-            <Link href="/" className="flex items-center">
-              <img src="/banner/logo final for param .png" alt="Param Logo" className="h-18 md:h-25 object-contain" />
+            <Link href="/" className="flex items-center shrink-0">
+              <img src="/banner/logo final for param .png" alt="Param Logo" className="h-14 md:h-20 lg:h-24 object-contain" />
             </Link>
 
             {/* Desktop Menu */}
-            <ul className="hidden lg:flex items-center gap-2">
+            <ul className="hidden lg:flex items-center gap-1 xl:gap-2">
               <li
                 className="relative mega-menu-container"
                 onMouseEnter={handleMouseEnter}
@@ -155,7 +154,7 @@ export default function Navbar() {
               >
                 <button
                   onClick={handleProductsClick}
-                  className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] transition cursor-pointer"
+                  className="flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base font-semibold text-[var(--clr-text-dark)] hover:text-[var(--clr-primary)] transition cursor-pointer whitespace-nowrap"
                 >
                   Products
                   <ChevronDown className={`w-4 h-4 transition ${activeDropdown === "products" ? "rotate-180" : ""}`} />
@@ -163,25 +162,25 @@ export default function Navbar() {
 
                 {activeDropdown === "products" && (
                   <div
-                    className="absolute top-full left-1/2 -translate-x-1/2 w-[900px] bg-white/98 backdrop-blur-xl rounded-b-xl shadow-2xl border border-gray-200 border-t-0 p-6 z-50"
+                    className="absolute top-full left-1/2 -translate-x-1/2 w-[90vw] max-w-[900px] bg-white/98 backdrop-blur-xl rounded-b-xl shadow-2xl border border-gray-200 border-t-0 p-4 xl:p-6 z-50"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <div className="grid grid-cols-4 gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 xl:gap-6">
                       {megaMenuColumns.map((column, idx) => (
                         <div key={idx}>
                           <div className="flex items-center justify-between mb-2 border-b pb-2">
-                            <h3 className="font-bold text-xs uppercase text-[var(--clr-text-dark)] tracking-wide">
+                            <h3 className="font-bold text-[11px] xl:text-xs uppercase text-[var(--clr-text-dark)] tracking-wide">
                               {column.title}
                             </h3>
                           </div>
                           <ul className="space-y-1">
-                            {column.data?.slice(0, 15).map((item: any) => (
+                            {column.data?.slice(0, 12).map((item: any) => (
                               <li key={item.slug}>
                                 {column.tabId === 'therapy' ? (
                                   <Link
                                     href={`/medipride?therapy=${item.slug}`}
-                                    className="text-[12px] text-gray-600 hover:text-[var(--clr-primary)] transition-all block"
+                                    className="text-[11px] xl:text-[12px] text-gray-600 hover:text-[var(--clr-primary)] transition-all block truncate"
                                     onClick={() => setActiveDropdown(null)}
                                   >
                                     {item.name}
@@ -190,7 +189,7 @@ export default function Navbar() {
                                   <a
                                     href={`/categories/all?tab=${column.tabId}#category-${item.slug}`}
                                     onClick={(e) => handleCategoryClick(e, column.tabId, item.slug)}
-                                    className="text-[12px] text-gray-600 hover:text-[var(--clr-primary)] transition-all block"
+                                    className="text-[11px] xl:text-[12px] text-gray-600 hover:text-[var(--clr-primary)] transition-all block truncate"
                                   >
                                     {item.name}
                                   </a>
@@ -209,7 +208,7 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`block px-4 py-1 text-sm font-bold rounded-full transition-all duration-300 ${
+                  className={`block px-3 xl:px-4 py-1 text-sm xl:text-base font-bold rounded-full transition-all duration-300 whitespace-nowrap ${
                     item.isButton
                       ? 'bg-[var(--clr-primary)] text-white text-center hover:bg-[var(--clr-secondary)] hover:shadow-lg hover:shadow-[var(--clr-primary)]/30 hover:-translate-y-0.5'
                       : 'text-gray-800 hover:bg-white/80 hover:text-[var(--clr-primary)]'
@@ -231,7 +230,7 @@ export default function Navbar() {
         {/* MOBILE MENU */}
         {mobileOpen && (
           <div className="lg:hidden border-t border-gray-200 bg-white/98 backdrop-blur-xl max-h-[85vh] overflow-y-auto">
-            <div className="px-6 max-w-[1500px] mx-auto space-y-2 pb-6">
+            <div className="px-4 md:px-6 max-w-[1500px] mx-auto space-y-2 pb-6">
               {/* Search */}
               <div className="flex items-center gap-2 bg-gray-100 rounded-xl px-4 py-3 mb-4">
                 <Search className="w-4 h-4 text-gray-400" />

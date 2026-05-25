@@ -424,6 +424,60 @@ body > * {
   box-shadow: 0 0 0 3px rgba(0, 147, 203, 0.1);
 }
 
+/* Add to your global CSS file for better 1024px support */
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  html {
+    font-size: 12px;
+  }
+  
+  /* Adjust mega menu for 1024px screens */
+  .mega-menu-container > div {
+    width: 85vw !important;
+    max-width: 900px;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    right: auto !important;
+  }
+  
+  /* Ensure mega menu columns are readable */
+  .mega-menu-container .grid {
+    gap: 1rem !important;
+  }
+  
+  .mega-menu-container h3 {
+    font-size: 0.7rem !important;
+  }
+  
+  .mega-menu-container a {
+    font-size: 0.7rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Navbar buttons */
+  .lg\\:flex .px-4 {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1536px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Optional: fine-tune root font scaling */
+:root {
+  font-size: 14px;
+}
 /* =====================================================
    UTILITY CLASSES
 ===================================================== */
