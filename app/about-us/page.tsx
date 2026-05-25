@@ -170,15 +170,15 @@ const WhyUsSection = () => {
     color: string;
   }
 
-  const Card = ({ item }: { item: CardItem }) => (
-    <div className="bg-white p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow">
-      <div className={`w-8 h-8 sm:w-10 sm:h-10 ${item.color} rounded-lg sm:rounded-xl mb-3 sm:mb-4 flex items-center justify-center text-white`}>
-        <item.icon size={18} className="sm:size-5" />
-      </div>
-      <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2">{item.title}</h3>
-      <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+const Card = ({ item }: { item: CardItem }) => (
+  <div className="bg-white p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow">
+    <div className={`w-8 h-8 sm:w-10 sm:h-10 ${item.color} rounded-lg sm:rounded-xl mb-3 sm:mb-4 flex items-center justify-center text-white`}>
+      <item.icon size={18} /> {/* Remove className prop */}
     </div>
-  );
+    <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2">{item.title}</h3>
+    <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+  </div>
+);
 
   return (
     <section className="py-8 sm:py-10 md:py-12 bg-slate-50">
