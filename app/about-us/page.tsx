@@ -217,61 +217,62 @@ const PageBanner = () => (
 
 // ─── WHY US SECTION ───────────────────────────────────────────────────────────
 const WhyUsSection = () => {
-  const row1Cards = [
-    // Workflow = end-to-end process flow
-    { title: "End to End Solutions", desc: "Specialized in pharmaceutical gifting with deep understanding of doctor preferences.", icon: Workflow, color: "bg-amber-500" },
-    // Truck = delivery / logistics
-    { title: "Pan-India Delivery", desc: "Seamless delivery across India ensuring your gifts reach clinics anywhere.", icon: Truck, color: "bg-blue-500" },
-    // FlaskConical = manufacturing / R&D / lab
-    { title: "In-House Manufacturing & R&D", desc: "Consistent quality and reliable execution of annual gifting campaigns.", icon: FlaskConical, color: "bg-rose-500" },
-  ];
-  const row2Cards = [
-    // Pill = pharma / medicine
-    { title: "Pharma Expertise", desc: "Gifts aligned with cardiac, diabetic, and pediatric therapy areas.", icon: Pill, color: "bg-emerald-500" },
-    // Network = vendor ecosystem / supply chain
-    { title: "Strong Vendor Ecosystem & Sourcing", desc: "All gifts meet regulatory guidelines for pharmaceutical promotions.", icon: Network, color: "bg-violet-500" },
-    // Wrench = after-sales / support / service
-    { title: "After Sales Service", desc: "Personalized packaging and branding options for your medical reps.", icon: Wrench, color: "bg-orange-500" },
-    // Lock = confidentiality / privacy
-    { title: "We Maintain Confidentiality", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Lock, color: "bg-cyan-500" },
-  ];
+    const row1Cards = [
+        // Workflow = end-to-end process flow
+            { title: "End to End Solutions", desc: "Specialized in pharmaceutical gifting with deep understanding of doctor preferences.", icon: Workflow, color: "bg-amber-500" },
+                // Truck = delivery / logistics
+                    { title: "Pan-India Delivery", desc: "Seamless delivery across India ensuring your gifts reach clinics anywhere.", icon: Truck, color: "bg-blue-500" },
+                        // FlaskConical = manufacturing / R&D / lab
+                            { title: "In-House Manufacturing & R&D", desc: "Consistent quality and reliable execution of annual gifting campaigns.", icon: FlaskConical, color: "bg-rose-500" },
+                              ];
+                                const row2Cards = [
+                                    // Pill = pharma / medicine
+                                        { title: "Pharma Expertise", desc: "Gifts aligned with cardiac, diabetic, and pediatric therapy areas.", icon: Pill, color: "bg-emerald-500" },
+                                            // Network = vendor ecosystem / supply chain
+                                                { title: "Strong Vendor Ecosystem & Sourcing", desc: "All gifts meet regulatory guidelines for pharmaceutical promotions.", icon: Network, color: "bg-violet-500" },
+                                                    // Wrench = after-sales / support / service
+                                                        { title: "After Sales Service", desc: "Personalized packaging and branding options for your medical reps.", icon: Wrench, color: "bg-orange-500" },
+                                                            // Lock = confidentiality / privacy
+                                                                { title: "We Maintain Confidentiality", desc: "Dedicated account managers ensuring smooth campaign execution.", icon: Lock, color: "bg-cyan-500" },
+                                                                  ];
 
-  interface CardItem {
-    title: string;
-    desc: string;
-    icon: React.ComponentType<{ size?: number }>;
-    color: string;
-  }
+                                                                    interface CardItem {
+                                                                        title: string;
+                                                                            desc: string;
+                                                                                icon: React.ComponentType<{ size?: number }>;
+                                                                                    color: string;
+                                                                                      }
 
-  const Card = ({ item }: { item: CardItem }) => (
-    <div className="bg-white p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow">
-      <div className={`w-8 h-8 sm:w-10 sm:h-10 ${item.color} rounded-lg sm:rounded-xl mb-3 sm:mb-4 flex items-center justify-center text-white`}>
-        <item.icon size={18} />
-      </div>
-      <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2">{item.title}</h3>
-      <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
-    </div>
-  );
+                                                                                        const Card = ({ item }: { item: CardItem }) => (
+                                                                                            <div className="bg-white p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow">
+                                                                                                  <div className={`w-8 h-8 sm:w-10 sm:h-10 ${item.color} rounded-lg sm:rounded-xl mb-3 sm:mb-4 flex items-center justify-center text-white`}>
+                                                                                                          <item.icon size={18} />
+                                                                                                                </div>
+                                                                                                                      <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2">{item.title}</h3>
+                                                                                                                            <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+                                                                                                                                </div>
+                                                                                                                                  );
 
-  return (
-    <section className="py-8 sm:py-10 md:py-12 bg-slate-50">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 space-y-3 sm:space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-4">
-          <div className="flex flex-col justify-center">
-            <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-1.5 sm:mb-2">Why Param</p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
-              The <span className="text-[#0093cb]">Difference</span>
-            </h2>
-          </div>
-          {row1Cards.map((item, i) => <Card key={i} item={item} />)}
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-          {row2Cards.map((item, i) => <Card key={i} item={item} />)}
-        </div>
-      </div>
-    </section>
-  );
-};
+                                                                                                                                    return (
+                                                                                                                                        <section className="py-8 sm:py-10 md:py-12 bg-slate-50">
+                                                                                                                                              <div className="max-w-[1500px] mx-auto px-4 sm:px-6 space-y-3 sm:space-y-4">
+                                                                                                                                                      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-4">
+                                                                                                                                                                <div className="flex flex-col justify-center">
+                                                                                                                                                                            <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-1.5 sm:mb-2">Why Param</p>
+                                                                                                                                                                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
+                                                                                                                                                                                                      The <span className="text-[#0093cb]">Difference</span>
+                                                                                                                                                                                                                  </h2>
+                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                      {row1Cards.map((item, i) => <Card key={i} item={item} />)}
+                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                                                                                                                                                                                                                                                                {row2Cards.map((item, i) => <Card key={i} item={item} />)}
+                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                                  </section>
+                                                                                                                                                                                                                                                                                    );
+                                                                                                                                                                                                                                                                                    };
+}
 
 // ─── VISION & MISSION ────────────────────────────────────────────────────────
 interface VisionMissionProps {

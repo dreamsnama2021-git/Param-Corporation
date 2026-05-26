@@ -226,6 +226,24 @@ export default function HeroWithStats() {
           ))}
         </div>
 
+        {/* ========== CONTENT OVERLAY ========== */}
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/40">
+          <div className="text-center text-white px-4 sm:px-6 md:px-8 max-w-4xl mx-auto">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 md:mb-5 leading-tight">
+              Pharma Branding & Doctor Gifting Solutions That Create Real Impact
+            </h1>
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg mb-5 sm:mb-6 md:mb-8 text-white/90 max-w-3xl mx-auto">
+              Param Corporation helps pharmaceutical brands strengthen doctor relationships, 
+              improve brand recall, and drive meaningful engagement through custom pharma 
+              promotional gifts, doctor engagement tools, patient education materials, and 
+              healthcare branding solutions designed for lasting impact.
+            </p>
+            <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-2 sm:py-2.5 md:py-3 px-5 sm:px-7 md:px-9 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-xs sm:text-sm md:text-base transform hover:scale-105">
+              Explore Pharma Branding Solutions
+            </button>
+          </div>
+        </div>
+
         {/* Navigation arrows */}
         <button 
           onClick={(e) => {
@@ -238,7 +256,7 @@ export default function HeroWithStats() {
           w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 
           bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center 
           text-white hover:bg-white/40 hover:scale-110 transition-all duration-300
-          border border-white/30 shadow-lg group z-20"
+          border border-white/30 shadow-lg group z-30"
           aria-label="Previous slide"
         >
           <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 group-hover:-translate-x-1 transition-transform" />
@@ -255,14 +273,14 @@ export default function HeroWithStats() {
           w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 
           bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center 
           text-white hover:bg-white/40 hover:scale-110 transition-all duration-300
-          border border-white/30 shadow-lg group z-20"
+          border border-white/30 shadow-lg group z-30"
           aria-label="Next slide"
         >
           <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 group-hover:translate-x-1 transition-transform" />
         </button>
 
         {/* Dots navigation */}
-        <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 lg:bottom-10 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-20">
+        <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 lg:bottom-10 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3 z-30">
           {HERO_SLIDES.map((_, i) => (
             <button
               key={i}
@@ -285,9 +303,9 @@ export default function HeroWithStats() {
         </div>
 
         {/* Gradient overlays */}
-        <div className="absolute inset-y-0 left-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-black/20 to-transparent pointer-events-none z-10" />
-        <div className="absolute inset-y-0 right-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-black/20 to-transparent pointer-events-none z-10" />
-        <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 md:h-32 bg-gradient-to-t from-black/30 to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 left-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-black/40 to-transparent pointer-events-none z-10" />
+        <div className="absolute inset-y-0 right-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-black/40 to-transparent pointer-events-none z-10" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 md:h-32 bg-gradient-to-t from-black/50 to-transparent pointer-events-none z-10" />
       </section>
     </div>
   );

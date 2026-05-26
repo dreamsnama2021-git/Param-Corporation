@@ -152,21 +152,21 @@ const AboutUsPage: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold tracking-tight leading-[1.1] animate-fade-up delay-100 text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500 pb-1 sm:pb-2">
+            <h2 className="text-[26px] sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold tracking-tight leading-[1.1] animate-fade-up delay-100 text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500 pb-1 sm:pb-2">
               Corporate Gifting For, <br />
               <span className="text-[#0093cb]">Pharma Brands In India.</span> <br />
             </h2>
 
             <p className="text-gray-500 text-sm sm:text-base md:text-lg lg:text-sm xl:text-base 2xl:text-lg leading-relaxed max-w-xl animate-fade-up delay-200 font-light pb-1 sm:pb-2">
-              At Param Corporation, we specialize in delivering strategic
-              corporate gifting & pharma marketing solutions tailored to different
-              industries. From doctor engagement kits to promotional
-              merchandise, we turn ideas into impactful brand experiences.
+             At Param Corporation, we specialize in pharma branding, doctor engagement solutions, and customized pharma promotional products tailored for the healthcare industry.
+<br/><br/>From gifts for doctors, clinic branding products, medical education tools, and branded consultation aids, we create practical solutions that help pharmaceutical companies strengthen professional relationships and improve brand visibility.
+<br/><br/>Our focus is simple: creating meaningful doctor engagement through thoughtful branding solutions that combine utility, innovation, and strategic communication.
+
             </p>
             <div className="flex justify-start pt-1 sm:pt-2">
               <Link
                 href="/about-us"
-                className="group flex items-center gap-2 sm:gap-3 bg-white border-2 border-[#0093cb] text-[#0093cb] px-5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 lg:py-2.5 xl:py-3.5 rounded-full font-semibold text-xs sm:text-sm hover:bg-[#0093cb] hover:text-white transition-all duration-300 transform hover:scale-105"
+                className="group flex items-center gap-2 sm:gap-3 bg-white border-2 border-[#0093cb] text-[#0093cb] px-5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 lg:py-2.5 xl:py-3.5 rounded-full font-semibold text-sm hover:bg-[#0093cb] hover:text-white transition-all duration-300 transform hover:scale-105"
               >
                 <span>Know More</span>
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
