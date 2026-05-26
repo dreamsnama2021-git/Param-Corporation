@@ -258,7 +258,7 @@ export default function Navbar() {
 
                           <ul className="space-y-3 xl:space-y-4">
                             {column.data
-                              ?.slice(0, 10)
+                              ?.slice(0, 15)
                               .map((item: any) => (
                                 <li key={item.slug}>
                                   {column.tabId === "therapy" ? (
