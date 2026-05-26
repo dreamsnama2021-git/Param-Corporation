@@ -304,9 +304,9 @@ export const allProducts: Product[] = [
   ] },
 
   // Categories - Indoor Plants (IDs: 67-69)
-  { id: 67, name: "Succulent Set with Pot", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
-  { id: 68, name: "Lucky Bamboo Plant", image: "https://images.unsplash.com/photo-1599598425947-d35301f7c396?w=400", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
-  { id: 69, name: "Air Purifying Plant", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  { id: 67, name: "Succulent Set with Pot", image: "/Indoor Plant/SYNGONIUM PLANT.jpeg", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
+  { id: 68, name: "Lucky Bamboo Plant", image: "/Indoor Plant/AGLAONEMA PLANT 1.jpeg", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
+  { id: 69, name: "Air Purifying Plant", image: "/Indoor Plant/ARECA PALM PLANT 1.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
 
   // Categories - Calendars (IDs: 70-72)
   { id: 70, name: "Medical Desk Calendar", image: "therepy/cardio-diabatics/ASCVD RISK CALCULATOR 2.jpg", price: "₹299", category: "calendars", categoryName: "Calendars", description: "Medical-focused desk calendar 2025" },
