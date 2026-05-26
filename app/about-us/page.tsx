@@ -475,19 +475,19 @@ const TeamCard = ({ member }: { member: TeamMember }) => (
 const TeamSection = () => {
   const team: TeamMember[] = [
     {
-      name: "Rajesh Kumar",
-      role: "Operations Head",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=600&fit=crop",
+      name: "Mr. Rajeev Dosi",
+      role: "Director",
+      image: "/banner/WhatsApp Image 2026-05-20 at 7.05.07 PM.jpeg",
     },
     {
-      name: "Priya Mehta",
-      role: "Creative Director",
+      name: "Mr. Sanchay Dosi",
+      role: "Founder",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=600&fit=crop",
     },
     {
       name: "Ms. Saakshi Dosi",
-      role: "Founder & CEO",
-      image: "https://medipride.org/wp-content/uploads/2025/11/IMG-20251106-WA0063-Edited-768x1024.jpg",
+      role: "Business Development Manager",
+      image: "/banner/WhatsApp Image 2026-05-20 at 7.05.06 PM.jpeg",
     },
   ];
 
