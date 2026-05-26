@@ -460,42 +460,39 @@ export const allProducts: Product[] = [
   "/Photo Frames/BRAIN RESIN ART FRAME 1.JPG",
   "/Photo Frames/BRAIN RESIN ART FRAME 2.JPG"
 ], tags: ["personalized", "crystal", "engraved"] },
-{ id: 83, name: "EXCLUSIVE LIVER FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Liver anatomy with artistic floral painting", images: [
+{ id: 502, name: "EXCLUSIVE LIVER FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Liver anatomy with artistic floral painting", images: [
     "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG",
     "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 2.JPG"
-] },
-  { id: 84, name: "EXCLUSIVE TEETH ANATOMY PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Dental anatomy painting frame for clinics", images: [
+], tags: ["personalized", "crystal", "engraved"] },
+  { id: 503, name: "EXCLUSIVE TEETH ANATOMY PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Dental anatomy painting frame for clinics", images: [
     "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG",
     "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 2.JPG"
-] },
-  { id: 85, name: "EXCLUSIVE UTERUS FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Uterus anatomy with elegant floral painting", images: [
+], tags: ["personalized", "crystal", "engraved"] },
+  { id: 504, name: "EXCLUSIVE UTERUS FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Uterus anatomy with elegant floral painting", images: [
     "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG",
     "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 2.JPG"
-] },
-  { id: 86, name: "FEMALE PELVIS RESIN ART FRAME", image: "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Female pelvis anatomy resin art frame", images: [
+], tags: ["personalized", "crystal", "engraved"] },
+  { id: 505, name: "FEMALE PELVIS RESIN ART FRAME", image: "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Female pelvis anatomy resin art frame", images: [
     "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG",
     "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 2.JPG"
-] },
-  { id: 87, name: "FERTILIZATION RESIN ART FRAME", image: "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG", price: "₹1699", category: "photo-frames", categoryName: "Photo Frames", description: "Educational fertilization process resin art frame", images: [
+], tags: ["personalized", "crystal", "engraved"] },
+  { id: 506, name: "FERTILIZATION RESIN ART FRAME", image: "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG", price: "₹1699", category: "photo-frames", categoryName: "Photo Frames", description: "Educational fertilization process resin art frame", images: [
     "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG",
     "/Photo Frames/FERTILIZATION RESIN ART FRAME 2.JPG"
-] },
-  { id: 88, name: "MOTHER-BABY ART FRAME", image: "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG", price: "₹1399", category: "photo-frames", categoryName: "Photo Frames", description: "Heartwarming mother-baby art frame for maternity clinics", images: [
+], tags: ["personalized", "crystal", "engraved"] },
+  { id: 507, name: "MOTHER-BABY ART FRAME", image: "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG", price: "₹1399", category: "photo-frames", categoryName: "Photo Frames", description: "Heartwarming mother-baby art frame for maternity clinics", images: [
     "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG",
     "/Photo Frames/MOTHER-BABY ART FRAME 2.JPG"
-] },
-  { id: 89, name: "OVARIES RESIN ART FRAME", image: "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Ovary anatomy resin art frame for gynecology clinics", images: [
+], tags: ["personalized", "crystal", "engraved"] },
+  { id: 508, name: "OVARIES RESIN ART FRAME", image: "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Ovary anatomy resin art frame for gynecology clinics", images: [
     "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG",
     "/Photo Frames/OVARIES RESIN ART FRAME 2.JPG",
     "/Photo Frames/OVARIES RESIN ART FRAME 3.JPG"
-] },
-  { id: 90, name: "SPINAL CORD RESIN ART FRAME WITH CLOCK", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG", price: "₹1899", category: "photo-frames", categoryName: "Photo Frames", description: "Spinal cord resin art frame with integrated clock", images: [
+], tags: ["personalized", "crystal", "engraved"] },
+  { id: 509, name: "SPINAL CORD RESIN ART FRAME WITH CLOCK", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG", price: "₹1899", category: "photo-frames", categoryName: "Photo Frames", description: "Spinal cord resin art frame with integrated clock", images: [
     "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG",
     "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 2.JPG"
-] },
-  { id: 91, name: "SPINAL CORD RESIN ART FRAME", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME.jpg", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Spinal cord anatomy resin art frame", images: [
-    "/Photo Frames/SPINAL CORD RESIN ART FRAME.jpg"
-] },
+], tags: ["personalized", "crystal", "engraved"] },
 
 // Clinic Branding / Momentos (IDs: 510-519)
 { id: 510, name: "Custom Clinic Logo Pen Stand", image: "/Desk Utility/CUSTOMIZED PEN HOLDER 1.JPG", price: "₹399", category: "clinic-branding", categoryName: "Momentos", description: "Acrylic pen stand with clinic logo and doctor name printed", tags: ["clinic-branding", "logo", "pen-stand"] },
