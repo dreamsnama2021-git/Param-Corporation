@@ -310,7 +310,7 @@ export const allProducts: Product[] = [
 
   // Categories - Calendars (IDs: 70-72)
   { id: 70, name: "Medical Desk Calendar", image: "therepy/cardio-diabatics/ASCVD RISK CALCULATOR 2.jpg", price: "₹299", category: "calendars", categoryName: "Calendars", description: "Medical-focused desk calendar 2025" },
-  { id: 71, name: "Wall Calendar with Health Tips", image: "therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_24_05 PM.png", price: "₹399", category: "calendars", categoryName: "Calendars", description: "Monthly calendar with wellness messages" },
+  { id: 71, name: "Wall Calendar with Health Tips", image: "therepy/cardio-diabatics/ASCVD RISK CALCULATOR 2.jpg", price: "₹399", category: "calendars", categoryName: "Calendars", description: "Monthly calendar with wellness messages" },
   { id: 72, name: "Planner Diary Combo", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹599", category: "calendars", categoryName: "Calendars", description: "Year planner with monthly calendar" },
 
   // Categories - Photo Frames (IDs: 73-95)
