@@ -69,7 +69,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     posters: [
       '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_24_00 PM.png',
       '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_26_54 PM.png',
-      '/therepy/cardio-diabatics/HEART ATTACK AWARENESS LAMA STANDEE.jpg,
+      '/therepy/cardio-diabatics/HEART ATTACK AWARENESS LAMA STANDEE.jpg',
     ],
     medicalScale: [
       '/therepy/cardio-diabatics/ASCVD RISK CALCULATOR 2.jpg',
