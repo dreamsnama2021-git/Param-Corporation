@@ -465,13 +465,13 @@ function LoadingFallback() {
 }
 // ─── PAGE BANNER ─────────────────────────────────────────────────────────────
 const PageBanner = () => (
-  <div className="relative w-full h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px] overflow-hidden">
+  <div className="relative w-full h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px] xl:h-[850px] overflow-hidden">
     {/* Background image */}
     <Image
       src="/banner/medipride.jpeg"
       alt="About Us Banner"
       fill
-      className="object-cover object-center"
+      className="object-fill object-center"
       priority
       unoptimized
     />
