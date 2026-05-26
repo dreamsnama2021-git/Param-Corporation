@@ -107,7 +107,7 @@ const serviceCategories: ServiceCategory[] = [
 
 const koruGalleryImages: GalleryImage[] = [
   { id: "g-1", src: "/New Product Images/10.png", title: "Custom Dashboard Interface", category: "Dashboard" },
-  { id: "g-2", src: "/New Product Images/9.png", title: "Analytics Visualization", category: "Analytics" },
+  { id: "g-2", src: "/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_15_09 PM.png", title: "Analytics Visualization", category: "Analytics" },
   { id: "g-3", src: "/New Product Images/52.png", title: "Health Risk Calculator", category: "HRA Tools" },
   { id: "g-4", src: "/New Product Images/68.png", title: "Patient Support Portal", category: "Patient Programs" },
   { id: "g-5", src: "/koru/koru4.png", title: "Mini Website Design", category: "Websites" },
