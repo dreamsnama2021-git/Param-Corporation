@@ -137,9 +137,9 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   'ENT & Respiratory': {
     card: 'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
     books: [
-      '/images/therapies/ent/books-1.jpg',
-      '/images/therapies/ent/books-2.jpg',
-      '/images/therapies/ent/books-3.jpg',
+      '/therepy/ent/423.jpg',
+      '/therepy/ent/ALLERGIC RHINITIS VISUAL ANALOG SCALE.jpg',
+      // '/images/therapies/ent/books-3.jpg',
     ],
     flipChart: [
       '/images/therapies/ent/flip-chart-1.jpg',
@@ -147,24 +147,24 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/ent/flip-chart-3.jpg',
     ],
     matt: [
-      '/images/therapies/ent/matt-1.jpg',
-      '/images/therapies/ent/matt-2.jpg',
-      '/images/therapies/ent/matt-3.jpg',
+      '/therepy/ent/428.jpg',
+      '/therepy/ent/432.jpg',
+      // '/images/therapies/ent/matt-3.jpg',
     ],
     posters: [
-      '/images/therapies/ent/posters-1.jpg',
-      '/images/therapies/ent/posters-2.jpg',
-      '/images/therapies/ent/posters-3.jpg',
+      '/therepy/ent/REVOLISER PATIENT COUNSELLING TOOL.jpg',
+      '/therepy/ent/HEALTHY SINUS VS SINUSITIS TABLE TOP.jpg',
+      '/therepy/ent/ChatGPT Image May 25, 2026, 06_08_56 PM.png',
     ],
     medicalScale: [
-      '/images/therapies/ent/medical-scale-1.jpg',
-      '/images/therapies/ent/medical-scale-2.jpg',
-      '/images/therapies/ent/medical-scale-3.jpg',
+      '/therepy/ent/421.jpg',
+      '/therepy/ent/422.jpg',
+      // '/images/therapies/ent/medical-scale-3.jpg',
     ],
     writeWipe: [
-      '/images/therapies/ent/write-wipe-1.jpg',
-      '/images/therapies/ent/write-wipe-2.jpg',
-      '/images/therapies/ent/write-wipe-3.jpg',
+      '/therepy/ent/ALLERGIC RHINITIS WRITE & WIPE EDUSTAND WITH NASAL  ANATOMICAL MODEL.jpg',
+      // '/images/therapies/ent/write-wipe-2.jpg',
+      // '/images/therapies/ent/write-wipe-3.jpg',
     ],
     tearOffPads: [
       '/images/therapies/ent/tear-off-pads-1.jpg',
@@ -172,9 +172,9 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/ent/tear-off-pads-3.jpg',
     ],
     tableTops: [
-      '/images/therapies/ent/table-tops-1.jpg',
-      '/images/therapies/ent/table-tops-2.jpg',
-      '/images/therapies/ent/table-tops-3.jpg',
+      '/therepy/ent/420.jpg',
+      '/therepy/ent/419.jpg',
+      '/therepy/ent/424.jpg',
     ],
   },
   'Orthopedics/Rheumatology': {
@@ -797,19 +797,19 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/hepatology/matt-3.jpg',
     ],
     posters: [
-      '/images/therapies/hepatology/posters-1.jpg',
-      '/images/therapies/hepatology/posters-2.jpg',
-      '/images/therapies/hepatology/posters-3.jpg',
+      '/therepy/hepatology/SPECTRUM OF LIVER DAMAGE ANATOMICAL MODEL 2.jpg',
+      // '/images/therapies/hepatology/posters-2.jpg',
+      // '/images/therapies/hepatology/posters-3.jpg',
     ],
     medicalScale: [
-      '/images/therapies/hepatology/medical-scale-1.jpg',
-      '/images/therapies/hepatology/medical-scale-2.jpg',
-      '/images/therapies/hepatology/medical-scale-3.jpg',
+      '/therepy/hepatology/Frame.png',
+      // '/images/therapies/hepatology/medical-scale-2.jpg',
+      // '/images/therapies/hepatology/medical-scale-3.jpg',
     ],
     writeWipe: [
-      '/images/therapies/hepatology/write-wipe-1.jpg',
-      '/images/therapies/hepatology/write-wipe-2.jpg',
-      '/images/therapies/hepatology/write-wipe-3.jpg',
+      '/therepy/hepatology/Write & Wipe.png',
+      // '/images/therapies/hepatology/write-wipe-2.jpg',
+      // '/images/therapies/hepatology/write-wipe-3.jpg',
     ],
     tearOffPads: [
       '/images/therapies/hepatology/tear-off-pads-1.jpg',
@@ -817,9 +817,9 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/hepatology/tear-off-pads-3.jpg',
     ],
     tableTops: [
-      '/images/therapies/hepatology/table-tops-1.jpg',
-      '/images/therapies/hepatology/table-tops-2.jpg',
-      '/images/therapies/hepatology/table-tops-3.jpg',
+      '/therepy/hepatology/Table Top.png',
+      // '/images/therapies/hepatology/table-tops-2.jpg',
+      // '/images/therapies/hepatology/table-tops-3.jpg',
     ],
   },
   'Oncology': {
