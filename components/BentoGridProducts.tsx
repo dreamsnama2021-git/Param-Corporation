@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { ArrowUpRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { createPortal } from 'react-dom';
 
-// ─── Types (MUST be defined before use) ───
+// ─── Types ───
 const PRODUCT_CATEGORIES = [
   "BOOKS & MAGAZINES",
   "FLIP CHART",
@@ -35,154 +35,39 @@ type Therapy = {
   items: Product[];
 };
 
-// ─── Unsplash Image URLs for Therapies ───
-const THERAPY_IMAGES: Record<string, string[]> = {
-  'Diabetes': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
-    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
-  ],
-  'Cardio-Vascular': [
-    'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80',
-  ],
-  'ENT & Respiratory': [
-    'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
-  ],
-  'Orthopedics/Rheumatology': [
-    'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80',
-    'https://images.unsplash.com/photo-1580518337843-f959e992563b?w=800&q=80',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-  ],
-  'Gynaecology and Obstetrics': [
-    'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
-  ],
-  'Gastroenterology': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
-    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80',
-  ],
-  'Ophthalmology': [
-    'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=800&q=80',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
-  ],
-  'Dermatology': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
-    'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=80',
-  ],
-  'Pediatrics': [
-    'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
-  ],
-  'Urology': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
-    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80',
-  ],
-  'Neurology': [
-    'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
-  ],
-  'Psychiatry': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
-    'https://images.unsplash.com/photo-1493836512293-7c2c1370e297?w=800&q=80',
-  ],
-  'Dentistry': [
-    'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
-  ],
-  'Infectious Diseases': [
-    'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&q=80',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
-  ],
-  'Nutritional Deficiencies': [
-    'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
-  ],
-  'Endocrinology': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
-    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80',
-  ],
-  'Nephrology': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
-  ],
-  'Hepatology': [
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
-    'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80',
-  ],
-  'Oncology': [
-    'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
-  ],
-  'General Wellness': [
-    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
-  ],
+// ─── Generate Unique Images for Each Therapy + Category Combination ───
+const generateUniqueImage = (therapyName: string, category: ProductCategory, index: number): string => {
+  // Create a consistent but unique-looking placeholder using therapy name + category + index
+  // Using Unsplash with different search terms for variety
+  const searchTerms: Record<ProductCategory, string[]> = {
+    "BOOKS & MAGAZINES": ["medical-book", "healthcare-magazine", "clinical-journal"],
+    "FLIP CHART": ["medical-chart", "healthcare-flipchart", "clinical-presentation"],
+    "MATT (Desk Mats)": ["desk-mat", "office-mat", "clinical-desk"],
+    "POSTERS": ["medical-poster", "anatomy-poster", "healthcare-poster"],
+    "Medical SCALE": ["medical-scale", "clinical-scale", "healthcare-scale"],
+    "WRITE & WIPE": ["whiteboard", "dry-erase-board", "wipe-board"],
+    "Tear off Pads": ["prescription-pad", "medical-notepad", "tear-off-pad"],
+    "TABLE TOPS & SCIENTIFIC INPUTS": ["scientific-display", "medical-tabletop", "interactive-display"]
+  };
+  
+  const terms = searchTerms[category];
+  const term = terms[index % terms.length];
+  const therapySlug = therapyName.toLowerCase().replace(/[^a-z]/g, '-');
+  
+  // Use different image sources for variety
+  const imageSources = [
+    `https://source.unsplash.com/featured/?${term},medical,healthcare&${therapySlug}&sig=${index}`,
+    `https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80`,
+    `https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80`,
+    `https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&q=80`,
+    `https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80`,
+  ];
+  
+  // Return different image based on combination
+  return imageSources[(therapyName.length + category.length + index) % imageSources.length];
 };
 
-// ─── Rest of the component remains the same ───
-const CATEGORY_IMAGES: Record<ProductCategory, string[]> = {
-  "BOOKS & MAGAZINES": [
-    'https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80',
-    'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80',
-    'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&q=80',
-  ],
-  "FLIP CHART": [
-    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80',
-    'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80',
-    'https://images.unsplash.com/photo-1552581234-26160f608093?w=600&q=80',
-  ],
-  "MATT (Desk Mats)": [
-    'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80',
-    'https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600&q=80',
-    'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80',
-  ],
-  "POSTERS": [
-    'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80',
-    'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80',
-    'https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&q=80',
-  ],
-  "Medical SCALE": [
-    'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80',
-    'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&q=80',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80',
-  ],
-  "WRITE & WIPE": [
-    'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80',
-    'https://images.unsplash.com/photo-1513258496099-48168024aec0?w=600&q=80',
-    'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80',
-  ],
-  "Tear off Pads": [
-    'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=600&q=80',
-    'https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&q=80',
-    'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80',
-  ],
-  "TABLE TOPS & SCIENTIFIC INPUTS": [
-    'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600&q=80',
-    'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?w=600&q=80',
-    'https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=600&q=80',
-  ],
-};
-
+// ─── Generate Category Products with Unique Images per Therapy ───
 const generateCategoryProducts = (therapyName: string, category: ProductCategory): Product[] => {
   const categoryDetails: Record<ProductCategory, { icon: string; titles: string[]; descBase: string }> = {
     "BOOKS & MAGAZINES": {
@@ -228,15 +113,53 @@ const generateCategoryProducts = (therapyName: string, category: ProductCategory
   };
 
   const details = categoryDetails[category];
-  const categoryImages = CATEGORY_IMAGES[category];
 
   return [0, 1, 2].map((index) => ({
     title: `${therapyName}: ${details.titles[index]}`,
     desc: `${details.descBase} ${index === 0 ? 'Ideal for healthcare professionals.' : index === 1 ? 'Enhances clinical workflow and patient understanding.' : 'Trusted by medical facilities worldwide.'}`,
-    img: categoryImages[index] || 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80',
+    img: generateUniqueImage(therapyName, category, index),
     category
   }));
 };
+
+// ─── Therapy Data with Unique Card Images ───
+const generateTherapyCardImage = (therapyName: string): string => {
+  const therapyImages: Record<string, string> = {
+    'Diabetes': 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'Cardio-Vascular': 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80',
+    'ENT & Respiratory': 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
+    'Orthopedics/Rheumatology': 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80',
+    'Gynaecology and Obstetrics': 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80',
+    'Gastroenterology': 'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
+    'Ophthalmology': 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=800&q=80',
+    'Dermatology': 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=80',
+    'Pediatrics': 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80',
+    'Urology': 'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
+    'Neurology': 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80',
+    'Psychiatry': 'https://images.unsplash.com/photo-1493836512293-7c2c1370e297?w=800&q=80',
+    'Dentistry': 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
+    'Infectious Diseases': 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&q=80',
+    'Nutritional Deficiencies': 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80',
+    'Endocrinology': 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    'Nephrology': 'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
+    'Hepatology': 'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
+    'Oncology': 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80',
+    'General Wellness': 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80',
+  };
+  
+  return therapyImages[therapyName] || therapyImages['General Wellness'];
+};
+
+const THERAPY_IMAGES: Record<string, string[]> = {};
+
+// Pre-populate therapy images
+Object.keys(generateTherapyCardImage).forEach(therapy => {
+  THERAPY_IMAGES[therapy] = [
+    generateTherapyCardImage(therapy),
+    generateTherapyCardImage(therapy),
+    generateTherapyCardImage(therapy)
+  ];
+});
 
 const generateFullTherapyData = (): Therapy[] => {
   const therapies = [
@@ -270,6 +193,7 @@ const generateFullTherapyData = (): Therapy[] => {
 
 const THERAPY_DATA = generateFullTherapyData();
 
+// ─── Category Section Component ───
 function CategorySection({ category, products, therapyColor, therapyName }: { category: ProductCategory; products: Product[]; therapyColor: string; therapyName: string }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -373,7 +297,18 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
           {products.map((item, idx) => (
             <div key={idx} className="flex-shrink-0 w-[240px] sm:w-[280px] md:w-[300px] lg:w-[320px] bg-white rounded-lg sm:rounded-xl overflow-hidden hover:shadow-lg sm:hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="relative aspect-[4/3] overflow-hidden">
-                <Image src={item.img} alt={item.title} fill className="object-cover" sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 320px" unoptimized />
+                <Image 
+                  src={item.img} 
+                  alt={item.title} 
+                  fill 
+                  className="object-cover" 
+                  sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 320px" 
+                  unoptimized 
+                />
+              </div>
+              <div className="p-3 sm:p-4">
+                <h4 className="text-xs sm:text-sm font-semibold text-neutral-800 line-clamp-2">{item.title}</h4>
+                <p className="text-[10px] sm:text-xs text-neutral-500 mt-1 line-clamp-2">{item.desc}</p>
               </div>
             </div>
           ))}
@@ -390,6 +325,7 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
   );
 }
 
+// ─── Modal Component ───
 function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) {
   const [isVisible, setIsVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -493,9 +429,9 @@ function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) 
   return createPortal(modalContent, document.body);
 }
 
+// ─── Collage Card Component ───
 function CollageCard({ therapy, onClick }: { therapy: Therapy; onClick: () => void }) {
-  const therapyImages = THERAPY_IMAGES[therapy.therapy] || THERAPY_IMAGES['General Wellness'];
-  const cardImage = therapyImages[0];
+  const cardImage = generateTherapyCardImage(therapy.therapy);
 
   return (
     <article
