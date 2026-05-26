@@ -377,6 +377,10 @@ export const allProducts: Product[] = [
   { id: 17, name: "Seed Paper Diary", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹399", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Plantable seed paper notebook" },
   { id: 18, name: "Jute Laptop Bag", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400", price: "₹999", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Eco-friendly jute carry bag" },
   { id: 19, name: "Recycled Material Planter", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹299", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Sustainable desk planter made from recycled materials" },
+  { id: 20, name: "Jute Laptop Bag", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400", price: "₹999", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Eco-friendly jute carry bag" },
+  { id: 21, name: "Recycled Material Planter", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹299", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Sustainable desk planter made from recycled materials" },
+  { id: 22, name: "Jute Laptop Bag", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400", price: "₹999", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Eco-friendly jute carry bag" },
+  { id: 23, name: "Recycled Material Planter", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹299", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Sustainable desk planter made from recycled materials" },
   
   // Categories - LED Tabletops
   { id: 20, name: "CARDIO LED TABLE TOP", image: "/LED INPUTS/CARDIO LED TABLE TOP.jpg", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated cardio-themed LED tabletop display for medical branding", images: [
@@ -427,26 +431,35 @@ export const allProducts: Product[] = [
     "/LED INPUTS/IMG_7394.JPG"
   ] },
   
-  { id: 30, name: "LED BRANDING TABLE TOP", image: "/LED INPUTS/IMG_8393.JPG", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Customizable LED tabletop for brand promotion", images: [
-    "/LED INPUTS/IMG_8393.JPG",
-    "/LED INPUTS/IMG_8397.JPG",
-    "/LED INPUTS/IMG_8406.JPG",
-    "/LED INPUTS/IMG_8414.JPG"
-  ] },
+  // { id: 30, name: "LED BRANDING TABLE TOP", image: "/LED INPUTS/IMG_8393.JPG", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Customizable LED tabletop for brand promotion", images: [
+  //   "/LED INPUTS/IMG_8393.JPG",
+  //   "/LED INPUTS/IMG_8397.JPG",
+  //   "/LED INPUTS/IMG_8406.JPG",
+  //   "/LED INPUTS/IMG_8414.JPG"
+  // ] },
   
-  { id: 31, name: "MODERN LED TABLE TOP", image: "/LED INPUTS/IMG_9720.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Modern sleek LED illuminated tabletop display", images: [
-    "/LED INPUTS/IMG_9720.JPG",
-    "/LED INPUTS/IMG_9724.JPG"
+  // { id: 31, name: "MODERN LED TABLE TOP", image: "/LED INPUTS/IMG_9720.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Modern sleek LED illuminated tabletop display", images: [
+  //   "/LED INPUTS/IMG_9720.JPG",
+  //   "/LED INPUTS/IMG_9724.JPG"
   ] },
   // Categories - Indoor Plants
   { id: 23, name: "Succulent Set with Pot", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
   { id: 24, name: "Lucky Bamboo Plant", image: "https://images.unsplash.com/photo-1599598425947-d35301f7c396?w=400", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
   { id: 25, name: "Air Purifying Plant", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  { id: 26, name: "Lucky Bamboo Plant", image: "https://images.unsplash.com/photo-1599598425947-d35301f7c396?w=400", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
+  { id: 27, name: "Air Purifying Plant", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  { id: 28, name: "Lucky Bamboo Plant", image: "https://images.unsplash.com/photo-1599598425947-d35301f7c396?w=400", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
+  { id: 29, name: "Air Purifying Plant", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  { id: 30, name: "Lucky Bamboo Plant", image: "https://images.unsplash.com/photo-1599598425947-d35301f7c396?w=400", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
+  { id: 31, name: "Air Purifying Plant", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  { id: 32, name: "Lucky Bamboo Plant", image: "https://images.unsplash.com/photo-1599598425947-d35301f7c396?w=400", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
   
   // Categories - Calendars
   { id: 26, name: "Medical Desk Calendar", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹299", category: "calendars", categoryName: "Calendars", description: "Medical-focused desk calendar 2025" },
   { id: 27, name: "Wall Calendar with Health Tips", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹399", category: "calendars", categoryName: "Calendars", description: "Monthly calendar with wellness messages" },
   { id: 28, name: "Planner Diary Combo", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹599", category: "calendars", categoryName: "Calendars", description: "Year planner with monthly calendar" },
+  { id: 29, name: "Wall Calendar with Health Tips", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400", price: "₹399", category: "calendars", categoryName: "Calendars", description: "Monthly calendar with wellness messages" },
+  { id: 30, name: "Planner Diary Combo", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹599", category: "calendars", categoryName: "Calendars", description: "Year planner with monthly calendar" },
   
  // Categories - Photo Frames
   { id: 29, name: "BABIES RESIN ART FRAME", image: "/Photo Frames/BABIES RESIN ART FRAME 1.JPG", price: "₹1299", category: "photo-frames", categoryName: "Photo Frames", description: "Beautiful resin art frame featuring baby designs - perfect for pediatric clinics", images: [
@@ -617,40 +630,66 @@ export const allProducts: Product[] = [
   // OCCASIONS - Gifting Based on Occasion
   // ==========================================
   
-  // Doctor's Day
-  { id: 201, name: "Doctor's Day Pen Set", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹1299", category: "doctors-day", categoryName: "Doctor's Day", description: "Premium medical-themed pens and diaries", tags: ["doctorsday", "medical", "appreciation"] },
-  { id: 202, name: "Doctor Appreciation Plaque", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹899", category: "doctors-day", categoryName: "Doctor's Day", description: "Thank you plaque for doctors", tags: ["appreciation", "plaque", "gratitude"] },
-  { id: 203, name: "Desk Plant with Quote", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹649", category: "doctors-day", categoryName: "Doctor's Day", description: "Succulent with 'Thank You Doctor' message", tags: ["plants", "doctorsday", "gratitude"] },
+  // // Doctor's Day
+  // { id: 201, name: "Doctor's Day Pen Set", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹1299", category: "doctors-day", categoryName: "Doctor's Day", description: "Premium medical-themed pens and diaries", tags: ["doctorsday", "medical", "appreciation"] },
+  // { id: 202, name: "Doctor Appreciation Plaque", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹899", category: "doctors-day", categoryName: "Doctor's Day", description: "Thank you plaque for doctors", tags: ["appreciation", "plaque", "gratitude"] },
+  // { id: 203, name: "Desk Plant with Quote", image: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400", price: "₹649", category: "doctors-day", categoryName: "Doctor's Day", description: "Succulent with 'Thank You Doctor' message", tags: ["plants", "doctorsday", "gratitude"] },
   
-  // Medical Conferences
-  { id: 204, name: "Conference Welcome Kit", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹799", category: "medical-conferences", categoryName: "Medical Conferences", description: "Notebook, pen, and essentials for attendees", tags: ["conference", "kit", "medical"] },
-  { id: 205, name: "Medical Tote Bag", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400", price: "₹499", category: "medical-conferences", categoryName: "Medical Conferences", description: "Branded conference bag for doctors", tags: ["bag", "conference", "branded"] },
+  // // Medical Conferences
+  // { id: 204, name: "Conference Welcome Kit", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹799", category: "medical-conferences", categoryName: "Medical Conferences", description: "Notebook, pen, and essentials for attendees", tags: ["conference", "kit", "medical"] },
+  // { id: 205, name: "Medical Tote Bag", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400", price: "₹499", category: "medical-conferences", categoryName: "Medical Conferences", description: "Branded conference bag for doctors", tags: ["bag", "conference", "branded"] },
   
-  // Product Launches
-  { id: 206, name: "Launch Event Gift Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1999", category: "product-launches", categoryName: "Product Launches", description: "Premium gift box for product launch attendees", tags: ["launch", "premium", "event"] },
-  { id: 207, name: "Branded Launch Kit", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹1499", category: "product-launches", categoryName: "Product Launches", description: "Customized kit with product information", tags: ["launch", "branded", "promotional"] },
+  // // Product Launches
+  // { id: 206, name: "Launch Event Gift Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1999", category: "product-launches", categoryName: "Product Launches", description: "Premium gift box for product launch attendees", tags: ["launch", "premium", "event"] },
+  // { id: 207, name: "Branded Launch Kit", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹1499", category: "product-launches", categoryName: "Product Launches", description: "Customized kit with product information", tags: ["launch", "branded", "promotional"] },
   
-  // Festive Gifting
-  { id: 208, name: "Premium Diwali Hamper", image: "https://images.unsplash.com/photo-1573662761572-2c2be631a545?w=400", price: "₹4999", category: "festive-gifting", categoryName: "Festive Gifting", description: "Luxury sweets, dry fruits, and decor items", tags: ["diwali", "luxury", "festival"] },
-  { id: 209, name: "Christmas Celebration Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2999", category: "festive-gifting", categoryName: "Festive Gifting", description: "Cakes, wine, and Christmas decor", tags: ["christmas", "celebration", "festival"] },
+  // // Festive Gifting
+  // { id: 208, name: "Premium Diwali Hamper", image: "https://images.unsplash.com/photo-1573662761572-2c2be631a545?w=400", price: "₹4999", category: "festive-gifting", categoryName: "Festive Gifting", description: "Luxury sweets, dry fruits, and decor items", tags: ["diwali", "luxury", "festival"] },
+  // { id: 209, name: "Christmas Celebration Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2999", category: "festive-gifting", categoryName: "Festive Gifting", description: "Cakes, wine, and Christmas decor", tags: ["christmas", "celebration", "festival"] },
   
   // January
   { id: 210, name: "New Year Celebration Hamper", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1999", category: "january", categoryName: "January", description: "Premium hamper with chocolates, wine, and diary", tags: ["newyear", "hamper", "celebration"] },
-  { id: 211, name: "Executive Planner 2025", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹899", category: "january", categoryName: "January", description: "Premium leather planner with company branding", tags: ["planner", "executive", "branding"] },
+  // { id: 211, name: "Executive Planner 2025", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹899", category: "january", categoryName: "January", description: "Premium leather planner with company branding", tags: ["planner", "executive", "branding"] },
+  
+  // February
+  { id: 212, name: "Monsoon Care Package", image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=400", price: "₹999", category: "july", categoryName: "July", description: "Umbrellas, raincoats, and herbal teas", tags: ["monsoon", "rain", "care"] },
+  
+  // March
+  { id: 213, name: "Decorative Diya Set", image: "https://images.unsplash.com/photo-1573662761572-2c2be631a545?w=400", price: "₹599", category: "october", categoryName: "October", description: "Handcrafted brass diyas with branded packaging", tags: ["diya", "diwali", "traditional"] },
+  // { id: 214, name: "Dry Fruit Premium Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2999", category: "october", categoryName: "October", description: "Imported nuts and dried fruits collection", tags: ["dryfruits", "premium", "diwali"] },
+  
+  // April
+  { id: 215, name: "Diabetes Care Kit", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400", price: "₹2499", category: "november", categoryName: "November", description: "Glucometer and sugar-free snacks hamper", tags: ["diabetes", "health", "care"] },
+  
+  // May
+  { id: 216, name: "Year End Planner 2025", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹999", category: "december", categoryName: "December", description: "Premium planner for the upcoming year", tags: ["planner", "2025", "newyear"] },
+  // { id: 217, name: "Winter Care Package", image: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=400", price: "₹1799", category: "december", categoryName: "December", description: "Warmers, teas, and skincare for winter", tags: ["winter", "care", "warm"] },
+
+  // June
+  { id: 210, name: "New Year Celebration Hamper", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1999", category: "january", categoryName: "January", description: "Premium hamper with chocolates, wine, and diary", tags: ["newyear", "hamper", "celebration"] },
+  // { id: 211, name: "Executive Planner 2025", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹899", category: "january", categoryName: "January", description: "Premium leather planner with company branding", tags: ["planner", "executive", "branding"] },
   
   // July (Doctor's Day & Monsoon)
   { id: 212, name: "Monsoon Care Package", image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=400", price: "₹999", category: "july", categoryName: "July", description: "Umbrellas, raincoats, and herbal teas", tags: ["monsoon", "rain", "care"] },
   
-  // October (Diwali)
+  // August
   { id: 213, name: "Decorative Diya Set", image: "https://images.unsplash.com/photo-1573662761572-2c2be631a545?w=400", price: "₹599", category: "october", categoryName: "October", description: "Handcrafted brass diyas with branded packaging", tags: ["diya", "diwali", "traditional"] },
-  { id: 214, name: "Dry Fruit Premium Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2999", category: "october", categoryName: "October", description: "Imported nuts and dried fruits collection", tags: ["dryfruits", "premium", "diwali"] },
+  // { id: 214, name: "Dry Fruit Premium Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2999", category: "october", categoryName: "October", description: "Imported nuts and dried fruits collection", tags: ["dryfruits", "premium", "diwali"] },
   
-  // November (Diabetes Awareness)
+  // September
+  { id: 215, name: "Diabetes Care Kit", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400", price: "₹2499", category: "november", categoryName: "November", description: "Glucometer and sugar-free snacks hamper", tags: ["diabetes", "health", "care"] },
+  
+  // October 
+  { id: 216, name: "Year End Planner 2025", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹999", category: "december", categoryName: "December", description: "Premium planner for the upcoming year", tags: ["planner", "2025", "newyear"] },
+  // { id: 217, name: "Winter Care Package", image: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=400", price: "₹1799", category: "december", categoryName: "December", description: "Warmers, teas, and skincare for winter", tags: ["winter", "care", "warm"] },
+
+  // November 
   { id: 215, name: "Diabetes Care Kit", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400", price: "₹2499", category: "november", categoryName: "November", description: "Glucometer and sugar-free snacks hamper", tags: ["diabetes", "health", "care"] },
   
   // December
   { id: 216, name: "Year End Planner 2025", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹999", category: "december", categoryName: "December", description: "Premium planner for the upcoming year", tags: ["planner", "2025", "newyear"] },
-  { id: 217, name: "Winter Care Package", image: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=400", price: "₹1799", category: "december", categoryName: "December", description: "Warmers, teas, and skincare for winter", tags: ["winter", "care", "warm"] },
+  // { id: 217, name: "Winter Care Package", image: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=400", price: "₹1799", category: "december", categoryName: "December", description: "Warmers, teas, and skincare for winter", tags: ["winter", "care", "warm"] },
+
   
   // ==========================================
   // PERSONALIZED GIFTS
