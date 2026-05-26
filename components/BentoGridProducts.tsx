@@ -111,7 +111,6 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
     posters: [
       '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_06_35 PM.png',
-      '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_15_09 PM.png',
       '/images/therapies/diabetes/posters-3.jpg',
     ],
     medicalScale: [
