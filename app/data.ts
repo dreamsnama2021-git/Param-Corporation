@@ -357,42 +357,42 @@ export const allProducts: Product[] = [
   { id: 82, name: "EXCLUSIVE BRAIN FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE BRAIN FLORAL PAINTING FRAME.jpg", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Beautiful brain anatomy with floral painting design", images: [
     "/Photo Frames/EXCLUSIVE BRAIN FLORAL PAINTING FRAME.jpg"
   ] },
-  { id: 83, name: "EXCLUSIVE LIVER FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Liver anatomy with artistic floral painting", images: [
-    "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG",
-    "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 2.JPG"
-  ] },
-  { id: 84, name: "EXCLUSIVE TEETH ANATOMY PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Dental anatomy painting frame for clinics", images: [
-    "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG",
-    "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 2.JPG"
-  ] },
-  { id: 85, name: "EXCLUSIVE UTERUS FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Uterus anatomy with elegant floral painting", images: [
-    "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG",
-    "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 2.JPG"
-  ] },
-  { id: 86, name: "FEMALE PELVIS RESIN ART FRAME", image: "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Female pelvis anatomy resin art frame", images: [
-    "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG",
-    "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 2.JPG"
-  ] },
-  { id: 87, name: "FERTILIZATION RESIN ART FRAME", image: "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG", price: "₹1699", category: "photo-frames", categoryName: "Photo Frames", description: "Educational fertilization process resin art frame", images: [
-    "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG",
-    "/Photo Frames/FERTILIZATION RESIN ART FRAME 2.JPG"
-  ] },
-  { id: 88, name: "MOTHER-BABY ART FRAME", image: "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG", price: "₹1399", category: "photo-frames", categoryName: "Photo Frames", description: "Heartwarming mother-baby art frame for maternity clinics", images: [
-    "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG",
-    "/Photo Frames/MOTHER-BABY ART FRAME 2.JPG"
-  ] },
-  { id: 89, name: "OVARIES RESIN ART FRAME", image: "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Ovary anatomy resin art frame for gynecology clinics", images: [
-    "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG",
-    "/Photo Frames/OVARIES RESIN ART FRAME 2.JPG",
-    "/Photo Frames/OVARIES RESIN ART FRAME 3.JPG"
-  ] },
-  { id: 90, name: "SPINAL CORD RESIN ART FRAME WITH CLOCK", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG", price: "₹1899", category: "photo-frames", categoryName: "Photo Frames", description: "Spinal cord resin art frame with integrated clock", images: [
-    "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG",
-    "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 2.JPG"
-  ] },
-  { id: 91, name: "SPINAL CORD RESIN ART FRAME", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME.jpg", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Spinal cord anatomy resin art frame", images: [
-    "/Photo Frames/SPINAL CORD RESIN ART FRAME.jpg"
-  ] },
+  // { id: 83, name: "EXCLUSIVE LIVER FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Liver anatomy with artistic floral painting", images: [
+  //   "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG",
+  //   "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 2.JPG"
+  // ] },
+  // { id: 84, name: "EXCLUSIVE TEETH ANATOMY PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Dental anatomy painting frame for clinics", images: [
+  //   "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG",
+  //   "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 2.JPG"
+  // ] },
+  // { id: 85, name: "EXCLUSIVE UTERUS FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Uterus anatomy with elegant floral painting", images: [
+  //   "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG",
+  //   "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 2.JPG"
+  // ] },
+  // { id: 86, name: "FEMALE PELVIS RESIN ART FRAME", image: "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Female pelvis anatomy resin art frame", images: [
+  //   "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG",
+  //   "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 2.JPG"
+  // ] },
+  // { id: 87, name: "FERTILIZATION RESIN ART FRAME", image: "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG", price: "₹1699", category: "photo-frames", categoryName: "Photo Frames", description: "Educational fertilization process resin art frame", images: [
+  //   "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG",
+  //   "/Photo Frames/FERTILIZATION RESIN ART FRAME 2.JPG"
+  // ] },
+  // { id: 88, name: "MOTHER-BABY ART FRAME", image: "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG", price: "₹1399", category: "photo-frames", categoryName: "Photo Frames", description: "Heartwarming mother-baby art frame for maternity clinics", images: [
+  //   "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG",
+  //   "/Photo Frames/MOTHER-BABY ART FRAME 2.JPG"
+  // ] },
+  // { id: 89, name: "OVARIES RESIN ART FRAME", image: "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Ovary anatomy resin art frame for gynecology clinics", images: [
+  //   "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG",
+  //   "/Photo Frames/OVARIES RESIN ART FRAME 2.JPG",
+  //   "/Photo Frames/OVARIES RESIN ART FRAME 3.JPG"
+  // ] },
+  // { id: 90, name: "SPINAL CORD RESIN ART FRAME WITH CLOCK", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG", price: "₹1899", category: "photo-frames", categoryName: "Photo Frames", description: "Spinal cord resin art frame with integrated clock", images: [
+  //   "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG",
+  //   "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 2.JPG"
+  // ] },
+  // { id: 91, name: "SPINAL CORD RESIN ART FRAME", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME.jpg", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Spinal cord anatomy resin art frame", images: [
+  //   "/Photo Frames/SPINAL CORD RESIN ART FRAME.jpg"
+  // ] },
 
   // Occasions - Monthly Gifts (IDs: 100-130)
   // January (IDs: 100-101)
