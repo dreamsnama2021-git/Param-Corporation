@@ -32,42 +32,901 @@ type Therapy = {
   color: string;
   bgColor: string;
   span: number;
+  slug: string;
+  images: {
+    card: string;
+    books: string[];
+    flipChart: string[];
+    matt: string[];
+    posters: string[];
+    medicalScale: string[];
+    writeWipe: string[];
+    tearOffPads: string[];
+    tableTops: string[];
+  };
   items: Product[];
 };
 
-// ─── Generate Unique Images for Each Therapy + Category Combination ───
-const generateUniqueImage = (therapyName: string, category: ProductCategory, index: number): string => {
-  // Create a consistent but unique-looking placeholder using therapy name + category + index
-  // Using Unsplash with different search terms for variety
-  const searchTerms: Record<ProductCategory, string[]> = {
-    "BOOKS & MAGAZINES": ["medical-book", "healthcare-magazine", "clinical-journal"],
-    "FLIP CHART": ["medical-chart", "healthcare-flipchart", "clinical-presentation"],
-    "MATT (Desk Mats)": ["desk-mat", "office-mat", "clinical-desk"],
-    "POSTERS": ["medical-poster", "anatomy-poster", "healthcare-poster"],
-    "Medical SCALE": ["medical-scale", "clinical-scale", "healthcare-scale"],
-    "WRITE & WIPE": ["whiteboard", "dry-erase-board", "wipe-board"],
-    "Tear off Pads": ["prescription-pad", "medical-notepad", "tear-off-pad"],
-    "TABLE TOPS & SCIENTIFIC INPUTS": ["scientific-display", "medical-tabletop", "interactive-display"]
-  };
-  
-  const terms = searchTerms[category];
-  const term = terms[index % terms.length];
-  const therapySlug = therapyName.toLowerCase().replace(/[^a-z]/g, '-');
-  
-  // Use different image sources for variety
-  const imageSources = [
-    `https://source.unsplash.com/featured/?${term},medical,healthcare&${therapySlug}&sig=${index}`,
-    `https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80`,
-    `https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80`,
-    `https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&q=80`,
-    `https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80`,
-  ];
-  
-  // Return different image based on combination
-  return imageSources[(therapyName.length + category.length + index) % imageSources.length];
+// ─── Therapy Images Data (Local Images) ───
+const THERAPY_IMAGES_DATA: Record<string, any> = {
+  'Cardio-Vascular': {
+    card: '/images/therapies/cardio/card.jpg',
+    books: [
+      '/images/therapies/cardio/books-1.jpg',
+      '/images/therapies/cardio/books-2.jpg',
+      '/images/therapies/cardio/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/cardio/flip-chart-1.jpg',
+      '/images/therapies/cardio/flip-chart-2.jpg',
+      '/images/therapies/cardio/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/cardio/matt-1.jpg',
+      '/images/therapies/cardio/matt-2.jpg',
+      '/images/therapies/cardio/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/cardio/posters-1.jpg',
+      '/images/therapies/cardio/posters-2.jpg',
+      '/images/therapies/cardio/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/cardio/medical-scale-1.jpg',
+      '/images/therapies/cardio/medical-scale-2.jpg',
+      '/images/therapies/cardio/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/cardio/write-wipe-1.jpg',
+      '/images/therapies/cardio/write-wipe-2.jpg',
+      '/images/therapies/cardio/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/cardio/tear-off-pads-1.jpg',
+      '/images/therapies/cardio/tear-off-pads-2.jpg',
+      '/images/therapies/cardio/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/cardio/table-tops-1.jpg',
+      '/images/therapies/cardio/table-tops-2.jpg',
+      '/images/therapies/cardio/table-tops-3.jpg',
+    ],
+  },
+  'Diabetes': {
+    card: '/images/therapies/diabetes/card.jpg',
+    books: [
+      '/images/therapies/diabetes/books-1.jpg',
+      '/images/therapies/diabetes/books-2.jpg',
+      '/images/therapies/diabetes/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/diabetes/flip-chart-1.jpg',
+      '/images/therapies/diabetes/flip-chart-2.jpg',
+      '/images/therapies/diabetes/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/diabetes/matt-1.jpg',
+      '/images/therapies/diabetes/matt-2.jpg',
+      '/images/therapies/diabetes/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/diabetes/posters-1.jpg',
+      '/images/therapies/diabetes/posters-2.jpg',
+      '/images/therapies/diabetes/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/diabetes/medical-scale-1.jpg',
+      '/images/therapies/diabetes/medical-scale-2.jpg',
+      '/images/therapies/diabetes/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/diabetes/write-wipe-1.jpg',
+      '/images/therapies/diabetes/write-wipe-2.jpg',
+      '/images/therapies/diabetes/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/diabetes/tear-off-pads-1.jpg',
+      '/images/therapies/diabetes/tear-off-pads-2.jpg',
+      '/images/therapies/diabetes/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/diabetes/table-tops-1.jpg',
+      '/images/therapies/diabetes/table-tops-2.jpg',
+      '/images/therapies/diabetes/table-tops-3.jpg',
+    ],
+  },
+  'ENT & Respiratory': {
+    card: '/images/therapies/ent/card.jpg',
+    books: [
+      '/images/therapies/ent/books-1.jpg',
+      '/images/therapies/ent/books-2.jpg',
+      '/images/therapies/ent/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/ent/flip-chart-1.jpg',
+      '/images/therapies/ent/flip-chart-2.jpg',
+      '/images/therapies/ent/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/ent/matt-1.jpg',
+      '/images/therapies/ent/matt-2.jpg',
+      '/images/therapies/ent/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/ent/posters-1.jpg',
+      '/images/therapies/ent/posters-2.jpg',
+      '/images/therapies/ent/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/ent/medical-scale-1.jpg',
+      '/images/therapies/ent/medical-scale-2.jpg',
+      '/images/therapies/ent/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/ent/write-wipe-1.jpg',
+      '/images/therapies/ent/write-wipe-2.jpg',
+      '/images/therapies/ent/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/ent/tear-off-pads-1.jpg',
+      '/images/therapies/ent/tear-off-pads-2.jpg',
+      '/images/therapies/ent/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/ent/table-tops-1.jpg',
+      '/images/therapies/ent/table-tops-2.jpg',
+      '/images/therapies/ent/table-tops-3.jpg',
+    ],
+  },
+  'Orthopedics/Rheumatology': {
+    card: '/images/therapies/ortho/card.jpg',
+    books: [
+      '/images/therapies/ortho/books-1.jpg',
+      '/images/therapies/ortho/books-2.jpg',
+      '/images/therapies/ortho/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/ortho/flip-chart-1.jpg',
+      '/images/therapies/ortho/flip-chart-2.jpg',
+      '/images/therapies/ortho/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/ortho/matt-1.jpg',
+      '/images/therapies/ortho/matt-2.jpg',
+      '/images/therapies/ortho/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/ortho/posters-1.jpg',
+      '/images/therapies/ortho/posters-2.jpg',
+      '/images/therapies/ortho/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/ortho/medical-scale-1.jpg',
+      '/images/therapies/ortho/medical-scale-2.jpg',
+      '/images/therapies/ortho/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/ortho/write-wipe-1.jpg',
+      '/images/therapies/ortho/write-wipe-2.jpg',
+      '/images/therapies/ortho/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/ortho/tear-off-pads-1.jpg',
+      '/images/therapies/ortho/tear-off-pads-2.jpg',
+      '/images/therapies/ortho/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/ortho/table-tops-1.jpg',
+      '/images/therapies/ortho/table-tops-2.jpg',
+      '/images/therapies/ortho/table-tops-3.jpg',
+    ],
+  },
+  'Gynaecology and Obstetrics': {
+    card: '/images/therapies/gynaecology/card.jpg',
+    books: [
+      '/images/therapies/gynaecology/books-1.jpg',
+      '/images/therapies/gynaecology/books-2.jpg',
+      '/images/therapies/gynaecology/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/gynaecology/flip-chart-1.jpg',
+      '/images/therapies/gynaecology/flip-chart-2.jpg',
+      '/images/therapies/gynaecology/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/gynaecology/matt-1.jpg',
+      '/images/therapies/gynaecology/matt-2.jpg',
+      '/images/therapies/gynaecology/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/gynaecology/posters-1.jpg',
+      '/images/therapies/gynaecology/posters-2.jpg',
+      '/images/therapies/gynaecology/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/gynaecology/medical-scale-1.jpg',
+      '/images/therapies/gynaecology/medical-scale-2.jpg',
+      '/images/therapies/gynaecology/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/gynaecology/write-wipe-1.jpg',
+      '/images/therapies/gynaecology/write-wipe-2.jpg',
+      '/images/therapies/gynaecology/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/gynaecology/tear-off-pads-1.jpg',
+      '/images/therapies/gynaecology/tear-off-pads-2.jpg',
+      '/images/therapies/gynaecology/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/gynaecology/table-tops-1.jpg',
+      '/images/therapies/gynaecology/table-tops-2.jpg',
+      '/images/therapies/gynaecology/table-tops-3.jpg',
+    ],
+  },
+  'Gastroenterology': {
+    card: '/images/therapies/gastro/card.jpg',
+    books: [
+      '/images/therapies/gastro/books-1.jpg',
+      '/images/therapies/gastro/books-2.jpg',
+      '/images/therapies/gastro/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/gastro/flip-chart-1.jpg',
+      '/images/therapies/gastro/flip-chart-2.jpg',
+      '/images/therapies/gastro/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/gastro/matt-1.jpg',
+      '/images/therapies/gastro/matt-2.jpg',
+      '/images/therapies/gastro/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/gastro/posters-1.jpg',
+      '/images/therapies/gastro/posters-2.jpg',
+      '/images/therapies/gastro/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/gastro/medical-scale-1.jpg',
+      '/images/therapies/gastro/medical-scale-2.jpg',
+      '/images/therapies/gastro/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/gastro/write-wipe-1.jpg',
+      '/images/therapies/gastro/write-wipe-2.jpg',
+      '/images/therapies/gastro/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/gastro/tear-off-pads-1.jpg',
+      '/images/therapies/gastro/tear-off-pads-2.jpg',
+      '/images/therapies/gastro/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/gastro/table-tops-1.jpg',
+      '/images/therapies/gastro/table-tops-2.jpg',
+      '/images/therapies/gastro/table-tops-3.jpg',
+    ],
+  },
+  'Ophthalmology': {
+    card: '/images/therapies/ophthalmology/card.jpg',
+    books: [
+      '/images/therapies/ophthalmology/books-1.jpg',
+      '/images/therapies/ophthalmology/books-2.jpg',
+      '/images/therapies/ophthalmology/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/ophthalmology/flip-chart-1.jpg',
+      '/images/therapies/ophthalmology/flip-chart-2.jpg',
+      '/images/therapies/ophthalmology/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/ophthalmology/matt-1.jpg',
+      '/images/therapies/ophthalmology/matt-2.jpg',
+      '/images/therapies/ophthalmology/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/ophthalmology/posters-1.jpg',
+      '/images/therapies/ophthalmology/posters-2.jpg',
+      '/images/therapies/ophthalmology/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/ophthalmology/medical-scale-1.jpg',
+      '/images/therapies/ophthalmology/medical-scale-2.jpg',
+      '/images/therapies/ophthalmology/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/ophthalmology/write-wipe-1.jpg',
+      '/images/therapies/ophthalmology/write-wipe-2.jpg',
+      '/images/therapies/ophthalmology/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/ophthalmology/tear-off-pads-1.jpg',
+      '/images/therapies/ophthalmology/tear-off-pads-2.jpg',
+      '/images/therapies/ophthalmology/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/ophthalmology/table-tops-1.jpg',
+      '/images/therapies/ophthalmology/table-tops-2.jpg',
+      '/images/therapies/ophthalmology/table-tops-3.jpg',
+    ],
+  },
+  'Dermatology': {
+    card: '/images/therapies/dermatology/card.jpg',
+    books: [
+      '/images/therapies/dermatology/books-1.jpg',
+      '/images/therapies/dermatology/books-2.jpg',
+      '/images/therapies/dermatology/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/dermatology/flip-chart-1.jpg',
+      '/images/therapies/dermatology/flip-chart-2.jpg',
+      '/images/therapies/dermatology/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/dermatology/matt-1.jpg',
+      '/images/therapies/dermatology/matt-2.jpg',
+      '/images/therapies/dermatology/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/dermatology/posters-1.jpg',
+      '/images/therapies/dermatology/posters-2.jpg',
+      '/images/therapies/dermatology/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/dermatology/medical-scale-1.jpg',
+      '/images/therapies/dermatology/medical-scale-2.jpg',
+      '/images/therapies/dermatology/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/dermatology/write-wipe-1.jpg',
+      '/images/therapies/dermatology/write-wipe-2.jpg',
+      '/images/therapies/dermatology/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/dermatology/tear-off-pads-1.jpg',
+      '/images/therapies/dermatology/tear-off-pads-2.jpg',
+      '/images/therapies/dermatology/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/dermatology/table-tops-1.jpg',
+      '/images/therapies/dermatology/table-tops-2.jpg',
+      '/images/therapies/dermatology/table-tops-3.jpg',
+    ],
+  },
+  'Pediatrics': {
+    card: '/images/therapies/pediatrics/card.jpg',
+    books: [
+      '/images/therapies/pediatrics/books-1.jpg',
+      '/images/therapies/pediatrics/books-2.jpg',
+      '/images/therapies/pediatrics/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/pediatrics/flip-chart-1.jpg',
+      '/images/therapies/pediatrics/flip-chart-2.jpg',
+      '/images/therapies/pediatrics/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/pediatrics/matt-1.jpg',
+      '/images/therapies/pediatrics/matt-2.jpg',
+      '/images/therapies/pediatrics/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/pediatrics/posters-1.jpg',
+      '/images/therapies/pediatrics/posters-2.jpg',
+      '/images/therapies/pediatrics/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/pediatrics/medical-scale-1.jpg',
+      '/images/therapies/pediatrics/medical-scale-2.jpg',
+      '/images/therapies/pediatrics/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/pediatrics/write-wipe-1.jpg',
+      '/images/therapies/pediatrics/write-wipe-2.jpg',
+      '/images/therapies/pediatrics/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/pediatrics/tear-off-pads-1.jpg',
+      '/images/therapies/pediatrics/tear-off-pads-2.jpg',
+      '/images/therapies/pediatrics/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/pediatrics/table-tops-1.jpg',
+      '/images/therapies/pediatrics/table-tops-2.jpg',
+      '/images/therapies/pediatrics/table-tops-3.jpg',
+    ],
+  },
+  'Urology': {
+    card: '/images/therapies/urology/card.jpg',
+    books: [
+      '/images/therapies/urology/books-1.jpg',
+      '/images/therapies/urology/books-2.jpg',
+      '/images/therapies/urology/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/urology/flip-chart-1.jpg',
+      '/images/therapies/urology/flip-chart-2.jpg',
+      '/images/therapies/urology/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/urology/matt-1.jpg',
+      '/images/therapies/urology/matt-2.jpg',
+      '/images/therapies/urology/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/urology/posters-1.jpg',
+      '/images/therapies/urology/posters-2.jpg',
+      '/images/therapies/urology/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/urology/medical-scale-1.jpg',
+      '/images/therapies/urology/medical-scale-2.jpg',
+      '/images/therapies/urology/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/urology/write-wipe-1.jpg',
+      '/images/therapies/urology/write-wipe-2.jpg',
+      '/images/therapies/urology/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/urology/tear-off-pads-1.jpg',
+      '/images/therapies/urology/tear-off-pads-2.jpg',
+      '/images/therapies/urology/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/urology/table-tops-1.jpg',
+      '/images/therapies/urology/table-tops-2.jpg',
+      '/images/therapies/urology/table-tops-3.jpg',
+    ],
+  },
+  'Neurology': {
+    card: '/images/therapies/neurology/card.jpg',
+    books: [
+      '/images/therapies/neurology/books-1.jpg',
+      '/images/therapies/neurology/books-2.jpg',
+      '/images/therapies/neurology/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/neurology/flip-chart-1.jpg',
+      '/images/therapies/neurology/flip-chart-2.jpg',
+      '/images/therapies/neurology/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/neurology/matt-1.jpg',
+      '/images/therapies/neurology/matt-2.jpg',
+      '/images/therapies/neurology/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/neurology/posters-1.jpg',
+      '/images/therapies/neurology/posters-2.jpg',
+      '/images/therapies/neurology/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/neurology/medical-scale-1.jpg',
+      '/images/therapies/neurology/medical-scale-2.jpg',
+      '/images/therapies/neurology/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/neurology/write-wipe-1.jpg',
+      '/images/therapies/neurology/write-wipe-2.jpg',
+      '/images/therapies/neurology/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/neurology/tear-off-pads-1.jpg',
+      '/images/therapies/neurology/tear-off-pads-2.jpg',
+      '/images/therapies/neurology/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/neurology/table-tops-1.jpg',
+      '/images/therapies/neurology/table-tops-2.jpg',
+      '/images/therapies/neurology/table-tops-3.jpg',
+    ],
+  },
+  'Psychiatry': {
+    card: '/images/therapies/psychiatry/card.jpg',
+    books: [
+      '/images/therapies/psychiatry/books-1.jpg',
+      '/images/therapies/psychiatry/books-2.jpg',
+      '/images/therapies/psychiatry/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/psychiatry/flip-chart-1.jpg',
+      '/images/therapies/psychiatry/flip-chart-2.jpg',
+      '/images/therapies/psychiatry/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/psychiatry/matt-1.jpg',
+      '/images/therapies/psychiatry/matt-2.jpg',
+      '/images/therapies/psychiatry/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/psychiatry/posters-1.jpg',
+      '/images/therapies/psychiatry/posters-2.jpg',
+      '/images/therapies/psychiatry/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/psychiatry/medical-scale-1.jpg',
+      '/images/therapies/psychiatry/medical-scale-2.jpg',
+      '/images/therapies/psychiatry/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/psychiatry/write-wipe-1.jpg',
+      '/images/therapies/psychiatry/write-wipe-2.jpg',
+      '/images/therapies/psychiatry/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/psychiatry/tear-off-pads-1.jpg',
+      '/images/therapies/psychiatry/tear-off-pads-2.jpg',
+      '/images/therapies/psychiatry/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/psychiatry/table-tops-1.jpg',
+      '/images/therapies/psychiatry/table-tops-2.jpg',
+      '/images/therapies/psychiatry/table-tops-3.jpg',
+    ],
+  },
+  'Dentistry': {
+    card: '/images/therapies/dentistry/card.jpg',
+    books: [
+      '/images/therapies/dentistry/books-1.jpg',
+      '/images/therapies/dentistry/books-2.jpg',
+      '/images/therapies/dentistry/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/dentistry/flip-chart-1.jpg',
+      '/images/therapies/dentistry/flip-chart-2.jpg',
+      '/images/therapies/dentistry/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/dentistry/matt-1.jpg',
+      '/images/therapies/dentistry/matt-2.jpg',
+      '/images/therapies/dentistry/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/dentistry/posters-1.jpg',
+      '/images/therapies/dentistry/posters-2.jpg',
+      '/images/therapies/dentistry/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/dentistry/medical-scale-1.jpg',
+      '/images/therapies/dentistry/medical-scale-2.jpg',
+      '/images/therapies/dentistry/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/dentistry/write-wipe-1.jpg',
+      '/images/therapies/dentistry/write-wipe-2.jpg',
+      '/images/therapies/dentistry/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/dentistry/tear-off-pads-1.jpg',
+      '/images/therapies/dentistry/tear-off-pads-2.jpg',
+      '/images/therapies/dentistry/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/dentistry/table-tops-1.jpg',
+      '/images/therapies/dentistry/table-tops-2.jpg',
+      '/images/therapies/dentistry/table-tops-3.jpg',
+    ],
+  },
+  'Infectious Diseases': {
+    card: '/images/therapies/infectious/card.jpg',
+    books: [
+      '/images/therapies/infectious/books-1.jpg',
+      '/images/therapies/infectious/books-2.jpg',
+      '/images/therapies/infectious/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/infectious/flip-chart-1.jpg',
+      '/images/therapies/infectious/flip-chart-2.jpg',
+      '/images/therapies/infectious/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/infectious/matt-1.jpg',
+      '/images/therapies/infectious/matt-2.jpg',
+      '/images/therapies/infectious/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/infectious/posters-1.jpg',
+      '/images/therapies/infectious/posters-2.jpg',
+      '/images/therapies/infectious/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/infectious/medical-scale-1.jpg',
+      '/images/therapies/infectious/medical-scale-2.jpg',
+      '/images/therapies/infectious/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/infectious/write-wipe-1.jpg',
+      '/images/therapies/infectious/write-wipe-2.jpg',
+      '/images/therapies/infectious/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/infectious/tear-off-pads-1.jpg',
+      '/images/therapies/infectious/tear-off-pads-2.jpg',
+      '/images/therapies/infectious/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/infectious/table-tops-1.jpg',
+      '/images/therapies/infectious/table-tops-2.jpg',
+      '/images/therapies/infectious/table-tops-3.jpg',
+    ],
+  },
+  'Nutritional Deficiencies': {
+    card: '/images/therapies/nutrition/card.jpg',
+    books: [
+      '/images/therapies/nutrition/books-1.jpg',
+      '/images/therapies/nutrition/books-2.jpg',
+      '/images/therapies/nutrition/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/nutrition/flip-chart-1.jpg',
+      '/images/therapies/nutrition/flip-chart-2.jpg',
+      '/images/therapies/nutrition/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/nutrition/matt-1.jpg',
+      '/images/therapies/nutrition/matt-2.jpg',
+      '/images/therapies/nutrition/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/nutrition/posters-1.jpg',
+      '/images/therapies/nutrition/posters-2.jpg',
+      '/images/therapies/nutrition/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/nutrition/medical-scale-1.jpg',
+      '/images/therapies/nutrition/medical-scale-2.jpg',
+      '/images/therapies/nutrition/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/nutrition/write-wipe-1.jpg',
+      '/images/therapies/nutrition/write-wipe-2.jpg',
+      '/images/therapies/nutrition/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/nutrition/tear-off-pads-1.jpg',
+      '/images/therapies/nutrition/tear-off-pads-2.jpg',
+      '/images/therapies/nutrition/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/nutrition/table-tops-1.jpg',
+      '/images/therapies/nutrition/table-tops-2.jpg',
+      '/images/therapies/nutrition/table-tops-3.jpg',
+    ],
+  },
+  'Endocrinology': {
+    card: '/images/therapies/endocrinology/card.jpg',
+    books: [
+      '/images/therapies/endocrinology/books-1.jpg',
+      '/images/therapies/endocrinology/books-2.jpg',
+      '/images/therapies/endocrinology/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/endocrinology/flip-chart-1.jpg',
+      '/images/therapies/endocrinology/flip-chart-2.jpg',
+      '/images/therapies/endocrinology/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/endocrinology/matt-1.jpg',
+      '/images/therapies/endocrinology/matt-2.jpg',
+      '/images/therapies/endocrinology/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/endocrinology/posters-1.jpg',
+      '/images/therapies/endocrinology/posters-2.jpg',
+      '/images/therapies/endocrinology/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/endocrinology/medical-scale-1.jpg',
+      '/images/therapies/endocrinology/medical-scale-2.jpg',
+      '/images/therapies/endocrinology/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/endocrinology/write-wipe-1.jpg',
+      '/images/therapies/endocrinology/write-wipe-2.jpg',
+      '/images/therapies/endocrinology/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/endocrinology/tear-off-pads-1.jpg',
+      '/images/therapies/endocrinology/tear-off-pads-2.jpg',
+      '/images/therapies/endocrinology/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/endocrinology/table-tops-1.jpg',
+      '/images/therapies/endocrinology/table-tops-2.jpg',
+      '/images/therapies/endocrinology/table-tops-3.jpg',
+    ],
+  },
+  'Nephrology': {
+    card: '/images/therapies/nephrology/card.jpg',
+    books: [
+      '/images/therapies/nephrology/books-1.jpg',
+      '/images/therapies/nephrology/books-2.jpg',
+      '/images/therapies/nephrology/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/nephrology/flip-chart-1.jpg',
+      '/images/therapies/nephrology/flip-chart-2.jpg',
+      '/images/therapies/nephrology/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/nephrology/matt-1.jpg',
+      '/images/therapies/nephrology/matt-2.jpg',
+      '/images/therapies/nephrology/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/nephrology/posters-1.jpg',
+      '/images/therapies/nephrology/posters-2.jpg',
+      '/images/therapies/nephrology/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/nephrology/medical-scale-1.jpg',
+      '/images/therapies/nephrology/medical-scale-2.jpg',
+      '/images/therapies/nephrology/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/nephrology/write-wipe-1.jpg',
+      '/images/therapies/nephrology/write-wipe-2.jpg',
+      '/images/therapies/nephrology/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/nephrology/tear-off-pads-1.jpg',
+      '/images/therapies/nephrology/tear-off-pads-2.jpg',
+      '/images/therapies/nephrology/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/nephrology/table-tops-1.jpg',
+      '/images/therapies/nephrology/table-tops-2.jpg',
+      '/images/therapies/nephrology/table-tops-3.jpg',
+    ],
+  },
+  'Hepatology': {
+    card: '/images/therapies/hepatology/card.jpg',
+    books: [
+      '/images/therapies/hepatology/books-1.jpg',
+      '/images/therapies/hepatology/books-2.jpg',
+      '/images/therapies/hepatology/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/hepatology/flip-chart-1.jpg',
+      '/images/therapies/hepatology/flip-chart-2.jpg',
+      '/images/therapies/hepatology/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/hepatology/matt-1.jpg',
+      '/images/therapies/hepatology/matt-2.jpg',
+      '/images/therapies/hepatology/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/hepatology/posters-1.jpg',
+      '/images/therapies/hepatology/posters-2.jpg',
+      '/images/therapies/hepatology/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/hepatology/medical-scale-1.jpg',
+      '/images/therapies/hepatology/medical-scale-2.jpg',
+      '/images/therapies/hepatology/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/hepatology/write-wipe-1.jpg',
+      '/images/therapies/hepatology/write-wipe-2.jpg',
+      '/images/therapies/hepatology/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/hepatology/tear-off-pads-1.jpg',
+      '/images/therapies/hepatology/tear-off-pads-2.jpg',
+      '/images/therapies/hepatology/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/hepatology/table-tops-1.jpg',
+      '/images/therapies/hepatology/table-tops-2.jpg',
+      '/images/therapies/hepatology/table-tops-3.jpg',
+    ],
+  },
+  'Oncology': {
+    card: '/images/therapies/oncology/card.jpg',
+    books: [
+      '/images/therapies/oncology/books-1.jpg',
+      '/images/therapies/oncology/books-2.jpg',
+      '/images/therapies/oncology/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/oncology/flip-chart-1.jpg',
+      '/images/therapies/oncology/flip-chart-2.jpg',
+      '/images/therapies/oncology/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/oncology/matt-1.jpg',
+      '/images/therapies/oncology/matt-2.jpg',
+      '/images/therapies/oncology/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/oncology/posters-1.jpg',
+      '/images/therapies/oncology/posters-2.jpg',
+      '/images/therapies/oncology/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/oncology/medical-scale-1.jpg',
+      '/images/therapies/oncology/medical-scale-2.jpg',
+      '/images/therapies/oncology/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/oncology/write-wipe-1.jpg',
+      '/images/therapies/oncology/write-wipe-2.jpg',
+      '/images/therapies/oncology/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/oncology/tear-off-pads-1.jpg',
+      '/images/therapies/oncology/tear-off-pads-2.jpg',
+      '/images/therapies/oncology/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/oncology/table-tops-1.jpg',
+      '/images/therapies/oncology/table-tops-2.jpg',
+      '/images/therapies/oncology/table-tops-3.jpg',
+    ],
+  },
+  'General Wellness': {
+    card: '/images/therapies/wellness/card.jpg',
+    books: [
+      '/images/therapies/wellness/books-1.jpg',
+      '/images/therapies/wellness/books-2.jpg',
+      '/images/therapies/wellness/books-3.jpg',
+    ],
+    flipChart: [
+      '/images/therapies/wellness/flip-chart-1.jpg',
+      '/images/therapies/wellness/flip-chart-2.jpg',
+      '/images/therapies/wellness/flip-chart-3.jpg',
+    ],
+    matt: [
+      '/images/therapies/wellness/matt-1.jpg',
+      '/images/therapies/wellness/matt-2.jpg',
+      '/images/therapies/wellness/matt-3.jpg',
+    ],
+    posters: [
+      '/images/therapies/wellness/posters-1.jpg',
+      '/images/therapies/wellness/posters-2.jpg',
+      '/images/therapies/wellness/posters-3.jpg',
+    ],
+    medicalScale: [
+      '/images/therapies/wellness/medical-scale-1.jpg',
+      '/images/therapies/wellness/medical-scale-2.jpg',
+      '/images/therapies/wellness/medical-scale-3.jpg',
+    ],
+    writeWipe: [
+      '/images/therapies/wellness/write-wipe-1.jpg',
+      '/images/therapies/wellness/write-wipe-2.jpg',
+      '/images/therapies/wellness/write-wipe-3.jpg',
+    ],
+    tearOffPads: [
+      '/images/therapies/wellness/tear-off-pads-1.jpg',
+      '/images/therapies/wellness/tear-off-pads-2.jpg',
+      '/images/therapies/wellness/tear-off-pads-3.jpg',
+    ],
+    tableTops: [
+      '/images/therapies/wellness/table-tops-1.jpg',
+      '/images/therapies/wellness/table-tops-2.jpg',
+      '/images/therapies/wellness/table-tops-3.jpg',
+    ],
+  },
 };
 
-// ─── Generate Category Products with Unique Images per Therapy ───
+// ─── Helper function to get category key ───
+const getCategoryKey = (category: ProductCategory): keyof typeof THERAPY_IMAGES_DATA['Cardio-Vascular'] => {
+  const keyMap: Record<ProductCategory, string> = {
+    "BOOKS & MAGAZINES": "books",
+    "FLIP CHART": "flipChart",
+    "MATT (Desk Mats)": "matt",
+    "POSTERS": "posters",
+    "Medical SCALE": "medicalScale",
+    "WRITE & WIPE": "writeWipe",
+    "Tear off Pads": "tearOffPads",
+    "TABLE TOPS & SCIENTIFIC INPUTS": "tableTops"
+  };
+  return keyMap[category] as keyof typeof THERAPY_IMAGES_DATA['Cardio-Vascular'];
+};
+
+// ─── Generate Category Products with Local Images ───
 const generateCategoryProducts = (therapyName: string, category: ProductCategory): Product[] => {
   const categoryDetails: Record<ProductCategory, { icon: string; titles: string[]; descBase: string }> = {
     "BOOKS & MAGAZINES": {
@@ -113,80 +972,50 @@ const generateCategoryProducts = (therapyName: string, category: ProductCategory
   };
 
   const details = categoryDetails[category];
+  const therapyImages = THERAPY_IMAGES_DATA[therapyName];
+  const categoryKey = getCategoryKey(category);
+  const categoryImages = therapyImages?.[categoryKey] || [
+    '/images/placeholder.jpg',
+    '/images/placeholder.jpg',
+    '/images/placeholder.jpg',
+  ];
 
   return [0, 1, 2].map((index) => ({
     title: `${therapyName}: ${details.titles[index]}`,
     desc: `${details.descBase} ${index === 0 ? 'Ideal for healthcare professionals.' : index === 1 ? 'Enhances clinical workflow and patient understanding.' : 'Trusted by medical facilities worldwide.'}`,
-    img: generateUniqueImage(therapyName, category, index),
+    img: categoryImages[index] || categoryImages[0],
     category
   }));
 };
 
-// ─── Therapy Data with Unique Card Images ───
-const generateTherapyCardImage = (therapyName: string): string => {
-  const therapyImages: Record<string, string> = {
-    'Diabetes': 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'Cardio-Vascular': 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80',
-    'ENT & Respiratory': 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
-    'Orthopedics/Rheumatology': 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80',
-    'Gynaecology and Obstetrics': 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80',
-    'Gastroenterology': 'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
-    'Ophthalmology': 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=800&q=80',
-    'Dermatology': 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=80',
-    'Pediatrics': 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80',
-    'Urology': 'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
-    'Neurology': 'https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80',
-    'Psychiatry': 'https://images.unsplash.com/photo-1493836512293-7c2c1370e297?w=800&q=80',
-    'Dentistry': 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80',
-    'Infectious Diseases': 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&q=80',
-    'Nutritional Deficiencies': 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=80',
-    'Endocrinology': 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
-    'Nephrology': 'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
-    'Hepatology': 'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80',
-    'Oncology': 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80',
-    'General Wellness': 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80',
-  };
-  
-  return therapyImages[therapyName] || therapyImages['General Wellness'];
-};
-
-const THERAPY_IMAGES: Record<string, string[]> = {};
-
-// Pre-populate therapy images
-Object.keys(generateTherapyCardImage).forEach(therapy => {
-  THERAPY_IMAGES[therapy] = [
-    generateTherapyCardImage(therapy),
-    generateTherapyCardImage(therapy),
-    generateTherapyCardImage(therapy)
-  ];
-});
-
+// ─── Generate Full Therapy Data ───
 const generateFullTherapyData = (): Therapy[] => {
   const therapies = [
-    { therapy: 'Diabetes', icon: '💉', color: '#3b82f6', bgColor: 'from-blue-500/20 to-blue-600/10', span: 2 },
-    { therapy: 'Cardio-Vascular', icon: '❤️', color: '#ef4444', bgColor: 'from-red-500/20 to-red-600/10', span: 1 },
-    { therapy: 'ENT & Respiratory', icon: '🫁', color: '#06b6d4', bgColor: 'from-cyan-500/20 to-cyan-600/10', span: 1 },
-    { therapy: 'Orthopedics/Rheumatology', icon: '🦴', color: '#f97316', bgColor: 'from-orange-500/20 to-orange-600/10', span: 1 },
-    { therapy: 'Gynaecology and Obstetrics', icon: '👶', color: '#ec4899', bgColor: 'from-pink-500/20 to-pink-600/10', span: 1 },
-    { therapy: 'Gastroenterology', icon: '🔬', color: '#84cc16', bgColor: 'from-lime-500/20 to-lime-600/10', span: 2 },
-    { therapy: 'Ophthalmology', icon: '👁️', color: '#0ea5e9', bgColor: 'from-sky-500/20 to-sky-600/10', span: 1 },
-    { therapy: 'Dermatology', icon: '✨', color: '#f59e0b', bgColor: 'from-amber-500/20 to-amber-600/10', span: 1 },
-    { therapy: 'Pediatrics', icon: '🧸', color: '#8b5cf6', bgColor: 'from-purple-500/20 to-purple-600/10', span: 2 },
-    { therapy: 'Urology', icon: '💧', color: '#14b8a6', bgColor: 'from-teal-500/20 to-teal-600/10', span: 1 },
-    { therapy: 'Neurology', icon: '🧠', color: '#7c3aed', bgColor: 'from-purple-600/20 to-purple-700/10', span: 1 },
-    { therapy: 'Psychiatry', icon: '🧠', color: '#a855f7', bgColor: 'from-purple-500/20 to-purple-600/10', span: 1 },
-    { therapy: 'Dentistry', icon: '🦷', color: '#6366f1', bgColor: 'from-indigo-500/20 to-indigo-600/10', span: 1 },
-    { therapy: 'Infectious Diseases', icon: '🦠', color: '#dc2626', bgColor: 'from-red-600/20 to-red-700/10', span: 2 },
-    { therapy: 'Nutritional Deficiencies', icon: '🥗', color: '#10b981', bgColor: 'from-emerald-500/20 to-emerald-600/10', span: 1 },
-    { therapy: 'Endocrinology', icon: '⚖️', color: '#06b6d4', bgColor: 'from-cyan-600/20 to-cyan-700/10', span: 1 },
-    { therapy: 'Nephrology', icon: '🫘', color: '#6366f1', bgColor: 'from-indigo-500/20 to-indigo-600/10', span: 1 },
-    { therapy: 'Hepatology', icon: '🫖', color: '#a855f7', bgColor: 'from-violet-500/20 to-violet-600/10', span: 1 },
-    { therapy: 'Oncology', icon: '🎗️', color: '#dc2626', bgColor: 'from-red-600/20 to-red-700/10', span: 2 },
-    { therapy: 'General Wellness', icon: '🌟', color: '#10b981', bgColor: 'from-emerald-500/20 to-emerald-600/10', span: 1 }
+    { therapy: 'Diabetes', icon: '💉', color: '#3b82f6', bgColor: 'from-blue-500/20 to-blue-600/10', span: 2, slug: 'diabetes' },
+    { therapy: 'Cardio-Vascular', icon: '❤️', color: '#ef4444', bgColor: 'from-red-500/20 to-red-600/10', span: 1, slug: 'cardio' },
+    { therapy: 'ENT & Respiratory', icon: '🫁', color: '#06b6d4', bgColor: 'from-cyan-500/20 to-cyan-600/10', span: 1, slug: 'ent-respiratory' },
+    { therapy: 'Orthopedics/Rheumatology', icon: '🦴', color: '#f97316', bgColor: 'from-orange-500/20 to-orange-600/10', span: 1, slug: 'orthopedics' },
+    { therapy: 'Gynaecology and Obstetrics', icon: '👶', color: '#ec4899', bgColor: 'from-pink-500/20 to-pink-600/10', span: 1, slug: 'gynaecology' },
+    { therapy: 'Gastroenterology', icon: '🔬', color: '#84cc16', bgColor: 'from-lime-500/20 to-lime-600/10', span: 2, slug: 'gastroenterology' },
+    { therapy: 'Ophthalmology', icon: '👁️', color: '#0ea5e9', bgColor: 'from-sky-500/20 to-sky-600/10', span: 1, slug: 'ophthalmology' },
+    { therapy: 'Dermatology', icon: '✨', color: '#f59e0b', bgColor: 'from-amber-500/20 to-amber-600/10', span: 1, slug: 'dermatology' },
+    { therapy: 'Pediatrics', icon: '🧸', color: '#8b5cf6', bgColor: 'from-purple-500/20 to-purple-600/10', span: 2, slug: 'pediatrics' },
+    { therapy: 'Urology', icon: '💧', color: '#14b8a6', bgColor: 'from-teal-500/20 to-teal-600/10', span: 1, slug: 'urology' },
+    { therapy: 'Neurology', icon: '🧠', color: '#7c3aed', bgColor: 'from-purple-600/20 to-purple-700/10', span: 1, slug: 'neurology' },
+    { therapy: 'Psychiatry', icon: '🧠', color: '#a855f7', bgColor: 'from-purple-500/20 to-purple-600/10', span: 1, slug: 'psychiatry' },
+    { therapy: 'Dentistry', icon: '🦷', color: '#6366f1', bgColor: 'from-indigo-500/20 to-indigo-600/10', span: 1, slug: 'dentistry' },
+    { therapy: 'Infectious Diseases', icon: '🦠', color: '#dc2626', bgColor: 'from-red-600/20 to-red-700/10', span: 2, slug: 'infectious-diseases' },
+    { therapy: 'Nutritional Deficiencies', icon: '🥗', color: '#10b981', bgColor: 'from-emerald-500/20 to-emerald-600/10', span: 1, slug: 'nutrition' },
+    { therapy: 'Endocrinology', icon: '⚖️', color: '#06b6d4', bgColor: 'from-cyan-600/20 to-cyan-700/10', span: 1, slug: 'endocrinology' },
+    { therapy: 'Nephrology', icon: '🫘', color: '#6366f1', bgColor: 'from-indigo-500/20 to-indigo-600/10', span: 1, slug: 'nephrology' },
+    { therapy: 'Hepatology', icon: '🫖', color: '#a855f7', bgColor: 'from-violet-500/20 to-violet-600/10', span: 1, slug: 'hepatology' },
+    { therapy: 'Oncology', icon: '🎗️', color: '#dc2626', bgColor: 'from-red-600/20 to-red-700/10', span: 2, slug: 'oncology' },
+    { therapy: 'General Wellness', icon: '🌟', color: '#10b981', bgColor: 'from-emerald-500/20 to-emerald-600/10', span: 1, slug: 'wellness' }
   ];
 
   return therapies.map(t => ({
     ...t,
+    images: THERAPY_IMAGES_DATA[t.therapy] || THERAPY_IMAGES_DATA['General Wellness'],
     items: PRODUCT_CATEGORIES.flatMap(category => generateCategoryProducts(t.therapy, category))
   }));
 };
@@ -296,14 +1125,13 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
           style={{ scrollbarWidth: 'thin', scrollbarColor: `${therapyColor} #e5e5e5` }}>
           {products.map((item, idx) => (
             <div key={idx} className="flex-shrink-0 w-[240px] sm:w-[280px] md:w-[300px] lg:w-[320px] bg-white rounded-lg sm:rounded-xl overflow-hidden hover:shadow-lg sm:hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                 <Image 
                   src={item.img} 
                   alt={item.title} 
                   fill 
                   className="object-cover" 
-                  sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 320px" 
-                  unoptimized 
+                  sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 320px"
                 />
               </div>
               <div className="p-3 sm:p-4">
@@ -431,8 +1259,6 @@ function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) 
 
 // ─── Collage Card Component ───
 function CollageCard({ therapy, onClick }: { therapy: Therapy; onClick: () => void }) {
-  const cardImage = generateTherapyCardImage(therapy.therapy);
-
   return (
     <article
       className={`group relative rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl h-full min-h-[180px] sm:min-h-[200px] md:min-h-[220px] lg:min-h-[240px] ${
@@ -444,12 +1270,11 @@ function CollageCard({ therapy, onClick }: { therapy: Therapy; onClick: () => vo
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick(); }}
     >
       <Image 
-        src={cardImage}
+        src={therapy.images.card}
         alt={therapy.therapy} 
         fill
         className="object-cover transition-all duration-700 group-hover:scale-110"
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
-        unoptimized
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
       <div className="absolute inset-0 p-3 sm:p-4 md:p-5 flex flex-col justify-between">
