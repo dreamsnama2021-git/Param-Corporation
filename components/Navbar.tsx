@@ -207,7 +207,7 @@ export default function Navbar() {
               <img
                 src="/PARAM CO. .png"
                 alt="Param Logo"
-                className="h-10 object-contain"
+                className="h-14 md:h-18 xl:h-24 ml-3 scale-130 xl:scale-150 object-contain"
               />
             </Link>
 

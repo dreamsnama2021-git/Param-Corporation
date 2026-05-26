@@ -463,26 +463,46 @@ function LoadingFallback() {
     </div>
   );
 }
-// ─── PAGE BANNER ─────────────────────────────────────────────────────────────
+// ─── MEDIPRIDE PAGE BANNER ─────────────────────────────────────────────────────────────
+
 const PageBanner = () => (
-  <div className="relative w-full h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px] xl:h-[850px] overflow-hidden">
-    {/* Background image */}
+ <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[70vh] overflow-hidden">
+    {/* Mobile image */}
     <Image
-      src="/banner/medipride.jpeg"
-      alt="About Us Banner"
+      src="/banner/Medipride page Mobile.jpg"
+      alt="MediPride Banner - Mobile"
       fill
-      className="object-fill object-center"
+      className="object-cover object-center block md:hidden"
       priority
       unoptimized
     />
 
-    {/* Gradient overlay: dark at bottom/left for text legibility */}
-    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-black/5" />
+    {/* Tablet image */}
+    <Image
+      src="/banner/Medipride page Tablet.jpg"
+      alt="MediPride Banner - Tablet"
+      fill
+      className="object-cover object-center hidden md:block lg:hidden"
+      priority
+      unoptimized
+    />
+
+    {/* Desktop image */}
+    <Image
+      src="/banner/Medipride page Desktop.jpg"
+      alt="MediPride Banner - Desktop"
+      fill
+      className="object-cover object-center hidden lg:block"
+      priority
+      unoptimized
+    />
+
+    {/* Gradient overlay */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
     {/* Content */}
     <div className="absolute inset-0 flex flex-col justify-end pb-8 sm:pb-10 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1500px] mx-auto left-0 right-0">
-      {/* Breadcrumb */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -491,23 +511,27 @@ const PageBanner = () => (
       >
         <span>Home</span>
         <ChevronRight size={14} />
-        <span className="text-white">Medipride</span>
+        <span className="text-white">MediPride</span>
       </motion.div>
 
-      {/* Page Title */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-3xl sm:text-4xl md:text-4xl xl:text-5xl font-extrabold text-white leading-tight"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight"
       >
-        Medipride
+        MediPride Communications
       </motion.h1>
 
-      {/* Subtitle */}
-    
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.35 }}
+        className="mt-2 sm:mt-3 text-white/75 text-sm sm:text-base md:text-lg max-w-xl"
+      >
+        Simplifying healthcare communication through innovative medical education tools.
+      </motion.p>
 
-      {/* Accent line */}
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
@@ -539,83 +563,96 @@ function MediPrideContent() {
     <PageBanner/>
 
       {/* ── ABOUT ── */}
-      <section
-        id="about"
-        className="relative py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24 overflow-hidden"
-      >
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 bg-[#8bde7a]/10 rounded-full blur-3xl pointer-events-none z-0" />
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-40 sm:w-56 md:w-72 h-40 sm:h-56 md:h-72 bg-[#0093cb]/10 rounded-full blur-3xl pointer-events-none z-0" />
+ <section
+  id="about"
+  className="relative py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24 overflow-hidden"
+>
+  <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 bg-[#8bde7a]/10 rounded-full blur-3xl pointer-events-none z-0" />
+  <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-40 sm:w-56 md:w-72 h-40 sm:h-56 md:h-72 bg-[#0093cb]/10 rounded-full blur-3xl pointer-events-none z-0" />
 
-        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 xl:gap-24 items-center">
-            <div className="lg:col-span-5 relative">
-              <div className="relative z-10 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-xl sm:shadow-2xl border-4 sm:border-6 lg:border-8 border-white transform -rotate-1 sm:-rotate-2 hover:rotate-0 transition-transform duration-500">
-                <img
-                  src="https://medipride.org/wp-content/uploads/2025/10/medical-banner-with-stethoscope-1-768x768.jpg"
-                  alt="About MediPride"
-                  className="w-full h-[250px] sm:h-[320px] md:h-[380px] lg:h-[420px] xl:h-[500px] object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-3 sm:-bottom-4 md:-bottom-6 -right-1 sm:-right-2 md:-right-4 lg:-right-6 bg-white p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl z-20 flex flex-col items-center justify-center border-b-4 border-[#00a65d]">
-                <span className="text-[10px] sm:text-xs md:text-sm font-bold text-slate-400 uppercase tracking-widest">
-                  Founded in
-                </span>
-                <span className="text-xl sm:text-2xl md:text-3xl font-black text-[#0093cb]">
-                  2022
-                </span>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7 space-y-5 sm:space-y-6 md:space-y-8 mt-4 sm:mt-6 lg:mt-0">
-              <div>
-                <span className="inline-block z-10 px-3 sm:px-4 py-1 sm:py-1.5 mb-2 sm:mb-3 md:mb-4 text-xs sm:text-sm font-bold tracking-wider text-[#00a65d] uppercase bg-[#00a65d]/10 rounded-full">
-                  About MediPride
-                </span>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl z-10 font-black text-slate-900 leading-tight">
-                  Bridging the gap between <br className="hidden md:block" />
-                  <span className="text-[#0093cb]">
-                    Clinical Knowledge &amp; Real-World Understanding
-                  </span>
-                </h2>
-              </div>
-              <div className="space-y-3 sm:space-y-4 md:space-y-6">
-                <p className="text-base sm:text-lg lg:text-base xl:text-lg 2xl:text-xl leading-relaxed text-slate-700 font-medium">
-                  <span className="text-[#0093cb] font-bold">
-                    MediPride Communications
-                  </span>{" "}
-                  is a specialized medical communication partner focused on
-                  simplifying complex scientific information into meaningful,
-                  easy-to-understand content.
-                </p>
-                <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed">
-                  With a strong foundation in medical accuracy and creative
-                  storytelling, MediPride helps brands connect effectively with
-                  doctors, empower patients, and improve overall healthcare
-                  communication.
-                </p>
-              </div>
-              <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6 pt-1 sm:pt-2 md:pt-4">
-                {[
-                  "Accurate",
-                  "Visually engaging",
-                  "Easy to understand",
-                  "Result-driven",
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center space-x-2 sm:space-x-3">
-                    <CheckCircle
-                      size={16}
-                      className="sm:size-4 md:size-4.5 text-[#00a65d] flex-shrink-0"
-                    />
-                    <span className="font-medium text-slate-700 text-xs sm:text-sm md:text-base">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+  <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
+    <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 xl:gap-24 items-center">
+      <div className="lg:col-span-5 relative">
+        <div className="relative z-10 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-xl sm:shadow-2xl border-4 sm:border-6 lg:border-8 border-white transform -rotate-1 sm:-rotate-2 hover:rotate-0 transition-transform duration-500">
+          <img
+            src="https://medipride.org/wp-content/uploads/2025/10/medical-banner-with-stethoscope-1-768x768.jpg"
+            alt="Medical Communication"
+            className="w-full h-[250px] sm:h-[320px] md:h-[380px] lg:h-[420px] xl:h-[500px] object-cover"
+          />
         </div>
-      </section>
+        <div className="absolute -bottom-3 sm:-bottom-4 md:-bottom-6 -right-1 sm:-right-2 md:-right-4 lg:-right-6 bg-white p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl z-20 flex flex-col items-center justify-center border-b-4 border-[#00a65d]">
+          <span className="text-[10px] sm:text-xs md:text-sm font-bold text-slate-400 uppercase tracking-widest">
+            Research-Driven
+          </span>
+          <span className="text-xl sm:text-2xl md:text-3xl font-black text-[#0093cb]">
+            Since 2022
+          </span>
+        </div>
+      </div>
+
+      <div className="lg:col-span-7 space-y-5 sm:space-y-6 md:space-y-8 mt-4 sm:mt-6 lg:mt-0">
+        <div>
+          <span className="inline-block z-10 px-3 sm:px-4 py-1 sm:py-1.5 mb-2 sm:mb-3 md:mb-4 text-xs sm:text-sm font-bold tracking-wider text-[#00a65d] uppercase bg-[#00a65d]/10 rounded-full">
+            Research-Driven Medical Communication
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl z-10 font-black text-slate-900 leading-tight">
+            Transforming Complex Medical Science into{" "}
+            <br className="hidden md:block" />
+            <span className="text-[#0093cb]">
+              Simple & Engaging Communication Tools
+            </span>
+          </h2>
+        </div>
+        
+        <div className="space-y-3 sm:space-y-4 md:space-y-6">
+          <p className="text-base sm:text-lg lg:text-base xl:text-lg 2xl:text-xl leading-relaxed text-slate-700 font-medium">
+            <span className="text-[#0093cb] font-bold">
+              Medipride
+            </span>{" "}
+            is a specialized medical communication and patient education partner focused on 
+            transforming complex medical science into simple, engaging, and scientifically 
+            accurate communication tools.
+          </p>
+          <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed">
+            Built for pharmaceutical companies, healthcare brands, and medical professionals, 
+            Medipride combines medical expertise, healthcare content strategy, scientific 
+            storytelling, and visual communication design to improve doctor-patient 
+            communication and patient understanding.
+          </p>
+          <p className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed">
+            From patient education content and flipcharts to anatomical charts, medical 
+            education products, and awareness tools, every solution is developed to improve 
+            communication outcomes while maintaining clinical credibility. With a strong 
+            foundation in medical accuracy and research-backed content development, 
+            Medipride helps brands educate patients, support doctors, and strengthen 
+            healthcare engagement.
+          </p>
+        </div>
+{/* 
+        <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-6 pt-1 sm:pt-2 md:pt-4">
+          {[
+            "Medically Accurate",
+            "Visually Engaging",
+            "Easy to Understand",
+            "Scientifically Credible",
+            "Research-Backed",
+            "Result-Driven",
+          ].map((item, i) => (
+            <div key={i} className="flex items-center space-x-2 sm:space-x-3">
+              <CheckCircle
+                size={16}
+                className="sm:size-4 md:size-4.5 text-[#00a65d] flex-shrink-0"
+              />
+              <span className="font-medium text-slate-700 text-xs sm:text-sm md:text-base">
+                {item}
+              </span>
+            </div>
+          ))}
+        </div> */}
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* why choose Us */}
       <section className="py-14 sm:py-16 md:py-18 lg:py-22 xl:py-28 bg-[#f8fafc] overflow-hidden">

@@ -16,6 +16,7 @@ import {
   ArrowUpRight,
   ExternalLink
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 // ─── TYPES ──────────────────────────────────────────────────────────────────
 interface CaseStudy {
@@ -80,6 +81,85 @@ const caseStudies: CaseStudy[] = [
   }
 ];
 
+// ─── CASE STUDY PAGE BANNER ─────────────────────────────────────────────────────────────
+
+const PageBanner = () => (
+ <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[70vh] overflow-hidden">
+    {/* Mobile image */}
+    <Image
+      src="/banner/Case study page Mobile.jpg"
+      alt="Case Study Banner - Mobile"
+      fill
+      className="object-cover object-center block md:hidden"
+      priority
+      unoptimized
+    />
+
+    {/* Tablet image */}
+    <Image
+      src="/banner/Case study page Tablet.jpg"
+      alt="Case Study Banner - Tablet"
+      fill
+      className="object-cover object-center hidden md:block lg:hidden"
+      priority
+      unoptimized
+    />
+
+    {/* Desktop image */}
+    <Image
+      src="/banner/Case study page Desktop.jpg"
+      alt="Case Study Banner - Desktop"
+      fill
+      className="object-cover object-center hidden lg:block"
+      priority
+      unoptimized
+    />
+
+    {/* Gradient overlay */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+    {/* Content */}
+    <div className="absolute inset-0 flex flex-col justify-end pb-8 sm:pb-10 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1500px] mx-auto left-0 right-0">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="flex items-center gap-1.5 text-white/60 text-xs sm:text-sm font-medium mb-3 sm:mb-4"
+      >
+        <span>Home</span>
+        <ChevronRight size={14} />
+        <span className="text-white">Case Studies</span>
+      </motion.div>
+
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight"
+      >
+        Case Studies
+      </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.35 }}
+        className="mt-2 sm:mt-3 text-white/75 text-sm sm:text-base md:text-lg max-w-xl"
+      >
+        Real success stories from our trusted pharmaceutical partners.
+      </motion.p>
+
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+        style={{ originX: 0 }}
+        className="mt-4 sm:mt-5 h-1 w-16 sm:w-20 bg-[#0093cb] rounded-full"
+      />
+    </div>
+  </div>
+);
 // ─── IMAGE CARD COMPONENT ─────────────────────────────────────────────────
 function ImageCard({ imageUrl, title }: { imageUrl: string; title: string }) {
   const [isHovered, setIsHovered] = React.useState(false);
@@ -126,7 +206,7 @@ export default function CaseStudiesPage() {
     <div className="min-h-screen font-[family-name:var(--font-body)]">
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] text-white py-20 lg:py-28 relative overflow-hidden">
+      {/* <section className="bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] text-white py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 w-72 h-72 bg-[var(--clr-primary)] rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-[var(--clr-secondary)] rounded-full blur-3xl" />
@@ -150,8 +230,8 @@ export default function CaseStudiesPage() {
             </p>
           </div>
         </div>
-      </section>
-
+      </section> */}
+<PageBanner />
       {/* Case Studies Grid */}
       <section className="py-16 lg:py-24 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 space-y-24 lg:space-y-32">
         {caseStudies.map((study, index) => (

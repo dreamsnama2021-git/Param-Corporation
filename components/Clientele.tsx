@@ -92,12 +92,12 @@ const ClientSection = () => {
             <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[var(--clr-primary)]" />
           </p>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-[var(--clr-text-dark)]">
-            Trusted by <span className="text-[#0093cb]">industry leader</span>
+            Trusted by <span className="text-[#0093cb]">Pharmaceutical Brands Across India</span>
           </h2>
           <p className="text-xs sm:text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
-            Trusted by pharmaceutical brands nationwide. Supporting impactful
-            doctor engagement solutions. Our clients trust us to deliver
-            results. We deliver with precision and consistency.
+           Param Corporation partners with pharmaceutical companies, healthcare brands, and medical organizations to create impactful doctor gifting solutions, pharma branding tools, and healthcare communication products.
+We build meaningful brand relationships through solutions designed for visibility, engagement, and long-term recall.
+
           </p>
         </motion.div>
       </div>

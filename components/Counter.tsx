@@ -39,47 +39,58 @@ interface FloatingShapeProps {
 const stats: Stat[] = [
   {
     id: 1,
-    value: 98,
-    suffix: "%",
-    label: "Clients Satisfaction Rate",
-    subtext: "Trusted Partners",
-    icon: Users,
+    value: 500,
+    suffix: "+",
+    label: "Projects Delivered",
+    subtext: "And Counting",
+    icon: PackageCheck,
     gradient: "from-[#0093cb] to-[#0077b6]",
     accent: "#0093cb",
-    position: "top"
+    position: "center"
   },
   {
     id: 2,
-    value: 500,
-    suffix: "+",
-    label: "Products Delivered",
-    subtext: "And Counting",
-    icon: PackageCheck,
+    value: 98,
+    suffix: "%",
+    label: "Client Satisfaction",
+    subtext: "Trusted Partners",
+    icon: Users,
     gradient: "from-[#00a65d] to-[#008f4c]",
     accent: "#00a65d",
-    position: "center"
+    position: "top"
   },
   {
     id: 3,
     value: 50000,
     suffix: "+",
     label: "Patients Reached",
-    subtext: "Industry Leaders",
-    icon: Clock,
+    subtext: "Healthcare Impact",
+    icon: Users,
     gradient: "from-[#8bde7a] to-[#6bc952]",
     accent: "#8bde7a",
     position: "top"
   },
   {
     id: 4,
-    value: 25,
-    suffix: "+",
-    label: "Cities Covered",
+    value: 1,
+    suffix: "",
+    label: "Pan-India Campaign Execution",
     subtext: "Nationwide Reach",
     icon: MapPin,
     gradient: "from-[#0093cb] to-[#00a65d]",
     accent: "#0093cb",
     position: "center"
+  },
+  {
+    id: 5,
+    value: 1,
+    suffix: "",
+    label: "Trusted by Leading Pharma Brands",
+    subtext: "Industry Leaders",
+    icon: Users,
+    gradient: "from-[#0093cb] to-[#0077b6]",
+    accent: "#0093cb",
+    position: "top"
   },
 ];
 
@@ -294,12 +305,14 @@ export default function CreativeStatsSection(): React.ReactElement {
             transition={{ delay: 0.2 }}
             className="text-gray-600 text-xs sm:text-xs md:text-sm lg:text-base max-w-2xl mx-auto"
           >
-            Delivering measurable impact through healthcare communication.
+           Delivering Measurable Healthcare Communication Impact
+           <br />Helping pharmaceutical companies improve doctor engagement, patient awareness, and healthcare communication through strategic branding solutions.
+
           </motion.p>
         </div>
 
         {/* Stats Grid - Staggered Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           {stats.map((stat, index) => (
             <TiltCard key={stat.id} stat={stat} index={index} />
           ))}

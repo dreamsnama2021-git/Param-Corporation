@@ -24,6 +24,7 @@ import {
   Network,
   Wrench,
   Lock,
+  Leaf,
 } from "lucide-react";
 import Image from "next/image";
 import {
@@ -34,9 +35,9 @@ import {
 // ─── DATA: TIMELINE ─────────────────────────────────────────────────────────
 const timelineItems: TimelineItem[] = [
   {
-    title: "The Beginning",
+    title: "Where It All Began",
     description:
-      "Founded with a vision to create impactful corporate gifting solutions for the pharmaceutical industry. Our founding team combined healthcare marketing expertise with premium product design, recognizing an untapped opportunity to blend medical relevance with creative presentation. This deep industry insight became the cornerstone of our entire operation and continues to guide our decisions today.",
+      "Every journey starts with a simple idea. Ours began with a vision to create meaningful brand experiences through thoughtful gifting and impactful communication. What started as a small initiative soon became a growing passion for building stronger connections between brands and people.",
     date: "2019",
     category: "Foundation",
     icon: Rocket,
@@ -44,9 +45,9 @@ const timelineItems: TimelineItem[] = [
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",
   },
   {
-    title: "Building Capabilities",
+    title: "Building the Foundation",
     description:
-      "Strengthened production infrastructure and expanded vendor network to meet growing demand across multiple therapeutic segments. We invested in state-of-the-art manufacturing equipment and established rigorous quality control protocols. Our team grew to over fifty specialists across design, production, and client services, enabling us to handle increasingly complex projects while maintaining personalized attention.",
+      "In the early years, every project became a learning experience. We focused on building the right team, understanding client needs, and creating solutions that were not only visually appealing but also meaningful and impactful. Slowly, trust started growing — and so did we.",
     date: "2020",
     category: "Growth",
     icon: Factory,
@@ -54,9 +55,9 @@ const timelineItems: TimelineItem[] = [
       "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&q=80",
   },
   {
-    title: "Growing in Pharma",
+    title: "Creating Meaningful Brand Experiences",
     description:
-      "Expanded presence by working with leading pharmaceutical brands across India, establishing ourselves as a trusted partner in corporate gifting. Our portfolio grew to include top-tier companies who valued our understanding of regulatory compliance and ethical marketing. We developed specialized gifting categories for different medical specialties, ensuring each product served practical purposes while reinforcing brand messaging.",
+      "As we collaborated with more brands, we realized that gifting was never just about products. It was about emotions, recall, relationships, and experiences. This belief inspired us to think beyond conventional gifting and create more customized and engaging solutions.",
     date: "2021",
     category: "Expansion",
     icon: Pill,
@@ -64,9 +65,9 @@ const timelineItems: TimelineItem[] = [
       "https://cdn.expresspharma.in/wp-content/uploads/2021/11/12182826/Growth-1.jpg",
   },
   {
-    title: "Focus on Innovation",
+    title: "The Beginning of MediPride Communications",
     description:
-      "Introduced customized and concept-driven gifting solutions aligned with brand campaigns, revolutionizing pharmaceutical engagement. Our innovation lab developed proprietary design methodologies that transformed ordinary medical utilities into memorable brand experiences. We pioneered augmented reality elements and sustainable materials, setting new industry standards that resonated strongly with healthcare professionals across the country.",
+      "A major milestone in our journey came with the launch of MediPride Communications — our dedicated vertical for medical communication and patient education tools. We wanted to simplify healthcare communication by creating solutions that were informative, engaging, and easy to understand for both doctors and patients.",
     date: "2022",
     category: "Innovation",
     icon: Lightbulb,
@@ -74,9 +75,9 @@ const timelineItems: TimelineItem[] = [
       "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80",
   },
   {
-    title: "Scaling Operations",
+    title: "Embracing Innovation with 3D Printing",
     description:
-      "Executed larger projects across India with improved efficiency handling multi-city simultaneous deployments with precision. We introduced dedicated project management teams, regional warehousing, and real-time tracking systems for unprecedented campaign visibility. Our lean management principles and digital automation reduced turnaround time by 40% while maintaining consistent quality across all product categories.",
+      "Innovation became a stronger part of our journey as we introduced 3D printing technology into our product development process. This opened new possibilities for creating interactive, concept-driven, and visually impactful solutions that helped brands communicate more effectively.",
     date: "2023",
     category: "Growth",
     icon: TrendingUp,
@@ -84,14 +85,34 @@ const timelineItems: TimelineItem[] = [
       "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&q=80",
   },
   {
-    title: "Strengthening Partnerships",
+    title: "Growing Through Trust & Relationships",
     description:
-      "Achieved 90%+ client retention rate with repeat annual orders, reflecting our commitment to exceeding expectations consistently. We introduced dedicated relationship management programs providing strategic consultation beyond product delivery. Our feedback-driven improvement cycle ensures every campaign becomes more refined, creating increasing satisfaction and loyalty that forms the foundation for our next innovation phase.",
-    date: "2025",
+      "With every successful project, our relationships grew stronger. As our client network expanded across industries, we continued focusing on what mattered most — quality, creativity, timely execution, and building long-term trust.",
+    date: "2024",
     category: "Achievement",
     icon: Users,
     image:
       "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80",
+  },
+  {
+    title: "Introducing Koru",
+    description:
+      "Our journey evolved further with the introduction of Koru — a brand created to bring together functionality, aesthetics, and sustainability. With eco-friendly live moss products and thoughtfully designed desk utilities, Koru reflected our vision of creating gifting experiences that are not only innovative, but also meaningful and lasting.",
+    date: "2025",
+    category: "Innovation",
+    icon: Leaf, // You may need to import Leaf or replace with an appropriate icon
+    image:
+      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80", // Consider replacing with a Koru/moss product image
+  },
+  {
+    title: "Expanding Horizons",
+    description:
+      "As we step into 2026, we continue to grow with the same passion and purpose that started our journey. With expanding capabilities, stronger partnerships, and a growing portfolio of innovative solutions, we remain committed to creating impactful experiences for brands across industries.",
+    date: "2026",
+    category: "Growth",
+    icon: TrendingUp,
+    image:
+      "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80",
   },
 ];
 
@@ -152,26 +173,45 @@ const FloatingCard = ({
   </motion.div>
 );
 
-// ─── PAGE BANNER ─────────────────────────────────────────────────────────────
+// ─── ABOUT US PAGE BANNER ─────────────────────────────────────────────────────────────
 const PageBanner = () => (
-  <div className="relative w-full h-[220px] sm:h-[280px] md:h-[340px] lg:h-[400px] xl:h-[850px] overflow-hidden">
-    {/* Background image */}
+ <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[70vh] overflow-hidden">
+    {/* Mobile image */}
     <Image
-      src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80"
-      alt="About Us Banner"
+      src="/banner/About page Mobile.jpg"
+      alt="About Us Banner - Mobile"
       fill
-      className="object-fill object-center"
+      className="object-cover object-center block md:hidden"
       priority
       unoptimized
     />
 
-    {/* Gradient overlay: dark at bottom/left for text legibility */}
+    {/* Tablet image */}
+    <Image
+      src="/banner/About page  Tablet.jpg"
+      alt="About Us Banner - Tablet"
+      fill
+      className="object-cover object-center hidden md:block lg:hidden"
+      priority
+      unoptimized
+    />
+
+    {/* Desktop image */}
+    <Image
+      src="/banner/About page Desktop.jpg"
+      alt="About Us Banner - Desktop"
+      fill
+      className="object-cover object-center hidden lg:block"
+      priority
+      unoptimized
+    />
+
+    {/* Gradient overlay */}
     <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
     {/* Content */}
     <div className="absolute inset-0 flex flex-col justify-end pb-8 sm:pb-10 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1500px] mx-auto left-0 right-0">
-      {/* Breadcrumb */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -183,7 +223,6 @@ const PageBanner = () => (
         <span className="text-white">About Us</span>
       </motion.div>
 
-      {/* Page Title */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -193,7 +232,6 @@ const PageBanner = () => (
         About Us
       </motion.h1>
 
-      {/* Subtitle */}
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -203,7 +241,6 @@ const PageBanner = () => (
         Trusted pharma gifting partner since 2019 — creating meaningful doctor connections across India.
       </motion.p>
 
-      {/* Accent line */}
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
@@ -353,9 +390,9 @@ const VisionSection = () => {
     {
       number: "01",
       label: "Vision",
-      title: "Creating Meaningful Brand Connections",
+      title: "Creating Meaningful Doctor & Pharma Brand Connections",
       tagline: '"Every gift strengthens doctor relationships"',
-      desc: "To become a trusted partner for corporates across industries by delivering innovative gifting solutions that create lasting impressions and real engagement.",
+      desc: "To become India’s most trusted partner for pharma branding, doctor engagement solutions, and customized pharmaceutical promotional products, delivering meaningful brand experiences that create long-term impact",
       icon: <Target size={18} className="sm:size-5" />,
       iconBg: "bg-blue-50",
       iconColor: "text-[#0093cb]",
@@ -367,9 +404,9 @@ const VisionSection = () => {
     {
       number: "02",
       label: "Mission",
-      title: "Driven by Purpose. Focused on Results.",
+      title: "Driven by Healthcare Communication. Focused on Results.",
       tagline: '"Quality, creativity, and reliability"',
-      desc: "To design and deliver high-quality, customized gifting solutions that add value, improve brand communication, and consistently exceed client expectations.",
+      desc: "To design and deliver innovative doctor gifting solutions, patient education materials, clinic branding products, and healthcare communication tools that strengthen pharma relationships and improve engagement outcomes.",
       icon: <Rocket size={18} className="sm:size-5" />,
       iconBg: "bg-emerald-50",
       iconColor: "text-[#00a65d]",
@@ -454,17 +491,69 @@ const TeamSection = () => {
     },
   ];
 
+  const TeamCard = ({ member }: { member: TeamMember }) => (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+    >
+      <div className="relative aspect-[3/4] overflow-hidden">
+        <Image
+          src={member.image}
+          alt={member.name}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+        <h3 className="text-white text-lg font-bold">{member.name}</h3>
+        <p className="text-white/80 text-sm">{member.role}</p>
+      </div>
+    </motion.div>
+  );
+
   return (
-    <section className="py-8 sm:py-10 md:py-12 2xl:py-16 bg-white">
+    <section className="py-12 sm:py-16 md:py-20 bg-white">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
-        <div className="mb-8 sm:mb-10 md:mb-12 text-center">
-          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-1.5 sm:mb-2">
-            Our People
-          </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black">
-            The <span className="text-[#0093cb]">Leadership</span>
-          </h2>
+        {/* Section Header */}
+        <div className="text-center mb-4 sm:mb-4 md:mb-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-2 sm:mb-3">
+              Experts in Pharma Branding & Doctor Gifting
+            </p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight">
+              Meet Our <span className="text-[#0093cb]">Leadership</span>
+            </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] mx-auto mt-4 rounded-full" />
+          </motion.div>
         </div>
+
+        {/* Description Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 md:mb-16"
+        >
+          <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+            Our team understands the unique dynamics of pharmaceutical marketing, doctor behavior, 
+            therapy-focused communication, and brand recall strategy. We create customized doctor 
+            engagement tools, pharma promotional gifts, medical education products, and patient 
+            communication solutions aligned with campaign objectives and healthcare needs.
+          </p>
+        </motion.div>
+
+        {/* Team Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {team.map((member, idx) => (
             <TeamCard key={idx} member={member} />

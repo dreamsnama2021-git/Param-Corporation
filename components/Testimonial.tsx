@@ -269,12 +269,13 @@ export const TestimonialCardsVariant = () => {
             <span className="inline-block w-3 sm:w-4 md:w-5 h-[1.5px] bg-[#0093cb]" />
           </p>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-[var(--clr-text-dark)]">
-            Trusted by <span className="text-[#0093cb]">India's largest</span>{" "}
-            enterprises
+            What Pharma  <span className="text-[#0093cb]">Brands Say
+</span>{" "}
+        
           </h2>
           <p className="text-[11px] sm:text-xs md:text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
-            Procurement leaders and HR directors rely on us to deliver curated
-            gifting — at scale, without compromise
+       Trusted by leading pharmaceutical companies for delivering doctor engagement tools, custom pharma gifts, patient education products, and strategic healthcare communication solutions that perform.
+
           </p>
         </motion.div>
 

@@ -104,13 +104,12 @@ function CaseStudiesSection() {
           </p>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-2 sm:mb-3 text-[var(--clr-text-dark)]">
-            Real results for growing brands
+            Real Work. Real Healthcare Impact.
           </h2>
 
           <p className="text-xs sm:text-sm xl:text-[16px] leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
-            Explore how companies increased client retention, boosted employee
-            engagement, and strengthened brand loyalty through thoughtfully
-            curated gifting campaigns.
+            Every project we create is designed to solve real communication challenges for pharmaceutical brands.
+            From patient education materials and doctor consultation tools to custom pharma promotional products, our solutions combine strategic thinking, creativity, and measurable brand engagement.
           </p>
         </motion.div>
 
@@ -298,7 +297,7 @@ function CaseStudiesGrid() {
                   <Link
                     href={`/case-study/${study.slug}`}
                     className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#8bde7a] group-hover:bg-[#0093cb] 
-                      text-gray-900 group-hover:text-white px-3 lg:px-3 xl:px-5 py-1.5 sm:py-2 rounded-full font-semibold text-xs xl:text-sm 
+                      text-gray-900 group-hover:text-white px-3 lg:px-3 xl:px-5 py-1.5 sm:py-2 rounded-full font-semibold text-sm 
                       transition-all duration-300 group/btn shadow-sm group-hover:shadow-lg group-hover:shadow-[#0093cb]/30"
                   >
                     Read Article

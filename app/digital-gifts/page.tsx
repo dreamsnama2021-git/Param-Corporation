@@ -18,6 +18,7 @@ import {
   Sparkles,
   Eye,
   Zap,
+  ChevronRight,
 } from 'lucide-react';
 
 // ─── TYPES ──────────────────────────────────────────────────────────────────
@@ -176,12 +177,90 @@ function SectionBadge({ children, className }: { children: React.ReactNode; clas
     </span>
   );
 }
+// ─── DIGITAL PAGE BANNER ─────────────────────────────────────────────────────────────
 
+const PageBanner = () => (
+ <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[70vh] overflow-hidden">
+    {/* Mobile image */}
+    <Image
+      src="/banner/Digital Input Page Mobile.jpg"
+      alt="Digital Banner - Mobile"
+      fill
+      className="object-cover object-center block md:hidden"
+      priority
+      unoptimized
+    />
+
+    {/* Tablet image */}
+    <Image
+      src="/banner/Digital Input Page Tablet  (2).jpg"
+      alt="Digital Banner - Tablet"
+      fill
+      className="object-cover object-center hidden md:block lg:hidden"
+      priority
+      unoptimized
+    />
+
+    {/* Desktop image */}
+    <Image
+      src="/banner/Digital Input Page Desktop.jpg"
+      alt="Digital Banner - Desktop"
+      fill
+      className="object-cover object-center hidden lg:block"
+      priority
+      unoptimized
+    />
+
+    {/* Gradient overlay */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+    {/* Content */}
+    <div className="absolute inset-0 flex flex-col justify-end pb-8 sm:pb-10 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1500px] mx-auto left-0 right-0">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="flex items-center gap-1.5 text-white/60 text-xs sm:text-sm font-medium mb-3 sm:mb-4"
+      >
+        <span>Home</span>
+        <ChevronRight size={14} />
+        <span className="text-white">Digital Solutions</span>
+      </motion.div>
+
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight"
+      >
+        Digital Solutions
+      </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.35 }}
+        className="mt-2 sm:mt-3 text-white/75 text-sm sm:text-base md:text-lg max-w-xl"
+      >
+        Engaging digital experiences for modern pharmaceutical marketing.
+      </motion.p>
+
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+        style={{ originX: 0 }}
+        className="mt-4 sm:mt-5 h-1 w-16 sm:w-20 bg-[#0093cb] rounded-full"
+      />
+    </div>
+  </div>
+);
 // ─── PAGE ────────────────────────────────────────────────────────────────────
 export default function DigitalServicesPage() {
   return (
     <div className="min-h-screen bg-white">
-      <HeroBanner />
+      <PageBanner />
       <HyperPersonalizedServices />
       <CollageGallerySection />
     </div>
