@@ -67,13 +67,13 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/cardio/matt-3.jpg',
     ],
     posters: [
-      '/images/therapies/cardio/posters-1.jpg',
-      '/images/therapies/cardio/posters-2.jpg',
-      '/images/therapies/cardio/posters-3.jpg',
+      '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_24_00 PM.png',
+      '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_26_54 PM.png',
+      '/therepy/cardio-diabatics/HEART ATTACK AWARENESS LAMA STANDEE.jpg,
     ],
     medicalScale: [
-      '/images/therapies/cardio/medical-scale-1.jpg',
-      '/images/therapies/cardio/medical-scale-2.jpg',
+      '/therepy/cardio-diabatics/ASCVD RISK CALCULATOR 2.jpg',
+      '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_10_59 PM.png',
       '/images/therapies/cardio/medical-scale-3.jpg',
     ],
     writeWipe: [
@@ -87,8 +87,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/cardio/tear-off-pads-3.jpg',
     ],
     tableTops: [
-      '/images/therapies/cardio/table-tops-1.jpg',
-      '/images/therapies/cardio/table-tops-2.jpg',
+      '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_15_18 PM.png',
+      '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_25_07 PM.png',
       '/images/therapies/cardio/table-tops-3.jpg',
     ],
   },
@@ -111,7 +111,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
     posters: [
       '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_06_35 PM.png',
-      '/images/therapies/diabetes/posters-2.jpg',
+      '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_15_09 PM.png',
       '/images/therapies/diabetes/posters-3.jpg',
     ],
     medicalScale: [
