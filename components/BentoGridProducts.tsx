@@ -77,7 +77,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/cardio/medical-scale-3.jpg',
     ],
     writeWipe: [
-      '/images/therapies/cardio/write-wipe-1.jpg',
+      '/therepy/cardio-diabatics/Write & Wipe Tools and FLIPCHART.jpg',
       '/images/therapies/cardio/write-wipe-2.jpg',
       '/images/therapies/cardio/write-wipe-3.jpg',
     ],
@@ -110,7 +110,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/diabetes/matt-3.jpg',
     ],
     posters: [
-      '/images/therapies/diabetes/posters-1.jpg',
+      '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_06_35 PM.png',
       '/images/therapies/diabetes/posters-2.jpg',
       '/images/therapies/diabetes/posters-3.jpg',
     ],
