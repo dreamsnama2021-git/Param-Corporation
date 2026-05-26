@@ -303,10 +303,10 @@ export default function KoruCommunications() {
                 <div className="absolute top-4 left-4 sm:top-5 sm:left-5 md:top-8 md:left-8 right-0 bottom-0 rounded-2xl sm:rounded-3xl overflow-hidden z-[2] shadow-xl sm:shadow-2xl">
                   <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800" alt="Koru Leadership" className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
                 </div>
-                <div className="absolute top-4 -right-1 sm:top-6 sm:-right-2 md:top-8 md:-right-3 lg:top-10 lg:-right-4 bg-[#0b3c5d] text-white rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-5 lg:px-6 py-2 sm:py-3 md:py-4 lg:py-5 text-center z-[5] leading-tight shadow-lg sm:shadow-xl border-b-4 border-[#8bde7a]">
+                {/* <div className="absolute top-4 -right-1 sm:top-6 sm:-right-2 md:top-8 md:-right-3 lg:top-10 lg:-right-4 bg-[#0b3c5d] text-white rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-5 lg:px-6 py-2 sm:py-3 md:py-4 lg:py-5 text-center z-[5] leading-tight shadow-lg sm:shadow-xl border-b-4 border-[#8bde7a]">
                   <span className="text-xl sm:text-2xl md:text-3xl font-black block text-[#8bde7a]">10+</span>
                   <span className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-widest block mt-1">Years of <br /> Excellence</span>
-                </div>
+                </div> */}
               </div>
             </div>
 
