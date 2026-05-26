@@ -147,20 +147,20 @@ export const allProducts: Product[] = [
   { id: 36, name: "CUSTOMIZED APPLE SHAPED FRAGRANCE PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED APPLE SHAPED FRAGRANCE PAPERWEIGHT 1.JPG", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
   { id: 37, name: "CUSTOMIZED BOOK SHAPED PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED BOOK SHAPED PAPERWEIGHT 2.JPG", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
   { id: 38, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 39, name: "CUSTOMIZED DENTAL MIRROR PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED DENTAL MIRROR PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 40, name: "CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 41, name: "CUSTOMIZED LUBIMOIST PACK SHOT SHAPE PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED LUBIMOIST PACK SHOT SHAPE PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 42, name: "CUSTOMIZED MNEMONIC ROCKING PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED MNEMONIC ROCKING PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 43, name: "CUSTOMIZED Q PIN SHAPED PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED Q PIN SHAPED PAPERWEIGHT 2.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 44, name: "CUSTOMIZED TRIPLE LAYER TABLET PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED TRIPLE LAYER TABLET PAPERWEIGHT 3.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 45, name: "ENSURE BOTTLE SHAPED PAPERWEIGHT", image: "/Paperweights/ENSURE BOTTLE SHAPED PAPERWEIGHT.jpg", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 46, name: "LIPID PROFILER SHAPE PAPERWEIGHT", image: "/Paperweights/LIPID PROFILER SHAPE PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 47, name: "MOLECULE COMBINATION PAPERWEIGHT", image: "/Paperweights/MOLECULE COMBINATION PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 48, name: "STAGES OF DIABETIC FOOT ULCERS PAPERWEIGHT", image: "/Paperweights/STAGES OF DIABETIC FOOT ULCERS PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 49, name: "STOMACH PELLET PAPERWEIGHT", image: "/Paperweights/STOMACH PELLET PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 50, name: "SYRUP BOTTLE SHAPE PAPERWEIGHT", image: "/Paperweights/SYRUP BOTTLE SHAPE PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 51, name: "TYPES OD TENDONITIS CUBE SHAPED PAPERWEIGHT", image: "/Paperweights/TYPES OD TENDONITIS CUBE SHAPED PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 52, name: "TYPES OF KIDNEY STONES ANATOMICAL PAPERWEIGHT", image: "/Paperweights/TYPES OF KIDNEY STONES ANATOMICAL PAPERWEIGHT.jpg", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 39, name: "CUSTOMIZED DENTAL MIRROR PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED DENTAL MIRROR PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 40, name: "CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 41, name: "CUSTOMIZED LUBIMOIST PACK SHOT SHAPE PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED LUBIMOIST PACK SHOT SHAPE PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 42, name: "CUSTOMIZED MNEMONIC ROCKING PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED MNEMONIC ROCKING PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 43, name: "CUSTOMIZED Q PIN SHAPED PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED Q PIN SHAPED PAPERWEIGHT 2.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 44, name: "CUSTOMIZED TRIPLE LAYER TABLET PAPERWEIGHT", image: "/Paperweights/CUSTOMIZED TRIPLE LAYER TABLET PAPERWEIGHT 3.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 45, name: "ENSURE BOTTLE SHAPED PAPERWEIGHT", image: "/Paperweights/ENSURE BOTTLE SHAPED PAPERWEIGHT.jpg", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 46, name: "LIPID PROFILER SHAPE PAPERWEIGHT", image: "/Paperweights/LIPID PROFILER SHAPE PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 47, name: "MOLECULE COMBINATION PAPERWEIGHT", image: "/Paperweights/MOLECULE COMBINATION PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 48, name: "STAGES OF DIABETIC FOOT ULCERS PAPERWEIGHT", image: "/Paperweights/STAGES OF DIABETIC FOOT ULCERS PAPERWEIGHT.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 49, name: "STOMACH PELLET PAPERWEIGHT", image: "/Paperweights/STOMACH PELLET PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 50, name: "SYRUP BOTTLE SHAPE PAPERWEIGHT", image: "/Paperweights/SYRUP BOTTLE SHAPE PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 51, name: "TYPES OD TENDONITIS CUBE SHAPED PAPERWEIGHT", image: "/Paperweights/TYPES OD TENDONITIS CUBE SHAPED PAPERWEIGHT 1.JPG", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  // { id: 52, name: "TYPES OF KIDNEY STONES ANATOMICAL PAPERWEIGHT", image: "/Paperweights/TYPES OF KIDNEY STONES ANATOMICAL PAPERWEIGHT.jpg", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   
   // Categories - Tabletops
   { id: 4, name: "CUSTOMIZED 1 LAKH DOSES MOMENTO", image: "/TableTop/CUSTOMIZED 1 LAKH DOSES MOMENTO 1.JPG", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
@@ -225,67 +225,67 @@ export const allProducts: Product[] = [
     "/Desk Utility/CUSTOMIZED LED CHIT HOLDER 2.JPG"
   ] },
   
-  { id: 17, name: "CUSTOMIZED MOBILE CHARGER STAND", image: "/Desk Utility/CUSTOMIZED MOBILE CHARGER STAND 1.JPG", price: "₹399", category: "desk-utility", categoryName: "Desk Utility", description: "Stand for mobile phone while charging", images: [
-    "/Desk Utility/CUSTOMIZED MOBILE CHARGER STAND 1.JPG",
-    "/Desk Utility/CUSTOMIZED MOBILE CHARGER STAND 2.JPG",
-    "/Desk Utility/CUSTOMIZED MOBILE CHARGER STAND 3.JPG"
-  ] },
+  // { id: 17, name: "CUSTOMIZED MOBILE CHARGER STAND", image: "/Desk Utility/CUSTOMIZED MOBILE CHARGER STAND 1.JPG", price: "₹399", category: "desk-utility", categoryName: "Desk Utility", description: "Stand for mobile phone while charging", images: [
+  //   "/Desk Utility/CUSTOMIZED MOBILE CHARGER STAND 1.JPG",
+  //   "/Desk Utility/CUSTOMIZED MOBILE CHARGER STAND 2.JPG",
+  //   "/Desk Utility/CUSTOMIZED MOBILE CHARGER STAND 3.JPG"
+  // ] },
   
-  { id: 18, name: "CUSTOMIZED MOBILE CHARGING STAND", image: "/Desk Utility/CUSTOMIZED MOBILE CHARGING STAND 4.JPG", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "Ergonomic stand for charging mobile phones", images: [
-    "/Desk Utility/CUSTOMIZED MOBILE CHARGING STAND 4.JPG",
-    "/Desk Utility/CUSTOMIZED MOBILE CHARGING STAND 5.JPG",
-    "/Desk Utility/CUSTOMIZED MOBILE CHARGING STAND 6.JPG"
-  ] },
+  // { id: 18, name: "CUSTOMIZED MOBILE CHARGING STAND", image: "/Desk Utility/CUSTOMIZED MOBILE CHARGING STAND 4.JPG", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "Ergonomic stand for charging mobile phones", images: [
+  //   "/Desk Utility/CUSTOMIZED MOBILE CHARGING STAND 4.JPG",
+  //   "/Desk Utility/CUSTOMIZED MOBILE CHARGING STAND 5.JPG",
+  //   "/Desk Utility/CUSTOMIZED MOBILE CHARGING STAND 6.JPG"
+  // ] },
   
-  { id: 19, name: "CUSTOMIZED MOBILE HOLDER KEY CHAIN", image: "/Desk Utility/CUSTOMIZED MOBILE HOLDER KEY CHAIN 1.JPG", price: "₹249", category: "desk-utility", categoryName: "Desk Utility", description: "Portable mobile holder that doubles as keychain", images: [
-    "/Desk Utility/CUSTOMIZED MOBILE HOLDER KEY CHAIN 1.JPG",
-    "/Desk Utility/CUSTOMIZED MOBILE HOLDER KEY CHAIN 2.JPG",
-    "/Desk Utility/CUSTOMIZED MOBILE HOLDER KEY CHAIN 3.JPG"
-  ] },
+  // { id: 19, name: "CUSTOMIZED MOBILE HOLDER KEY CHAIN", image: "/Desk Utility/CUSTOMIZED MOBILE HOLDER KEY CHAIN 1.JPG", price: "₹249", category: "desk-utility", categoryName: "Desk Utility", description: "Portable mobile holder that doubles as keychain", images: [
+  //   "/Desk Utility/CUSTOMIZED MOBILE HOLDER KEY CHAIN 1.JPG",
+  //   "/Desk Utility/CUSTOMIZED MOBILE HOLDER KEY CHAIN 2.JPG",
+  //   "/Desk Utility/CUSTOMIZED MOBILE HOLDER KEY CHAIN 3.JPG"
+  // ] },
   
-  { id: 20, name: "CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER", image: "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER 1.JPG", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "2-in-1 mobile stand with integrated pen holder", images: [
-    "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER 1.JPG",
-    "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER 2.JPG",
-    "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER 3.JPG"
-  ] },
+  // { id: 20, name: "CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER", image: "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER 1.JPG", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "2-in-1 mobile stand with integrated pen holder", images: [
+  //   "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER 1.JPG",
+  //   "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER 2.JPG",
+  //   "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER 3.JPG"
+  // ] },
   
-  { id: 21, name: "CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER", image: "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER 1.JPG", price: "₹499", category: "desk-utility", categoryName: "Desk Utility", description: "Multi-functional mobile stand with business card holder", images: [
-    "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER 1.JPG",
-    "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER 2.JPG",
-    "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER 3.JPG"
-  ] },
+  // { id: 21, name: "CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER", image: "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER 1.JPG", price: "₹499", category: "desk-utility", categoryName: "Desk Utility", description: "Multi-functional mobile stand with business card holder", images: [
+  //   "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER 1.JPG",
+  //   "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER 2.JPG",
+  //   "/Desk Utility/CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER 3.JPG"
+  // ] },
   
-  { id: 22, name: "CUSTOMIZED PEN HOLDER", image: "/Desk Utility/CUSTOMIZED PEN HOLDER 1.JPG", price: "₹199", category: "desk-utility", categoryName: "Desk Utility", description: "Simple and elegant pen holder for desk", images: [
-    "/Desk Utility/CUSTOMIZED PEN HOLDER 1.JPG",
-    "/Desk Utility/CUSTOMIZED PEN HOLDER 2.JPG"
-  ] },
+  // { id: 22, name: "CUSTOMIZED PEN HOLDER", image: "/Desk Utility/CUSTOMIZED PEN HOLDER 1.JPG", price: "₹199", category: "desk-utility", categoryName: "Desk Utility", description: "Simple and elegant pen holder for desk", images: [
+  //   "/Desk Utility/CUSTOMIZED PEN HOLDER 1.JPG",
+  //   "/Desk Utility/CUSTOMIZED PEN HOLDER 2.JPG"
+  // ] },
   
-  { id: 23, name: "CUSTOMIZED PORTABLE MIRROR", image: "/Desk Utility/CUSTOMIZED PORTABLE MIRROR 1.JPG", price: "₹299", category: "desk-utility", categoryName: "Desk Utility", description: "Portable mirror for desk or travel use", images: [
-    "/Desk Utility/CUSTOMIZED PORTABLE MIRROR 1.JPG",
-    "/Desk Utility/CUSTOMIZED PORTABLE MIRROR 2.JPG"
-  ] },
+  // { id: 23, name: "CUSTOMIZED PORTABLE MIRROR", image: "/Desk Utility/CUSTOMIZED PORTABLE MIRROR 1.JPG", price: "₹299", category: "desk-utility", categoryName: "Desk Utility", description: "Portable mirror for desk or travel use", images: [
+  //   "/Desk Utility/CUSTOMIZED PORTABLE MIRROR 1.JPG",
+  //   "/Desk Utility/CUSTOMIZED PORTABLE MIRROR 2.JPG"
+  // ] },
   
-  { id: 24, name: "MULTI BRANDING DUAL UTILITY PAPERWEIGHT", image: "/Desk Utility/MULTI BRANDING DUAL UTILITY PAPERWEIGHT.JPG", price: "₹599", category: "desk-utility", categoryName: "Desk Utility", description: "Paperweight with dual branding options and multi-utility", images: [
-    "/Desk Utility/MULTI BRANDING DUAL UTILITY PAPERWEIGHT.JPG"
-  ] },
+  // { id: 24, name: "MULTI BRANDING DUAL UTILITY PAPERWEIGHT", image: "/Desk Utility/MULTI BRANDING DUAL UTILITY PAPERWEIGHT.JPG", price: "₹599", category: "desk-utility", categoryName: "Desk Utility", description: "Paperweight with dual branding options and multi-utility", images: [
+  //   "/Desk Utility/MULTI BRANDING DUAL UTILITY PAPERWEIGHT.JPG"
+  // ] },
   
-  { id: 25, name: "MULTI BRANDING PAPERWEIGHT", image: "/Desk Utility/MULTI BRANDING PAPERWEIGHT.JPG", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "Elegant paperweight with multi-branding capability", images: [
-    "/Desk Utility/MULTI BRANDING PAPERWEIGHT.JPG"
-  ] },
+  // { id: 25, name: "MULTI BRANDING PAPERWEIGHT", image: "/Desk Utility/MULTI BRANDING PAPERWEIGHT.JPG", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "Elegant paperweight with multi-branding capability", images: [
+  //   "/Desk Utility/MULTI BRANDING PAPERWEIGHT.JPG"
+  // ] },
   
-  { id: 26, name: "MULTI BRANDING ROTATING PEN STAND", image: "/Desk Utility/MULTI BRANDING ROTATING PEN STAND 1.JPG", price: "₹699", category: "desk-utility", categoryName: "Desk Utility", description: "360-degree rotating pen stand with branding space", images: [
-    "/Desk Utility/MULTI BRANDING ROTATING PEN STAND 1.JPG",
-    "/Desk Utility/MULTI BRANDING ROTATING PEN STAND 2.JPG"
-  ] },
+  // { id: 26, name: "MULTI BRANDING ROTATING PEN STAND", image: "/Desk Utility/MULTI BRANDING ROTATING PEN STAND 1.JPG", price: "₹699", category: "desk-utility", categoryName: "Desk Utility", description: "360-degree rotating pen stand with branding space", images: [
+  //   "/Desk Utility/MULTI BRANDING ROTATING PEN STAND 1.JPG",
+  //   "/Desk Utility/MULTI BRANDING ROTATING PEN STAND 2.JPG"
+  // ] },
   
-  { id: 27, name: "MULTI UTILITY DESK CLOCK", image: "/Desk Utility/MULTI UTILITY DESK CLOCK 1.JPG", price: "₹799", category: "desk-utility", categoryName: "Desk Utility", description: "Desk clock with multiple utility features", images: [
-    "/Desk Utility/MULTI UTILITY DESK CLOCK 1.JPG",
-    "/Desk Utility/MULTI UTILITY DESK CLOCK 2.JPG"
-  ] },
+  // { id: 27, name: "MULTI UTILITY DESK CLOCK", image: "/Desk Utility/MULTI UTILITY DESK CLOCK 1.JPG", price: "₹799", category: "desk-utility", categoryName: "Desk Utility", description: "Desk clock with multiple utility features", images: [
+  //   "/Desk Utility/MULTI UTILITY DESK CLOCK 1.JPG",
+  //   "/Desk Utility/MULTI UTILITY DESK CLOCK 2.JPG"
+  // ] },
   
-  { id: 28, name: "MULTIBRANDING PAPERWEIGHT WITH MOBILE HOLDER", image: "/Desk Utility/MULTIBRANDING PAPERWEIGHT WITH MOBILE HOLDER.JPG", price: "₹549", category: "desk-utility", categoryName: "Desk Utility", description: "2-in-1 paperweight and mobile holder with multi-branding", images: [
-    "/Desk Utility/MULTIBRANDING PAPERWEIGHT WITH MOBILE HOLDER.JPG"
-  ] },
+  // { id: 28, name: "MULTIBRANDING PAPERWEIGHT WITH MOBILE HOLDER", image: "/Desk Utility/MULTIBRANDING PAPERWEIGHT WITH MOBILE HOLDER.JPG", price: "₹549", category: "desk-utility", categoryName: "Desk Utility", description: "2-in-1 paperweight and mobile holder with multi-branding", images: [
+  //   "/Desk Utility/MULTIBRANDING PAPERWEIGHT WITH MOBILE HOLDER.JPG"
+  // ] },
 
   // Categories - 3D Printed
   { id: 10, name: "AESTHETIC HEART SHAPED FLOWER VASE", image: "/3dprinted/AESTHETIC HEART SHAPED FLOWER VASE 1.JPG", price: "₹799", category: "3d-printed", categoryName: "3D Printed", description: "Custom 3D printed desk name plate" },
@@ -298,10 +298,10 @@ export const allProducts: Product[] = [
   { id: 17, name: "INTESTINE SHAPED PEN STAND", image: "/3dprinted/INTESTINE SHAPED PEN STAND 1.JPG", price: "₹699", category: "3d-printed", categoryName: "3D Printed", description: "Unique intestine design pen holder" },
   { id: 18, name: "KIDNEY SHAPED PEN STAND", image: "/3dprinted/KIDNEY SHAPED PEN STAND 1.JPG", price: "₹699", category: "3d-printed", categoryName: "3D Printed", description: "Anatomy-inspired kidney pen holder" },
   { id: 20, name: "MITOCHONDRIA PAPERWEIGHT", image: "/3dprinted/MITOCHONDRIA PAPERWEIGHT.JPG", price: "₹599", category: "3d-printed", categoryName: "3D Printed", description: "Cell biology mitochondria paperweight" },
-  { id: 21, name: "MITOCHONDRIA PUZZLE PAPERWEIGHT", image: "/3dprinted/MITOCHONDRIA PUZZLE PAPERWEIGHT.JPG", price: "₹699", category: "3d-printed", categoryName: "3D Printed", description: "Interactive puzzle-style mitochondria" },
-  { id: 22, name: "MOTHER BABY TABLE TOP", image: "/3dprinted/MOTHER BABY TABLE TOP.JPG", price: "₹1599", category: "3d-printed", categoryName: "3D Printed", description: "Heartwarming mother-child figurine" },
-  { id: 23, name: "PINEAPPLE SHAPE STATIONARY HOLDER", image: "/3dprinted/PINEAPPLE SHAPE STATIONARY HOLDER 1.JPG", price: "₹799", category: "3d-printed", categoryName: "3D Printed", description: "Tropical pineapple desk organizer" },
-  { id: 24, name: "REUMEN MODEL", image: "/3dprinted/REUMEN MODEL 1.JPG", price: "₹1999", category: "3d-printed", categoryName: "3D Printed", description: "Detailed anatomical model" },
+  // { id: 21, name: "MITOCHONDRIA PUZZLE PAPERWEIGHT", image: "/3dprinted/MITOCHONDRIA PUZZLE PAPERWEIGHT.JPG", price: "₹699", category: "3d-printed", categoryName: "3D Printed", description: "Interactive puzzle-style mitochondria" },
+  // { id: 22, name: "MOTHER BABY TABLE TOP", image: "/3dprinted/MOTHER BABY TABLE TOP.JPG", price: "₹1599", category: "3d-printed", categoryName: "3D Printed", description: "Heartwarming mother-child figurine" },
+  // { id: 23, name: "PINEAPPLE SHAPE STATIONARY HOLDER", image: "/3dprinted/PINEAPPLE SHAPE STATIONARY HOLDER 1.JPG", price: "₹799", category: "3d-printed", categoryName: "3D Printed", description: "Tropical pineapple desk organizer" },
+  // { id: 24, name: "REUMEN MODEL", image: "/3dprinted/REUMEN MODEL 1.JPG", price: "₹1999", category: "3d-printed", categoryName: "3D Printed", description: "Detailed anatomical model" },
 
 
  // Categories - Fibre and Resin Products
@@ -353,24 +353,24 @@ export const allProducts: Product[] = [
     "/Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
   ] },
   
-  { id: 23, name: "MOTHER-BABY FIBRE TABLE TOP", image: "/Fibre & Resin/MOTHER-BABY FIBRE TABLE TOP.JPG", price: "₹1599", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Heartwarming mother-baby fibre figurine for tabletop decor", images: [
-    "/Fibre & Resin/MOTHER-BABY FIBRE TABLE TOP.JPG"
-  ] },
+  // { id: 23, name: "MOTHER-BABY FIBRE TABLE TOP", image: "/Fibre & Resin/MOTHER-BABY FIBRE TABLE TOP.JPG", price: "₹1599", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Heartwarming mother-baby fibre figurine for tabletop decor", images: [
+  //   "/Fibre & Resin/MOTHER-BABY FIBRE TABLE TOP.JPG"
+  // ] },
   
-  { id: 24, name: "ORANGE PEN STAND", image: "/Fibre & Resin/ORANGE PEN STAND 1.JPG", price: "₹399", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Fruit-shaped orange pen stand for colorful desk organization", images: [
-    "/Fibre & Resin/ORANGE PEN STAND 1.JPG",
-    "/Fibre & Resin/ORANGE PEN STAND 2.JPG"
-  ] },
+  // { id: 24, name: "ORANGE PEN STAND", image: "/Fibre & Resin/ORANGE PEN STAND 1.JPG", price: "₹399", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Fruit-shaped orange pen stand for colorful desk organization", images: [
+  //   "/Fibre & Resin/ORANGE PEN STAND 1.JPG",
+  //   "/Fibre & Resin/ORANGE PEN STAND 2.JPG"
+  // ] },
   
-  { id: 25, name: "ORGANS AFFECTED BY DIABETES PEN STAND", image: "/Fibre & Resin/ORGANS AFFECTED BY DIABETES PEN STAND 1.JPG", price: "₹899", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Educational pen stand showing organs affected by diabetes - perfect for clinics", images: [
-    "/Fibre & Resin/ORGANS AFFECTED BY DIABETES PEN STAND 1.JPG",
-    "/Fibre & Resin/ORGANS AFFECTED BY DIABETES PEN STAND 2.JPG"
-  ] },
+  // { id: 25, name: "ORGANS AFFECTED BY DIABETES PEN STAND", image: "/Fibre & Resin/ORGANS AFFECTED BY DIABETES PEN STAND 1.JPG", price: "₹899", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Educational pen stand showing organs affected by diabetes - perfect for clinics", images: [
+  //   "/Fibre & Resin/ORGANS AFFECTED BY DIABETES PEN STAND 1.JPG",
+  //   "/Fibre & Resin/ORGANS AFFECTED BY DIABETES PEN STAND 2.JPG"
+  // ] },
   
-  { id: 26, name: "TOOTH DECAY REPAIR MODEL", image: "/Fibre & Resin/TOOTH DECAY REPAIR MODEL 1.JPG", price: "₹1999", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Dental education model showing tooth decay and repair process", images: [
-    "/Fibre & Resin/TOOTH DECAY REPAIR MODEL 1.JPG",
-    "/Fibre & Resin/TOOTH DECAY REPAIR MODEL 2.JPG"
-  ] },
+  // { id: 26, name: "TOOTH DECAY REPAIR MODEL", image: "/Fibre & Resin/TOOTH DECAY REPAIR MODEL 1.JPG", price: "₹1999", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Dental education model showing tooth decay and repair process", images: [
+  //   "/Fibre & Resin/TOOTH DECAY REPAIR MODEL 1.JPG",
+  //   "/Fibre & Resin/TOOTH DECAY REPAIR MODEL 2.JPG"
+  // ] },
 
   // Categories - Eco Friendly
   { id: 16, name: "Bamboo Cutlery Set", image: "https://images.unsplash.com/photo-1584622651921-47e0e8043693?w=400", price: "₹499", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Sustainable bamboo utensils" },
