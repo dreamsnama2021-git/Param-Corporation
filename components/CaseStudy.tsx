@@ -51,12 +51,12 @@ const CASE_STUDIES = [
 const CASE_STUDIES_CARDS = [
   {
     id: 1,
-    title: "The Stunning Transformation of Thordiam Jewellery: From B2B to B2C",
+    title: "Diabetic Retinopathy Patient Awareness Tool",
     description:
-      "How we helped shift from low-margin B2B (3%) to high-impact B2C (~30%), using trust-first content and conversion-focused creative.",
+      "Diabetic Retinopathy Patient Awareness Tool",
     image:
       "/products/4 IN 1 DESK ORGANISER.png", // Jewellery/retail image
-    slug: "thordiam-transformation",
+    slug: "diabetic-retinopathy-tool",
     readTime: "6 min read",
     category: "Retail",
   },
@@ -190,7 +190,7 @@ function CaseStudiesSection() {
                   {/* CTA Button - Compact */}
                   <div className="pt-1 sm:pt-2">
                     <Link
-                      href={`/case-studies/${study.slug}`}
+                      href={`/case-study/${study.slug}`}
                       className="inline-flex items-center gap-2 bg-[#0093cb] hover:bg-[#00a65d] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-semibold text-xs sm:text-sm transition-all duration-300 hover:shadow-md group/btn"
                     >
                       Read More
@@ -206,7 +206,7 @@ function CaseStudiesSection() {
         {/* Bottom CTA - Compact */}
         <div className="flex justify-center mt-8 sm:mt-10 md:mt-12 lg:mt-16">
           <Link
-            href="/case-studies"
+            href="/case-study"
             className="group flex items-center gap-2 bg-white border-2 border-[#0093cb] 
               text-[#0093cb] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-xs sm:text-sm 
               hover:bg-[#0093cb] hover:text-white transition-all duration-300"
@@ -296,7 +296,7 @@ function CaseStudiesGrid() {
                 {/* Footer: Button with Primary Hover */}
                 <div className="flex items-center justify-between pt-2 sm:pt-3 border-t border-gray-100">
                   <Link
-                    href={`/case-studies/${study.slug}`}
+                    href={`/case-study/${study.slug}`}
                     className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#8bde7a] group-hover:bg-[#0093cb] 
                       text-gray-900 group-hover:text-white px-3 lg:px-3 xl:px-5 py-1.5 sm:py-2 rounded-full font-semibold text-xs xl:text-sm 
                       transition-all duration-300 group/btn shadow-sm group-hover:shadow-lg group-hover:shadow-[#0093cb]/30"

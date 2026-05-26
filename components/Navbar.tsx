@@ -205,7 +205,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center shrink-0">
               <img
-                src="/banner/logo final for param .png"
+                src="/PARAM CO. .png"
                 alt="Param Logo"
                 className="h-10 object-contain"
               />
