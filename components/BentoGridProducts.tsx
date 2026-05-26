@@ -154,7 +154,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     posters: [
       '/therepy/ent/REVOLISER PATIENT COUNSELLING TOOL.jpg',
       '/therepy/ent/HEALTHY SINUS VS SINUSITIS TABLE TOP.jpg',
-      '/therepy/ent/ChatGPT Image May 25, 2026, 06_08_56 PM.png',
+      // '/therepy/ent/ChatGPT Image May 25, 2026, 06_08_56 PM.png',
     ],
     medicalScale: [
       '/therepy/ent/421.jpg',
