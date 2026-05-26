@@ -1128,7 +1128,7 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
               <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                 <Image 
                   src={item.img} 
-                  // alt={item.title} 
+                  alt={item.title} 
                   fill 
                   className="object-cover" 
                   sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 320px"
