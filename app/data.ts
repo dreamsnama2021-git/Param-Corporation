@@ -303,10 +303,17 @@ export const allProducts: Product[] = [
     "/LED INPUTS/IMG_9724.JPG"
   ] },
 
-  // Categories - Indoor Plants (IDs: 67-69)
-  { id: 67, name: "Succulent Set with Pot", image: "/Indoor Plant/SYNGONIUM PLANT.jpeg", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
-  { id: 68, name: "Lucky Bamboo Plant", image: "/Indoor Plant/AGLAONEMA PLANT 1.jpeg", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
-  { id: 69, name: "Air Purifying Plant", image: "/Indoor Plant/ARECA PALM PLANT 1.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  // Categories - Indoor Plants (IDs: 67-76)
+  { id: 67, name: "SYNGONIUM PLANT", image: "/Indoor Plant/SYNGONIUM PLANT.jpeg", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
+  { id: 68, name: "AGLAONEMA PLANT", image: "/Indoor Plant/AGLAONEMA PLANT 1.jpeg", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
+  { id: 69, name: "ARECA PALM PLANT", image: "/Indoor Plant/ARECA PALM PLANT 1.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  { id: 70, name: "ARROWHEAD PLANT", image: "/public/Indoor Plant/ARROWHEAD PLANT.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  { id: 71, name: "CHAMAEDOREA PALM", image: "/public/Indoor Plant/CHAMAEDOREA PALM 3.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  { id: 72, name: "DESSERT ROSE PLANT", image: "/public/Indoor Plant/DESSERT ROSE PLANT.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  { id: 73, name: "DIEFFENBACHIA", image: "/public/Indoor Plant/DIEFFENBACHIA 1.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  { id: 74, name: "DUMB CANE PLANT", image: "/public/Indoor Plant/DUMB CANE PLANT.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  { id: 75, name: "GOLDEN POTHOS PLANT", image: "/public/Indoor Plant/GOLDEN POTHOS PLANT.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  { id: 76, name: "JADE PLANT", image: "/public/Indoor Plant/JADE PLANT 3.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
 
   // Categories - Calendars (IDs: 70-72)
   { id: 70, name: "Medical Desk Calendar", image: "therepy/cardio-diabatics/ASCVD RISK CALCULATOR 2.jpg", price: "₹299", category: "calendars", categoryName: "Calendars", description: "Medical-focused desk calendar 2025" },
