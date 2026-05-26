@@ -251,13 +251,13 @@ function SidebarWithSubcategories({
 }
 // ─── PRODUCTS PAGE BANNER ─────────────────────────────────────────────────────────────
 const PageBanner = () => (
- <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[80vh] overflow-hidden">
+ <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="/banner/Products page Mobile.jpg"
       alt="Products Banner - Mobile"
       fill
-      className="object-cover object-center block md:hidden"
+      className="object-fill object-center block md:hidden"
       priority
       unoptimized
     />
@@ -267,7 +267,7 @@ const PageBanner = () => (
       src="/banner/Products page Tablet.jpg"
       alt="Products Banner - Tablet"
       fill
-      className="object-cover object-center hidden md:block lg:hidden"
+      className="object-fill object-center hidden md:block lg:hidden"
       priority
       unoptimized
     />
@@ -277,7 +277,7 @@ const PageBanner = () => (
       src="/banner/Products page Desktop.jpg"
       alt="Products Banner - Desktop"
       fill
-      className="object-cover object-center hidden lg:block"
+      className="object-fill object-center hidden lg:block"
       priority
       unoptimized
     />

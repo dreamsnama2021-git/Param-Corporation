@@ -219,13 +219,13 @@ const PRODUCT_DATA = [
 // ─── KORU PAGE BANNER ─────────────────────────────────────────────────────────────
 
 const PageBanner = () => (
- <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[70vh] overflow-hidden">
+ <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="/banner/Koru Mobile.jpg"
       alt="Koru Banner - Mobile"
       fill
-      className="object-cover object-center block md:hidden"
+      className="object-fill object-center block md:hidden"
       priority
       unoptimized
     />
@@ -235,7 +235,7 @@ const PageBanner = () => (
       src="/banner/Koru Tablet.jpg"
       alt="Koru Banner - Tablet"
       fill
-      className="object-cover object-center hidden md:block lg:hidden"
+      className="object-fill object-center hidden md:block lg:hidden"
       priority
       unoptimized
     />
@@ -245,7 +245,7 @@ const PageBanner = () => (
       src="/banner/Koru Desktop.jpg"
       alt="Koru Banner - Desktop"
       fill
-      className="object-cover object-center hidden lg:block"
+      className="object-fill object-center hidden lg:block"
       priority
       unoptimized
     />
@@ -325,7 +325,7 @@ export default function KoruCommunications() {
                 <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-24 sm:w-28 md:w-32 lg:w-36 h-24 sm:h-28 md:h-32 lg:h-36 rounded-full bg-[#0093cb]/5 z-0" />
                 <div className="absolute top-2 left-2 sm:top-3 sm:left-3 md:top-4 md:left-4 right-0 bottom-0 rounded-2xl sm:rounded-3xl border-2 border-[#0093cb]/30 z-[1]" />
                 <div className="absolute top-4 left-4 sm:top-5 sm:left-5 md:top-8 md:left-8 right-0 bottom-0 rounded-2xl sm:rounded-3xl overflow-hidden z-[2] shadow-xl sm:shadow-2xl">
-                  <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800" alt="Koru Leadership" className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
+                  <img src="/koru/koru-about.jpeg" alt="Koru Leadership" className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
                 </div>
                 {/* <div className="absolute top-4 -right-1 sm:top-6 sm:-right-2 md:top-8 md:-right-3 lg:top-10 lg:-right-4 bg-[#0b3c5d] text-white rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-5 lg:px-6 py-2 sm:py-3 md:py-4 lg:py-5 text-center z-[5] leading-tight shadow-lg sm:shadow-xl border-b-4 border-[#8bde7a]">
                   <span className="text-xl sm:text-2xl md:text-3xl font-black block text-[#8bde7a]">10+</span>

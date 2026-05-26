@@ -84,23 +84,23 @@ const caseStudies: CaseStudy[] = [
 // ─── CASE STUDY PAGE BANNER ─────────────────────────────────────────────────────────────
 
 const PageBanner = () => (
- <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[70vh] overflow-hidden">
+ <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="/banner/Case study page Mobile.jpg"
       alt="Case Study Banner - Mobile"
       fill
-      className="object-cover object-center block md:hidden"
+      className="object-fill object-center block md:hidden"
       priority
       unoptimized
     />
 
     {/* Tablet image */}
     <Image
-      src="/banner/Case study page Tablet.jpg"
+      src="/banner/Case study page Tablet .jpg"
       alt="Case Study Banner - Tablet"
       fill
-      className="object-cover object-center hidden md:block lg:hidden"
+      className="object-fill object-center hidden md:block lg:hidden"
       priority
       unoptimized
     />
@@ -110,10 +110,12 @@ const PageBanner = () => (
       src="/banner/Case study page Desktop.jpg"
       alt="Case Study Banner - Desktop"
       fill
-      className="object-cover object-center hidden lg:block"
+      className="object-fill object-center hidden lg:block"
       priority
       unoptimized
     />
+
+ 
 
     {/* Gradient overlay */}
     <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
@@ -166,7 +168,7 @@ function ImageCard({ imageUrl, title }: { imageUrl: string; title: string }) {
 
   return (
     <div 
-      className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gray-100 group"
+      className="relative aspect-[4/3] rounded-2xl overflow-hidden  bg-gray-100 group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -179,9 +181,9 @@ function ImageCard({ imageUrl, title }: { imageUrl: string; title: string }) {
       />
       
       {/* Overlay gradient */}
-      <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-300 ${
+      {/* <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-300 ${
         isHovered ? 'opacity-100' : 'opacity-60'
-      }`} />
+      }`} /> */}
       
       {/* View case study overlay on hover */}
       <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
@@ -249,10 +251,7 @@ export default function CaseStudiesPage() {
                 imageUrl={study.imageUrl}
                 title={study.title}
               />
-              {/* Decorative background element */}
-              <div className={`absolute -z-10 w-full h-full rounded-2xl bg-[var(--clr-primary)]/10 top-4 ${
-                study.reverse ? 'right-4' : 'left-4'
-              }`} />
+            
             </div>
 
             <div className={`space-y-6 ${study.reverse ? 'lg:col-start-1 lg:row-start-1' : ''}`}>

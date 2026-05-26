@@ -180,13 +180,13 @@ function SectionBadge({ children, className }: { children: React.ReactNode; clas
 // ─── DIGITAL PAGE BANNER ─────────────────────────────────────────────────────────────
 
 const PageBanner = () => (
- <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[70vh] overflow-hidden">
+ <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="/banner/Digital Input Page Mobile.jpg"
       alt="Digital Banner - Mobile"
       fill
-      className="object-cover object-center block md:hidden"
+      className="object-fill object-center block md:hidden"
       priority
       unoptimized
     />
@@ -196,7 +196,7 @@ const PageBanner = () => (
       src="/banner/Digital Input Page Tablet  (2).jpg"
       alt="Digital Banner - Tablet"
       fill
-      className="object-cover object-center hidden md:block lg:hidden"
+      className="object-fill object-center hidden md:block lg:hidden"
       priority
       unoptimized
     />
@@ -206,7 +206,7 @@ const PageBanner = () => (
       src="/banner/Digital Input Page Desktop.jpg"
       alt="Digital Banner - Desktop"
       fill
-      className="object-cover object-center hidden lg:block"
+      className="object-fill object-center hidden lg:block"
       priority
       unoptimized
     />

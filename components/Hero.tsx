@@ -12,19 +12,23 @@ interface HeroSlide {
 
 const HERO_SLIDES: HeroSlide[] = [
   {
-    image: "/banner/home4.jpeg",
+    image: "/banner/home1.jpeg",
     alt: "Corporate Gifts",
   },
   {
-    image: "/banner/home5.jpeg",
+    image: "/banner/home2.jpeg",
     alt: "Branding",
   },
   {
-    image: "/banner/home6.jpeg",
+    image: "/banner/home3.jpeg",
     alt: "Pharmaceutical Gifts",
   },
   {
-    image: "/banner/home7.jpeg",
+    image: "/banner/home4.jpeg",
+    alt: "Pharmaceutical Gifts",
+  },
+  {
+    image: "/banner/home5.jpeg",
     alt: "Pharmaceutical Gifts",
   },
 ];

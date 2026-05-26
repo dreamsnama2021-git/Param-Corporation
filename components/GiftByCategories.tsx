@@ -255,9 +255,9 @@ function TrendingProducts() {
               style={{ willChange: 'transform' }}
             >
               {duplicatedProducts.map((item, index) => (
-                <Link
-                  key={`${item.id}-${index}`}
-                  href={`/products/${item.id}`}
+                <div
+                  // key={`${item.id}-${index}`}
+                  // href={`/products/${item.id}`}
                   className="group relative h-[220px] sm:h-[260px] md:h-[280px] lg:h-[300px] xl:h-[320px] 
                     w-[calc(25%-12px)] lg:w-[calc(25%-15px)] 
                     min-w-[160px] sm:min-w-[180px] md:min-w-[200px] lg:min-w-[220px] xl:min-w-[240px]
@@ -289,7 +289,7 @@ function TrendingProducts() {
                       {item.title}
                     </h3>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </div>
