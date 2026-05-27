@@ -18,7 +18,6 @@ import {
   X,
   ZoomIn,
   Grid3X3,
-  List,
   ChevronDown,
   Check,
   Package,
@@ -249,6 +248,7 @@ function SidebarWithSubcategories({
     </div>
   );
 }
+
 // ─── PRODUCTS PAGE BANNER ─────────────────────────────────────────────────────────────
 const PageBanner = () => (
  <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] overflow-hidden">
@@ -282,9 +282,9 @@ const PageBanner = () => (
       unoptimized
     />
 
-    {/* Gradient overlay */}
-    <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+   {/* Gradient overlay */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/10 to-black/5" />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
     {/* Content */}
     <div className="absolute inset-0 flex flex-col justify-end pb-8 sm:pb-10 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1500px] mx-auto left-0 right-0">
@@ -327,6 +327,7 @@ const PageBanner = () => (
     </div>
   </div>
 );
+
 /* ══════════════════════════════════════════
    PRODUCT CARD (Grid View)
 ══════════════════════════════════════════ */
@@ -394,76 +395,6 @@ function ProductCard({
             </div>
           )}
         </div>
-      </motion.div>
-    </Link>
-  );
-}
-
-/* ══════════════════════════════════════════
-   PRODUCT LIST ITEM (List View)
-══════════════════════════════════════════ */
-function ProductListItem({
-  product,
-  accentColor,
-}: {
-  product: any;
-  accentColor: string;
-}) {
-  const productImage = product.images?.[0] || product.image;
-
-  return (
-    <Link href={`/product/${product.id}`} className="block">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group flex gap-4 p-4 border border-gray-100"
-      >
-        <div className="relative w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden bg-gray-50">
-          {productImage ? (
-            <Image
-              src={productImage}
-              alt={product.name}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-              unoptimized
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              <Package className="w-6 h-6 text-gray-300" />
-            </div>
-          )}
-        </div>
-        <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-bold text-[#060706] mb-1 group-hover:text-[#0093cb] transition-colors line-clamp-1">
-            {product.name}
-          </h3>
-          <p className="text-xs text-gray-500 mb-2 line-clamp-2">
-            {product.description}
-          </p>
-          {product.features && (
-            <div className="flex flex-wrap gap-1 mb-2">
-              {product.features.slice(0, 3).map((feature: string, idx: number) => (
-                <span
-                  key={idx}
-                  className="text-[10px] px-2 py-0.5 bg-[#0093cb]/5 text-[#0093cb] rounded-full font-medium"
-                >
-                  {feature}
-                </span>
-              ))}
-            </div>
-          )}
-          {product.tags && (
-            <div className="flex flex-wrap gap-1">
-              {product.tags.slice(0, 2).map((tag: string, idx: number) => (
-                <span key={idx} className="text-[10px] font-medium" style={{ color: accentColor }}>
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-        <ArrowUpRight className="w-5 h-5 text-gray-300 group-hover:text-[#0093cb] transition-colors flex-shrink-0 self-center" />
       </motion.div>
     </Link>
   );
@@ -554,16 +485,14 @@ function LightboxModal({
 }
 
 /* ══════════════════════════════════════════
-   CATEGORY SECTION WITH VIEW MORE
+   CATEGORY SECTION WITH VIEW MORE (Grid Only)
 ══════════════════════════════════════════ */
 function CategorySection({
   group,
-  viewMode,
   activeTabColor,
   onViewAll,
 }: {
   group: any;
-  viewMode: "grid" | "list";
   activeTabColor: string;
   onViewAll: (categorySlug: string, categoryName: string) => void;
 }) {
@@ -633,27 +562,16 @@ function CategorySection({
         </div>
       </div>
 
-      {viewMode === "grid" ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {displayedProducts.map((product: any) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              accentColor={activeTabColor}
-            />
-          ))}
-        </div>
-      ) : (
-        <div className="flex flex-col gap-3">
-          {displayedProducts.map((product: any) => (
-            <ProductListItem
-              key={product.id}
-              product={product}
-              accentColor={activeTabColor}
-            />
-          ))}
-        </div>
-      )}
+      {/* Grid View Only */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        {displayedProducts.map((product: any) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            accentColor={activeTabColor}
+          />
+        ))}
+      </div>
 
       {hasMore && (
         <div className="mt-6 text-center">
@@ -694,7 +612,6 @@ function CategoryPageContent() {
 
   const tabParam = searchParams.get("tab") as TabId | null;
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [highlightedCategory, setHighlightedCategory] = useState<string | null>(null);
 
   // Default to "all" if no tab specified
@@ -771,7 +688,7 @@ function CategoryPageContent() {
       <style dangerouslySetInnerHTML={{ __html: listingStyles }} />
       <div className="min-h-screen listing-container bg-[#f8fafc]">
         {/* Hero Section */}
-      <PageBanner/>
+        <PageBanner/>
 
         {/* Main Content with Sidebar */}
         <div className="max-w-[1500px] mx-auto px-6 py-12 lg:py-16">
@@ -780,43 +697,10 @@ function CategoryPageContent() {
             <aside className="lg:w-64 flex-shrink-0">
               <div className="sticky top-[100px]">
                 <SidebarWithSubcategories activeTab={activeTab} onSelect={handleTabSelect} />
-
-                {/* View Toggle */}
-                <div className="mt-6">
-                  <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-3">
-                    View As
-                  </div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => setViewMode("grid")}
-                      className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all ${
-                        viewMode === "grid"
-                          ? "bg-[#060706] text-white shadow-lg"
-                          : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-50"
-                      }`}
-                      type="button"
-                    >
-                      <Grid3X3 className="w-4 h-4" />
-                      Grid
-                    </button>
-                    <button
-                      onClick={() => setViewMode("list")}
-                      className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium transition-all ${
-                        viewMode === "list"
-                          ? "bg-[#060706] text-white shadow-lg"
-                          : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-50"
-                      }`}
-                      type="button"
-                    >
-                      <List className="w-4 h-4" />
-                      List
-                    </button>
-                  </div>
-                </div>
               </div>
             </aside>
 
-            {/* ─── RIGHT PRODUCT LISTING ─── */}
+            {/* ─── RIGHT PRODUCT LISTING (Grid Only) ─── */}
             <main className="flex-1 min-w-0">
               {groupedProducts.length === 0 ? (
                 <div className="text-center py-20">
@@ -847,7 +731,6 @@ function CategoryPageContent() {
                       <CategorySection
                         key={group.categorySlug}
                         group={group}
-                        viewMode={viewMode}
                         activeTabColor={activeTabColor}
                         onViewAll={handleViewAllProducts}
                       />

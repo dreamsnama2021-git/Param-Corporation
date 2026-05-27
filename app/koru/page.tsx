@@ -251,8 +251,8 @@ const PageBanner = () => (
     />
 
     {/* Gradient overlay */}
-    <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+    <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/10 to-black/5" />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
     {/* Content */}
     <div className="absolute inset-0 flex flex-col justify-end pb-8 sm:pb-10 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1500px] mx-auto left-0 right-0">
@@ -306,10 +306,10 @@ export default function KoruCommunications() {
       <PageBanner/>
 
 
-      {/* ── ABOUT ── */}
+    {/* ── ABOUT ── */}
       <section id="about" className="py-10 sm:py-12 md:py-14 lg:py-12 bg-[#f8fafc] overflow-hidden">
-        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
-          <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-10 md:gap-12 lg:gap-14 xl:gap-20 2xl:gap-24">
+        <div className="max-w-[1500px] xl:w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-14 xl:gap-20 2xl:gap-24">
 
             {/* Image block */}
             <div className="w-full sm:w-[340px] md:w-[380px] lg:w-[420px] xl:w-[460px] 2xl:w-[500px] relative flex-shrink-0">
@@ -327,31 +327,29 @@ export default function KoruCommunications() {
                 <div className="absolute top-4 left-4 sm:top-5 sm:left-5 md:top-8 md:left-8 right-0 bottom-0 rounded-2xl sm:rounded-3xl overflow-hidden z-[2] shadow-xl sm:shadow-2xl">
                   <img src="/koru/koru-about.jpeg" alt="Koru Leadership" className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
                 </div>
-                {/* <div className="absolute top-4 -right-1 sm:top-6 sm:-right-2 md:top-8 md:-right-3 lg:top-10 lg:-right-4 bg-[#0b3c5d] text-white rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-5 lg:px-6 py-2 sm:py-3 md:py-4 lg:py-5 text-center z-[5] leading-tight shadow-lg sm:shadow-xl border-b-4 border-[#8bde7a]">
-                  <span className="text-xl sm:text-2xl md:text-3xl font-black block text-[#8bde7a]">10+</span>
-                  <span className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-widest block mt-1">Years of <br /> Excellence</span>
-                </div> */}
               </div>
             </div>
 
             {/* Text content */}
-            <div className="flex-1 min-w-0 space-y-5 sm:space-y-6 md:space-y-8 w-full">
+            <div className="flex-1 min-w-0 space-y-5 sm:space-y-6 md:space-y-8 xl:ml-10 w-full">
               <div>
                 <div className="inline-flex items-center gap-2 border border-[#00a65d]/20 bg-[#00a65d]/5 text-[#00a65d] text-[9px] sm:text-[10px] md:text-xs font-black px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-full uppercase tracking-[0.2em] mb-3 sm:mb-4 md:mb-6">
                   <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-[#00a65d] rounded-full animate-pulse flex-shrink-0" />
                   About Koru Communications
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-black text-[#0f172a] leading-[1.1] tracking-tighter">
-                  Bridging the Gap in <br />
-                  <span className="text-[#0093cb]">Scientific Clarity</span> <br />
-                  and Engagement
+                 Bringing Nature Aesthetics into <br />
+                  <span className="text-[#0093cb]">Pharma Utility Gifting</span> 
+                  
                 </h2>
               </div>
-              <p className="text-sm sm:text-base md:text-lg text-[#6b7280] leading-relaxed max-w-xl">
-                We transform complex clinical breakthroughs into human-centric narratives. Our team is dedicated to empowering healthcare providers and patients through visual precision and scientific rigor.
+              <p className="text-sm sm:text-base md:text-lg text-[#6b7280] leading-relaxed max-w-3xl">
+               KORU creates thoughtfully designed premium desk utility products and pharma promotional gifts that combine functionality with calming natural aesthetics.
+Designed for clinics, hospitals, and high-focus workspaces, KORU products improve usability while enhancing subtle brand visibility.
+
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 sm:gap-y-3 md:gap-y-4 gap-x-4 sm:gap-x-6 md:gap-x-8 pb-2 sm:pb-4">
-                {["Expert Medical Writers", "Regulatory-Ready Design", "Patient-Centric Storytelling", "High-Impact Visual Tools"].map((item) => (
+                {[" Custom branding available", "Premium utility gifting", "Low-maintenance natural aesthetics", "Multi-functional products"].map((item) => (
                   <div key={item} className="flex items-center gap-2 sm:gap-3 text-xs sm:text-[13px] md:text-[14px] font-bold text-[#0f172a]">
                     <div className="w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 rounded-lg bg-[#00a65d]/10 flex items-center justify-center flex-shrink-0 border border-[#00a65d]/20">
                       <CheckCircle size={10} className="sm:size-3 md:size-3.5 text-[#00a65d]" />

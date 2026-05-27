@@ -12,23 +12,23 @@ interface HeroSlide {
 
 const HERO_SLIDES: HeroSlide[] = [
   {
-    image: "/banner/home1.jpeg",
+    image: "/banner/home1.png",
     alt: "Corporate Gifts",
   },
   {
-    image: "/banner/home2.jpeg",
+    image: "/banner/home2.png",
     alt: "Branding",
   },
   {
-    image: "/banner/home3.jpeg",
+    image: "/banner/home3.png",
     alt: "Pharmaceutical Gifts",
   },
   {
-    image: "/banner/home4.jpeg",
+    image: "/banner/home4.png",
     alt: "Pharmaceutical Gifts",
   },
   {
-    image: "/banner/home5.jpeg",
+    image: "/banner/home5.png",
     alt: "Pharmaceutical Gifts",
   },
 ];
@@ -177,7 +177,7 @@ export default function HeroWithStats() {
   return (
     <div className="flex flex-col overflow-hidden">
       <section 
-        className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-[90vh] overflow-hidden bg-black"
+        className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[70vh] xl:h-[90vh] overflow-hidden bg-black"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
       >
@@ -207,7 +207,7 @@ export default function HeroWithStats() {
                 src={slide.image}
                 alt={slide.alt}
                 fill
-                className="object-cover pointer-events-none"
+                className="object-fill pointer-events-none"
                 priority={idx >= middleStart && idx < middleStart + 2}
                 sizes="100vw"
                 quality={100}

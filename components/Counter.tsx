@@ -72,26 +72,26 @@ const stats: Stat[] = [
   },
   {
     id: 4,
-    value: 1,
-    suffix: "",
-    label: "Pan-India Campaign Execution",
+    value: 25,
+    suffix: "+",
+    label: "Cities Covered",
     subtext: "Nationwide Reach",
     icon: MapPin,
     gradient: "from-[#0093cb] to-[#00a65d]",
     accent: "#0093cb",
     position: "center"
   },
-  {
-    id: 5,
-    value: 1,
-    suffix: "",
-    label: "Trusted by Leading Pharma Brands",
-    subtext: "Industry Leaders",
-    icon: Users,
-    gradient: "from-[#0093cb] to-[#0077b6]",
-    accent: "#0093cb",
-    position: "top"
-  },
+  // {
+  //   id: 5,
+  //   value: 1,
+  //   suffix: "",
+  //   label: "Trusted by Leading Pharma Brands",
+  //   subtext: "Industry Leaders",
+  //   icon: Users,
+  //   gradient: "from-[#0093cb] to-[#0077b6]",
+  //   accent: "#0093cb",
+  //   position: "top"
+  // },
 ];
 
 // 3D Tilt Card Component
@@ -206,7 +206,7 @@ const TiltCard = ({ stat, index }: TiltCardProps): React.ReactElement => {
 
         {/* Number Display */}
         <div className="relative mb-1.5">
-          <h3 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter bg-gradient-to-r ${stat.gradient} 
+          <h3 className={`text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-black tracking-tighter bg-gradient-to-r ${stat.gradient} 
             bg-clip-text text-transparent tabular-nums`}>
             {displayValue}{stat.suffix}
           </h3>
@@ -222,7 +222,7 @@ const TiltCard = ({ stat, index }: TiltCardProps): React.ReactElement => {
 
         {/* Label */}
         <div className="relative z-10">
-          <h4 className="text-gray-900 font-bold text-xs sm:text-sm md:text-base lg:text-lg mb-0.5 group-hover:text-gray-800 transition-colors">
+          <h4 className="text-gray-900 font-bold text-xs sm:text-sm md:text-base xl:text-lg mb-0.5 group-hover:text-gray-800 transition-colors">
             {stat.label}
           </h4>
           <p className="text-gray-500 text-[10px] sm:text-xs flex items-center gap-1">
@@ -312,7 +312,7 @@ export default function CreativeStatsSection(): React.ReactElement {
         </div>
 
         {/* Stats Grid - Staggered Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           {stats.map((stat, index) => (
             <TiltCard key={stat.id} stat={stat} index={index} />
           ))}

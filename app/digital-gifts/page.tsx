@@ -19,6 +19,10 @@ import {
   Eye,
   Zap,
   ChevronRight,
+  Tag,
+  Calendar,
+  Clock,
+  ArrowRight,
 } from 'lucide-react';
 
 // ─── TYPES ──────────────────────────────────────────────────────────────────
@@ -46,7 +50,7 @@ const serviceCategories: ServiceCategory[] = [
     title: "Customized Dashboard",
     description: "Tailored analytics dashboards providing real-time insights and KPIs for pharmaceutical sales and marketing teams with role-based access.",
     icon: LayoutDashboard,
-    gradient: "from-blue-500 to-cyan-400",
+    gradient: "from-[#0093cb] to-[#00a65d]",
   },
   {
     id: "customized-analytics",
@@ -54,7 +58,7 @@ const serviceCategories: ServiceCategory[] = [
     title: "Customized Analytics",
     description: "Advanced pharmaceutical analytics solutions delivering deep insights into prescription patterns, market trends, and HCP behavior.",
     icon: BarChart3,
-    gradient: "from-purple-500 to-pink-400",
+    gradient: "from-[#0093cb] to-[#8bde7a]",
   },
   {
     id: "health-risk-calculators",
@@ -62,7 +66,7 @@ const serviceCategories: ServiceCategory[] = [
     title: "Health Risk Calculators",
     description: "Interactive health risk assessment tools that engage patients and HCPs while generating valuable health insights and leads.",
     icon: HeartPulse,
-    gradient: "from-red-500 to-orange-400",
+    gradient: "from-[#00a65d] to-[#8bde7a]",
   },
   {
     id: "patient-support-programs",
@@ -70,7 +74,7 @@ const serviceCategories: ServiceCategory[] = [
     title: "Patient Support Programs",
     description: "Comprehensive digital patient support ecosystems including medication adherence, education, and 24/7 assistance platforms.",
     icon: Users,
-    gradient: "from-green-500 to-emerald-400",
+    gradient: "from-[#0093cb] to-[#00a65d]",
   },
   {
     id: "mini-websites",
@@ -78,7 +82,7 @@ const serviceCategories: ServiceCategory[] = [
     title: "Mini Websites",
     description: "Dedicated micro-sites and landing pages for pharmaceutical brands, products, and disease awareness campaigns.",
     icon: Globe,
-    gradient: "from-indigo-500 to-blue-400",
+    gradient: "from-[#0093cb] to-[#8bde7a]",
   },
   {
     id: "customized-apps",
@@ -86,7 +90,7 @@ const serviceCategories: ServiceCategory[] = [
     title: "Customized Apps",
     description: "Native and cross-platform mobile applications tailored for pharmaceutical sales reps, HCPs, and patient engagement.",
     icon: Smartphone,
-    gradient: "from-teal-500 to-green-400",
+    gradient: "from-[#00a65d] to-[#8bde7a]",
   },
   {
     id: "video-production",
@@ -94,7 +98,7 @@ const serviceCategories: ServiceCategory[] = [
     title: "Video Production & Editing",
     description: "Professional medical video production services including 3D animations, MOA videos, and HCP testimonial content.",
     icon: Video,
-    gradient: "from-orange-500 to-yellow-400",
+    gradient: "from-[#0093cb] to-[#00a65d]",
   },
   {
     id: "variable-data",
@@ -102,7 +106,7 @@ const serviceCategories: ServiceCategory[] = [
     title: "Variable Data Collection & Printing",
     description: "Intelligent variable data solutions for personalized pharmaceutical marketing materials with automated data integration.",
     icon: Database,
-    gradient: "from-rose-500 to-pink-400",
+    gradient: "from-[#0093cb] to-[#8bde7a]",
   },
 ];
 
@@ -177,10 +181,10 @@ function SectionBadge({ children, className }: { children: React.ReactNode; clas
     </span>
   );
 }
-// ─── DIGITAL PAGE BANNER ─────────────────────────────────────────────────────────────
 
+// ─── DIGITAL PAGE BANNER ─────────────────────────────────────────────────────
 const PageBanner = () => (
- <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] overflow-hidden">
+  <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="/banner/Digital Input Page Mobile.jpg"
@@ -211,9 +215,9 @@ const PageBanner = () => (
       unoptimized
     />
 
-    {/* Gradient overlay */}
-    <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+   {/* Gradient overlay */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/10 to-black/5" />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
     {/* Content */}
     <div className="absolute inset-0 flex flex-col justify-end pb-8 sm:pb-10 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1500px] mx-auto left-0 right-0">
@@ -256,64 +260,6 @@ const PageBanner = () => (
     </div>
   </div>
 );
-// ─── PAGE ────────────────────────────────────────────────────────────────────
-export default function DigitalServicesPage() {
-  return (
-    <div className="min-h-screen bg-white">
-      <PageBanner />
-      <HyperPersonalizedServices />
-      <CollageGallerySection />
-    </div>
-  );
-}
-
-// ─── HERO BANNER ─────────────────────────────────────────────────────────────
-function HeroBanner() {
-  return (
-    <section className="relative w-full h-[35vh] sm:h-[40vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] 2xl:h-[65vh] overflow-hidden">
-      <Image
-        src="/koru/koru.png"
-        alt="Digital Products & Services"
-        fill
-        className="object-cover"
-        priority
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-14">
-        <div className="max-w-[1500px] mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <SectionBadge className="bg-white/10 backdrop-blur-md text-[#8bde7a] border border-white/20 mb-3 sm:mb-4">
-              <Sparkles size={14} className="sm:size-4" />
-              Digital Transformation in Pharma
-            </SectionBadge>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.1] mb-3 sm:mb-4"
-          >
-            Digital
-            <span className="block text-[#8bde7a]">Services</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 max-w-2xl"
-          >
-            Empowering pharmaceutical companies with cutting-edge digital solutions
-            that enhance HCP engagement and deliver measurable healthcare outcomes.
-          </motion.p>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 // ─── HYPERPERSONALIZED SERVICES SECTION ──────────────────────────────────────
 function HyperPersonalizedServices() {
@@ -326,7 +272,7 @@ function HyperPersonalizedServices() {
           viewport={{ once: true, margin: "-60px" }}
           className="text-center mb-10 sm:mb-12 md:mb-14 lg:mb-16"
         >
-          <SectionBadge className="bg-[#0093cb]/10 text-[#0093cb] border border-[#0093cb]/20 mb-3 sm:mb-4">
+          {/* <SectionBadge className="bg-[#0093cb]/10 text-[#0093cb] border border-[#0093cb]/20 mb-3 sm:mb-4">
             <Zap size={14} className="sm:size-4" />
             Tailored Solutions
           </SectionBadge>
@@ -335,8 +281,16 @@ function HyperPersonalizedServices() {
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#0093cb] to-[#00a65d]">
               Services
             </span>
+          </h2> */}
+            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#0093cb]">
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+           Tailored Solutions
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+          </p>
+          <h2 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-slate-900">
+                Hyperpersonalized<span className="text-[#0093cb]">   Services</span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg xl:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             We craft bespoke digital solutions that adapt to your unique pharmaceutical
             brand needs. Each service is meticulously personalized to drive engagement,
             compliance, and measurable outcomes.
@@ -344,7 +298,7 @@ function HyperPersonalizedServices() {
           <div className="mt-5 sm:mt-6 w-20 sm:w-24 h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full mx-auto" />
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
           {serviceCategories.map((service, index) => (
             <FlipCard key={service.id} service={service} index={index} />
           ))}
@@ -354,7 +308,7 @@ function HyperPersonalizedServices() {
   );
 }
 
-// ─── FLIP CARD ───────────────────────────────────────────────────────────────
+// ─── FLIP CARD (with brand colors and Explore button) ────────────────────────
 function FlipCard({ service, index }: { service: ServiceCategory; index: number }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const Icon = service.icon;
@@ -433,9 +387,22 @@ function FlipCard({ service, index }: { service: ServiceCategory; index: number 
           <h3 className="text-base sm:text-lg font-extrabold text-white text-center mb-2 sm:mb-3 relative z-10">
             {service.title}
           </h3>
-          <p className="text-xs sm:text-sm text-slate-300 text-center leading-relaxed relative z-10 mb-4 sm:mb-6">
+          <p className="text-xs sm:text-sm text-slate-300 text-center leading-relaxed relative z-10 mb-5 sm:mb-6">
             {service.description}
           </p>
+          
+          {/* Explore Button - Navigates to Contact Us */}
+          <Link
+            href="/contact-us"
+            className="relative z-20 inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm 
+              hover:bg-[#0093cb] text-white px-5 py-2 rounded-full font-semibold text-sm 
+              transition-all duration-300 hover:shadow-lg hover:shadow-[#0093cb]/30 
+              border border-white/20 hover:border-[#0093cb] group/btn"
+          >
+            <span>Explore {service.title.split(' ')[0]}</span>
+            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
+          </Link>
+          
           <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient}`} />
         </div>
       </motion.div>
@@ -462,15 +429,13 @@ function CollageGallerySection() {
           viewport={{ once: true, margin: "-60px" }}
           className="text-center mb-8 sm:mb-10 md:mb-12"
         >
-          <SectionBadge className="bg-[#00a65d]/10 text-[#00a65d] border border-[#00a65d]/20 mb-3 sm:mb-4">
-            <Eye size={14} className="sm:size-4" />
-            Portfolio Showcase
-          </SectionBadge>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 sm:mb-5 md:mb-6">
-            Digital Input
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#00a65d] to-[#8bde7a]">
-              Gallery
-            </span>
+           <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#0093cb]">
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+           Portfolio Showcase
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+          </p>
+          <h2 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-slate-900">
+           Digital Input <span className="text-[#0093cb]">Gallery</span>
           </h2>
           <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Explore our collection of digital service interfaces and solutions crafted for
@@ -545,7 +510,7 @@ function CollageGallerySection() {
           ))}
         </motion.div>
 
-        {/* See More / See Less Button */}
+        {/* See More / See Less Button - Brand Colors */}
         {hasMoreImages && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -556,70 +521,77 @@ function CollageGallerySection() {
             {!showAll ? (
               <button
                 onClick={() => setShowAll(true)}
-                className="relative px-8 sm:px-10 py-3 sm:py-3.5 text-white font-semibold text-sm sm:text-base rounded-full transition-all duration-300 hover:shadow-lg active:scale-95"
-                style={{
-                  backgroundColor: '#0093cb',
-                  boxShadow: '0 4px 14px rgba(0,147,203,0.3)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#007ba8';
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,147,203,0.4)';
-                  e.currentTarget.style.transform = 'translateY(-1px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#0093cb';
-                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(0,147,203,0.3)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
+                className="group flex items-center gap-2 sm:gap-3 bg-[#0093cb] hover:bg-[#00a65d] 
+                  text-white px-5 lg:px-6 xl:px-8 py-2.5 lg:py-3 xl:py-3.5 rounded-full font-semibold text-sm xl:text-base 
+                  transition-all duration-300 hover:shadow-lg hover:shadow-[#0093cb]/30 active:scale-95 mx-auto"
               >
-                <span className="flex items-center gap-2">
-                  See All ({koruGalleryImages.length - INITIAL_COUNT}+ more)
-                  <svg 
-                    className="w-3.5 h-3.5 sm:w-4 sm:h-4" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </span>
+                <span>See All ({koruGalleryImages.length - INITIAL_COUNT}+ more)</span>
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
               </button>
             ) : (
               <button
                 onClick={() => setShowAll(false)}
-                className="relative px-8 sm:px-10 py-3 sm:py-3.5 font-semibold text-sm sm:text-base rounded-full transition-all duration-300 hover:shadow-md active:scale-95"
-                style={{
-                  backgroundColor: '#f0fdf4',
-                  color: '#00a65d',
-                  border: '2px solid #00a65d',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#00a65d';
-                  e.currentTarget.style.color = '#ffffff';
-                  e.currentTarget.style.transform = 'translateY(-1px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#f0fdf4';
-                  e.currentTarget.style.color = '#00a65d';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
+                className="group flex items-center gap-2 sm:gap-3 bg-white border-2 border-[#0093cb] 
+                  text-[#0093cb] hover:bg-[#0093cb] hover:text-white px-5 lg:px-6 xl:px-8 py-2.5 lg:py-3 xl:py-3.5 
+                  rounded-full font-semibold text-sm xl:text-base transition-all duration-300 
+                  hover:shadow-md active:scale-95 mx-auto"
               >
-                <span className="flex items-center gap-2">
-                  Show Less
-                  <svg 
-                    className="w-3.5 h-3.5 sm:w-4 sm:h-4" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                  </svg>
-                </span>
+                <span>Show Less</span>
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
               </button>
             )}
           </motion.div>
         )}
       </div>
     </section>
+  );
+}
+
+// ─── CASE STUDIES SECTION (Grid layout from reference) ─────────────────────
+const CASE_STUDIES_CARDS = [
+  {
+    id: 1,
+    title: "Diabetic Retinopathy Patient Awareness Tool",
+    description:
+      "Diabetic Retinopathy Patient Awareness Tool",
+    image:
+      "/products/4 IN 1 DESK ORGANISER.png",
+    slug: "diabetic-retinopathy-tool",
+    readTime: "6 min read",
+    category: "Retail",
+  },
+  {
+    id: 2,
+    title: "Scaling Healthcare Outreach with Digital-First Strategy",
+    description:
+      "Leveraging WhatsApp-led nurturing and targeted content to increase patient engagement by 200% for a leading clinic chain.",
+    image:
+      "/products/4 IN 1 DESK ORGANISER.png",
+    slug: "healthcare-digital",
+    readTime: "4 min read",
+    category: "Healthcare",
+  },
+  {
+    id: 3,
+    title: "Corporate Gifting Success for Fortune 500 Company",
+    description:
+      "Implementing a personalized gifting solution that improved employee retention and client satisfaction scores significantly.",
+    image:
+      "/products/4 IN 1 DESK ORGANISER.png",
+    slug: "corporate-gifting",
+    readTime: "5 min read",
+    category: "Corporate",
+  },
+];
+
+
+// ─── MAIN PAGE ───────────────────────────────────────────────────────────────
+export default function DigitalServicesPage() {
+  return (
+    <div className="min-h-screen bg-white">
+      <PageBanner />
+      <HyperPersonalizedServices />
+      <CollageGallerySection />
+    </div>
   );
 }

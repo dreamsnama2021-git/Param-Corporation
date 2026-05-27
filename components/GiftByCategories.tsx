@@ -12,7 +12,7 @@ const CATEGORIES = [
     title: "Category",
     image: "/products/CUSTOMIZED CHITS HOLDER.png",
     count: "24",
-    link: "/categories/1?tab=categories",
+    link: "/categories/all?tab=categories",
     tab: "categories",
   },
   {
@@ -28,7 +28,7 @@ const CATEGORIES = [
     title: "Personalized Gifts",
     image: "/products/CUSTOMIZED MOBILE HOLDER.png",
     count: "32",
-    link: "/categories/3?tab=personalized-gifts",
+    link: "/categories/all?tab=personalized",
     tab: "personalized-gifts",
   },
   {
@@ -36,7 +36,7 @@ const CATEGORIES = [
     title: "Occasion",
     image: "/products/DR QR CODE STANDEE.png",
     count: "15",
-    link: "/categories/4?tab=occasion",
+    link: "/categories/all?tab=occasion",
     tab: "occasion",
   },
 ];
@@ -159,7 +159,7 @@ function GiftsByCategories() {
 
         <div className="flex justify-center">
           <Link
-            href="/categories/all?tab=categories"
+            href="/categories/all?tab=all"
             className="group flex items-center gap-2 sm:gap-3 bg-white border-2 border-[#0093cb] text-[#0093cb] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-semibold text-xs sm:text-sm hover:bg-[#0093cb] hover:text-white transition-all duration-300 transform hover:scale-105"
           >
             <span>View All</span>
