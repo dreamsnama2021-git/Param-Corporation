@@ -100,7 +100,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/diabetes/books-3.jpg',
     ],
     flipChart: [
-      '/images/therapies/diabetes/flip-chart-1.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_05_00%20PM.png',
       '/images/therapies/diabetes/flip-chart-2.jpg',
       '/images/therapies/diabetes/flip-chart-3.jpg',
     ],
@@ -124,7 +124,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/diabetes/write-wipe-3.jpg',
     ],
     tearOffPads: [
-      '/images/therapies/diabetes/tear-off-pads-1.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_05_00%20PM.png',
       '/images/therapies/diabetes/tear-off-pads-2.jpg',
       '/images/therapies/diabetes/tear-off-pads-3.jpg',
     ],
