@@ -7,23 +7,23 @@ interface GalleryImage {
 }
 
 const koruImages: GalleryImage[] = [
-  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/1.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/34.png" },
   { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/2.png" },
   { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/3.png" },
   { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/4.png" },
-  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/5.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/35.png" },
   { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/6.png" },
   { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/7.png" },
   { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/8.png" },
-  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/9.png" },
-  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/10.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/36.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/37.png" },
   { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/11.png" },
   { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/12.png" },
-  { src: "/koru/koru7.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/38.png" },
   { src: "/koru/koru11.png" },
   { src: "/koru/koru12.png" },
   { src: "/koru/koru13.png" },
-  { src: "/koru/koru16.png" },
+  { src: "//https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/39.png" },
   { src: "/koru/koru14.png" },
   { src: "/koru/koru15.png" },
   { src: "/koru/koru16.png" },
@@ -111,20 +111,20 @@ function buildBlock(srcs: string[]): GridItem[] {
     // Row 2-4: Tall image in col 2
     { src: s(4), colStart: 2, colSpan: 1, rowSpan: 3 }, // E - tall (3 rows)
     
-    // Row 2-3: Two images in cols 3-4
-    { src: s(5), colStart: 3, colSpan: 1, rowSpan: 2 }, // F
-    { src: s(6), colStart: 4, colSpan: 1, rowSpan: 2 }, // G
+    // // Row 2-3: Two images in cols 3-4
+    // { src: s(5), colStart: 3, colSpan: 1, rowSpan: 2 }, // F
+    // { src: s(6), colStart: 4, colSpan: 1, rowSpan: 2 }, // G
     
-    // Row 3-4: Image in col 1
-    { src: s(7), colStart: 1, colSpan: 1, rowSpan: 2 }, // H
+    // // Row 3-4: Image in col 1
+    // { src: s(7), colStart: 1, colSpan: 1, rowSpan: 2 }, // H
     
-    // Row 3-5: Tall images in cols 3-4
-    { src: s(8), colStart: 3, colSpan: 1, rowSpan: 3 }, // I - tall (3 rows)
-    { src: s(9), colStart: 4, colSpan: 1, rowSpan: 3 }, // J - tall (3 rows)
+    // // Row 3-5: Tall images in cols 3-4
+    // { src: s(8), colStart: 3, colSpan: 1, rowSpan: 3 }, // I - tall (3 rows)
+    // { src: s(9), colStart: 4, colSpan: 1, rowSpan: 3 }, // J - tall (3 rows)
     
-    // Row 5: Two images in cols 1-2
-    { src: s(10), colStart: 1, colSpan: 1, rowSpan: 2 }, // K
-    { src: s(11), colStart: 2, colSpan: 1, rowSpan: 2 }, // L
+    // // Row 5: Two images in cols 1-2
+    // { src: s(10), colStart: 1, colSpan: 1, rowSpan: 2 }, // K
+    // { src: s(11), colStart: 2, colSpan: 1, rowSpan: 2 }, // L
   ];
 }
 
