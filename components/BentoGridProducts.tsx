@@ -62,7 +62,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/cardio/flip-chart-3.jpg',
     ],
     matt: [
-      '/images/therapies/cardio/matt-1.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_24_05%20PM.png',
       '/images/therapies/cardio/matt-2.jpg',
       '/images/therapies/cardio/matt-3.jpg',
     ],
@@ -72,7 +72,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/therepy/cardio-diabatics/HEART ATTACK AWARENESS LAMA STANDEE.jpg',
     ],
     medicalScale: [
-      '/therepy/cardio-diabatics/ASCVD RISK CALCULATOR 2.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/PARAM%20PRODUCTS%20.png',
       '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_10_59 PM.png',
       '/images/therapies/cardio/medical-scale-3.jpg',
     ],
@@ -87,7 +87,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/cardio/tear-off-pads-3.jpg',
     ],
     tableTops: [
-      '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_15_18 PM.png',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_25_07%20PM.png',
       '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_25_07 PM.png',
       '/images/therapies/cardio/table-tops-3.jpg',
     ],
@@ -110,16 +110,17 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/diabetes/matt-3.jpg',
     ],
     posters: [
-      '/therepy/cardio-diabatics/ChatGPT Image May 25, 2026, 04_06_35 PM.png',
-      '/images/therapies/diabetes/posters-3.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_06_35%20PM.png',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_15_09%20PM.png',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_24_00%20PM.png',
     ],
     medicalScale: [
-      '/images/therapies/diabetes/medical-scale-1.jpg',
-      '/images/therapies/diabetes/medical-scale-2.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_10_59%20PM.png',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_14_58%20PM.png',
       '/images/therapies/diabetes/medical-scale-3.jpg',
     ],
     writeWipe: [
-      '/images/therapies/diabetes/write-wipe-1.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_05_33%20PM.png',
       '/images/therapies/diabetes/write-wipe-2.jpg',
       '/images/therapies/diabetes/write-wipe-3.jpg',
     ],
@@ -137,8 +138,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   'ENT & Respiratory': {
     card: 'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
     books: [
-      '/therepy/ent/423.jpg',
-      '/therepy/ent/ALLERGIC RHINITIS VISUAL ANALOG SCALE.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/29.png',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/40.png',
       // '/images/therapies/ent/books-3.jpg',
     ],
     flipChart: [
@@ -147,23 +148,23 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/ent/flip-chart-3.jpg',
     ],
     matt: [
-      '/therepy/ent/428.jpg',
-      '/therepy/ent/432.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/34.png',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/38.png',
       // '/images/therapies/ent/matt-3.jpg',
     ],
     posters: [
-      '/therepy/ent/REVOLISER PATIENT COUNSELLING TOOL.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_56%20PM.png',
       '/therepy/ent/HEALTHY SINUS VS SINUSITIS TABLE TOP.jpg',
       // '/therepy/ent/ChatGPT Image May 25, 2026, 06_08_56 PM.png',
     ],
     medicalScale: [
-      '/therepy/ent/421.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_42_08%20PM.png',
       '/therepy/ent/422.jpg',
       // '/images/therapies/ent/medical-scale-3.jpg',
     ],
     writeWipe: [
-      '/therepy/ent/ALLERGIC RHINITIS WRITE & WIPE EDUSTAND WITH NASAL  ANATOMICAL MODEL.jpg',
-      // '/images/therapies/ent/write-wipe-2.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_44%20PM.png',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/38.png',
       // '/images/therapies/ent/write-wipe-3.jpg',
     ],
     tearOffPads: [
@@ -172,9 +173,9 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/ent/tear-off-pads-3.jpg',
     ],
     tableTops: [
-      '/therepy/ent/420.jpg',
-      '/therepy/ent/419.jpg',
-      '/therepy/ent/424.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/25.png',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/28.png',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/30.png',
     ],
   },
   'Orthopedics/Rheumatology': {
@@ -481,7 +482,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   'Neurology': {
     card: 'data:image/jpeg;base64,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',
     books: [
-      '/images/therapies/neurology/books-1.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Neurology/87.png',
       '/images/therapies/neurology/books-2.jpg',
       '/images/therapies/neurology/books-3.jpg',
     ],
@@ -496,7 +497,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/neurology/matt-3.jpg',
     ],
     posters: [
-      '/images/therapies/neurology/posters-1.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Neurology/81.png',
       '/images/therapies/neurology/posters-2.jpg',
       '/images/therapies/neurology/posters-3.jpg',
     ],
@@ -506,7 +507,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/neurology/medical-scale-3.jpg',
     ],
     writeWipe: [
-      '/images/therapies/neurology/write-wipe-1.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Neurology/82.png',
       '/images/therapies/neurology/write-wipe-2.jpg',
       '/images/therapies/neurology/write-wipe-3.jpg',
     ],
@@ -797,17 +798,17 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/hepatology/matt-3.jpg',
     ],
     posters: [
-      '/therepy/hepatology/SPECTRUM OF LIVER DAMAGE ANATOMICAL MODEL 2.jpg',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Hepatology/Frame.png',
       // '/images/therapies/hepatology/posters-2.jpg',
       // '/images/therapies/hepatology/posters-3.jpg',
     ],
     medicalScale: [
-      '/therepy/hepatology/Frame.png',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Hepatology/Paper%20Weight.png',
       // '/images/therapies/hepatology/medical-scale-2.jpg',
       // '/images/therapies/hepatology/medical-scale-3.jpg',
     ],
     writeWipe: [
-      '/therepy/hepatology/Write & Wipe.png',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Hepatology/Write%20%26%20Wipe.png',
       // '/images/therapies/hepatology/write-wipe-2.jpg',
       // '/images/therapies/hepatology/write-wipe-3.jpg',
     ],
@@ -817,7 +818,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/hepatology/tear-off-pads-3.jpg',
     ],
     tableTops: [
-      '/therepy/hepatology/Table Top.png',
+      '/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Hepatology/Table%20Top.png',
       // '/images/therapies/hepatology/table-tops-2.jpg',
       // '/images/therapies/hepatology/table-tops-3.jpg',
     ],
