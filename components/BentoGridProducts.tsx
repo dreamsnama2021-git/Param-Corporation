@@ -353,9 +353,9 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   'Dermatology': {
     card:  'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
     books: [
-      '/images/therapies/dermatology/books-1.jpg',
-      '/images/therapies/dermatology/books-2.jpg',
-      '/images/therapies/dermatology/books-3.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/43.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_51_33%20PM.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_52_31%20PM.png',
     ],
     flipChart: [
       '/images/therapies/dermatology/flip-chart-1.jpg',
@@ -368,14 +368,14 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/dermatology/matt-3.jpg',
     ],
     posters: [
-      '/images/therapies/dermatology/posters-1.jpg',
-      '/images/therapies/dermatology/posters-2.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/74.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/86.png',
       '/images/therapies/dermatology/posters-3.jpg',
     ],
     medicalScale: [
-      '/images/therapies/dermatology/medical-scale-1.jpg',
-      '/images/therapies/dermatology/medical-scale-2.jpg',
-      '/images/therapies/dermatology/medical-scale-3.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/51.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/89.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_52_21%20PM.png',
     ],
     writeWipe: [
       '/images/therapies/dermatology/write-wipe-1.jpg',
@@ -388,9 +388,9 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/dermatology/tear-off-pads-3.jpg',
     ],
     tableTops: [
-      '/images/therapies/dermatology/table-tops-1.jpg',
-      '/images/therapies/dermatology/table-tops-2.jpg',
-      '/images/therapies/dermatology/table-tops-3.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_38_53%20PM.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_39_01%20PM.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_39_12%20PM.png',
     ],
   },
   'Pediatrics': {
