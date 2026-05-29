@@ -250,49 +250,6 @@ const PageBanner = () => (
       unoptimized
     />
 
-    {/* Gradient overlay */}
-    <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/10 to-black/5" />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-
-    {/* Content */}
-    <div className="absolute inset-0 flex flex-col justify-end pb-8 sm:pb-10 md:pb-12 px-4 sm:px-8 md:px-12 max-w-[1500px] mx-auto left-0 right-0">
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="flex items-center gap-1.5 text-white/60 text-xs sm:text-sm font-medium mb-3 sm:mb-4"
-      >
-        <span>Home</span>
-        <ChevronRight size={14} />
-        <span className="text-white">Koru</span>
-      </motion.div>
-
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight"
-      >
-        Koru
-      </motion.h1>
-
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.35 }}
-        className="mt-2 sm:mt-3 text-white/75 text-sm sm:text-base md:text-lg max-w-xl"
-      >
-        Where functionality meets sustainability — eco-friendly gifting with live moss and thoughtful design.
-      </motion.p>
-
-      <motion.div
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
-        style={{ originX: 0 }}
-        className="mt-4 sm:mt-5 h-1 w-16 sm:w-20 bg-[#0093cb] rounded-full"
-      />
-    </div>
   </div>
 );
 export default function KoruCommunications() {
