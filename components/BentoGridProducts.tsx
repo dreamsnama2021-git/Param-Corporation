@@ -154,8 +154,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
     posters: [
       'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_56%20PM.png',
-      '/therepy/ent/HEALTHY SINUS VS SINUSITIS TABLE TOP.jpg',
-      // '/therepy/ent/ChatGPT Image May 25, 2026, 06_08_56 PM.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/26.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/27.png',
     ],
     medicalScale: [
       'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_42_08%20PM.png',
@@ -181,12 +181,12 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   'Orthopedics/Rheumatology': {
     card:  'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80',
     books: [
-      '/images/therapies/ortho/books-1.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Orthopedics/PARAM%20PRODUCTS%20.png',
       '/images/therapies/ortho/books-2.jpg',
       '/images/therapies/ortho/books-3.jpg',
     ],
     flipChart: [
-      '/images/therapies/ortho/flip-chart-1.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Orthopedics/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_51_21%20PM.png',
       '/images/therapies/ortho/flip-chart-2.jpg',
       '/images/therapies/ortho/flip-chart-3.jpg',
     ],
@@ -196,12 +196,12 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/ortho/matt-3.jpg',
     ],
     posters: [
-      '/images/therapies/ortho/posters-1.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Orthopedics/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_44_50%20PM.png',
       '/images/therapies/ortho/posters-2.jpg',
       '/images/therapies/ortho/posters-3.jpg',
     ],
     medicalScale: [
-      '/images/therapies/ortho/medical-scale-1.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Orthopedics/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_37_54%20PM.png',
       '/images/therapies/ortho/medical-scale-2.jpg',
       '/images/therapies/ortho/medical-scale-3.jpg',
     ],
@@ -211,7 +211,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/ortho/write-wipe-3.jpg',
     ],
     tearOffPads: [
-      '/images/therapies/ortho/tear-off-pads-1.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Orthopedics/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_45_24%20PM.png',
       '/images/therapies/ortho/tear-off-pads-2.jpg',
       '/images/therapies/ortho/tear-off-pads-3.jpg',
     ],
@@ -353,9 +353,9 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   'Dermatology': {
     card:  'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
     books: [
-      '/images/therapies/dermatology/books-1.jpg',
-      '/images/therapies/dermatology/books-2.jpg',
-      '/images/therapies/dermatology/books-3.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/43.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_51_33%20PM.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_52_31%20PM.png',
     ],
     flipChart: [
       '/images/therapies/dermatology/flip-chart-1.jpg',
@@ -368,14 +368,14 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/dermatology/matt-3.jpg',
     ],
     posters: [
-      '/images/therapies/dermatology/posters-1.jpg',
-      '/images/therapies/dermatology/posters-2.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/74.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/86.png',
       '/images/therapies/dermatology/posters-3.jpg',
     ],
     medicalScale: [
-      '/images/therapies/dermatology/medical-scale-1.jpg',
-      '/images/therapies/dermatology/medical-scale-2.jpg',
-      '/images/therapies/dermatology/medical-scale-3.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/51.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/89.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_52_21%20PM.png',
     ],
     writeWipe: [
       '/images/therapies/dermatology/write-wipe-1.jpg',
@@ -388,9 +388,9 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/dermatology/tear-off-pads-3.jpg',
     ],
     tableTops: [
-      '/images/therapies/dermatology/table-tops-1.jpg',
-      '/images/therapies/dermatology/table-tops-2.jpg',
-      '/images/therapies/dermatology/table-tops-3.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_38_53%20PM.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_39_01%20PM.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_39_12%20PM.png',
     ],
   },
   'Pediatrics': {
@@ -444,13 +444,13 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/urology/books-3.jpg',
     ],
     flipChart: [
-      '/images/therapies/urology/flip-chart-1.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/Urology-.png',
       '/images/therapies/urology/flip-chart-2.jpg',
       '/images/therapies/urology/flip-chart-3.jpg',
     ],
     matt: [
-      '/images/therapies/urology/matt-1.jpg',
-      '/images/therapies/urology/matt-2.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/18.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/23.png',
       '/images/therapies/urology/matt-3.jpg',
     ],
     posters: [
@@ -464,9 +464,9 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/urology/medical-scale-3.jpg',
     ],
     writeWipe: [
-      '/images/therapies/urology/write-wipe-1.jpg',
-      '/images/therapies/urology/write-wipe-2.jpg',
-      '/images/therapies/urology/write-wipe-3.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/12.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/18.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/Urology-.png',
     ],
     tearOffPads: [
       '/images/therapies/urology/tear-off-pads-1.jpg',
@@ -474,8 +474,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/urology/tear-off-pads-3.jpg',
     ],
     tableTops: [
-      '/images/therapies/urology/table-tops-1.jpg',
-      '/images/therapies/urology/table-tops-2.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/14.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/15.png',
       '/images/therapies/urology/table-tops-3.jpg',
     ],
   },
