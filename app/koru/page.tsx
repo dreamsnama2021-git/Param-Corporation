@@ -282,7 +282,7 @@ export default function KoruCommunications() {
                 <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-24 sm:w-28 md:w-32 lg:w-36 h-24 sm:h-28 md:h-32 lg:h-36 rounded-full bg-[#0093cb]/5 z-0" />
                 <div className="absolute top-2 left-2 sm:top-3 sm:left-3 md:top-4 md:left-4 right-0 bottom-0 rounded-2xl sm:rounded-3xl border-2 border-[#0093cb]/30 z-[1]" />
                 <div className="absolute top-4 left-4 sm:top-5 sm:left-5 md:top-8 md:left-8 right-0 bottom-0 rounded-2xl sm:rounded-3xl overflow-hidden z-[2] shadow-xl sm:shadow-2xl">
-                  <img src="/koru/koru-about.jpeg" alt="Koru Leadership" className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
+                  <img src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru-about.jpeg" alt="Koru Leadership" className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
                 </div>
               </div>
             </div>

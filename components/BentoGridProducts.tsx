@@ -1124,14 +1124,14 @@ function CategorySection({ category, products, therapyColor, therapyName }: { ca
         <div ref={scrollContainerRef} className="flex gap-3 sm:gap-4 md:gap-5 overflow-x-auto pb-3 sm:pb-4"
           style={{ scrollbarWidth: 'thin', scrollbarColor: `${therapyColor} #e5e5e5` }}>
           {products.map((item, idx) => (
-            <div key={idx} className="flex-shrink-0 w-[240px] sm:w-[280px] md:w-[300px] lg:w-[320px] bg-white rounded-lg sm:rounded-xl overflow-hidden hover:shadow-lg sm:hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+            <div key={idx} className="flex-shrink-0 w-[240px] h-[250px] sm:w-[280px] md:w-[300px] lg:w-[280px] xl:w-[320px] bg-white rounded-lg sm:rounded-xl overflow-hidden hover:shadow-lg sm:hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="relative h-full overflow-hidden bg-gray-100">
                 <Image 
                   src={item.img} 
                   alt={item.title} 
                   fill 
-                  className="object-cover" 
-                  sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 320px"
+                  className="object-fill" 
+                  sizes="(max-width: 640px) 220px, (max-width: 768px) 250px, 300px"
                 />
               </div>
               {/* <div className="p-3 sm:p-4">
@@ -1273,7 +1273,7 @@ function CollageCard({ therapy, onClick }: { therapy: Therapy; onClick: () => vo
         src={therapy.images.card}
         alt={therapy.therapy} 
         fill
-        className="object-cover transition-all duration-700 group-hover:scale-110"
+        className="object-fill transition-all duration-700 "
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />

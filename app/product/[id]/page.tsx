@@ -306,7 +306,7 @@ export default function ProductDetailPage() {
                       src={images[currentImageIndex] || "/placeholder.png"}
                       alt={product.name}
                       fill={true}
-                      className="object-contain p-8"
+                      className="object-fill"
                     />
                   </motion.div>
                 </AnimatePresence>
@@ -400,29 +400,29 @@ export default function ProductDetailPage() {
 
           {/* --- BOTTOM: Related Products --- */}
           {relatedProducts.length > 0 && (
-            <section className="mt-18">
-              <h2 className="text-3xl font-serif text-slate-900 italic mb-10">Similar Collections</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {relatedProducts.map((rel: any) => (
-                  <Link key={rel.id} href={`/product/${rel.id}`} className="group">
-                    <div className="bg-white rounded-3xl p-3 shadow-sm border border-slate-100 hover:shadow-xl transition-all">
-                      <div className="relative aspect-square rounded-2xl overflow-hidden bg-slate-50 mb-4">
-                        <ProtectedImage 
-                          src={rel.images?.[0] || rel.image} 
-                          alt={rel.name} 
-                          fill={true} 
-                          className="object-contain p-4 group-hover:scale-110 transition-transform duration-700" 
-                        />
-                      </div>
-                      <div className="px-2 pb-2">
-                        <p className="text-xs font-bold text-orange-500 mb-1">{rel.categoryName}</p>
-                        <h4 className="text-sm font-semibold text-slate-800 line-clamp-1">{rel.name}</h4>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </section>
+           <section className="mt-18">
+  <h2 className="text-3xl font-serif text-slate-900 italic mb-10">Similar Collections</h2>
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+    {relatedProducts.map((rel: any) => (
+      <Link key={rel.id} href={`/product/${rel.id}`} className="group">
+        <div className="bg-white rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-all overflow-hidden">
+          <div className="relative aspect-square overflow-hidden">
+            <ProtectedImage 
+              src={rel.images?.[0] || rel.image} 
+              alt={rel.name} 
+              fill={true} 
+              className="object-cover group-hover:scale-110 transition-transform duration-700" 
+            />
+          </div>
+          <div className="px-4 py-2 pb-2">
+            <p className="text-xs font-bold text-orange-500 mb-1">{rel.categoryName}</p>
+            <h4 className="text-sm font-semibold text-slate-800 line-clamp-1">{rel.name}</h4>
+          </div>
+        </div>
+      </Link>
+    ))}
+  </div>
+</section>
           )}
         </main>
       </div>

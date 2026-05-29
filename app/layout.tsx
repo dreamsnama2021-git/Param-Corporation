@@ -32,10 +32,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="bg-[var(--clr-bg-cream)] text-[var(--clr-text-dark)] font-sans antialiased selection:bg-black selection:text-white">
-        <Script
-          src="https://elfsightcdn.com/platform.js"
-          strategy="lazyOnload"
-        />
+    
+<script src="https://elfsightcdn.com/platform.js" async></script>
+
         {/* Grid pattern - lowest layer */}
         <BackgroundDecoration />
 
