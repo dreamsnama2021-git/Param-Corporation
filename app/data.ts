@@ -193,9 +193,9 @@ export const allProducts: Product[] = [
   {
     id: 27, name: "CUSTOMIZED FLOWER SHAPE PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_27%20PM.png", price: "₹399", category: "desk-utility", categoryName: "Desk Utility", description: "Beautiful flower-shaped decorative paperweight", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_27%20PM.png",
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(1).jpeg"
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(2).jpeg"
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM.jpeg"
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(1).jpeg",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(2).jpeg",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM.jpeg",
     ]
   },
   {
