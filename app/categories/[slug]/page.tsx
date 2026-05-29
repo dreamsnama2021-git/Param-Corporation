@@ -108,6 +108,81 @@ const getCategoriesForTab = (tabId: TabId) => {
 // Maximum products to show per subcategory
 const MAX_PRODUCTS_PER_CATEGORY = 10;
 
+// Custom Image Component with error handling
+const ProductImage = ({ src, alt, className = "" }: { src: string; alt: string; className?: string }) => {
+  const [imgError, setImgError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  if (!src || imgError) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-gray-50">
+        <Package className="w-8 h-8 text-gray-300" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative w-full h-full">
+      {isLoading && (
+        <div className="absolute inset-0 bg-gray-100 animate-pulse" />
+      )}
+      <img
+        src={src}
+        alt={alt}
+        className={`w-full h-full object-cover transition-opacity duration-300 ${className} ${
+          isLoading ? 'opacity-0' : 'opacity-100'
+        }`}
+        onLoad={() => setIsLoading(false)}
+        onError={() => {
+          console.error("Failed to load image:", src);
+          setImgError(true);
+          setIsLoading(false);
+        }}
+        loading="lazy"
+      />
+    </div>
+  );
+};
+
+// Banner Component with proper image handling
+const PageBanner = () => {
+  const [bannerError, setBannerError] = useState(false);
+  
+  if (bannerError) {
+    return (
+      <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center">
+        <p className="text-gray-400">Banner image not available</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] overflow-hidden bg-gray-100">
+      {/* Mobile image */}
+      <picture>
+        <source
+          media="(max-width: 767px)"
+          srcSet="/banner/Products page Mobile.jpg"
+        />
+        <source
+          media="(min-width: 768px) and (max-width: 1023px)"
+          srcSet="/banner/Products page Tablet.jpg"
+        />
+        <source
+          media="(min-width: 1024px)"
+          srcSet="/banner/Products page Desktop.jpg"
+        />
+        <img
+          src="/banner/Products page Desktop.jpg"
+          alt="Products Banner"
+          className="w-full h-full object-cover"
+          onError={() => setBannerError(true)}
+        />
+      </picture>
+    </div>
+  );
+};
+
 /* ══════════════════════════════════════════
    SIDEBAR WITH DROPDOWN + SUBCATEGORIES
 ══════════════════════════════════════════ */
@@ -118,7 +193,6 @@ function SidebarWithSubcategories({
   activeTab: TabId;
   onSelect: (tabId: TabId) => void;
 }) {
-  // Get subcategories for current active tab
   const subCategories = useMemo(() => {
     if (activeTab === "all") return [];
     return getCategoriesForTab(activeTab);
@@ -143,7 +217,6 @@ function SidebarWithSubcategories({
         inline: 'nearest'
       });
       
-      // Add highlight effect
       element.classList.add('highlight-category');
       setTimeout(() => {
         element.classList.remove('highlight-category');
@@ -153,7 +226,6 @@ function SidebarWithSubcategories({
 
   return (
     <div className="space-y-6">
-      {/* ─── FILTER BY HEADER ─── */}
       <div>
         <div className="flex items-center gap-2 mb-3">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
@@ -162,7 +234,6 @@ function SidebarWithSubcategories({
           <div className="h-px flex-1 bg-gray-200" />
         </div>
 
-        {/* ─── MAIN TABS AS EXPANDABLE LIST ─── */}
         <div className="bg-white rounded-xl border-2 border-gray-200 shadow-sm overflow-hidden">
           {TABS.map((tab, index) => {
             const count = getCount(tab.id);
@@ -171,7 +242,6 @@ function SidebarWithSubcategories({
 
             return (
               <div key={tab.id}>
-                {/* Main Tab Button */}
                 <button
                   onClick={() => onSelect(tab.id)}
                   className={`w-full flex items-center justify-between py-3 px-4 text-left transition-colors relative ${
@@ -206,7 +276,6 @@ function SidebarWithSubcategories({
                   </div>
                 </button>
 
-                {/* Subcategories Dropdown */}
                 <AnimatePresence>
                   {isSelected && subCategories.length > 0 && (
                     <motion.div
@@ -249,44 +318,8 @@ function SidebarWithSubcategories({
   );
 }
 
-// ─── PRODUCTS PAGE BANNER ─────────────────────────────────────────────────────────────
-const PageBanner = () => (
- <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] overflow-hidden">
-    {/* Mobile image */}
-    <Image
-      src="/banner/Products page Mobile.jpg"
-      alt="Products Banner - Mobile"
-      fill
-      className="object-fill object-center block md:hidden"
-      priority
-      unoptimized
-    />
-
-    {/* Tablet image */}
-    <Image
-      src="/banner/Products page Tablet.jpg"
-      alt="Products Banner - Tablet"
-      fill
-      className="object-fill object-center hidden md:block lg:hidden"
-      priority
-      unoptimized
-    />
-
-    {/* Desktop image */}
-    <Image
-      src="/banner/Products page Desktop.jpg"
-      alt="Products Banner - Desktop"
-      fill
-      className="object-fill object-center hidden lg:block"
-      priority
-      unoptimized
-    />
-
-  </div>
-);
-
 /* ══════════════════════════════════════════
-   PRODUCT CARD (Grid View)
+   PRODUCT CARD (Fixed Image)
 ══════════════════════════════════════════ */
 function ProductCard({
   product,
@@ -297,6 +330,8 @@ function ProductCard({
 }) {
   const productImages = product.images || [product.image];
   const productName = product.name || "Product";
+  const [imageError, setImageError] = useState(false);
+  const imageUrl = productImages[0];
 
   return (
     <Link href={`/product/${product.id}`} className="block">
@@ -307,25 +342,30 @@ function ProductCard({
         className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group h-full product-card border border-gray-100"
       >
         <div className="relative aspect-square overflow-hidden bg-gray-50">
-          {productImages[0] ? (
-            <Image
-              src={productImages[0]}
-              alt={productName}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              unoptimized
-            />
+          {imageUrl && !imageError ? (
+            <>
+              <img
+                src={imageUrl}
+                alt={productName}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                onError={() => {
+                  console.error("Product image failed to load:", imageUrl);
+                  setImageError(true);
+                }}
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-[#0093cb]/0 group-hover:bg-[#0093cb]/10 transition-colors duration-300 flex items-center justify-center product-overlay">
+                <div className="w-10 h-10 rounded-full bg-white/95 flex items-center justify-center shadow-lg">
+                  <ZoomIn className="w-4 h-4 text-[#0093cb]" />
+                </div>
+              </div>
+            </>
           ) : (
             <div className="w-full h-full flex items-center justify-center">
               <Package className="w-8 h-8 text-gray-300" />
             </div>
           )}
-          <div className="absolute inset-0 bg-[#0093cb]/0 group-hover:bg-[#0093cb]/10 transition-colors duration-300 flex items-center justify-center product-overlay">
-            <div className="w-10 h-10 rounded-full bg-white/95 flex items-center justify-center shadow-lg">
-              <ZoomIn className="w-4 h-4 text-[#0093cb]" />
-            </div>
-          </div>
-          {product.features && product.features.length > 0 && (
+          {product.features && product.features.length > 0 && !imageError && (
             <div className="absolute top-2 left-2">
               <span className="px-2 py-1 bg-white/90 backdrop-blur-sm rounded-full text-[10px] font-semibold text-[#060706] shadow-sm border border-gray-100">
                 {product.features[0]}
@@ -338,7 +378,6 @@ function ProductCard({
           <p className="text-sm font-semibold text-[#060706] leading-tight line-clamp-2 mb-1 group-hover:text-[#0093cb] transition-colors">
             {productName}
           </p>
-         
         </div>
       </motion.div>
     </Link>
@@ -346,7 +385,7 @@ function ProductCard({
 }
 
 /* ══════════════════════════════════════════
-   LIGHTBOX MODAL
+   LIGHTBOX MODAL (Fixed Image)
 ══════════════════════════════════════════ */
 function LightboxModal({
   product,
@@ -356,7 +395,12 @@ function LightboxModal({
   onClose: () => void;
 }) {
   const [currentImage, setCurrentImage] = useState(0);
+  const [imageErrors, setImageErrors] = useState<boolean[]>([]);
   const productImages = product.images || [product.image];
+
+  useEffect(() => {
+    setImageErrors(new Array(productImages.length).fill(false));
+  }, [productImages.length]);
 
   const nextImage = () => {
     setCurrentImage((prev) => (prev + 1) % productImages.length);
@@ -364,6 +408,14 @@ function LightboxModal({
 
   const prevImage = () => {
     setCurrentImage((prev) => (prev - 1 + productImages.length) % productImages.length);
+  };
+
+  const handleImageError = (index: number) => {
+    setImageErrors(prev => {
+      const newErrors = [...prev];
+      newErrors[index] = true;
+      return newErrors;
+    });
   };
 
   return (
@@ -378,15 +430,16 @@ function LightboxModal({
         className="relative max-w-4xl w-full max-h-[90vh] rounded-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative aspect-square">
-          {productImages[currentImage] && (
-            <Image
+        <div className="relative aspect-square bg-black/50 flex items-center justify-center">
+          {productImages[currentImage] && !imageErrors[currentImage] ? (
+            <img
               src={productImages[currentImage]}
               alt={product.name}
-              fill
-              className="object-contain"
-              unoptimized
+              className="w-full h-full object-contain"
+              onError={() => handleImageError(currentImage)}
             />
+          ) : (
+            <Package className="w-20 h-20 text-gray-500" />
           )}
         </div>
 
@@ -430,7 +483,7 @@ function LightboxModal({
 }
 
 /* ══════════════════════════════════════════
-   CATEGORY SECTION WITH VIEW MORE (Grid Only)
+   CATEGORY SECTION WITH VIEW MORE
 ══════════════════════════════════════════ */
 function CategorySection({
   group,
@@ -449,7 +502,6 @@ function CategorySection({
 
   const handleViewMore = () => {
     if (showAll) {
-      // Scroll to top of section when collapsing
       const element = document.getElementById(`category-${group.categorySlug}`);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -489,7 +541,6 @@ function CategorySection({
             />
           </div>
           
-          {/* View All Button */}
           <button
             onClick={handleViewAllProducts}
             className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all view-more-btn"
@@ -507,7 +558,6 @@ function CategorySection({
         </div>
       </div>
 
-      {/* Grid View Only */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {displayedProducts.map((product: any) => (
           <ProductCard
@@ -557,9 +607,7 @@ function CategoryPageContent() {
 
   const tabParam = searchParams.get("tab") as TabId | null;
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
-  const [highlightedCategory, setHighlightedCategory] = useState<string | null>(null);
 
-  // Default to "all" if no tab specified
   const activeTab: TabId = useMemo(() => {
     if (tabParam && TABS.some((t) => t.id === tabParam)) return tabParam;
     return "all";
@@ -568,14 +616,11 @@ function CategoryPageContent() {
   const activeTabColor = TABS.find((t) => t.id === activeTab)?.color || BRAND.primary;
   const tabCategories = useMemo(() => getCategoriesForTab(activeTab), [activeTab]);
 
-  // Handle hash scrolling and highlighting on mount
   useEffect(() => {
     const hash = window.location.hash;
     if (hash && hash.startsWith('#category-')) {
       const categorySlug = hash.replace('#category-', '');
-      setHighlightedCategory(categorySlug);
       
-      // Small delay to ensure DOM is ready
       setTimeout(() => {
         const element = document.getElementById(`category-${categorySlug}`);
         if (element) {
@@ -585,18 +630,15 @@ function CategoryPageContent() {
             inline: 'nearest'
           });
           
-          // Add highlight effect temporarily
           element.classList.add('highlight-category');
           setTimeout(() => {
             element.classList.remove('highlight-category');
-            setHighlightedCategory(null);
           }, 3000);
         }
       }, 500);
     }
-  }, [activeTab]); // Re-run when tab changes
+  }, [activeTab]);
 
-  // Group products by subcategory
   const groupedProducts = useMemo(() => {
     const groups: { categoryName: string; categorySlug: string; products: any[]; description?: string }[] = [];
 
@@ -613,7 +655,7 @@ function CategoryPageContent() {
     });
 
     return groups;
-  }, [activeTab, tabCategories]);
+  }, [tabCategories]);
 
   const totalProducts = useMemo(() => {
     return groupedProducts.reduce((sum, group) => sum + group.products.length, 0);
@@ -624,7 +666,6 @@ function CategoryPageContent() {
   };
 
   const handleViewAllProducts = (categorySlug: string, categoryName: string) => {
-    // Navigate to category-specific page or filter view
     router.push(`/categories/all?tab=${activeTab}&category=${categorySlug}`);
   };
 
@@ -632,20 +673,16 @@ function CategoryPageContent() {
     <>
       <style dangerouslySetInnerHTML={{ __html: listingStyles }} />
       <div className="min-h-screen listing-container bg-[#f8fafc]">
-        {/* Hero Section */}
-        <PageBanner/>
+        <PageBanner />
 
-        {/* Main Content with Sidebar */}
         <div className="max-w-[1500px] mx-auto px-6 py-12 lg:py-16">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-            {/* ─── LEFT SIDEBAR ─── */}
             <aside className="lg:w-64 flex-shrink-0">
               <div className="sticky top-[100px]">
                 <SidebarWithSubcategories activeTab={activeTab} onSelect={handleTabSelect} />
               </div>
             </aside>
 
-            {/* ─── RIGHT PRODUCT LISTING (Grid Only) ─── */}
             <main className="flex-1 min-w-0">
               {groupedProducts.length === 0 ? (
                 <div className="text-center py-20">

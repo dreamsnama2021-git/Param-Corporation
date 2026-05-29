@@ -55,7 +55,7 @@ const CASE_STUDIES_CARDS = [
     description:
       "Diabetic Retinopathy Patient Awareness Tool",
     image:
-      "/products/4 IN 1 DESK ORGANISER.png", // Jewellery/retail image
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Case%20Study/case-study%20(1).png", // Jewellery/retail image
     slug: "diabetic-retinopathy-tool",
     readTime: "6 min read",
     category: "Retail",
@@ -66,7 +66,7 @@ const CASE_STUDIES_CARDS = [
     description:
       "Leveraging WhatsApp-led nurturing and targeted content to increase patient engagement by 200% for a leading clinic chain.Leveraging WhatsApp-led nurturing ",
     image:
-      "/products/4 IN 1 DESK ORGANISER.png", // Healthcare image
+      "http://localhost:3000/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1579684385127-1ef15d508118%3Fw%3D1200%26h%3D800%26fit%3Dcrop&w=1920&q=75", // Healthcare image
     slug: "healthcare-digital",
     readTime: "4 min read",
     category: "Healthcare",
@@ -77,7 +77,7 @@ const CASE_STUDIES_CARDS = [
     description:
       "Implementing a personalized gifting solution that improved employee retention and client satisfaction scores significantly retention and client satisfaction scores significantly.",
     image:
-      "/products/4 IN 1 DESK ORGANISER.png", // Gifting/corporate image
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru-about.jpeg", // Gifting/corporate image
     slug: "corporate-gifting",
     readTime: "5 min read",
     category: "Corporate",
@@ -127,12 +127,12 @@ function CaseStudiesSection() {
                 <div
                   className={`relative group ${isEven ? "lg:order-1" : "lg:order-2"}`}
                 >
-                  <div className="relative aspect-[16/10] rounded-lg sm:rounded-xl overflow-hidden shadow-md sm:shadow-lg bg-gray-100">
+                  <div className="relative  rounded-lg sm:rounded-xl overflow-hidden shadow-md sm:shadow-lg bg-gray-100">
                     <Image
                       src={study.image}
                       alt={study.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-fill transition-transform duration-500 group-hover:scale-105"
                       unoptimized
                     />
                   </div>
@@ -250,23 +250,24 @@ function CaseStudiesGrid() {
         </motion.div>
 
         {/* 3 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-5 xl:gap-8">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-5 xl:gap-8">
           {CASE_STUDIES_CARDS.map((study) => (
             <article
               key={study.id}
               className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-md sm:shadow-lg 
                 hover:shadow-[0_15px_40px_-12px_rgba(0,147,203,0.25)] 
                 hover:shadow-2xl transition-all duration-500 ease-out 
+                w-[350px]
                 transform hover:-translate-y-1.5 sm:hover:-translate-y-2 flex flex-col
                 border border-transparent hover:border-[#0093cb]/20"
             >
               {/* Clean Image Section (No Text Overlay) */}
-              <div className="relative h-40 sm:h-44 md:h-48 lg:h-52 xl:h-56 overflow-hidden">
+              <div className="relative h-40 sm:h-44 md:h-48 lg:h-52 xl:h-80 overflow-hidden">
                 <Image
                   src={study.image}
                   alt={study.title}
                   fill
-                  className="object-contain scale-125 sm:scale-135 md:scale-150 xl:scale-180 transition-transform duration-700 group-hover:scale-130 sm:group-hover:scale-140 md:group-hover:scale-160 xl:group-hover:scale-190"
+                  className="object-fill  transition-transform duration-700 group-hover:scale-105 "
                   unoptimized
                 />
                 {/* Subtle primary glow on hover */}
@@ -276,19 +277,19 @@ function CaseStudiesGrid() {
               {/* Content Section - Title Moved Here */}
               <div className="px-4 lg:px-4 xl:px-6 py-3 lg:py-3 xl:py-4 flex flex-col flex-grow bg-white">
                 {/* Category Tag */}
-                <span className="inline-block w-fit px-2 sm:px-2.5 py-0.5 sm:py-1 bg-[#0093cb]/10 text-[#0093cb] text-[9px] sm:text-[10px] xl:text-xs font-semibold rounded mb-2 sm:mb-3">
+                {/* <span className="inline-block w-fit px-2 sm:px-2.5 py-0.5 sm:py-1 bg-[#0093cb]/10 text-[#0093cb] text-[9px] sm:text-[10px] xl:text-xs font-semibold rounded mb-2 sm:mb-3">
                   {study.category}
-                </span>
+                </span> */}
 
                 {/* Title - Now Below Image */}
                 <h3
-                  className="text-[#1a1a1a] font-bold text-base sm:text-[16px] md:text-lg leading-snug mb-2 sm:mb-3 line-clamp-2 
+                  className="text-[#1a1a1a] font-bold text-base sm:text-[16px] md:text-lg leading-snug mb-1 sm:mb-1 line-clamp-2 
                   group-hover:text-[#0093cb] transition-colors duration-300"
                 >
                   {study.title}
                 </h3>
 
-                <p className="text-gray-600 text-xs xl:text-sm leading-relaxed mb-3 sm:mb-4 flex-grow line-clamp-2">
+                <p className="text-gray-600 text-xs xl:text-sm leading-relaxed mb-2 flex-grow line-clamp-2">
                   {study.description}
                 </p>
 
