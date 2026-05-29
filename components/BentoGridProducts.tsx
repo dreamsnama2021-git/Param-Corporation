@@ -154,8 +154,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
     posters: [
       'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_56%20PM.png',
-      '/therepy/ent/HEALTHY SINUS VS SINUSITIS TABLE TOP.jpg',
-      // '/therepy/ent/ChatGPT Image May 25, 2026, 06_08_56 PM.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/26.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/27.png',
     ],
     medicalScale: [
       'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_42_08%20PM.png',
