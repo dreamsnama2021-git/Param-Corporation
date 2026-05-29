@@ -6,6 +6,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackgroundDecoration from "@/components/BackgroundDecoration";
+import Script from "next/script";
 
 // Primary Font for Headings
 const display = Poppins({
@@ -27,17 +28,17 @@ export const metadata = {
     "Premium corporate gifting solutions designed to impress clients and teams.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="bg-[var(--clr-bg-cream)] text-[var(--clr-text-dark)] font-sans antialiased selection:bg-black selection:text-white">
+        <Script
+          src="https://elfsightcdn.com/platform.js"
+          strategy="lazyOnload"
+        />
         {/* Grid pattern - lowest layer */}
         <BackgroundDecoration />
-        
+
         {/* Content wrapper - sits above grid */}
         <div className="relative z-10 flex min-h-screen flex-col">
           <Navbar />
