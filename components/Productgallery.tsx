@@ -7,52 +7,87 @@ interface GalleryImage {
 }
 
 const koruImages: GalleryImage[] = [
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(3).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(1).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(2).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(4).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(6).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(5).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(9).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(8).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(7).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(12).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(10).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(13).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(11).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(14).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(16).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(17).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(15).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(19).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(20).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(21).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(18).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(22).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(23).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(25).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(24).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(27).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(28).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(29).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(26).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(30).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(33).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(34).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(32).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(31).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(35).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(36).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(37).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(38).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(39).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(40).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(41).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(42).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(43).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(44).png" },
-  { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru%20(45).png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/34.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/1.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/2.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/3.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/35.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/4.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/5.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/6.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/36.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/37.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/7.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/8.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/9.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/10.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/11.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/12.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/39.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/13.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/14.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/15.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/40.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/41.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/16.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/17.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/18.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/19.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/20.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/21.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/22.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/23.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/24.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/25.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/26.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/27.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/28.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/29.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/30.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/31.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/32.png" },
+  { src: "/https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/33.png" },
+  // { src: "/koru/koru35.png" },
+  // { src: "/koru/koru36.png" },
+  // { src: "/koru/koru37.png" },
+  // { src: "/koru/koru38.png" },
+  // { src: "/koru/koru39.png" },
+  // { src: "/koru/koru40.png" },
+  // { src: "/koru/koru41.png" },
+  // { src: "/koru/koru42.png" },
+  // { src: "/koru/koru43.png" },
+  // { src: "/koru/koru44.png" },
 ];
+
+/**
+ * Fixed 4-column grid pattern — 16 images per block, all blocks identical.
+ * Maintains the same dramatic vertical anchors concept with tall images.
+ *
+ * Grid layout:
+ * ┌──────┬──────┬──────┬──────┐
+ * │      │      │      │      │
+ * │  A   │  B   │  C   │  D   │  Row 1 (B, C, D span 2)
+ * │      │      │      │      │
+ * │      ├──────┼──────┼──────┤
+ * │      │      │      │      │
+ * │ 3r   │  E   │  F   │  G   │  Row 2 (F, G span 2)
+ * │      │      │      │      │
+ * │      │  3r  │      │      │
+ * ├──────┤      ├──────┼──────┤
+ * │      │      │      │      │
+ * │  H   │      │  I   │  J   │  Row 3 (J spans 3)
+ * │      │      │      │      │
+ * │  2r  │      │  3r  │  3r  │
+ * ├──────┼──────┤      │      │
+ * │      │      │      │      │
+ * │  K   │  L   │      │      │  Row 4-5
+ * │      │      │      │      │
+ * │  2r  │  2r  │      │      │
+ * └──────┴──────┴──────┴──────┘
+ *
+ * Images per block: 12
+ * Total rows per block: 5
+ */
 
 type GridItem = {
   src: string;
