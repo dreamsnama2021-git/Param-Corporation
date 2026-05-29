@@ -111,9 +111,9 @@ const serviceCategories: ServiceCategory[] = [
 ];
 
 const koruGalleryImages: GalleryImage[] = [
-  { id: "g-1", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_06_57%20PM.png", title: "Custom Dashboard Interface", category: "Dashboard" },
+  { id: "g-1", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png", title: "Custom Dashboard Interface", category: "Dashboard" },
   { id: "g-2", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_15_09%20PM.png", title: "Analytics Visualization", category: "Analytics" },
-  { id: "g-3", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png", title: "Health Risk Calculator", category: "HRA Tools" },
+  { id: "g-3", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_06_57%20PM.png", title: "Health Risk Calculator", category: "HRA Tools" },
   { id: "g-4", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/23.png", title: "Patient Support Portal", category: "Patient Programs" },
   { id: "g-5", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/3.png", title: "Mini Website Design", category: "Websites" },
   { id: "g-6", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/52.png", title: "Mobile App Interface", category: "Apps" },
@@ -122,7 +122,7 @@ const koruGalleryImages: GalleryImage[] = [
   { id: "g-9", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Neurology/82.png", title: "Sales Dashboard View", category: "Dashboard" },
   { id: "g-10", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Neurology/87.png", title: "Territory Analytics", category: "Analytics" },
   { id: "g-11", src: "/koru/koru10.png", title: "Risk Assessment Tool", category: "HRA Tools" },
-  { id: "g-12", src: "/koru/koru12.png", title: "Patient App Screen", category: "Patient Programs" },
+  { id: "g-12", src: "/koru/koru10.png", title: "Patient App Screen", category: "Patient Programs" },
   { id: "g-13", src: "/koru/koru13.png", title: "Dashboard Analytics", category: "Dashboard" },
   { id: "g-14", src: "/koru/koru14.png", title: "Report Interface", category: "Analytics" },
   { id: "g-15", src: "/koru/koru15.png", title: "Health Assessment", category: "HRA Tools" },
