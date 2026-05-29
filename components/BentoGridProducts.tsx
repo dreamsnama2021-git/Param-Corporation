@@ -186,8 +186,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/ortho/books-3.jpg',
     ],
     flipChart: [
-      '/images/therapies/ortho/flip-chart-1.jpg',
-      '/images/therapies/ortho/flip-chart-2.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Orthopedics/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_51_21%20PM.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Orthopedics/PARAM%20PRODUCTS%20.png',
       '/images/therapies/ortho/flip-chart-3.jpg',
     ],
     matt: [
@@ -196,12 +196,12 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/ortho/matt-3.jpg',
     ],
     posters: [
-      '/images/therapies/ortho/posters-1.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Orthopedics/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_44_50%20PM.png',
       '/images/therapies/ortho/posters-2.jpg',
       '/images/therapies/ortho/posters-3.jpg',
     ],
     medicalScale: [
-      '/images/therapies/ortho/medical-scale-1.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Orthopedics/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_37_54%20PM.png',
       '/images/therapies/ortho/medical-scale-2.jpg',
       '/images/therapies/ortho/medical-scale-3.jpg',
     ],
@@ -211,7 +211,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/ortho/write-wipe-3.jpg',
     ],
     tearOffPads: [
-      '/images/therapies/ortho/tear-off-pads-1.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Orthopedics/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_45_24%20PM.png',
       '/images/therapies/ortho/tear-off-pads-2.jpg',
       '/images/therapies/ortho/tear-off-pads-3.jpg',
     ],
