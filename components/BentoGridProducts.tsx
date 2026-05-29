@@ -181,13 +181,13 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   'Orthopedics/Rheumatology': {
     card:  'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80',
     books: [
-      '/images/therapies/ortho/books-1.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Orthopedics/PARAM%20PRODUCTS%20.png',
       '/images/therapies/ortho/books-2.jpg',
       '/images/therapies/ortho/books-3.jpg',
     ],
     flipChart: [
       'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Orthopedics/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_51_21%20PM.png',
-      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Orthopedics/PARAM%20PRODUCTS%20.png',
+      '/images/therapies/ortho/flip-chart-2.jpg',
       '/images/therapies/ortho/flip-chart-3.jpg',
     ],
     matt: [
