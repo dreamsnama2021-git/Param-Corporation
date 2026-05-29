@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -47,6 +47,94 @@ export default function ProductDetailPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
+
+  // Block right-click and image copying
+  useEffect(() => {
+    // Block right-click context menu globally
+    const blockContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+      return false;
+    };
+
+    // Block image dragging
+    const blockDragStart = (e: DragEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'IMG' || target.closest('img')) {
+        e.preventDefault();
+        return false;
+      }
+    };
+
+    // Block copy, cut, and paste
+    const blockCopy = (e: ClipboardEvent) => {
+      e.preventDefault();
+      return false;
+    };
+
+    // Block keyboard shortcuts
+    const blockShortcuts = (e: KeyboardEvent) => {
+      // Block Ctrl+C, Ctrl+X, Ctrl+V, Ctrl+S, F12, Ctrl+Shift+I, Ctrl+U
+      if (
+        (e.ctrlKey && (e.key === 'c' || e.key === 'C' || 
+                       e.key === 'x' || e.key === 'X' || 
+                       e.key === 'v' || e.key === 'V' || 
+                       e.key === 's' || e.key === 'S')) ||
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'C' || e.key === 'c')) ||
+        (e.ctrlKey && e.key === 'u')
+      ) {
+        e.preventDefault();
+        return false;
+      }
+    };
+
+    // Block print screen
+    const blockPrintScreen = (e: KeyboardEvent) => {
+      if (e.key === 'PrintScreen') {
+        e.preventDefault();
+        return false;
+      }
+    };
+
+    // Block selecting text
+    const blockSelect = (e: Event) => {
+      e.preventDefault();
+      return false;
+    };
+
+    // Add all event listeners
+    document.addEventListener('contextmenu', blockContextMenu);
+    document.addEventListener('dragstart', blockDragStart);
+    document.addEventListener('copy', blockCopy);
+    document.addEventListener('cut', blockCopy);
+    document.addEventListener('paste', blockCopy);
+    document.addEventListener('keydown', blockShortcuts);
+    document.addEventListener('keyup', blockPrintScreen);
+    document.addEventListener('selectstart', blockSelect);
+
+    // Disable image context menu on all images
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+      img.addEventListener('contextmenu', blockContextMenu);
+      img.setAttribute('draggable', 'false');
+    });
+
+    // Cleanup
+    return () => {
+      document.removeEventListener('contextmenu', blockContextMenu);
+      document.removeEventListener('dragstart', blockDragStart);
+      document.removeEventListener('copy', blockCopy);
+      document.removeEventListener('cut', blockCopy);
+      document.removeEventListener('paste', blockCopy);
+      document.removeEventListener('keydown', blockShortcuts);
+      document.removeEventListener('keyup', blockPrintScreen);
+      document.removeEventListener('selectstart', blockSelect);
+      
+      images.forEach(img => {
+        img.removeEventListener('contextmenu', blockContextMenu);
+      });
+    };
+  }, []);
 
   // 1. Find Product
   const product = useMemo(() => {
@@ -165,9 +253,25 @@ export default function ProductDetailPage() {
     ? product.images
     : [product.image].filter(Boolean);
 
+  // Custom image component with protection
+  const ProtectedImage = ({ src, alt, fill = false, className = "" }: any) => {
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        fill={fill}
+        className={className}
+        unoptimized
+        draggable={false}
+        onContextMenu={(e) => e.preventDefault()}
+        onDragStart={(e) => e.preventDefault()}
+      />
+    );
+  };
+
   return (
     <>
-      <div className="min-h-screen bg-[#fcfdfe] pb-12">
+      <div className="min-h-screen bg-[#fcfdfe] pb-12" onContextMenu={(e) => e.preventDefault()}>
         {/* --- Header Navigation --- */}
         <div className="max-w-[1500px] mx-auto px-6 pt-16">
           <nav className="flex items-center gap-2 text-xs uppercase tracking-widest text-gray-400 mb-6">
@@ -198,12 +302,11 @@ export default function ProductDetailPage() {
                     exit={{ opacity: 0 }}
                     className="relative w-full h-[500px]"
                   >
-                    <Image
+                    <ProtectedImage
                       src={images[currentImageIndex] || "/placeholder.png"}
                       alt={product.name}
-                      fill
+                      fill={true}
                       className="object-contain p-8"
-                      unoptimized
                     />
                   </motion.div>
                 </AnimatePresence>
@@ -236,7 +339,7 @@ export default function ProductDetailPage() {
                       currentImageIndex === idx ? "border-orange-500 ring-4 ring-orange-50" : "border-transparent opacity-60 hover:opacity-100"
                     }`}
                   >
-                    <Image src={img} alt="Thumb" fill className="object-cover" unoptimized />
+                    <ProtectedImage src={img} alt="Thumb" fill={true} className="object-cover" />
                   </button>
                 ))}
               </div>
@@ -304,12 +407,11 @@ export default function ProductDetailPage() {
                   <Link key={rel.id} href={`/product/${rel.id}`} className="group">
                     <div className="bg-white rounded-3xl p-3 shadow-sm border border-slate-100 hover:shadow-xl transition-all">
                       <div className="relative aspect-square rounded-2xl overflow-hidden bg-slate-50 mb-4">
-                        <Image 
+                        <ProtectedImage 
                           src={rel.images?.[0] || rel.image} 
                           alt={rel.name} 
-                          fill 
+                          fill={true} 
                           className="object-contain p-4 group-hover:scale-110 transition-transform duration-700" 
-                          unoptimized 
                         />
                       </div>
                       <div className="px-2 pb-2">
@@ -451,96 +553,96 @@ export default function ProductDetailPage() {
                           Quantity Required
                         </label>
                         <input
-                          type="text"
-                          name="quantity"
-                          value={formState.quantity}
-                          onChange={handleInputChange}
-                          className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-orange-500 focus:ring-4 focus:ring-orange-50 outline-none transition-all text-sm"
-                          placeholder="e.g., 100 units, 50 boxes"
-                        />
-                      </div>
+                            type="text"
+                            name="quantity"
+                            value={formState.quantity}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-orange-500 focus:ring-4 focus:ring-orange-50 outline-none transition-all text-sm"
+                            placeholder="e.g., 100 units, 50 boxes"
+                          />
+                        </div>
 
-                      {/* Message Field */}
-                      <div className="space-y-1.5">
-                        <label className="flex items-center gap-2 text-sm font-medium text-slate-700">
-                          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-orange-100 text-orange-500">
-                            <MessageCircle size={12} />
-                          </span>
-                          Additional Message
-                        </label>
-                        <textarea
-                          name="message"
-                          value={formState.message}
-                          onChange={handleInputChange}
-                          rows={4}
-                          className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-orange-500 focus:ring-4 focus:ring-orange-50 outline-none transition-all text-sm resize-none"
-                          placeholder="Any specific requirements, customization needs, or questions..."
-                        />
-                      </div>
+                        {/* Message Field */}
+                        <div className="space-y-1.5">
+                          <label className="flex items-center gap-2 text-sm font-medium text-slate-700">
+                            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-orange-100 text-orange-500">
+                              <MessageCircle size={12} />
+                            </span>
+                            Additional Message
+                          </label>
+                          <textarea
+                            name="message"
+                            value={formState.message}
+                            onChange={handleInputChange}
+                            rows={4}
+                            className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-orange-500 focus:ring-4 focus:ring-orange-50 outline-none transition-all text-sm resize-none"
+                            placeholder="Any specific requirements, customization needs, or questions..."
+                          />
+                        </div>
 
-                      {/* Error Message */}
-                      {error && (
-                        <motion.div
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm"
-                        >
-                          {error}
-                        </motion.div>
-                      )}
+                        {/* Error Message */}
+                        {error && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm"
+                          >
+                            {error}
+                          </motion.div>
+                        )}
 
-                      {/* Action Buttons */}
-                      <div className="flex gap-3 pt-2">
-                        <button
-                          type="button"
-                          onClick={closeModal}
-                          className="flex-1 px-6 py-3.5 border-2 border-slate-200 text-slate-600 font-semibold rounded-xl hover:bg-slate-50 transition-all"
-                        >
-                          Cancel
-                        </button>
-                        <button
-                          type="submit"
-                          disabled={isSubmitting}
-                          className="flex-[2] bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 text-white font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2"
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <Loader2 size={18} className="animate-spin" />
-                              Sending Enquiry...
-                            </>
-                          ) : (
-                            <>
-                              <Send size={18} />
-                              Send Enquiry
-                            </>
-                          )}
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </>
-              ) : (
-                /* Success State */
-                <div className="p-12 text-center">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", damping: 15, stiffness: 200 }}
-                  >
-                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <CheckCircle2 size={40} className="text-green-500" />
+                        {/* Action Buttons */}
+                        <div className="flex gap-3 pt-2">
+                          <button
+                            type="button"
+                            onClick={closeModal}
+                            className="flex-1 px-6 py-3.5 border-2 border-slate-200 text-slate-600 font-semibold rounded-xl hover:bg-slate-50 transition-all"
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="flex-[2] bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 text-white font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2"
+                          >
+                            {isSubmitting ? (
+                              <>
+                                <Loader2 size={18} className="animate-spin" />
+                                Sending Enquiry...
+                              </>
+                            ) : (
+                              <>
+                                <Send size={18} />
+                                Send Enquiry
+                              </>
+                            )}
+                          </button>
+                        </div>
+                      </form>
                     </div>
-                  </motion.div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Enquiry Sent Successfully!</h3>
-                  <p className="text-slate-600 mb-1">Thank you for your interest in {product.name}.</p>
-                  <p className="text-sm text-slate-500">Our team will contact you within 24 hours.</p>
-                  <p className="text-xs text-slate-400 mt-6">This window will close automatically...</p>
-                </div>
-              )}
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-    </>
-  );
-}
+                  </>
+                ) : (
+                  /* Success State */
+                  <div className="p-12 text-center">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", damping: 15, stiffness: 200 }}
+                    >
+                      <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <CheckCircle2 size={40} className="text-green-500" />
+                      </div>
+                    </motion.div>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Enquiry Sent Successfully!</h3>
+                    <p className="text-slate-600 mb-1">Thank you for your interest in {product.name}.</p>
+                    <p className="text-sm text-slate-500">Our team will contact you within 24 hours.</p>
+                    <p className="text-xs text-slate-400 mt-6">This window will close automatically...</p>
+                  </div>
+                )}
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+      </>
+    );
+  }

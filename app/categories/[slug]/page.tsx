@@ -381,19 +381,7 @@ function ProductCard({
           <p className="text-sm font-semibold text-[#060706] leading-tight line-clamp-2 mb-1 group-hover:text-[#0093cb] transition-colors">
             {productName}
           </p>
-          {product.tags && (
-            <div className="flex flex-wrap gap-1">
-              {product.tags.slice(0, 2).map((tag: string, idx: number) => (
-                <span
-                  key={idx}
-                  className="text-[10px] font-medium"
-                  style={{ color: accentColor }}
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          )}
+         
         </div>
       </motion.div>
     </Link>
