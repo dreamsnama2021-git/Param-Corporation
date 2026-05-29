@@ -444,13 +444,13 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/urology/books-3.jpg',
     ],
     flipChart: [
-      '/images/therapies/urology/flip-chart-1.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/Urology-.png',
       '/images/therapies/urology/flip-chart-2.jpg',
       '/images/therapies/urology/flip-chart-3.jpg',
     ],
     matt: [
-      '/images/therapies/urology/matt-1.jpg',
-      '/images/therapies/urology/matt-2.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/18.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/23.png',
       '/images/therapies/urology/matt-3.jpg',
     ],
     posters: [
@@ -464,9 +464,9 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/urology/medical-scale-3.jpg',
     ],
     writeWipe: [
-      '/images/therapies/urology/write-wipe-1.jpg',
-      '/images/therapies/urology/write-wipe-2.jpg',
-      '/images/therapies/urology/write-wipe-3.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/12.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/18.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/Urology-.png',
     ],
     tearOffPads: [
       '/images/therapies/urology/tear-off-pads-1.jpg',
@@ -474,8 +474,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       '/images/therapies/urology/tear-off-pads-3.jpg',
     ],
     tableTops: [
-      '/images/therapies/urology/table-tops-1.jpg',
-      '/images/therapies/urology/table-tops-2.jpg',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/14.png',
+      'https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/15.png',
       '/images/therapies/urology/table-tops-3.jpg',
     ],
   },
