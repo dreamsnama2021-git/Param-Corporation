@@ -1023,131 +1023,308 @@ const generateFullTherapyData = (): Therapy[] => {
 const THERAPY_DATA = generateFullTherapyData();
 
 // ─── Category Section Component ───
-function CategorySection({ category, products, therapyColor, therapyName }: { category: ProductCategory; products: Product[]; therapyColor: string; therapyName: string }) {
+function CategorySection({
+  category,
+  products,
+  therapyColor,
+  therapyName
+}: {
+  category: ProductCategory;
+  products: Product[];
+  therapyColor: string;
+  therapyName: string;
+}) {
+
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
 
-  const categoryDetails: Record<ProductCategory, { icon: string; title: string; description: string }> = {
+  const categoryDetails: Record<
+    ProductCategory,
+    {
+      icon: string;
+      title: string;
+      description: string;
+    }
+  > = {
     "BOOKS & MAGAZINES": {
       icon: "📚",
       title: "BOOKS & MAGAZINES",
-      description: `Comprehensive written resources for ${therapyName} education.`
+      description: `Comprehensive written resources for ${therapyName} education.`,
     },
+
     "FLIP CHART": {
       icon: "📊",
       title: "Clinical Flip Charts",
-      description: `Visual teaching aids designed for ${therapyName} patient education.`
+      description: `Visual teaching aids designed for ${therapyName} patient education.`,
     },
+
     "MATT (Desk Mats)": {
       icon: "🧩",
       title: "Desk Reference Mats",
-      description: `Durable, wipe-clean desk mats for ${therapyName} clinical reference.`
+      description: `Durable, wipe-clean desk mats for ${therapyName} clinical reference.`,
     },
+
     "POSTERS": {
       icon: "🖼️",
       title: "Educational Posters",
-      description: `High-resolution, laminated posters for ${therapyName} education.`
+      description: `High-resolution, laminated posters for ${therapyName} education.`,
     },
+
     "Medical SCALE": {
       icon: "⚖️",
       title: "Clinical Assessment Scales",
-      description: `Evidence-based assessment tools for ${therapyName} evaluation.`
+      description: `Evidence-based assessment tools for ${therapyName} evaluation.`,
     },
+
     "WRITE & WIPE": {
       icon: "✏️",
       title: "Write & Wipe Tools",
-      description: `Reusable dry-erase surfaces for ${therapyName} care planning.`
+      description: `Reusable dry-erase surfaces for ${therapyName} care planning.`,
     },
+
     "Tear off Pads": {
       icon: "📋",
       title: "Tear-Off Pads",
-      description: `Convenient tear-off pads for ${therapyName} patient take-home information.`
+      description: `Convenient tear-off pads for ${therapyName} patient take-home information.`,
     },
+
     "TABLE TOPS & SCIENTIFIC INPUTS": {
       icon: "🔬",
       title: "Table Tops & Scientific Inputs",
-      description: `Interactive table top displays and scientific input modules for ${therapyName}.`
-    }
+      description: `Interactive table top displays and scientific input modules for ${therapyName}.`,
+    },
   };
 
   const details = categoryDetails[category];
 
   const checkScroll = () => {
     const container = scrollContainerRef.current;
+
     if (container) {
       setShowLeftArrow(container.scrollLeft > 10);
-      setShowRightArrow(container.scrollLeft < container.scrollWidth - container.clientWidth - 10);
+
+      setShowRightArrow(
+        container.scrollLeft <
+          container.scrollWidth - container.clientWidth - 10
+      );
     }
   };
 
-  const scroll = (direction: 'left' | 'right') => {
+  const scroll = (direction: "left" | "right") => {
     const container = scrollContainerRef.current;
+
     if (container) {
-      container.scrollBy({ left: direction === 'left' ? -340 : 340, behavior: 'smooth' });
+      container.scrollBy({
+        left: direction === "left" ? -260 : 260,
+        behavior: "smooth",
+      });
     }
   };
 
   useEffect(() => {
     const container = scrollContainerRef.current;
+
     if (container) {
       checkScroll();
-      container.addEventListener('scroll', checkScroll);
-      window.addEventListener('resize', checkScroll);
+
+      container.addEventListener("scroll", checkScroll);
+
+      window.addEventListener("resize", checkScroll);
+
       return () => {
-        container.removeEventListener('scroll', checkScroll);
-        window.removeEventListener('resize', checkScroll);
+        container.removeEventListener("scroll", checkScroll);
+
+        window.removeEventListener("resize", checkScroll);
       };
     }
   }, [products]);
 
   return (
     <div className="mb-8 sm:mb-10 md:mb-12 last:mb-0">
+
+      {/* Header */}
       <div className="mb-3 sm:mb-4">
+
         <div className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
-          <span className="text-2xl sm:text-3xl">{details.icon}</span>
-          <h3 className="text-lg sm:text-xl font-bold" style={{ color: therapyColor }}>
+
+          <span className="text-2xl sm:text-3xl">
+            {details.icon}
+          </span>
+
+          <h3
+            className="text-lg sm:text-xl font-bold"
+            style={{ color: therapyColor }}
+          >
             {details.title}
           </h3>
+
         </div>
-        <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-4xl">{details.description}</p>
+
+        <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-4xl">
+          {details.description}
+        </p>
+
       </div>
 
+      {/* Slider */}
       <div className="relative group mt-3 sm:mt-4">
+
+        {/* Left Arrow */}
         {showLeftArrow && (
-          <button onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-xl border flex items-center justify-center hover:scale-110 transition-all -ml-1 sm:-ml-2 opacity-0 group-hover:opacity-100">
-            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: therapyColor }} />
+          <button
+            onClick={() => scroll("left")}
+            className="
+              absolute
+              left-0
+              top-1/2
+              -translate-y-1/2
+              z-20
+              w-8
+              h-8
+              sm:w-10
+              sm:h-10
+              rounded-full
+              bg-white
+              shadow-xl
+              border
+              flex
+              items-center
+              justify-center
+              hover:scale-110
+              transition-all
+              -ml-1
+              sm:-ml-2
+              opacity-0
+              group-hover:opacity-100
+            "
+          >
+            <ChevronLeft
+              className="w-4 h-4 sm:w-5 sm:h-5"
+              style={{ color: therapyColor }}
+            />
           </button>
         )}
 
-        <div ref={scrollContainerRef} className="flex gap-3 sm:gap-4 md:gap-5 overflow-x-auto pb-3 sm:pb-4"
-          style={{ scrollbarWidth: 'thin', scrollbarColor: `${therapyColor} #e5e5e5` }}>
+        {/* Cards */}
+        <div
+          ref={scrollContainerRef}
+          className="
+            flex
+            gap-2
+            sm:gap-3
+            md:gap-4
+            overflow-x-auto
+            pb-3
+            sm:pb-4
+            scroll-smooth
+          "
+          style={{
+            scrollbarWidth: "thin",
+            scrollbarColor: `${therapyColor} #e5e5e5`,
+          }}
+        >
           {products.map((item, idx) => (
-            <div key={idx} className="flex-shrink-0 w-[240px] h-[250px] sm:w-[280px] md:w-[300px] lg:w-[280px] xl:w-[320px] bg-white rounded-lg sm:rounded-xl overflow-hidden hover:shadow-lg sm:hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+
+            <div
+              key={idx}
+              className="
+                flex-shrink-0
+
+                w-[160px]
+                h-[180px]
+
+                sm:w-[190px]
+                sm:h-[210px]
+
+                md:w-[220px]
+                md:h-[240px]
+
+                lg:w-[240px]
+                lg:h-[250px]
+
+                xl:w-[280px]
+                xl:h-[300px]
+
+                bg-white
+                rounded-lg
+                sm:rounded-xl
+                overflow-hidden
+
+                hover:shadow-lg
+                sm:hover:shadow-xl
+
+                hover:-translate-y-1
+
+                transition-all
+                duration-300
+              "
+            >
+
               <div className="relative h-full overflow-hidden bg-gray-100">
-                <Image 
-                  src={item.img} 
-                  alt={item.title} 
-                  fill 
-                  className="object-fill" 
-                  sizes="(max-width: 640px) 220px, (max-width: 768px) 250px, 300px"
+
+                <Image
+                  src={item.img}
+                  alt={item.title}
+                  fill
+                  className="
+                    object-cover
+                    transition-transform
+                    duration-500
+                    hover:scale-105
+                  "
+                  sizes="
+                    (max-width: 640px) 160px,
+                    (max-width: 768px) 190px,
+                    (max-width: 1024px) 220px,
+                    280px
+                  "
                 />
+
               </div>
-              {/* <div className="p-3 sm:p-4">
-                <h4 className="text-xs sm:text-sm font-semibold text-neutral-800 line-clamp-2">{item.title}</h4>
-                <p className="text-[10px] sm:text-xs text-neutral-500 mt-1 line-clamp-2">{item.desc}</p>
-              </div> */}
+
             </div>
+
           ))}
         </div>
 
+        {/* Right Arrow */}
         {showRightArrow && (
-          <button onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-xl border flex items-center justify-center hover:scale-110 transition-all -mr-1 sm:-mr-2 opacity-0 group-hover:opacity-100">
-            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: therapyColor }} />
+          <button
+            onClick={() => scroll("right")}
+            className="
+              absolute
+              right-0
+              top-1/2
+              -translate-y-1/2
+              z-20
+              w-8
+              h-8
+              sm:w-10
+              sm:h-10
+              rounded-full
+              bg-white
+              shadow-xl
+              border
+              flex
+              items-center
+              justify-center
+              hover:scale-110
+              transition-all
+              -mr-1
+              sm:-mr-2
+              opacity-0
+              group-hover:opacity-100
+            "
+          >
+            <ChevronRight
+              className="w-4 h-4 sm:w-5 sm:h-5"
+              style={{ color: therapyColor }}
+            />
           </button>
         )}
+
       </div>
     </div>
   );
@@ -1258,36 +1435,118 @@ function Modal({ therapy, onClose }: { therapy: Therapy; onClose: () => void }) 
 }
 
 // ─── Collage Card Component ───
-function CollageCard({ therapy, onClick }: { therapy: Therapy; onClick: () => void }) {
+function CollageCard({
+  therapy,
+  onClick
+}: {
+  therapy: Therapy;
+  onClick: () => void;
+}) {
+
   return (
     <article
-      className={`group relative rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl h-full min-h-[180px] sm:min-h-[200px] md:min-h-[220px] lg:min-h-[240px] ${
-        therapy.span === 2 ? 'col-span-2' : 'col-span-1'
-      }`}
+      className={`
+        group
+        relative
+        rounded-xl
+        sm:rounded-2xl
+        overflow-hidden
+        cursor-pointer
+
+        transition-all
+        duration-500
+
+        hover:-translate-y-1
+        hover:shadow-2xl
+
+        h-full
+
+        min-h-[140px]
+        sm:min-h-[180px]
+        md:min-h-[190px]
+        lg:min-h-[200px]
+        xl:min-h-[240px]
+
+        w-full
+
+        ${therapy.span === 2 ? 'col-span-2' : 'col-span-1'}
+      `}
       onClick={onClick}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onClick(); }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          onClick();
+        }
+      }}
     >
-      <Image 
+
+      {/* Image */}
+      <Image
         src={therapy.images.card}
-        alt={therapy.therapy} 
+        alt={therapy.therapy}
         fill
-        className="object-fill transition-all duration-700 "
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+        className="
+          object-cover
+          transition-transform
+          duration-700
+          group-hover:scale-105
+        "
+        sizes="
+          (max-width: 640px) 50vw,
+          (max-width: 1024px) 33vw,
+          20vw
+        "
       />
+
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
-      <div className="absolute inset-0 p-3 sm:p-4 md:p-5 flex flex-col justify-between">
+
+      {/* Content */}
+      <div className="absolute inset-0 p-2 sm:p-3 md:p-4 lg:p-5 flex flex-col justify-between">
+
+        {/* Arrow */}
         <div className="flex justify-end">
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110">
-            <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
+
+          <div
+            className="
+              w-7
+              h-7
+              sm:w-8
+              sm:h-8
+              rounded-full
+              bg-white/15
+              backdrop-blur-md
+              flex
+              items-center
+              justify-center
+              opacity-0
+              group-hover:opacity-100
+              transition-all
+              duration-300
+              group-hover:scale-110
+            "
+          >
+            <ArrowUpRight className="w-3.5 h-3.5 text-white" />
           </div>
+
         </div>
+
+        {/* Bottom Content */}
         <div>
-          <span className="text-xl sm:text-2xl md:text-3xl drop-shadow-lg block mb-1.5 sm:mb-2">{therapy.icon}</span>
-          <h3 className="text-white text-xs sm:text-sm md:text-base lg:text-lg font-bold leading-tight drop-shadow-lg">{therapy.therapy}</h3>
+
+          <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl drop-shadow-lg block mb-1 sm:mb-2">
+            {therapy.icon}
+          </span>
+
+          <h3 className="text-white text-[11px] sm:text-sm md:text-base lg:text-lg font-bold leading-tight drop-shadow-lg">
+            {therapy.therapy}
+          </h3>
+
         </div>
+
       </div>
+
     </article>
   );
 }
