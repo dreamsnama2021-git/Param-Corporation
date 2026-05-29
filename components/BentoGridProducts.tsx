@@ -1215,6 +1215,7 @@ function CategorySection({
             gap-2
             sm:gap-3
             md:gap-4
+            xl:gap-6
             overflow-x-auto
             pb-3
             sm:pb-4
