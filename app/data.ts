@@ -157,60 +157,60 @@ export const allProducts: Product[] = [
   // Categories - Desk Utility (IDs: 21-40)
   {
     id: 21, name: "CUSTOMIZED 3 IN 1 DESK ORGANIZER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_16_31%20PM.png", price: "₹599", category: "desk-utility", categoryName: "Desk Utility", description: "Multi-functional 3-in-1 desk organizer for pens, mobile, and stationery", images: [
-      // "Desk Utility/CUSTOMIZED 3 IN 1 DESK ORGANIZER 1.JPG",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_16_31%20PM.png",
       // "Desk Utility/CUSTOMIZED 3 IN 1 DESK ORGANIZER 2.JPG"
     ]
   },
   {
     id: 22, name: "CUSTOMIZED AMBULANCE SHAPED FIRST AID KIT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_16_58%20PM.png", price: "₹899", category: "desk-utility", categoryName: "Desk Utility", description: "Unique ambulance-shaped first aid kit with branding options", images: [
-      // "Desk Utility/CUSTOMIZED AMBULANCE SHAPED FIRST AID KIT 1.JPG",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_16_58%20PM.png",
       // "Desk Utility/CUSTOMIZED AMBULANCE SHAPED FIRST AID KIT 2.JPG"
     ]
   },
   {
     id: 23, name: "CUSTOMIZED CHIT CONTAINER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_03%20PM.png", price: "₹349", category: "desk-utility", categoryName: "Desk Utility", description: "Elegant chit/note container for desk organization", images: [
-      // "Desk Utility/CUSTOMIZED CHIT CONTAINER 1.JPG",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_03%20PM.png",
       // "Desk Utility/CUSTOMIZED CHIT CONTAINER 2.JPG"
     ]
   },
   {
     id: 24, name: "CUSTOMIZED CHIT CONTAINER WITH PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_09%20PM.png", price: "₹449", category: "desk-utility", categoryName: "Desk Utility", description: "Combination chit container and pen stand", images: [
-      // "Desk Utility/CUSTOMIZED CHIT CONTAINER WITH PEN STAND.JPG"
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_09%20PM.png"
     ]
   },
   {
     id: 25, name: "CUSTOMIZED CHIT HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_51%20PM.png", price: "₹299", category: "desk-utility", categoryName: "Desk Utility", description: "Simple and elegant chit/note holder", images: [
-      // "Desk Utility/CUSTOMIZED CHIT HOLDER 1.JPG",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_51%20PM.png",
       // "Desk Utility/CUSTOMIZED CHIT HOLDER 2.JPG"
     ]
   },
   {
     id: 26, name: "CUSTOMIZED CHIT HOLDER WITH MOBILE HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2012_56_13%20PM.png", price: "₹499", category: "desk-utility", categoryName: "Desk Utility", description: "2-in-1 chit holder with mobile phone stand", images: [
-      // "Desk Utility/CUSTOMIZED CHIT HOLDER WITH MOBILE HOLDER 1.JPG",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2012_56_13%20PM.png",
       // "Desk Utility/CUSTOMIZED CHIT HOLDER WITH MOBILE HOLDER 2.JPG"
     ]
   },
   {
     id: 27, name: "CUSTOMIZED FLOWER SHAPE PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_27%20PM.png", price: "₹399", category: "desk-utility", categoryName: "Desk Utility", description: "Beautiful flower-shaped decorative paperweight", images: [
-      // "Desk Utility/CUSTOMIZED FLOWER SHAPE PAPERWEIGHT 1.JPG",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_27%20PM.png",
       // "Desk Utility/CUSTOMIZED FLOWER SHAPE PAPERWEIGHT 2.JPG"
     ]
   },
   {
     id: 28, name: "CUSTOMIZED FOLDABLE CHIT PAD & PEN HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_22%20PM.png", price: "₹649", category: "desk-utility", categoryName: "Desk Utility", description: "Foldable desk organizer with chit pad and pen holder", images: [
-      // "Desk Utility/CUSTOMIZED FOLDABLE CHIT PAD & PEN HOLDER TABLE TOP 1.JPG",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_22%20PM.png",
       // "Desk Utility/CUSTOMIZED FOLDABLE CHIT PAD & PEN HOLDER TABLE TOP TO 2.JPG"
     ]
   },
   {
     id: 29, name: "CUSTOMIZED FOLDABLE MOBILE HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_16%20PM.png", price: "₹299", category: "desk-utility", categoryName: "Desk Utility", description: "Portable foldable mobile phone stand", images: [
-      // "Desk Utility/CUSTOMIZED FOLDABLE MOBILE HOLDER 1.JPG",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_16%20PM.png",
       // "Desk Utility/CUSTOMIZED FOLDABLE MOBILE HOLDER 2.JPG"
     ]
   },
   {
     id: 30, name: "CUSTOMIZED LED CHIT HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_05%20PM.png", price: "₹549", category: "desk-utility", categoryName: "Desk Utility", description: "Illuminated LED chit holder for enhanced visibility", images: [
-      // "Desk Utility/CUSTOMIZED LED CHIT HOLDER 1.JPG",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_05%20PM.png",
       // "Desk Utility/CUSTOMIZED LED CHIT HOLDER 2.JPG"
     ]
   },
