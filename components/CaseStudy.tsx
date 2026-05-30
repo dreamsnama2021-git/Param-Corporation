@@ -66,7 +66,7 @@ const CASE_STUDIES_CARDS = [
     description:
       "Leveraging WhatsApp-led nurturing and targeted content to increase patient engagement by 200% for a leading clinic chain.Leveraging WhatsApp-led nurturing ",
     image:
-      "http://localhost:3000/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1579684385127-1ef15d508118%3Fw%3D1200%26h%3D800%26fit%3Dcrop&w=1920&q=75", // Healthcare image
+      "https://auroveda.org/wp-content/uploads/2022/11/Ways-to-improve-Indias-current-Health-Care-system-copy.jpg", // Healthcare image
     slug: "healthcare-digital",
     readTime: "4 min read",
     category: "Healthcare",

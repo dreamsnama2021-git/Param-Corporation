@@ -528,7 +528,7 @@ export default function KoruCommunications() {
                   <p className="text-[#6b7280] leading-relaxed mb-3 xl:mb-4 text-sm xl:text-base">
                     {service.desc}
                   </p>
-                  <div className="flex items-center gap-2 text-[#00a65d] font-medium text-xs xl:text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-0 group-hover:translate-x-2">
+                  {/* <div className="flex items-center gap-2 text-[#00a65d] font-medium text-xs xl:text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-0 group-hover:translate-x-2">
                     <span>Learn more</span>
                     <svg
                       width="14"
@@ -545,7 +545,7 @@ export default function KoruCommunications() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="absolute -top-2.5 -left-2.5 xl:-top-3 xl:-left-3 w-6 h-6 xl:w-7 xl:h-7 2xl:w-8 2xl:h-8 bg-white rounded-full shadow-md flex items-center justify-center text-[10px] xl:text-xs font-bold text-[#0093cb] border border-[#0093cb]/30">
                   {String(index + 1).padStart(2, "0")}
