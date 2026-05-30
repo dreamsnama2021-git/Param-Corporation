@@ -414,7 +414,7 @@ export default async function CaseStudyDetailPage({
         {/* Back link */}
         <div className="mt-12">
           <NextLink
-            href="/case-studies"
+            href="/case-study"
             className="text-sm underline underline-offset-4 hover:opacity-80 transition-opacity"
             style={{ color: 'var(--clr-primary)' }}
           >

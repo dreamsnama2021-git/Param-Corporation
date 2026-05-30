@@ -153,8 +153,8 @@ export default function IndustriesWeCater() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
             >
-              <Link
-                href={`/categories/industry/${industry.id}`}
+              <div
+              
                 className="block group"
               >
                 <div className="relative w-full h-24 sm:h-28 md:h-32 lg:h-36 xl:h-44 rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 shadow-sm">
@@ -190,7 +190,7 @@ export default function IndustriesWeCater() {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             </motion.div>
           ))}
         </div>
