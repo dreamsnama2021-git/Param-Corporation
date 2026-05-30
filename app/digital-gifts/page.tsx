@@ -312,7 +312,7 @@ function FlipCard({ service, index }: { service: ServiceCategory; index: number 
           <p className="text-xs sm:text-sm text-slate-500 text-center leading-relaxed line-clamp-2 relative z-10">
             {service.description.split('.')[0]}.
           </p>
-          <div className="absolute bottom-4 sm:bottom-6 flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs text-slate-400 group-hover:text-[#0093cb] transition-colors duration-300">
+          {/* <div className="absolute bottom-4 sm:bottom-6 flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs text-slate-400 group-hover:text-[#0093cb] transition-colors duration-300">
             <span>Hover to explore</span>
             <motion.svg
               animate={{ rotate: isFlipped ? 180 : 0 }}
@@ -323,7 +323,7 @@ function FlipCard({ service, index }: { service: ServiceCategory; index: number 
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </motion.svg>
-          </div>
+          </div> */}
         </div>
 
         {/* Back Face */}
