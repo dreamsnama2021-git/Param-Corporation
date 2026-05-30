@@ -45,17 +45,17 @@ const caseStudies: CaseStudy[] = [
     slug: "diabetic-retinopathy-tool",
     stats: { engagement: "+85%", reach: "50K+", products: "1" }
   },
-  {
-    id: 1,
-    title: "Transforming ENT Product Line Strategy",
-    category: "Medical Communications",
-    client: "Leading Pharma Co.",
-    date: "2024",
-    description: "Developed comprehensive medical communication strategy for ENT portfolio, resulting in 40% increase in physician engagement and successful launch of 3 new products.",
-    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
-    slug: "ent-strategy",
-    stats: { engagement: "+40%", reach: "2.5M+", products: "3" }
-  },
+  // {
+  //   id: 1,
+  //   title: "Transforming ENT Product Line Strategy",
+  //   category: "Medical Communications",
+  //   client: "Leading Pharma Co.",
+  //   date: "2024",
+  //   description: "Developed comprehensive medical communication strategy for ENT portfolio, resulting in 40% increase in physician engagement and successful launch of 3 new products.",
+  //   imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
+  //   slug: "ent-strategy",
+  //   stats: { engagement: "+40%", reach: "2.5M+", products: "3" }
+  // },
   {
     id: 2,
     title: "Cardio-Diabetes Digital Campaign",
