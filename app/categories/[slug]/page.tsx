@@ -157,7 +157,7 @@ const PageBanner = () => {
   }
 
   return (
-    <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] overflow-hidden bg-gray-100">
+     <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] overflow-hidden">
       {/* Mobile image */}
       <picture>
         <source

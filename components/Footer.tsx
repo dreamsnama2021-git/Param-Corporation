@@ -33,6 +33,40 @@ const SocialIcon = ({
 );
 
 export default function Footer() {
+  // Function to handle smooth scrolling when on the same page
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Check if we're on the category page
+    const isCategoryPage = window.location.pathname.includes('/categories');
+    
+    if (isCategoryPage) {
+      e.preventDefault();
+      
+      // Extract the tab and category from the href
+      const url = new URL(href, window.location.origin);
+      const tab = url.searchParams.get('tab');
+      const categoryId = url.hash.split('#category-')[1];
+      
+      if (tab) {
+        // Update URL without reloading the page
+        window.history.pushState({}, '', href);
+        
+        // Find and click the corresponding tab button
+        const tabButton = document.querySelector(`[data-tab="${tab}"]`) as HTMLButtonElement;
+        if (tabButton) {
+          tabButton.click();
+        }
+        
+        // After a short delay to allow the tab content to render, scroll to the category
+        setTimeout(() => {
+          const element = document.getElementById(`category-${categoryId}`);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      }
+    }
+  };
+
   return (
     <footer className="bg-[var(--clr-bg-dark-deep)] text-gray-300 pt-8 sm:pt-10 md:pt-12 lg:pt-12 xl:pt-16 pb-4 sm:pb-5 md:pb-6">
       <div className="max-w-[1500px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-8">
@@ -175,7 +209,7 @@ export default function Footer() {
                     href={`/categories/all?tab=categories#category-${item.slug}`}
                     className="flex items-center gap-1.5 sm:gap-1.5 md:gap-2 text-xs xl:text-sm 
                     hover:text-[var(--clr-primary)] group transition-all duration-200"
-                    scroll={false}
+                    onClick={(e) => handleScroll(e, `/categories/all?tab=categories#category-${item.slug}`)}
                   >
                     <ChevronRight
                       size={10}
@@ -231,6 +265,7 @@ export default function Footer() {
                     href={`/categories/all?tab=occasion#category-${item.slug}`}
                     className="flex items-center gap-1.5 sm:gap-1.5 md:gap-2 text-xs xl:text-sm 
                     hover:text-[var(--clr-primary)] group transition-all duration-200"
+                    onClick={(e) => handleScroll(e, `/categories/all?tab=occasion#category-${item.slug}`)}
                   >
                     <ChevronRight
                       size={10}
@@ -258,6 +293,7 @@ export default function Footer() {
                     href={`/categories/all?tab=personalized#category-${item.slug}`}
                     className="flex items-center gap-1.5 sm:gap-1.5 md:gap-2 text-xs xl:text-sm 
                     hover:text-[var(--clr-primary)] group transition-all duration-200"
+                    onClick={(e) => handleScroll(e, `/categories/all?tab=personalized#category-${item.slug}`)}
                   >
                     <ChevronRight
                       size={10}

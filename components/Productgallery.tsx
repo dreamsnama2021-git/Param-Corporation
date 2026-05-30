@@ -47,19 +47,9 @@ const koruImages: GalleryImage[] = [
   { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/31.png" },
   // { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/32.png" },
   { src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/33.png" },
-  // { src: "/koru/koru35.png" },
-  // { src: "/koru/koru36.png" },
-  // { src: "/koru/koru37.png" },
-  // { src: "/koru/koru38.png" },
-  // { src: "/koru/koru39.png" },
-  // { src: "/koru/koru40.png" },
-  // { src: "/koru/koru41.png" },
-  // { src: "/koru/koru42.png" },
-  // { src: "/koru/koru43.png" },
-  // { src: "/koru/koru44.png" },
 ];
 
-
+// ... (all type definitions and helper functions remain the same)
 
 type GridItem = {
   src: string;
@@ -182,7 +172,8 @@ function buildGridItems(images: GalleryImage[], is3Col: boolean = false): GridIt
   return items;
 }
 
-const INITIAL_COUNT = 36;
+// Changed from 36 to 12
+const INITIAL_COUNT = 12;
 
 export default function CollageGalleryManual() {
   const [showAll, setShowAll] = useState(false);
