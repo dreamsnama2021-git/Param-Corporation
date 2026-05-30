@@ -42,7 +42,7 @@ const timelineItems: TimelineItem[] = [
     category: "Foundation",
     icon: Rocket,
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timeline%20(6).jpeg",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timeline%20(5).jpeg",
   },
   {
     title: "Building the Foundation",
@@ -52,7 +52,7 @@ const timelineItems: TimelineItem[] = [
     category: "Growth",
     icon: Factory,
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timeline%20(5).jpeg",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timeline%20(6).jpeg",
   },
   {
     title: "Creating Meaningful Brand Experiences",
@@ -84,36 +84,36 @@ const timelineItems: TimelineItem[] = [
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timeline%20(2).jpeg",
   },
-  // {
-  //   title: "Growing Through Trust & Relationships",
-  //   description:
-  //     "With every successful project, our relationships grew stronger. As our client network expanded across industries, we continued focusing on what mattered most — quality, creativity, timely execution, and building long-term trust.",
-  //   date: "2024",
-  //   category: "Achievement",
-  //   icon: Users,
-  //   image:
-  //     "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timeline%20(1).jpeg",
-  // },
-  // {
-  //   title: "Introducing Koru",
-  //   description:
-  //     "Our journey evolved further with the introduction of Koru — a brand created to bring together functionality, aesthetics, and sustainability. With eco-friendly live moss products and thoughtfully designed desk utilities, Koru reflected our vision of creating gifting experiences that are not only innovative, but also meaningful and lasting.",
-  //   date: "2025",
-  //   category: "Innovation",
-  //   icon: Leaf,
-  //   image:
-  //     "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timeline%20(1).jpeg", // You may want to upload a 7th image for this
-  // },
-  // {
-  //   title: "Expanding Horizons",
-  //   description:
-  //     "As we step into 2026, we continue to grow with the same passion and purpose that started our journey. With expanding capabilities, stronger partnerships, and a growing portfolio of innovative solutions, we remain committed to creating impactful experiences for brands across industries.",
-  //   date: "2026",
-  //   category: "Growth",
-  //   icon: TrendingUp,
-  //   image:
-  //     "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timeline%20(6).jpeg", // You may want to upload an 8th image for this
-  // },
+  {
+    title: "Growing Through Trust & Relationships",
+    description:
+      "With every successful project, our relationships grew stronger. As our client network expanded across industries, we continued focusing on what mattered most — quality, creativity, timely execution, and building long-term trust.",
+    date: "2024",
+    category: "Achievement",
+    icon: Users,
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timeline%20(1).jpeg",
+  },
+  {
+    title: "Introducing Koru",
+    description:
+      "Our journey evolved further with the introduction of Koru — a brand created to bring together functionality, aesthetics, and sustainability. With eco-friendly live moss products and thoughtfully designed desk utilities, Koru reflected our vision of creating gifting experiences that are not only innovative, but also meaningful and lasting.",
+    date: "2025",
+    category: "Innovation",
+    icon: Leaf,
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timeline%20(1).jpeg", // You may want to upload a 7th image for this
+  },
+  {
+    title: "Expanding Horizons",
+    description:
+      "As we step into 2026, we continue to grow with the same passion and purpose that started our journey. With expanding capabilities, stronger partnerships, and a growing portfolio of innovative solutions, we remain committed to creating impactful experiences for brands across industries.",
+    date: "2026",
+    category: "Growth",
+    icon: TrendingUp,
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timeline%20(1).png", // You may want to upload an 8th image for this
+  },
 ];
 
 // ─── REUSABLE COMPONENTS ─────────────────────────────────────────────────────
