@@ -11,6 +11,42 @@ import {
   Clock,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+
+// ─── Contact US PAGE BANNER ─────────────────────────────────────────────────────────────
+const PageBanner = () => (
+  <div className="relative w-full h-[25vh] md:h-[30vh] lg:h-[45vh] xl:h-[50vh] overflow-hidden">
+    {/* Mobile image */}
+    <Image
+      src="/banner/contact us.png"
+      alt="About Us Banner - Mobile"
+      fill
+      className="object-fill object-center block md:hidden"
+      priority
+      unoptimized
+    />
+
+    {/* Tablet image */}
+    <Image
+      src="/banner/contact us.png"
+      alt="About Us Banner - Tablet"
+      fill
+      className="object-fill object-center hidden md:block lg:hidden"
+      priority
+      unoptimized
+    />
+
+    {/* Desktop image */}
+    <Image
+      src="/banner/contact us.png"
+      alt="About Us Banner - Desktop"
+      fill
+      className="object-fill object-center hidden lg:block"
+      priority
+      unoptimized
+    />
+  </div>
+);
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -30,44 +66,7 @@ export default function ContactUs() {
   return (
     <div className="min-h-screen font-[family-name:var(--font-body)] bg-[#f8fafc00]">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#0b3c5d] via-[#072c44] to-[#0093cb]/20 min-h-[240px] md:min-h-[280px] flex items-end overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <svg width="100%" height="100%">
-            <pattern id="hero-pattern" width="60" height="60" patternUnits="userSpaceOnUse">
-              <circle cx="30" cy="30" r="1.5" fill="white" />
-            </pattern>
-            <rect width="100%" height="100%" fill="url(#hero-pattern)" />
-          </svg>
-        </div>
-        
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#0093cb]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#00a65d]/10 rounded-full blur-3xl" />
-        
-        <div className="relative w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 pb-8 md:pb-12">
-          <svg width="48" height="8" viewBox="0 0 48 8" fill="none" className="text-[#8bde7a] mb-4">
-            <path d="M2 6C4 2 8 1 10 3C12 5 14 7 18 4C22 1 26 5 30 3C34 1 38 4 42 3C44 2 46 5 46 5" 
-                  stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-          </svg>
-          
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-display)] font-bold text-white mb-3">
-            Let&apos;s <span className="relative inline-block">
-              Connect
-              <svg className="absolute -bottom-2 left-0 w-full" height="6" viewBox="0 0 100 6" preserveAspectRatio="none">
-                <path d="M0,4 Q25,0 50,4 Q75,8 100,4" stroke="#8bde7a" strokeWidth="2" fill="none" strokeLinecap="round" />
-              </svg>
-            </span>
-          </h1>
-          
-          <div className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-white/60 hover:text-white flex items-center gap-1.5 transition-colors group">
-              <Home className="w-3.5 h-3.5" /> 
-              <span>Home</span>
-            </Link>
-            <span className="text-white/40">/</span>
-            <span className="text-[#8bde7a] font-medium">Contact Us</span>
-          </div>
-        </div>
-      </section>
+<PageBanner />
 
       {/* Main Contact Section */}
       <section className="relative py-16 md:py-20 overflow-hidden">
