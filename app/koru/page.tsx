@@ -529,7 +529,7 @@ export default function KoruCommunications() {
                     {service.desc}
                   </p>
                   <div className="flex items-center gap-2 text-[#00a65d] font-medium text-xs xl:text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-0 group-hover:translate-x-2">
-                    <span>Learn more</span>
+                    {/* <span>Learn more</span> */}
                     <svg
                       width="14"
                       height="14"
