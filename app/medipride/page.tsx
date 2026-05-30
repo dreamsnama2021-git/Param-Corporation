@@ -631,7 +631,7 @@ function MediPrideContent() {
                 Our Advantage
               </div>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-serif font-bold text-[#0f172a] leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl  font-bold text-[#0f172a] leading-tight">
                 Why Choose <span className="text-[#0093cb]">MediPride?</span>
               </h2>
 

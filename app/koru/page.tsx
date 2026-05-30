@@ -2,17 +2,48 @@
 
 import React, { useState, useRef } from "react";
 import { Phone, CheckCircle, ArrowUpRight, ChevronRight } from "lucide-react";
-import { FileText, Users, Monitor, ShieldCheck, Lightbulb, Activity } from "lucide-react";
+import {
+  FileText,
+  Users,
+  Monitor,
+  ShieldCheck,
+  Lightbulb,
+  Activity,
+} from "lucide-react";
 import ImageGallery from "@/components/Productgallery";
 import Image from "next/image";
 import { motion } from "framer-motion";
 const SERVICES = [
-  { title: "Medical Writing", desc: "Scientifically accurate content creation reviewed by clinical experts for precision.", icon: <FileText size={28} /> },
-  { title: "Patient Education", desc: "Simplifying complex clinical data into engaging stories patients can understand.", icon: <Users size={28} /> },
-  { title: "Visual Design", desc: "Premium medical illustrations and graphic design that amplify brand credibility.", icon: <Monitor size={28} /> },
-  { title: "Regulatory Support", desc: "Ensuring all communications meet strict healthcare compliance and guidelines.", icon: <ShieldCheck size={28} /> },
-  { title: "Brand Strategy", desc: "Customized narratives that bridge the gap between science and marketing.", icon: <Lightbulb size={28} /> },
-  { title: "Clinical Tools", desc: "Interactive educational charts, mats, and scales for real-world medical use.", icon: <Activity size={28} /> },
+  {
+    title: "Medical Writing",
+    desc: "Scientifically accurate content creation reviewed by clinical experts for precision.",
+    icon: <FileText size={28} />,
+  },
+  {
+    title: "Patient Education",
+    desc: "Simplifying complex clinical data into engaging stories patients can understand.",
+    icon: <Users size={28} />,
+  },
+  {
+    title: "Visual Design",
+    desc: "Premium medical illustrations and graphic design that amplify brand credibility.",
+    icon: <Monitor size={28} />,
+  },
+  {
+    title: "Regulatory Support",
+    desc: "Ensuring all communications meet strict healthcare compliance and guidelines.",
+    icon: <ShieldCheck size={28} />,
+  },
+  {
+    title: "Brand Strategy",
+    desc: "Customized narratives that bridge the gap between science and marketing.",
+    icon: <Lightbulb size={28} />,
+  },
+  {
+    title: "Clinical Tools",
+    desc: "Interactive educational charts, mats, and scales for real-world medical use.",
+    icon: <Activity size={28} />,
+  },
 ];
 
 // ─── Define the types for the props ───────────────────────────
@@ -23,7 +54,11 @@ interface SwipeCarouselProps {
 }
 
 // ─── Reusable swipe carousel (mobile + tablet only) ───────────────────────────
-function SwipeCarousel({ children, count, accentColor = "#0093cb" }: SwipeCarouselProps) {
+function SwipeCarousel({
+  children,
+  count,
+  accentColor = "#0093cb",
+}: SwipeCarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
 
@@ -64,7 +99,9 @@ function SwipeCarousel({ children, count, accentColor = "#0093cb" }: SwipeCarous
               key={i}
               onClick={() => scrollTo(i)}
               aria-label={`Go to slide ${i + 1}`}
-              style={{ backgroundColor: i === activeIdx ? accentColor : "#cbd5e1" }}
+              style={{
+                backgroundColor: i === activeIdx ? accentColor : "#cbd5e1",
+              }}
               className={`rounded-full transition-all duration-300 ${i === activeIdx ? "w-5 sm:w-6 h-2" : "w-2 h-2"}`}
             />
           ))}
@@ -219,7 +256,7 @@ const PRODUCT_DATA = [
 // ─── KORU PAGE BANNER ─────────────────────────────────────────────────────────────
 
 const PageBanner = () => (
- <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] overflow-hidden">
+  <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="/banner/Koru Mobile.jpg"
@@ -249,40 +286,55 @@ const PageBanner = () => (
       priority
       unoptimized
     />
-
   </div>
 );
 export default function KoruCommunications() {
-  const allProductImages: string[] = PRODUCT_DATA.flatMap(cat =>
-    cat.items.map(item => item.img)
+  const allProductImages: string[] = PRODUCT_DATA.flatMap((cat) =>
+    cat.items.map((item) => item.img),
   );
   return (
     <div className="text-slate-800 font-sans scroll-smooth bg-white">
-
       {/* ── HERO ── */}
-      <PageBanner/>
+      <PageBanner />
 
-
-    {/* ── ABOUT ── */}
-      <section id="about" className="py-10 sm:py-12 md:py-14 lg:py-12 bg-[#f8fafc] overflow-hidden">
+      {/* ── ABOUT ── */}
+      <section
+        id="about"
+        className="py-10 sm:py-12 md:py-14 lg:py-12 bg-[#f8fafc] overflow-hidden"
+      >
         <div className="max-w-[1500px] xl:w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
           <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-14 xl:gap-20 2xl:gap-24">
-
-            {/* Image block */}
             <div className="w-full sm:w-[340px] md:w-[380px] lg:w-[420px] xl:w-[460px] 2xl:w-[500px] relative flex-shrink-0">
               <div className="relative h-[300px] sm:h-[360px] md:h-[420px] lg:h-[440px] xl:h-[480px] 2xl:h-[520px]">
+                {/* Dots Pattern */}
                 <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 md:-top-6 md:-left-6 grid grid-cols-6 gap-2 sm:gap-3 z-0">
                   {Array.from({ length: 36 }).map((_, i) => (
-                    <span key={i} className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-[#00a65d] opacity-20 block" />
+                    <span
+                      key={i}
+                      className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-[#00a65d] opacity-20 block"
+                    />
                   ))}
                 </div>
+
+                {/* Decorative Circles */}
                 <div className="absolute -top-6 -left-6 sm:-top-8 sm:-left-8 md:-top-10 md:-left-10 w-32 sm:w-40 md:w-48 lg:w-56 h-32 sm:h-40 md:h-48 lg:h-56 rounded-full border border-dashed border-[#0093cb] opacity-30 z-0 animate-spin-slow" />
-                <div className="absolute -top-4 -left-4 sm:-top-5 sm:-left-5 md:-top-6 md:-left-6 w-28 sm:w-32 md:w-36 lg:w-48 h-28 sm:h-32 md:h-36 lg:h-48 rounded-full border border-dashed border-[#00a65d] opacity-20 z-0" />
+
+                <div className="absolute -top-4 -left-4 sm:-top-5 sm:-left-5 md:-top-6 md:left-6 w-28 sm:w-32 md:w-36 lg:w-48 h-28 sm:h-32 md:h-36 lg:h-48 rounded-full border border-dashed border-[#00a65d] opacity-20 z-0" />
+
                 <div className="absolute -bottom-5 -right-5 sm:-bottom-6 sm:-right-6 md:-bottom-8 md:-right-8 w-28 sm:w-32 md:w-40 lg:w-44 h-28 sm:h-32 md:h-40 lg:h-44 rounded-full bg-[#8bde7a]/10 z-0" />
+
                 <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-24 sm:w-28 md:w-32 lg:w-36 h-24 sm:h-28 md:h-32 lg:h-36 rounded-full bg-[#0093cb]/5 z-0" />
+
+                {/* Border Frame */}
                 <div className="absolute top-2 left-2 sm:top-3 sm:left-3 md:top-4 md:left-4 right-0 bottom-0 rounded-2xl sm:rounded-3xl border-2 border-[#0093cb]/30 z-[1]" />
-                <div className="absolute top-4 left-4 sm:top-5 sm:left-5 md:top-8 md:left-8 right-0 bottom-0 rounded-2xl sm:rounded-3xl overflow-hidden z-[2] shadow-xl sm:shadow-2xl">
-                  <img src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru-about.jpeg" alt="Koru Leadership" className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
+
+                {/* Image Container */}
+                <div className="relative top-4 left-4 sm:top-5 sm:left-5 md:top-8 md:left- right-0 bottom-2 rounded-2xl sm:rounded-3xl overflow-hidden z-[2] shadow-xl sm:shadow-2xl">
+                  <img
+                    src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru-about.jpeg"
+                    alt="Koru Leadership"
+                    className="w-full h-full object-fill object-center transition-transform duration-700 hover:scale-105"
+                  />
                 </div>
               </div>
             </div>
@@ -295,21 +347,33 @@ export default function KoruCommunications() {
                   About Koru Communications
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-black text-[#0f172a] leading-[1.1] tracking-tighter">
-                 Bringing Nature Aesthetics into <br />
-                  <span className="text-[#0093cb]">Pharma Utility Gifting</span> 
-                  
+                  Bringing Nature Aesthetics into <br />
+                  <span className="text-[#0093cb]">Pharma Utility Gifting</span>
                 </h2>
               </div>
               <p className="text-sm sm:text-base md:text-lg text-[#6b7280] leading-relaxed max-w-3xl">
-               KORU creates thoughtfully designed premium desk utility products and pharma promotional gifts that combine functionality with calming natural aesthetics.
-Designed for clinics, hospitals, and high-focus workspaces, KORU products improve usability while enhancing subtle brand visibility.
-
+                KORU creates thoughtfully designed premium desk utility products
+                and pharma promotional gifts that combine functionality with
+                calming natural aesthetics. Designed for clinics, hospitals, and
+                high-focus workspaces, KORU products improve usability while
+                enhancing subtle brand visibility.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 sm:gap-y-3 md:gap-y-4 gap-x-4 sm:gap-x-6 md:gap-x-8 pb-2 sm:pb-4">
-                {[" Custom branding available", "Premium utility gifting", "Low-maintenance natural aesthetics", "Multi-functional products"].map((item) => (
-                  <div key={item} className="flex items-center gap-2 sm:gap-3 text-xs sm:text-[13px] md:text-[14px] font-bold text-[#0f172a]">
+                {[
+                  " Custom branding available",
+                  "Premium utility gifting",
+                  "Low-maintenance natural aesthetics",
+                  "Multi-functional products",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-2 sm:gap-3 text-xs sm:text-[13px] md:text-[14px] font-bold text-[#0f172a]"
+                  >
                     <div className="w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 rounded-lg bg-[#00a65d]/10 flex items-center justify-center flex-shrink-0 border border-[#00a65d]/20">
-                      <CheckCircle size={10} className="sm:size-3 md:size-3.5 text-[#00a65d]" />
+                      <CheckCircle
+                        size={10}
+                        className="sm:size-3 md:size-3.5 text-[#00a65d]"
+                      />
                     </div>
                     {item}
                   </div>
@@ -320,42 +384,77 @@ Designed for clinics, hospitals, and high-focus workspaces, KORU products improv
         </div>
       </section>
 
-
       {/* ── SERVICES ── */}
       <section className="py-8 sm:py-10 md:py-12 lg:py-10 bg-gradient-to-br from-[#f8fafc] via-white to-[#8bde7a]/10 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 bg-[#0093cb]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
         <div className="absolute bottom-0 left-0 w-40 sm:w-56 md:w-72 lg:w-80 h-40 sm:h-56 md:h-72 lg:h-80 bg-[#00a65d]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
         <div className="absolute inset-0 opacity-[0.015]">
           <svg width="100%" height="100%">
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" />
+            <pattern
+              id="grid"
+              width="40"
+              height="40"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 40 0 L 0 0 0 40"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="0.5"
+              />
             </pattern>
             <rect width="100%" height="100%" fill="url(#grid)" />
           </svg>
         </div>
 
         <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative">
-
           {/* Header */}
           <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16 relative">
             <div className="flex items-center gap-2 sm:gap-3 mb-1.5 sm:mb-2">
-              <svg width="28" height="8" viewBox="0 0 32 8" fill="none" className="sm:w-8 text-[#0093cb]">
-                <path d="M2 6C4 2 8 1 10 3C12 5 14 7 18 4C22 1 26 5 30 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" className="opacity-70" />
+              <svg
+                width="28"
+                height="8"
+                viewBox="0 0 32 8"
+                fill="none"
+                className="sm:w-8 text-[#0093cb]"
+              >
+                <path
+                  d="M2 6C4 2 8 1 10 3C12 5 14 7 18 4C22 1 26 5 30 3"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  fill="none"
+                  className="opacity-70"
+                />
               </svg>
-              <span className="text-[#0093cb] font-medium tracking-wider text-xs sm:text-sm uppercase">What We Do Best</span>
+              <span className="text-[#0093cb] font-medium tracking-wider text-xs sm:text-sm uppercase">
+                What We Do Best
+              </span>
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-[#0f172a]">
               Expert{" "}
               <span className="relative inline-block">
                 Services
-                <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 100 8" preserveAspectRatio="none">
-                  <path d="M0,5 Q25,0 50,5 Q75,10 100,5" stroke="#00a65d" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                <svg
+                  className="absolute -bottom-2 left-0 w-full"
+                  height="8"
+                  viewBox="0 0 100 8"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0,5 Q25,0 50,5 Q75,10 100,5"
+                    stroke="#00a65d"
+                    strokeWidth="2.5"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
                 </svg>
               </span>
             </h2>
             <div className="flex items-center gap-3 sm:gap-4 mt-3 sm:mt-4">
               <p className="text-[#6b7280] text-sm sm:text-base md:text-lg max-w-xs sm:max-w-xl">
-                A holistic approach to medical communication, blending science with storytelling.
+                A holistic approach to medical communication, blending science
+                with storytelling.
               </p>
               <div className="hidden sm:block h-px flex-1 bg-gradient-to-r from-[#0093cb]/50 to-transparent" />
             </div>
@@ -374,8 +473,12 @@ Designed for clinics, hospitals, and high-focus workspaces, KORU products improv
                       <div className="text-[#0093cb]">{service.icon}</div>
                     </div>
                   </div>
-                  <h3 className="text-base sm:text-lg font-bold text-[#0f172a] mb-1.5 sm:mb-2">{service.title}</h3>
-                  <p className="text-[#6b7280] leading-relaxed text-xs sm:text-sm">{service.desc}</p>
+                  <h3 className="text-base sm:text-lg font-bold text-[#0f172a] mb-1.5 sm:mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-[#6b7280] leading-relaxed text-xs sm:text-sm">
+                    {service.desc}
+                  </p>
                 </div>
                 <div className="absolute -top-2 -left-2 sm:-top-3 sm:-left-3 w-6 h-6 sm:w-7 sm:h-7 bg-white rounded-full shadow-md flex items-center justify-center text-[8px] sm:text-[10px] font-bold text-[#0093cb] border border-[#0093cb]/30">
                   {String(index + 1).padStart(2, "0")}
@@ -388,16 +491,32 @@ Designed for clinics, hospitals, and high-focus workspaces, KORU products improv
           <div className="hidden lg:grid grid-cols-3 gap-5 lg:gap-6 xl:gap-8">
             {SERVICES.map((service, index) => (
               <div key={index} className="relative group">
-                <div className="relative p-6 xl:p-8 bg-white/80 backdrop-blur-sm rounded-2xl xl:rounded-3xl border border-[#eef2f7] shadow-lg hover:shadow-2xl transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-white
-                  before:absolute before:inset-0 before:rounded-2xl xl:before:rounded-3xl before:bg-gradient-to-br before:from-[#0093cb]/0 before:to-[#00a65d]/0 hover:before:from-[#0093cb]/5 hover:before:to-[#00a65d]/5 before:transition-colors before:duration-500">
+                <div
+                  className="relative p-6 xl:p-8 bg-white/80 backdrop-blur-sm rounded-2xl xl:rounded-3xl border border-[#eef2f7] shadow-lg hover:shadow-2xl transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-white
+                  before:absolute before:inset-0 before:rounded-2xl xl:before:rounded-3xl before:bg-gradient-to-br before:from-[#0093cb]/0 before:to-[#00a65d]/0 hover:before:from-[#0093cb]/5 hover:before:to-[#00a65d]/5 before:transition-colors before:duration-500"
+                >
                   <div className="absolute top-3 right-3 xl:top-4 xl:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" className="xl:w-5 xl:h-5">
-                      <path d="M2 2L10 10M10 10L18 2M10 10L2 18M10 10L18 18" stroke="#00a65d" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      className="xl:w-5 xl:h-5"
+                    >
+                      <path
+                        d="M2 2L10 10M10 10L18 2M10 10L2 18M10 10L18 18"
+                        stroke="#00a65d"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        opacity="0.3"
+                      />
                     </svg>
                   </div>
                   <div className="mb-5 xl:mb-7 relative">
                     <div className="w-12 h-12 xl:w-14 xl:h-14 2xl:w-16 2xl:h-16 bg-gradient-to-br from-[#0093cb]/10 to-[#00a65d]/10 rounded-xl xl:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner">
-                      <div className="text-[#0093cb] transform group-hover:rotate-3 transition-transform">{service.icon}</div>
+                      <div className="text-[#0093cb] transform group-hover:rotate-3 transition-transform">
+                        {service.icon}
+                      </div>
                     </div>
                     <div className="absolute -top-1.5 -right-1.5 xl:-top-2 xl:-right-2 w-2.5 h-2.5 xl:w-3 xl:h-3 bg-[#8bde7a] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-150" />
                     <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 xl:w-2 xl:h-2 bg-[#0093cb] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-150" />
@@ -406,11 +525,25 @@ Designed for clinics, hospitals, and high-focus workspaces, KORU products improv
                     {service.title}
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] group-hover:w-full transition-all duration-500" />
                   </h3>
-                  <p className="text-[#6b7280] leading-relaxed mb-3 xl:mb-4 text-sm xl:text-base">{service.desc}</p>
+                  <p className="text-[#6b7280] leading-relaxed mb-3 xl:mb-4 text-sm xl:text-base">
+                    {service.desc}
+                  </p>
                   <div className="flex items-center gap-2 text-[#00a65d] font-medium text-xs xl:text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-0 group-hover:translate-x-2">
                     <span>Learn more</span>
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="xl:w-4 xl:h-4 group-hover:translate-x-1 transition-transform">
-                      <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      className="xl:w-4 xl:h-4 group-hover:translate-x-1 transition-transform"
+                    >
+                      <path
+                        d="M6 12L10 8L6 4"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </div>
                 </div>
@@ -423,18 +556,23 @@ Designed for clinics, hospitals, and high-focus workspaces, KORU products improv
         </div>
       </section>
 
-
       {/* ── BENTO GRID ── */}
       <section className="py-8 sm:py-10 md:py-12 bg-slate-50">
         <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-4 sm:mb-5 md:mb-6">
-            <span className="text-[#00a65d] font-bold uppercase tracking-widest text-xs sm:text-sm inline-block mb-1.5 sm:mb-2">Visual Portfolio</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">Our <span className="text-[#0093cb]">Gallery</span></h2>
-            <p className="text-slate-500 mt-3 sm:mt-4 text-sm sm:text-base md:text-lg">A glimpse into our high-quality medical communication tools and educational materials.</p>
+            <span className="text-[#00a65d] font-bold uppercase tracking-widest text-xs sm:text-sm inline-block mb-1.5 sm:mb-2">
+              Visual Portfolio
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
+              Our <span className="text-[#0093cb]">Gallery</span>
+            </h2>
+            <p className="text-slate-500 mt-3 sm:mt-4 text-sm sm:text-base md:text-lg">
+              A glimpse into our high-quality medical communication tools and
+              educational materials.
+            </p>
           </div>
-          <ImageGallery  />
+          <ImageGallery />
         </div>
-
       </section>
     </div>
   );

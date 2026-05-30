@@ -35,27 +35,27 @@ interface CaseStudy {
 // app/case-studies/page.tsx (update the caseStudies array)
 const caseStudies: CaseStudy[] = [
   {
-    id: 4,
+    id:1,
     title: "Diabetic Retinopathy Patient Awareness Tool",
     category: "Patient Education",
     client: "Leading Pharmaceutical Brand",
     date: "2024",
     description: "Designed and developed an innovative patient awareness solution featuring visual education tools and simulation goggles that helped diabetic patients understand the serious consequences of unmanaged diabetes.",
-    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
+    imageUrl: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Case%20Study/case-study%20(1).png",
     slug: "diabetic-retinopathy-tool",
     stats: { engagement: "+85%", reach: "50K+", products: "1" }
   },
-  {
-    id: 1,
-    title: "Transforming ENT Product Line Strategy",
-    category: "Medical Communications",
-    client: "Leading Pharma Co.",
-    date: "2024",
-    description: "Developed comprehensive medical communication strategy for ENT portfolio, resulting in 40% increase in physician engagement and successful launch of 3 new products.",
-    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
-    slug: "ent-strategy",
-    stats: { engagement: "+40%", reach: "2.5M+", products: "3" }
-  },
+  // {
+  //   id: 2,
+  //   title: "Transforming ENT Product Line Strategy",
+  //   category: "Medical Communications",
+  //   client: "Leading Pharma Co.",
+  //   date: "2024",
+  //   description: "Developed comprehensive medical communication strategy for ENT portfolio, resulting in 40% increase in physician engagement and successful launch of 3 new products.",
+  //   imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
+  //   slug: "ent-strategy",
+  //   stats: { engagement: "+40%", reach: "2.5M+", products: "3" }
+  // },
   {
     id: 2,
     title: "Cardio-Diabetes Digital Campaign",
@@ -75,7 +75,7 @@ const caseStudies: CaseStudy[] = [
     client: "Medical Device Company",
     date: "2024",
     description: "Comprehensive market analysis and launch strategy for orthopedic implants, including surgeon training programs and patient education materials.",
-    imageUrl: "https://images.unsplash.com/photo-1551076805-e1869023e561?w=800&h=600&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
     slug: "ortho-market-entry",
     stats: { engagement: "+120%", reach: "1.8M+", products: "5" }
   }
@@ -123,7 +123,7 @@ function ImageCard({ imageUrl, title }: { imageUrl: string; title: string }) {
 
   return (
     <div 
-      className="relative aspect-[4/3] rounded-2xl overflow-hidden  bg-gray-100 group"
+      className="relative max-w-[550px] h-[350px] md:h-[400px] xl:h-[500px] rounded-2xl overflow-hidden  bg-gray-100 group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -131,7 +131,7 @@ function ImageCard({ imageUrl, title }: { imageUrl: string; title: string }) {
         src={imageUrl}
         alt={title}
         fill
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
+        className="object-fill transition-transform duration-700 group-hover:scale-105"
         sizes="(max-width: 768px) 100vw, 50vw"
       />
       

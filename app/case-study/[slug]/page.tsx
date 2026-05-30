@@ -36,7 +36,7 @@ const caseStudies: Record<string, CaseStudyData> = {
     client: "Leading Pharmaceutical Brand",
     date: "2024-02-10",
     description: "Designed and developed an innovative patient awareness solution for diabetic retinopathy, featuring visual education tools and simulation goggles that helped diabetic patients understand the serious consequences of unmanaged diabetes.",
-    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=800&fit=crop",
+    imageUrl: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Case%20Study/case-study%20(1).png",
     slug: "diabetic-retinopathy-tool",
     stats: { engagement: "+85%", reach: "50K+", products: "1" },
     challenge: "The client needed more than just informational content — they wanted a practical and immersive tool that patients could easily understand and relate to. Additionally, the project involved multiple components requiring careful design, development, and large-scale production within a constrained timeline. An ideal execution window of 45 days was initially planned, but due to project timelines, the overall duration was significantly reduced.",
