@@ -26,7 +26,7 @@ const CATEGORIES = [
   {
     id: "3",
     title: "Personalized Gifts",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_27_41%20PM.png",
+    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%204.png",
     count: "32",
     link: "/categories/all?tab=personalized",
     tab: "personalized-gifts",
@@ -34,7 +34,7 @@ const CATEGORIES = [
   {
     id: "4",
     title: "Occasion",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_25_07%20PM.png",
+    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png",
     count: "15",
     link: "/categories/all?tab=occasion",
     tab: "occasion",
