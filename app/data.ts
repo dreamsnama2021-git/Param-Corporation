@@ -732,19 +732,19 @@ export const allProducts: Product[] = [
 //   { id: 563, name: "Brass Name Plate for Clinic", image: "/TableTop/CUSTOMIZED 15 YEARS MOMENTO.JPG",
 //      price: "₹899", category: "photo-gifts", categoryName: "Name Plate", description: "Traditional brass name plate with doctor's name and specialisation", tags: ["nameplate", "brass", "traditional"] },
 
-//   // Custom Stationery / 3D Printed Plates (IDs: 570-579)
-//   { id: 570, name: "Personalized Doctor's Notebook Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%201.png",
-//      price: "₹599", category: "custom-stationery", categoryName: "3D Printed Plates", description: "Set of 2 notebooks with embossed doctor name and Rx symbol", tags: ["stationery", "notebook", "personalized"] },
-//   { id: 571, name: "Custom Prescription Pad Holder", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%202.png",
-//      price: "₹449", category: "custom-stationery", categoryName: "3D Printed Plates", description: "Leather holder for prescription pads with custom branding", tags: ["stationery", "prescription", "leather"] },
-//   { id: 572, name: "3D Printed Doctor Name Plate", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%203.png",
-//      price: "₹799", category: "custom-stationery", categoryName: "3D Printed Plates", description: "3D printed name plate with doctor name and speciality design", tags: ["3d-printed", "nameplate", "custom"] },
-//   { id: 573, name: "Custom 3D Printed Award Plaque", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%204.png",
-//      price: "₹1499", category: "custom-stationery", categoryName: "3D Printed Plates", description: "3D printed recognition plaque for doctor achievements", tags: ["3d-printed", "award", "plaque"] },
-//   { id: 572, name: "3D Printed Doctor Name Plate", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%203.png",
-//      price: "₹799", category: "custom-stationery", categoryName: "3D Printed Plates", description: "3D printed name plate with doctor name and speciality design", tags: ["3d-printed", "nameplate", "custom"] },
-//   { id: 573, name: "Custom 3D Printed Award Plaque", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%204.png ",
-//      price: "₹1499", category: "custom-stationery", categoryName: "3D Printed Plates", description: "3D printed recognition plaque for doctor achievements", tags: ["3d-printed", "award", "plaque"] },
+  // Custom Stationery / 3D Printed Plates (IDs: 570-579)
+  { id: 570, name: "Personalized Doctor's Notebook Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%201.png",
+     price: "₹599", category: "custom-stationery", categoryName: "3D Printed Plates", description: "Set of 2 notebooks with embossed doctor name and Rx symbol", tags: ["stationery", "notebook", "personalized"] },
+  { id: 571, name: "Custom Prescription Pad Holder", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%202.png",
+     price: "₹449", category: "custom-stationery", categoryName: "3D Printed Plates", description: "Leather holder for prescription pads with custom branding", tags: ["stationery", "prescription", "leather"] },
+  { id: 572, name: "3D Printed Doctor Name Plate", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%203.png",
+     price: "₹799", category: "custom-stationery", categoryName: "3D Printed Plates", description: "3D printed name plate with doctor name and speciality design", tags: ["3d-printed", "nameplate", "custom"] },
+  { id: 573, name: "Custom 3D Printed Award Plaque", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%204.png",
+     price: "₹1499", category: "custom-stationery", categoryName: "3D Printed Plates", description: "3D printed recognition plaque for doctor achievements", tags: ["3d-printed", "award", "plaque"] },
+  { id: 572, name: "3D Printed Doctor Name Plate", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%203.png",
+     price: "₹799", category: "custom-stationery", categoryName: "3D Printed Plates", description: "3D printed name plate with doctor name and speciality design", tags: ["3d-printed", "nameplate", "custom"] },
+  { id: 573, name: "Custom 3D Printed Award Plaque", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%204.png ",
+     price: "₹1499", category: "custom-stationery", categoryName: "3D Printed Plates", description: "3D printed recognition plaque for doctor achievements", tags: ["3d-printed", "award", "plaque"] },
 
 //   // Embossed Leather / Personalized Desk Utility (IDs: 580-589)
 //   { id: 580, name: "Embossed Leather Card Holder", image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=400",
