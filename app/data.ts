@@ -102,7 +102,7 @@ export const personalizedGifts: CategoryItem[] = [
   { name: "Photo Frames", slug: "doctor-name-personalization", description: "Gifts with doctor's name engraved or printed" },
   { name: "Momentos", slug: "clinic-branding", description: "Items customized with clinic logo and details" },
   { name: "Trophies", slug: "custom-packaging", description: "Branded packaging solutions for gifts" },
-  { name: "Brand-Specific Messaging", slug: "brand-specific-messaging", description: "Personalized messages and brand communication" },
+  { name: "Plaques", slug: "brand-specific-messaging", description: "Personalized messages and brand communication" },
   { name: "Persanalized Hampers", slug: "engraved-pens", description: "Personalized writing instruments" },
   { name: "Star Map", slug: "custom-mugs", description: "Printed and personalized coffee mugs" },
   { name: "Name Plate", slug: "photo-gifts", description: "Personalized photo items and collages" },
