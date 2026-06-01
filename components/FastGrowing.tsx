@@ -116,78 +116,77 @@ const industries: Industry[] = [
 
 export default function IndustriesWeCater() {
   return (
-    <section className="relative py-6 sm:py-8 md:py-10 lg:py-12 xl:py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      <div className="max-w-[1500px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-8 mb-6 sm:mb-8 md:mb-10 lg:mb-12">
-        {/* Header */}
-        <div className="text-center">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-gray-900"
-          >
-            Industries we<span className="text-[#0093cb]"> Cater</span>
-          </motion.h2>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-600 text-xs sm:text-xs md:text-sm lg:text-sm xl:text-base max-w-3xl mx-auto mt-2 sm:mt-3 md:mt-4"
-          >
+    <section className="w-full bg-gradient-to-b from-gray-50 to-white py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 overflow-hidden">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-12 xl:mb-16"
+        >
+          <p className="text-xs xl:text-sm font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#0093cb]">
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+            Industries We Serve
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+          </p>
+
+          <h2 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-[#1a1a1a]">
+            Industries we <span className="text-[#0093cb]">Cater</span>
+          </h2>
+
+          <p className="text-sm lg:text-sm xl:text-[18px] leading-relaxed max-w-[780px] mx-auto text-gray-500 px-2 sm:px-0">
             Delivering exceptional gifting and branding solutions across diverse industries nationwide
-          </motion.p>
-        </div>
+          </p>
+        </motion.div>
       </div>
 
       {/* Grid Container - 6 Columns */}
-      <div className="max-w-[1500px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-8 pb-6 sm:pb-8">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 md:gap-4 lg:gap-4 xl:gap-5">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-5 xl:gap-6">
           {industries.map((industry, index) => (
             <motion.div
               key={industry.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
+              transition={{ duration: 0.55, delay: index * 0.05 }}
+              className="block group"
             >
-              <div
-              
-                className="block group"
-              >
-                <div className="relative w-full h-24 sm:h-28 md:h-32 lg:h-36 xl:h-44 rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 shadow-sm">
-                  {/* Background Image */}
-                  <Image
-                    src={industry.image}
-                    alt={industry.name}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
-                  />
-                  
-                  {/* Gradient Overlays */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} opacity-20`} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                  
-                  {/* Content */}
-                  <div className="relative h-full flex flex-col justify-end p-1.5 sm:p-2 md:p-3">
-                    {/* Icon */}
-                    <div className="absolute top-1.5 sm:top-2 md:top-3 left-1.5 sm:left-2 md:left-3">
-                      <div className="p-1 sm:p-1.5 rounded-md sm:rounded-lg bg-white/20 backdrop-blur-md border border-white/20">
-                        <div className="text-white">
-                          {industry.icon}
-                        </div>
+              <div className="relative w-full h-24 sm:h-28 md:h-32 lg:h-36 xl:h-44 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-500 ease-out hover:shadow-2xl hover:-translate-y-1.5 sm:hover:-translate-y-2 shadow-md border border-transparent hover:border-[#0093cb]/20">
+                {/* Background Image */}
+                <Image
+                  src={industry.image}
+                  alt={industry.name}
+                  fill
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                />
+                
+                {/* Gradient Overlays */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} opacity-20`} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                
+                {/* Subtle Primary Glow on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0093cb]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Content */}
+                <div className="relative h-full flex flex-col justify-end p-2 sm:p-2.5 md:p-3">
+                  {/* Icon */}
+                  <div className="absolute top-2 sm:top-2.5 md:top-3 left-2 sm:left-2.5 md:left-3">
+                    <div className="p-1 sm:p-1.5 rounded-lg sm:rounded-xl bg-white/20 backdrop-blur-md border border-white/20 group-hover:bg-[#0093cb]/30 transition-colors duration-300">
+                      <div className="text-white">
+                        {industry.icon}
                       </div>
                     </div>
+                  </div>
 
-                    {/* Name */}
-                    <div>
-                      <h3 className="text-[9px] sm:text-[10px] md:text-xs lg:text-xs xl:text-sm font-bold text-white line-clamp-2 leading-tight">
-                        {industry.name}
-                      </h3>
-                    </div>
+                  {/* Name */}
+                  <div>
+                    <h3 className="font-bold text-[10px] sm:text-[11px] md:text-xs lg:text-xs xl:text-sm text-white line-clamp-2 leading-tight group-hover:translate-x-0.5 transition-transform duration-300">
+                      {industry.name}
+                    </h3>
                   </div>
                 </div>
               </div>

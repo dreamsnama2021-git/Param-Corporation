@@ -1,5 +1,14 @@
+/* =====================================================
+   FONT IMPORTS - MUST BE FIRST
+===================================================== */
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
+
+/* =====================================================
+   STYLE GUIDE CLASS SYSTEM
+   Based on Case Studies Component Style Guide
+   Compatible with existing design tokens
+===================================================== */
 
 @custom-variant dark (&:is(.dark *));
 
@@ -152,8 +161,6 @@
     max-width: var(--container-max);
     padding: var(--space-2xl) var(--container-padding);
   }
-  
-  
   
   /* Navbar link adjustments - keep navbar visible */
   nav .lg\:flex a {
@@ -517,3 +524,941 @@ nav img {
     max-height: 4.5rem;
   }
 }
+
+/* ----------------------------------------------
+   CONTAINER CLASSES
+---------------------------------------------- */
+.style-container {
+  width: 100%;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Container Padding - Responsive */
+.style-container-padding {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width: 640px) {
+  .style-container-padding {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .style-container-padding {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+/* Container Vertical Padding */
+.style-section-padding {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+@media (min-width: 640px) {
+  .style-section-padding {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .style-section-padding {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}
+
+/* Grid Container */
+.style-grid-container {
+  max-width: 1152px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  justify-items: center;
+}
+
+/* ----------------------------------------------
+   TYPOGRAPHY - HEADINGS & SUBHEADINGS
+--------------------------------------------- */
+
+/* Section Subtitle */
+.style-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--clr-primary, #0093cb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 640px) {
+  .style-subtitle {
+    margin-bottom: 12px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .style-subtitle {
+    font-size: 14px;
+  }
+}
+
+/* Subtitle Decorative Lines */
+.style-subtitle-line {
+  display: inline-block;
+  width: 16px;
+  height: 1.5px;
+  background-color: var(--clr-primary, #0093cb);
+}
+
+@media (min-width: 640px) {
+  .style-subtitle-line {
+    width: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .style-subtitle-line {
+    width: 24px;
+  }
+}
+
+/* Section Main Title */
+.style-title {
+  font-size: 24px;
+  font-weight: 800;
+  text-transform: capitalize;
+  letter-spacing: -0.025em;
+  color: var(--clr-text-dark, #1a1a1a);
+  margin-bottom: 8px;
+}
+
+@media (min-width: 640px) {
+  .style-title {
+    font-size: 30px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .style-title {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .style-title {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .style-title {
+    font-size: 48px;
+  }
+}
+
+/* Title Highlight (Primary Color) */
+.style-title-highlight {
+  color: var(--clr-primary, #0093cb);
+}
+
+/* Section Description */
+.style-description {
+  font-size: 14px;
+  line-height: 1.625;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--clr-text-muted, #6b7280);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+@media (min-width: 640px) {
+  .style-description {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .style-description {
+    font-size: 18px;
+  }
+}
+
+/* ----------------------------------------------
+   TYPOGRAPHY - CARD CONTENT
+--------------------------------------------- */
+
+/* Card Title - Following exact style guide specs */
+.style-card-title {
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.25;
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+  font-size: 16px;
+}
+
+@media (min-width: 640px) {
+  .style-card-title {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .style-card-title {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .style-card-title {
+    font-size: 20px;
+  }
+}
+
+/* Card Title Hover */
+.style-card-title-hover:hover,
+.group:hover .style-card-title-group {
+  color: var(--clr-primary, #0093cb);
+}
+
+/* Card Description */
+.style-card-description {
+  font-size: 14px;
+  line-height: 1.625;
+  color: #4b5563;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 1280px) {
+  .style-card-description {
+    font-size: 16px;
+  }
+}
+
+/* Card Meta Text (Read Time, etc.) */
+.style-card-meta {
+  font-size: 12px;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (min-width: 640px) {
+  .style-card-meta {
+    gap: 6px;
+  }
+}
+
+/* ----------------------------------------------
+   BUTTON STYLES
+--------------------------------------------- */
+
+/* Primary Button Base */
+.style-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: #8bde7a;
+  color: #1a1a1a;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 300ms ease-out;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  padding: 6px 12px;
+}
+
+@media (min-width: 640px) {
+  .style-btn-primary {
+    gap: 8px;
+    padding: 8px 20px;
+  }
+}
+
+/* Primary Button Hover */
+.style-btn-primary:hover {
+  background-color: var(--clr-primary, #0093cb);
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 147, 203, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Primary Button Arrow Icon */
+.style-btn-primary-arrow {
+  width: 12px;
+  height: 12px;
+  transition: transform 300ms ease-out;
+}
+
+@media (min-width: 640px) {
+  .style-btn-primary-arrow {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.style-btn-primary:hover .style-btn-primary-arrow {
+  transform: translateX(4px);
+}
+
+/* Secondary Button */
+.style-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: white;
+  border: 2px solid var(--clr-primary, #0093cb);
+  color: var(--clr-primary, #0093cb);
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 300ms ease-out;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 8px 20px;
+}
+
+@media (min-width: 1280px) {
+  .style-btn-secondary {
+    gap: 12px;
+    padding: 12px 32px;
+  }
+}
+
+/* Secondary Button Hover */
+.style-btn-secondary:hover {
+  background-color: var(--clr-primary, #0093cb);
+  color: white;
+  box-shadow: 0 8px 25px -10px rgba(0, 147, 203, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Secondary Button Arrow */
+.style-btn-secondary-arrow {
+  width: 14px;
+  height: 14px;
+  transition: transform 300ms ease-out;
+}
+
+@media (min-width: 640px) {
+  .style-btn-secondary-arrow {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.style-btn-secondary:hover .style-btn-secondary-arrow {
+  transform: translateX(4px);
+}
+
+/* ----------------------------------------------
+   CARD COMPONENTS
+--------------------------------------------- */
+
+/* Card Container */
+.style-card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  width: 100%;
+  max-width: 350px;
+  transition: all 500ms ease-out;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .style-card {
+    border-radius: 16px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
+}
+
+/* Card Hover Effects */
+.style-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  border-color: rgba(0, 147, 203, 0.2);
+}
+
+@media (max-width: 640px) {
+  .style-card:hover {
+    transform: translateY(-6px);
+  }
+}
+
+/* Card Image Wrapper */
+.style-card-image {
+  position: relative;
+  overflow: hidden;
+  height: 160px;
+}
+
+@media (min-width: 640px) {
+  .style-card-image {
+    height: 176px;
+  }
+}
+
+@media (min-width: 768px) {
+  .style-card-image {
+    height: 192px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .style-card-image {
+    height: 208px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .style-card-image {
+    height: 320px;
+  }
+}
+
+/* Card Image Inner */
+.style-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms ease-out;
+}
+
+.style-card:hover .style-card-image img {
+  transform: scale(1.05);
+}
+
+/* Card Image Overlay */
+.style-card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 147, 203, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+}
+
+.style-card:hover .style-card-image-overlay {
+  opacity: 1;
+}
+
+/* Card Content */
+.style-card-content {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: white;
+}
+
+@media (min-width: 1280px) {
+  .style-card-content {
+    padding: 16px 24px;
+  }
+}
+
+/* Card Divider */
+.style-card-divider {
+  border-top: 1px solid #f3f4f6;
+  padding-top: 8px;
+  margin-top: auto;
+}
+
+@media (min-width: 640px) {
+  .style-card-divider {
+    padding-top: 12px;
+  }
+}
+
+/* Card Footer */
+.style-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ----------------------------------------------
+   SPACING SYSTEM - MARGINS
+--------------------------------------------- */
+
+/* Section Header Bottom Margin */
+.style-section-header-margin {
+  margin-bottom: 32px;
+}
+
+@media (min-width: 640px) {
+  .style-section-header-margin {
+    margin-bottom: 48px;
+  }
+}
+
+/* Title Bottom Margin */
+.style-title-margin {
+  margin-bottom: 8px;
+}
+
+@media (min-width: 640px) {
+  .style-title-margin {
+    margin-bottom: 12px;
+  }
+}
+
+/* Button Top Margin (for View All buttons) */
+.style-button-top-margin {
+  margin-top: 32px;
+}
+
+@media (min-width: 640px) {
+  .style-button-top-margin {
+    margin-top: 48px;
+  }
+}
+
+/* Card Title Bottom Margin */
+.style-card-title-margin {
+  margin-bottom: 4px;
+}
+
+/* Grid Gap */
+.style-grid-gap {
+  gap: 20px;
+}
+
+@media (min-width: 1280px) {
+  .style-grid-gap {
+    gap: 32px;
+  }
+}
+
+/* ----------------------------------------------
+   ICON SIZES
+--------------------------------------------- */
+
+/* Small Icons (Arrow, Clock) */
+.style-icon-sm {
+  width: 12px;
+  height: 12px;
+}
+
+@media (min-width: 640px) {
+  .style-icon-sm {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Medium Icons */
+.style-icon-md {
+  width: 16px;
+  height: 16px;
+}
+
+/* Large Icons */
+.style-icon-lg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ----------------------------------------------
+   ANIMATION UTILITIES
+--------------------------------------------- */
+
+.style-transition-fast {
+  transition-duration: 300ms;
+}
+
+.style-transition-medium {
+  transition-duration: 500ms;
+}
+
+.style-transition-slow {
+  transition-duration: 700ms;
+}
+
+.style-hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.style-hover-translate-up {
+  transition: transform 300ms ease-out;
+}
+
+.style-hover-translate-up:hover {
+  transform: translateY(-4px);
+}
+
+/* ----------------------------------------------
+   GRID LAYOUTS
+--------------------------------------------- */
+
+/* 1 Column Grid (Mobile) */
+.style-grid-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  justify-items: center;
+}
+
+/* 2 Column Grid (Tablet) */
+@media (min-width: 640px) {
+  .style-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+}
+
+/* 3 Column Grid (Laptop) */
+@media (min-width: 1024px) {
+  .style-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+}
+
+/* 4 Column Grid (Desktop) */
+@media (min-width: 1280px) {
+  .style-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    justify-items: center;
+  }
+}
+
+/* 6 Column Grid (Large Desktop) */
+@media (min-width: 1440px) {
+  .style-grid-6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+    justify-items: center;
+  }
+}
+
+/* ----------------------------------------------
+   RESPONSIVE TEXT UTILITIES
+--------------------------------------------- */
+
+/* Responsive Text - Follows style guide breakpoints */
+.text-responsive-title {
+  font-size: 24px;
+}
+
+@media (min-width: 640px) {
+  .text-responsive-title {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .text-responsive-title {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .text-responsive-title {
+    font-size: 48px;
+  }
+}
+
+.text-responsive-subtitle {
+  font-size: 12px;
+}
+
+@media (min-width: 1280px) {
+  .text-responsive-subtitle {
+    font-size: 14px;
+  }
+}
+
+.text-responsive-description {
+  font-size: 14px;
+}
+
+@media (min-width: 1280px) {
+  .text-responsive-description {
+    font-size: 18px;
+  }
+}
+
+.text-responsive-card-title {
+  font-size: 16px;
+}
+
+@media (min-width: 1024px) {
+  .text-responsive-card-title {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .text-responsive-card-title {
+    font-size: 20px;
+  }
+}
+
+/* ----------------------------------------------
+   COMPOSITE CLASSES (Common Combinations)
+--------------------------------------------- */
+
+/* Complete Section Header */
+.style-section-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 640px) {
+  .style-section-header {
+    margin-bottom: 48px;
+  }
+}
+
+.style-section-header .subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--clr-primary, #0093cb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 640px) {
+  .style-section-header .subtitle {
+    margin-bottom: 12px;
+  }
+}
+
+.style-section-header .title {
+  font-size: 24px;
+  font-weight: 800;
+  text-transform: capitalize;
+  letter-spacing: -0.025em;
+  color: var(--clr-text-dark, #1a1a1a);
+  margin-bottom: 8px;
+}
+
+@media (min-width: 640px) {
+  .style-section-header .title {
+    font-size: 30px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .style-section-header .title {
+    font-size: 36px;
+  }
+}
+
+.style-section-header .description {
+  font-size: 14px;
+  line-height: 1.625;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--clr-text-muted, #6b7280);
+}
+
+@media (min-width: 1280px) {
+  .style-section-header .description {
+    font-size: 18px;
+  }
+}
+
+/* Complete Card */
+.style-card-complete {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  max-width: 350px;
+  transition: all 500ms ease-out;
+  border: 1px solid transparent;
+}
+
+@media (min-width: 640px) {
+  .style-card-complete {
+    border-radius: 16px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
+}
+
+.style-card-complete:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  border-color: rgba(0, 147, 203, 0.2);
+}
+
+.style-card-complete .image {
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .style-card-complete .image {
+    height: 176px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .style-card-complete .image {
+    height: 320px;
+  }
+}
+
+.style-card-complete .content {
+  padding: 12px 16px;
+}
+
+@media (min-width: 1280px) {
+  .style-card-complete .content {
+    padding: 16px 24px;
+  }
+}
+
+.style-card-complete .title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+@media (min-width: 1024px) {
+  .style-card-complete .title {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .style-card-complete .title {
+    font-size: 20px;
+  }
+}
+
+.style-card-complete .description {
+  font-size: 14px;
+  line-height: 1.625;
+  color: #4b5563;
+  margin-bottom: 8px;
+}
+
+/* ----------------------------------------------
+   HELPER CLASSES
+--------------------------------------------- */
+
+/* Text alignment */
+.text-center {
+  text-align: center;
+}
+
+/* Flex utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Overflow utilities */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* Position utilities */
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* Z-index utilities */
+.z-0 {
+  z-index: 0;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+/* Pointer events */
+.pointer-events-none {
+  pointer-events: none;
+}
+
+/* ----------------------------------------------
+   QUICK REFERENCE TABLE (CSS Comments)
+--------------------------------------------- */
+
+/*
+DEVICE BREAKPOINTS:
+- Mobile: 0 - 639px
+- Tablet: 640px - 1023px  
+- Laptop: 1024px - 1279px
+- Desktop 1280px: 1280px - 1439px
+- Desktop 1440px: 1440px - 1599px
+- Desktop 1600px: 1600px - 1899px
+- Desktop 1800px: 1900px+
+
+TYPOGRAPHY QUICK REF:
+- Subtitle: 12px → 14px (xl)
+- Title: 24px → 30px (sm) → 36px (xl) → 48px (2xl)
+- Description: 14px → 18px (xl)
+- Card Title: 16px → 18px (lg) → 20px (xl)
+
+SPACING QUICK REF:
+- Section Vertical: 32px → 40px (sm) → 64px (xl)
+- Section Header Bottom: 32px → 48px (sm)
+- Grid Gap: 20px → 32px (xl)
+- Card Content: 12px 16px → 16px 24px (xl)
+
+BUTTON QUICK REF:
+- Primary: #8bde7a → #0093cb on hover
+- Secondary: white border-2 → #0093cb bg on hover
+*/

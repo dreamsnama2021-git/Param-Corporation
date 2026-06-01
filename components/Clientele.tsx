@@ -25,7 +25,6 @@ const clients = [
     name: "Lupin",
     logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0007-scaled.jpg",
   },
-
   // --- New Logos from ParamCorp ---
   {
     name: "Wockhardt",
@@ -69,48 +68,49 @@ const clients = [
   },
 ];
 
-
-
 const ClientSection = () => {
   // Triple the array to ensure seamless looping
   const tripleClients = [...clients, ...clients, ...clients];
 
   return (
-    <section className="py-6 sm:py-8 md:py-10 overflow-hidden">
-      <div className="ui-container">
-        {/* Header */}
+    <section className="w-full bg-white py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 overflow-hidden">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="text-center mb-8 sm:mb-10 md:mb-12"
+          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-12 xl:mb-16"
         >
-          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[var(--clr-primary)]">
-            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[var(--clr-primary)]" />
-            Our clients
-            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[var(--clr-primary)]" />
+          <p className="text-xs xl:text-sm font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#0093cb]">
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+            Our Partners
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
           </p>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-[var(--clr-text-dark)]">
-            Trusted by <span className="text-[#0093cb]">Pharmaceutical Brands Across India</span>
-          </h2>
-          <p className="text-xs sm:text-sm leading-relaxed max-w-[780px] mx-auto text-[var(--clr-text-muted)] px-2 sm:px-0">
-           Param Corporation partners with pharmaceutical companies, healthcare brands, and medical organizations to create impactful doctor gifting solutions, pharma branding tools, and healthcare communication products.
-We build meaningful brand relationships through solutions designed for visibility, engagement, and long-term recall.
 
+          <h2 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-[#1a1a1a]">
+            Trusted by <span className="text-[#0093cb]">Pharmaceutical Brands</span>
+          </h2>
+          
+          <p className="text-sm lg:text-sm xl:text-[18px] leading-relaxed max-w-[780px] mx-auto text-gray-500 px-2 sm:px-0">
+            Param Corporation partners with pharmaceutical companies, healthcare brands, and medical organizations 
+            to create impactful doctor gifting solutions, pharma branding tools, and healthcare communication products.
+            <br /><br />
+            We build meaningful brand relationships through solutions designed for visibility, engagement, and long-term recall.
           </p>
         </motion.div>
       </div>
 
       {/* Infinite Scrolling Ticker - CSS Based */}
-      <div className="relative w-full bg-white">
+      <div className="relative w-full bg-white border-y border-[rgba(0,147,203,0.08)]">
         <div className="flex animate-scroll hover:[animation-play-state:paused]">
           {tripleClients.map((c, i) => (
             <div
               key={i}
-              className="flex-shrink-0 flex items-center justify-center px-6 sm:px-8 md:px-10 lg:px-12 border-r border-[rgba(0,147,203,0.12)]"
+              className="flex-shrink-0 flex items-center justify-center px-6 sm:px-8 md:px-10 lg:px-12 xl:px-14 border-r border-[rgba(0,147,203,0.12)] last:border-r-0 group transition-all duration-300"
             >
-              <div className="relative h-20 sm:h-24 md:h-28 lg:h-30 w-20 sm:w-22 md:w-24 lg:w-28 transition-all duration-300">
+              <div className="relative h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 w-20 sm:w-24 md:w-28 lg:w-32 xl:w-36 transition-all duration-300  opacity-90 hover:opacity-100">
                 <Image
                   src={c.logo}
                   alt={c.name}
@@ -133,8 +133,20 @@ We build meaningful brand relationships through solutions designed for visibilit
           }
         }
         .animate-scroll {
-          animation: scroll 30s linear infinite;
+          animation: scroll 35s linear infinite;
           width: max-content;
+        }
+        
+        @media (max-width: 640px) {
+          .animate-scroll {
+            animation-duration: 25s;
+          }
+        }
+        
+        @media (min-width: 1280px) {
+          .animate-scroll {
+            animation-duration: 40s;
+          }
         }
       `}</style>
     </section>
