@@ -451,7 +451,7 @@ const TeamSection = () => {
     {
       name: "Mr. Rajeev Dosi",
       role: "Director",
-      image: "/banner/WhatsApp Image 2026-05-20 at 7.05.07 PM.jpeg",
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/ChatGPT%20Image%20Jun%204%2C%202026%2C%2007_34_03%20PM.png",
     },
     {
       name: "Mr. Sanchay Dosi",
