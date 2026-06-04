@@ -17,7 +17,7 @@ interface PopupFormProps {
 export default function PopupForm({
   delay = 2500,
   title = "Get In Touch",
-  subtitle = "Fill out the form and our team will get back to you within 24 hours.",
+  // subtitle = "Fill out the form and our team will get back to you within 24 hours.",
   buttonText = "Submit",
   successMessage = "Thank you! We'll get back to you soon.",
   formEndpoint = "/api/contact",
@@ -210,9 +210,9 @@ export default function PopupForm({
                       <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
                         {title}
                       </h2>
-                      <p className="text-gray-500 text-sm sm:text-base">
+                      {/* <p className="text-gray-500 text-sm sm:text-base">
                         {subtitle}
-                      </p>
+                      </p> */}
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-4">

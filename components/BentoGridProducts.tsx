@@ -1565,7 +1565,7 @@ const CollageCard = memo(function CollageCard({
         className="object-cover transition-transform duration-700 group-hover:scale-105"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-white/2 to-white/4" />
 
       <div className="absolute inset-0 p-2 sm:p-3 md:p-4 lg:p-5 flex flex-col justify-between">
         <div className="flex justify-end">
@@ -1577,7 +1577,7 @@ const CollageCard = memo(function CollageCard({
           <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl drop-shadow-lg block mb-1 sm:mb-2">
             {therapy.icon}
           </span>
-          <h3 className="text-white text-[11px] sm:text-sm md:text-base lg:text-lg font-bold leading-tight drop-shadow-lg">
+          <h3 className="text-black  inline-block px-2 py-1 rounded-sm text-[11px] sm:text-sm md:text-base lg:text-lg font-semibold leading-tight drop-shadow-lg">
             {therapy.therapy}
           </h3>
         </div>

@@ -1,7 +1,18 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { Phone, CheckCircle, ArrowUpRight, ChevronRight, PenTool, Gift, Leaf, Layout, Eye, Droplets } from "lucide-react";
+import {
+  Phone,
+  CheckCircle,
+  ArrowUpRight,
+  ChevronRight,
+  PenTool,
+  Gift,
+  Leaf,
+  Layout,
+  Eye,
+  Droplets,
+} from "lucide-react";
 import {
   FileText,
   Users,
@@ -13,7 +24,6 @@ import {
 import ImageGallery from "@/components/Productgallery";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
 
 // ─── Define the types for the props ───────────────────────────
 interface SwipeCarouselProps {
@@ -336,7 +346,7 @@ const WhyChooseKoruSection = () => {
       {/* Background decorative blobs */}
       <div className="absolute top-0 right-0 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 bg-[#0093cb]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
       <div className="absolute bottom-0 left-0 w-40 sm:w-56 md:w-72 lg:w-80 h-40 sm:h-56 md:h-72 lg:h-80 bg-[#00a65d]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
-      
+
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 opacity-[0.015]">
         <svg width="100%" height="100%">
@@ -369,8 +379,9 @@ const WhyChooseKoruSection = () => {
             Why Choose <span className="style-title-highlight">KORU</span>
           </h2>
           <p className="style-description">
-            Premium desk solutions and pharma gifting products designed to enhance 
-            workspaces, improve usability, and create lasting brand visibility.
+            Premium desk solutions and pharma gifting products designed to
+            enhance workspaces, improve usability, and create lasting brand
+            visibility.
           </p>
         </div>
 
@@ -378,13 +389,16 @@ const WhyChooseKoruSection = () => {
         <div className="block lg:hidden">
           <VisionSwipeCarousel count={KORU_FEATURES.length}>
             {KORU_FEATURES.map((feature, index) => (
-              <div key={index} className="snap-center flex-shrink-0 w-[82vw] sm:w-[46vw]">
+              <div
+                key={index}
+                className="snap-center flex-shrink-0 w-[82vw] sm:w-[46vw]"
+              >
                 <div className="relative">
                   {/* Number badge */}
                   <div className="absolute -top-2.5 -left-2.5 w-6 h-6 sm:w-7 sm:h-7 bg-white rounded-full shadow-md flex items-center justify-center text-[10px] sm:text-xs font-bold text-[#0093cb] border border-[#0093cb]/30 z-10">
                     {String(index + 1).padStart(2, "0")}
                   </div>
-                  
+
                   {/* Card Content */}
                   <div className="p-4 sm:p-5 md:p-6 bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-[#eef2f7] shadow-lg">
                     {/* Icon */}
@@ -393,16 +407,14 @@ const WhyChooseKoruSection = () => {
                         <div className="text-[#0093cb]">{feature.icon}</div>
                       </div>
                     </div>
-                    
+
                     {/* Title */}
                     <h3 className="style-card-title style-card-title-margin">
                       {feature.title}
                     </h3>
-                    
+
                     {/* Description */}
-                    <p className="style-card-description">
-                      {feature.desc}
-                    </p>
+                    <p className="style-card-description">{feature.desc}</p>
                   </div>
                 </div>
               </div>
@@ -418,7 +430,7 @@ const WhyChooseKoruSection = () => {
               <div className="absolute -top-3 -left-3 xl:-top-3 xl:-left-3 w-7 h-7 xl:w-8 xl:h-8 bg-white rounded-full shadow-md flex items-center justify-center text-xs font-bold text-[#0093cb] border border-[#0093cb]/30 z-10">
                 {String(index + 1).padStart(2, "0")}
               </div>
-              
+
               {/* Card */}
               <div className=" transition-all duration-500 ease-out">
                 {/* Decorative corner element */}
@@ -433,12 +445,12 @@ const WhyChooseKoruSection = () => {
                     />
                   </svg>
                 </div>
-                
+
                 {/* Content */}
                 <div className="p-6 xl:p-8 bg-white/80 backdrop-blur-sm rounded-2xl xl:rounded-3xl border border-[#eef2f7] shadow-lg hover:shadow-2xl transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-white relative">
                   {/* Gradient overlay on hover */}
                   <div className="absolute inset-0 rounded-2xl xl:rounded-3xl bg-gradient-to-br from-[#0093cb]/0 to-[#00a65d]/0 group-hover:from-[#0093cb]/5 group-hover:to-[#00a65d]/5 transition-colors duration-500 pointer-events-none" />
-                  
+
                   {/* Icon */}
                   <div className="mb-5 xl:mb-6 relative">
                     <div className="w-12 h-12 xl:w-14 xl:h-14 bg-gradient-to-br from-[#0093cb]/10 to-[#00a65d]/10 rounded-xl xl:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner">
@@ -450,17 +462,15 @@ const WhyChooseKoruSection = () => {
                     <div className="absolute -top-1.5 -right-1.5 w-2.5 h-2.5 bg-[#8bde7a] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-150" />
                     <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-[#0093cb] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-150" />
                   </div>
-                  
+
                   {/* Title */}
                   <h3 className="style-card-title style-card-title-margin relative inline-block">
                     {feature.title}
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] group-hover:w-full transition-all duration-500" />
                   </h3>
-                  
+
                   {/* Description */}
-                  <p className="style-card-description">
-                    {feature.desc}
-                  </p>
+                  <p className="style-card-description">{feature.desc}</p>
                 </div>
               </div>
             </div>
@@ -479,7 +489,10 @@ export default function KoruCommunications() {
       <PageBanner />
 
       {/* ── ABOUT KORU ── */}
-      <section id="about" className="style-section-padding bg-[#f8fafc] overflow-hidden">
+      <section
+        id="about"
+        className="style-section-padding bg-[#f8fafc] overflow-hidden"
+      >
         <div className="style-container style-container-padding">
           <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-14 xl:gap-20 2xl:gap-24">
             {/* Image Section */}
@@ -504,14 +517,15 @@ export default function KoruCommunications() {
                 {/* Border Frame */}
                 <div className="absolute top-2 left-2 sm:top-3 sm:left-3 md:top-4 md:left-4 right-0 bottom-0 rounded-2xl sm:rounded-3xl border-2 border-[#0093cb]/30 z-[1]" />
 
-                {/* Image Container */}
-                <div className="relative top-4 left-4 sm:top-5 sm:left-5 md:top-8 md:left-8 right-0 bottom-2 rounded-2xl sm:rounded-3xl overflow-hidden z-[2] shadow-xl sm:shadow-2xl">
+                {/* Image Container - FIXED */}
+                <div className="absolute top-4 left-4 sm:top-5 sm:left-5 md:top-8 md:left-8 right-0 bottom-2 rounded-2xl sm:rounded-3xl overflow-hidden z-[2] shadow-xl sm:shadow-2xl">
                   <Image
                     src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru-about.jpeg"
                     alt="Koru Leadership"
                     fill
-                    className="object-fill object-center transition-transform duration-700 hover:scale-105"
+                    className="object-cover object-center transition-transform duration-700 hover:scale-105"
                     unoptimized
+                    priority
                   />
                 </div>
               </div>
@@ -526,7 +540,9 @@ export default function KoruCommunications() {
                 </div>
                 <h2 className="style-title !text-left">
                   Bringing Nature Aesthetics into{" "}
-                  <span className="style-title-highlight">Pharma Utility Gifting</span>
+                  <span className="style-title-highlight">
+                    Pharma Utility Gifting
+                  </span>
                 </h2>
               </div>
               <p className="style-description !text-left !max-w-3xl">
@@ -564,8 +580,6 @@ export default function KoruCommunications() {
 
       {/* ── WHY CHOOSE KORU ── */}
       <WhyChooseKoruSection />
-
-
 
       {/* ── GALLERY ── */}
       <section className="style-section-padding bg-slate-50">

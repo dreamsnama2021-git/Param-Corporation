@@ -175,7 +175,7 @@ const FloatingCard = ({
 
 // ─── ABOUT US PAGE BANNER ─────────────────────────────────────────────────────────────
 const PageBanner = () => (
-  <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] overflow-hidden">
+  <div className="relative w-full h-[50vh] sm:h-[55vh] md:h-[60vh] lg:h-[65vh] xl:h-[70vh] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="/banner/About page Mobile.jpg"
@@ -265,36 +265,42 @@ const WhyUsSection = () => {
   }
 
   const Card = ({ item }: { item: CardItem }) => (
-    <div className="bg-white p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow">
+    <div className="bg-white p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow flex flex-col">
       <div
-        className={`w-8 h-8 sm:w-10 sm:h-10 ${item.color} rounded-lg sm:rounded-xl mb-3 sm:mb-4 flex items-center justify-center text-white`}
+        className={`w-8 h-8 sm:w-10 sm:h-10 ${item.color} rounded-lg sm:rounded-xl mb-3 sm:mb-4 flex items-center justify-center text-white flex-shrink-0`}
       >
         <item.icon size={18} />
       </div>
-      <h3 className="style-card-title style-card-title-margin">
+      {/* Increased from text-sm to text-base, sm:text-base to sm:text-lg */}
+      <h3 className="text-base sm:text-lg font-bold mb-1.5 sm:mb-2 text-[#0f172a] flex-shrink-0">
         {item.title}
       </h3>
-      <p className="style-card-description">{item.desc}</p>
+      {/* Increased from text-xs to text-sm, sm:text-sm to sm:text-base */}
+      <p className="text-sm sm:text-base text-[#6b7280] leading-relaxed flex-grow">
+        {item.desc}
+      </p>
     </div>
   );
 
   return (
-    <section className="style-section-padding bg-slate-50">
-      <div className="style-container style-container-padding space-y-3 sm:space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 style-grid-gap">
-          <div className="flex flex-col justify-center">
-            <p className="style-subtitle !justify-start">
+    <section className="py-10 sm:py-14 md:py-16 lg:py-20 bg-slate-50 overflow-visible">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 space-y-3 sm:space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-4">
+          <div className="flex flex-col justify-center py-2 md:py-0">
+            {/* Subtitle: Increased from text-[10px] to text-xs, sm:text-[11px] to sm:text-[13px] */}
+            <p className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-1.5 sm:mb-2">
               Why Param
             </p>
-            <h2 className="style-title">
-              The <span className="style-title-highlight">Difference</span>
+            {/* Title: Increased from text-2xl to text-3xl, sm:text-3xl to sm:text-4xl, md:text-4xl to md:text-5xl */}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-[#0f172a]">
+              The <span className="text-[#0093cb]">Difference</span>
             </h2>
           </div>
           {row1Cards.map((item, i) => (
             <Card key={i} item={item} />
           ))}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 style-grid-gap">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {row2Cards.map((item, i) => (
             <Card key={i} item={item} />
           ))}
@@ -356,31 +362,32 @@ interface CardData {
   ctaHref?: string;
   estLabel: string;
 }
-
 function VisionCard({ item }: { item: CardData }) {
   return (
-    <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-200 p-5 sm:p-7 flex flex-col min-h-[220px] max-h-[300px] hover:border-slate-300 hover:shadow-sm transition-all duration-200">
-      <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-        <span className="style-card-meta !text-slate-400">
+    <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-200 p-5 sm:p-7 flex flex-col hover:border-slate-300 hover:shadow-sm transition-all duration-200 h-full">
+      <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 flex-shrink-0">
+        {/* Number/Label: Increased from text-[10px] to text-xs, sm:text-[11px] to sm:text-[13px] */}
+        <span className="text-xs sm:text-[13px] font-medium uppercase tracking-widest text-slate-400">
           {item.number} / {item.label}
         </span>
         <div className="flex-1 h-px bg-slate-100" />
       </div>
       <div
-        className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 ${item.iconBg}`}
+        className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 ${item.iconBg} flex-shrink-0`}
       >
         <span className={item.iconColor}>{item.icon}</span>
       </div>
-      <h3 className="style-card-title style-card-title-margin">
+      {/* Title: Increased from text-sm to text-base, sm:text-base to sm:text-lg, lg:text-[17px] to lg:text-[19px] */}
+      <h3 className="text-base sm:text-lg lg:text-[19px] font-semibold text-[#0f172a] mb-1.5 sm:mb-2 flex-shrink-0">
         {item.title}
       </h3>
-      <p className="style-card-description flex-1">
+      {/* Description: Increased from text-xs to text-sm, sm:text-sm to sm:text-base, lg:text-[13px] to lg:text-[15px] */}
+      <p className="text-sm sm:text-base lg:text-[15px] text-[#6b7280] leading-relaxed flex-grow overflow-y-auto">
         {item.desc}
       </p>
     </div>
   );
 }
-
 const VisionSection = () => {
   const data: CardData[] = [
     {
@@ -412,26 +419,30 @@ const VisionSection = () => {
   ];
 
   return (
-    <section className="style-section-padding bg-white overflow-hidden">
-      <div className="style-container style-container-padding">
-        <div className="style-section-header">
-          <p className="style-subtitle">
+    <section className="py-10 sm:py-14 md:py-16 lg:py-20 bg-white overflow-visible">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          {/* Subtitle: Increased from text-[10px] to text-xs, sm:text-[11px] to sm:text-[13px] */}
+          <p className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 text-[#0093cb]">
             Our Purpose
           </p>
-          <h2 className="style-title">
-            Vision & <span className="style-title-highlight">Mission</span>
+          {/* Title: Increased from text-2xl to text-3xl, sm:text-3xl to sm:text-4xl, md:text-4xl to md:text-5xl */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0f172a]">
+            Vision & <span className="text-[#0093cb]">Mission</span>
           </h2>
         </div>
         <VisionSwipeCarousel count={data.length}>
           {data.map((item, idx) => (
-            <div key={idx} className="snap-center flex-shrink-0 w-[85vw]">
+            <div key={idx} className="snap-center flex-shrink-0 w-[85vw] min-h-[300px] sm:min-h-[320px]">
               <VisionCard item={item} />
             </div>
           ))}
         </VisionSwipeCarousel>
         <div className="hidden md:grid md:grid-cols-2 gap-4 sm:gap-6">
           {data.map((item, idx) => (
-            <VisionCard key={idx} item={item} />
+            <div key={idx} className="min-h-[300px] sm:min-h-[320px]">
+              <VisionCard item={item} />
+            </div>
           ))}
         </div>
       </div>
@@ -472,41 +483,42 @@ const TeamSection = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+      className="group relative bg-white rounded-2xl overflow-visible shadow-sm hover:shadow-xl transition-all duration-300"
     >
-      <div className="relative aspect-[3/4] overflow-hidden">
+      <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
         <Image
           src={member.image}
           alt={member.name}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           unoptimized
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
-      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-        <h3 className="text-white text-lg font-bold">{member.name}</h3>
-        <p className="text-white/80 text-sm">{member.role}</p>
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent rounded-b-2xl translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+        <h3 className="text-white text-base sm:text-lg font-bold">{member.name}</h3>
+        <p className="text-white/80 text-xs sm:text-sm">{member.role}</p>
       </div>
     </motion.div>
   );
 
   return (
-    <section className="style-section-padding bg-white">
-      <div className="style-container style-container-padding">
+    <section className="py-10 sm:py-14 md:py-16 lg:py-20 bg-white overflow-visible">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
         {/* Section Header */}
-        <div className="style-section-header">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <p className="style-subtitle">
+            <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-2 sm:mb-3">
               Experts in Pharma Branding & Doctor Gifting
             </p>
-            <h2 className="style-title">
-              Meet Our <span className="style-title-highlight">Leadership</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-[#0f172a]">
+              Meet Our <span className="text-[#0093cb]">Leadership</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] mx-auto mt-4 rounded-full" />
           </motion.div>
@@ -520,7 +532,7 @@ const TeamSection = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 md:mb-16"
         >
-          <p className="style-description">
+          <p className="text-sm sm:text-base text-[#6b7280] leading-relaxed">
             Our team understands the unique dynamics of pharmaceutical
             marketing, doctor behavior, therapy-focused communication, and brand
             recall strategy. We create customized doctor engagement tools,
@@ -531,7 +543,7 @@ const TeamSection = () => {
         </motion.div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
           {team.map((member, idx) => (
             <TeamCard key={idx} member={member} />
           ))}
@@ -549,14 +561,14 @@ export default function AboutUsPage() {
       <PageBanner />
 
       {/* ── JOURNEY / TIMELINE ── */}
-      <section className="style-section-padding bg-white">
-        <div className="style-container style-container-padding">
-          <div className="style-section-header">
-            <span className="style-subtitle">
+      <section className="py-10 sm:py-14 md:py-16 lg:py-20 bg-white overflow-visible">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
+          <div className="text-center mb-8 sm:mb-10 md:mb-12">
+            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb]">
               Our History
             </span>
-            <h2 className="style-title">
-              A Legacy of <span className="style-title-highlight">Excellence</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mt-1.5 sm:mt-2 text-[#0f172a]">
+              A Legacy of <span className="text-[#0093cb]">Excellence</span>
             </h2>
           </div>
         </div>
@@ -566,6 +578,16 @@ export default function AboutUsPage() {
       <WhyUsSection />
       <VisionSection />
       <TeamSection />
+
+      <style jsx global>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 }

@@ -43,9 +43,9 @@ export default function Page() {
           formEndpoint="..."    // Your API endpoint
       ==================================================================== */}
       <PopupForm
-        delay={2000}
+        delay={1500}
         title="Get In Touch"
-        subtitle="Fill out the form and our team will get back to you within 24 hours."
+        // subtitle="Fill out the form and our team will get back to you within 24 hours."
         buttonText="Submit"
         formEndpoint="/api/contact"
       />
