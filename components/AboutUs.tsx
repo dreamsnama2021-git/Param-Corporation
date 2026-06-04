@@ -191,7 +191,7 @@ const AboutUsPage: React.FC = () => {
                   <br/><br/>
                   From gifts for Doctors, Clinic Branding Products, Medical Education Tools, and Branded Consultation Aids, we create Practical Solutions that help Pharmaceutical Companies strengthen professional relationships and improve brand visibility.
                   <br/><br/>
-                  Our focus is simple: creating meaningful doctor engagement through thoughtful branding solutions that combine utility, innovation, and strategic communication.
+                  Our focus is simple: creating meaningful Doctor Engagement through thoughtful branding solutions that combine utility, innovation, and strategic communication.
                 </p>
               </motion.div>
 
