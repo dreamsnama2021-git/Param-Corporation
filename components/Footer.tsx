@@ -98,14 +98,14 @@ export default function Footer() {
               </a>
 
               <a
-                href="mailto:info@paramcorporation.com"
+                href="mailto:sanchay@paramcorp.in"
                 className="flex items-center gap-2 hover:text-[var(--clr-primary)] transition-colors"
               >
                 <Mail
                   size={12}
                   className="text-[var(--clr-primary)] sm:w-3 sm:h-3 md:w-3.5 md:h-3.5"
                 />
-                <span>info@paramcorporation.com</span>
+                <span>sanchay@paramcorp.in</span>
               </a>
 
               <div className="flex items-start gap-2">

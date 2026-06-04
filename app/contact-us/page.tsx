@@ -163,7 +163,7 @@ export default function ContactUs() {
                     <div>
                       <h3 className="font-bold text-[#0f172a] text-xs font-[family-name:var(--font-display)]">Email Us</h3>
                       <a
-                        href="mailto:info@paramcorporation.com"
+                        href="mailto:sanchay@paramcorp.in"
                         className="flex items-center gap-1.5 text-[#6b7280] hover:text-[#0093cb] text-xs transition-colors group/link font-[family-name:var(--font-body)]"
                       >
                         <span className="w-1 h-1 rounded-full bg-[#8bde7a] group-hover/link:scale-150 transition-transform flex-shrink-0" />
