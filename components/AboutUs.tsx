@@ -187,9 +187,9 @@ const AboutUsPage: React.FC = () => {
                 transition={{ duration: 0.55, delay: 0.2 }}
               >
                 <p className="text-gray-500 text-sm sm:text-base md:text-lg lg:text-sm xl:text-base 2xl:text-lg leading-relaxed max-w-xl font-light pb-1 sm:pb-2">
-                  At Param Corporation, we specialize in pharma branding, doctor engagement solutions, and customized pharma promotional products tailored for the healthcare industry.
+                  At Param Corporation, we specialize in Pharma Branding, Doctor Engagement Solutions, and Customized Pharma Promotional Products tailored for the healthcare industry.
                   <br/><br/>
-                  From gifts for doctors, clinic branding products, medical education tools, and branded consultation aids, we create practical solutions that help pharmaceutical companies strengthen professional relationships and improve brand visibility.
+                  From gifts for Doctors, Clinic Branding Products, Medical Education Tools, and Branded Consultation Aids, we create Practical Solutions that help Pharmaceutical Companies strengthen professional relationships and improve brand visibility.
                   <br/><br/>
                   Our focus is simple: creating meaningful doctor engagement through thoughtful branding solutions that combine utility, innovation, and strategic communication.
                 </p>
