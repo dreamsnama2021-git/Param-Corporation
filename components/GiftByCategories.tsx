@@ -256,7 +256,7 @@ function TrendingProducts() {
         }} />
       </div>
 
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8 relative z-10">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8 relative ">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -290,8 +290,8 @@ function TrendingProducts() {
             onMouseLeave={handleMouseLeave}
           >
             {/* Gradient Fade Edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-20 lg:w-32 bg-gradient-to-r from-[#f8fafc] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-20 lg:w-32 bg-gradient-to-l from-[#f8fafc] to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-20 lg:w-32 bg-gradient-to-r from-[#f8fafc] to-transparent  pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-20 lg:w-32 bg-gradient-to-l from-[#f8fafc] to-transparent  pointer-events-none" />
 
             {/* Scrolling Content */}
             <div

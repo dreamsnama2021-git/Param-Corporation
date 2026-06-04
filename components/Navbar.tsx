@@ -91,12 +91,12 @@ export default function Navbar() {
   }
 
   const mainNavItems = [
-    { label: "About Us", href: "/about-us" },
     { label: "Digital Inputs", href: "/digital-gifts",  },
-    { label: "Case Study", href: "/case-study" },
-    { label: "Contact Us", href: "/contact-us" },
     { label: "Koru", href: "/koru", isButton: true },
     { label: "Medipride", href: "/medipride", isButton: true },
+    { label: "About Us", href: "/about-us" },
+    { label: "Case Study", href: "/case-study" },
+    { label: "Contact Us", href: "/contact-us" },
   ];
 
   const megaMenuColumns = [

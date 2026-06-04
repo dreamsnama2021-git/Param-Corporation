@@ -221,7 +221,7 @@ const TiltCard = ({ stat, index }: TiltCardProps): React.ReactElement => {
         </div>
 
         {/* Label */}
-        <div className="relative z-10">
+        <div className="relative ">
           <h4 className="text-gray-900 font-bold text-xs sm:text-sm md:text-base xl:text-lg mb-0.5 group-hover:text-gray-800 transition-colors">
             {stat.label}
           </h4>
@@ -272,7 +272,7 @@ export default function CreativeStatsSection(): React.ReactElement {
       <FloatingShape delay={2} color="#00a65d" className="w-40 sm:w-56 md:w-64 h-40 sm:h-56 md:h-64 top-1/2 right-0" />
       <FloatingShape delay={4} color="#8bde7a" className="w-36 sm:w-48 md:w-56 h-36 sm:h-48 md:h-56 bottom-16 left-1/3" />
       
-      <div className="max-w-[1500px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-8 relative z-10">
+      <div className="max-w-[1500px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-8 relative ">
         
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">

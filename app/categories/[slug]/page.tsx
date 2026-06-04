@@ -22,6 +22,7 @@ import {
   Check,
   Package,
   Eye,
+  Download,
 } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -319,22 +320,255 @@ function SidebarWithSubcategories({
 }
 
 /* ══════════════════════════════════════════
-   PRODUCT CARD (Fixed Image)
+   PRODUCT DETAILS MODAL (With Download Catalogue Button)
+══════════════════════════════════════════ */
+function ProductDetailsModal({
+  product,
+  onClose,
+}: {
+  product: any;
+  onClose: () => void;
+}) {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [imageErrors, setImageErrors] = useState<boolean[]>([]);
+  const productImages = product.images || [product.image];
+
+  useEffect(() => {
+    setImageErrors(new Array(productImages.length).fill(false));
+  }, [productImages.length]);
+
+  const nextImage = () => {
+    setCurrentImage((prev) => (prev + 1) % productImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImage((prev) => (prev - 1 + productImages.length) % productImages.length);
+  };
+
+  const handleImageError = (index: number) => {
+    setImageErrors(prev => {
+      const newErrors = [...prev];
+      newErrors[index] = true;
+      return newErrors;
+    });
+  };
+
+  const handleDownloadCatalogue = () => {
+    // This would typically download a PDF or open a catalogue
+    // For demo, we'll create a simple text download
+    const catalogueContent = `
+      Product Catalogue
+      =================
+      Name: ${product.name}
+      Category: ${product.category}
+      Description: ${product.description || 'No description available'}
+      Features: ${product.features?.join(', ') || 'No features listed'}
+      Tags: ${product.tags?.join(', ') || 'No tags'}
+    `;
+    
+    const blob = new Blob([catalogueContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${product.name.replace(/\s+/g, '_')}_Catalogue.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 bg-[#060706]/95 backdrop-blur-sm flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div
+        className="relative max-w-5xl w-full max-h-[90vh] bg-white rounded-2xl overflow-hidden flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Modal Header */}
+        <div className="flex items-center justify-between p-4 border-b border-gray-100">
+          <h2 className="text-lg font-semibold text-[#060706]">Product Details</h2>
+          <button
+            onClick={onClose}
+            className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Modal Content */}
+        <div className="flex-1 overflow-y-auto p-6">
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Image Gallery */}
+            <div className="lg:w-1/2">
+              <div className="relative aspect-square bg-gray-50 rounded-xl overflow-hidden">
+                {productImages[currentImage] && !imageErrors[currentImage] ? (
+                  <img
+                    src={productImages[currentImage]}
+                    alt={product.name}
+                    className="w-full h-full object-contain"
+                    onError={() => handleImageError(currentImage)}
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Package className="w-16 h-16 text-gray-300" />
+                  </div>
+                )}
+                
+                {productImages.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-colors"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-colors"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </>
+                )}
+              </div>
+              
+              {/* Thumbnails */}
+              {productImages.length > 1 && (
+                <div className="flex gap-2 mt-3 overflow-x-auto pb-2">
+                  {productImages.map((img: string, idx: number) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentImage(idx)}
+                      className={`relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all ${
+                        currentImage === idx ? 'border-[#0093cb]' : 'border-gray-200'
+                      }`}
+                    >
+                      <img
+                        src={img}
+                        alt={`${product.name} ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                        onError={() => handleImageError(idx)}
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Product Info */}
+            <div className="lg:w-1/2 space-y-4">
+              <div>
+                <h3 className="text-2xl font-bold text-[#060706] mb-2">{product.name}</h3>
+                <div className="flex items-center gap-2">
+                  <span
+                    className="inline-block px-2 py-0.5 rounded-full text-xs font-medium"
+                    style={{
+                      backgroundColor: `${BRAND.primary}10`,
+                      color: BRAND.primary,
+                    }}
+                  >
+                    {product.category}
+                  </span>
+                </div>
+              </div>
+
+              {product.description && (
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-700 mb-1">Description</h4>
+                  <p className="text-sm text-gray-600">{product.description}</p>
+                </div>
+              )}
+
+              {product.features && product.features.length > 0 && (
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-700 mb-2">Features</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {product.features.map((feature: string, idx: number) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-1 bg-gray-100 rounded-md text-xs text-gray-600"
+                      >
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {product.tags && product.tags.length > 0 && (
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-700 mb-2">Tags</h4>
+                  <div className="flex flex-wrap gap-1">
+                    {product.tags.map((tag: string, idx: number) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-0.5 rounded-full text-xs"
+                        style={{
+                          backgroundColor: `${BRAND.secondary}10`,
+                          color: BRAND.secondary,
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Download Catalogue Button */}
+              <div className="pt-4">
+                <button
+                  onClick={handleDownloadCatalogue}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-medium transition-all"
+                  style={{
+                    background: `linear-gradient(135deg, ${BRAND.primary}, ${BRAND.secondary})`,
+                    color: 'white',
+                  }}
+                >
+                  <Download className="w-4 h-4" />
+                  Download Catalogue
+                </button>
+                <p className="text-xs text-gray-400 text-center mt-2">
+                  Get detailed product specifications and information
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+/* ══════════════════════════════════════════
+   PRODUCT CARD (Opens Modal Instead of Navigation)
 ══════════════════════════════════════════ */
 function ProductCard({
   product,
   accentColor,
+  onProductClick,
 }: {
   product: any;
   accentColor: string;
+  onProductClick: (product: any) => void;
 }) {
   const productImages = product.images || [product.image];
   const productName = product.name || "Product";
   const [imageError, setImageError] = useState(false);
   const imageUrl = productImages[0];
 
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onProductClick(product);
+  };
+
   return (
-    <Link href={`/product/${product.id}`} className="block">
+    <div onClick={handleClick} className="block cursor-pointer">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -380,105 +614,7 @@ function ProductCard({
           </p>
         </div>
       </motion.div>
-    </Link>
-  );
-}
-
-/* ══════════════════════════════════════════
-   LIGHTBOX MODAL (Fixed Image)
-══════════════════════════════════════════ */
-function LightboxModal({
-  product,
-  onClose,
-}: {
-  product: any;
-  onClose: () => void;
-}) {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [imageErrors, setImageErrors] = useState<boolean[]>([]);
-  const productImages = product.images || [product.image];
-
-  useEffect(() => {
-    setImageErrors(new Array(productImages.length).fill(false));
-  }, [productImages.length]);
-
-  const nextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % productImages.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + productImages.length) % productImages.length);
-  };
-
-  const handleImageError = (index: number) => {
-    setImageErrors(prev => {
-      const newErrors = [...prev];
-      newErrors[index] = true;
-      return newErrors;
-    });
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-[#060706]/95 backdrop-blur-sm flex items-center justify-center p-4"
-      onClick={onClose}
-    >
-      <div
-        className="relative max-w-4xl w-full max-h-[90vh] rounded-2xl overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="relative aspect-square bg-black/50 flex items-center justify-center">
-          {productImages[currentImage] && !imageErrors[currentImage] ? (
-            <img
-              src={productImages[currentImage]}
-              alt={product.name}
-              className="w-full h-full object-contain"
-              onError={() => handleImageError(currentImage)}
-            />
-          ) : (
-            <Package className="w-20 h-20 text-gray-500" />
-          )}
-        </div>
-
-        {productImages.length > 1 && (
-          <>
-            <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#0093cb]/30 transition-colors">
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-[#0093cb]/30 transition-colors">
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </>
-        )}
-
-        <button onClick={onClose} className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-colors">
-          <X className="w-5 h-5" />
-        </button>
-
-        {productImages.length > 1 && (
-          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-white text-xs">
-            {currentImage + 1} / {productImages.length}
-          </div>
-        )}
-
-        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#060706]/90 to-transparent">
-          <h3 className="text-white text-xl font-bold">{product.name}</h3>
-          <p className="text-white/80 text-sm mt-1">{product.description}</p>
-          {product.tags && (
-            <div className="flex flex-wrap gap-1 mt-2">
-              {product.tags.map((tag: string, idx: number) => (
-                <span key={idx} className="text-xs px-2 py-0.5 bg-[#0093cb]/20 text-[#0093cb] rounded-full">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -489,10 +625,12 @@ function CategorySection({
   group,
   activeTabColor,
   onViewAll,
+  onProductClick,
 }: {
   group: any;
   activeTabColor: string;
   onViewAll: (categorySlug: string, categoryName: string) => void;
+  onProductClick: (product: any) => void;
 }) {
   const [showAll, setShowAll] = useState(false);
   const displayedProducts = showAll 
@@ -564,6 +702,7 @@ function CategorySection({
             key={product.id}
             product={product}
             accentColor={activeTabColor}
+            onProductClick={onProductClick}
           />
         ))}
       </div>
@@ -669,6 +808,10 @@ function CategoryPageContent() {
     router.push(`/categories/all?tab=${activeTab}&category=${categorySlug}`);
   };
 
+  const handleProductClick = (product: any) => {
+    setSelectedProduct(product);
+  };
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: listingStyles }} />
@@ -715,6 +858,7 @@ function CategoryPageContent() {
                         group={group}
                         activeTabColor={activeTabColor}
                         onViewAll={handleViewAllProducts}
+                        onProductClick={handleProductClick}
                       />
                     ))}
                   </div>
@@ -727,7 +871,7 @@ function CategoryPageContent() {
 
       <AnimatePresence>
         {selectedProduct && (
-          <LightboxModal
+          <ProductDetailsModal
             product={selectedProduct}
             onClose={() => setSelectedProduct(null)}
           />

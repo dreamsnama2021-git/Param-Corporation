@@ -137,7 +137,7 @@ const AboutUsPage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.55 }}
-                className="relative z-10 w-full flex justify-center"
+                className="relative  w-full flex justify-center"
               >
                 <div className="overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] shadow-xl sm:shadow-2xl shadow-[#0093cb]/20 w-[75%] sm:w-[70%] md:w-[65%] lg:w-[80%] xl:w-[80%] aspect-[4/4.5] relative transition-transform duration-500 ease-out group-hover:-translate-y-1.5 sm:group-hover:-translate-y-2 backdrop-blur-sm bg-white/40">
                   <Image
