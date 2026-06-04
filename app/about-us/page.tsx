@@ -178,7 +178,7 @@ const PageBanner = () => (
   <div className="relative w-full h-[50vh] sm:h-[55vh] md:h-[60vh] lg:h-[65vh] xl:h-[70vh] overflow-hidden">
     {/* Mobile image */}
     <Image
-      src="/banner/About page Mobile.jpg"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/About%20page%20Mobile.jpg"
       alt="About Us Banner - Mobile"
       fill
       className="object-cover object-center block md:hidden"
@@ -188,7 +188,7 @@ const PageBanner = () => (
 
     {/* Tablet image */}
     <Image
-      src="/banner/About page  Tablet.jpg"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/About%20page%20%20Tablet.jpg"
       alt="About Us Banner - Tablet"
       fill
       className="object-cover object-center hidden md:block lg:hidden"
@@ -198,7 +198,7 @@ const PageBanner = () => (
 
     {/* Desktop image */}
     <Image
-      src="/banner/About page Desktop.jpg"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/About%20page%20Desktop.jpg"
       alt="About Us Banner - Desktop"
       fill
       className="object-cover object-center hidden lg:block"
@@ -462,13 +462,13 @@ const TeamSection = () => {
     {
       name: "Mr. Rajeev Dosi",
       role: "Director",
-      image: "/banner/WhatsApp Image 2026-05-20 at 7.05.07 PM.jpeg",
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/ChatGPT%20Image%20Jun%204%2C%202026%2C%2007_34_03%20PM.png",
     },
     {
       name: "Mr. Sanchay Dosi",
       role: "Founder",
       image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=600&fit=crop",
+        "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/WhatsApp%20Image%202026-06-01%20at%207.26.05%20PM.jpeg",
     },
     {
       name: "Ms. Saakshi Dosi",
