@@ -20,7 +20,7 @@ const HERO_SLIDES: HeroSlide[] = [
     alt: "Branding",
   },
   {
-    image: "/banner/home3.png",
+    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
     alt: "Pharmaceutical Gifts",
   },
   {
