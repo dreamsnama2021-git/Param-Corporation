@@ -28,26 +28,19 @@ export default function PopupForm({
     name: "",
     email: "",
     phone: "",
-    message: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // ==========================================================================
-  // ⏰ SHOW POPUP AFTER DELAY
+  // ⏰ SHOW POPUP AFTER DELAY - EVERY TIME PAGE LOADS
   // ==========================================================================
   useEffect(() => {
-    // Check if user has already dismissed the popup
-    const hasSeenPopup = sessionStorage.getItem("popupSeen");
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, delay);
 
-    if (!hasSeenPopup) {
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-        sessionStorage.setItem("popupSeen", "true");
-      }, delay);
-
-      return () => clearTimeout(timer);
-    }
+    return () => clearTimeout(timer);
   }, [delay]);
 
   // ==========================================================================
@@ -97,9 +90,6 @@ export default function PopupForm({
     } else if (!/^\+?[\d\s-]{10,}$/.test(formData.phone)) {
       newErrors.phone = "Please enter a valid phone number";
     }
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -130,7 +120,7 @@ export default function PopupForm({
           // Reset after popup closes
           setTimeout(() => {
             setIsSubmitted(false);
-            setFormData({ name: "", email: "", phone: "", message: "" });
+            setFormData({ name: "", email: "", phone: "" });
           }, 500);
         }, 3000);
       } else {
@@ -156,7 +146,7 @@ export default function PopupForm({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={handleOverlayClick}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-5 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           >
             {/* ================================================================
                 📦 POPUP CONTAINER
@@ -306,34 +296,6 @@ export default function PopupForm({
                         {errors.phone && (
                           <p className="mt-1 text-xs text-red-500">
                             {errors.phone}
-                          </p>
-                        )}
-                      </div>
-
-                      {/* Message Field */}
-                      <div>
-                        <label
-                          htmlFor="popup-message"
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          Message <span className="text-red-500">*</span>
-                        </label>
-                        <textarea
-                          id="popup-message"
-                          name="message"
-                          rows={3}
-                          value={formData.message}
-                          onChange={handleChange}
-                          placeholder="How can we help you?"
-                          className={`w-full px-4 py-2.5 rounded-lg border resize-none ${
-                            errors.message
-                              ? "border-red-500 focus:ring-red-500"
-                              : "border-gray-300 focus:ring-[#199b9d]"
-                          } focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-colors`}
-                        />
-                        {errors.message && (
-                          <p className="mt-1 text-xs text-red-500">
-                            {errors.message}
                           </p>
                         )}
                       </div>

@@ -91,7 +91,7 @@ export default function Navbar() {
   }
 
   const mainNavItems = [
-    { label: "Digital Inputs", href: "/digital-gifts",  },
+    { label: "Digital Inputs", href: "/digital-gifts", isButton: true },
     { label: "Koru", href: "/koru", isButton: true },
     { label: "Medipride", href: "/medipride", isButton: true },
     { label: "About Us", href: "/about-us" },

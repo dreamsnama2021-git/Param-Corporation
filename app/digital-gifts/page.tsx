@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -23,6 +23,10 @@ import {
   Calendar,
   Clock,
   ArrowRight,
+  X,
+  ChevronLeft,
+  ChevronRight as ChevronRightIcon,
+  Grid3X3,
 } from 'lucide-react';
 
 // ─── TYPES ──────────────────────────────────────────────────────────────────
@@ -104,7 +108,6 @@ const serviceCategories: ServiceCategory[] = [
     id: "variable-data",
     number: "08",
     title: "Variable Data Collection & Printing",
-    //  with automated data integration.
     description: "Intelligent variable data solutions for personalized pharmaceutical marketing materials",
     icon: Database,
     gradient: "from-[#0093cb] to-[#8bde7a]",
@@ -144,34 +147,185 @@ type GridItem = {
   colStart: number;
   colSpan: number;
   rowSpan: number;
+  imageData: GalleryImage;
 };
 
-function buildBlock(srcs: string[]): GridItem[] {
+function buildBlock(srcs: GalleryImage[]): GridItem[] {
   const s = (i: number) => srcs[i] ?? srcs[srcs.length - 1];
 
   return [
-    { src: s(0), colStart: 1, colSpan: 1, rowSpan: 3 },
-    { src: s(1), colStart: 2, colSpan: 1, rowSpan: 2 },
-    { src: s(2), colStart: 3, colSpan: 1, rowSpan: 2 },
-    { src: s(3), colStart: 4, colSpan: 1, rowSpan: 2 },
-    { src: s(4), colStart: 2, colSpan: 1, rowSpan: 3 },
-    { src: s(5), colStart: 3, colSpan: 1, rowSpan: 2 },
-    { src: s(6), colStart: 4, colSpan: 1, rowSpan: 2 },
-    { src: s(7), colStart: 1, colSpan: 1, rowSpan: 2 },
-    { src: s(8), colStart: 3, colSpan: 1, rowSpan: 3 },
-    { src: s(9), colStart: 4, colSpan: 1, rowSpan: 3 },
-    { src: s(10), colStart: 1, colSpan: 1, rowSpan: 2 },
-    { src: s(11), colStart: 2, colSpan: 1, rowSpan: 2 },
+    { src: s(0).src, colStart: 1, colSpan: 1, rowSpan: 3, imageData: s(0) },
+    { src: s(1).src, colStart: 2, colSpan: 1, rowSpan: 2, imageData: s(1) },
+    { src: s(2).src, colStart: 3, colSpan: 1, rowSpan: 2, imageData: s(2) },
+    { src: s(3).src, colStart: 4, colSpan: 1, rowSpan: 2, imageData: s(3) },
+    { src: s(4).src, colStart: 2, colSpan: 1, rowSpan: 3, imageData: s(4) },
+    { src: s(5).src, colStart: 3, colSpan: 1, rowSpan: 2, imageData: s(5) },
+    { src: s(6).src, colStart: 4, colSpan: 1, rowSpan: 2, imageData: s(6) },
+    { src: s(7).src, colStart: 1, colSpan: 1, rowSpan: 2, imageData: s(7) },
+    { src: s(8).src, colStart: 3, colSpan: 1, rowSpan: 3, imageData: s(8) },
+    { src: s(9).src, colStart: 4, colSpan: 1, rowSpan: 3, imageData: s(9) },
+    { src: s(10).src, colStart: 1, colSpan: 1, rowSpan: 2, imageData: s(10) },
+    { src: s(11).src, colStart: 2, colSpan: 1, rowSpan: 2, imageData: s(11) },
   ];
 }
 
 function buildGridItems(images: GalleryImage[]): GridItem[] {
   const items: GridItem[] = [];
   for (let i = 0; i < images.length; i += 12) {
-    const srcs = images.slice(i, i + 12).map((img) => img.src);
+    const srcs = images.slice(i, i + 12);
     items.push(...buildBlock(srcs));
   }
   return items;
+}
+
+// ─── GALLERY LIGHTBOX MODAL ─────────────────────────────────────────────────
+function GalleryLightboxModal({
+  images,
+  initialIndex,
+  onClose,
+}: {
+  images: GalleryImage[];
+  initialIndex: number;
+  onClose: () => void;
+}) {
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [showThumbnails, setShowThumbnails] = useState(true);
+  const currentImage = images[currentIndex];
+
+  const nextImage = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') prevImage();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'Escape') onClose();
+  };
+
+  React.useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-lg flex items-center justify-center"
+      onClick={onClose}
+    >
+      {/* Modal Container with max dimensions */}
+      <div 
+        className="relative max-w-[90vw] max-h-[85vh] w-full h-full bg-transparent flex items-center justify-center"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+
+        {/* Main Image Container */}
+        <div className="relative w-full h-full flex items-center justify-center p-16 md:p-20">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+            className="relative w-full h-full flex items-center justify-center"
+          >
+            <div className="relative w-full h-full flex items-center rounded-lg justify-center">
+              <Image
+                src={currentImage.src}
+                alt={currentImage.title}
+                width={1200}
+                height={800}
+                className="max-w-full max-h-[calc(85vh-120px)] object-contain rounded-lg"
+                unoptimized
+              />
+            </div>
+            
+           
+          </motion.div>
+        </div>
+
+        {/* Navigation Buttons */}
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                prevImage();
+              }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors hover:scale-110"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                nextImage();
+              }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors hover:scale-110"
+            >
+              <ChevronRightIcon className="w-6 h-6" />
+            </button>
+          </>
+        )}
+
+        {/* Thumbnails Strip */}
+        <AnimatePresence>
+          {showThumbnails && (
+            <motion.div
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 100, opacity: 0 }}
+              className="absolute  -bottom-8 xl:-bottom-12 2xl:-bottom-14 mt-4 left-0 right-0  rounded-b-lg"
+            >
+              <div className="max-w-full overflow-x-auto px-4 py-3">
+                <div className="flex gap-2 justify-center min-w-max">
+                  {images.map((img, idx) => (
+                    <button
+                      key={img.id}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentIndex(idx);
+                      }}
+                      className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden transition-all duration-200 ${
+                        currentIndex === idx
+                          ? 'ring-2 ring-[#0093cb] ring-offset-2 ring-offset-black scale-105'
+                          : 'opacity-90 hover:opacity-100'
+                      }`}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.title}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                      {currentIndex === idx && (
+                        <div className="absolute inset-0 bg-[#0093cb]/20" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
 }
 
 // ─── SECTION BADGE ───────────────────────────────────────────────────────────
@@ -215,8 +369,6 @@ const PageBanner = () => (
       priority
       unoptimized
     />
-
-   
   </div>
 );
 
@@ -231,23 +383,13 @@ function HyperPersonalizedServices() {
           viewport={{ once: true, margin: "-60px" }}
           className="text-center mb-10 sm:mb-12 md:mb-14 lg:mb-16"
         >
-          {/* <SectionBadge className="bg-[#0093cb]/10 text-[#0093cb] border border-[#0093cb]/20 mb-3 sm:mb-4">
-            <Zap size={14} className="sm:size-4" />
-            Tailored Solutions
-          </SectionBadge>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-slate-900 mb-4 sm:mb-5 md:mb-6">
-            Hyperpersonalized
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#0093cb] to-[#00a65d]">
-              Services
-            </span>
-          </h2> */}
-            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#0093cb]">
+          <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#0093cb]">
             <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
            Tailored Solutions
             <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
           </p>
           <h2 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-slate-900">
-                Hyperpersonalized<span className="text-[#0093cb]">   Services</span>
+                Digital <span className="text-[#0093cb]">   Services</span>
           </h2>
           <p className="text-base sm:text-lg xl:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             We craft bespoke digital solutions that adapt to your unique pharmaceutical
@@ -312,18 +454,6 @@ function FlipCard({ service, index }: { service: ServiceCategory; index: number 
           <p className="text-xs sm:text-sm text-slate-500 text-center leading-relaxed line-clamp-2 relative z-10">
             {service.description.split('.')[0]}.
           </p>
-          {/* <div className="absolute bottom-4 sm:bottom-6 flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs text-slate-400 group-hover:text-[#0093cb] transition-colors duration-300">
-            <span>Hover to explore</span>
-            <motion.svg
-              animate={{ rotate: isFlipped ? 180 : 0 }}
-              className="w-2.5 h-2.5 sm:w-3 sm:h-3"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </motion.svg>
-          </div> */}
         </div>
 
         {/* Back Face */}
@@ -373,176 +503,165 @@ function FlipCard({ service, index }: { service: ServiceCategory; index: number 
 function CollageGallerySection() {
   const INITIAL_COUNT = 12;
   const [showAll, setShowAll] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   
   const source = showAll ? koruGalleryImages : koruGalleryImages.slice(0, INITIAL_COUNT);
   const gridItems = buildGridItems(source);
   const hasMoreImages = koruGalleryImages.length > INITIAL_COUNT;
 
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index);
+    setLightboxOpen(true);
+  };
+
   return (
-    <section className="py-10 sm:py-12 md:py-14 lg:py-18 xl:py-20 2xl:py-24" style={{ background: 'linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 50%, #f8faf8 100%)' }}>
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
-        {/* Gallery Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          className="text-center mb-8 sm:mb-10 md:mb-12"
-        >
-           <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#0093cb]">
-            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
-           Portfolio Showcase
-            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
-          </p>
-          <h2 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-slate-900">
-           Digital Input <span className="text-[#0093cb]">Gallery</span>
-          </h2>
-          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Explore our collection of digital service interfaces and solutions crafted for
-            pharmaceutical companies. Each design is meticulously created to enhance
-            user engagement and deliver impactful digital experiences.
-          </p>
-          <div className="mt-5 sm:mt-6 w-20 sm:w-24 h-1 bg-gradient-to-r from-[#00a65d] to-[#8bde7a] rounded-full mx-auto" />
-        </motion.div>
-
-        {/* Collage Grid */}
-        <motion.div 
-          layout
-          className="gap-2 sm:gap-3 md:gap-4 2xl:gap-6"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gridAutoRows: '120px',
-          }}
-        >
-          {gridItems.map((item, index) => (
-            <motion.div
-              key={index}
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.03, duration: 0.4 }}
-              className="relative overflow-hidden group"
-              style={{
-                gridColumn: `${item.colStart} / span ${item.colSpan}`,
-                gridRow: `span ${item.rowSpan}`,
-                borderRadius: '12px',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
-              }}
-            >
-              {/* Brand Accent Overlay */}
-              <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(0,147,203,0.15) 0%, rgba(0,166,93,0.1) 100%)',
-                  borderRadius: '12px',
-                }}
-              />
-              
-              {/* Subtle border glow on hover */}
-              <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none rounded-xl"
-                style={{
-                  boxShadow: 'inset 0 0 0 2px rgba(0,147,203,0.3)',
-                }}
-              />
-
-              <Image
-                src={item.src}
-                alt={`Gallery image ${index + 1}`}
-                fill
-                className="object-fill group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              />
-
-              {/* Image number badge */}
-              <div 
-                className="absolute top-1.5 sm:top-2 left-1.5 sm:left-2 z-20 text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ 
-                  backgroundColor: '#060706',
-                  color: '#ffffff'
-                }}
-              >
-                {index + 1}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* See More / See Less Button - Brand Colors */}
-        {hasMoreImages && (
+    <>
+      <section className="py-10 sm:py-12 md:py-14 lg:py-18 xl:py-20 2xl:py-24" style={{ background: 'linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 50%, #f8faf8 100%)' }}>
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
+          {/* Gallery Header */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="mt-8 sm:mt-10 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="text-center mb-8 sm:mb-10 md:mb-12"
           >
-            {!showAll ? (
-              <button
-                onClick={() => setShowAll(true)}
-                className="group flex items-center gap-2 sm:gap-3 bg-[#0093cb] hover:bg-[#00a65d] 
-                  text-white px-5 lg:px-6 xl:px-8 py-2.5 lg:py-3 xl:py-3.5 rounded-full font-semibold text-sm xl:text-base 
-                  transition-all duration-300 hover:shadow-lg hover:shadow-[#0093cb]/30 active:scale-95 mx-auto"
-              >
-                <span>See All ({koruGalleryImages.length - INITIAL_COUNT}+ more)</span>
-                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
-              </button>
-            ) : (
-              <button
-                onClick={() => setShowAll(false)}
-                className="group flex items-center gap-2 sm:gap-3 bg-white border-2 border-[#0093cb] 
-                  text-[#0093cb] hover:bg-[#0093cb] hover:text-white px-5 lg:px-6 xl:px-8 py-2.5 lg:py-3 xl:py-3.5 
-                  rounded-full font-semibold text-sm xl:text-base transition-all duration-300 
-                  hover:shadow-md active:scale-95 mx-auto"
-              >
-                <span>Show Less</span>
-                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
-              </button>
-            )}
+            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#0093cb]">
+              <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+              Portfolio Showcase
+              <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+            </p>
+            <h2 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-slate-900">
+              Digital Input <span className="text-[#0093cb]">Gallery</span>
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+              Explore our collection of digital service interfaces and solutions crafted for
+              pharmaceutical companies. Each design is meticulously created to enhance
+              user engagement and deliver impactful digital experiences.
+            </p>
+            <div className="mt-5 sm:mt-6 w-20 sm:w-24 h-1 bg-gradient-to-r from-[#00a65d] to-[#8bde7a] rounded-full mx-auto" />
           </motion.div>
+
+          {/* Collage Grid */}
+          <motion.div 
+            layout
+            className="gap-2 sm:gap-3 md:gap-4 2xl:gap-6"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gridAutoRows: '120px',
+            }}
+          >
+            {gridItems.map((item, index) => (
+              <motion.div
+                key={index}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.03, duration: 0.4 }}
+                className="relative overflow-hidden group cursor-pointer"
+                style={{
+                  gridColumn: `${item.colStart} / span ${item.colSpan}`,
+                  gridRow: `span ${item.rowSpan}`,
+                  borderRadius: '12px',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+                }}
+                onClick={() => handleImageClick(index)}
+              >
+                {/* Brand Accent Overlay */}
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(0,147,203,0.15) 0%, rgba(0,166,93,0.1) 100%)',
+                    borderRadius: '12px',
+                  }}
+                />
+                
+                {/* Subtle border glow on hover */}
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none rounded-xl"
+                  style={{
+                    boxShadow: 'inset 0 0 0 2px rgba(0,147,203,0.3)',
+                  }}
+                />
+
+                {/* Eye icon overlay for better UX */}
+                {/* <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 z-10 flex items-center justify-center pointer-events-none">
+                  <Eye className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100" />
+                </div> */}
+
+                <Image
+                  src={item.src}
+                  alt={`Gallery image ${index + 1}`}
+                  fill
+                  className="object-fill group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  unoptimized
+                />
+
+                {/* Image number badge */}
+                <div 
+                  className="absolute top-1.5 sm:top-2 left-1.5 sm:left-2 z-20 text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ 
+                    backgroundColor: '#060706',
+                    color: '#ffffff'
+                  }}
+                >
+                  {index + 1}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* See More / See Less Button - Brand Colors */}
+          {hasMoreImages && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="mt-8 sm:mt-10 text-center"
+            >
+              {!showAll ? (
+                <button
+                  onClick={() => setShowAll(true)}
+                  className="group flex items-center gap-2 sm:gap-3 bg-[#0093cb] hover:bg-[#00a65d] 
+                    text-white px-5 lg:px-6 xl:px-8 py-2.5 lg:py-3 xl:py-3.5 rounded-full font-semibold text-sm xl:text-base 
+                    transition-all duration-300 hover:shadow-lg hover:shadow-[#0093cb]/30 active:scale-95 mx-auto"
+                >
+                  <span>See All ({koruGalleryImages.length - INITIAL_COUNT}+ more)</span>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
+                </button>
+              ) : (
+                <button
+                  onClick={() => setShowAll(false)}
+                  className="group flex items-center gap-2 sm:gap-3 bg-white border-2 border-[#0093cb] 
+                    text-[#0093cb] hover:bg-[#0093cb] hover:text-white px-5 lg:px-6 xl:px-8 py-2.5 lg:py-3 xl:py-3.5 
+                    rounded-full font-semibold text-sm xl:text-base transition-all duration-300 
+                    hover:shadow-md active:scale-95 mx-auto"
+                >
+                  <span>Show Less</span>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
+                </button>
+              )}
+            </motion.div>
+          )}
+        </div>
+      </section>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {lightboxOpen && (
+          <GalleryLightboxModal
+            images={source}
+            initialIndex={selectedImageIndex}
+            onClose={() => setLightboxOpen(false)}
+          />
         )}
-      </div>
-    </section>
+      </AnimatePresence>
+    </>
   );
 }
-
-// ─── CASE STUDIES SECTION (Grid layout from reference) ─────────────────────
-const CASE_STUDIES_CARDS = [
-  {
-    id: 1,
-    title: "Diabetic Retinopathy Patient Awareness Tool",
-    description:
-      "Diabetic Retinopathy Patient Awareness Tool",
-    image:
-      "/products/4 IN 1 DESK ORGANISER.png",
-    slug: "diabetic-retinopathy-tool",
-    readTime: "6 min read",
-    category: "Retail",
-  },
-  {
-    id: 2,
-    title: "Scaling Healthcare Outreach with Digital-First Strategy",
-    description:
-      "Leveraging WhatsApp-led nurturing and targeted content to increase patient engagement by 200% for a leading clinic chain.",
-    image:
-      "/products/4 IN 1 DESK ORGANISER.png",
-    slug: "healthcare-digital",
-    readTime: "4 min read",
-    category: "Healthcare",
-  },
-  {
-    id: 3,
-    title: "Corporate Gifting Success for Fortune 500 Company",
-    description:
-      "Implementing a personalized gifting solution that improved employee retention and client satisfaction scores significantly.",
-    image:
-      "/products/4 IN 1 DESK ORGANISER.png",
-    slug: "corporate-gifting",
-    readTime: "5 min read",
-    category: "Corporate",
-  },
-];
-
 
 // ─── MAIN PAGE ───────────────────────────────────────────────────────────────
 export default function DigitalServicesPage() {

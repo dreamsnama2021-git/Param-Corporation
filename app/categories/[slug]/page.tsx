@@ -320,268 +320,96 @@ function SidebarWithSubcategories({
 }
 
 /* ══════════════════════════════════════════
-   PRODUCT DETAILS MODAL (With Download Catalogue Button)
+   IMAGE LIGHTBOX MODAL (Single Image Only - No Navigation)
 ══════════════════════════════════════════ */
-function ProductDetailsModal({
-  product,
+function ImageLightboxModal({
+  imageUrl,
+  productName,
   onClose,
 }: {
-  product: any;
+  imageUrl: string;
+  productName: string;
   onClose: () => void;
 }) {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [imageErrors, setImageErrors] = useState<boolean[]>([]);
-  const productImages = product.images || [product.image];
-
-  useEffect(() => {
-    setImageErrors(new Array(productImages.length).fill(false));
-  }, [productImages.length]);
-
-  const nextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % productImages.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + productImages.length) % productImages.length);
-  };
-
-  const handleImageError = (index: number) => {
-    setImageErrors(prev => {
-      const newErrors = [...prev];
-      newErrors[index] = true;
-      return newErrors;
-    });
-  };
-
-  const handleDownloadCatalogue = () => {
-    // This would typically download a PDF or open a catalogue
-    // For demo, we'll create a simple text download
-    const catalogueContent = `
-      Product Catalogue
-      =================
-      Name: ${product.name}
-      Category: ${product.category}
-      Description: ${product.description || 'No description available'}
-      Features: ${product.features?.join(', ') || 'No features listed'}
-      Tags: ${product.tags?.join(', ') || 'No tags'}
-    `;
-    
-    const blob = new Blob([catalogueContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${product.name.replace(/\s+/g, '_')}_Catalogue.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
+  const [imageError, setImageError] = useState(false);
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-[#060706]/95 backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center"
       onClick={onClose}
     >
-      <div
-        className="relative max-w-5xl w-full max-h-[90vh] bg-white rounded-2xl overflow-hidden flex flex-col"
-        onClick={(e) => e.stopPropagation()}
+      {/* Close Button */}
+      <button
+        onClick={onClose}
+        className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
       >
-        {/* Modal Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-100">
-          <h2 className="text-lg font-semibold text-[#060706]">Product Details</h2>
-          <button
-            onClick={onClose}
-            className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
+        <X className="w-5 h-5" />
+      </button>
 
-        {/* Modal Content */}
-        <div className="flex-1 overflow-y-auto p-6">
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Image Gallery */}
-            <div className="lg:w-1/2">
-              <div className="relative aspect-square bg-gray-50 rounded-xl overflow-hidden">
-                {productImages[currentImage] && !imageErrors[currentImage] ? (
-                  <img
-                    src={productImages[currentImage]}
-                    alt={product.name}
-                    className="w-full h-full object-contain"
-                    onError={() => handleImageError(currentImage)}
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <Package className="w-16 h-16 text-gray-300" />
-                  </div>
-                )}
-                
-                {productImages.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevImage}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-colors"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={nextImage}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-colors"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </>
-                )}
-              </div>
-              
-              {/* Thumbnails */}
-              {productImages.length > 1 && (
-                <div className="flex gap-2 mt-3 overflow-x-auto pb-2">
-                  {productImages.map((img: string, idx: number) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentImage(idx)}
-                      className={`relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all ${
-                        currentImage === idx ? 'border-[#0093cb]' : 'border-gray-200'
-                      }`}
-                    >
-                      <img
-                        src={img}
-                        alt={`${product.name} ${idx + 1}`}
-                        className="w-full h-full object-cover"
-                        onError={() => handleImageError(idx)}
-                      />
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Product Info */}
-            <div className="lg:w-1/2 space-y-4">
-              <div>
-                <h3 className="text-2xl font-bold text-[#060706] mb-2">{product.name}</h3>
-                <div className="flex items-center gap-2">
-                  <span
-                    className="inline-block px-2 py-0.5 rounded-full text-xs font-medium"
-                    style={{
-                      backgroundColor: `${BRAND.primary}10`,
-                      color: BRAND.primary,
-                    }}
-                  >
-                    {product.category}
-                  </span>
-                </div>
-              </div>
-
-              {product.description && (
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-700 mb-1">Description</h4>
-                  <p className="text-sm text-gray-600">{product.description}</p>
-                </div>
-              )}
-
-              {product.features && product.features.length > 0 && (
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-700 mb-2">Features</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {product.features.map((feature: string, idx: number) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-1 bg-gray-100 rounded-md text-xs text-gray-600"
-                      >
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {product.tags && product.tags.length > 0 && (
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-700 mb-2">Tags</h4>
-                  <div className="flex flex-wrap gap-1">
-                    {product.tags.map((tag: string, idx: number) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-0.5 rounded-full text-xs"
-                        style={{
-                          backgroundColor: `${BRAND.secondary}10`,
-                          color: BRAND.secondary,
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Download Catalogue Button */}
-              <div className="pt-4">
-                <button
-                  onClick={handleDownloadCatalogue}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-medium transition-all"
-                  style={{
-                    background: `linear-gradient(135deg, ${BRAND.primary}, ${BRAND.secondary})`,
-                    color: 'white',
-                  }}
-                >
-                  <Download className="w-4 h-4" />
-                  Download Catalogue
-                </button>
-                <p className="text-xs text-gray-400 text-center mt-2">
-                  Get detailed product specifications and information
-                </p>
-              </div>
-            </div>
+      {/* Main Image Container */}
+      <div className="relative w-full h-full flex items-center justify-center p-12 md:p-16">
+        {imageUrl && !imageError ? (
+          <img
+            src={imageUrl}
+            alt={productName}
+            className="max-w-full max-h-full rounded-xl object-contain"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="flex flex-col items-center justify-center">
+            <Package className="w-20 h-20 text-gray-600" />
+            <p className="text-gray-500 mt-2">Image not available</p>
           </div>
-        </div>
+        )}
       </div>
     </motion.div>
   );
 }
 
 /* ══════════════════════════════════════════
-   PRODUCT CARD (Opens Modal Instead of Navigation)
+   PRODUCT CARD (Opens Image Lightbox Only)
 ══════════════════════════════════════════ */
 function ProductCard({
   product,
   accentColor,
-  onProductClick,
+  onImageClick,
 }: {
   product: any;
   accentColor: string;
-  onProductClick: (product: any) => void;
+  onImageClick: (product: any) => void;
 }) {
-  const productImages = product.images || [product.image];
+  const productImage = product.image || (product.images && product.images[0]);
   const productName = product.name || "Product";
   const [imageError, setImageError] = useState(false);
-  const imageUrl = productImages[0];
+  const imageUrl = productImage;
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleImageClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    onProductClick(product);
+    e.stopPropagation();
+    onImageClick(product);
   };
 
   return (
-    <div onClick={handleClick} className="block cursor-pointer">
+    <div className="block">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-30px" }}
-        className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group h-full product-card border border-gray-100"
+        className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group h-full product-card border border-gray-100"
       >
-        <div className="relative aspect-square overflow-hidden bg-gray-50">
+        <div 
+          className="relative aspect-square overflow-hidden bg-gray-50 cursor-pointer"
+          onClick={handleImageClick}
+        >
           {imageUrl && !imageError ? (
             <>
               <img
                 src={imageUrl}
                 alt={productName}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover roun transition-transform duration-500 group-hover:scale-105"
                 onError={() => {
                   console.error("Product image failed to load:", imageUrl);
                   setImageError(true);
@@ -589,9 +417,7 @@ function ProductCard({
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-[#0093cb]/0 group-hover:bg-[#0093cb]/10 transition-colors duration-300 flex items-center justify-center product-overlay">
-                <div className="w-10 h-10 rounded-full bg-white/95 flex items-center justify-center shadow-lg">
-                  <ZoomIn className="w-4 h-4 text-[#0093cb]" />
-                </div>
+                {/* Zoom indicator removed as requested */}
               </div>
             </>
           ) : (
@@ -609,7 +435,7 @@ function ProductCard({
         </div>
 
         <div className="p-3">
-          <p className="text-sm font-semibold text-[#060706] leading-tight line-clamp-2 mb-1 group-hover:text-[#0093cb] transition-colors">
+          <p className="text-sm font-semibold text-[#060706] leading-tight line-clamp-2 mb-1">
             {productName}
           </p>
         </div>
@@ -625,12 +451,12 @@ function CategorySection({
   group,
   activeTabColor,
   onViewAll,
-  onProductClick,
+  onImageClick,
 }: {
   group: any;
   activeTabColor: string;
   onViewAll: (categorySlug: string, categoryName: string) => void;
-  onProductClick: (product: any) => void;
+  onImageClick: (product: any) => void;
 }) {
   const [showAll, setShowAll] = useState(false);
   const displayedProducts = showAll 
@@ -678,21 +504,7 @@ function CategorySection({
               }}
             />
           </div>
-          
-          <button
-            onClick={handleViewAllProducts}
-            className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all view-more-btn"
-            style={{
-              backgroundColor: `${BRAND.primary}10`,
-              color: BRAND.primary,
-              border: `1px solid ${BRAND.primary}20`,
-            }}
-            type="button"
-          >
-            <Eye className="w-4 h-4" />
-            View All Products
-            <ChevronRight className="w-4 h-4" />
-          </button>
+         
         </div>
       </div>
 
@@ -702,7 +514,7 @@ function CategorySection({
             key={product.id}
             product={product}
             accentColor={activeTabColor}
-            onProductClick={onProductClick}
+            onImageClick={onImageClick}
           />
         ))}
       </div>
@@ -745,7 +557,15 @@ function CategoryPageContent() {
   const searchParams = useSearchParams();
 
   const tabParam = searchParams.get("tab") as TabId | null;
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [lightboxState, setLightboxState] = useState<{
+    isOpen: boolean;
+    imageUrl: string;
+    productName: string;
+  }>({
+    isOpen: false,
+    imageUrl: "",
+    productName: "",
+  });
 
   const activeTab: TabId = useMemo(() => {
     if (tabParam && TABS.some((t) => t.id === tabParam)) return tabParam;
@@ -808,8 +628,65 @@ function CategoryPageContent() {
     router.push(`/categories/all?tab=${activeTab}&category=${categorySlug}`);
   };
 
-  const handleProductClick = (product: any) => {
-    setSelectedProduct(product);
+  const handleImageClick = (product: any) => {
+    const imageUrl = product.image || (product.images && product.images[0]);
+    setLightboxState({
+      isOpen: true,
+      imageUrl: imageUrl || "",
+      productName: product.name || "Product",
+    });
+  };
+
+  const closeLightbox = () => {
+    setLightboxState(prev => ({ ...prev, isOpen: false }));
+  };
+
+  // Function to download full catalogue
+  const handleDownloadFullCatalogue = () => {
+    // Create catalogue content with all products
+    let catalogueContent = `========================================
+COMPLETE PRODUCT CATALOGUE
+========================================
+Generated: ${new Date().toLocaleDateString()}
+Total Products: ${totalProducts}
+Categories: ${groupedProducts.length}
+========================================\n\n`;
+
+    groupedProducts.forEach((group, groupIndex) => {
+      catalogueContent += `${groupIndex + 1}. ${group.categoryName.toUpperCase()}\n`;
+      catalogueContent += `${'='.repeat(group.categoryName.length + 4)}\n`;
+      catalogueContent += `Description: ${group.description || 'No description available'}\n`;
+      catalogueContent += `Products: ${group.products.length}\n\n`;
+      
+      group.products.forEach((product, productIndex) => {
+        catalogueContent += `  ${productIndex + 1}. ${product.name}\n`;
+        catalogueContent += `     Category: ${product.category}\n`;
+        catalogueContent += `     Description: ${product.description || 'No description'}\n`;
+        if (product.features && product.features.length > 0) {
+          catalogueContent += `     Features: ${product.features.join(', ')}\n`;
+        }
+        if (product.tags && product.tags.length > 0) {
+          catalogueContent += `     Tags: ${product.tags.join(', ')}\n`;
+        }
+        catalogueContent += `\n`;
+      });
+      
+      catalogueContent += `\n`;
+    });
+
+    catalogueContent += `========================================
+END OF CATALOGUE
+========================================`;
+
+    const blob = new Blob([catalogueContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Complete_Product_Catalogue_${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -844,11 +721,24 @@ function CategoryPageContent() {
                 </div>
               ) : (
                 <>
-                  <div className="mb-8 flex items-center justify-between">
+                  {/* Header with Product Count on Left and Download Button on Right */}
+                  <div className="mb-8 flex items-center justify-between flex-wrap gap-4">
                     <p className="text-sm text-gray-500">
                       Showing <span className="font-semibold text-[#060706]">{totalProducts}</span> products
                       in <span className="font-semibold text-[#060706]">{groupedProducts.length}</span> subcategories
                     </p>
+                    
+                    <button
+                      onClick={handleDownloadFullCatalogue}
+                      className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all shadow-md hover:shadow-lg"
+                      style={{
+                        background: `linear-gradient(135deg, ${BRAND.primary}, ${BRAND.secondary})`,
+                        color: 'white',
+                      }}
+                    >
+                      <Download className="w-4 h-4" />
+                      Download Catalogue
+                    </button>
                   </div>
 
                   <div className="space-y-14">
@@ -858,7 +748,7 @@ function CategoryPageContent() {
                         group={group}
                         activeTabColor={activeTabColor}
                         onViewAll={handleViewAllProducts}
-                        onProductClick={handleProductClick}
+                        onImageClick={handleImageClick}
                       />
                     ))}
                   </div>
@@ -870,10 +760,11 @@ function CategoryPageContent() {
       </div>
 
       <AnimatePresence>
-        {selectedProduct && (
-          <ProductDetailsModal
-            product={selectedProduct}
-            onClose={() => setSelectedProduct(null)}
+        {lightboxState.isOpen && (
+          <ImageLightboxModal
+            imageUrl={lightboxState.imageUrl}
+            productName={lightboxState.productName}
+            onClose={closeLightbox}
           />
         )}
       </AnimatePresence>

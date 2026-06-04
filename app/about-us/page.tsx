@@ -102,7 +102,7 @@ const timelineItems: TimelineItem[] = [
     category: "Innovation",
     icon: Leaf,
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timline-koru.jpeg", // You may want to upload a 7th image for this
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timline-koru.jpeg",
   },
   {
     title: "Expanding Horizons",
@@ -112,7 +112,7 @@ const timelineItems: TimelineItem[] = [
     category: "Growth",
     icon: TrendingUp,
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timeline%20(1).png", // You may want to upload an 8th image for this
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timeline%20(1).png",
   },
 ];
 
@@ -211,21 +211,18 @@ const PageBanner = () => (
 // ─── WHY US SECTION ───────────────────────────────────────────────────────────
 const WhyUsSection = () => {
   const row1Cards = [
-    // Workflow = end-to-end process flow
     {
       title: "End to End Solutions",
       desc: "Complete pharma branding services from product ideation to customization, packaging, and delivery.",
       icon: Workflow,
       color: "bg-amber-500",
     },
-    // Truck = delivery / logistics
     {
       title: "Pan-India Delivery",
       desc: "Seamless nationwide delivery of doctor engagement tools and healthcare promotional products.",
       icon: Truck,
       color: "bg-blue-500",
     },
-    // FlaskConical = manufacturing / R&D / lab
     {
       title: "In-House Manufacturing & R&D",
       desc: "Quality-driven manufacturing and innovation for customized pharma promotional solutions.",
@@ -234,28 +231,24 @@ const WhyUsSection = () => {
     },
   ];
   const row2Cards = [
-    // Pill = pharma / medicine
     {
       title: "Pharma Expertise",
       desc: "Customized pharma promotional products and doctor gifting solutions designed for effective brand recall.",
       icon: Pill,
       color: "bg-emerald-500",
     },
-    // Network = vendor ecosystem / supply chain
     {
       title: "Strong Vendor Ecosystem & Sourcing",
       desc: "Reliable sourcing network ensuring premium corporate gifts for pharmaceutical companies.",
       icon: Network,
       color: "bg-violet-500",
     },
-    // Wrench = after-sales / support / service
     {
       title: "After Sales Service",
       desc: "Ongoing support for smooth execution of doctor gifting and branding campaigns",
       icon: Wrench,
       color: "bg-orange-500",
     },
-    // Lock = confidentiality / privacy
     {
       title: "We Maintain Confidentiality",
       desc: "Secure handling of pharmaceutical marketing assets, campaign strategies, and product concepts.",
@@ -278,30 +271,30 @@ const WhyUsSection = () => {
       >
         <item.icon size={18} />
       </div>
-      <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2">
+      <h3 className="style-card-title style-card-title-margin">
         {item.title}
       </h3>
-      <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+      <p className="style-card-description">{item.desc}</p>
     </div>
   );
 
   return (
-    <section className="py-8 sm:py-10 md:py-12 bg-slate-50">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 space-y-3 sm:space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-4">
+    <section className="style-section-padding bg-slate-50">
+      <div className="style-container style-container-padding space-y-3 sm:space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 style-grid-gap">
           <div className="flex flex-col justify-center">
-            <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-1.5 sm:mb-2">
+            <p className="style-subtitle !justify-start">
               Why Param
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
-              The <span className="text-[#0093cb]">Difference</span>
+            <h2 className="style-title">
+              The <span className="style-title-highlight">Difference</span>
             </h2>
           </div>
           {row1Cards.map((item, i) => (
             <Card key={i} item={item} />
           ))}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 style-grid-gap">
           {row2Cards.map((item, i) => (
             <Card key={i} item={item} />
           ))}
@@ -366,9 +359,9 @@ interface CardData {
 
 function VisionCard({ item }: { item: CardData }) {
   return (
-    <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-200 p-5 sm:p-7 flex flex-col min-h-[220px] sm:min-h-[250px] hover:border-slate-300 hover:shadow-sm transition-all duration-200">
+    <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-200 p-5 sm:p-7 flex flex-col min-h-[220px] max-h-[300px] hover:border-slate-300 hover:shadow-sm transition-all duration-200">
       <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-        <span className="text-[10px] sm:text-[11px] font-medium uppercase tracking-widest text-slate-400">
+        <span className="style-card-meta !text-slate-400">
           {item.number} / {item.label}
         </span>
         <div className="flex-1 h-px bg-slate-100" />
@@ -378,10 +371,10 @@ function VisionCard({ item }: { item: CardData }) {
       >
         <span className={item.iconColor}>{item.icon}</span>
       </div>
-      <h3 className="text-sm sm:text-base lg:text-[17px] font-semibold text-slate-900 mb-1.5 sm:mb-2">
+      <h3 className="style-card-title style-card-title-margin">
         {item.title}
       </h3>
-      <p className="text-xs sm:text-sm lg:text-[13px] text-slate-500 leading-relaxed flex-1">
+      <p className="style-card-description flex-1">
         {item.desc}
       </p>
     </div>
@@ -395,7 +388,7 @@ const VisionSection = () => {
       label: "Vision",
       title: "Creating Meaningful Doctor & Pharma Brand Connections",
       tagline: '"Every gift strengthens doctor relationships"',
-      desc: "To become India’s most trusted partner for pharma branding, doctor engagement solutions, and customized pharmaceutical promotional products, delivering meaningful brand experiences that create long-term impact",
+      desc: "To become India's most trusted partner for pharma branding, doctor engagement solutions, and customized pharmaceutical promotional products, delivering meaningful brand experiences that create long-term impact",
       icon: <Target size={18} className="sm:size-5" />,
       iconBg: "bg-blue-50",
       iconColor: "text-[#0093cb]",
@@ -419,14 +412,14 @@ const VisionSection = () => {
   ];
 
   return (
-    <section className="py-8 sm:py-10 md:py-12 2xl:py-24 bg-white overflow-hidden">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
-        <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 text-[#0093cb]">
+    <section className="style-section-padding bg-white overflow-hidden">
+      <div className="style-container style-container-padding">
+        <div className="style-section-header">
+          <p className="style-subtitle">
             Our Purpose
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900">
-            Vision & <span className="text-[#0093cb]">Mission</span>
+          <h2 className="style-title">
+            Vision & <span className="style-title-highlight">Mission</span>
           </h2>
         </div>
         <VisionSwipeCarousel count={data.length}>
@@ -452,28 +445,6 @@ interface TeamMember {
   role: string;
   image: string;
 }
-
-const TeamCard = ({ member }: { member: TeamMember }) => (
-  <div className="relative aspect-[3/4] rounded-2xl sm:rounded-3xl overflow-hidden group shadow-lg cursor-pointer bg-slate-100">
-    <Image
-      src={member.image}
-      alt={member.name}
-      fill
-      className="object-cover transition-transform duration-700 group-hover:scale-105"
-      unoptimized
-    />
-    <div className="absolute inset-0 bg-black/20 flex flex-col justify-end p-4 sm:p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
-      <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1">
-          {member.name}
-        </h3>
-        <p className="text-[#8bde7a] font-semibold text-xs sm:text-sm md:text-base uppercase tracking-wider">
-          {member.role}
-        </p>
-      </div>
-    </div>
-  </div>
-);
 
 const TeamSection = () => {
   const team: TeamMember[] = [
@@ -521,21 +492,21 @@ const TeamSection = () => {
   );
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-white">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
+    <section className="style-section-padding bg-white">
+      <div className="style-container style-container-padding">
         {/* Section Header */}
-        <div className="text-center mb-4 sm:mb-4 md:mb-6">
+        <div className="style-section-header">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-2 sm:mb-3">
+            <p className="style-subtitle">
               Experts in Pharma Branding & Doctor Gifting
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight">
-              Meet Our <span className="text-[#0093cb]">Leadership</span>
+            <h2 className="style-title">
+              Meet Our <span className="style-title-highlight">Leadership</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] mx-auto mt-4 rounded-full" />
           </motion.div>
@@ -549,7 +520,7 @@ const TeamSection = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 md:mb-16"
         >
-          <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+          <p className="style-description">
             Our team understands the unique dynamics of pharmaceutical
             marketing, doctor behavior, therapy-focused communication, and brand
             recall strategy. We create customized doctor engagement tools,
@@ -577,17 +548,17 @@ export default function AboutUsPage() {
       {/* ── BANNER ── */}
       <PageBanner />
 
-      {/* ── HERO / INTRO ── */}
-
       {/* ── JOURNEY / TIMELINE ── */}
-      <section className="py-6 sm:py-8 md:py-10 2xl:py-12 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center mb-10 sm:mb-12 md:mb-16">
-          <span className="text-[#0093cb] font-bold text-[10px] sm:text-xs uppercase tracking-widest">
-            Our History
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mt-1.5 sm:mt-2">
-            A Legacy of <span className="text-[#0093cb]">Excellence</span>
-          </h2>
+      <section className="style-section-padding bg-white">
+        <div className="style-container style-container-padding">
+          <div className="style-section-header">
+            <span className="style-subtitle">
+              Our History
+            </span>
+            <h2 className="style-title">
+              A Legacy of <span className="style-title-highlight">Excellence</span>
+            </h2>
+          </div>
         </div>
         <EditorialTimeline items={timelineItems} />
       </section>
@@ -595,16 +566,6 @@ export default function AboutUsPage() {
       <WhyUsSection />
       <VisionSection />
       <TeamSection />
-
-      <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </div>
   );
 }

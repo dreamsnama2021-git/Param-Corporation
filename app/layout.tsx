@@ -6,6 +6,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackgroundDecoration from "@/components/BackgroundDecoration";
+import ContentProtection from "@/components/ContentProtection";
 import Script from "next/script";
 
 // Primary Font for Headings
@@ -32,8 +33,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="bg-[var(--clr-bg-cream)] text-[var(--clr-text-dark)] font-sans antialiased selection:bg-black selection:text-white">
-    
-<script src="https://elfsightcdn.com/platform.js" async></script>
+        {/* Content Protection - must be inside body */}
+        <ContentProtection />
+        
+        {/* Elfsight script */}
+        <Script src="https://elfsightcdn.com/platform.js" async />
 
         {/* Grid pattern - lowest layer */}
         <BackgroundDecoration />
