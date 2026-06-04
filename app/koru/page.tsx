@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { Phone, CheckCircle, ArrowUpRight, ChevronRight } from "lucide-react";
+import { Phone, CheckCircle, ArrowUpRight, ChevronRight, PenTool, Gift, Leaf, Layout, Eye, Droplets } from "lucide-react";
 import {
   FileText,
   Users,
@@ -13,38 +13,7 @@ import {
 import ImageGallery from "@/components/Productgallery";
 import Image from "next/image";
 import { motion } from "framer-motion";
-const SERVICES = [
-  {
-    title: "Medical Writing",
-    desc: "Scientifically accurate content creation reviewed by clinical experts for precision.",
-    icon: <FileText size={28} />,
-  },
-  {
-    title: "Patient Education",
-    desc: "Simplifying complex clinical data into engaging stories patients can understand.",
-    icon: <Users size={28} />,
-  },
-  {
-    title: "Visual Design",
-    desc: "Premium medical illustrations and graphic design that amplify brand credibility.",
-    icon: <Monitor size={28} />,
-  },
-  {
-    title: "Regulatory Support",
-    desc: "Ensuring all communications meet strict healthcare compliance and guidelines.",
-    icon: <ShieldCheck size={28} />,
-  },
-  {
-    title: "Brand Strategy",
-    desc: "Customized narratives that bridge the gap between science and marketing.",
-    icon: <Lightbulb size={28} />,
-  },
-  {
-    title: "Clinical Tools",
-    desc: "Interactive educational charts, mats, and scales for real-world medical use.",
-    icon: <Activity size={28} />,
-  },
-];
+
 
 // ─── Define the types for the props ───────────────────────────
 interface SwipeCarouselProps {
@@ -107,6 +76,44 @@ function SwipeCarousel({
           ))}
         </div>
       )}
+    </div>
+  );
+}
+
+// ─── Vision Swipe Carousel (used in Why Choose KORU) ─────────────────────────
+interface VisionMissionProps {
+  children: React.ReactNode;
+  count: number;
+}
+
+function VisionSwipeCarousel({ children, count }: VisionMissionProps) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const handleScroll = () => {
+    const el = trackRef.current;
+    if (!el || count === 0) return;
+    const cardWidth = el.scrollWidth / count;
+    setActiveIdx(Math.min(Math.round(el.scrollLeft / cardWidth), count - 1));
+  };
+
+  return (
+    <div className="block lg:hidden">
+      <div
+        ref={trackRef}
+        onScroll={handleScroll}
+        className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 sm:pb-6 snap-x snap-mandatory scrollbar-hide"
+      >
+        {children}
+      </div>
+      <div className="flex justify-center gap-1.5 sm:gap-2">
+        {Array.from({ length: count }).map((_, i) => (
+          <div
+            key={i}
+            className={`h-1.5 rounded-full transition-all duration-300 ${i === activeIdx ? "w-5 sm:w-6 bg-[#0093cb]" : "w-1.5 bg-gray-300"}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
@@ -253,8 +260,8 @@ const PRODUCT_DATA = [
     ],
   },
 ];
-// ─── KORU PAGE BANNER ─────────────────────────────────────────────────────────────
 
+// ─── KORU PAGE BANNER ─────────────────────────────────────────────────────────────
 const PageBanner = () => (
   <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] overflow-hidden">
     {/* Mobile image */}
@@ -288,22 +295,194 @@ const PageBanner = () => (
     />
   </div>
 );
-export default function KoruCommunications() {
-  const allProductImages: string[] = PRODUCT_DATA.flatMap((cat) =>
-    cat.items.map((item) => item.img),
+
+// ─── WHY CHOOSE KORU SECTION ─────────────────────────────────────────────────
+const WhyChooseKoruSection = () => {
+  const KORU_FEATURES = [
+    {
+      icon: <PenTool size={24} />,
+      title: "Custom Brand Integration",
+      desc: "Transform everyday desk essentials into powerful brand touchpoints with personalized branding options designed for doctors, clinics, and healthcare professionals.",
+    },
+    {
+      icon: <Gift size={24} />,
+      title: "Premium Utility Gifting",
+      desc: "Thoughtfully crafted products that deliver practical value while creating a lasting impression, making every gift both meaningful and useful.",
+    },
+    {
+      icon: <Leaf size={24} />,
+      title: "Nature-Inspired Design",
+      desc: "Bring the calming influence of natural aesthetics into professional workspaces with products designed to create a more pleasant and balanced environment.",
+    },
+    {
+      icon: <Layout size={24} />,
+      title: "Multi-Functional Solutions",
+      desc: "Designed to do more than one job, our products maximize desk space, improve organization, and enhance daily productivity.",
+    },
+    {
+      icon: <Eye size={24} />,
+      title: "Long-Term Brand Visibility",
+      desc: "Unlike conventional giveaways, KORU products remain in daily use, keeping your brand visible where it matters most.",
+    },
+    {
+      icon: <Droplets size={24} />,
+      title: "Low-Maintenance Appeal",
+      desc: "Enjoy the visual benefits of nature-inspired elements without the upkeep, making them ideal for busy healthcare and corporate settings.",
+    },
+  ];
+
+  return (
+    <section className="style-section-padding bg-gradient-to-br from-[#f8fafc] via-white to-[#8bde7a]/10 relative overflow-hidden">
+      {/* Background decorative blobs */}
+      <div className="absolute top-0 right-0 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 bg-[#0093cb]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+      <div className="absolute bottom-0 left-0 w-40 sm:w-56 md:w-72 lg:w-80 h-40 sm:h-56 md:h-72 lg:h-80 bg-[#00a65d]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
+      
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 opacity-[0.015]">
+        <svg width="100%" height="100%">
+          <pattern
+            id="koru-grid"
+            width="40"
+            height="40"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 40 0 L 0 0 0 40"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="0.5"
+            />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#koru-grid)" />
+        </svg>
+      </div>
+
+      <div className="style-container style-container-padding relative">
+        {/* Section Header */}
+        <div className="style-section-header">
+          <p className="style-subtitle">
+            <span className="style-subtitle-line" />
+            Designed for Purpose. Inspired by Nature
+            <span className="style-subtitle-line" />
+          </p>
+          <h2 className="style-title style-title-margin">
+            Why Choose <span className="style-title-highlight">KORU</span>
+          </h2>
+          <p className="style-description">
+            Premium desk solutions and pharma gifting products designed to enhance 
+            workspaces, improve usability, and create lasting brand visibility.
+          </p>
+        </div>
+
+        {/* Mobile/Tablet: Swipe Carousel */}
+        <div className="block lg:hidden">
+          <VisionSwipeCarousel count={KORU_FEATURES.length}>
+            {KORU_FEATURES.map((feature, index) => (
+              <div key={index} className="snap-center flex-shrink-0 w-[82vw] sm:w-[46vw]">
+                <div className="relative">
+                  {/* Number badge */}
+                  <div className="absolute -top-2.5 -left-2.5 w-6 h-6 sm:w-7 sm:h-7 bg-white rounded-full shadow-md flex items-center justify-center text-[10px] sm:text-xs font-bold text-[#0093cb] border border-[#0093cb]/30 z-10">
+                    {String(index + 1).padStart(2, "0")}
+                  </div>
+                  
+                  {/* Card Content */}
+                  <div className="p-4 sm:p-5 md:p-6 bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-[#eef2f7] shadow-lg">
+                    {/* Icon */}
+                    <div className="mb-4 sm:mb-5">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#0093cb]/10 to-[#00a65d]/10 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-inner">
+                        <div className="text-[#0093cb]">{feature.icon}</div>
+                      </div>
+                    </div>
+                    
+                    {/* Title */}
+                    <h3 className="style-card-title style-card-title-margin">
+                      {feature.title}
+                    </h3>
+                    
+                    {/* Description */}
+                    <p className="style-card-description">
+                      {feature.desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </VisionSwipeCarousel>
+        </div>
+
+        {/* Desktop: 3-Column Grid */}
+        <div className="hidden lg:grid grid-cols-3 style-grid-gap">
+          {KORU_FEATURES.map((feature, index) => (
+            <div key={index} className="relative group">
+              {/* Number badge */}
+              <div className="absolute -top-3 -left-3 xl:-top-3 xl:-left-3 w-7 h-7 xl:w-8 xl:h-8 bg-white rounded-full shadow-md flex items-center justify-center text-xs font-bold text-[#0093cb] border border-[#0093cb]/30 z-10">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+              
+              {/* Card */}
+              <div className=" transition-all duration-500 ease-out">
+                {/* Decorative corner element */}
+                <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M2 2L10 10M10 10L18 2M10 10L2 18M10 10L18 18"
+                      stroke="#00a65d"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      opacity="0.3"
+                    />
+                  </svg>
+                </div>
+                
+                {/* Content */}
+                <div className="p-6 xl:p-8 bg-white/80 backdrop-blur-sm rounded-2xl xl:rounded-3xl border border-[#eef2f7] shadow-lg hover:shadow-2xl transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-white relative">
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 rounded-2xl xl:rounded-3xl bg-gradient-to-br from-[#0093cb]/0 to-[#00a65d]/0 group-hover:from-[#0093cb]/5 group-hover:to-[#00a65d]/5 transition-colors duration-500 pointer-events-none" />
+                  
+                  {/* Icon */}
+                  <div className="mb-5 xl:mb-6 relative">
+                    <div className="w-12 h-12 xl:w-14 xl:h-14 bg-gradient-to-br from-[#0093cb]/10 to-[#00a65d]/10 rounded-xl xl:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                      <div className="text-[#0093cb] transform group-hover:rotate-3 transition-transform">
+                        {feature.icon}
+                      </div>
+                    </div>
+                    {/* Decorative dots */}
+                    <div className="absolute -top-1.5 -right-1.5 w-2.5 h-2.5 bg-[#8bde7a] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-150" />
+                    <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 bg-[#0093cb] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-150" />
+                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="style-card-title style-card-title-margin relative inline-block">
+                    {feature.title}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] group-hover:w-full transition-all duration-500" />
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="style-card-description">
+                    {feature.desc}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
+};
+
+// ─── MAIN KORU PAGE ──────────────────────────────────────────────────────────
+export default function KoruCommunications() {
   return (
     <div className="text-slate-800 font-sans scroll-smooth bg-white">
-      {/* ── HERO ── */}
+      {/* ── HERO BANNER ── */}
       <PageBanner />
 
-      {/* ── ABOUT ── */}
-      <section
-        id="about"
-        className="py-10 sm:py-12 md:py-14 lg:py-12 bg-[#f8fafc] overflow-hidden"
-      >
-        <div className="max-w-[1500px] xl:w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
+      {/* ── ABOUT KORU ── */}
+      <section id="about" className="style-section-padding bg-[#f8fafc] overflow-hidden">
+        <div className="style-container style-container-padding">
           <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-10 md:gap-12 lg:gap-14 xl:gap-20 2xl:gap-24">
+            {/* Image Section */}
             <div className="w-full sm:w-[340px] md:w-[380px] lg:w-[420px] xl:w-[460px] 2xl:w-[500px] relative flex-shrink-0">
               <div className="relative h-[300px] sm:h-[360px] md:h-[420px] lg:h-[440px] xl:h-[480px] 2xl:h-[520px]">
                 {/* Dots Pattern */}
@@ -318,40 +497,39 @@ export default function KoruCommunications() {
 
                 {/* Decorative Circles */}
                 <div className="absolute -top-6 -left-6 sm:-top-8 sm:-left-8 md:-top-10 md:-left-10 w-32 sm:w-40 md:w-48 lg:w-56 h-32 sm:h-40 md:h-48 lg:h-56 rounded-full border border-dashed border-[#0093cb] opacity-30 z-0 animate-spin-slow" />
-
                 <div className="absolute -top-4 -left-4 sm:-top-5 sm:-left-5 md:-top-6 md:left-6 w-28 sm:w-32 md:w-36 lg:w-48 h-28 sm:h-32 md:h-36 lg:h-48 rounded-full border border-dashed border-[#00a65d] opacity-20 z-0" />
-
                 <div className="absolute -bottom-5 -right-5 sm:-bottom-6 sm:-right-6 md:-bottom-8 md:-right-8 w-28 sm:w-32 md:w-40 lg:w-44 h-28 sm:h-32 md:h-40 lg:h-44 rounded-full bg-[#8bde7a]/10 z-0" />
-
                 <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-24 sm:w-28 md:w-32 lg:w-36 h-24 sm:h-28 md:h-32 lg:h-36 rounded-full bg-[#0093cb]/5 z-0" />
 
                 {/* Border Frame */}
                 <div className="absolute top-2 left-2 sm:top-3 sm:left-3 md:top-4 md:left-4 right-0 bottom-0 rounded-2xl sm:rounded-3xl border-2 border-[#0093cb]/30 z-[1]" />
 
                 {/* Image Container */}
-                <div className="relative top-4 left-4 sm:top-5 sm:left-5 md:top-8 md:left- right-0 bottom-2 rounded-2xl sm:rounded-3xl overflow-hidden z-[2] shadow-xl sm:shadow-2xl">
-                  <img
+                <div className="relative top-4 left-4 sm:top-5 sm:left-5 md:top-8 md:left-8 right-0 bottom-2 rounded-2xl sm:rounded-3xl overflow-hidden z-[2] shadow-xl sm:shadow-2xl">
+                  <Image
                     src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru-about.jpeg"
                     alt="Koru Leadership"
-                    className="w-full h-full object-fill object-center transition-transform duration-700 hover:scale-105"
+                    fill
+                    className="object-fill object-center transition-transform duration-700 hover:scale-105"
+                    unoptimized
                   />
                 </div>
               </div>
             </div>
 
-            {/* Text content */}
+            {/* Text Content */}
             <div className="flex-1 min-w-0 space-y-5 sm:space-y-6 md:space-y-8 xl:ml-10 w-full">
               <div>
                 <div className="inline-flex items-center gap-2 border border-[#00a65d]/20 bg-[#00a65d]/5 text-[#00a65d] text-[9px] sm:text-[10px] md:text-xs font-black px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-full uppercase tracking-[0.2em] mb-3 sm:mb-4 md:mb-6">
                   <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-[#00a65d] rounded-full animate-pulse flex-shrink-0" />
                   About Koru Communications
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-black text-[#0f172a] leading-[1.1] tracking-tighter">
-                  Bringing Nature Aesthetics into <br />
-                  <span className="text-[#0093cb]">Pharma Utility Gifting</span>
+                <h2 className="style-title !text-left">
+                  Bringing Nature Aesthetics into{" "}
+                  <span className="style-title-highlight">Pharma Utility Gifting</span>
                 </h2>
               </div>
-              <p className="text-sm sm:text-base md:text-lg text-[#6b7280] leading-relaxed max-w-3xl">
+              <p className="style-description !text-left !max-w-3xl">
                 KORU creates thoughtfully designed premium desk utility products
                 and pharma promotional gifts that combine functionality with
                 calming natural aesthetics. Designed for clinics, hospitals, and
@@ -360,7 +538,7 @@ export default function KoruCommunications() {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 sm:gap-y-3 md:gap-y-4 gap-x-4 sm:gap-x-6 md:gap-x-8 pb-2 sm:pb-4">
                 {[
-                  " Custom branding available",
+                  "Custom branding available",
                   "Premium utility gifting",
                   "Low-maintenance natural aesthetics",
                   "Multi-functional products",
@@ -384,189 +562,24 @@ export default function KoruCommunications() {
         </div>
       </section>
 
-      {/* ── SERVICES ── */}
-      <section className="py-8 sm:py-10 md:py-12 lg:py-10 bg-gradient-to-br from-[#f8fafc] via-white to-[#8bde7a]/10 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 bg-[#0093cb]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
-        <div className="absolute bottom-0 left-0 w-40 sm:w-56 md:w-72 lg:w-80 h-40 sm:h-56 md:h-72 lg:h-80 bg-[#00a65d]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
-        <div className="absolute inset-0 opacity-[0.015]">
-          <svg width="100%" height="100%">
-            <pattern
-              id="grid"
-              width="40"
-              height="40"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 40 0 L 0 0 0 40"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="0.5"
-              />
-            </pattern>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
+      {/* ── WHY CHOOSE KORU ── */}
+      <WhyChooseKoruSection />
 
-        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative">
-          {/* Header */}
-          <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16 relative">
-            <div className="flex items-center gap-2 sm:gap-3 mb-1.5 sm:mb-2">
-              <svg
-                width="28"
-                height="8"
-                viewBox="0 0 32 8"
-                fill="none"
-                className="sm:w-8 text-[#0093cb]"
-              >
-                <path
-                  d="M2 6C4 2 8 1 10 3C12 5 14 7 18 4C22 1 26 5 30 3"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  fill="none"
-                  className="opacity-70"
-                />
-              </svg>
-              <span className="text-[#0093cb] font-medium tracking-wider text-xs sm:text-sm uppercase">
-                What We Do Best
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-[#0f172a]">
-              Expert{" "}
-              <span className="relative inline-block">
-                Services
-                <svg
-                  className="absolute -bottom-2 left-0 w-full"
-                  height="8"
-                  viewBox="0 0 100 8"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0,5 Q25,0 50,5 Q75,10 100,5"
-                    stroke="#00a65d"
-                    strokeWidth="2.5"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>
-            </h2>
-            <div className="flex items-center gap-3 sm:gap-4 mt-3 sm:mt-4">
-              <p className="text-[#6b7280] text-sm sm:text-base md:text-lg max-w-xs sm:max-w-xl">
-                A holistic approach to medical communication, blending science
-                with storytelling.
-              </p>
-              <div className="hidden sm:block h-px flex-1 bg-gradient-to-r from-[#0093cb]/50 to-transparent" />
-            </div>
-          </div>
 
-          {/* ── Mobile / tablet: swipe carousel ── */}
-          <SwipeCarousel count={SERVICES.length} accentColor="#0093cb">
-            {SERVICES.map((service, index) => (
-              <div
-                key={index}
-                className="snap-center flex-shrink-0 w-[82vw] sm:w-[46vw] relative group"
-              >
-                <div className="relative p-4 sm:p-5 md:p-6 bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-[#eef2f7] shadow-lg h-full">
-                  <div className="mb-4 sm:mb-5 relative">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#0093cb]/10 to-[#00a65d]/10 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-inner">
-                      <div className="text-[#0093cb]">{service.icon}</div>
-                    </div>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-bold text-[#0f172a] mb-1.5 sm:mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-[#6b7280] leading-relaxed text-xs sm:text-sm">
-                    {service.desc}
-                  </p>
-                </div>
-                <div className="absolute -top-2 -left-2 sm:-top-3 sm:-left-3 w-6 h-6 sm:w-7 sm:h-7 bg-white rounded-full shadow-md flex items-center justify-center text-[8px] sm:text-[10px] font-bold text-[#0093cb] border border-[#0093cb]/30">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-              </div>
-            ))}
-          </SwipeCarousel>
 
-          {/* ── Desktop: 3-column grid ── */}
-          <div className="hidden lg:grid grid-cols-3 gap-5 lg:gap-6 xl:gap-8">
-            {SERVICES.map((service, index) => (
-              <div key={index} className="relative group">
-                <div
-                  className="relative p-6 xl:p-8 bg-white/80 backdrop-blur-sm rounded-2xl xl:rounded-3xl border border-[#eef2f7] shadow-lg hover:shadow-2xl transition-all duration-500 ease-out hover:-translate-y-2 hover:bg-white
-                  before:absolute before:inset-0 before:rounded-2xl xl:before:rounded-3xl before:bg-gradient-to-br before:from-[#0093cb]/0 before:to-[#00a65d]/0 hover:before:from-[#0093cb]/5 hover:before:to-[#00a65d]/5 before:transition-colors before:duration-500"
-                >
-                  <div className="absolute top-3 right-3 xl:top-4 xl:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      className="xl:w-5 xl:h-5"
-                    >
-                      <path
-                        d="M2 2L10 10M10 10L18 2M10 10L2 18M10 10L18 18"
-                        stroke="#00a65d"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        opacity="0.3"
-                      />
-                    </svg>
-                  </div>
-                  <div className="mb-5 xl:mb-7 relative">
-                    <div className="w-12 h-12 xl:w-14 xl:h-14 2xl:w-16 2xl:h-16 bg-gradient-to-br from-[#0093cb]/10 to-[#00a65d]/10 rounded-xl xl:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner">
-                      <div className="text-[#0093cb] transform group-hover:rotate-3 transition-transform">
-                        {service.icon}
-                      </div>
-                    </div>
-                    <div className="absolute -top-1.5 -right-1.5 xl:-top-2 xl:-right-2 w-2.5 h-2.5 xl:w-3 xl:h-3 bg-[#8bde7a] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-150" />
-                    <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 xl:w-2 xl:h-2 bg-[#0093cb] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-150" />
-                  </div>
-                  <h3 className="text-lg xl:text-xl 2xl:text-2xl font-bold text-[#0f172a] mb-2 xl:mb-3 relative inline-block">
-                    {service.title}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] group-hover:w-full transition-all duration-500" />
-                  </h3>
-                  <p className="text-[#6b7280] leading-relaxed mb-3 xl:mb-4 text-sm xl:text-base">
-                    {service.desc}
-                  </p>
-                  {/* <div className="flex items-center gap-2 text-[#00a65d] font-medium text-xs xl:text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-0 group-hover:translate-x-2">
-                    <span>Learn more</span>
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      className="xl:w-4 xl:h-4 group-hover:translate-x-1 transition-transform"
-                    >
-                      <path
-                        d="M6 12L10 8L6 4"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div> */}
-                </div>
-                <div className="absolute -top-2.5 -left-2.5 xl:-top-3 xl:-left-3 w-6 h-6 xl:w-7 xl:h-7 2xl:w-8 2xl:h-8 bg-white rounded-full shadow-md flex items-center justify-center text-[10px] xl:text-xs font-bold text-[#0093cb] border border-[#0093cb]/30">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── BENTO GRID ── */}
-      <section className="py-8 sm:py-10 md:py-12 bg-slate-50">
-        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-4 sm:mb-5 md:mb-6">
-            <span className="text-[#00a65d] font-bold uppercase tracking-widest text-xs sm:text-sm inline-block mb-1.5 sm:mb-2">
+      {/* ── GALLERY ── */}
+      <section className="style-section-padding bg-slate-50">
+        <div className="style-container style-container-padding">
+          <div className="style-section-header">
+            <p className="style-subtitle">
+              <span className="style-subtitle-line" />
               Visual Portfolio
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
-              Our <span className="text-[#0093cb]">Gallery</span>
+              <span className="style-subtitle-line" />
+            </p>
+            <h2 className="style-title style-title-margin">
+              Our <span className="style-title-highlight">Gallery</span>
             </h2>
-            <p className="text-slate-500 mt-3 sm:mt-4 text-sm sm:text-base md:text-lg">
+            <p className="style-description">
               A glimpse into our high-quality medical communication tools and
               educational materials.
             </p>

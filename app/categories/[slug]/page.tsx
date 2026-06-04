@@ -23,6 +23,12 @@ import {
   Package,
   Eye,
   Download,
+  Mail,
+  Phone,
+  User,
+  Building2,
+  Send,
+  Loader2,
 } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -183,6 +189,395 @@ const PageBanner = () => {
     </div>
   );
 };
+
+/* ══════════════════════════════════════════
+   DOWNLOAD CATALOGUE FORM MODAL
+══════════════════════════════════════════ */
+interface FormData {
+  fullName: string;
+  email: string;
+  phone: string;
+  companyName: string;
+  designation: string;
+}
+
+interface FormErrors {
+  fullName?: string;
+  email?: string;
+  phone?: string;
+}
+
+function DownloadCatalogueModal({
+  isOpen,
+  onClose,
+  totalProducts,
+  categoriesCount,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  totalProducts: number;
+  categoriesCount: number;
+}) {
+  const [formData, setFormData] = useState<FormData>({
+    fullName: "",
+    email: "",
+    phone: "",
+    companyName: "",
+    designation: "",
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = "Full name is required";
+    } else if (formData.fullName.trim().length < 2) {
+      newErrors.fullName = "Please enter a valid name";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!/^[+]?[\d\s-]{10,}$/.test(formData.phone.replace(/\s/g, ""))) {
+      newErrors.phone = "Please enter a valid phone number";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (field: keyof FormData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    // Clear error when user starts typing
+    if (errors[field as keyof FormErrors]) {
+      setErrors(prev => ({ ...prev, [field]: undefined }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Simulate API call - replace with your actual API endpoint
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      // You can add your API call here:
+      // await fetch('/api/download-catalogue', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(formData),
+      // });
+
+      setIsSubmitted(true);
+      
+      // Trigger download after successful submission
+      setTimeout(() => {
+        downloadCatalogue();
+      }, 500);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const downloadCatalogue = () => {
+    // Create catalogue content with all products
+    let catalogueContent = `========================================
+COMPLETE PRODUCT CATALOGUE
+========================================
+Generated: ${new Date().toLocaleDateString()}
+Total Products: ${totalProducts}
+Categories: ${categoriesCount}
+========================================\n\n`;
+
+    // Add all products from allProducts data
+    const groupedProducts = getCategoriesForTab("all");
+    const productMap = new Map<string, any[]>();
+    
+    groupedProducts.forEach(cat => {
+      const products = allProducts.filter(p => p.category === cat.slug);
+      if (products.length > 0) {
+        productMap.set(cat.name, products);
+      }
+    });
+
+    let groupIndex = 0;
+    productMap.forEach((products, categoryName) => {
+      groupIndex++;
+      catalogueContent += `${groupIndex}. ${categoryName.toUpperCase()}\n`;
+      catalogueContent += `${'='.repeat(categoryName.length + 4)}\n`;
+      catalogueContent += `Products: ${products.length}\n\n`;
+      
+      products.forEach((product, productIndex) => {
+        catalogueContent += `  ${productIndex + 1}. ${product.name}\n`;
+        catalogueContent += `     Category: ${product.category}\n`;
+        catalogueContent += `     Description: ${product.description || 'No description'}\n`;
+        if (product.features && product.features.length > 0) {
+          catalogueContent += `     Features: ${product.features.join(', ')}\n`;
+        }
+        if (product.tags && product.tags.length > 0) {
+          catalogueContent += `     Tags: ${product.tags.join(', ')}\n`;
+        }
+        catalogueContent += `\n`;
+      });
+      
+      catalogueContent += `\n`;
+    });
+
+    catalogueContent += `========================================
+END OF CATALOGUE
+========================================`;
+
+    const blob = new Blob([catalogueContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Complete_Product_Catalogue_${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleClose = () => {
+    if (!isSubmitting) {
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        companyName: "",
+        designation: "",
+      });
+      setErrors({});
+      setIsSubmitted(false);
+      onClose();
+    }
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={handleClose}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.2 }}
+            className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="relative p-6 border-b border-gray-100">
+              <button
+                onClick={handleClose}
+                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors"
+                type="button"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              {!isSubmitted ? (
+                <>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0093cb] to-[#00a65d] flex items-center justify-center">
+                      <Download className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-bold text-[#060706]">Download Catalogue</h2>
+                      <p className="text-sm text-gray-500">
+                        {totalProducts} products • {categoriesCount} categories
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-500">
+                    Please fill in your details below to download the complete product catalogue.
+                  </p>
+                </>
+              ) : (
+                <div className="text-center py-4">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
+                    <Check className="w-8 h-8 text-[#00a65d]" />
+                  </div>
+                  <h2 className="text-xl font-bold text-[#060706] mb-2">Thank You!</h2>
+                  <p className="text-sm text-gray-500">
+                    Your download will begin shortly. Check your email for a copy.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Form */}
+            {!isSubmitted && (
+              <form onSubmit={handleSubmit} className="p-6 space-y-4">
+                {/* Full Name */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Full Name <span className="text-red-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <input
+                      type="text"
+                      value={formData.fullName}
+                      onChange={(e) => handleInputChange("fullName", e.target.value)}
+                      placeholder="Enter your full name"
+                      className={`w-full pl-10 pr-4 py-2.5 rounded-xl border ${
+                        errors.fullName ? "border-red-300 bg-red-50" : "border-gray-200"
+                      } focus:outline-none focus:ring-2 focus:ring-[#0093cb]/20 focus:border-[#0093cb] transition-colors text-sm`}
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  {errors.fullName && (
+                    <p className="mt-1 text-xs text-red-500">{errors.fullName}</p>
+                  )}
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Email Address <span className="text-red-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange("email", e.target.value)}
+                      placeholder="Enter your email"
+                      className={`w-full pl-10 pr-4 py-2.5 rounded-xl border ${
+                        errors.email ? "border-red-300 bg-red-50" : "border-gray-200"
+                      } focus:outline-none focus:ring-2 focus:ring-[#0093cb]/20 focus:border-[#0093cb] transition-colors text-sm`}
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  {errors.email && (
+                    <p className="mt-1 text-xs text-red-500">{errors.email}</p>
+                  )}
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Phone Number <span className="text-red-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <input
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange("phone", e.target.value)}
+                      placeholder="Enter your phone number"
+                      className={`w-full pl-10 pr-4 py-2.5 rounded-xl border ${
+                        errors.phone ? "border-red-300 bg-red-50" : "border-gray-200"
+                      } focus:outline-none focus:ring-2 focus:ring-[#0093cb]/20 focus:border-[#0093cb] transition-colors text-sm`}
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                  {errors.phone && (
+                    <p className="mt-1 text-xs text-red-500">{errors.phone}</p>
+                  )}
+                </div>
+
+                {/* Company Name (Optional) */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Company Name <span className="text-gray-400">(Optional)</span>
+                  </label>
+                  <div className="relative">
+                    <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                    <input
+                      type="text"
+                      value={formData.companyName}
+                      onChange={(e) => handleInputChange("companyName", e.target.value)}
+                      placeholder="Enter your company name"
+                      className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#0093cb]/20 focus:border-[#0093cb] transition-colors text-sm"
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                </div>
+
+                {/* Designation (Optional) */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Designation <span className="text-gray-400">(Optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.designation}
+                    onChange={(e) => handleInputChange("designation", e.target.value)}
+                    placeholder="e.g., Procurement Manager"
+                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#0093cb]/20 focus:border-[#0093cb] transition-colors text-sm"
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white font-medium transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{
+                    background: `linear-gradient(135deg, ${BRAND.primary}, ${BRAND.secondary})`,
+                  }}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      <Download className="w-4 h-4" />
+                      Download Catalogue
+                    </>
+                  )}
+                </button>
+
+                <p className="text-xs text-center text-gray-400">
+                  We respect your privacy. Your information will not be shared with third parties.
+                </p>
+              </form>
+            )}
+
+            {/* Success State */}
+            {isSubmitted && (
+              <div className="p-6 pt-0">
+                <button
+                  onClick={handleClose}
+                  className="w-full px-6 py-3 rounded-xl bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition-colors"
+                  type="button"
+                >
+                  Close
+                </button>
+              </div>
+            )}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
 
 /* ══════════════════════════════════════════
    SIDEBAR WITH DROPDOWN + SUBCATEGORIES
@@ -417,7 +812,6 @@ function ProductCard({
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-[#0093cb]/0 group-hover:bg-[#0093cb]/10 transition-colors duration-300 flex items-center justify-center product-overlay">
-                {/* Zoom indicator removed as requested */}
               </div>
             </>
           ) : (
@@ -504,7 +898,6 @@ function CategorySection({
               }}
             />
           </div>
-         
         </div>
       </div>
 
@@ -566,6 +959,8 @@ function CategoryPageContent() {
     imageUrl: "",
     productName: "",
   });
+
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
   const activeTab: TabId = useMemo(() => {
     if (tabParam && TABS.some((t) => t.id === tabParam)) return tabParam;
@@ -641,52 +1036,8 @@ function CategoryPageContent() {
     setLightboxState(prev => ({ ...prev, isOpen: false }));
   };
 
-  // Function to download full catalogue
-  const handleDownloadFullCatalogue = () => {
-    // Create catalogue content with all products
-    let catalogueContent = `========================================
-COMPLETE PRODUCT CATALOGUE
-========================================
-Generated: ${new Date().toLocaleDateString()}
-Total Products: ${totalProducts}
-Categories: ${groupedProducts.length}
-========================================\n\n`;
-
-    groupedProducts.forEach((group, groupIndex) => {
-      catalogueContent += `${groupIndex + 1}. ${group.categoryName.toUpperCase()}\n`;
-      catalogueContent += `${'='.repeat(group.categoryName.length + 4)}\n`;
-      catalogueContent += `Description: ${group.description || 'No description available'}\n`;
-      catalogueContent += `Products: ${group.products.length}\n\n`;
-      
-      group.products.forEach((product, productIndex) => {
-        catalogueContent += `  ${productIndex + 1}. ${product.name}\n`;
-        catalogueContent += `     Category: ${product.category}\n`;
-        catalogueContent += `     Description: ${product.description || 'No description'}\n`;
-        if (product.features && product.features.length > 0) {
-          catalogueContent += `     Features: ${product.features.join(', ')}\n`;
-        }
-        if (product.tags && product.tags.length > 0) {
-          catalogueContent += `     Tags: ${product.tags.join(', ')}\n`;
-        }
-        catalogueContent += `\n`;
-      });
-      
-      catalogueContent += `\n`;
-    });
-
-    catalogueContent += `========================================
-END OF CATALOGUE
-========================================`;
-
-    const blob = new Blob([catalogueContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `Complete_Product_Catalogue_${new Date().toISOString().split('T')[0]}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+  const handleDownloadClick = () => {
+    setIsDownloadModalOpen(true);
   };
 
   return (
@@ -729,7 +1080,7 @@ END OF CATALOGUE
                     </p>
                     
                     <button
-                      onClick={handleDownloadFullCatalogue}
+                      onClick={handleDownloadClick}
                       className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all shadow-md hover:shadow-lg"
                       style={{
                         background: `linear-gradient(135deg, ${BRAND.primary}, ${BRAND.secondary})`,
@@ -759,6 +1110,15 @@ END OF CATALOGUE
         </div>
       </div>
 
+      {/* Download Catalogue Modal */}
+      <DownloadCatalogueModal
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+        totalProducts={totalProducts}
+        categoriesCount={groupedProducts.length}
+      />
+
+      {/* Image Lightbox */}
       <AnimatePresence>
         {lightboxState.isOpen && (
           <ImageLightboxModal
