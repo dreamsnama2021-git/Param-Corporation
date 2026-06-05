@@ -20,15 +20,15 @@ const HERO_SLIDES: HeroSlide[] = [
     alt: "Corporate Gifts",
   },
   {
-    desktopImage: "/banner/home2.png",
-    mobileImage: "/banner/mobile/home2.png",
-    tabletImage: "/banner/tablet/home2.png",
+    desktopImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%202.jpg",
+    mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Mobile%20Home%20Banner%202.jpg",
+    tabletImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Tablet%20Home%20Banner%202.jpg",
     alt: "Branding",
   },
   {
     desktopImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
     mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Mobile%20Home%20Banner%203.jpeg",
-    tabletImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Tablet%20Home%20Banner%203.jpeg", // Optional
+    tabletImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Teblet%20Home%20Banner%203.jpeg", // Optional
     alt: "Pharmaceutical Gifts",
   },
   {
