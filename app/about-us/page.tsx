@@ -395,7 +395,7 @@ const VisionSection = () => {
       label: "Vision",
       title: "Creating Meaningful Doctor & Pharma Brand Connections",
       tagline: '"Every gift strengthens doctor relationships"',
-      desc: "To become India's most trusted partner for pharma branding, doctor engagement solutions, and customized pharmaceutical promotional products, delivering meaningful brand experiences that create long-term impact",
+      desc: "To become India's most trusted partner for pharma branding, doctor engagement solutions, and customized pharmaceutical promotional products, delivering meaningful brand experiences that create long-term impact.",
       icon: <Target size={18} className="sm:size-5" />,
       iconBg: "bg-blue-50",
       iconColor: "text-[#0093cb]",
