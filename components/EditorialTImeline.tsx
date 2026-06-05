@@ -115,8 +115,8 @@ const EditorialRow = ({ item, index }: { item: TimelineItem; index: number }) =>
           </h3>
           
           {/* Description */}
-          <p className="text-xs sm:text-sm md:text-xs lg:text-sm xl:text-base 2xl:text-lg text-slate-600 leading-relaxed 
-                       line-clamp-5 md:line-clamp-none lg:line-clamp-6">
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed 
+                       line-clamp-5 md:line-clamp-none lg:line-clamp-8">
             {item.description}
           </p>
         </div>
