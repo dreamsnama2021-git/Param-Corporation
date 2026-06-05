@@ -193,7 +193,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   "ENT & Respiratory": {
     card: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80",
     books: [
-      "https://picsum.photos/id/68/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_29_49%20PM.png",
       "https://picsum.photos/id/69/400/300",
       "https://picsum.photos/id/70/400/300",
     ],
