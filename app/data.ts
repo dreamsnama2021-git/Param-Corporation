@@ -240,7 +240,7 @@ export const allProducts: Product[] = [
 
   // Categories - Fibre and Resin Products (IDs: 41-55)
   {
-    id: 41, name: "4 STAGE ENDODONTIC TREATMENT MODEL", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_25%20PM.png", price: "₹2499", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Detailed 4-stage endodontic treatment demonstration model for dental education", images: [
+    id: 41, name: "4 STAGE ENDODONTIC TREATMENT MODEL", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_37_54%20PM.png", price: "₹2499", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Detailed 4-stage endodontic treatment demonstration model for dental education", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_25%20PM.png",
       // "Fibre & Resin/4 STAGE ENDODONTIC TREATMENT MODEL 2.jpg"
     ]
