@@ -469,7 +469,7 @@ const PageBanner = () => (
    <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] 2xl:h-[65vh] overflow-hidden">
     {/* Mobile image */}
     <Image
-      src="/banner/Medipride page Mobile.jpg"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Medipride%20page%20Mobile.png"
       alt="MediPride Banner - Mobile"
       fill
       className="object-fill object-center block md:hidden"
@@ -479,7 +479,7 @@ const PageBanner = () => (
 
     {/* Tablet image */}
     <Image
-      src="/banner/Medipride page Tablet.jpg"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Medipride%20page%20Tablet.png"
       alt="MediPride Banner - Tablet"
       fill
       className="object-fill object-center hidden md:block lg:hidden"
@@ -489,7 +489,7 @@ const PageBanner = () => (
 
     {/* Desktop image */}
     <Image
-      src="/banner/Medipride page Desktop.jpg"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Medipride%20page%20Desktop.png"
       alt="MediPride Banner - Desktop"
       fill
       className="object-fill object-center hidden lg:block"
