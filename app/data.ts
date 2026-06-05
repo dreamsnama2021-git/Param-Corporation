@@ -139,8 +139,9 @@ export const allProducts: Product[] = [
   { id: 6, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_04_56%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   { id: 7, name: "CUSTOMIZED APPLE SHAPED FRAGRANCE PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_08_09%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   { id: 8, name: "CLEAR THEME PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_09_23%20PM.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
-  { id: 9, name: "CAPSULE ROCKING PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_09_48%20PM.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
-  { id: 10, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_10_17%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 9, name: "CAPSULE ROCKING PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_43%20PM.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
+  { id: 10, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_54%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 10, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_18_02%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
 
   // Categories - Tabletops (IDs: 11-26)
   { id: 11, name: "CUSTOMIZED 1 LAKH DOSES MOMENTO", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/22.png", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
@@ -198,7 +199,7 @@ export const allProducts: Product[] = [
     ]
   },
   {
-    id: 27, name: "CUSTOMIZED FOLDABLE CHIT PAD & PEN HOLDER TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_27%20PM.png", price: "₹399", category: "desk-utility", categoryName: "Desk Utility", description: "Beautiful flower-shaped decorative paperweight", images: [
+    id: 27, name: "CUSTOMIZED FOLDABLE CHIT PAD & PEN HOLDER TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_31%20PM.png", price: "₹399", category: "desk-utility", categoryName: "Desk Utility", description: "Beautiful flower-shaped decorative paperweight", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_27%20PM.png",
       // "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(1).jpeg",
       // "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(2).jpeg",
@@ -253,28 +254,28 @@ export const allProducts: Product[] = [
     ]
   },
   {
-    id: 43, name: "CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_43%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Fun burger-shaped fibre paperweight for desk decor", images: [
+    id: 43, name: "CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_31%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Fun burger-shaped fibre paperweight for desk decor", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_43%20PM.png"
     ]
   },
   {
-    id: 44, name: "CUSTOMIZED FIBRE TEA CUP PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_54%20PM.png", price: "₹399", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Unique samosa-shaped fibre paperweight - quirky desk accessory", images: [
+    id: 44, name: "CUSTOMIZED FIBRE TEA CUP PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_43%20PM.png", price: "₹399", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Unique samosa-shaped fibre paperweight - quirky desk accessory", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_54%20PM.png",
       // "Fibre & Resin/CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT 2.JPG"
     ]
   },
   {
-    id: 45, name: "CUSTOMIZED FIBRE VADA PAV PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_18_02%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Tea cup shaped fibre paperweight for desk decor", images: [
+    id: 45, name: "CUSTOMIZED FIBRE VADA PAV PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_54%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Tea cup shaped fibre paperweight for desk decor", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_18_02%20PM.png"
     ]
   },
   {
-    id: 46, name: "FINGER EXERCISE MODEL", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_08_59%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Traditional tea glass shaped fibre paperweight", images: [
+    id: 46, name: "FINGER EXERCISE MODEL", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_18_02%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Traditional tea glass shaped fibre paperweight", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_08_59%20PM.png"
     ]
   },
   {
-    id: 47, name: "MOTHER-BABY FIBRE TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Mumbai-style vada pav shaped fibre paperweight", images: [
+    id: 47, name: "MOTHER-BABY FIBRE TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Mumbai-style vada pav shaped fibre paperweight", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png",
       // "Fibre & Resin/CUSTOMIZED FIBRE VADA PAV PAPERWEIGHT 2.JPG"
     ]
@@ -531,7 +532,7 @@ export const allProducts: Product[] = [
   // { id: 107, name: "Summer Hydration Package", image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=400", price: "₹799", category: "april", categoryName: "April", description: "Reusable water bottles and electrolyte supplements", tags: ["summer", "hydration", "health"] },
 
   // May (IDs: 108-109)
-  { id: 108, name: "Nurses Appreciation Hamper", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png", price: "₹1999", category: "may", categoryName: "May", description: "Thank you gifts for nursing staff", tags: ["nurses", "appreciation", "healthcare"] },
+  { id: 108, name: "Nurses Appreciation Hamper", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png", price: "₹1999", category: "may", categoryName: "May", description: "Thank you gifts for nursing staff", tags: ["nurses", "appreciation", "healthcare"] },
   { id: 109, name: "Summer Sun Care Kit", image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=400", price: "₹1099", category: "may", categoryName: "May", description: "Sunscreens, hats, and summer essentials", tags: ["summer", "sunprotection", "skincare"] },
 
   // // June (IDs: 110-111)
