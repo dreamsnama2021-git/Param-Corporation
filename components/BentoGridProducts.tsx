@@ -107,7 +107,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   "Cardio-Vascular": {
     card: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
     books: [
-      "https://picsum.photos/id/20/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_55_26%20PM.png",
       "https://picsum.photos/id/21/400/300",
       "https://picsum.photos/id/22/400/300",
     ],
@@ -236,13 +236,13 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   "Orthopedics/Rheumatology": {
     card: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80",
     books: [
-      "https://picsum.photos/id/92/400/300",
-      "https://picsum.photos/id/93/400/300",
-      "https://picsum.photos/id/94/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_55_44%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_55_32%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/BOOKS%20%26%20MAGAZINES.png",
     ],
     flipChart: [
-      "https://picsum.photos/id/95/400/300",
-      "https://picsum.photos/id/96/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/BOOKS%20%26%20MAGAZINES%202.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/BOOKS%20%26%20MAGAZINES%201.png",
       "https://picsum.photos/id/97/400/300",
     ],
     matt: [
