@@ -251,7 +251,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_45_24%20PM.png",
     ],
     posters: [
-      "https://picsum.photos/id/101/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_51_21%20PM.png",
       "https://picsum.photos/id/102/400/300",
       "https://picsum.photos/id/103/400/300",
     ],
