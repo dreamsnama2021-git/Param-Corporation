@@ -1573,7 +1573,7 @@ const CollageCard = memo(function CollageCard({
             <ArrowUpRight className="w-3.5 h-3.5 text-white" />
           </div>
         </div>
-        <div>
+        <div className=" flex items-center gap-1">
           <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl drop-shadow-lg block mb-1 sm:mb-2">
             {therapy.icon}
           </span>
