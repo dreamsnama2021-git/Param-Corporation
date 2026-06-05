@@ -1493,14 +1493,14 @@ const CollageCard = memo(function CollageCard({
 
       <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-white/2 to-white/4" />
 
-      <div className="absolute inset-0 p-2 sm:p-3 md:p-4 lg:p-5 flex flex-col justify-between">
+      <div className="absolute inset-0 p-1 flex flex-col justify-between">
         <div className="flex justify-end">
           <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110">
             <ArrowUpRight className="w-3.5 h-3.5 text-white" />
           </div>
         </div>
-        <div className=" flex items-center gap-1">
-          <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl drop-shadow-lg block mb-1 sm:mb-2">
+        <div className=" flex items-center gap-[1px]">
+          <span className="text-lg sm:text-xl md:text-2xl lg:text-2xl drop-shadow-lg block mb-1 sm:mb-2">
             {therapy.icon}
           </span>
           <h3 className="text-black inline-block px-2 py-1 rounded-sm text-[11px] sm:text-sm md:text-base lg:text-lg font-semibold leading-tight drop-shadow-lg">

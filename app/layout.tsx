@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="bg-[var(--clr-bg-cream)] text-[var(--clr-text-dark)] font-sans antialiased selection:bg-black selection:text-white">
         {/* Content Protection - must be inside body */}
-        <ContentProtection />
+        {/* <ContentProtection /> */}
         
         {/* Elfsight script */}
         <Script src="https://elfsightcdn.com/platform.js" async />
