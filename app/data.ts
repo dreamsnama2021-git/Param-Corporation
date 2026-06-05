@@ -136,11 +136,12 @@ export const allProducts: Product[] = [
   { id: 3, name: "BEPLEX TABLET COMPARISON PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_16%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   { id: 4, name: "5 STAR THEME MAGNETIC PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_32%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   { id: 5, name: "BEPLEX TABLET COMPARISON PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_57%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 6, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_08_09%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 7, name: "CUSTOMIZED APPLE SHAPED FRAGRANCE PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_09_23%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
-  { id: 8, name: "CLEAR THEME PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_09_31%20PM.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
-  { id: 9, name: "CAPSULE ROCKING PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_09_48%20PM.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
-  { id: 10, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_10_17%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 6, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_04_56%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 7, name: "CUSTOMIZED APPLE SHAPED FRAGRANCE PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_08_09%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 8, name: "CLEAR THEME PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_09_23%20PM.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
+  { id: 9, name: "CAPSULE ROCKING PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_43%20PM.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
+  { id: 10, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_54%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
+  { id: 10, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_18_02%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
 
   // Categories - Tabletops (IDs: 11-26)
   { id: 11, name: "CUSTOMIZED 1 LAKH DOSES MOMENTO", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/22.png", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
@@ -192,13 +193,13 @@ export const allProducts: Product[] = [
     ]
   },
   {
-    id: 26, name: "CUSTOMIZED 3 IN 1 DESK ORGANIZER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2012_56_13%20PM.png", price: "₹499", category: "desk-utility", categoryName: "Desk Utility", description: "2-in-1 chit holder with mobile phone stand", images: [
+    id: 26, name: "CUSTOMIZED 3 IN 1 DESK ORGANIZER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_05_02%20PM.png", price: "₹499", category: "desk-utility", categoryName: "Desk Utility", description: "2-in-1 chit holder with mobile phone stand", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2012_56_13%20PM.png",
       // "Desk Utility/CUSTOMIZED CHIT HOLDER WITH MOBILE HOLDER 2.JPG"
     ]
   },
   {
-    id: 27, name: "CUSTOMIZED FOLDABLE CHIT PAD & PEN HOLDER TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_27%20PM.png", price: "₹399", category: "desk-utility", categoryName: "Desk Utility", description: "Beautiful flower-shaped decorative paperweight", images: [
+    id: 27, name: "CUSTOMIZED FOLDABLE CHIT PAD & PEN HOLDER TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_31%20PM.png", price: "₹399", category: "desk-utility", categoryName: "Desk Utility", description: "Beautiful flower-shaped decorative paperweight", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_27%20PM.png",
       // "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(1).jpeg",
       // "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(2).jpeg",
@@ -206,15 +207,15 @@ export const allProducts: Product[] = [
     ]
   },
   {
-    id: 28, name: "CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_22%20PM.png", price: "₹649", category: "desk-utility", categoryName: "Desk Utility", description: "Foldable desk organizer with chit pad and pen holder", images: [
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_22%20PM.png",
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(1).jpeg",
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(2).jpeg",
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM.jpeg",
+    id: 28, name: "CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_15%20PM.png", price: "₹649", category: "desk-utility", categoryName: "Desk Utility", description: "Foldable desk organizer with chit pad and pen holder", images: [
+      // "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_22%20PM.png",
+      // "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(1).jpeg",
+      // "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(2).jpeg",
+      // "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM.jpeg",
     ]
   },
   {
-    id: 29, name: "CUSTOMIZED FLOWER SHAPE PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_16%20PM.png", price: "₹299", category: "desk-utility", categoryName: "Desk Utility", description: "Portable foldable mobile phone stand", images: [
+    id: 29, name: "CUSTOMIZED FLOWER SHAPE PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png", price: "₹299", category: "desk-utility", categoryName: "Desk Utility", description: "Portable foldable mobile phone stand", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_16%20PM.png",
       // "Desk Utility/CUSTOMIZED FOLDABLE MOBILE HOLDER 2.JPG"
     ]
@@ -231,8 +232,8 @@ export const allProducts: Product[] = [
   { id: 32, name: "CUSTOMIWS BRAND NAME DUAL UTILITY TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_27_41%20PM.png", price: "₹1499", category: "3d-printed", categoryName: "3D Printed", description: "Pharma branding 3D molecule visualization" },
   { id: 33, name: "CUSTOMIZED BRAND NAME DUAL UTILITY TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_29_49%20PM.png", price: "₹1999", category: "3d-printed", categoryName: "3D Printed", description: "Educational 3D printed organ model" },
   { id: 34, name: "CUSTOMIZED G SHAPED SHEET HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_01_16%20PM.png", price: "₹899", category: "3d-printed", categoryName: "3D Printed", description: "Custom sheet holder with branding" },
-  { id: 35, name: "CUSTOMIZED BRAND NAME SHEET HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_29_49%20PM.png", price: "₹899", category: "3d-printed", categoryName: "3D Printed", description: "Elegant G-shaped document holder" },
-  { id: 36, name: "INFINITY MIRROR", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_00_38%20PM.png", price: "₹2499", category: "3d-printed", categoryName: "3D Printed", description: "Conceptual gut-brain connection art frame" },
+  { id: 35, name: "CUSTOMIZED BRAND NAME SHEET HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_04_56%20PM.png", price: "₹899", category: "3d-printed", categoryName: "3D Printed", description: "Elegant G-shaped document holder" },
+  { id: 36, name: "INFINITY MIRROR", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_05_02%20PM.png", price: "₹2499", category: "3d-printed", categoryName: "3D Printed", description: "Conceptual gut-brain connection art frame" },
   { id: 37, name: "GUTT BRAIN CONNECTION CONCEPTUALISED FRAME", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_01_16%20PM.png", price: "₹1299", category: "3d-printed", categoryName: "3D Printed", description: "Mesmerizing infinity mirror effect" },
   { id: 38, name: "SKIN MODEL", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_03_57%20PM.png", price: "₹699", category: "3d-printed", categoryName: "3D Printed", description: "Unique intestine design pen holder" },
   { id: 39, name: "MITOCHONDRIA PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_04_56%20PM.png", price: "₹699", category: "3d-printed", categoryName: "3D Printed", description: "Anatomy-inspired kidney pen holder" },
@@ -246,53 +247,71 @@ export const allProducts: Product[] = [
     ]
   },
   {
-    id: 42, name: "CUSTOMIZED DOCTOR COAT SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_31%20PM.png", price: "₹599", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Unique doctor coat shaped pen stand - perfect medical desk accessory", images: [
+    id: 42, name: "CUSTOMIZED DOCTOR COAT SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_25%20PM.png", price: "₹599", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Unique doctor coat shaped pen stand - perfect medical desk accessory", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_31%20PM.png",
       // "Fibre & Resin/CUSTOMIZED DOCTOR COAT SHAPED PEN STAND 2.JPG",
       // "Fibre & Resin/CUSTOMIZED DOCTOR COAT SHAPED PEN STAND 3.JPG"
     ]
   },
   {
-    id: 43, name: "CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_43%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Fun burger-shaped fibre paperweight for desk decor", images: [
+    id: 43, name: "CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_31%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Fun burger-shaped fibre paperweight for desk decor", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_43%20PM.png"
     ]
   },
   {
-    id: 44, name: "CUSTOMIZED FIBRE TEA CUP PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_54%20PM.png", price: "₹399", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Unique samosa-shaped fibre paperweight - quirky desk accessory", images: [
+    id: 44, name: "CUSTOMIZED FIBRE TEA CUP PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_43%20PM.png", price: "₹399", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Unique samosa-shaped fibre paperweight - quirky desk accessory", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_54%20PM.png",
       // "Fibre & Resin/CUSTOMIZED FIBRE SAMOSA PAPERWEIGHT 2.JPG"
     ]
   },
   {
-    id: 45, name: "CUSTOMIZED FIBRE VADA PAV PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_18_02%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Tea cup shaped fibre paperweight for desk decor", images: [
+    id: 45, name: "CUSTOMIZED FIBRE VADA PAV PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_54%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Tea cup shaped fibre paperweight for desk decor", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_18_02%20PM.png"
     ]
   },
   {
-    id: 46, name: "FINGER EXERCISE MODEL", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_08_59%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Traditional tea glass shaped fibre paperweight", images: [
+    id: 46, name: "FINGER EXERCISE MODEL", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_18_02%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Traditional tea glass shaped fibre paperweight", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_08_59%20PM.png"
     ]
   },
   {
-    id: 47, name: "MOTHER-BABY FIBRE TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Mumbai-style vada pav shaped fibre paperweight", images: [
+    id: 47, name: "MOTHER-BABY FIBRE TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png", price: "₹449", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Mumbai-style vada pav shaped fibre paperweight", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png",
       // "Fibre & Resin/CUSTOMIZED FIBRE VADA PAV PAPERWEIGHT 2.JPG"
     ]
   },
   {
-    id: 48, name: "ORGANS AFFECTED BY DIABETES PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_15%20PM.png", price: "₹499", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Customizable number-shaped paperweight - perfect for birthdays and anniversaries", images: [
+    id: 48, name: "ORGANS AFFECTED BY DIABETES PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_15%20PM.png", price: "₹499", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Customizable number-shaped paperweight - perfect for birthdays and anniversaries", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_15%20PM.png",
       // "Fibre & Resin/CUSTOMIZED NUMBER SHAPE PAPERWEIGHT 2.JPG"
     ]
   },
   {
-    id: 49, name: "TOOTH DECAY REPAIR MODEL", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_33%20PM.png", price: "₹1299", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Therapeutic finger exercise model for rehabilitation", images: [
+    id: 49, name: "TOOTH DECAY REPAIR MODEL", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_33%20PM.png", price: "₹1299", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Therapeutic finger exercise model for rehabilitation", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_33%20PM.png",
       // "Fibre & Resin/FINGER EXERCISE MODEL 2.jpg"
     ]
   },
   {
-    id: 50, name: "INTESTINE SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
+    id: 50, name: "INTESTINE SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png",
+      // "Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
+    ]
+  },
+  {
+    id: 51, name: "INTESTINE SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_44%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png",
+      // "Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
+    ]
+  },
+  {
+    id: 51, name: "INTESTINE SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_44_54%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png",
+      // "Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
+    ]
+  },
+  {
+    id: 51, name: "INTESTINE SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_44%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png",
       // "Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
     ]
@@ -318,65 +337,65 @@ export const allProducts: Product[] = [
       // "LED INPUTS/CUSTOMIZED LED THUNDER TABLE TOP 3.JPG"
     ]
   },
-  // {
-  //   id: 57, name: "HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP", image: "LED INPUTS/HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP.jpg", price: "₹2499", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display comparing healthy and infected kidney anatomy", images: [
-  //     "LED INPUTS/HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP.jpg"
-  //   ]
-  // },
-  // {
-  //   id: 58, name: "IUI & IVF PROCEDURE LED TABLE TOP", image: "LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg", price: "₹2999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated educational display showing IUI and IVF procedures", images: [
-  //     "LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg"
-  //   ]
-  // },
-  // {
-  //   id: 59, name: "LED DOCTOR IN-OUT BOX", image: "LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG", price: "₹1599", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated doctor availability status board", images: [
-  //     "LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG",
-  //     "LED INPUTS/LED DOCTOR IN-OUT BOX 2.JPG"
-  //   ]
-  // },
-  // {
-  //   id: 60, name: "STAGES OF OSTEOPOROSIS LED TABLE TOP", image: "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG", price: "₹2299", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display showing progressive stages of osteoporosis", images: [
-  //     "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG",
-  //     "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 2.JPG"
-  //   ]
-  // },
-  // {
-  //   id: 61, name: "415 LED TABLE TOP", image: "LED INPUTS/415.jpg", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated tabletop with 415 design", images: [
-  //     "LED INPUTS/415.jpg"
-  //   ]
-  // },
-  // {
-  //   id: 62, name: "LED TABLE TOP DISPLAY", image: "LED INPUTS/IMG_0328.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Premium LED illuminated tabletop display", images: [
-  //     "LED INPUTS/IMG_0328.JPG",
-  //     "LED INPUTS/IMG_0330.JPG"
-  //   ]
-  // },
-  // {
-  //   id: 63, name: "PREMIUM LED TABLE TOP", image: "LED INPUTS/IMG_6995.JPG", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "High-quality LED illuminated tabletop with branding options", images: [
-  //     "LED INPUTS/IMG_6995.JPG",
-  //     "LED INPUTS/IMG_7003.JPG"
-  //   ]
-  // },
-  // {
-  //   id: 64, name: "DECORATIVE LED TABLE TOP", image: "LED INPUTS/IMG_7390.JPG", price: "₹1699", category: "led-tabletops", categoryName: "LED Tabletops", description: "Decorative LED tabletop for modern desk setup", images: [
-  //     "LED INPUTS/IMG_7390.JPG",
-  //     "LED INPUTS/IMG_7394.JPG"
-  //   ]
-  // },
-  // {
-  //   id: 65, name: "LED BRANDING TABLE TOP", image: "LED INPUTS/IMG_8393.JPG", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Customizable LED tabletop for brand promotion", images: [
-  //     "LED INPUTS/IMG_8393.JPG",
-  //     "LED INPUTS/IMG_8397.JPG",
-  //     "LED INPUTS/IMG_8406.JPG",
-  //     "LED INPUTS/IMG_8414.JPG"
-  //   ]
-  // },
-  // {
-  //   id: 66, name: "MODERN LED TABLE TOP", image: "LED INPUTS/IMG_9720.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Modern sleek LED illuminated tabletop display", images: [
-  //     "LED INPUTS/IMG_9720.JPG",
-  //     "LED INPUTS/IMG_9724.JPG"
-  //   ]
-  // },
+  {
+    id: 57, name: "HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_29_40%20PM.png", price: "₹2499", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display comparing healthy and infected kidney anatomy", images: [
+      "LED INPUTS/HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP.jpg"
+    ]
+  },
+  {
+    id: 58, name: "IUI & IVF PROCEDURE LED TABLE TOP", image: "LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg", price: "₹2999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated educational display showing IUI and IVF procedures", images: [
+      "LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg"
+    ]
+  },
+  {
+    id: 59, name: "LED DOCTOR IN-OUT BOX", image: "LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG", price: "₹1599", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated doctor availability status board", images: [
+      "LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG",
+      "LED INPUTS/LED DOCTOR IN-OUT BOX 2.JPG"
+    ]
+  },
+  {
+    id: 60, name: "STAGES OF OSTEOPOROSIS LED TABLE TOP", image: "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG", price: "₹2299", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display showing progressive stages of osteoporosis", images: [
+      "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG",
+      "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 2.JPG"
+    ]
+  },
+  {
+    id: 61, name: "415 LED TABLE TOP", image: "LED INPUTS/415.jpg", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated tabletop with 415 design", images: [
+      "LED INPUTS/415.jpg"
+    ]
+  },
+  {
+    id: 62, name: "LED TABLE TOP DISPLAY", image: "LED INPUTS/IMG_0328.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Premium LED illuminated tabletop display", images: [
+      "LED INPUTS/IMG_0328.JPG",
+      "LED INPUTS/IMG_0330.JPG"
+    ]
+  },
+  {
+    id: 63, name: "PREMIUM LED TABLE TOP", image: "LED INPUTS/IMG_6995.JPG", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "High-quality LED illuminated tabletop with branding options", images: [
+      "LED INPUTS/IMG_6995.JPG",
+      "LED INPUTS/IMG_7003.JPG"
+    ]
+  },
+  {
+    id: 64, name: "DECORATIVE LED TABLE TOP", image: "LED INPUTS/IMG_7390.JPG", price: "₹1699", category: "led-tabletops", categoryName: "LED Tabletops", description: "Decorative LED tabletop for modern desk setup", images: [
+      "LED INPUTS/IMG_7390.JPG",
+      "LED INPUTS/IMG_7394.JPG"
+    ]
+  },
+  {
+    id: 65, name: "LED BRANDING TABLE TOP", image: "LED INPUTS/IMG_8393.JPG", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Customizable LED tabletop for brand promotion", images: [
+      "LED INPUTS/IMG_8393.JPG",
+      "LED INPUTS/IMG_8397.JPG",
+      "LED INPUTS/IMG_8406.JPG",
+      "LED INPUTS/IMG_8414.JPG"
+    ]
+  },
+  {
+    id: 66, name: "MODERN LED TABLE TOP", image: "LED INPUTS/IMG_9720.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Modern sleek LED illuminated tabletop display", images: [
+      "LED INPUTS/IMG_9720.JPG",
+      "LED INPUTS/IMG_9724.JPG"
+    ]
+  },
 
   // Categories - Indoor Plants (IDs: 67-76)
   { id: 67, name: "AGLAONEMA PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/AGLAONEMA%20PLANT%201.jpeg", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
@@ -395,7 +414,7 @@ export const allProducts: Product[] = [
   { id: 71, name: "Desk Calendar", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_24_05%20PM.png", price: "₹399", category: "calendars", categoryName: "Calendars", description: "Monthly wall calendar featuring wellness messages, health tips, and seasonal reminders for clinic waiting areas." },
   // { id: 72, name: "Planner Diary Combo", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹599", category: "calendars", categoryName: "Calendars", description: "Complete year planner with monthly calendar views, appointment tracker, and note sections for medical professionals." },
   // Categories - Photo Frames (IDs: 80-82)
-{ id: 80, name: "Clinic Desk Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/PhotoFrames/desk_frame.png", price: "₹449", category: "photo-frames", categoryName: "Photo Frames", description: "Elegant acrylic desk frame with laser-engraved pharma logo, perfect for doctor's clinic desk displaying certificates or family photos." },
+{ id: 80, name: "Clinic Desk Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Frame.png", price: "₹449", category: "photo-frames", categoryName: "Photo Frames", description: "Elegant acrylic desk frame with laser-engraved pharma logo, perfect for doctor's clinic desk displaying certificates or family photos." },
 { id: 81, name: "Digital Photo Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/PhotoFrames/digital_frame.png", price: "₹1899", category: "photo-frames", categoryName: "Photo Frames", description: "7-inch HD digital frame pre-loaded with brand messaging, slideshow capable with remote control for clinic waiting areas." },
 { id: 82, name: "Wall Mount Collage Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/PhotoFrames/collage_frame.png", price: "₹799", category: "photo-frames", categoryName: "Photo Frames", description: "Multi-opening collage frame with subtle branding, holds 4 photos - ideal for clinic wall display." },
 
@@ -410,13 +429,13 @@ export const allProducts: Product[] = [
 { id: 88, name: "Wellness Gift Hamper", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/DoctorKits/wellness_hamper.png", price: "₹1199", category: "custom-doctor-kits", categoryName: "Custom Doctor Kits", description: "Doctor appreciation kit including insulated mug, stress ball, hand sanitizer, and desk organiser with branding." },
 
 // Categories - Surgical Tools (IDs: 89-91)
-{ id: 89, name: "Branded Scissors Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/SurgicalTools/scissors_set.png", price: "₹649", category: "surgical-tools", categoryName: "Surgical Tools", description: "High-quality stainless steel surgical scissors with laser-engraved pharma logo, available in straight and curved tip." },
+{ id: 89, name: "Branded Scissors Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Urology-.png", price: "₹649", category: "surgical-tools", categoryName: "Surgical Tools", description: "High-quality stainless steel surgical scissors with laser-engraved pharma logo, available in straight and curved tip." },
 { id: 90, name: "Forceps with Carry Case", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/SurgicalTools/forceps_set.png", price: "₹549", category: "surgical-tools", categoryName: "Surgical Tools", description: "Dissecting forceps set (plain and toothed) in branded leatherette pouch - ideal for surgical reps." },
 { id: 91, name: "Diagnostic Tool Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/SurgicalTools/diagnostic_set.png", price: "₹1999", category: "surgical-tools", categoryName: "Surgical Tools", description: "Complete diagnostic set including ophthalmoscope, otoscope, and nasal speculum with branded hard case." },
 
 // Categories - Custom Training Models (IDs: 92-94)
-{ id: 92, name: "3D Organ Model Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/TrainingModels/organ_models.png", price: "₹2999", category: "custom-training-models", categoryName: "Custom Training Models", description: "Anatomical heart, brain, and kidney models with removable parts and pharma branding for patient education." },
-{ id: 93, name: "Injection Practice Pad", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/TrainingModels/injection_pad.png", price: "₹799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Silicone injection training pad with vein simulation, branded with your pharma logo - ideal for insulin/device training." },
+{ id: 92, name: "3D Organ Model Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_42_08%20PM.png", price: "₹2999", category: "custom-training-models", categoryName: "Custom Training Models", description: "Anatomical heart, brain, and kidney models with removable parts and pharma branding for patient education." },
+{ id: 93, name: "Injection Practice Pad", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Urology-.png", price: "₹799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Silicone injection training pad with vein simulation, branded with your pharma logo - ideal for insulin/device training." },
 { id: 94, name: "Suture Practice Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/TrainingModels/suture_kit.png", price: "₹1799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Complete suture practice kit with silicone skin pad, instruments, and branded storage case for surgical training workshops." },
   
   // Categories - Photo Frames (IDs: 73-95)
@@ -531,7 +550,7 @@ export const allProducts: Product[] = [
   // { id: 107, name: "Summer Hydration Package", image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=400", price: "₹799", category: "april", categoryName: "April", description: "Reusable water bottles and electrolyte supplements", tags: ["summer", "hydration", "health"] },
 
   // May (IDs: 108-109)
-  { id: 108, name: "Nurses Appreciation Hamper", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png", price: "₹1999", category: "may", categoryName: "May", description: "Thank you gifts for nursing staff", tags: ["nurses", "appreciation", "healthcare"] },
+  { id: 108, name: "Nurses Appreciation Hamper", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png", price: "₹1999", category: "may", categoryName: "May", description: "Thank you gifts for nursing staff", tags: ["nurses", "appreciation", "healthcare"] },
   { id: 109, name: "Summer Sun Care Kit", image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=400", price: "₹1099", category: "may", categoryName: "May", description: "Sunscreens, hats, and summer essentials", tags: ["summer", "sunprotection", "skincare"] },
 
   // // June (IDs: 110-111)

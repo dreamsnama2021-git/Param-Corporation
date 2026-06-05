@@ -194,7 +194,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     card: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_29_49%20PM.png",
-      "https://picsum.photos/id/69/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_44%20PM.png",
       "https://picsum.photos/id/70/400/300",
     ],
     flipChart: [
@@ -279,7 +279,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   "Gynaecology and Obstetrics": {
     card: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80",
     books: [
-      "https://picsum.photos/id/116/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_29_40%20PM.png",
       "https://picsum.photos/id/117/400/300",
       "https://picsum.photos/id/118/400/300",
     ],
@@ -537,7 +537,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Neurology: {
     card: "https://mehtahospital.com/wp-content/uploads/2025/04/dr-mehta-hospital-neurology.webp",
     books: [
-      "https://picsum.photos/id/260/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/EPILEPSY%20PATIENT%20EDUCATION%20LAPTOP%20MAT.png",
       "https://picsum.photos/id/261/400/300",
       "https://picsum.photos/id/262/400/300",
     ],
@@ -623,7 +623,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Dentistry: {
     card: "https://dentalarchindia.com/wp-content/uploads/2026/03/teeth-cleaning-in-mumbai.jpeg.webp",
     books: [
-      "https://picsum.photos/id/308/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_25%20PM.png",
       "https://picsum.photos/id/309/400/300",
       "https://picsum.photos/id/310/400/300",
     ],
@@ -752,8 +752,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Hepatology: {
     card: "https://www.gastropune.com/wp-content/uploads/2024/07/Untitled-design-2024-07-16T115210.358-1024x614.png",
     books: [
-      "https://picsum.photos/id/380/400/300",
-      "https://picsum.photos/id/381/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Frame.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Table%20Top.png",
       "https://picsum.photos/id/382/400/300",
     ],
     flipChart: [
