@@ -155,12 +155,12 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_05_33%20PM.png",
     ],
     flipChart: [
-      "https://picsum.photos/id/47/400/300",
-      "https://picsum.photos/id/48/400/300",
-      "https://picsum.photos/id/49/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_06_35%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_06_57%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_10_59%20PM.png",
     ],
     matt: [
-      "https://picsum.photos/id/50/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_15_09%20PM.png",
       "https://picsum.photos/id/51/400/300",
       "https://picsum.photos/id/52/400/300",
     ],
