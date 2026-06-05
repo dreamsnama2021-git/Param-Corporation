@@ -537,7 +537,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Neurology: {
     card: "https://mehtahospital.com/wp-content/uploads/2025/04/dr-mehta-hospital-neurology.webp",
     books: [
-      "https://picsum.photos/id/260/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/EPILEPSY%20PATIENT%20EDUCATION%20LAPTOP%20MAT.png",
       "https://picsum.photos/id/261/400/300",
       "https://picsum.photos/id/262/400/300",
     ],
@@ -752,8 +752,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Hepatology: {
     card: "https://www.gastropune.com/wp-content/uploads/2024/07/Untitled-design-2024-07-16T115210.358-1024x614.png",
     books: [
-      "https://picsum.photos/id/380/400/300",
-      "https://picsum.photos/id/381/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Frame.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Table%20Top.png",
       "https://picsum.photos/id/382/400/300",
     ],
     flipChart: [
