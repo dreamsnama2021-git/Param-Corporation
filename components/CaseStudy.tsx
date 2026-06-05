@@ -127,7 +127,7 @@ function CaseStudiesGrid() {
                 border border-transparent hover:border-[#0093cb]/20"
             >
               {/* Clean Image Section (No Text Overlay) */}
-              <div className="relative h-40 sm:h-44 md:h-48 lg:h-52 xl:h-80 overflow-hidden">
+              <div className="relative h-70 sm:h-44 md:h-48 lg:h-52 xl:h-80 overflow-hidden">
                 <Image
                   src={study.image}
                   alt={study.title}
