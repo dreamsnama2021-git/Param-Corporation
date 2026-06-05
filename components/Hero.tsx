@@ -14,22 +14,22 @@ interface HeroSlide {
 
 const HERO_SLIDES: HeroSlide[] = [
   {
-    desktop: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
-    tablet: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
-    mobile: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
+    desktop: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%202.jpg",
+    tablet: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Tablet%20Home%20Banner%202.jpg",
+    mobile: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Mobile%20Home%20Banner%202.jpg",
     alt: "Corporate Gifts",
   },
   {
-    desktop: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
+    desktop: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpg",
     tablet: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
     mobile: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
     alt: "Branding",
   },
   {
-    desktop: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
-    tablet: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Tablet%20Home%20Banner%203.jpeg",
-    mobile: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Mobile%20Home%20Banner%203.jpeg",
-    alt: "Pharmaceutical Gifts",
+  desktop: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%204.jpg.png",
+    tablet: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Tablet%20Home%20Banner%204.jpg.png",
+    mobile: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Mobile%20Home%20Banner%204.jpg.png",
+      alt: "Pharmaceutical Gifts",
   },
   {
     desktop: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
@@ -222,7 +222,7 @@ export default function HeroWithStats() {
   return (
     <div className="flex flex-col overflow-hidden">
       <section 
-        className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[85vh] 2xl:h-[95vh] overflow-visible bg-black"
+        className="relative w-full h-[80vh] sm:h-[60vh] md:h-[45vh] lg:h-[85vh] 2xl:h-[95vh] overflow-visible bg-black"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
       >
