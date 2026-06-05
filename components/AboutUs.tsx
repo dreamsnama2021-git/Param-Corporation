@@ -141,7 +141,7 @@ const AboutUsPage: React.FC = () => {
               >
                 <div className="overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] shadow-xl sm:shadow-2xl shadow-[#0093cb]/20 w-[75%] sm:w-[70%] md:w-[65%] lg:w-[80%] xl:w-[80%] aspect-[4/4.5] relative transition-transform duration-500 ease-out group-hover:-translate-y-1.5 sm:group-hover:-translate-y-2 backdrop-blur-sm bg-white/40">
                   <Image
-                    src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/param%20about%20us.jpeg"
+                    src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Homepage%20About%20us%20section.png"
                     alt="Team collaboration in courtyard"
                     fill
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
