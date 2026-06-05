@@ -6,29 +6,35 @@ import { useEffect, useState, useCallback, useRef } from "react";
 
 // ─── Types & Data ─────────────────────────────────────
 interface HeroSlide {
-  image: string;
+  desktopImage: string;
+  mobileImage: string;
   alt: string;
 }
 
 const HERO_SLIDES: HeroSlide[] = [
   {
-    image: "/banner/home1.png",
+    desktopImage: "/banner/home1.png",
+    mobileImage: "/banner/mobile/home1.png",
     alt: "Corporate Gifts",
   },
   {
-    image: "/banner/home2.png",
+    desktopImage: "/banner/home2.png",
+    mobileImage: "/banner/mobile/home2.png",
     alt: "Branding",
   },
   {
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
+    desktopImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
+    mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Mobile%20Home%20Banner%203.jpeg",
     alt: "Pharmaceutical Gifts",
   },
   {
-    image: "/banner/home4.png",
+    desktopImage: "/banner/home4.png",
+    mobileImage: "/banner/mobile/home4.png",
     alt: "Pharmaceutical Gifts",
   },
   {
-    image: "/banner/home5.png",
+    desktopImage: "/banner/home5.png",
+    mobileImage: "/banner/mobile/home5.png",
     alt: "Pharmaceutical Gifts",
   },
 ];
@@ -200,18 +206,34 @@ export default function HeroWithStats() {
         >
           {infiniteSlides.map((slide, idx) => (
             <div
-              key={`${idx}-${slide.image}`}
+              key={`${idx}-${slide.desktopImage}`}
               className="relative w-full h-full flex-shrink-0"
             >
-              <Image
-                src={slide.image}
-                alt={slide.alt}
-                fill
-                className="object-fill pointer-events-none"
-                priority={idx >= middleStart && idx < middleStart + 2}
-                sizes="100vw"
-                quality={100}
-              />
+              {/* Desktop Image */}
+              <div className="hidden md:block relative w-full h-full">
+                <Image
+                  src={slide.desktopImage}
+                  alt={slide.alt}
+                  fill
+                  className="object-cover pointer-events-none"
+                  priority={idx >= middleStart && idx < middleStart + 2}
+                  sizes="100vw"
+                  quality={100}
+                />
+              </div>
+              
+              {/* Mobile Image */}
+              <div className="block md:hidden relative w-full h-full">
+                <Image
+                  src={slide.mobileImage}
+                  alt={slide.alt}
+                  fill
+                  className="object-cover pointer-events-none"
+                  priority={idx >= middleStart && idx < middleStart + 2}
+                  sizes="100vw"
+                  quality={100}
+                />
+              </div>
             </div>
           ))}
         </div>
@@ -219,14 +241,22 @@ export default function HeroWithStats() {
         {/* Preload all images */}
         <div className="hidden">
           {HERO_SLIDES.map((slide, idx) => (
-            <Image
-              key={`preload-${idx}`}
-              src={slide.image}
-              alt="preload"
-              width={1}
-              height={1}
-              priority
-            />
+            <div key={`preload-${idx}`}>
+              <Image
+                src={slide.desktopImage}
+                alt="preload"
+                width={1}
+                height={1}
+                priority
+              />
+              <Image
+                src={slide.mobileImage}
+                alt="preload"
+                width={1}
+                height={1}
+                priority
+              />
+            </div>
           ))}
         </div>
 

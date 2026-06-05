@@ -157,7 +157,7 @@ const PageBanner = () => {
   
   if (bannerError) {
     return (
-      <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center">
+      <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] 2xl:h-[65vh] bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center">
         <p className="text-gray-400">Banner image not available</p>
       </div>
     );

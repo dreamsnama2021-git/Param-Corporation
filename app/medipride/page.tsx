@@ -466,7 +466,7 @@ function LoadingFallback() {
 // ─── MEDIPRIDE PAGE BANNER ─────────────────────────────────────────────────────────────
 
 const PageBanner = () => (
-   <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] overflow-hidden">
+   <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] 2xl:h-[65vh] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="/banner/Medipride page Mobile.jpg"
