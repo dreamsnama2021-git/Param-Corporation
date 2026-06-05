@@ -207,15 +207,15 @@ export const allProducts: Product[] = [
     ]
   },
   {
-    id: 28, name: "CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_22%20PM.png", price: "₹649", category: "desk-utility", categoryName: "Desk Utility", description: "Foldable desk organizer with chit pad and pen holder", images: [
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_22%20PM.png",
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(1).jpeg",
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(2).jpeg",
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM.jpeg",
+    id: 28, name: "CUSTOMIZED MOBILE HOLDER WITH VISITING CARD HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_15%20PM.png", price: "₹649", category: "desk-utility", categoryName: "Desk Utility", description: "Foldable desk organizer with chit pad and pen holder", images: [
+      // "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_22%20PM.png",
+      // "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(1).jpeg",
+      // "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM%20(2).jpeg",
+      // "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/WhatsApp%20Image%202026-05-29%20at%208.20.24%20PM.jpeg",
     ]
   },
   {
-    id: 29, name: "CUSTOMIZED FLOWER SHAPE PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_16%20PM.png", price: "₹299", category: "desk-utility", categoryName: "Desk Utility", description: "Portable foldable mobile phone stand", images: [
+    id: 29, name: "CUSTOMIZED FLOWER SHAPE PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png", price: "₹299", category: "desk-utility", categoryName: "Desk Utility", description: "Portable foldable mobile phone stand", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_16%20PM.png",
       // "Desk Utility/CUSTOMIZED FOLDABLE MOBILE HOLDER 2.JPG"
     ]
@@ -281,19 +281,25 @@ export const allProducts: Product[] = [
     ]
   },
   {
-    id: 48, name: "ORGANS AFFECTED BY DIABETES PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_15%20PM.png", price: "₹499", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Customizable number-shaped paperweight - perfect for birthdays and anniversaries", images: [
+    id: 48, name: "ORGANS AFFECTED BY DIABETES PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_15%20PM.png", price: "₹499", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Customizable number-shaped paperweight - perfect for birthdays and anniversaries", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_15%20PM.png",
       // "Fibre & Resin/CUSTOMIZED NUMBER SHAPE PAPERWEIGHT 2.JPG"
     ]
   },
   {
-    id: 49, name: "TOOTH DECAY REPAIR MODEL", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_33%20PM.png", price: "₹1299", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Therapeutic finger exercise model for rehabilitation", images: [
+    id: 49, name: "TOOTH DECAY REPAIR MODEL", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_33%20PM.png", price: "₹1299", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Therapeutic finger exercise model for rehabilitation", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_33%20PM.png",
       // "Fibre & Resin/FINGER EXERCISE MODEL 2.jpg"
     ]
   },
   {
-    id: 50, name: "INTESTINE SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
+    id: 50, name: "INTESTINE SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png",
+      // "Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
+    ]
+  },
+  {
+    id: 51, name: "INTESTINE SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_44%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png",
       // "Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
     ]
@@ -319,65 +325,65 @@ export const allProducts: Product[] = [
       // "LED INPUTS/CUSTOMIZED LED THUNDER TABLE TOP 3.JPG"
     ]
   },
-  // {
-  //   id: 57, name: "HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP", image: "LED INPUTS/HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP.jpg", price: "₹2499", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display comparing healthy and infected kidney anatomy", images: [
-  //     "LED INPUTS/HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP.jpg"
-  //   ]
-  // },
-  // {
-  //   id: 58, name: "IUI & IVF PROCEDURE LED TABLE TOP", image: "LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg", price: "₹2999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated educational display showing IUI and IVF procedures", images: [
-  //     "LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg"
-  //   ]
-  // },
-  // {
-  //   id: 59, name: "LED DOCTOR IN-OUT BOX", image: "LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG", price: "₹1599", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated doctor availability status board", images: [
-  //     "LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG",
-  //     "LED INPUTS/LED DOCTOR IN-OUT BOX 2.JPG"
-  //   ]
-  // },
-  // {
-  //   id: 60, name: "STAGES OF OSTEOPOROSIS LED TABLE TOP", image: "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG", price: "₹2299", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display showing progressive stages of osteoporosis", images: [
-  //     "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG",
-  //     "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 2.JPG"
-  //   ]
-  // },
-  // {
-  //   id: 61, name: "415 LED TABLE TOP", image: "LED INPUTS/415.jpg", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated tabletop with 415 design", images: [
-  //     "LED INPUTS/415.jpg"
-  //   ]
-  // },
-  // {
-  //   id: 62, name: "LED TABLE TOP DISPLAY", image: "LED INPUTS/IMG_0328.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Premium LED illuminated tabletop display", images: [
-  //     "LED INPUTS/IMG_0328.JPG",
-  //     "LED INPUTS/IMG_0330.JPG"
-  //   ]
-  // },
-  // {
-  //   id: 63, name: "PREMIUM LED TABLE TOP", image: "LED INPUTS/IMG_6995.JPG", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "High-quality LED illuminated tabletop with branding options", images: [
-  //     "LED INPUTS/IMG_6995.JPG",
-  //     "LED INPUTS/IMG_7003.JPG"
-  //   ]
-  // },
-  // {
-  //   id: 64, name: "DECORATIVE LED TABLE TOP", image: "LED INPUTS/IMG_7390.JPG", price: "₹1699", category: "led-tabletops", categoryName: "LED Tabletops", description: "Decorative LED tabletop for modern desk setup", images: [
-  //     "LED INPUTS/IMG_7390.JPG",
-  //     "LED INPUTS/IMG_7394.JPG"
-  //   ]
-  // },
-  // {
-  //   id: 65, name: "LED BRANDING TABLE TOP", image: "LED INPUTS/IMG_8393.JPG", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Customizable LED tabletop for brand promotion", images: [
-  //     "LED INPUTS/IMG_8393.JPG",
-  //     "LED INPUTS/IMG_8397.JPG",
-  //     "LED INPUTS/IMG_8406.JPG",
-  //     "LED INPUTS/IMG_8414.JPG"
-  //   ]
-  // },
-  // {
-  //   id: 66, name: "MODERN LED TABLE TOP", image: "LED INPUTS/IMG_9720.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Modern sleek LED illuminated tabletop display", images: [
-  //     "LED INPUTS/IMG_9720.JPG",
-  //     "LED INPUTS/IMG_9724.JPG"
-  //   ]
-  // },
+  {
+    id: 57, name: "HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_29_40%20PM.png", price: "₹2499", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display comparing healthy and infected kidney anatomy", images: [
+      "LED INPUTS/HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP.jpg"
+    ]
+  },
+  {
+    id: 58, name: "IUI & IVF PROCEDURE LED TABLE TOP", image: "LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg", price: "₹2999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated educational display showing IUI and IVF procedures", images: [
+      "LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg"
+    ]
+  },
+  {
+    id: 59, name: "LED DOCTOR IN-OUT BOX", image: "LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG", price: "₹1599", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated doctor availability status board", images: [
+      "LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG",
+      "LED INPUTS/LED DOCTOR IN-OUT BOX 2.JPG"
+    ]
+  },
+  {
+    id: 60, name: "STAGES OF OSTEOPOROSIS LED TABLE TOP", image: "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG", price: "₹2299", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display showing progressive stages of osteoporosis", images: [
+      "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG",
+      "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 2.JPG"
+    ]
+  },
+  {
+    id: 61, name: "415 LED TABLE TOP", image: "LED INPUTS/415.jpg", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated tabletop with 415 design", images: [
+      "LED INPUTS/415.jpg"
+    ]
+  },
+  {
+    id: 62, name: "LED TABLE TOP DISPLAY", image: "LED INPUTS/IMG_0328.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Premium LED illuminated tabletop display", images: [
+      "LED INPUTS/IMG_0328.JPG",
+      "LED INPUTS/IMG_0330.JPG"
+    ]
+  },
+  {
+    id: 63, name: "PREMIUM LED TABLE TOP", image: "LED INPUTS/IMG_6995.JPG", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "High-quality LED illuminated tabletop with branding options", images: [
+      "LED INPUTS/IMG_6995.JPG",
+      "LED INPUTS/IMG_7003.JPG"
+    ]
+  },
+  {
+    id: 64, name: "DECORATIVE LED TABLE TOP", image: "LED INPUTS/IMG_7390.JPG", price: "₹1699", category: "led-tabletops", categoryName: "LED Tabletops", description: "Decorative LED tabletop for modern desk setup", images: [
+      "LED INPUTS/IMG_7390.JPG",
+      "LED INPUTS/IMG_7394.JPG"
+    ]
+  },
+  {
+    id: 65, name: "LED BRANDING TABLE TOP", image: "LED INPUTS/IMG_8393.JPG", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Customizable LED tabletop for brand promotion", images: [
+      "LED INPUTS/IMG_8393.JPG",
+      "LED INPUTS/IMG_8397.JPG",
+      "LED INPUTS/IMG_8406.JPG",
+      "LED INPUTS/IMG_8414.JPG"
+    ]
+  },
+  {
+    id: 66, name: "MODERN LED TABLE TOP", image: "LED INPUTS/IMG_9720.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Modern sleek LED illuminated tabletop display", images: [
+      "LED INPUTS/IMG_9720.JPG",
+      "LED INPUTS/IMG_9724.JPG"
+    ]
+  },
 
   // Categories - Indoor Plants (IDs: 67-76)
   { id: 67, name: "AGLAONEMA PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/AGLAONEMA%20PLANT%201.jpeg", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
@@ -416,7 +422,7 @@ export const allProducts: Product[] = [
 { id: 91, name: "Diagnostic Tool Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/SurgicalTools/diagnostic_set.png", price: "₹1999", category: "surgical-tools", categoryName: "Surgical Tools", description: "Complete diagnostic set including ophthalmoscope, otoscope, and nasal speculum with branded hard case." },
 
 // Categories - Custom Training Models (IDs: 92-94)
-{ id: 92, name: "3D Organ Model Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/TrainingModels/organ_models.png", price: "₹2999", category: "custom-training-models", categoryName: "Custom Training Models", description: "Anatomical heart, brain, and kidney models with removable parts and pharma branding for patient education." },
+{ id: 92, name: "3D Organ Model Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_42_08%20PM.png", price: "₹2999", category: "custom-training-models", categoryName: "Custom Training Models", description: "Anatomical heart, brain, and kidney models with removable parts and pharma branding for patient education." },
 { id: 93, name: "Injection Practice Pad", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/TrainingModels/injection_pad.png", price: "₹799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Silicone injection training pad with vein simulation, branded with your pharma logo - ideal for insulin/device training." },
 { id: 94, name: "Suture Practice Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/TrainingModels/suture_kit.png", price: "₹1799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Complete suture practice kit with silicone skin pad, instruments, and branded storage case for surgical training workshops." },
   
