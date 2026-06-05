@@ -623,7 +623,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Dentistry: {
     card: "https://dentalarchindia.com/wp-content/uploads/2026/03/teeth-cleaning-in-mumbai.jpeg.webp",
     books: [
-      "https://picsum.photos/id/308/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_25%20PM.png",
       "https://picsum.photos/id/309/400/300",
       "https://picsum.photos/id/310/400/300",
     ],
