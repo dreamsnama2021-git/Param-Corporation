@@ -131,8 +131,8 @@ export const digitalGifts: CategoryItem[] = [
 
 export const allProducts: Product[] = [
   // Categories - Paperweights (IDs: 1-50)
-  { id: 1, name: "5 STAR THEME MAGNETIC PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Hepatology/Paper%20Weight.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
-  { id: 2, name: "5 STAR THEME MAGNETIC PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_32%20PM.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
+  { id: 1, name: "Kidney Stone", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/20.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
+  { id: 2, name: "5 STAR THEME MAGNETIC PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/58.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
   // { id: 3, name: "BEPLEX TABLET COMPARISON PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_37%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   { id: 4, name: "BEPLEX TABLET COMPARISON PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_57%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   { id: 5, name: "ACID REFLUX DETAILER PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_04_17%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
@@ -142,17 +142,23 @@ export const allProducts: Product[] = [
   { id: 9, name: "CAPSULE ROCKING PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_09_48%20PM.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
   { id: 10, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_10_17%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
 
-  // Categories - Tabletops (IDs: 11-19)
-  { id: 11, name: "CUSTOMIZED 1 LAKH DOSES MOMENTO", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_25_07%20PM.png", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
-  { id: 12, name: "CUSTOMIZED 15 YEARS MOMENTO", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Hepatology/Table%20Top.png", price: "₹899", category: "tabletops", categoryName: "Tabletops", description: "Traditional brass decorative piece" },
-  { id: 13, name: "CUSTOMIZED BRAIN & GUTT CONNECTION WOODEN FRAME WITH CLOCK", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/25.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
-  { id: 14, name: "CUSTOMIZED DESK CLOCK", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/32.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  // Categories - Tabletops (IDs: 11-26)
+  { id: 11, name: "CUSTOMIZED 1 LAKH DOSES MOMENTO", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/22.png", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
+  { id: 12, name: "CUSTOMIZED 15 YEARS MOMENTO", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/24.png", price: "₹899", category: "tabletops", categoryName: "Tabletops", description: "Traditional brass decorative piece" },
+  { id: 13, name: "CUSTOMIZED BRAIN & GUTT CONNECTION WOODEN FRAME WITH CLOCK", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/25.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 14, name: "CUSTOMIZED DESK CLOCK", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/26.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
   { id: 15, name: "CUSTOMIZED HEART SHAPE COASTER SET", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/15.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
-  { id: 16, name: "CUSTOMIZED MAGNETIC DETAILER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/28.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
-  { id: 17, name: "CUSTOMIZED MNEMONIC SLANT PEN HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_39_01%20PM.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
-  { id: 18, name: "CUSTOMIZED MOBILE HOLDER", image: "TableTop/CUSTOMIZED MOBILE HOLDER.jpg", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
-  { id: 19, name: "CUSTOMIZED YOGA THEME DESK CLOCK", image: "TableTop/CUSTOMIZED YOGA THEME DESK CLOCK.JPG", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
-  { id: 20, name: "EAR MODEL WITH SAMPLE DESPENSER", image: "TableTop/EAR MODEL WITH SAMPLE DESPENSER.jpg", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 16, name: "CUSTOMIZED MAGNETIC DETAILER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/27.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 17, name: "CUSTOMIZED MNEMONIC SLANT PEN HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/30.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 18, name: "CUSTOMIZED MOBILE HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/31.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 19, name: "CUSTOMIZED YOGA THEME DESK CLOCK", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/35.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 20, name: "EAR MODEL WITH SAMPLE DESPENSER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/36.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 21, name: "CUSTOMIZED YOGA THEME DESK CLOCK", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/37.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 22, name: "EAR MODEL WITH SAMPLE DESPENSER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/48.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 23, name: "CUSTOMIZED YOGA THEME DESK CLOCK", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/50.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 24, name: "EAR MODEL WITH SAMPLE DESPENSER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/61.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 25, name: "CUSTOMIZED YOGA THEME DESK CLOCK", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/71.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 26, name: "EAR MODEL WITH SAMPLE DESPENSER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/77.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
 
   // Categories - Desk Utility (IDs: 21-40)
   {
@@ -220,7 +226,7 @@ export const allProducts: Product[] = [
   },
 
   // Categories - 3D Printed (IDs: 31-40)
-  { id: 31, name: "AESTHETIC HEART SHAPED FLOWER VASE", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_27_29%20PM.png", price: "₹799", category: "3d-printed", categoryName: "3D Printed", description: "Custom 3D printed desk name plate" },
+  { id: 31, name: "AESTHETIC HEART SHAPED FLOWER VASE", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/61.png", price: "₹799", category: "3d-printed", categoryName: "3D Printed", description: "Custom 3D printed desk name plate" },
   { id: 32, name: "CUSTOMIWS BRAND NAME DUAL UTILITY TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_27_41%20PM.png", price: "₹1499", category: "3d-printed", categoryName: "3D Printed", description: "Pharma branding 3D molecule visualization" },
   // { id: 33, name: "CUSTOMIZED BRAND NAME DUAL UTILITY TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_28_41%20PM.png", price: "₹1999", category: "3d-printed", categoryName: "3D Printed", description: "Educational 3D printed organ model" },
   { id: 34, name: "CUSTOMIZED G SHAPED SHEET HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_28_52%20PM.png", price: "₹899", category: "3d-printed", categoryName: "3D Printed", description: "Custom sheet holder with branding" },
@@ -299,13 +305,13 @@ export const allProducts: Product[] = [
 
   // Categories - LED Tabletops (IDs: 55-65)
   {
-    id: 55, name: "CARDIO LED TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_15_18%20PM.png", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated cardio-themed LED tabletop display for medical branding", images: [
+    id: 55, name: "CARDIO LED TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/21.png", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated cardio-themed LED tabletop display for medical branding", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_15_18%20PM.png",
       // "LED INPUTS/CARDIO LED TABLE TOP (2).jpg"
     ]
   },
   {
-    id: 56, name: "INFINITY MIRROR", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_00_38%20PM.png", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Dynamic thunder-shaped LED tabletop with customization options", images: [
+    id: 56, name: "INFINITY MIRROR", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/59.png", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Dynamic thunder-shaped LED tabletop with customization options", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_00_38%20PM.png",
       // "LED INPUTS/CUSTOMIZED LED THUNDER TABLE TOP 2.JPG",
       // "LED INPUTS/CUSTOMIZED LED THUNDER TABLE TOP 3.JPG"
@@ -384,7 +390,7 @@ export const allProducts: Product[] = [
   // { id: 76, name: "JADE PLANT", image: "Indoor Plant/JADE PLANT 3.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
 
   // Categories - Calendars (IDs: 70-72)
-  { id: 70, name: "Matt Calendar", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_24_05%20PM.png", price: "₹299", category: "calendars", categoryName: "Calendars", description: "Medical-focused desk calendar 2025 with important health awareness dates and pharmaceutical brand positioning." },
+  { id: 70, name: "Matt Calendar", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/64.png", price: "₹299", category: "calendars", categoryName: "Calendars", description: "Medical-focused desk calendar 2025 with important health awareness dates and pharmaceutical brand positioning." },
   { id: 71, name: "Desk Calendar", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Neurology/64.png", price: "₹399", category: "calendars", categoryName: "Calendars", description: "Monthly wall calendar featuring wellness messages, health tips, and seasonal reminders for clinic waiting areas." },
   // { id: 72, name: "Planner Diary Combo", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹599", category: "calendars", categoryName: "Calendars", description: "Complete year planner with monthly calendar views, appointment tracker, and note sections for medical professionals." },
   // Categories - Photo Frames (IDs: 73-95)
