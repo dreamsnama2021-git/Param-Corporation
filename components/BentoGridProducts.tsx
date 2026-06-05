@@ -102,268 +102,781 @@ const LazyImage = memo(function LazyImage({
   );
 });
 
-// ─── Real Product Images from Provided Data ───
-const PRODUCT_IMAGES = {
-  paperweights: [
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Hepatology/Paper%20Weight.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_32%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_57%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_04_17%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_08_09%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_09_23%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_09_31%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_09_48%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_10_17%20PM.png",
-  ],
-  tabletops: [
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_25_07%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Hepatology/Table%20Top.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/25.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/32.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/15.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/28.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_39_01%20PM.png",
-  ],
-  deskUtility: [
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_16_31%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_16_58%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_03%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_09%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_51%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2012_56_13%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_27%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_22%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_16%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_05%20PM.png",
-  ],
-  dPrinted: [
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_27_29%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_27_41%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_28_52%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_29_49%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_00_38%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_01_16%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_03_57%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_04_56%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_05_02%20PM.png",
-  ],
-  fibreResin: [
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_25%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_31%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_43%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_54%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_18_02%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_08_59%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_15%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_33%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png",
-  ],
-  ledTabletops: [
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_15_18%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_00_38%20PM.png",
-  ],
-};
-
-// ─── Therapy Images Data with Real Product Images ───
+// ─── Therapy Images Data with Temporary URLs ───
 const THERAPY_IMAGES_DATA: Record<string, any> = {
   "Cardio-Vascular": {
     card: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
-    books: PRODUCT_IMAGES.paperweights.slice(0, 3),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(0, 3),
-    matt: PRODUCT_IMAGES.dPrinted.slice(0, 3),
-    posters: PRODUCT_IMAGES.fibreResin.slice(0, 3),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(0, 3),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/20/400/300",
+      "https://picsum.photos/id/21/400/300",
+      "https://picsum.photos/id/22/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/23/400/300",
+      "https://picsum.photos/id/24/400/300",
+      "https://picsum.photos/id/25/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/26/400/300",
+      "https://picsum.photos/id/27/400/300",
+      "https://picsum.photos/id/28/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/29/400/300",
+      "https://picsum.photos/id/30/400/300",
+      "https://picsum.photos/id/31/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/32/400/300",
+      "https://picsum.photos/id/33/400/300",
+      "https://picsum.photos/id/34/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/35/400/300",
+      "https://picsum.photos/id/36/400/300",
+      "https://picsum.photos/id/37/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/38/400/300",
+      "https://picsum.photos/id/39/400/300",
+      "https://picsum.photos/id/40/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/41/400/300",
+      "https://picsum.photos/id/42/400/300",
+      "https://picsum.photos/id/43/400/300",
+    ],
   },
   Diabetes: {
     card: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80",
-    books: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    matt: PRODUCT_IMAGES.dPrinted.slice(3, 6),
-    posters: PRODUCT_IMAGES.fibreResin.slice(3, 6),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(3, 6),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(6, 9),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(6, 9),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/44/400/300",
+      "https://picsum.photos/id/45/400/300",
+      "https://picsum.photos/id/46/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/47/400/300",
+      "https://picsum.photos/id/48/400/300",
+      "https://picsum.photos/id/49/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/50/400/300",
+      "https://picsum.photos/id/51/400/300",
+      "https://picsum.photos/id/52/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/53/400/300",
+      "https://picsum.photos/id/54/400/300",
+      "https://picsum.photos/id/55/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/56/400/300",
+      "https://picsum.photos/id/57/400/300",
+      "https://picsum.photos/id/58/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/59/400/300",
+      "https://picsum.photos/id/60/400/300",
+      "https://picsum.photos/id/61/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/62/400/300",
+      "https://picsum.photos/id/63/400/300",
+      "https://picsum.photos/id/64/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/65/400/300",
+      "https://picsum.photos/id/66/400/300",
+      "https://picsum.photos/id/67/400/300",
+    ],
   },
   "ENT & Respiratory": {
     card: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80",
-    books: PRODUCT_IMAGES.paperweights.slice(0, 3),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(0, 3),
-    matt: PRODUCT_IMAGES.dPrinted.slice(0, 3),
-    posters: PRODUCT_IMAGES.fibreResin.slice(0, 3),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(0, 3),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/68/400/300",
+      "https://picsum.photos/id/69/400/300",
+      "https://picsum.photos/id/70/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/71/400/300",
+      "https://picsum.photos/id/72/400/300",
+      "https://picsum.photos/id/73/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/74/400/300",
+      "https://picsum.photos/id/75/400/300",
+      "https://picsum.photos/id/76/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/77/400/300",
+      "https://picsum.photos/id/78/400/300",
+      "https://picsum.photos/id/79/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/80/400/300",
+      "https://picsum.photos/id/81/400/300",
+      "https://picsum.photos/id/82/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/83/400/300",
+      "https://picsum.photos/id/84/400/300",
+      "https://picsum.photos/id/85/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/86/400/300",
+      "https://picsum.photos/id/87/400/300",
+      "https://picsum.photos/id/88/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/89/400/300",
+      "https://picsum.photos/id/90/400/300",
+      "https://picsum.photos/id/91/400/300",
+    ],
   },
   "Orthopedics/Rheumatology": {
     card: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80",
-    books: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    matt: PRODUCT_IMAGES.dPrinted.slice(3, 6),
-    posters: PRODUCT_IMAGES.fibreResin.slice(3, 6),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(3, 6),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(6, 9),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(6, 9),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/92/400/300",
+      "https://picsum.photos/id/93/400/300",
+      "https://picsum.photos/id/94/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/95/400/300",
+      "https://picsum.photos/id/96/400/300",
+      "https://picsum.photos/id/97/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/98/400/300",
+      "https://picsum.photos/id/99/400/300",
+      "https://picsum.photos/id/100/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/101/400/300",
+      "https://picsum.photos/id/102/400/300",
+      "https://picsum.photos/id/103/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/104/400/300",
+      "https://picsum.photos/id/105/400/300",
+      "https://picsum.photos/id/106/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/107/400/300",
+      "https://picsum.photos/id/108/400/300",
+      "https://picsum.photos/id/109/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/110/400/300",
+      "https://picsum.photos/id/111/400/300",
+      "https://picsum.photos/id/112/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/113/400/300",
+      "https://picsum.photos/id/114/400/300",
+      "https://picsum.photos/id/115/400/300",
+    ],
   },
   "Gynaecology and Obstetrics": {
     card: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80",
-    books: PRODUCT_IMAGES.paperweights.slice(0, 3),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(0, 3),
-    matt: PRODUCT_IMAGES.dPrinted.slice(0, 3),
-    posters: PRODUCT_IMAGES.fibreResin.slice(0, 3),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(0, 3),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/116/400/300",
+      "https://picsum.photos/id/117/400/300",
+      "https://picsum.photos/id/118/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/119/400/300",
+      "https://picsum.photos/id/120/400/300",
+      "https://picsum.photos/id/121/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/122/400/300",
+      "https://picsum.photos/id/123/400/300",
+      "https://picsum.photos/id/124/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/125/400/300",
+      "https://picsum.photos/id/126/400/300",
+      "https://picsum.photos/id/127/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/128/400/300",
+      "https://picsum.photos/id/129/400/300",
+      "https://picsum.photos/id/130/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/131/400/300",
+      "https://picsum.photos/id/132/400/300",
+      "https://picsum.photos/id/133/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/134/400/300",
+      "https://picsum.photos/id/135/400/300",
+      "https://picsum.photos/id/136/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/137/400/300",
+      "https://picsum.photos/id/138/400/300",
+      "https://picsum.photos/id/139/400/300",
+    ],
   },
   Gastroenterology: {
     card: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80",
-    books: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    matt: PRODUCT_IMAGES.dPrinted.slice(3, 6),
-    posters: PRODUCT_IMAGES.fibreResin.slice(3, 6),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(3, 6),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(6, 9),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(6, 9),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/140/400/300",
+      "https://picsum.photos/id/141/400/300",
+      "https://picsum.photos/id/142/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/143/400/300",
+      "https://picsum.photos/id/144/400/300",
+      "https://picsum.photos/id/145/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/146/400/300",
+      "https://picsum.photos/id/147/400/300",
+      "https://picsum.photos/id/148/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/149/400/300",
+      "https://picsum.photos/id/150/400/300",
+      "https://picsum.photos/id/151/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/152/400/300",
+      "https://picsum.photos/id/153/400/300",
+      "https://picsum.photos/id/154/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/155/400/300",
+      "https://picsum.photos/id/156/400/300",
+      "https://picsum.photos/id/157/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/158/400/300",
+      "https://picsum.photos/id/159/400/300",
+      "https://picsum.photos/id/160/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/161/400/300",
+      "https://picsum.photos/id/162/400/300",
+      "https://picsum.photos/id/163/400/300",
+    ],
   },
   Ophthalmology: {
     card: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=800&q=80",
-    books: PRODUCT_IMAGES.paperweights.slice(0, 3),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(0, 3),
-    matt: PRODUCT_IMAGES.dPrinted.slice(0, 3),
-    posters: PRODUCT_IMAGES.fibreResin.slice(0, 3),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(0, 3),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/164/400/300",
+      "https://picsum.photos/id/165/400/300",
+      "https://picsum.photos/id/166/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/167/400/300",
+      "https://picsum.photos/id/168/400/300",
+      "https://picsum.photos/id/169/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/170/400/300",
+      "https://picsum.photos/id/171/400/300",
+      "https://picsum.photos/id/172/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/173/400/300",
+      "https://picsum.photos/id/174/400/300",
+      "https://picsum.photos/id/175/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/176/400/300",
+      "https://picsum.photos/id/177/400/300",
+      "https://picsum.photos/id/178/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/179/400/300",
+      "https://picsum.photos/id/180/400/300",
+      "https://picsum.photos/id/181/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/182/400/300",
+      "https://picsum.photos/id/183/400/300",
+      "https://picsum.photos/id/184/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/185/400/300",
+      "https://picsum.photos/id/186/400/300",
+      "https://picsum.photos/id/187/400/300",
+    ],
   },
   Dermatology: {
     card: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
-    books: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    matt: PRODUCT_IMAGES.dPrinted.slice(3, 6),
-    posters: PRODUCT_IMAGES.fibreResin.slice(3, 6),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(3, 6),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(6, 9),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(6, 9),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/188/400/300",
+      "https://picsum.photos/id/189/400/300",
+      "https://picsum.photos/id/190/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/191/400/300",
+      "https://picsum.photos/id/192/400/300",
+      "https://picsum.photos/id/193/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/194/400/300",
+      "https://picsum.photos/id/195/400/300",
+      "https://picsum.photos/id/196/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/197/400/300",
+      "https://picsum.photos/id/198/400/300",
+      "https://picsum.photos/id/199/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/200/400/300",
+      "https://picsum.photos/id/201/400/300",
+      "https://picsum.photos/id/202/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/203/400/300",
+      "https://picsum.photos/id/204/400/300",
+      "https://picsum.photos/id/205/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/206/400/300",
+      "https://picsum.photos/id/207/400/300",
+      "https://picsum.photos/id/208/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/209/400/300",
+      "https://picsum.photos/id/210/400/300",
+      "https://picsum.photos/id/211/400/300",
+    ],
   },
   Pediatrics: {
     card: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80",
-    books: PRODUCT_IMAGES.paperweights.slice(0, 3),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(0, 3),
-    matt: PRODUCT_IMAGES.dPrinted.slice(0, 3),
-    posters: PRODUCT_IMAGES.fibreResin.slice(0, 3),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(0, 3),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/212/400/300",
+      "https://picsum.photos/id/213/400/300",
+      "https://picsum.photos/id/214/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/215/400/300",
+      "https://picsum.photos/id/216/400/300",
+      "https://picsum.photos/id/217/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/218/400/300",
+      "https://picsum.photos/id/219/400/300",
+      "https://picsum.photos/id/220/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/221/400/300",
+      "https://picsum.photos/id/222/400/300",
+      "https://picsum.photos/id/223/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/224/400/300",
+      "https://picsum.photos/id/225/400/300",
+      "https://picsum.photos/id/226/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/227/400/300",
+      "https://picsum.photos/id/228/400/300",
+      "https://picsum.photos/id/229/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/230/400/300",
+      "https://picsum.photos/id/231/400/300",
+      "https://picsum.photos/id/232/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/233/400/300",
+      "https://picsum.photos/id/234/400/300",
+      "https://picsum.photos/id/235/400/300",
+    ],
   },
   Urology: {
     card: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
-    books: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    matt: PRODUCT_IMAGES.dPrinted.slice(3, 6),
-    posters: PRODUCT_IMAGES.fibreResin.slice(3, 6),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(3, 6),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(6, 9),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(6, 9),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/236/400/300",
+      "https://picsum.photos/id/237/400/300",
+      "https://picsum.photos/id/238/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/239/400/300",
+      "https://picsum.photos/id/240/400/300",
+      "https://picsum.photos/id/241/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/242/400/300",
+      "https://picsum.photos/id/243/400/300",
+      "https://picsum.photos/id/244/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/245/400/300",
+      "https://picsum.photos/id/246/400/300",
+      "https://picsum.photos/id/247/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/248/400/300",
+      "https://picsum.photos/id/249/400/300",
+      "https://picsum.photos/id/250/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/251/400/300",
+      "https://picsum.photos/id/252/400/300",
+      "https://picsum.photos/id/253/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/254/400/300",
+      "https://picsum.photos/id/255/400/300",
+      "https://picsum.photos/id/256/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/257/400/300",
+      "https://picsum.photos/id/258/400/300",
+      "https://picsum.photos/id/259/400/300",
+    ],
   },
   Neurology: {
     card: "https://mehtahospital.com/wp-content/uploads/2025/04/dr-mehta-hospital-neurology.webp",
-    books: PRODUCT_IMAGES.paperweights.slice(0, 3),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(0, 3),
-    matt: PRODUCT_IMAGES.dPrinted.slice(0, 3),
-    posters: PRODUCT_IMAGES.fibreResin.slice(0, 3),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(0, 3),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/260/400/300",
+      "https://picsum.photos/id/261/400/300",
+      "https://picsum.photos/id/262/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/263/400/300",
+      "https://picsum.photos/id/264/400/300",
+      "https://picsum.photos/id/265/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/266/400/300",
+      "https://picsum.photos/id/267/400/300",
+      "https://picsum.photos/id/268/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/269/400/300",
+      "https://picsum.photos/id/270/400/300",
+      "https://picsum.photos/id/271/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/272/400/300",
+      "https://picsum.photos/id/273/400/300",
+      "https://picsum.photos/id/274/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/275/400/300",
+      "https://picsum.photos/id/276/400/300",
+      "https://picsum.photos/id/277/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/278/400/300",
+      "https://picsum.photos/id/279/400/300",
+      "https://picsum.photos/id/280/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/281/400/300",
+      "https://picsum.photos/id/282/400/300",
+      "https://picsum.photos/id/283/400/300",
+    ],
   },
   Psychiatry: {
     card: "https://suryahospitals.com/speciality/6561e6ee81bdeExpertise---Psychiatry-(Adult).jpg",
-    books: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    matt: PRODUCT_IMAGES.dPrinted.slice(3, 6),
-    posters: PRODUCT_IMAGES.fibreResin.slice(3, 6),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(3, 6),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(6, 9),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(6, 9),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/284/400/300",
+      "https://picsum.photos/id/285/400/300",
+      "https://picsum.photos/id/286/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/287/400/300",
+      "https://picsum.photos/id/288/400/300",
+      "https://picsum.photos/id/289/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/290/400/300",
+      "https://picsum.photos/id/291/400/300",
+      "https://picsum.photos/id/292/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/293/400/300",
+      "https://picsum.photos/id/294/400/300",
+      "https://picsum.photos/id/295/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/296/400/300",
+      "https://picsum.photos/id/297/400/300",
+      "https://picsum.photos/id/298/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/299/400/300",
+      "https://picsum.photos/id/300/400/300",
+      "https://picsum.photos/id/301/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/302/400/300",
+      "https://picsum.photos/id/303/400/300",
+      "https://picsum.photos/id/304/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/305/400/300",
+      "https://picsum.photos/id/306/400/300",
+      "https://picsum.photos/id/307/400/300",
+    ],
   },
   Dentistry: {
     card: "https://dentalarchindia.com/wp-content/uploads/2026/03/teeth-cleaning-in-mumbai.jpeg.webp",
-    books: PRODUCT_IMAGES.paperweights.slice(0, 3),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(0, 3),
-    matt: PRODUCT_IMAGES.dPrinted.slice(0, 3),
-    posters: PRODUCT_IMAGES.fibreResin.slice(0, 3),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(0, 3),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/308/400/300",
+      "https://picsum.photos/id/309/400/300",
+      "https://picsum.photos/id/310/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/311/400/300",
+      "https://picsum.photos/id/312/400/300",
+      "https://picsum.photos/id/313/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/314/400/300",
+      "https://picsum.photos/id/315/400/300",
+      "https://picsum.photos/id/316/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/317/400/300",
+      "https://picsum.photos/id/318/400/300",
+      "https://picsum.photos/id/319/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/320/400/300",
+      "https://picsum.photos/id/321/400/300",
+      "https://picsum.photos/id/322/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/323/400/300",
+      "https://picsum.photos/id/324/400/300",
+      "https://picsum.photos/id/325/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/326/400/300",
+      "https://picsum.photos/id/327/400/300",
+      "https://picsum.photos/id/328/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/329/400/300",
+      "https://picsum.photos/id/330/400/300",
+      "https://picsum.photos/id/331/400/300",
+    ],
   },
   "Infectious Diseases": {
     card: "https://www.verywellhealth.com/thmb/yI57XOKvdPi_bFAitEG2Pir1BSw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/VirusIllustration-59ce8c1303f4020011702d0a.jpg",
-    books: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    matt: PRODUCT_IMAGES.dPrinted.slice(3, 6),
-    posters: PRODUCT_IMAGES.fibreResin.slice(3, 6),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(3, 6),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(6, 9),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(6, 9),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/332/400/300",
+      "https://picsum.photos/id/333/400/300",
+      "https://picsum.photos/id/334/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/335/400/300",
+      "https://picsum.photos/id/336/400/300",
+      "https://picsum.photos/id/337/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/338/400/300",
+      "https://picsum.photos/id/339/400/300",
+      "https://picsum.photos/id/340/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/341/400/300",
+      "https://picsum.photos/id/342/400/300",
+      "https://picsum.photos/id/343/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/344/400/300",
+      "https://picsum.photos/id/345/400/300",
+      "https://picsum.photos/id/346/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/347/400/300",
+      "https://picsum.photos/id/348/400/300",
+      "https://picsum.photos/id/349/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/350/400/300",
+      "https://picsum.photos/id/351/400/300",
+      "https://picsum.photos/id/352/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/353/400/300",
+      "https://picsum.photos/id/354/400/300",
+      "https://picsum.photos/id/355/400/300",
+    ],
   },
   Endocrinology: {
     card: "https://cdn.aws.premiummedicalcircle.com/Endokrinologie-Fachbereich-iStockjpg.webp",
-    books: PRODUCT_IMAGES.paperweights.slice(0, 3),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(0, 3),
-    matt: PRODUCT_IMAGES.dPrinted.slice(0, 3),
-    posters: PRODUCT_IMAGES.fibreResin.slice(0, 3),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(0, 3),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/356/400/300",
+      "https://picsum.photos/id/357/400/300",
+      "https://picsum.photos/id/358/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/359/400/300",
+      "https://picsum.photos/id/360/400/300",
+      "https://picsum.photos/id/361/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/362/400/300",
+      "https://picsum.photos/id/363/400/300",
+      "https://picsum.photos/id/364/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/365/400/300",
+      "https://picsum.photos/id/366/400/300",
+      "https://picsum.photos/id/367/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/368/400/300",
+      "https://picsum.photos/id/369/400/300",
+      "https://picsum.photos/id/370/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/371/400/300",
+      "https://picsum.photos/id/372/400/300",
+      "https://picsum.photos/id/373/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/374/400/300",
+      "https://picsum.photos/id/375/400/300",
+      "https://picsum.photos/id/376/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/377/400/300",
+      "https://picsum.photos/id/378/400/300",
+      "https://picsum.photos/id/379/400/300",
+    ],
   },
   Hepatology: {
     card: "https://www.gastropune.com/wp-content/uploads/2024/07/Untitled-design-2024-07-16T115210.358-1024x614.png",
-    books: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    matt: PRODUCT_IMAGES.dPrinted.slice(3, 6),
-    posters: PRODUCT_IMAGES.fibreResin.slice(3, 6),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(3, 6),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(6, 9),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(6, 9),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/380/400/300",
+      "https://picsum.photos/id/381/400/300",
+      "https://picsum.photos/id/382/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/383/400/300",
+      "https://picsum.photos/id/384/400/300",
+      "https://picsum.photos/id/385/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/386/400/300",
+      "https://picsum.photos/id/387/400/300",
+      "https://picsum.photos/id/388/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/389/400/300",
+      "https://picsum.photos/id/390/400/300",
+      "https://picsum.photos/id/391/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/392/400/300",
+      "https://picsum.photos/id/393/400/300",
+      "https://picsum.photos/id/394/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/395/400/300",
+      "https://picsum.photos/id/396/400/300",
+      "https://picsum.photos/id/397/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/398/400/300",
+      "https://picsum.photos/id/399/400/300",
+      "https://picsum.photos/id/400/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/401/400/300",
+      "https://picsum.photos/id/402/400/300",
+      "https://picsum.photos/id/403/400/300",
+    ],
   },
   Oncology: {
     card: "https://www.news-medical.net/images/Article_Images/ImageForArticle_1224_17375676414306114.jpg",
-    books: PRODUCT_IMAGES.paperweights.slice(0, 3),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(0, 3),
-    matt: PRODUCT_IMAGES.dPrinted.slice(0, 3),
-    posters: PRODUCT_IMAGES.fibreResin.slice(0, 3),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(0, 3),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/404/400/300",
+      "https://picsum.photos/id/405/400/300",
+      "https://picsum.photos/id/406/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/407/400/300",
+      "https://picsum.photos/id/408/400/300",
+      "https://picsum.photos/id/409/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/410/400/300",
+      "https://picsum.photos/id/411/400/300",
+      "https://picsum.photos/id/412/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/413/400/300",
+      "https://picsum.photos/id/414/400/300",
+      "https://picsum.photos/id/415/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/416/400/300",
+      "https://picsum.photos/id/417/400/300",
+      "https://picsum.photos/id/418/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/419/400/300",
+      "https://picsum.photos/id/420/400/300",
+      "https://picsum.photos/id/421/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/422/400/300",
+      "https://picsum.photos/id/423/400/300",
+      "https://picsum.photos/id/424/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/425/400/300",
+      "https://picsum.photos/id/426/400/300",
+      "https://picsum.photos/id/427/400/300",
+    ],
   },
   "General Wellness": {
     card: "https://savaherbals.com/cdn/shop/files/Group_of_2_Objects4.jpg?v=1762148767&width=3840",
-    books: PRODUCT_IMAGES.paperweights.slice(3, 6),
-    flipChart: PRODUCT_IMAGES.deskUtility.slice(3, 6),
-    matt: PRODUCT_IMAGES.dPrinted.slice(3, 6),
-    posters: PRODUCT_IMAGES.fibreResin.slice(3, 6),
-    medicalScale: PRODUCT_IMAGES.tabletops.slice(3, 6),
-    writeWipe: PRODUCT_IMAGES.deskUtility.slice(6, 9),
-    tearOffPads: PRODUCT_IMAGES.paperweights.slice(6, 9),
-    tableTops: PRODUCT_IMAGES.ledTabletops.slice(0, 2),
+    books: [
+      "https://picsum.photos/id/428/400/300",
+      "https://picsum.photos/id/429/400/300",
+      "https://picsum.photos/id/430/400/300",
+    ],
+    flipChart: [
+      "https://picsum.photos/id/431/400/300",
+      "https://picsum.photos/id/432/400/300",
+      "https://picsum.photos/id/433/400/300",
+    ],
+    matt: [
+      "https://picsum.photos/id/434/400/300",
+      "https://picsum.photos/id/435/400/300",
+      "https://picsum.photos/id/436/400/300",
+    ],
+    posters: [
+      "https://picsum.photos/id/437/400/300",
+      "https://picsum.photos/id/438/400/300",
+      "https://picsum.photos/id/439/400/300",
+    ],
+    medicalScale: [
+      "https://picsum.photos/id/440/400/300",
+      "https://picsum.photos/id/441/400/300",
+      "https://picsum.photos/id/442/400/300",
+    ],
+    writeWipe: [
+      "https://picsum.photos/id/443/400/300",
+      "https://picsum.photos/id/444/400/300",
+      "https://picsum.photos/id/445/400/300",
+    ],
+    tearOffPads: [
+      "https://picsum.photos/id/446/400/300",
+      "https://picsum.photos/id/447/400/300",
+      "https://picsum.photos/id/448/400/300",
+    ],
+    tableTops: [
+      "https://picsum.photos/id/449/400/300",
+      "https://picsum.photos/id/450/400/300",
+      "https://picsum.photos/id/451/400/300",
+    ],
   },
 };
 
@@ -475,9 +988,9 @@ const generateCategoryProducts = (
   const therapyImages = THERAPY_IMAGES_DATA[therapyName];
   const categoryKey = getCategoryKey(category);
   const categoryImages = therapyImages?.[categoryKey] || [
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_32%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_57%20PM.png",
-    "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Paperweights/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_04_17%20PM.png",
+    "https://picsum.photos/id/1/400/300",
+    "https://picsum.photos/id/2/400/300",
+    "https://picsum.photos/id/3/400/300",
   ];
 
   return [0, 1, 2].map((index) => ({
@@ -688,6 +1201,7 @@ function FullscreenGallery({
   }, []);
 
   useEffect(() => {
+    // Scroll thumbnail into view when current index changes
     if (thumbnailContainerRef.current) {
       const thumbnailElement = thumbnailContainerRef.current.children[
         currentIndex
@@ -741,6 +1255,7 @@ function FullscreenGallery({
         }}
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Close button */}
         <button
           onClick={handleClose}
           className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center transition-all"
@@ -748,6 +1263,7 @@ function FullscreenGallery({
           <X className="w-5 h-5 text-white" />
         </button>
 
+        {/* Prev button */}
         <button
           onClick={handlePrev}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center transition-all"
@@ -755,6 +1271,7 @@ function FullscreenGallery({
           <ChevronLeft className="w-6 h-6 text-white" />
         </button>
 
+        {/* Next button */}
         <button
           onClick={handleNext}
           className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center transition-all"
@@ -762,6 +1279,7 @@ function FullscreenGallery({
           <ChevronRight className="w-6 h-6 text-white" />
         </button>
 
+        {/* Current image */}
         <div className="flex-1 flex items-center justify-center p-4 md:p-8 min-h-0">
           <div className="relative w-full max-w-7xl h-full max-h-[70vh]">
             <Image
@@ -774,6 +1292,7 @@ function FullscreenGallery({
           </div>
         </div>
 
+        {/* Thumbnails */}
         <div className="flex-shrink-0 pb-6 px-4">
           <div className="max-w-[1200px] mx-auto overflow-hidden">
             <div
@@ -822,6 +1341,7 @@ function Modal({
   const [mounted, setMounted] = useState(false);
   const [galleryIndex, setGalleryIndex] = useState<number | null>(null);
 
+  // Collect all images from all categories
   const allImages = therapy.items.map((item) => item.img);
 
   useEffect(() => {
@@ -884,6 +1404,7 @@ function Modal({
           }}
           onClick={(e) => e.stopPropagation()}
         >
+          {/* Header */}
           <div className="px-4 sm:px-6 md:px-8 pt-4 sm:pt-5 pb-3 sm:pb-4 border-b bg-white flex-shrink-0">
             <div className="flex items-start justify-between gap-2 sm:gap-3">
               <div className="flex items-center gap-1.5 sm:gap-2">
@@ -903,6 +1424,7 @@ function Modal({
             </div>
           </div>
 
+          {/* Image Grid - No categories, no text, just images */}
           <div className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
               {allImages.map((img, index) => (
@@ -925,6 +1447,7 @@ function Modal({
         </div>
       </div>
 
+      {/* Fullscreen Gallery with Thumbnails */}
       {galleryIndex !== null && (
         <FullscreenGallery
           images={allImages}
@@ -1071,6 +1594,7 @@ export default function TherapyCollageGrid({
           <div
             className={`transition-all duration-700 delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
+            {/* Mobile: 2 columns */}
             <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:hidden">
               {THERAPY_DATA.map((therapy, i) => (
                 <CollageCard
@@ -1082,6 +1606,7 @@ export default function TherapyCollageGrid({
               ))}
             </div>
 
+            {/* Tablet: 3 columns */}
             <div className="hidden sm:grid lg:hidden grid-cols-3 gap-2 sm:gap-3 auto-rows-[180px] sm:auto-rows-[200px]">
               {THERAPY_DATA.map((therapy, i) => (
                 <CollageCard
@@ -1097,6 +1622,7 @@ export default function TherapyCollageGrid({
               ))}
             </div>
 
+            {/* Desktop: 5 columns */}
             <div className="hidden lg:grid grid-cols-5 gap-2 sm:gap-3 auto-rows-[220px] xl:auto-rows-[240px]">
               {THERAPY_DATA.map((therapy, i) => (
                 <CollageCard
