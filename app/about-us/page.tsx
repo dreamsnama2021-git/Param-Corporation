@@ -102,7 +102,7 @@ const timelineItems: TimelineItem[] = [
     category: "Innovation",
     icon: Leaf,
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/timline-koru.jpeg",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/Koru%202025.png",
   },
   {
     title: "Expanding Horizons",
