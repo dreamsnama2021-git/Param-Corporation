@@ -163,19 +163,19 @@ export const allProducts: Product[] = [
 
   // Categories - Desk Utility (IDs: 21-40)
   {
-    id: 21, name: "CUSTOMIZED AMBULANCE SHAPED FIRST AID KIT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_16_31%20PM.png", price: "₹599", category: "desk-utility", categoryName: "Desk Utility", description: "Multi-functional 3-in-1 desk organizer for pens, mobile, and stationery", images: [
+    id: 21, name: "CUSTOMIZED AMBULANCE SHAPED FIRST AID KIT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_16_31%20PM.png", price: "₹599", category: "desk-utility", categoryName: "Desk Utility", description: "Multi-functional 3-in-1 desk organizer for pens, mobile, and stationery", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_16_31%20PM.png",
       // "Desk Utility/CUSTOMIZED 3 IN 1 DESK ORGANIZER 2.JPG"
     ]
   },
   {
-    id: 22, name: "MULTI BRANDING ROTATING PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_16_58%20PM.png", price: "₹899", category: "desk-utility", categoryName: "Desk Utility", description: "Unique ambulance-shaped first aid kit with branding options", images: [
+    id: 22, name: "MULTI BRANDING ROTATING PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_03%20PM.png", price: "₹899", category: "desk-utility", categoryName: "Desk Utility", description: "Unique ambulance-shaped first aid kit with branding options", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_16_58%20PM.png",
       // "Desk Utility/CUSTOMIZED AMBULANCE SHAPED FIRST AID KIT 2.JPG"
     ]
   },
   {
-    id: 23, name: "CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_03%20PM.png", price: "₹349", category: "desk-utility", categoryName: "Desk Utility", description: "Elegant chit/note container for desk organization", images: [
+    id: 23, name: "CUSTOMIZED MOBILE HOLDER WITH PEN HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_51%20PM.png", price: "₹349", category: "desk-utility", categoryName: "Desk Utility", description: "Elegant chit/note container for desk organization", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Utility/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_03%20PM.png",
       // "Desk Utility/CUSTOMIZED CHIT CONTAINER 2.JPG"
     ]
@@ -228,8 +228,8 @@ export const allProducts: Product[] = [
 
   // Categories - 3D Printed (IDs: 31-40)
   { id: 31, name: "AESTHETIC HEART SHAPED FLOWER VASE", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/61.png", price: "₹799", category: "3d-printed", categoryName: "3D Printed", description: "Custom 3D printed desk name plate" },
-  { id: 32, name: "CUSTOMIWS BRAND NAME DUAL UTILITY TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_27_41%20PM.png", price: "₹1499", category: "3d-printed", categoryName: "3D Printed", description: "Pharma branding 3D molecule visualization" },
-  // { id: 33, name: "CUSTOMIZED BRAND NAME DUAL UTILITY TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_28_41%20PM.png", price: "₹1999", category: "3d-printed", categoryName: "3D Printed", description: "Educational 3D printed organ model" },
+  { id: 32, name: "CUSTOMIWS BRAND NAME DUAL UTILITY TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_27_41%20PM.png", price: "₹1499", category: "3d-printed", categoryName: "3D Printed", description: "Pharma branding 3D molecule visualization" },
+  { id: 33, name: "CUSTOMIZED BRAND NAME DUAL UTILITY TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_29_49%20PM.png", price: "₹1999", category: "3d-printed", categoryName: "3D Printed", description: "Educational 3D printed organ model" },
   { id: 34, name: "CUSTOMIZED G SHAPED SHEET HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_28_52%20PM.png", price: "₹899", category: "3d-printed", categoryName: "3D Printed", description: "Custom sheet holder with branding" },
   { id: 35, name: "CUSTOMIZED BRAND NAME SHEET HOLDER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_29_49%20PM.png", price: "₹899", category: "3d-printed", categoryName: "3D Printed", description: "Elegant G-shaped document holder" },
   { id: 36, name: "INFINITY MIRROR", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_00_38%20PM.png", price: "₹2499", category: "3d-printed", categoryName: "3D Printed", description: "Conceptual gut-brain connection art frame" },
