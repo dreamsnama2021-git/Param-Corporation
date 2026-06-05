@@ -108,11 +108,11 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     card: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_55_26%20PM.png",
-      "https://picsum.photos/id/21/400/300",
-      "https://picsum.photos/id/22/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_24_05%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_25_07%20PM.png",
     ],
     flipChart: [
-      "https://picsum.photos/id/23/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_26_54%20PM.png",
       "https://picsum.photos/id/24/400/300",
       "https://picsum.photos/id/25/400/300",
     ],
@@ -247,8 +247,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
     matt: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_56_10%20PM.png",
-      "https://picsum.photos/id/99/400/300",
-      "https://picsum.photos/id/100/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_44_50%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_45_24%20PM.png",
     ],
     posters: [
       "https://picsum.photos/id/101/400/300",
