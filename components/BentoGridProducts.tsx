@@ -150,9 +150,9 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Diabetes: {
     card: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80",
     books: [
-      "https://picsum.photos/id/44/400/300",
-      "https://picsum.photos/id/45/400/300",
-      "https://picsum.photos/id/46/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_03_15%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_05_00%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_05_33%20PM.png",
     ],
     flipChart: [
       "https://picsum.photos/id/47/400/300",
@@ -243,10 +243,10 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     flipChart: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/BOOKS%20%26%20MAGAZINES%202.png",
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/BOOKS%20%26%20MAGAZINES%201.png",
-      "https://picsum.photos/id/97/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_55_53%20PM.png",
     ],
     matt: [
-      "https://picsum.photos/id/98/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_56_10%20PM.png",
       "https://picsum.photos/id/99/400/300",
       "https://picsum.photos/id/100/400/300",
     ],
