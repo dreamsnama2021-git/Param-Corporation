@@ -107,12 +107,12 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   "Cardio-Vascular": {
     card: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
     books: [
-      "https://picsum.photos/id/20/400/300",
-      "https://picsum.photos/id/21/400/300",
-      "https://picsum.photos/id/22/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_55_26%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_24_05%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_25_07%20PM.png",
     ],
     flipChart: [
-      "https://picsum.photos/id/23/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_26_54%20PM.png",
       "https://picsum.photos/id/24/400/300",
       "https://picsum.photos/id/25/400/300",
     ],
@@ -150,17 +150,17 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Diabetes: {
     card: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80",
     books: [
-      "https://picsum.photos/id/44/400/300",
-      "https://picsum.photos/id/45/400/300",
-      "https://picsum.photos/id/46/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_03_15%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_05_00%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_05_33%20PM.png",
     ],
     flipChart: [
-      "https://picsum.photos/id/47/400/300",
-      "https://picsum.photos/id/48/400/300",
-      "https://picsum.photos/id/49/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_06_35%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_06_57%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_10_59%20PM.png",
     ],
     matt: [
-      "https://picsum.photos/id/50/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_15_09%20PM.png",
       "https://picsum.photos/id/51/400/300",
       "https://picsum.photos/id/52/400/300",
     ],
@@ -193,7 +193,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   "ENT & Respiratory": {
     card: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80",
     books: [
-      "https://picsum.photos/id/68/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_29_49%20PM.png",
       "https://picsum.photos/id/69/400/300",
       "https://picsum.photos/id/70/400/300",
     ],
@@ -236,22 +236,22 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   "Orthopedics/Rheumatology": {
     card: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80",
     books: [
-      "https://picsum.photos/id/92/400/300",
-      "https://picsum.photos/id/93/400/300",
-      "https://picsum.photos/id/94/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_55_44%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_55_32%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/BOOKS%20%26%20MAGAZINES.png",
     ],
     flipChart: [
-      "https://picsum.photos/id/95/400/300",
-      "https://picsum.photos/id/96/400/300",
-      "https://picsum.photos/id/97/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/BOOKS%20%26%20MAGAZINES%202.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/BOOKS%20%26%20MAGAZINES%201.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_55_53%20PM.png",
     ],
     matt: [
-      "https://picsum.photos/id/98/400/300",
-      "https://picsum.photos/id/99/400/300",
-      "https://picsum.photos/id/100/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_56_10%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_44_50%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_45_24%20PM.png",
     ],
     posters: [
-      "https://picsum.photos/id/101/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_51_21%20PM.png",
       "https://picsum.photos/id/102/400/300",
       "https://picsum.photos/id/103/400/300",
     ],
