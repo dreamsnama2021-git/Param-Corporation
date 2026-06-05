@@ -304,6 +304,18 @@ export const allProducts: Product[] = [
       // "Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
     ]
   },
+  {
+    id: 51, name: "INTESTINE SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_44_54%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png",
+      // "Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
+    ]
+  },
+  {
+    id: 51, name: "INTESTINE SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_44%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png",
+      // "Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
+    ]
+  },
 
   // Categories - Eco Friendly (IDs: 51-54)
   // { id: 51, name: "Bamboo Cutlery Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Eco%20Friendly%20Products/CUSTOMIZED%20DENTIST%20THEME%20WOODEN%20CLOCK%201.JPG", price: "₹499", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Sustainable bamboo utensils" },
@@ -402,7 +414,7 @@ export const allProducts: Product[] = [
   { id: 71, name: "Desk Calendar", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_24_05%20PM.png", price: "₹399", category: "calendars", categoryName: "Calendars", description: "Monthly wall calendar featuring wellness messages, health tips, and seasonal reminders for clinic waiting areas." },
   // { id: 72, name: "Planner Diary Combo", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹599", category: "calendars", categoryName: "Calendars", description: "Complete year planner with monthly calendar views, appointment tracker, and note sections for medical professionals." },
   // Categories - Photo Frames (IDs: 80-82)
-{ id: 80, name: "Clinic Desk Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/PhotoFrames/desk_frame.png", price: "₹449", category: "photo-frames", categoryName: "Photo Frames", description: "Elegant acrylic desk frame with laser-engraved pharma logo, perfect for doctor's clinic desk displaying certificates or family photos." },
+{ id: 80, name: "Clinic Desk Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Frame.png", price: "₹449", category: "photo-frames", categoryName: "Photo Frames", description: "Elegant acrylic desk frame with laser-engraved pharma logo, perfect for doctor's clinic desk displaying certificates or family photos." },
 { id: 81, name: "Digital Photo Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/PhotoFrames/digital_frame.png", price: "₹1899", category: "photo-frames", categoryName: "Photo Frames", description: "7-inch HD digital frame pre-loaded with brand messaging, slideshow capable with remote control for clinic waiting areas." },
 { id: 82, name: "Wall Mount Collage Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/PhotoFrames/collage_frame.png", price: "₹799", category: "photo-frames", categoryName: "Photo Frames", description: "Multi-opening collage frame with subtle branding, holds 4 photos - ideal for clinic wall display." },
 
