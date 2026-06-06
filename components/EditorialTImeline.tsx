@@ -25,7 +25,7 @@ interface EditorialTimelineProps {
 
 export function EditorialTimeline({ items }: EditorialTimelineProps) {
   return (
-    <div className="relative w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative w-full max-w-[1500px] mx-auto sm:px-6 lg:px-8">
       {/* Central Path */}
       <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[1px] bg-[#0093cb] hidden md:block" />
 
@@ -56,7 +56,7 @@ const EditorialRow = ({ item, index }: { item: TimelineItem; index: number }) =>
         transition={{ duration: 0.8 }}
         className={`w-full flex justify-center ${isEven ? 'md:justify-end md:pr-6 lg:pr-10 xl:pr-16' : 'md:justify-start md:pl-6 lg:pl-10 xl:pl-16 md:order-2'}`}
       >
-        <div className="relative aspect-[4/3] w-full max-w-[280px] sm:max-w-[340px] md:max-w-[320px] lg:max-w-[360px] xl:max-w-[400px] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-2xl group">
+        <div className="relative aspect-[4/3] w-full max-w-[350px] sm:max-w-[340px] md:max-w-[320px] lg:max-w-[360px] xl:max-w-[400px] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-2xl group">
           <Image 
             src={item.image} 
             alt={item.title} 
@@ -98,7 +98,7 @@ const EditorialRow = ({ item, index }: { item: TimelineItem; index: number }) =>
         transition={{ duration: 0.6, delay: 0.2 }}
         className={`w-full flex justify-center ${isEven ? 'md:justify-start md:pl-6 lg:pl-10 xl:pl-16 md:order-2' : 'md:justify-end md:pr-6 lg:pr-10 xl:pr-16 md:order-1'}`}
       >
-        <div className="w-full max-w-[280px] sm:max-w-[340px] md:max-w-[320px] lg:max-w-[360px] xl:max-w-[400px] space-y-2 sm:space-y-3 md:space-y-4">
+        <div className="w-full max-w-[350px] sm:max-w-[340px] md:max-w-[320px] lg:max-w-[360px] xl:max-w-[400px] space-y-2 sm:space-y-3 md:space-y-4">
           {/* Date */}
           <div className="flex items-center gap-2 sm:gap-3">
             <span className="text-3xl sm:text-4xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#00a65d] tracking-tighter leading-none">

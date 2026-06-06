@@ -152,43 +152,41 @@ const ProductImage = ({ src, alt, className = "" }: { src: string; alt: string; 
 };
 
 // Banner Component with proper image handling
-const PageBanner = () => {
-  const [bannerError, setBannerError] = useState(false);
-  
-  if (bannerError) {
-    return (
-      <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[70vh] 2xl:h-[65vh] bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center">
-        <p className="text-gray-400">Banner image not available</p>
-      </div>
-    );
-  }
+const PageBanner = () => (
+   <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] 2xl:h-[65vh] overflow-hidden">
+    {/* Mobile image */}
+    <Image
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Mobile.png"
+      alt="MediPride Banner - Mobile"
+      fill
+      className="object-fill object-center block md:hidden"
+      priority
+      unoptimized
+    />
 
-  return (
-     <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] overflow-hidden">
-      {/* Mobile image */}
-      <picture>
-        <source
-          media="(max-width: 767px)"
-          srcSet="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Mobile.png"
-        />
-        <source
-          media="(min-width: 768px) and (max-width: 1023px)"
-          srcSet="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Tablet.png"
-        />
-        <source
-          media="(min-width: 1024px)"
-          srcSet="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Desktop.png"
-        />
-        <img
-          src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Desktop.png"
-          alt="Products Banner"
-          className="w-full h-full object-cover"
-          onError={() => setBannerError(true)}
-        />
-      </picture>
-    </div>
-  );
-};
+    {/* Tablet image */}
+    <Image
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Tablet.png"
+      alt="MediPride Banner - Tablet"
+      fill
+      className="object-fill object-center hidden md:block lg:hidden"
+      priority
+      unoptimized
+    />
+
+    {/* Desktop image */}
+    <Image
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Desktop.png"
+      alt="MediPride Banner - Desktop"
+      fill
+      className="object-fill object-center hidden lg:block"
+      priority
+      unoptimized
+    />
+
+   
+  </div>
+);
 
 /* ══════════════════════════════════════════
    DOWNLOAD CATALOGUE FORM MODAL

@@ -87,7 +87,7 @@ const PageBanner = () => (
    <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] 2xl:h-[65vh] overflow-hidden">
     {/* Mobile image */}
     <Image
-      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Case%20study%20page%20Desktop.jpg.jpeg"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Case%20study%20page%20Mobile.jpg.jpeg"
       alt="Case Study Banner - Mobile"
       fill
       className="object-fill object-center block md:hidden"
@@ -107,7 +107,7 @@ const PageBanner = () => (
 
     {/* Desktop image */}
     <Image
-      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Case%20study%20page%20Mobile.jpg.jpeg"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Case%20study%20page%20Desktop.jpg.jpeg"
       alt="Case Study Banner - Desktop"
       fill
       className="object-fill object-center hidden lg:block"
