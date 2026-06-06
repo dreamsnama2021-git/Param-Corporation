@@ -117,13 +117,13 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/48.png",
     ],
     matt: [
-      "https://picsum.photos/id/26/400/300",
-      "https://picsum.photos/id/27/400/300",
-      "https://picsum.photos/id/28/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/49.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/59.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/61.png",
     ],
     posters: [
-      "https://picsum.photos/id/29/400/300",
-      "https://picsum.photos/id/30/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/66.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/67.png",
       "https://picsum.photos/id/31/400/300",
     ],
     medicalScale: [
@@ -213,7 +213,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/40.png",
     ],
     medicalScale: [
-      "https://picsum.photos/id/80/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/83.png",
       "https://picsum.photos/id/81/400/300",
       "https://picsum.photos/id/82/400/300",
     ],
@@ -252,8 +252,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
     posters: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_51_21%20PM.png",
-      "https://picsum.photos/id/102/400/300",
-      "https://picsum.photos/id/103/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/50.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/55.png",
     ],
     medicalScale: [
       "https://picsum.photos/id/104/400/300",
@@ -280,8 +280,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     card: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_29_40%20PM.png",
-      "https://picsum.photos/id/117/400/300",
-      "https://picsum.photos/id/118/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/77.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/78.png",
     ],
     flipChart: [
       "https://picsum.photos/id/119/400/300",
@@ -322,8 +322,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Gastroenterology: {
     card: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80",
     books: [
-      "https://picsum.photos/id/140/400/300",
-      "https://picsum.photos/id/141/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/54.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/55.png",
       "https://picsum.photos/id/142/400/300",
     ],
     flipChart: [
@@ -365,9 +365,9 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Ophthalmology: {
     card: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=800&q=80",
     books: [
-      "https://picsum.photos/id/164/400/300",
-      "https://picsum.photos/id/165/400/300",
-      "https://picsum.photos/id/166/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/71.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/72.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/73.png",
     ],
     flipChart: [
       "https://picsum.photos/id/167/400/300",
@@ -495,7 +495,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     card: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/24.png",
-      "https://picsum.photos/id/237/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/76.png",
       "https://picsum.photos/id/238/400/300",
     ],
     flipChart: [
@@ -538,8 +538,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     card: "https://mehtahospital.com/wp-content/uploads/2025/04/dr-mehta-hospital-neurology.webp",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/EPILEPSY%20PATIENT%20EDUCATION%20LAPTOP%20MAT.png",
-      "https://picsum.photos/id/261/400/300",
-      "https://picsum.photos/id/262/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/64.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/81.png",
     ],
     flipChart: [
       "https://picsum.photos/id/263/400/300",
