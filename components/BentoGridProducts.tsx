@@ -160,8 +160,6 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
     matt: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_15_09%20PM.png",
-      // "https://picsum.photos/id/51/400/300",
-      // "https://picsum.photos/id/52/400/300",
     ],
     // posters: [
     //   "https://picsum.photos/id/53/400/300",
@@ -213,8 +211,6 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
     medicalScale: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/83.png",
-      // "https://picsum.photos/id/81/400/300",
-      // "https://picsum.photos/id/82/400/300",
     ],
   //   writeWipe: [
   //     "https://picsum.photos/id/83/400/300",
