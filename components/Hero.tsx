@@ -69,7 +69,7 @@ function ResponsiveSlideImage({ slide, priority = false }: { slide: HeroSlide; p
         src={slide.desktop}
         alt={slide.alt}
         fill
-        className="object-fill object-bottom pointer-events-none"
+        className="object-cover object-bottom pointer-events-none"
         priority={priority}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
         quality={90}
@@ -222,7 +222,7 @@ export default function HeroWithStats() {
   return (
     <div className="flex flex-col overflow-hidden">
       <section 
-        className="relative w-full h-[80vh] sm:h-[60vh] md:h-[45vh] lg:h-[85vh] 2xl:h-[95vh] overflow-visible bg-black"
+        className="relative w-full h-[80vh] sm:h-[60vh] md:h-[40vh] lg:h-[90vh] xl:h-[80vh] 2xl:h-[90vh] overflow-visible bg-black"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
       >
