@@ -326,20 +326,20 @@ export const allProducts: Product[] = [
 
   // Categories - LED Tabletops (IDs: 55-65)
   {
-    id: 55, name: "CARDIO LED TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/21.png", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated cardio-themed LED tabletop display for medical branding", images: [
+    id: 55, name: "KIDNEY LED STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/21.png", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated cardio-themed LED tabletop display for medical branding", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/21.png",
       // "LED INPUTS/CARDIO LED TABLE TOP (2).jpg"
     ]
   },
   {
-    id: 56, name: "INFINITY MIRROR", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/59.png", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Dynamic thunder-shaped LED tabletop with customization options", images: [
+    id: 56, name: "CARDIOVASCULAR LED FRAME", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/59.png", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Dynamic thunder-shaped LED tabletop with customization options", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/59.png",
       // "LED INPUTS/CUSTOMIZED LED THUNDER TABLE TOP 2.JPG",
       // "LED INPUTS/CUSTOMIZED LED THUNDER TABLE TOP 3.JPG"
     ]
   },
   {
-    id: 57, name: "HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_29_40%20PM.png", price: "₹2499", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display comparing healthy and infected kidney anatomy", images: [
+    id: 57, name: "IUI PROCEDURE LED FRAME", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_29_40%20PM.png", price: "₹2499", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display comparing healthy and infected kidney anatomy", images: [
       "LED INPUTS/HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP.jpg"
     ]
   },
@@ -412,11 +412,11 @@ export const allProducts: Product[] = [
 
   // Categories - Calendars (IDs: 70-72)
   { id: 70, name: "Matt Calendar", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/64.png", price: "₹299", category: "calendars", categoryName: "Calendars", description: "Medical-focused desk calendar 2025 with important health awareness dates and pharmaceutical brand positioning." },
-  { id: 71, name: "Desk Calendar", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_24_05%20PM.png", price: "₹399", category: "calendars", categoryName: "Calendars", description: "Monthly wall calendar featuring wellness messages, health tips, and seasonal reminders for clinic waiting areas." },
+  { id: 71, name: "HYPERTENSION PROTOCOL MATT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_24_05%20PM.png", price: "₹399", category: "calendars", categoryName: "Calendars", description: "Monthly wall calendar featuring wellness messages, health tips, and seasonal reminders for clinic waiting areas." },
   // { id: 72, name: "Planner Diary Combo", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹599", category: "calendars", categoryName: "Calendars", description: "Complete year planner with monthly calendar views, appointment tracker, and note sections for medical professionals." },
  
   // Categories - Photo Frames (IDs: 80-82)
-{ id: 80, name: "Clinic Desk Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Frame.png", price: "₹449", category: "photo-frames", categoryName: "Photo Frames", description: "Elegant acrylic desk frame with laser-engraved pharma logo, perfect for doctor's clinic desk displaying certificates or family photos." },
+{ id: 80, name: "TYPES OF LIVER DISEASES FRAME", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Frame.png", price: "₹449", category: "photo-frames", categoryName: "Photo Frames", description: "Elegant acrylic desk frame with laser-engraved pharma logo, perfect for doctor's clinic desk displaying certificates or family photos." },
 // { id: 81, name: "Digital Photo Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/PhotoFrames/digital_frame.png", price: "₹1899", category: "photo-frames", categoryName: "Photo Frames", description: "7-inch HD digital frame pre-loaded with brand messaging, slideshow capable with remote control for clinic waiting areas." },
 // { id: 82, name: "Wall Mount Collage Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/PhotoFrames/collage_frame.png", price: "₹799", category: "photo-frames", categoryName: "Photo Frames", description: "Multi-opening collage frame with subtle branding, holds 4 photos - ideal for clinic wall display." },
 
@@ -426,27 +426,27 @@ export const allProducts: Product[] = [
 // { id: 85, name: "Conference Launch Bundle", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/LaunchKits/conference_bundle.png", price: "₹3499", category: "pharma-launch-kits", categoryName: "Pharma Launch Kits", description: "Premium conference kit including branded bag, tablet stylus, power bank, and product monograph for CME events." },
 
 // Categories - Custom Doctor Kits (IDs: 86-88)
-{ id: 86, name: "Executive Doctor Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/68.png", price: "₹1599", category: "custom-doctor-kits", categoryName: "Custom Doctor Kits", description: "Premium leather-embossed kit with branded stethoscope ID tag, pen, notepad, and clinic diary." },
+{ id: 86, name: "DERMA DIGITAL KIT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/68.png", price: "₹1599", category: "custom-doctor-kits", categoryName: "Custom Doctor Kits", description: "Premium leather-embossed kit with branded stethoscope ID tag, pen, notepad, and clinic diary." },
 // { id: 87, name: "Clinic Utility Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/DoctorKits/utility_kit.png", price: "₹899", category: "custom-doctor-kits", categoryName: "Custom Doctor Kits", description: "Practical kit with branded measuring tape, penlight, scissors, and medical reference cards in carry case." },
 // { id: 88, name: "Wellness Gift Hamper", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/DoctorKits/wellness_hamper.png", price: "₹1199", category: "custom-doctor-kits", categoryName: "Custom Doctor Kits", description: "Doctor appreciation kit including insulated mug, stress ball, hand sanitizer, and desk organiser with branding." },
 
 // Categories - Surgical Tools (IDs: 89-91)
-{ id: 89, name: "Branded Scissors Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Urology-.png", price: "₹649", category: "surgical-tools", categoryName: "Surgical Tools", description: "High-quality stainless steel surgical scissors with laser-engraved pharma logo, available in straight and curved tip." },
+{ id: 89, name: "XTIKTR WRITE & WIPE FLIP CHART", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Urology-.png", price: "₹649", category: "surgical-tools", categoryName: "Surgical Tools", description: "High-quality stainless steel surgical scissors with laser-engraved pharma logo, available in straight and curved tip." },
 // { id: 90, name: "Forceps with Carry Case", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/SurgicalTools/forceps_set.png", price: "₹549", category: "surgical-tools", categoryName: "Surgical Tools", description: "Dissecting forceps set (plain and toothed) in branded leatherette pouch - ideal for surgical reps." },
 // { id: 91, name: "Diagnostic Tool Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/SurgicalTools/diagnostic_set.png", price: "₹1999", category: "surgical-tools", categoryName: "Surgical Tools", description: "Complete diagnostic set including ophthalmoscope, otoscope, and nasal speculum with branded hard case." },
 
 // Categories - Custom Training Models (IDs: 92-100)
-{ id: 92, name: "3D Organ Model Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_42_08%20PM.png", price: "₹2999", category: "custom-training-models", categoryName: "Custom Training Models", description: "Anatomical heart, brain, and kidney models with removable parts and pharma branding for patient education." },
-{ id: 93, name: "Injection Practice Pad", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Urology-.png", price: "₹799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Silicone injection training pad with vein simulation, branded with your pharma logo - ideal for insulin/device training." },
+{ id: 92, name: "THE REVOLIZER PATIENT EDUCATION KIT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_42_08%20PM.png", price: "₹2999", category: "custom-training-models", categoryName: "Custom Training Models", description: "Anatomical heart, brain, and kidney models with removable parts and pharma branding for patient education." },
+{ id: 93, name: "XTIKTR WRITE & WIPE FLIP CHART", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Urology-.png", price: "₹799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Silicone injection training pad with vein simulation, branded with your pharma logo - ideal for insulin/device training." },
 { id: 94, name: "Suture Practice Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/65.png", price: "₹1799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Complete suture practice kit with silicone skin pad, instruments, and branded storage case for surgical training workshops." },
-{ id: 95, name: "Suture Practice Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/76.png", price: "₹1799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Complete suture practice kit with silicone skin pad, instruments, and branded storage case for surgical training workshops." },
-{ id: 96, name: "Suture Practice Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/83.png", price: "₹1799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Complete suture practice kit with silicone skin pad, instruments, and branded storage case for surgical training workshops." },
-{ id: 97, name: "Suture Practice Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/76.png", price: "₹1799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Complete suture practice kit with silicone skin pad, instruments, and branded storage case for surgical training workshops." },
+{ id: 95, name: "Doctor Training Pending", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/76.png", price: "₹1799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Complete suture practice kit with silicone skin pad, instruments, and branded storage case for surgical training workshops." },
+{ id: 96, name: "Doctor Training Pending", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/83.png", price: "₹1799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Complete suture practice kit with silicone skin pad, instruments, and branded storage case for surgical training workshops." },
+// { id: 97, name: "Suture Practice Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/76.png", price: "₹1799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Complete suture practice kit with silicone skin pad, instruments, and branded storage case for surgical training workshops." },
 
   
   // Categories - Photo Frames (IDs: 73-95)
   {
-    id: 73, name: "BABIES RESIN ART FRAME", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_01_16%20PM.png", price: "₹1299", category: "photo-frames", categoryName: "Photo Frames", description: "Beautiful resin art frame featuring baby designs - perfect for pediatric clinics", images: [
+    id: 73, name: "GUTT BRAIN CONNECTION CONCEPTUALISED FRAME", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_01_16%20PM.png", price: "₹1299", category: "photo-frames", categoryName: "Photo Frames", description: "Beautiful resin art frame featuring baby designs - perfect for pediatric clinics", images: [
       "Photo Frames/BABIES RESIN ART FRAME 1.JPG",
       // "Photo Frames/BABIES RESIN ART FRAME 2.JPG",
       // "Photo Frames/BABIES RESIN ART FRAME 3.JPG",
