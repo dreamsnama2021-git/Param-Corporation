@@ -143,7 +143,7 @@ export const allProducts: Product[] = [
   { id: 10, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_17_54%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   { id: 10, name: "CUSTOMIZED BP MACHINE SHAPED PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_18_02%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
 
-  // Categories - Tabletops (IDs: 11-26)
+  // Categories - Tabletops (IDs: 11-30)
   { id: 11, name: "CUSTOMIZED 1 LAKH DOSES MOMENTO", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/22.png", price: "₹599", category: "tabletops", categoryName: "Tabletops", description: "Premium tabletop calendar stand" },
   { id: 12, name: "EAR MODEL WITH SAMPLE DESPENSER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_55_53%20PM.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
   { id: 13, name: "CUSTOMIZED 15 YEARS MOMENTO", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/24.png", price: "₹899", category: "tabletops", categoryName: "Tabletops", description: "Traditional brass decorative piece" },
@@ -161,6 +161,7 @@ export const allProducts: Product[] = [
   { id: 25, name: "EAR MODEL WITH SAMPLE DESPENSER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/61.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
   { id: 26, name: "CUSTOMIZED YOGA THEME DESK CLOCK", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/71.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
   { id: 27, name: "EAR MODEL WITH SAMPLE DESPENSER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/77.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
+  { id: 28, name: "EAR MODEL WITH SAMPLE DESPENSER", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/47.png", price: "₹1299", category: "tabletops", categoryName: "Tabletops", description: "Medical anatomy tabletop display" },
 
   // Categories - Desk Utility (IDs: 21-40)
   {

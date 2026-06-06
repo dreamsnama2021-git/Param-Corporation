@@ -113,8 +113,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
     flipChart: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_26_54%20PM.png",
-      "https://picsum.photos/id/24/400/300",
-      "https://picsum.photos/id/25/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/47.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/48.png",
     ],
     matt: [
       "https://picsum.photos/id/26/400/300",
@@ -409,8 +409,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     card: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/41.png",
-      "https://picsum.photos/id/189/400/300",
-      "https://picsum.photos/id/190/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/44.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/45.png",
     ],
     flipChart: [
       "https://picsum.photos/id/191/400/300",
