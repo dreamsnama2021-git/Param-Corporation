@@ -203,7 +203,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/30.png",
     ],
     matt: [
-      "https://picsum.photos/id/74/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/34.png",
       "https://picsum.photos/id/75/400/300",
       "https://picsum.photos/id/76/400/300",
     ],
