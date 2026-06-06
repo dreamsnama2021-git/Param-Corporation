@@ -324,10 +324,10 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/54.png",
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/55.png",
-      "https://picsum.photos/id/142/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/90.png",
     ],
     flipChart: [
-      "https://picsum.photos/id/143/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/91.png",
       "https://picsum.photos/id/144/400/300",
       "https://picsum.photos/id/145/400/300",
     ],
@@ -413,8 +413,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/45.png",
     ],
     flipChart: [
-      "https://picsum.photos/id/191/400/300",
-      "https://picsum.photos/id/192/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/86.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/89.png",
       "https://picsum.photos/id/193/400/300",
     ],
     matt: [
