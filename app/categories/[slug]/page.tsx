@@ -169,18 +169,18 @@ const PageBanner = () => {
       <picture>
         <source
           media="(max-width: 767px)"
-          srcSet="/banner/Products page Mobile.jpg"
+          srcSet="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Mobile.png"
         />
         <source
           media="(min-width: 768px) and (max-width: 1023px)"
-          srcSet="/banner/Products page Tablet.jpg"
+          srcSet="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Tablet.png"
         />
         <source
           media="(min-width: 1024px)"
-          srcSet="/banner/Products page Desktop.jpg"
+          srcSet="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Desktop.png"
         />
         <img
-          src="/banner/Products page Desktop.jpg"
+          src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Desktop.png"
           alt="Products Banner"
           className="w-full h-full object-cover"
           onError={() => setBannerError(true)}
