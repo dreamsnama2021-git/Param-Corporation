@@ -22,7 +22,7 @@ const HERO_SLIDES: HeroSlide[] = [
   {
     desktop: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpg",
     tablet: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
-    mobile: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
+    mobile: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Mobile%20Home%20Banner%203.jpeg",
     alt: "Branding",
   },
   {
@@ -34,13 +34,13 @@ const HERO_SLIDES: HeroSlide[] = [
   {
     desktop: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
     tablet: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
-    mobile: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
+    mobile: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Mobile%20Home%20Banner%203.jpeg",
     alt: "Pharmaceutical Gifts",
   },
   {
     desktop: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
     tablet: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
-    mobile: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%203.jpeg",
+    mobile: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Mobile%20Home%20Banner%203.jpeg",
     alt: "Pharmaceutical Gifts",
   },
 ];
@@ -69,7 +69,7 @@ function ResponsiveSlideImage({ slide, priority = false }: { slide: HeroSlide; p
         src={slide.desktop}
         alt={slide.alt}
         fill
-        className="object-cover object-bottom pointer-events-none"
+        className="md:object-cover object-bottom pointer-events-none"
         priority={priority}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
         quality={90}
@@ -222,7 +222,7 @@ export default function HeroWithStats() {
   return (
     <div className="flex flex-col overflow-hidden">
       <section 
-        className="relative w-full h-[80vh] sm:h-[60vh] md:h-[40vh] lg:h-[90vh] xl:h-[80vh] 2xl:h-[90vh] overflow-visible bg-black"
+        className="relative w-full h-[70vh] sm:h-[60vh] md:h-[40vh] lg:h-[90vh] xl:h-[80vh] 2xl:h-[90vh] overflow-visible bg-black"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
       >

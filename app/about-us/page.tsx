@@ -272,11 +272,11 @@ const WhyUsSection = () => {
         <item.icon size={18} />
       </div>
       {/* Increased from text-sm to text-base, sm:text-base to sm:text-lg */}
-      <h3 className="text-base sm:text-lg font-bold mb-1.5 sm:mb-2 text-[#0f172a] flex-shrink-0">
+      <h3 className="text-base xl:text-lg font-bold mb-1.5 sm:mb-2 text-[#0f172a] flex-shrink-0">
         {item.title}
       </h3>
       {/* Increased from text-xs to text-sm, sm:text-sm to sm:text-base */}
-      <p className="text-sm sm:text-base text-[#6b7280] leading-relaxed flex-grow">
+      <p className="text-sm xl:text-base text-[#6b7280] leading-relaxed flex-grow">
         {item.desc}
       </p>
     </div>
@@ -292,7 +292,7 @@ const WhyUsSection = () => {
               Why Param
             </p>
             {/* Title: Increased from text-2xl to text-3xl, sm:text-3xl to sm:text-4xl, md:text-4xl to md:text-5xl */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-[#0f172a]">
+            <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold leading-tight text-[#0f172a]">
               The <span className="text-[#0093cb]">Difference</span>
             </h2>
           </div>
@@ -300,7 +300,7 @@ const WhyUsSection = () => {
             <Card key={i} item={item} />
           ))}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 xl:gap-4">
           {row2Cards.map((item, i) => (
             <Card key={i} item={item} />
           ))}

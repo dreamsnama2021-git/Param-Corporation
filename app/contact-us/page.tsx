@@ -15,7 +15,7 @@ import Image from "next/image";
 
 // ─── Contact US PAGE BANNER ─────────────────────────────────────────────────────────────
 const PageBanner = () => (
-  <div className="relative w-full h-[25vh] md:h-[30vh] lg:h-[45vh] xl:h-[50vh] overflow-hidden">
+ <div className="relative w-full h-[60vh] md:h-[40vh] lg:h-[65vh] xl:h-[65vh] 2xl:h-[65vh] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="/banner/contact us.png"

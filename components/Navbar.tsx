@@ -237,7 +237,7 @@ export default function Navbar() {
                 {/* Mega Menu */}
                 {activeDropdown === "products" && (
                   <div
-                    className="absolute top-full left-1/2 -translate-x-1/2 w-[850px] bg-white/98 backdrop-blur-xl rounded-xl shadow-2xl border border-gray-200  p-4 z-50"
+                    className="absolute top-full left-[10rem] xl:left-1/2 -translate-x-1/2 w-[850px] bg-white/98 backdrop-blur-xl rounded-xl shadow-2xl border border-gray-200  p-4 z-50"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
