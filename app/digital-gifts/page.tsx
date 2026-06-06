@@ -1,7 +1,7 @@
 // app/digital-services/page.tsx
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -115,67 +115,65 @@ const serviceCategories: ServiceCategory[] = [
 ];
 
 const koruGalleryImages: GalleryImage[] = [
-  { id: "g-1", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png", title: "Custom Dashboard Interface", category: "Dashboard" },
-  { id: "g-2", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_15_09%20PM.png", title: "Analytics Visualization", category: "Analytics" },
   { id: "g-3", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_06_57%20PM.png", title: "Health Risk Calculator", category: "HRA Tools" },
+  { id: "g-1", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png", title: "Custom Dashboard Interface", category: "Dashboard" },
   { id: "g-4", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/41.png", title: "Patient Support Portal", category: "Patient Programs" },
   { id: "g-5", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/3.png", title: "Mini Website Design", category: "Websites" },
-  { id: "g-6", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/52.png", title: "Mobile App Interface", category: "Apps" },
-  { id: "g-7", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/68.png", title: "Video Production Still", category: "Video" },
+  { id: "g-2", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Cardio/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_15_09%20PM.png", title: "Analytics Visualization", category: "Analytics" },
   { id: "g-8", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/9.png", title: "Variable Data Print Sample", category: "Print" },
-  { id: "g-9", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Neurology/82.png", title: "Sales Dashboard View", category: "Dashboard" },
+  { id: "g-7", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/68.png", title: "Video Production Still", category: "Video" },
   { id: "g-10", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/87.png", title: "Territory Analytics", category: "Analytics" },
-  { id: "g-11", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/23.png", title: "Risk Assessment Tool", category: "HRA Tools" },
+  { id: "g-9", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Neurology/82.png", title: "Sales Dashboard View", category: "Dashboard" },
+  { id: "g-6", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/52.png", title: "Mobile App Interface", category: "Apps" },
   { id: "g-12", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Dermatology/ChatGPT%20Image%20May%2029%2C%202026%2C%2004_39_27%20PM.png", title: "Patient App Screen", category: "Patient Programs" },
+  { id: "g-11", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Urology/23.png", title: "Risk Assessment Tool", category: "HRA Tools" },
   { id: "g-13", src: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/63.png", title: "Dashboard Analytics", category: "Dashboard" },
-  { id: "g-14", src: "/koru/koru14.png", title: "Report Interface", category: "Analytics" },
-  { id: "g-15", src: "/koru/koru15.png", title: "Health Assessment", category: "HRA Tools" },
-  { id: "g-16", src: "/koru/koru16.png", title: "Patient Dashboard", category: "Patient Programs" },
-  { id: "g-17", src: "/koru/koru17.png", title: "Web Design", category: "Websites" },
-  { id: "g-18", src: "/koru/koru18.png", title: "Mobile Dashboard", category: "Apps" },
-  { id: "g-19", src: "/koru/koru19.png", title: "Video Frame", category: "Video" },
-  { id: "g-20", src: "/koru/koru20.png", title: "Print Design", category: "Print" },
-  { id: "g-21", src: "/koru/koru21.png", title: "Dashboard UI", category: "Dashboard" },
-  { id: "g-22", src: "/koru/koru22.png", title: "Charts View", category: "Analytics" },
-  { id: "g-23", src: "/koru/koru23.png", title: "Risk Tool", category: "HRA Tools" },
-  { id: "g-24", src: "/koru/koru24.png", title: "Patient App", category: "Patient Programs" },
+  // { id: "g-14", src: "/koru/koru14.png", title: "Report Interface", category: "Analytics" },
+  // { id: "g-15", src: "/koru/koru15.png", title: "Health Assessment", category: "HRA Tools" },
+  // { id: "g-16", src: "/koru/koru16.png", title: "Patient Dashboard", category: "Patient Programs" },
+  // { id: "g-17", src: "/koru/koru17.png", title: "Web Design", category: "Websites" },
+  // { id: "g-18", src: "/koru/koru18.png", title: "Mobile Dashboard", category: "Apps" },
+  // { id: "g-19", src: "/koru/koru19.png", title: "Video Frame", category: "Video" },
+  // { id: "g-20", src: "/koru/koru20.png", title: "Print Design", category: "Print" },
+  // { id: "g-21", src: "/koru/koru21.png", title: "Dashboard UI", category: "Dashboard" },
+  // { id: "g-22", src: "/koru/koru22.png", title: "Charts View", category: "Analytics" },
+  // { id: "g-23", src: "/koru/koru23.png", title: "Risk Tool", category: "HRA Tools" },
+  // { id: "g-24", src: "/koru/koru24.png", title: "Patient App", category: "Patient Programs" },
 ];
 
-// ─── COLLAGE GRID HELPERS ────────────────────────────────────────────────────
-type GridItem = {
-  src: string;
-  colStart: number;
-  colSpan: number;
-  rowSpan: number;
-  imageData: GalleryImage;
-};
+// Varied aspect ratios for organic masonry feel
+const ASPECT_RATIO_VALUES = [
+  1.0, 1.333, 1.2, 1.25, 1.0, 1.5, 0.9, 1.333, 1.3, 1.0,
+  1.25, 1.0, 1.5, 0.85, 1.333, 1.0, 1.4, 0.9, 1.25, 1.0,
+  1.333, 1.0, 1.2, 1.4,
+];
 
-function buildBlock(srcs: GalleryImage[]): GridItem[] {
-  const s = (i: number) => srcs[i] ?? srcs[srcs.length - 1];
+const ASPECT_RATIOS = [
+  '1 / 1', '3 / 4', '1 / 1.2', '4 / 5', '1 / 1', '2 / 3',
+  '1 / 0.9', '3 / 4', '1 / 1.3', '1 / 1', '4 / 5', '1 / 1',
+  '2 / 3', '1 / 0.85', '3 / 4', '1 / 1', '1 / 1.4', '1 / 0.9',
+  '4 / 5', '1 / 1', '3 / 4', '1 / 1', '1 / 1.2', '3 / 4',
+];
 
-  return [
-    { src: s(0).src, colStart: 1, colSpan: 1, rowSpan: 3, imageData: s(0) },
-    { src: s(1).src, colStart: 2, colSpan: 1, rowSpan: 2, imageData: s(1) },
-    { src: s(2).src, colStart: 3, colSpan: 1, rowSpan: 2, imageData: s(2) },
-    { src: s(3).src, colStart: 4, colSpan: 1, rowSpan: 2, imageData: s(3) },
-    { src: s(4).src, colStart: 2, colSpan: 1, rowSpan: 3, imageData: s(4) },
-    { src: s(5).src, colStart: 3, colSpan: 1, rowSpan: 2, imageData: s(5) },
-    { src: s(6).src, colStart: 4, colSpan: 1, rowSpan: 2, imageData: s(6) },
-    { src: s(7).src, colStart: 1, colSpan: 1, rowSpan: 2, imageData: s(7) },
-    { src: s(8).src, colStart: 3, colSpan: 1, rowSpan: 3, imageData: s(8) },
-    { src: s(9).src, colStart: 4, colSpan: 1, rowSpan: 3, imageData: s(9) },
-    { src: s(10).src, colStart: 1, colSpan: 1, rowSpan: 2, imageData: s(10) },
-    { src: s(11).src, colStart: 2, colSpan: 1, rowSpan: 2, imageData: s(11) },
-  ];
-}
+// Distribute images into columns using shortest-column-first algorithm
+function distributeIntoColumns(
+  images: GalleryImage[],
+  numCols: number
+): { img: GalleryImage; originalIndex: number; aspectRatio: string; ratioValue: number }[][] {
+  const cols: { img: GalleryImage; originalIndex: number; aspectRatio: string; ratioValue: number }[][] = 
+    Array.from({ length: numCols }, () => []);
+  const heights = new Array(numCols).fill(0);
 
-function buildGridItems(images: GalleryImage[]): GridItem[] {
-  const items: GridItem[] = [];
-  for (let i = 0; i < images.length; i += 12) {
-    const srcs = images.slice(i, i + 12);
-    items.push(...buildBlock(srcs));
-  }
-  return items;
+  images.forEach((img, i) => {
+    const ratioValue = ASPECT_RATIO_VALUES[i % ASPECT_RATIO_VALUES.length];
+    const aspectRatio = ASPECT_RATIOS[i % ASPECT_RATIOS.length];
+    
+    const col = heights.indexOf(Math.min(...heights));
+    cols[col].push({ img, originalIndex: i, aspectRatio, ratioValue });
+    heights[col] += ratioValue + 0.12;
+  });
+
+  return cols;
 }
 
 // ─── GALLERY LIGHTBOX MODAL ─────────────────────────────────────────────────
@@ -189,142 +187,378 @@ function GalleryLightboxModal({
   onClose: () => void;
 }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
-  const [showThumbnails, setShowThumbnails] = useState(true);
+  const [imgOpacity, setImgOpacity] = useState(1);
+  const thumbnailsRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
   const currentImage = images[currentIndex];
 
-  const nextImage = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
+  const go = (index: number) => {
+    const next = ((index % images.length) + images.length) % images.length;
+    setImgOpacity(0);
+    setTimeout(() => {
+      setCurrentIndex(next);
+      setImgOpacity(1);
+    }, 150);
   };
 
-  const prevImage = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
+  const nextImage = () => go(currentIndex + 1);
+  const prevImage = () => go(currentIndex - 1);
 
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'ArrowLeft') prevImage();
-    if (e.key === 'ArrowRight') nextImage();
-    if (e.key === 'Escape') onClose();
-  };
-
-  React.useEffect(() => {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'Escape') onClose();
+    };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handleKeyDown]);
+  }, [currentIndex, prevImage, nextImage, onClose]);
+
+  useEffect(() => {
+    const active = thumbnailsRef.current?.children[currentIndex] as HTMLElement;
+    active?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }, [currentIndex]);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!thumbnailsRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - thumbnailsRef.current.offsetLeft);
+    setScrollLeft(thumbnailsRef.current.scrollLeft);
+  };
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !thumbnailsRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - thumbnailsRef.current.offsetLeft;
+    thumbnailsRef.current.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  };
+  const handleMouseUp = () => setIsDragging(false);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!thumbnailsRef.current) return;
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - thumbnailsRef.current.offsetLeft);
+    setScrollLeft(thumbnailsRef.current.scrollLeft);
+  };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !thumbnailsRef.current) return;
+    const x = e.touches[0].pageX - thumbnailsRef.current.offsetLeft;
+    thumbnailsRef.current.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  };
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-lg flex items-center justify-center"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center"
+      style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(12px)' }}
       onClick={onClose}
     >
-      {/* Modal Container with max dimensions */}
-      <div 
-        className="relative max-w-[90vw] max-h-[85vh] w-full h-full bg-transparent flex items-center justify-center"
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full flex items-center justify-center text-white transition-colors"
+        style={{ background: 'rgba(255,255,255,0.12)' }}
+        aria-label="Close lightbox"
+      >
+        <X className="w-5 h-5" />
+      </button>
+
+      <div
+        className="relative flex items-center justify-center"
+        style={{ maxWidth: '88vw', maxHeight: '76vh' }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
         <button
-          onClick={onClose}
-          className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+          onClick={(e) => { e.stopPropagation(); prevImage(); }}
+          className="absolute -left-14 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full flex items-center justify-center text-white transition-colors z-10"
+          style={{ background: 'rgba(255,255,255,0.12)' }}
+          aria-label="Previous image"
         >
-          <X className="w-5 h-5" />
+          <ChevronLeft className="w-6 h-6" />
         </button>
 
+        <Image
+          key={currentIndex}
+          src={currentImage.src}
+          alt={currentImage.title}
+          width={1200}
+          height={800}
+          className="rounded-xl object-contain"
+          style={{
+            maxWidth: '88vw',
+            maxHeight: '76vh',
+            opacity: imgOpacity,
+            transition: 'opacity 0.15s ease',
+          }}
+          unoptimized
+        />
 
-        {/* Main Image Container */}
-        <div className="relative w-full h-full flex items-center justify-center p-16 md:p-20">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.3 }}
-            className="relative w-full h-full flex items-center justify-center"
+        <button
+          onClick={(e) => { e.stopPropagation(); nextImage(); }}
+          className="absolute -right-14 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full flex items-center justify-center text-white transition-colors z-10"
+          style={{ background: 'rgba(255,255,255,0.12)' }}
+          aria-label="Next image"
+        >
+          <ChevronRightIcon className="w-6 h-6" />
+        </button>
+      </div>
+
+      <p
+        className="mt-3 text-sm font-medium"
+        style={{ color: 'rgba(255,255,255,0.5)' }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {currentIndex + 1} / {images.length}
+      </p>
+
+      <div
+        ref={thumbnailsRef}
+        className="mt-3 flex gap-2 overflow-x-auto px-4 pb-1"
+        style={{
+          maxWidth: '88vw',
+          cursor: isDragging ? 'grabbing' : 'grab',
+          userSelect: 'none',
+          scrollbarWidth: 'thin',
+          scrollbarColor: 'rgba(255,255,255,0.2) transparent',
+        }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleMouseUp}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {images.map((img, idx) => (
+          <button
+            key={img.id}
+            onClick={(e) => { e.stopPropagation(); go(idx); }}
+            className="relative flex-shrink-0 rounded-lg overflow-hidden transition-all duration-200"
+            style={{
+              width: 52,
+              height: 52,
+              border: currentIndex === idx
+                ? '2px solid #0093cb'
+                : '2px solid transparent',
+              transform: currentIndex === idx ? 'scale(1.08)' : 'scale(1)',
+              cursor: 'pointer',
+            }}
           >
-            <div className="relative w-full h-full flex items-center rounded-lg justify-center">
-              <Image
-                src={currentImage.src}
-                alt={currentImage.title}
-                width={1200}
-                height={800}
-                className="max-w-full max-h-[calc(85vh-120px)] object-contain rounded-lg"
-                unoptimized
-              />
-            </div>
-            
-           
-          </motion.div>
-        </div>
-
-        {/* Navigation Buttons */}
-        {images.length > 1 && (
-          <>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                prevImage();
-              }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors hover:scale-110"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                nextImage();
-              }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors hover:scale-110"
-            >
-              <ChevronRightIcon className="w-6 h-6" />
-            </button>
-          </>
-        )}
-
-        {/* Thumbnails Strip */}
-        <AnimatePresence>
-          {showThumbnails && (
-            <motion.div
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 100, opacity: 0 }}
-              className="absolute  -bottom-8 xl:-bottom-12 2xl:-bottom-14 mt-4 left-0 right-0  rounded-b-lg"
-            >
-              <div className="max-w-full overflow-x-auto px-4 py-3">
-                <div className="flex gap-2 justify-center min-w-max">
-                  {images.map((img, idx) => (
-                    <button
-                      key={img.id}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setCurrentIndex(idx);
-                      }}
-                      className={`relative flex-shrink-0 w-15 h-15 xl:w-20 xl:h-20 rounded-lg overflow-hidden transition-all duration-200 ${
-                        currentIndex === idx
-                          ? 'ring-2 ring-[#0093cb] ring-offset-2 ring-offset-black scale-105'
-                          : 'opacity-90 hover:opacity-100'
-                      }`}
-                    >
-                      <Image
-                        src={img.src}
-                        alt={img.title}
-                        fill
-                        className="object-cover"
-                        unoptimized
-                      />
-                      {currentIndex === idx && (
-                        <div className="absolute inset-0 bg-[#0093cb]/20" />
-                      )}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            <Image
+              src={img.src}
+              alt={img.title}
+              fill
+              className="object-cover"
+              unoptimized
+            />
+            {currentIndex === idx && (
+              <div className="absolute inset-0" style={{ background: 'rgba(0,147,203,0.2)' }} />
+            )}
+          </button>
+        ))}
       </div>
     </motion.div>
+  );
+}
+
+// ─── MOSAIC TILE ─────────────────────────────────────────────────────────────
+function MosaicTile({
+  img,
+  index,
+  aspectRatio,
+  onClick,
+}: {
+  img: GalleryImage;
+  index: number;
+  aspectRatio: string;
+  onClick: () => void;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-20px" }}
+      transition={{ delay: (index % 10) * 0.03, duration: 0.4 }}
+      className="group relative overflow-hidden cursor-pointer"
+      style={{
+        borderRadius: 12,
+        aspectRatio,
+        breakInside: 'avoid',
+        marginBottom: 12,
+      }}
+      onClick={onClick}
+    >
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"
+        style={{
+          background: 'linear-gradient(135deg, rgba(0,147,203,0.15) 0%, rgba(0,166,93,0.1) 100%)',
+          borderRadius: 12,
+        }}
+      />
+
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none rounded-xl"
+        style={{
+          boxShadow: 'inset 0 0 0 2px rgba(0,147,203,0.3)',
+        }}
+      />
+
+      <Image
+        src={img.src}
+        alt={img.title}
+        fill
+        className="object-cover transition-transform duration-500 group-hover:scale-105"
+        sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 22vw"
+        unoptimized
+      />
+
+      <div
+        className="absolute top-1.5 left-1.5 z-20 text-[10px] font-bold px-1.5 py-0.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{ backgroundColor: '#060706', color: '#ffffff' }}
+      >
+        {index + 1}
+      </div>
+    </motion.div>
+  );
+}
+
+// ─── MASONRY GRID ───────────────────────────────────────────────────────────
+function MasonryGrid({
+  images,
+  numCols,
+  onImageClick,
+}: {
+  images: GalleryImage[];
+  numCols: number;
+  onImageClick: (originalIndex: number) => void;
+}) {
+  const columns = distributeIntoColumns(images, numCols);
+
+  return (
+    <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+      {columns.map((col, colIdx) => (
+        <div key={colIdx} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {col.map(({ img, originalIndex, aspectRatio }) => (
+            <MosaicTile
+              key={img.id}
+              img={img}
+              index={originalIndex}
+              aspectRatio={aspectRatio}
+              onClick={() => onImageClick(originalIndex)}
+            />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ─── COLLAGE GALLERY SECTION (UPDATED WITH MASONRY LAYOUT) ──────────────────
+function CollageGallerySection() {
+  const INITIAL_COUNT = 12;
+  const [showAll, setShowAll] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  
+  const source = showAll ? koruGalleryImages : koruGalleryImages.slice(0, INITIAL_COUNT);
+  const hasMoreImages = koruGalleryImages.length > INITIAL_COUNT;
+
+  const handleImageClick = (originalIndex: number) => {
+    setSelectedImageIndex(originalIndex);
+    setLightboxOpen(true);
+  };
+
+  return (
+    <>
+      <section className="py-10 sm:py-12 md:py-14 lg:py-18 xl:py-20 2xl:py-24" style={{ background: 'linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 50%, #f8faf8 100%)' }}>
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
+          {/* Gallery Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            className="text-center mb-8 sm:mb-10 md:mb-12"
+          >
+            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#0093cb]">
+              <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+              Portfolio Showcase
+              <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+            </p>
+            <h2 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-slate-900">
+              Digital Input <span className="text-[#0093cb]">Gallery</span>
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+              Explore our collection of digital service interfaces and solutions crafted for
+              pharmaceutical companies. Each design is meticulously created to enhance
+              user engagement and deliver impactful digital experiences.
+            </p>
+            <div className="mt-5 sm:mt-6 w-20 sm:w-24 h-1 bg-gradient-to-r from-[#00a65d] to-[#8bde7a] rounded-full mx-auto" />
+          </motion.div>
+
+          {/* Masonry Grid - Responsive columns */}
+          <div className="hidden xl:block">
+            <MasonryGrid images={source} numCols={4} onImageClick={handleImageClick} />
+          </div>
+          <div className="hidden lg:block xl:hidden">
+            <MasonryGrid images={source} numCols={3} onImageClick={handleImageClick} />
+          </div>
+          <div className="hidden sm:block lg:hidden">
+            <MasonryGrid images={source} numCols={2} onImageClick={handleImageClick} />
+          </div>
+          <div className="block sm:hidden">
+            <MasonryGrid images={source} numCols={1} onImageClick={handleImageClick} />
+          </div>
+
+          {/* See More / See Less Button - Brand Colors */}
+          {hasMoreImages && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="mt-8 sm:mt-10 text-center"
+            >
+              {!showAll ? (
+                <button
+                  onClick={() => setShowAll(true)}
+                  className="group flex items-center gap-2 sm:gap-3 bg-[#0093cb] hover:bg-[#00a65d] 
+                    text-white px-5 lg:px-6 xl:px-8 py-2.5 lg:py-3 xl:py-3.5 rounded-full font-semibold text-sm xl:text-base 
+                    transition-all duration-300 hover:shadow-lg hover:shadow-[#0093cb]/30 active:scale-95 mx-auto"
+                >
+                  <span>See All ({koruGalleryImages.length - INITIAL_COUNT}+ more)</span>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
+                </button>
+              ) : (
+                <button
+                  onClick={() => setShowAll(false)}
+                  className="group flex items-center gap-2 sm:gap-3 bg-white border-2 border-[#0093cb] 
+                    text-[#0093cb] hover:bg-[#0093cb] hover:text-white px-5 lg:px-6 xl:px-8 py-2.5 lg:py-3 xl:py-3.5 
+                    rounded-full font-semibold text-sm xl:text-base transition-all duration-300 
+                    hover:shadow-md active:scale-95 mx-auto"
+                >
+                  <span>Show Less</span>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
+                </button>
+              )}
+            </motion.div>
+          )}
+        </div>
+      </section>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {lightboxOpen && (
+          <GalleryLightboxModal
+            images={source}
+            initialIndex={selectedImageIndex}
+            onClose={() => setLightboxOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
@@ -496,170 +730,6 @@ function FlipCard({ service, index }: { service: ServiceCategory; index: number 
         </div>
       </motion.div>
     </motion.div>
-  );
-}
-
-// ─── COLLAGE GALLERY SECTION ─────────────────────────────────────────────────
-function CollageGallerySection() {
-  const INITIAL_COUNT = 12;
-  const [showAll, setShowAll] = useState(false);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  
-  const source = showAll ? koruGalleryImages : koruGalleryImages.slice(0, INITIAL_COUNT);
-  const gridItems = buildGridItems(source);
-  const hasMoreImages = koruGalleryImages.length > INITIAL_COUNT;
-
-  const handleImageClick = (index: number) => {
-    setSelectedImageIndex(index);
-    setLightboxOpen(true);
-  };
-
-  return (
-    <>
-      <section className="py-10 sm:py-12 md:py-14 lg:py-18 xl:py-20 2xl:py-24" style={{ background: 'linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 50%, #f8faf8 100%)' }}>
-        <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
-          {/* Gallery Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            className="text-center mb-8 sm:mb-10 md:mb-12"
-          >
-            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#0093cb]">
-              <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
-              Portfolio Showcase
-              <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
-            </p>
-            <h2 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-slate-900">
-              Digital Input <span className="text-[#0093cb]">Gallery</span>
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              Explore our collection of digital service interfaces and solutions crafted for
-              pharmaceutical companies. Each design is meticulously created to enhance
-              user engagement and deliver impactful digital experiences.
-            </p>
-            <div className="mt-5 sm:mt-6 w-20 sm:w-24 h-1 bg-gradient-to-r from-[#00a65d] to-[#8bde7a] rounded-full mx-auto" />
-          </motion.div>
-
-          {/* Collage Grid */}
-          <motion.div 
-            layout
-            className="gap-2 sm:gap-3 md:gap-4 2xl:gap-6"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gridAutoRows: '120px',
-            }}
-          >
-            {gridItems.map((item, index) => (
-              <motion.div
-                key={index}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.03, duration: 0.4 }}
-                className="relative overflow-hidden group cursor-pointer"
-                style={{
-                  gridColumn: `${item.colStart} / span ${item.colSpan}`,
-                  gridRow: `span ${item.rowSpan}`,
-                  borderRadius: '12px',
-                  boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
-                }}
-                onClick={() => handleImageClick(index)}
-              >
-                {/* Brand Accent Overlay */}
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(0,147,203,0.15) 0%, rgba(0,166,93,0.1) 100%)',
-                    borderRadius: '12px',
-                  }}
-                />
-                
-                {/* Subtle border glow on hover */}
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none rounded-xl"
-                  style={{
-                    boxShadow: 'inset 0 0 0 2px rgba(0,147,203,0.3)',
-                  }}
-                />
-
-                {/* Eye icon overlay for better UX */}
-                {/* <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 z-10 flex items-center justify-center pointer-events-none">
-                  <Eye className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100" />
-                </div> */}
-
-                <Image
-                  src={item.src}
-                  alt={`Gallery image ${index + 1}`}
-                  fill
-                  className="object-fill group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  unoptimized
-                />
-
-                {/* Image number badge */}
-                <div 
-                  className="absolute top-1.5 sm:top-2 left-1.5 sm:left-2 z-20 text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ 
-                    backgroundColor: '#060706',
-                    color: '#ffffff'
-                  }}
-                >
-                  {index + 1}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* See More / See Less Button - Brand Colors */}
-          {hasMoreImages && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="mt-8 sm:mt-10 text-center"
-            >
-              {!showAll ? (
-                <button
-                  onClick={() => setShowAll(true)}
-                  className="group flex items-center gap-2 sm:gap-3 bg-[#0093cb] hover:bg-[#00a65d] 
-                    text-white px-5 lg:px-6 xl:px-8 py-2.5 lg:py-3 xl:py-3.5 rounded-full font-semibold text-sm xl:text-base 
-                    transition-all duration-300 hover:shadow-lg hover:shadow-[#0093cb]/30 active:scale-95 mx-auto"
-                >
-                  <span>See All ({koruGalleryImages.length - INITIAL_COUNT}+ more)</span>
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
-                </button>
-              ) : (
-                <button
-                  onClick={() => setShowAll(false)}
-                  className="group flex items-center gap-2 sm:gap-3 bg-white border-2 border-[#0093cb] 
-                    text-[#0093cb] hover:bg-[#0093cb] hover:text-white px-5 lg:px-6 xl:px-8 py-2.5 lg:py-3 xl:py-3.5 
-                    rounded-full font-semibold text-sm xl:text-base transition-all duration-300 
-                    hover:shadow-md active:scale-95 mx-auto"
-                >
-                  <span>Show Less</span>
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
-                </button>
-              )}
-            </motion.div>
-          )}
-        </div>
-      </section>
-
-      {/* Lightbox Modal */}
-      <AnimatePresence>
-        {lightboxOpen && (
-          <GalleryLightboxModal
-            images={source}
-            initialIndex={selectedImageIndex}
-            onClose={() => setLightboxOpen(false)}
-          />
-        )}
-      </AnimatePresence>
-    </>
   );
 }
 
