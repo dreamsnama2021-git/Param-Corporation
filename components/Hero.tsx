@@ -222,7 +222,7 @@ export default function HeroWithStats() {
   return (
     <div className="flex flex-col overflow-hidden">
       <section 
-        className="relative w-full h-[70vh] sm:h-[60vh] md:h-[40vh] lg:h-[90vh] xl:h-[80vh] 2xl:h-[90vh] overflow-visible bg-black"
+        className="relative w-full h-[70vh] sm:h-[60vh] md:h-[40vh] lg:h-[90vh] xl:h-[80vh] 2xl:h-[95vh] overflow-visible bg-black"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
       >
