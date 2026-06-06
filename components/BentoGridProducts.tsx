@@ -213,7 +213,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/40.png",
     ],
     medicalScale: [
-      "https://picsum.photos/id/80/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/83.png",
       "https://picsum.photos/id/81/400/300",
       "https://picsum.photos/id/82/400/300",
     ],
@@ -280,8 +280,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     card: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_29_40%20PM.png",
-      "https://picsum.photos/id/117/400/300",
-      "https://picsum.photos/id/118/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/77.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/78.png",
     ],
     flipChart: [
       "https://picsum.photos/id/119/400/300",
@@ -367,7 +367,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/71.png",
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/72.png",
-      "https://picsum.photos/id/166/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/73.png",
     ],
     flipChart: [
       "https://picsum.photos/id/167/400/300",
@@ -495,7 +495,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     card: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/24.png",
-      "https://picsum.photos/id/237/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/76.png",
       "https://picsum.photos/id/238/400/300",
     ],
     flipChart: [
@@ -539,7 +539,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/EPILEPSY%20PATIENT%20EDUCATION%20LAPTOP%20MAT.png",
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/64.png",
-      "https://picsum.photos/id/262/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/81.png",
     ],
     flipChart: [
       "https://picsum.photos/id/263/400/300",
