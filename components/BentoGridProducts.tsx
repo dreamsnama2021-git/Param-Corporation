@@ -118,8 +118,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
     matt: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/49.png",
-      "https://picsum.photos/id/27/400/300",
-      "https://picsum.photos/id/28/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/59.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/61.png",
     ],
     posters: [
       "https://picsum.photos/id/29/400/300",
@@ -323,7 +323,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     card: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/54.png",
-      "https://picsum.photos/id/141/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/55.png",
       "https://picsum.photos/id/142/400/300",
     ],
     flipChart: [
@@ -538,7 +538,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     card: "https://mehtahospital.com/wp-content/uploads/2025/04/dr-mehta-hospital-neurology.webp",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/EPILEPSY%20PATIENT%20EDUCATION%20LAPTOP%20MAT.png",
-      "https://picsum.photos/id/261/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/64.png",
       "https://picsum.photos/id/262/400/300",
     ],
     flipChart: [
