@@ -84,7 +84,7 @@ const caseStudies: CaseStudy[] = [
 // ─── CASE STUDY PAGE BANNER ─────────────────────────────────────────────────────────────
 
 const PageBanner = () => (
-   <div className="relative w-full h-[60vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] 2xl:h-[65vh] overflow-hidden">
+ <div className="relative w-full h-[60vh] md:h-[40vh] lg:h-[65vh] xl:h-[65vh] 2xl:h-[65vh] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Case%20study%20page%20Mobile.jpg.jpeg"
