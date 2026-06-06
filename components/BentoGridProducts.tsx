@@ -122,8 +122,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/61.png",
     ],
     posters: [
-      "https://picsum.photos/id/29/400/300",
-      "https://picsum.photos/id/30/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/66.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/67.png",
       "https://picsum.photos/id/31/400/300",
     ],
     medicalScale: [
@@ -365,8 +365,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Ophthalmology: {
     card: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=800&q=80",
     books: [
-      "https://picsum.photos/id/164/400/300",
-      "https://picsum.photos/id/165/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/71.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/72.png",
       "https://picsum.photos/id/166/400/300",
     ],
     flipChart: [
