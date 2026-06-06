@@ -343,67 +343,67 @@ export const allProducts: Product[] = [
       "LED INPUTS/HEALTHY KIDNEY VS INFECTED KIDNEY TABLE TOP.jpg"
     ]
   },
-  {
-    id: 58, name: "IUI & IVF PROCEDURE LED TABLE TOP", image: "LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg", price: "₹2999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated educational display showing IUI and IVF procedures", images: [
-      "LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg"
-    ]
-  },
-  {
-    id: 59, name: "LED DOCTOR IN-OUT BOX", image: "LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG", price: "₹1599", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated doctor availability status board", images: [
-      "LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG",
-      "LED INPUTS/LED DOCTOR IN-OUT BOX 2.JPG"
-    ]
-  },
-  {
-    id: 60, name: "STAGES OF OSTEOPOROSIS LED TABLE TOP", image: "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG", price: "₹2299", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display showing progressive stages of osteoporosis", images: [
-      "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG",
-      "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 2.JPG"
-    ]
-  },
-  {
-    id: 61, name: "415 LED TABLE TOP", image: "LED INPUTS/415.jpg", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated tabletop with 415 design", images: [
-      "LED INPUTS/415.jpg"
-    ]
-  },
-  {
-    id: 62, name: "LED TABLE TOP DISPLAY", image: "LED INPUTS/IMG_0328.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Premium LED illuminated tabletop display", images: [
-      "LED INPUTS/IMG_0328.JPG",
-      "LED INPUTS/IMG_0330.JPG"
-    ]
-  },
-  {
-    id: 63, name: "PREMIUM LED TABLE TOP", image: "LED INPUTS/IMG_6995.JPG", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "High-quality LED illuminated tabletop with branding options", images: [
-      "LED INPUTS/IMG_6995.JPG",
-      "LED INPUTS/IMG_7003.JPG"
-    ]
-  },
-  {
-    id: 64, name: "DECORATIVE LED TABLE TOP", image: "LED INPUTS/IMG_7390.JPG", price: "₹1699", category: "led-tabletops", categoryName: "LED Tabletops", description: "Decorative LED tabletop for modern desk setup", images: [
-      "LED INPUTS/IMG_7390.JPG",
-      "LED INPUTS/IMG_7394.JPG"
-    ]
-  },
-  {
-    id: 65, name: "LED BRANDING TABLE TOP", image: "LED INPUTS/IMG_8393.JPG", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Customizable LED tabletop for brand promotion", images: [
-      "LED INPUTS/IMG_8393.JPG",
-      "LED INPUTS/IMG_8397.JPG",
-      "LED INPUTS/IMG_8406.JPG",
-      "LED INPUTS/IMG_8414.JPG"
-    ]
-  },
-  {
-    id: 66, name: "MODERN LED TABLE TOP", image: "LED INPUTS/IMG_9720.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Modern sleek LED illuminated tabletop display", images: [
-      "LED INPUTS/IMG_9720.JPG",
-      "LED INPUTS/IMG_9724.JPG"
-    ]
-  },
+  // {
+  //   id: 58, name: "IUI & IVF PROCEDURE LED TABLE TOP", image: "LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg", price: "₹2999", category: "led-tabletops", categoryName: "LED Tabletops", description: "Illuminated educational display showing IUI and IVF procedures", images: [
+  //     "LED INPUTS/IUI & IVF PROCEDURE LED TABLE TOP.jpg"
+  //   ]
+  // },
+  // {
+  //   id: 59, name: "LED DOCTOR IN-OUT BOX", image: "LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG", price: "₹1599", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated doctor availability status board", images: [
+  //     "LED INPUTS/LED DOCTOR IN-OUT BOX 1.JPG",
+  //     "LED INPUTS/LED DOCTOR IN-OUT BOX 2.JPG"
+  //   ]
+  // },
+  // {
+  //   id: 60, name: "STAGES OF OSTEOPOROSIS LED TABLE TOP", image: "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG", price: "₹2299", category: "led-tabletops", categoryName: "LED Tabletops", description: "Educational LED display showing progressive stages of osteoporosis", images: [
+  //     "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 1.JPG",
+  //     "LED INPUTS/STAGES OF OSTEOPOROSIS LED TABLE TOP 2.JPG"
+  //   ]
+  // },
+  // {
+  //   id: 61, name: "415 LED TABLE TOP", image: "LED INPUTS/415.jpg", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "LED illuminated tabletop with 415 design", images: [
+  //     "LED INPUTS/415.jpg"
+  //   ]
+  // },
+  // {
+  //   id: 62, name: "LED TABLE TOP DISPLAY", image: "LED INPUTS/IMG_0328.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Premium LED illuminated tabletop display", images: [
+  //     "LED INPUTS/IMG_0328.JPG",
+  //     "LED INPUTS/IMG_0330.JPG"
+  //   ]
+  // },
+  // {
+  //   id: 63, name: "PREMIUM LED TABLE TOP", image: "LED INPUTS/IMG_6995.JPG", price: "₹1999", category: "led-tabletops", categoryName: "LED Tabletops", description: "High-quality LED illuminated tabletop with branding options", images: [
+  //     "LED INPUTS/IMG_6995.JPG",
+  //     "LED INPUTS/IMG_7003.JPG"
+  //   ]
+  // },
+  // {
+  //   id: 64, name: "DECORATIVE LED TABLE TOP", image: "LED INPUTS/IMG_7390.JPG", price: "₹1699", category: "led-tabletops", categoryName: "LED Tabletops", description: "Decorative LED tabletop for modern desk setup", images: [
+  //     "LED INPUTS/IMG_7390.JPG",
+  //     "LED INPUTS/IMG_7394.JPG"
+  //   ]
+  // },
+  // {
+  //   id: 65, name: "LED BRANDING TABLE TOP", image: "LED INPUTS/IMG_8393.JPG", price: "₹1899", category: "led-tabletops", categoryName: "LED Tabletops", description: "Customizable LED tabletop for brand promotion", images: [
+  //     "LED INPUTS/IMG_8393.JPG",
+  //     "LED INPUTS/IMG_8397.JPG",
+  //     "LED INPUTS/IMG_8406.JPG",
+  //     "LED INPUTS/IMG_8414.JPG"
+  //   ]
+  // },
+  // {
+  //   id: 66, name: "MODERN LED TABLE TOP", image: "LED INPUTS/IMG_9720.JPG", price: "₹1799", category: "led-tabletops", categoryName: "LED Tabletops", description: "Modern sleek LED illuminated tabletop display", images: [
+  //     "LED INPUTS/IMG_9720.JPG",
+  //     "LED INPUTS/IMG_9724.JPG"
+  //   ]
+  // },
 
   // Categories - Indoor Plants (IDs: 67-76)
-  { id: 67, name: "AGLAONEMA PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/AGLAONEMA%20PLANT%201.jpeg", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
-  { id: 68, name: "ARECA PALM PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/ARECA%20PALM%20PLANT%201.jpeg", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
-  { id: 69, name: "CHAMAEDOREA PALM", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/CHAMAEDOREA%20PALM%201.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
-  { id: 70, name: "DESSERT ROSE PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/DESSERT%20ROSE%20PLANT.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
-  { id: 71, name: "DIEFFENBACHIA", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/DIEFFENBACHIA%201.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  // { id: 67, name: "AGLAONEMA PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/AGLAONEMA%20PLANT%201.jpeg", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
+  // { id: 68, name: "ARECA PALM PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/ARECA%20PALM%20PLANT%201.jpeg", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
+  // { id: 69, name: "CHAMAEDOREA PALM", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/CHAMAEDOREA%20PALM%201.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  // { id: 70, name: "DESSERT ROSE PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/DESSERT%20ROSE%20PLANT.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  // { id: 71, name: "DIEFFENBACHIA", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/DIEFFENBACHIA%201.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
   // { id: 72, name: "DESSERT ROSE PLANT", image: "Indoor Plant/DESSERT ROSE PLANT.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
   // { id: 73, name: "DIEFFENBACHIA", image: "Indoor Plant/DIEFFENBACHIA 1.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
   // { id: 74, name: "DUMB CANE PLANT", image: "Indoor Plant/DUMB CANE PLANT.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
@@ -417,23 +417,23 @@ export const allProducts: Product[] = [
  
   // Categories - Photo Frames (IDs: 80-82)
 { id: 80, name: "Clinic Desk Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Frame.png", price: "₹449", category: "photo-frames", categoryName: "Photo Frames", description: "Elegant acrylic desk frame with laser-engraved pharma logo, perfect for doctor's clinic desk displaying certificates or family photos." },
-{ id: 81, name: "Digital Photo Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/PhotoFrames/digital_frame.png", price: "₹1899", category: "photo-frames", categoryName: "Photo Frames", description: "7-inch HD digital frame pre-loaded with brand messaging, slideshow capable with remote control for clinic waiting areas." },
-{ id: 82, name: "Wall Mount Collage Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/PhotoFrames/collage_frame.png", price: "₹799", category: "photo-frames", categoryName: "Photo Frames", description: "Multi-opening collage frame with subtle branding, holds 4 photos - ideal for clinic wall display." },
+// { id: 81, name: "Digital Photo Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/PhotoFrames/digital_frame.png", price: "₹1899", category: "photo-frames", categoryName: "Photo Frames", description: "7-inch HD digital frame pre-loaded with brand messaging, slideshow capable with remote control for clinic waiting areas." },
+// { id: 82, name: "Wall Mount Collage Frame", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/PhotoFrames/collage_frame.png", price: "₹799", category: "photo-frames", categoryName: "Photo Frames", description: "Multi-opening collage frame with subtle branding, holds 4 photos - ideal for clinic wall display." },
 
 // Categories - Pharma Launch Kits (IDs: 83-85)
-{ id: 83, name: "Product Launch Premium Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/LaunchKits/premium_kit.png", price: "₹2499", category: "pharma-launch-kits", categoryName: "Pharma Launch Kits", description: "Complete launch kit including branded pen drive, notepad, pen set, and product brochure in luxury gift box." },
-{ id: 84, name: "Doctor Sampling Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/LaunchKits/sampling_kit.png", price: "₹999", category: "pharma-launch-kits", categoryName: "Pharma Launch Kits", description: "Compact promotional kit with product samples, detail cards, and visual aid for MR detailing visits." },
-{ id: 85, name: "Conference Launch Bundle", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/LaunchKits/conference_bundle.png", price: "₹3499", category: "pharma-launch-kits", categoryName: "Pharma Launch Kits", description: "Premium conference kit including branded bag, tablet stylus, power bank, and product monograph for CME events." },
+// { id: 83, name: "Product Launch Premium Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/LaunchKits/premium_kit.png", price: "₹2499", category: "pharma-launch-kits", categoryName: "Pharma Launch Kits", description: "Complete launch kit including branded pen drive, notepad, pen set, and product brochure in luxury gift box." },
+// { id: 84, name: "Doctor Sampling Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/LaunchKits/sampling_kit.png", price: "₹999", category: "pharma-launch-kits", categoryName: "Pharma Launch Kits", description: "Compact promotional kit with product samples, detail cards, and visual aid for MR detailing visits." },
+// { id: 85, name: "Conference Launch Bundle", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/LaunchKits/conference_bundle.png", price: "₹3499", category: "pharma-launch-kits", categoryName: "Pharma Launch Kits", description: "Premium conference kit including branded bag, tablet stylus, power bank, and product monograph for CME events." },
 
 // Categories - Custom Doctor Kits (IDs: 86-88)
 { id: 86, name: "Executive Doctor Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/68.png", price: "₹1599", category: "custom-doctor-kits", categoryName: "Custom Doctor Kits", description: "Premium leather-embossed kit with branded stethoscope ID tag, pen, notepad, and clinic diary." },
-{ id: 87, name: "Clinic Utility Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/DoctorKits/utility_kit.png", price: "₹899", category: "custom-doctor-kits", categoryName: "Custom Doctor Kits", description: "Practical kit with branded measuring tape, penlight, scissors, and medical reference cards in carry case." },
-{ id: 88, name: "Wellness Gift Hamper", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/DoctorKits/wellness_hamper.png", price: "₹1199", category: "custom-doctor-kits", categoryName: "Custom Doctor Kits", description: "Doctor appreciation kit including insulated mug, stress ball, hand sanitizer, and desk organiser with branding." },
+// { id: 87, name: "Clinic Utility Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/DoctorKits/utility_kit.png", price: "₹899", category: "custom-doctor-kits", categoryName: "Custom Doctor Kits", description: "Practical kit with branded measuring tape, penlight, scissors, and medical reference cards in carry case." },
+// { id: 88, name: "Wellness Gift Hamper", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/DoctorKits/wellness_hamper.png", price: "₹1199", category: "custom-doctor-kits", categoryName: "Custom Doctor Kits", description: "Doctor appreciation kit including insulated mug, stress ball, hand sanitizer, and desk organiser with branding." },
 
 // Categories - Surgical Tools (IDs: 89-91)
 { id: 89, name: "Branded Scissors Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Urology-.png", price: "₹649", category: "surgical-tools", categoryName: "Surgical Tools", description: "High-quality stainless steel surgical scissors with laser-engraved pharma logo, available in straight and curved tip." },
-{ id: 90, name: "Forceps with Carry Case", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/SurgicalTools/forceps_set.png", price: "₹549", category: "surgical-tools", categoryName: "Surgical Tools", description: "Dissecting forceps set (plain and toothed) in branded leatherette pouch - ideal for surgical reps." },
-{ id: 91, name: "Diagnostic Tool Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/SurgicalTools/diagnostic_set.png", price: "₹1999", category: "surgical-tools", categoryName: "Surgical Tools", description: "Complete diagnostic set including ophthalmoscope, otoscope, and nasal speculum with branded hard case." },
+// { id: 90, name: "Forceps with Carry Case", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/SurgicalTools/forceps_set.png", price: "₹549", category: "surgical-tools", categoryName: "Surgical Tools", description: "Dissecting forceps set (plain and toothed) in branded leatherette pouch - ideal for surgical reps." },
+// { id: 91, name: "Diagnostic Tool Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/SurgicalTools/diagnostic_set.png", price: "₹1999", category: "surgical-tools", categoryName: "Surgical Tools", description: "Complete diagnostic set including ophthalmoscope, otoscope, and nasal speculum with branded hard case." },
 
 // Categories - Custom Training Models (IDs: 92-100)
 { id: 92, name: "3D Organ Model Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_42_08%20PM.png", price: "₹2999", category: "custom-training-models", categoryName: "Custom Training Models", description: "Anatomical heart, brain, and kidney models with removable parts and pharma branding for patient education." },
@@ -453,90 +453,90 @@ export const allProducts: Product[] = [
       // "Photo Frames/BABIES RESIN ART FRAME 4.JPG"
     ]
   },
-  {
-    id: 74, name: "BRAIN RESIN ART FRAME", image: "Photo Frames/BRAIN RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Neurology-themed resin art frame with brain anatomy design", images: [
-      "Photo Frames/BRAIN RESIN ART FRAME 1.JPG",
-      "Photo Frames/BRAIN RESIN ART FRAME 2.JPG"
-    ]
-  },
-  {
-    id: 75, name: "CUSTOMIZED DOCTOR'S PRAYER FRAME", image: "Photo Frames/CUSTOMIZED DOCTOR_S PRAYER FRAME.JPG", price: "₹999", category: "photo-frames", categoryName: "Photo Frames", description: "Customizable prayer frame for doctors' clinics", images: [
-      "Photo Frames/CUSTOMIZED DOCTOR_S PRAYER FRAME.JPG"
-    ]
-  },
-  {
-    id: 76, name: "DENTAL ANATOMICAL PAINTINGS SERIES", image: "Photo Frames/DENTAL ANATOMICAL PAINTINGS SERIES.jpg", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Educational dental anatomy painting series for clinic decor", images: [
-      "Photo Frames/DENTAL ANATOMICAL PAINTINGS  SERIES.jpg"
-    ]
-  },
-  {
-    id: 77, name: "DIABETIC FOOT CONCEPTUALIZED FRAME", image: "Photo Frames/DIABETIC FOOT CONCEPTUALIZED FRAME.jpg", price: "₹1399", category: "photo-frames", categoryName: "Photo Frames", description: "Conceptual frame illustrating diabetic foot conditions", images: [
-      "Photo Frames/DIABETIC FOOT CONCEPTUALIZED FRAME.jpg"
-    ]
-  },
-  {
-    id: 78, name: "DIABETIC FOOT RESIN ART FRAME", image: "Photo Frames/DIABETIC FOOT RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Resin art frame depicting diabetic foot anatomy", images: [
-      "Photo Frames/DIABETIC FOOT RESIN ART FRAME 1.JPG",
-      "Photo Frames/DIABETIC FOOT RESIN ART FRAME 2.JPG"
-    ]
-  },
-  {
-    id: 79, name: "EAR ANATOMY FRAME", image: "Photo Frames/EAR ANATOMY FRAME.jpg", price: "₹1299", category: "photo-frames", categoryName: "Photo Frames", description: "Educational ear anatomy frame for ENT specialists", images: [
-      "Photo Frames/EAR ANATOMY FRAME.jpg"
-    ]
-  },
-  {
-    id: 80, name: "EMOTION RESIN ART FRAME", image: "Photo Frames/EMOTICON RESIN ART FRAME 1.JPG", price: "₹1199", category: "photo-frames", categoryName: "Photo Frames", description: "Artistic resin frame depicting human emotions", images: [
-      "Photo Frames/EMOTICON RESIN ART FRAME 1.JPG",
-      "Photo Frames/EMOTICON RESIN ART FRAME 2.JPG"
-    ]
-  },
-  {
-    id: 81, name: "EXCLUSIVE BONE ANATOMY CHALK BOARD STYLE FRAME", image: "Photo Frames/EXCLUSIVE BONE ANATOMY CHAL BOARD STYLE FRAME.jpg", price: "₹1699", category: "photo-frames", categoryName: "Photo Frames", description: "Unique chalkboard-style bone anatomy frame", images: [
-      "Photo Frames/EXCLUSIVE BONE ANATOMY CHAL BOARD STYLE FRAME.jpg"
-    ]
-  },
-  {
-    id: 82, name: "EXCLUSIVE BRAIN FLORAL PAINTING FRAME", image: "Photo Frames/EXCLUSIVE BRAIN FLORAL PAINTING FRAME.jpg", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Beautiful brain anatomy with floral painting design", images: [
-      "Photo Frames/EXCLUSIVE BRAIN FLORAL PAINTING FRAME.jpg"
-    ]
-  },
-  { id: 83, name: "EXCLUSIVE LIVER FLORAL PAINTING FRAME", image: "Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Liver anatomy with artistic floral painting", images: [
-    "Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG",
-    "Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 2.JPG"
-  ] },
-  { id: 84, name: "EXCLUSIVE TEETH ANATOMY PAINTING FRAME", image: "Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Dental anatomy painting frame for clinics", images: [
-    "Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG",
-    "Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 2.JPG"
-  ] },
-  { id: 85, name: "EXCLUSIVE UTERUS FLORAL PAINTING FRAME", image: "Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Uterus anatomy with elegant floral painting", images: [
-    "Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG",
-    "Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 2.JPG"
-  ] },
-  { id: 86, name: "FEMALE PELVIS RESIN ART FRAME", image: "Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Female pelvis anatomy resin art frame", images: [
-    "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG",
-    "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 2.JPG"
-  ] },
-  { id: 87, name: "FERTILIZATION RESIN ART FRAME", image: "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG", price: "₹1699", category: "photo-frames", categoryName: "Photo Frames", description: "Educational fertilization process resin art frame", images: [
-    "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG",
-    "/Photo Frames/FERTILIZATION RESIN ART FRAME 2.JPG"
-  ] },
-  { id: 88, name: "MOTHER-BABY ART FRAME", image: "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG", price: "₹1399", category: "photo-frames", categoryName: "Photo Frames", description: "Heartwarming mother-baby art frame for maternity clinics", images: [
-    "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG",
-    "/Photo Frames/MOTHER-BABY ART FRAME 2.JPG"
-  ] },
-  { id: 89, name: "OVARIES RESIN ART FRAME", image: "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Ovary anatomy resin art frame for gynecology clinics", images: [
-    "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG",
-    "/Photo Frames/OVARIES RESIN ART FRAME 2.JPG",
-    "/Photo Frames/OVARIES RESIN ART FRAME 3.JPG"
-  ] },
-  { id: 90, name: "SPINAL CORD RESIN ART FRAME WITH CLOCK", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG", price: "₹1899", category: "photo-frames", categoryName: "Photo Frames", description: "Spinal cord resin art frame with integrated clock", images: [
-    "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG",
-    "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 2.JPG"
-  ] },
-  { id: 91, name: "SPINAL CORD RESIN ART FRAME", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME.jpg", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Spinal cord anatomy resin art frame", images: [
-    "/Photo Frames/SPINAL CORD RESIN ART FRAME.jpg"
-  ] },
+  // {
+  //   id: 74, name: "BRAIN RESIN ART FRAME", image: "Photo Frames/BRAIN RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Neurology-themed resin art frame with brain anatomy design", images: [
+  //     "Photo Frames/BRAIN RESIN ART FRAME 1.JPG",
+  //     "Photo Frames/BRAIN RESIN ART FRAME 2.JPG"
+  //   ]
+  // },
+  // {
+  //   id: 75, name: "CUSTOMIZED DOCTOR'S PRAYER FRAME", image: "Photo Frames/CUSTOMIZED DOCTOR_S PRAYER FRAME.JPG", price: "₹999", category: "photo-frames", categoryName: "Photo Frames", description: "Customizable prayer frame for doctors' clinics", images: [
+  //     "Photo Frames/CUSTOMIZED DOCTOR_S PRAYER FRAME.JPG"
+  //   ]
+  // },
+  // {
+  //   id: 76, name: "DENTAL ANATOMICAL PAINTINGS SERIES", image: "Photo Frames/DENTAL ANATOMICAL PAINTINGS SERIES.jpg", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Educational dental anatomy painting series for clinic decor", images: [
+  //     "Photo Frames/DENTAL ANATOMICAL PAINTINGS  SERIES.jpg"
+  //   ]
+  // },
+  // {
+  //   id: 77, name: "DIABETIC FOOT CONCEPTUALIZED FRAME", image: "Photo Frames/DIABETIC FOOT CONCEPTUALIZED FRAME.jpg", price: "₹1399", category: "photo-frames", categoryName: "Photo Frames", description: "Conceptual frame illustrating diabetic foot conditions", images: [
+  //     "Photo Frames/DIABETIC FOOT CONCEPTUALIZED FRAME.jpg"
+  //   ]
+  // },
+  // {
+  //   id: 78, name: "DIABETIC FOOT RESIN ART FRAME", image: "Photo Frames/DIABETIC FOOT RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Resin art frame depicting diabetic foot anatomy", images: [
+  //     "Photo Frames/DIABETIC FOOT RESIN ART FRAME 1.JPG",
+  //     "Photo Frames/DIABETIC FOOT RESIN ART FRAME 2.JPG"
+  //   ]
+  // },
+  // {
+  //   id: 79, name: "EAR ANATOMY FRAME", image: "Photo Frames/EAR ANATOMY FRAME.jpg", price: "₹1299", category: "photo-frames", categoryName: "Photo Frames", description: "Educational ear anatomy frame for ENT specialists", images: [
+  //     "Photo Frames/EAR ANATOMY FRAME.jpg"
+  //   ]
+  // },
+  // {
+  //   id: 80, name: "EMOTION RESIN ART FRAME", image: "Photo Frames/EMOTICON RESIN ART FRAME 1.JPG", price: "₹1199", category: "photo-frames", categoryName: "Photo Frames", description: "Artistic resin frame depicting human emotions", images: [
+  //     "Photo Frames/EMOTICON RESIN ART FRAME 1.JPG",
+  //     "Photo Frames/EMOTICON RESIN ART FRAME 2.JPG"
+  //   ]
+  // },
+  // {
+  //   id: 81, name: "EXCLUSIVE BONE ANATOMY CHALK BOARD STYLE FRAME", image: "Photo Frames/EXCLUSIVE BONE ANATOMY CHAL BOARD STYLE FRAME.jpg", price: "₹1699", category: "photo-frames", categoryName: "Photo Frames", description: "Unique chalkboard-style bone anatomy frame", images: [
+  //     "Photo Frames/EXCLUSIVE BONE ANATOMY CHAL BOARD STYLE FRAME.jpg"
+  //   ]
+  // },
+  // {
+  //   id: 82, name: "EXCLUSIVE BRAIN FLORAL PAINTING FRAME", image: "Photo Frames/EXCLUSIVE BRAIN FLORAL PAINTING FRAME.jpg", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Beautiful brain anatomy with floral painting design", images: [
+  //     "Photo Frames/EXCLUSIVE BRAIN FLORAL PAINTING FRAME.jpg"
+  //   ]
+  // },
+  // { id: 83, name: "EXCLUSIVE LIVER FLORAL PAINTING FRAME", image: "Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Liver anatomy with artistic floral painting", images: [
+  //   "Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG",
+  //   "Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 2.JPG"
+  // ] },
+  // { id: 84, name: "EXCLUSIVE TEETH ANATOMY PAINTING FRAME", image: "Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Dental anatomy painting frame for clinics", images: [
+  //   "Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG",
+  //   "Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 2.JPG"
+  // ] },
+  // { id: 85, name: "EXCLUSIVE UTERUS FLORAL PAINTING FRAME", image: "Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "photo-frames", categoryName: "Photo Frames", description: "Uterus anatomy with elegant floral painting", images: [
+  //   "Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG",
+  //   "Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 2.JPG"
+  // ] },
+  // { id: 86, name: "FEMALE PELVIS RESIN ART FRAME", image: "Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Female pelvis anatomy resin art frame", images: [
+  //   "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG",
+  //   "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 2.JPG"
+  // ] },
+  // { id: 87, name: "FERTILIZATION RESIN ART FRAME", image: "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG", price: "₹1699", category: "photo-frames", categoryName: "Photo Frames", description: "Educational fertilization process resin art frame", images: [
+  //   "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG",
+  //   "/Photo Frames/FERTILIZATION RESIN ART FRAME 2.JPG"
+  // ] },
+  // { id: 88, name: "MOTHER-BABY ART FRAME", image: "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG", price: "₹1399", category: "photo-frames", categoryName: "Photo Frames", description: "Heartwarming mother-baby art frame for maternity clinics", images: [
+  //   "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG",
+  //   "/Photo Frames/MOTHER-BABY ART FRAME 2.JPG"
+  // ] },
+  // { id: 89, name: "OVARIES RESIN ART FRAME", image: "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Ovary anatomy resin art frame for gynecology clinics", images: [
+  //   "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG",
+  //   "/Photo Frames/OVARIES RESIN ART FRAME 2.JPG",
+  //   "/Photo Frames/OVARIES RESIN ART FRAME 3.JPG"
+  // ] },
+  // { id: 90, name: "SPINAL CORD RESIN ART FRAME WITH CLOCK", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG", price: "₹1899", category: "photo-frames", categoryName: "Photo Frames", description: "Spinal cord resin art frame with integrated clock", images: [
+  //   "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG",
+  //   "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 2.JPG"
+  // ] },
+  // { id: 91, name: "SPINAL CORD RESIN ART FRAME", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME.jpg", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Spinal cord anatomy resin art frame", images: [
+  //   "/Photo Frames/SPINAL CORD RESIN ART FRAME.jpg"
+  // ] },
 
   // Occasions - Monthly Gifts (IDs: 100-130)
   // January (IDs: 100-101)
@@ -597,84 +597,84 @@ export const allProducts: Product[] = [
   // ==========================================
 
   // Doctor Name Personalization / Photo Frames (IDs: 500-509)
-  {
-    id: 500, name: "Personalized Doctor Name Photo Frame", image: "/Photo Frames/CUSTOMIZED DOCTOR_S PRAYER FRAME.JPG", price: "₹899", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Elegant photo frame with doctor's name engraved - perfect for clinic desk", images: [
-      "/Photo Frames/CUSTOMIZED DOCTOR_S PRAYER FRAME.JPG"
-    ], tags: ["personalized", "photo-frame", "doctor-name"]
-  },
-  {
-    id: 501, name: "Engraved Crystal Photo Frame", image: "/Photo Frames/BRAIN RESIN ART FRAME 1.JPG", price: "₹1299", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Premium crystal frame with laser-engraved doctor name and specialisation", images: [
-      "/Photo Frames/BRAIN RESIN ART FRAME 1.JPG",
-      "/Photo Frames/BRAIN RESIN ART FRAME 2.JPG"
-    ], tags: ["personalized", "crystal", "engraved"]
-  },
-  { id: 502, name: "EXCLUSIVE LIVER FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Liver anatomy with artistic floral painting", images: [
-      "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG",
-      "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 2.JPG"
-  ], tags: ["personalized", "crystal", "engraved"] },
-    { id: 503, name: "EXCLUSIVE TEETH ANATOMY PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG", price: "₹1499", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Dental anatomy painting frame for clinics", images: [
-      "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG",
-      "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 2.JPG"
-  ], tags: ["personalized", "crystal", "engraved"] },
-    { id: 504, name: "EXCLUSIVE UTERUS FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Uterus anatomy with elegant floral painting", images: [
-      "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG",
-      "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 2.JPG"
-  ], tags: ["personalized", "crystal", "engraved"] },
-    { id: 505, name: "FEMALE PELVIS RESIN ART FRAME", image: "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG", price: "₹1499", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Female pelvis anatomy resin art frame", images: [
-      "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG",
-      "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 2.JPG"
-  ], tags: ["personalized", "crystal", "engraved"] },
-    { id: 506, name: "FERTILIZATION RESIN ART FRAME", image: "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG", price: "₹1699", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Educational fertilization process resin art frame", images: [
-      "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG",
-      "/Photo Frames/FERTILIZATION RESIN ART FRAME 2.JPG"
-  ], tags: ["personalized", "crystal", "engraved"] },
-    { id: 507, name: "MOTHER-BABY ART FRAME", image: "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG", price: "₹1399", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Heartwarming mother-baby art frame for maternity clinics", images: [
-      "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG",
-      "/Photo Frames/MOTHER-BABY ART FRAME 2.JPG"
-  ], tags: ["personalized", "crystal", "engraved"] },
-    { id: 508, name: "OVARIES RESIN ART FRAME", image: "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG", price: "₹1499", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Ovary anatomy resin art frame for gynecology clinics", images: [
-      "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG",
-      "/Photo Frames/OVARIES RESIN ART FRAME 2.JPG",
-      "/Photo Frames/OVARIES RESIN ART FRAME 3.JPG"
-  ], tags: ["personalized", "crystal", "engraved"] },
-    { id: 509, name: "SPINAL CORD RESIN ART FRAME WITH CLOCK", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG", price: "₹1899", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Spinal cord resin art frame with integrated clock", images: [
-      "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG",
-      "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 2.JPG"
-  ], tags: ["personalized", "crystal", "engraved"] },
+  // {
+  //   id: 500, name: "Personalized Doctor Name Photo Frame", image: "/Photo Frames/CUSTOMIZED DOCTOR_S PRAYER FRAME.JPG", price: "₹899", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Elegant photo frame with doctor's name engraved - perfect for clinic desk", images: [
+  //     "/Photo Frames/CUSTOMIZED DOCTOR_S PRAYER FRAME.JPG"
+  //   ], tags: ["personalized", "photo-frame", "doctor-name"]
+  // },
+  // {
+  //   id: 501, name: "Engraved Crystal Photo Frame", image: "/Photo Frames/BRAIN RESIN ART FRAME 1.JPG", price: "₹1299", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Premium crystal frame with laser-engraved doctor name and specialisation", images: [
+  //     "/Photo Frames/BRAIN RESIN ART FRAME 1.JPG",
+  //     "/Photo Frames/BRAIN RESIN ART FRAME 2.JPG"
+  //   ], tags: ["personalized", "crystal", "engraved"]
+  // },
+  // { id: 502, name: "EXCLUSIVE LIVER FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Liver anatomy with artistic floral painting", images: [
+  //     "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 1.JPG",
+  //     "/Photo Frames/EXCLUSIVE LIVER FLORAL PAINTING FRAME 2.JPG"
+  // ], tags: ["personalized", "crystal", "engraved"] },
+  //   { id: 503, name: "EXCLUSIVE TEETH ANATOMY PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG", price: "₹1499", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Dental anatomy painting frame for clinics", images: [
+  //     "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 1.JPG",
+  //     "/Photo Frames/EXCLUSIVE TEETH ANATOMY PAINTING FRAME 2.JPG"
+  // ], tags: ["personalized", "crystal", "engraved"] },
+  //   { id: 504, name: "EXCLUSIVE UTERUS FLORAL PAINTING FRAME", image: "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG", price: "₹1599", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Uterus anatomy with elegant floral painting", images: [
+  //     "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 1.JPG",
+  //     "/Photo Frames/EXCLUSIVE UTERUS FLORAL PAINTING FRAME 2.JPG"
+  // ], tags: ["personalized", "crystal", "engraved"] },
+  //   { id: 505, name: "FEMALE PELVIS RESIN ART FRAME", image: "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG", price: "₹1499", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Female pelvis anatomy resin art frame", images: [
+  //     "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 1.JPG",
+  //     "/Photo Frames/FEMALE PELVIS RESIN ART FRAME 2.JPG"
+  // ], tags: ["personalized", "crystal", "engraved"] },
+  //   { id: 506, name: "FERTILIZATION RESIN ART FRAME", image: "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG", price: "₹1699", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Educational fertilization process resin art frame", images: [
+  //     "/Photo Frames/FERTILIZATION RESIN ART FRAME 1.JPG",
+  //     "/Photo Frames/FERTILIZATION RESIN ART FRAME 2.JPG"
+  // ], tags: ["personalized", "crystal", "engraved"] },
+  //   { id: 507, name: "MOTHER-BABY ART FRAME", image: "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG", price: "₹1399", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Heartwarming mother-baby art frame for maternity clinics", images: [
+  //     "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG",
+  //     "/Photo Frames/MOTHER-BABY ART FRAME 2.JPG"
+  // ], tags: ["personalized", "crystal", "engraved"] },
+  //   { id: 508, name: "OVARIES RESIN ART FRAME", image: "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG", price: "₹1499", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Ovary anatomy resin art frame for gynecology clinics", images: [
+  //     "/Photo Frames/OVARIES RESIN ART FRAME 1.JPG",
+  //     "/Photo Frames/OVARIES RESIN ART FRAME 2.JPG",
+  //     "/Photo Frames/OVARIES RESIN ART FRAME 3.JPG"
+  // ], tags: ["personalized", "crystal", "engraved"] },
+  //   { id: 509, name: "SPINAL CORD RESIN ART FRAME WITH CLOCK", image: "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG", price: "₹1899", category: "doctor-name-personalization", categoryName: "Photo Frames", description: "Spinal cord resin art frame with integrated clock", images: [
+  //     "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 1.JPG",
+  //     "/Photo Frames/SPINAL CORD RESIN ART FRAME WITH CLOCK 2.JPG"
+  // ], tags: ["personalized", "crystal", "engraved"] },
 
   // Clinic Branding / Momentos (IDs: 510-519)
-  { id: 510, name: "Custom Clinic Logo Pen Stand", image: "/Desk Utility/CUSTOMIZED PEN HOLDER 1.JPG", price: "₹399", category: "clinic-branding", categoryName: "Momentos", description: "Acrylic pen stand with clinic logo and doctor name printed", tags: ["clinic-branding", "logo", "pen-stand"] },
-  { id: 511, name: "Branded Clinic Wall Clock", image: "/TableTop/CUSTOMIZED DESK CLOCK.JPG", price: "₹999", category: "clinic-branding", categoryName: "Momentos", description: "Wall clock customized with clinic logo, name, and contact details", tags: ["clinic-branding", "clock", "logo"] },
-  { id: 512, name: "Customized Clinic Name Plate", image: "/3dprinted/CUSTOMIZED BRAND NAME SHEET HOLDER 1.JPG", price: "₹799", category: "clinic-branding", categoryName: "Momentos", description: "Elegant acrylic name plate for doctor's clinic with branding", tags: ["clinic-branding", "nameplate", "acrylic"] },
-  { id: 513, name: "Clinic Logo Embossed Diary", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹499", category: "clinic-branding", categoryName: "Momentos", description: "Premium diary with embossed clinic logo and doctor details", tags: ["clinic-branding", "diary", "embossed"] },
+  // { id: 510, name: "Custom Clinic Logo Pen Stand", image: "/Desk Utility/CUSTOMIZED PEN HOLDER 1.JPG", price: "₹399", category: "clinic-branding", categoryName: "Momentos", description: "Acrylic pen stand with clinic logo and doctor name printed", tags: ["clinic-branding", "logo", "pen-stand"] },
+  // { id: 511, name: "Branded Clinic Wall Clock", image: "/TableTop/CUSTOMIZED DESK CLOCK.JPG", price: "₹999", category: "clinic-branding", categoryName: "Momentos", description: "Wall clock customized with clinic logo, name, and contact details", tags: ["clinic-branding", "clock", "logo"] },
+  // { id: 512, name: "Customized Clinic Name Plate", image: "/3dprinted/CUSTOMIZED BRAND NAME SHEET HOLDER 1.JPG", price: "₹799", category: "clinic-branding", categoryName: "Momentos", description: "Elegant acrylic name plate for doctor's clinic with branding", tags: ["clinic-branding", "nameplate", "acrylic"] },
+  // { id: 513, name: "Clinic Logo Embossed Diary", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹499", category: "clinic-branding", categoryName: "Momentos", description: "Premium diary with embossed clinic logo and doctor details", tags: ["clinic-branding", "diary", "embossed"] },
 
   // Custom Packaging / Trophies (IDs: 520-529)
-  { id: 520, name: "Custom Branded Gift Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1499", category: "custom-packaging", categoryName: "Trophies", description: "Premium gift box with custom branding, ribbon, and inserts", tags: ["packaging", "gift-box", "branded"] },
-  { id: 521, name: "Eco-Friendly Branded Hamper", image: "https://images.unsplash.com/photo-1573662761572-2c2be631a545?w=400", price: "₹1999", category: "custom-packaging", categoryName: "Trophies", description: "Jute hamper bag with screen-printed logo and custom inserts", tags: ["packaging", "eco-friendly", "hamper"] },
-  { id: 522, name: "Luxury Velvet Gift Box Set", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2499", category: "custom-packaging", categoryName: "Trophies", description: "Premium velvet boxes with gold foil branding - perfect for high-end gifts", tags: ["packaging", "luxury", "velvet"] },
+  // { id: 520, name: "Custom Branded Gift Box", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1499", category: "custom-packaging", categoryName: "Trophies", description: "Premium gift box with custom branding, ribbon, and inserts", tags: ["packaging", "gift-box", "branded"] },
+  // { id: 521, name: "Eco-Friendly Branded Hamper", image: "https://images.unsplash.com/photo-1573662761572-2c2be631a545?w=400", price: "₹1999", category: "custom-packaging", categoryName: "Trophies", description: "Jute hamper bag with screen-printed logo and custom inserts", tags: ["packaging", "eco-friendly", "hamper"] },
+  // { id: 522, name: "Luxury Velvet Gift Box Set", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2499", category: "custom-packaging", categoryName: "Trophies", description: "Premium velvet boxes with gold foil branding - perfect for high-end gifts", tags: ["packaging", "luxury", "velvet"] },
 
   // Brand-Specific Messaging (IDs: 530-539)
-  { id: 530, name: "Custom Message Desk Stand", image: "/TableTop/CUSTOMIZED MAGNETIC DETAILER 1.JPG", price: "₹699", category: "brand-specific-messaging", categoryName: "Brand-Specific Messaging", description: "Acrylic desk stand with personalized brand message and doctor appreciation note", tags: ["messaging", "brand", "desk-stand"] },
-  { id: 531, name: "Personalized Thank You Card Set", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹299", category: "brand-specific-messaging", categoryName: "Brand-Specific Messaging", description: "Set of 10 premium cards with custom brand message and envelope", tags: ["messaging", "thank-you", "cards"] },
-  { id: 532, name: "Brand Message Engraved Paperweight", image: "/Paperweights/CLEAR THEME PAPERWEIGHT.JPG", price: "₹449", category: "brand-specific-messaging", categoryName: "Brand-Specific Messaging", description: "Crystal paperweight with laser-engraved brand message and logo", tags: ["messaging", "paperweight", "engraved"] },
+  // { id: 530, name: "Custom Message Desk Stand", image: "/TableTop/CUSTOMIZED MAGNETIC DETAILER 1.JPG", price: "₹699", category: "brand-specific-messaging", categoryName: "Brand-Specific Messaging", description: "Acrylic desk stand with personalized brand message and doctor appreciation note", tags: ["messaging", "brand", "desk-stand"] },
+  // { id: 531, name: "Personalized Thank You Card Set", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹299", category: "brand-specific-messaging", categoryName: "Brand-Specific Messaging", description: "Set of 10 premium cards with custom brand message and envelope", tags: ["messaging", "thank-you", "cards"] },
+  // { id: 532, name: "Brand Message Engraved Paperweight", image: "/Paperweights/CLEAR THEME PAPERWEIGHT.JPG", price: "₹449", category: "brand-specific-messaging", categoryName: "Brand-Specific Messaging", description: "Crystal paperweight with laser-engraved brand message and logo", tags: ["messaging", "paperweight", "engraved"] },
 
   // Engraved Pens / Personalized Hampers (IDs: 540-549)
-  { id: 540, name: "Premium Engraved Metal Pen", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹599", category: "engraved-pens", categoryName: "Persanalized Hampers", description: "Executive pen with laser engraved doctor name - chrome finish", tags: ["pen", "engraved", "executive"] },
-  { id: 541, name: "Doctor's Day Pen & Diary Set", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹1299", category: "engraved-pens", categoryName: "Persanalized Hampers", description: "Premium leather diary with engraved pen set in gift box", tags: ["pen", "diary", "gift-set"] },
-  { id: 542, name: "Wooden Pen with Name Engraving", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹799", category: "engraved-pens", categoryName: "Persanalized Hampers", description: "Handcrafted rosewood pen with personalized name engraving", tags: ["pen", "wooden", "engraved"] },
-  { id: 543, name: "Personalized Doctor Hamper", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2999", category: "engraved-pens", categoryName: "Persanalized Hampers", description: "Complete gift hamper with pen, diary, mug, and thank you note", tags: ["hamper", "personalized", "doctor"] },
+  // { id: 540, name: "Premium Engraved Metal Pen", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹599", category: "engraved-pens", categoryName: "Persanalized Hampers", description: "Executive pen with laser engraved doctor name - chrome finish", tags: ["pen", "engraved", "executive"] },
+  // { id: 541, name: "Doctor's Day Pen & Diary Set", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=400", price: "₹1299", category: "engraved-pens", categoryName: "Persanalized Hampers", description: "Premium leather diary with engraved pen set in gift box", tags: ["pen", "diary", "gift-set"] },
+  // { id: 542, name: "Wooden Pen with Name Engraving", image: "/products/CUSTOMIZED CHITS HOLDER.png", price: "₹799", category: "engraved-pens", categoryName: "Persanalized Hampers", description: "Handcrafted rosewood pen with personalized name engraving", tags: ["pen", "wooden", "engraved"] },
+  // { id: 543, name: "Personalized Doctor Hamper", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹2999", category: "engraved-pens", categoryName: "Persanalized Hampers", description: "Complete gift hamper with pen, diary, mug, and thank you note", tags: ["hamper", "personalized", "doctor"] },
 
   // Custom Mugs / Star Map (IDs: 550-559)
-  { id: 550, name: "Magic Heat Reveal Coffee Mug", image: "https://images.unsplash.com/photo-1514228742587-6f155f924bb5?w=400", price: "₹499", category: "custom-mugs", categoryName: "Star Map", description: "Color changing mug - photo appears when hot liquid is added", tags: ["mug", "magic-mug", "photo"] },
-  { id: 551, name: "Engraved Ceramic Coffee Mug", image: "https://images.unsplash.com/photo-1514228742587-6f155f924bb5?w=400", price: "₹399", category: "custom-mugs", categoryName: "Star Map", description: "Premium ceramic mug with laser engraved doctor name and message", tags: ["mug", "ceramic", "engraved"] },
-  { id: 552, name: "Personalized Star Map Print", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹1499", category: "custom-mugs", categoryName: "Star Map", description: "Custom star map of significant date with doctor name and quote", tags: ["star-map", "personalized", "art-print"] },
-  { id: 553, name: "Birthday Star Map Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹1899", category: "custom-mugs", categoryName: "Star Map", description: "Framed star map showing constellation on doctor's birth date", tags: ["star-map", "birthday", "frame"] },
+  // { id: 550, name: "Magic Heat Reveal Coffee Mug", image: "https://images.unsplash.com/photo-1514228742587-6f155f924bb5?w=400", price: "₹499", category: "custom-mugs", categoryName: "Star Map", description: "Color changing mug - photo appears when hot liquid is added", tags: ["mug", "magic-mug", "photo"] },
+  // { id: 551, name: "Engraved Ceramic Coffee Mug", image: "https://images.unsplash.com/photo-1514228742587-6f155f924bb5?w=400", price: "₹399", category: "custom-mugs", categoryName: "Star Map", description: "Premium ceramic mug with laser engraved doctor name and message", tags: ["mug", "ceramic", "engraved"] },
+  // { id: 552, name: "Personalized Star Map Print", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹1499", category: "custom-mugs", categoryName: "Star Map", description: "Custom star map of significant date with doctor name and quote", tags: ["star-map", "personalized", "art-print"] },
+  // { id: 553, name: "Birthday Star Map Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹1899", category: "custom-mugs", categoryName: "Star Map", description: "Framed star map showing constellation on doctor's birth date", tags: ["star-map", "birthday", "frame"] },
 
   // Photo Gifts / Name Plate (IDs: 560-569)
-  { id: 560, name: "Crystal Photo Engraving Block", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹1299", category: "photo-gifts", categoryName: "Name Plate", description: "3D laser engraved crystal with doctor's photo and name", tags: ["photo", "crystal", "3d-engraving"] },
-  { id: 561, name: "Personalized Photo Collage Frame", image: "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG", price: "₹999", category: "photo-gifts", categoryName: "Name Plate", description: "Multi-photo frame with 6 slots for memorable clinic moments", tags: ["photo", "collage", "frame"] },
-  { id: 562, name: "Custom Acrylic Name Plate", image: "/3dprinted/CUSTOMIZED BRAND NAME SHEET HOLDER 1.JPG", price: "₹599", category: "photo-gifts", categoryName: "Name Plate", description: "Modern acrylic name plate for doctor's cabin with LED option", tags: ["nameplate", "acrylic", "cabin"] },
-  { id: 563, name: "Brass Name Plate for Clinic", image: "/TableTop/CUSTOMIZED 15 YEARS MOMENTO.JPG", price: "₹899", category: "photo-gifts", categoryName: "Name Plate", description: "Traditional brass name plate with doctor's name and specialisation", tags: ["nameplate", "brass", "traditional"] },
+  // { id: 560, name: "Crystal Photo Engraving Block", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹1299", category: "photo-gifts", categoryName: "Name Plate", description: "3D laser engraved crystal with doctor's photo and name", tags: ["photo", "crystal", "3d-engraving"] },
+  // { id: 561, name: "Personalized Photo Collage Frame", image: "/Photo Frames/MOTHER-BABY ART FRAME 1.JPG", price: "₹999", category: "photo-gifts", categoryName: "Name Plate", description: "Multi-photo frame with 6 slots for memorable clinic moments", tags: ["photo", "collage", "frame"] },
+  // { id: 562, name: "Custom Acrylic Name Plate", image: "/3dprinted/CUSTOMIZED BRAND NAME SHEET HOLDER 1.JPG", price: "₹599", category: "photo-gifts", categoryName: "Name Plate", description: "Modern acrylic name plate for doctor's cabin with LED option", tags: ["nameplate", "acrylic", "cabin"] },
+  // { id: 563, name: "Brass Name Plate for Clinic", image: "/TableTop/CUSTOMIZED 15 YEARS MOMENTO.JPG", price: "₹899", category: "photo-gifts", categoryName: "Name Plate", description: "Traditional brass name plate with doctor's name and specialisation", tags: ["nameplate", "brass", "traditional"] },
 
   // Custom Stationery / 3D Printed Plates (IDs: 570-579)
   { id: 570, name: "Personalized Doctor's Notebook Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%201.png", price: "₹599", category: "custom-stationery", categoryName: "3D Printed Plates", description: "Set of 2 notebooks with embossed doctor name and Rx symbol", tags: ["stationery", "notebook", "personalized"] },
@@ -685,28 +685,28 @@ export const allProducts: Product[] = [
   // { id: 573, name: "Custom 3D Printed Award Plaque", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%204.png ", price: "₹1499", category: "custom-stationery", categoryName: "3D Printed Plates", description: "3D printed recognition plaque for doctor achievements", tags: ["3d-printed", "award", "plaque"] },
 
   // Embossed Leather / Personalized Desk Utility (IDs: 580-589)
-  { id: 580, name: "Embossed Leather Card Holder", image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=400", price: "₹799", category: "embossed-leather", categoryName: "Personalized Desk Utility", description: "Genuine leather card holder with gold foil embossed initials", tags: ["leather", "card-holder", "embossed"] },
-  { id: 581, name: "Personalized Leather Wallet", image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=400", price: "₹1299", category: "embossed-leather", categoryName: "Personalized Desk Utility", description: "Premium leather wallet with doctor name embossing", tags: ["leather", "wallet", "embossed"] },
-  { id: 582, name: "Customized Desk Organizer Set", image: "/Desk Utility/CUSTOMIZED 3 IN 1 DESK ORGANIZER 1.JPG", price: "₹999", category: "embossed-leather", categoryName: "Personalized Desk Utility", description: "Complete desk organizer with pen stand, mobile holder, and name plate", tags: ["desk-utility", "organizer", "custom"] },
-  { id: 583, name: "Personalized Mouse Pad", image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400", price: "₹299", category: "embossed-leather", categoryName: "Personalized Desk Utility", description: "Custom printed mouse pad with doctor name and design", tags: ["desk-utility", "mousepad", "custom"] },
+  // { id: 580, name: "Embossed Leather Card Holder", image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=400", price: "₹799", category: "embossed-leather", categoryName: "Personalized Desk Utility", description: "Genuine leather card holder with gold foil embossed initials", tags: ["leather", "card-holder", "embossed"] },
+  // { id: 581, name: "Personalized Leather Wallet", image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=400", price: "₹1299", category: "embossed-leather", categoryName: "Personalized Desk Utility", description: "Premium leather wallet with doctor name embossing", tags: ["leather", "wallet", "embossed"] },
+  // { id: 582, name: "Customized Desk Organizer Set", image: "/Desk Utility/CUSTOMIZED 3 IN 1 DESK ORGANIZER 1.JPG", price: "₹999", category: "embossed-leather", categoryName: "Personalized Desk Utility", description: "Complete desk organizer with pen stand, mobile holder, and name plate", tags: ["desk-utility", "organizer", "custom"] },
+  // { id: 583, name: "Personalized Mouse Pad", image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400", price: "₹299", category: "embossed-leather", categoryName: "Personalized Desk Utility", description: "Custom printed mouse pad with doctor name and design", tags: ["desk-utility", "mousepad", "custom"] },
 
   // Engraved Keychains / Personalized Gifts (IDs: 590-599)
-  { id: 590, name: "Engraved Metal Keychain", image: "https://images.unsplash.com/photo-1581338834647-b0a407628db1?w=400", price: "₹299", category: "engraved-keychains", categoryName: "Personalized Gifts", description: "Stainless steel keychain with laser engraved doctor name", tags: ["keychain", "metal", "engraved"] },
-  { id: 591, name: "Personalized Stethoscope Keychain", image: "https://images.unsplash.com/photo-1581338834647-b0a407628db1?w=400", price: "₹399", category: "engraved-keychains", categoryName: "Personalized Gifts", description: "Mini stethoscope shaped keychain with custom name engraving", tags: ["keychain", "stethoscope", "medical"] },
-  { id: 592, name: "Customized Rotary Keychain", image: "https://images.unsplash.com/photo-1581338834647-b0a407628db1?w=400", price: "₹449", category: "engraved-keychains", categoryName: "Personalized Gifts", description: "Rotary keychain with hidden compartment and name engraving", tags: ["keychain", "rotary", "custom"] },
-  { id: 593, name: "Personalized Gift Combo Set", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1999", category: "engraved-keychains", categoryName: "Personalized Gifts", description: "Complete gift set with keychain, pen, mug, and thank you note", tags: ["gift-set", "combo", "personalized"] },
-  { id: 594, name: "Customized Wooden Keychain", image: "https://images.unsplash.com/photo-1581338834647-b0a407628db1?w=400", price: "₹249", category: "engraved-keychains", categoryName: "Personalized Gifts", description: "Eco-friendly wooden keychain with laser engraved message", tags: ["keychain", "wooden", "eco-friendly"] },
+  // { id: 590, name: "Engraved Metal Keychain", image: "https://images.unsplash.com/photo-1581338834647-b0a407628db1?w=400", price: "₹299", category: "engraved-keychains", categoryName: "Personalized Gifts", description: "Stainless steel keychain with laser engraved doctor name", tags: ["keychain", "metal", "engraved"] },
+  // { id: 591, name: "Personalized Stethoscope Keychain", image: "https://images.unsplash.com/photo-1581338834647-b0a407628db1?w=400", price: "₹399", category: "engraved-keychains", categoryName: "Personalized Gifts", description: "Mini stethoscope shaped keychain with custom name engraving", tags: ["keychain", "stethoscope", "medical"] },
+  // { id: 592, name: "Customized Rotary Keychain", image: "https://images.unsplash.com/photo-1581338834647-b0a407628db1?w=400", price: "₹449", category: "engraved-keychains", categoryName: "Personalized Gifts", description: "Rotary keychain with hidden compartment and name engraving", tags: ["keychain", "rotary", "custom"] },
+  // { id: 593, name: "Personalized Gift Combo Set", image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=400", price: "₹1999", category: "engraved-keychains", categoryName: "Personalized Gifts", description: "Complete gift set with keychain, pen, mug, and thank you note", tags: ["gift-set", "combo", "personalized"] },
+  // { id: 594, name: "Customized Wooden Keychain", image: "https://images.unsplash.com/photo-1581338834647-b0a407628db1?w=400", price: "₹249", category: "engraved-keychains", categoryName: "Personalized Gifts", description: "Eco-friendly wooden keychain with laser engraved message", tags: ["keychain", "wooden", "eco-friendly"] },
   // Digital Gifts (IDs: 300-309)
-  { id: 300, name: "Power Bank 20000mAh", image: "https://images.unsplash.com/photo-1619985632461-f33748ef7661?w=400", price: "₹1499", category: "power-banks", categoryName: "Power Banks", description: "High capacity portable charger" },
-  { id: 301, name: "JBL Bluetooth Speaker", image: "https://images.unsplash.com/photo-1608043152269-423db5724e21?w=400", price: "₹2999", category: "bluetooth-speakers", categoryName: "Bluetooth Speakers", description: "Wireless portable speaker" },
-  { id: 302, name: "USB 3.0 64GB Drive", image: "https://images.unsplash.com/photo-1586449480537-3ac15f1d6162?w=400", price: "₹699", category: "usb-drives", categoryName: "USB Drives", description: "Branded metal pen drive" },
-  { id: 303, name: "Wireless Charging Pad", image: "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=400", price: "₹1299", category: "wireless-chargers", categoryName: "Wireless Chargers", description: "Fast charging Qi pad" },
-  { id: 304, name: "7-inch Digital Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹3999", category: "digital-photo-frames", categoryName: "Digital Photo Frames", description: "Slideshow photo display" },
-  { id: 305, name: "Smart Home Assistant", image: "https://images.unsplash.com/photo-1558089687-f282ffcbc126?w=400", price: "₹3499", category: "smart-gadgets", categoryName: "Smart Gadgets", description: "Voice-controlled smart assistant" },
-  { id: 306, name: "Phone Stand with Charger", image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400", price: "₹899", category: "phone-accessories", categoryName: "Phone Accessories", description: "Adjustable stand with wireless charging" },
-  { id: 307, name: "Fitness Tracker Band", image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400", price: "₹1999", category: "fitness-bands", categoryName: "Fitness Bands", description: "Health and activity tracking wearable" },
-  { id: 308, name: "Universal Travel Adapter", image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400", price: "₹1299", category: "travel-adapters", categoryName: "Travel Adapters", description: "Multi-country charging adapter" },
-  { id: 309, name: "Tech Gift Combo", image: "https://images.unsplash.com/photo-1619985632461-f33748ef7661?w=400", price: "₹2499", category: "tech-combos", categoryName: "Tech Combos", description: "Power bank, USB drive, and cable set" },
+  // { id: 300, name: "Power Bank 20000mAh", image: "https://images.unsplash.com/photo-1619985632461-f33748ef7661?w=400", price: "₹1499", category: "power-banks", categoryName: "Power Banks", description: "High capacity portable charger" },
+  // { id: 301, name: "JBL Bluetooth Speaker", image: "https://images.unsplash.com/photo-1608043152269-423db5724e21?w=400", price: "₹2999", category: "bluetooth-speakers", categoryName: "Bluetooth Speakers", description: "Wireless portable speaker" },
+  // { id: 302, name: "USB 3.0 64GB Drive", image: "https://images.unsplash.com/photo-1586449480537-3ac15f1d6162?w=400", price: "₹699", category: "usb-drives", categoryName: "USB Drives", description: "Branded metal pen drive" },
+  // { id: 303, name: "Wireless Charging Pad", image: "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=400", price: "₹1299", category: "wireless-chargers", categoryName: "Wireless Chargers", description: "Fast charging Qi pad" },
+  // { id: 304, name: "7-inch Digital Frame", image: "https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400", price: "₹3999", category: "digital-photo-frames", categoryName: "Digital Photo Frames", description: "Slideshow photo display" },
+  // { id: 305, name: "Smart Home Assistant", image: "https://images.unsplash.com/photo-1558089687-f282ffcbc126?w=400", price: "₹3499", category: "smart-gadgets", categoryName: "Smart Gadgets", description: "Voice-controlled smart assistant" },
+  // { id: 306, name: "Phone Stand with Charger", image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400", price: "₹899", category: "phone-accessories", categoryName: "Phone Accessories", description: "Adjustable stand with wireless charging" },
+  // { id: 307, name: "Fitness Tracker Band", image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400", price: "₹1999", category: "fitness-bands", categoryName: "Fitness Bands", description: "Health and activity tracking wearable" },
+  // { id: 308, name: "Universal Travel Adapter", image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400", price: "₹1299", category: "travel-adapters", categoryName: "Travel Adapters", description: "Multi-country charging adapter" },
+  // { id: 309, name: "Tech Gift Combo", image: "https://images.unsplash.com/photo-1619985632461-f33748ef7661?w=400", price: "₹2499", category: "tech-combos", categoryName: "Tech Combos", description: "Power bank, USB drive, and cable set" },
 ];
 
 // ==========================================

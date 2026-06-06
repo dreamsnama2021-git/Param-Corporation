@@ -227,7 +227,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   //     "https://picsum.photos/id/90/400/300",
   //     "https://picsum.photos/id/91/400/300",
   //   ],
-  // },
+  },
   "Orthopedics/Rheumatology": {
     card: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80",
     books: [

@@ -14,9 +14,9 @@ interface HeroSlide {
 
 const HERO_SLIDES: HeroSlide[] = [
   {
-    desktop: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%202.jpg",
-    tablet: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Tablet%20Home%20Banner%202.jpg",
-    mobile: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Mobile%20Home%20Banner%202.jpg",
+    desktop: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Desktop%20Home%20Banner%201.png",
+    tablet: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Tablet%20Home%20Banner.png",
+    mobile: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Home%20Banner/Mobile%20Home%20Banner%201.png",
     alt: "Corporate Gifts",
   },
   {
@@ -56,7 +56,7 @@ function ResponsiveSlideImage({ slide, priority = false }: { slide: HeroSlide; p
       />
       {/* Tablet: 641px to 1024px */}
       <source
-        media="(min-width: 641px) and (max-width: 1024px)"
+        media="(min-width: 641px) and (max-width: 990px)"
         srcSet={slide.tablet}
       />
       {/* Desktop: 1025px and above */}
@@ -222,7 +222,7 @@ export default function HeroWithStats() {
   return (
     <div className="flex flex-col overflow-hidden">
       <section 
-        className="relative w-full h-[70vh] sm:h-[60vh] md:h-[40vh] lg:h-[90vh] xl:h-[80vh] 2xl:h-[95vh] overflow-visible bg-black"
+        className="relative w-full h-[75vh] sm:h-[60vh] md:h-[55vh] lg:h-[90vh] xl:h-[80vh] 2xl:h-[95vh] overflow-visible bg-black"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
       >
