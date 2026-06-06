@@ -195,12 +195,12 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_29_49%20PM.png",
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_44%20PM.png",
-      "https://picsum.photos/id/70/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/26.png",
     ],
     flipChart: [
-      "https://picsum.photos/id/71/400/300",
-      "https://picsum.photos/id/72/400/300",
-      "https://picsum.photos/id/73/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/27.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/29.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/30.png",
     ],
     matt: [
       "https://picsum.photos/id/74/400/300",
