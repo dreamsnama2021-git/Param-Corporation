@@ -103,6 +103,7 @@ const LazyImage = memo(function LazyImage({
 });
 
 // ─── Therapy Images Data with Temporary URLs ───
+// Dont Hide Pink Brackets - They are required for correct syntax highlighting and formatting of the object.
 const THERAPY_IMAGES_DATA: Record<string, any> = {
   "Cardio-Vascular": {
     card: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
