@@ -195,22 +195,22 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_29_49%20PM.png",
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_44%20PM.png",
-      "https://picsum.photos/id/70/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/26.png",
     ],
     flipChart: [
-      "https://picsum.photos/id/71/400/300",
-      "https://picsum.photos/id/72/400/300",
-      "https://picsum.photos/id/73/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/27.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/29.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/30.png",
     ],
     matt: [
-      "https://picsum.photos/id/74/400/300",
-      "https://picsum.photos/id/75/400/300",
-      "https://picsum.photos/id/76/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/34.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/35.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/36.png",
     ],
     posters: [
-      "https://picsum.photos/id/77/400/300",
-      "https://picsum.photos/id/78/400/300",
-      "https://picsum.photos/id/79/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/37.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/38.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/40.png",
     ],
     medicalScale: [
       "https://picsum.photos/id/80/400/300",
@@ -408,7 +408,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Dermatology: {
     card: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
     books: [
-      "https://picsum.photos/id/188/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/41.png",
       "https://picsum.photos/id/189/400/300",
       "https://picsum.photos/id/190/400/300",
     ],
@@ -494,7 +494,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Urology: {
     card: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
     books: [
-      "https://picsum.photos/id/236/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/24.png",
       "https://picsum.photos/id/237/400/300",
       "https://picsum.photos/id/238/400/300",
     ],
