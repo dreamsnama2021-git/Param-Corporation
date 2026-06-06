@@ -300,7 +300,7 @@ function GalleryLightboxModal({
                         e.stopPropagation();
                         setCurrentIndex(idx);
                       }}
-                      className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden transition-all duration-200 ${
+                      className={`relative flex-shrink-0 w-15 h-15 xl:w-20 xl:h-20 rounded-lg overflow-hidden transition-all duration-200 ${
                         currentIndex === idx
                           ? 'ring-2 ring-[#0093cb] ring-offset-2 ring-offset-black scale-105'
                           : 'opacity-90 hover:opacity-100'

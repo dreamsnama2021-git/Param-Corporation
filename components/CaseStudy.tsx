@@ -127,12 +127,12 @@ function CaseStudiesGrid() {
                 border border-transparent hover:border-[#0093cb]/20"
             >
               {/* Clean Image Section (No Text Overlay) */}
-              <div className="relative h-70 sm:h-44 md:h-48 lg:h-52 xl:h-80 overflow-hidden">
+              <div className="relative h-70 sm:h-44 md:h-48 lg:h-75 xl:h-80 overflow-hidden">
                 <Image
                   src={study.image}
                   alt={study.title}
                   fill
-                  className="object-fill transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                   unoptimized
                 />
                 {/* Subtle primary glow on hover */}

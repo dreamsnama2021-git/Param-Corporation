@@ -737,18 +737,18 @@ function ImageLightboxModal({
       {/* Close Button */}
       <button
         onClick={onClose}
-        className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+        className="absolute top-12 xl:top-20 right-6 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
       >
         <X className="w-5 h-5" />
       </button>
 
       {/* Main Image Container */}
-      <div className="relative w-full h-full flex items-center justify-center p-12 md:p-16">
+      <div className="relative w-full h-[80vh] flex items-center justify-center p-25 md:p-16">
         {imageUrl && !imageError ? (
           <img
             src={imageUrl}
             alt={productName}
-            className="max-w-full max-h-full rounded-xl object-contain"
+            className="max-w-full max-h-[80vh] rounded-xl object-contain"
             onError={() => setImageError(true)}
           />
         ) : (
@@ -899,7 +899,7 @@ function CategorySection({
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
         {displayedProducts.map((product: any) => (
           <ProductCard
             key={product.id}
@@ -1045,7 +1045,7 @@ function CategoryPageContent() {
         <PageBanner />
 
         <div className="max-w-[1500px] mx-auto px-6 py-12 lg:py-16">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+          <div className="flex flex-col lg:flex-row gap-4 xl:gap-8 2xl:gap-12">
             <aside className="lg:w-64 flex-shrink-0">
               <div className="sticky top-[100px]">
                 <SidebarWithSubcategories activeTab={activeTab} onSelect={handleTabSelect} />

@@ -49,7 +49,7 @@ type Therapy = {
 
 // ─── Tiny 1×1 transparent blur placeholder (base64) ───
 const BLUR_PLACEHOLDER =
-  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAADNCAMAAAC8cX2UAAAABlBMVEXn4dbi3dJOgJa7AAAA5klEQVR4nO3PAQEAAAjDIN+/tEEYDbgdaFfbUVtSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW7IHMqsBm14uZ0kAAAAASUVORK5CYII=";
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAADNCAMAAAC8cX2UAAAABlBMVEXn4dbi3dJOgJa7AAAA5klEQVR4nO3PAQEAAAjDIN+/tEEYDbgdaFfbUVtSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW1JbUltSW7IHMqsBm14uZ0kAAAAASUVORK5CYII=";
 
 // ─── Fallback image when src fails to load ───
 const FALLBACK_IMAGE =
@@ -1304,7 +1304,7 @@ function FullscreenGallery({
                 <button
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
-                  className={`relative w-16 h-16 md:w-20 md:h-20 flex-shrink-0 rounded-lg overflow-hidden transition-all duration-200 ${
+                  className={`relative w-15 h-15 xl:w-20 xl:h-20 flex-shrink-0 rounded-lg overflow-hidden transition-all duration-200 ${
                     currentIndex === idx
                       ? "ring-2 ring-white scale-105"
                       : "opacity-60 hover:opacity-100"
@@ -1474,7 +1474,7 @@ const CollageCard = memo(function CollageCard({
 }) {
   return (
     <article
-      className={`group relative rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl h-full min-h-[140px] sm:min-h-[180px] md:min-h-[190px] lg:min-h-[200px] xl:min-h-[240px] w-full ${therapy.span === 2 ? "col-span-2" : "col-span-1"}`}
+      className={`group relative rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl h-full min-h-[140px] sm:min-h-[180px] md:min-h-[190px] lg:min-h-[220px] xl:min-h-[240px] w-full ${therapy.span === 2 ? "col-span-3" : "col-span-2"}`}
       onClick={onClick}
       role="button"
       tabIndex={0}
@@ -1606,7 +1606,7 @@ export default function TherapyCollageGrid({
               ))}
             </div>
 
-            {/* Tablet: 3 columns */}
+            {/* Tablet: 3 columns (Maintaining proportional sizing) */}
             <div className="hidden sm:grid lg:hidden grid-cols-3 gap-2 sm:gap-3 auto-rows-[180px] sm:auto-rows-[200px]">
               {THERAPY_DATA.map((therapy, i) => (
                 <CollageCard
@@ -1622,8 +1622,8 @@ export default function TherapyCollageGrid({
               ))}
             </div>
 
-            {/* Desktop: 5 columns */}
-            <div className="hidden lg:grid grid-cols-5 gap-2 sm:gap-3 auto-rows-[220px] xl:auto-rows-[240px]">
+            {/* Desktop: 9 Columns Grid */}
+            <div className="hidden lg:grid grid-cols-9 gap-2 sm:gap-3 auto-rows-[220px] xl:auto-rows-[240px]">
               {THERAPY_DATA.map((therapy, i) => (
                 <CollageCard
                   key={therapy.therapy}
