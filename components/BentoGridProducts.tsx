@@ -252,8 +252,8 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
     posters: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_51_21%20PM.png",
-      "https://picsum.photos/id/102/400/300",
-      "https://picsum.photos/id/103/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/50.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/55.png",
     ],
     medicalScale: [
       "https://picsum.photos/id/104/400/300",
@@ -322,7 +322,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
   Gastroenterology: {
     card: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80",
     books: [
-      "https://picsum.photos/id/140/400/300",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/54.png",
       "https://picsum.photos/id/141/400/300",
       "https://picsum.photos/id/142/400/300",
     ],
