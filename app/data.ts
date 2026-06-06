@@ -435,10 +435,14 @@ export const allProducts: Product[] = [
 { id: 90, name: "Forceps with Carry Case", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/SurgicalTools/forceps_set.png", price: "₹549", category: "surgical-tools", categoryName: "Surgical Tools", description: "Dissecting forceps set (plain and toothed) in branded leatherette pouch - ideal for surgical reps." },
 { id: 91, name: "Diagnostic Tool Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/SurgicalTools/diagnostic_set.png", price: "₹1999", category: "surgical-tools", categoryName: "Surgical Tools", description: "Complete diagnostic set including ophthalmoscope, otoscope, and nasal speculum with branded hard case." },
 
-// Categories - Custom Training Models (IDs: 92-94)
+// Categories - Custom Training Models (IDs: 92-100)
 { id: 92, name: "3D Organ Model Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_42_08%20PM.png", price: "₹2999", category: "custom-training-models", categoryName: "Custom Training Models", description: "Anatomical heart, brain, and kidney models with removable parts and pharma branding for patient education." },
 { id: 93, name: "Injection Practice Pad", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Urology-.png", price: "₹799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Silicone injection training pad with vein simulation, branded with your pharma logo - ideal for insulin/device training." },
 { id: 94, name: "Suture Practice Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/65.png", price: "₹1799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Complete suture practice kit with silicone skin pad, instruments, and branded storage case for surgical training workshops." },
+{ id: 95, name: "Suture Practice Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/76.png", price: "₹1799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Complete suture practice kit with silicone skin pad, instruments, and branded storage case for surgical training workshops." },
+{ id: 96, name: "Suture Practice Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/83.png", price: "₹1799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Complete suture practice kit with silicone skin pad, instruments, and branded storage case for surgical training workshops." },
+{ id: 97, name: "Suture Practice Kit", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/76.png", price: "₹1799", category: "custom-training-models", categoryName: "Custom Training Models", description: "Complete suture practice kit with silicone skin pad, instruments, and branded storage case for surgical training workshops." },
+
   
   // Categories - Photo Frames (IDs: 73-95)
   {
