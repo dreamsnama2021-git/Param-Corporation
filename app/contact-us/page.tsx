@@ -18,7 +18,7 @@ const PageBanner = () => (
  <div className="relative w-full h-[60vh] md:h-[40vh] lg:h-[65vh] xl:h-[65vh] 2xl:h-[65vh] overflow-hidden">
     {/* Mobile image */}
     <Image
-      src="/banner/contact us.png"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Mobile%20Contact%20us%20Banner.png"
       alt="About Us Banner - Mobile"
       fill
       className="object-fill object-center block md:hidden"
@@ -28,7 +28,7 @@ const PageBanner = () => (
 
     {/* Tablet image */}
     <Image
-      src="/banner/contact us.png"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Tablet%20Contact%20us%20Banner.jpg"
       alt="About Us Banner - Tablet"
       fill
       className="object-fill object-center hidden md:block lg:hidden"
@@ -38,7 +38,7 @@ const PageBanner = () => (
 
     {/* Desktop image */}
     <Image
-      src="/banner/contact us.png"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Desktop%20Contact%20us%20Banner.png"
       alt="About Us Banner - Desktop"
       fill
       className="object-fill object-center hidden lg:block"
