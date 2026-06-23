@@ -136,8 +136,31 @@ function GiftsByCategories() {
   return (
     <section className="w-full bg-[#fafcff] py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
-        {/* Section Header - same as above */}
-        
+        {/* Section Header - Now Added */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-12 xl:mb-16"
+        >
+          <p className="text-xs xl:text-sm font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#0093cb]">
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+            Shop by Category
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+          </p>
+
+          <h2 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-[#1a1a1a]">
+             Our <span className="text-[#0093cb]">Products</span>
+          </h2>
+
+          <div className="flex justify-center items-center gap-2 sm:gap-3">
+            <div className="w-6 sm:w-8 h-[1.5px] bg-[#0093cb]/30" />
+            <div className="w-12 sm:w-14 md:w-16 h-1 bg-[#0093cb] rounded-full" />
+            <div className="w-6 sm:w-8 h-[1.5px] bg-[#0093cb]/30" />
+          </div>
+        </motion.div>
+
         {/* Categories Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 xl:gap-8 mb-10 sm:mb-12 lg:mb-12 xl:mb-16">
           {CATEGORIES.map((item, index) => (
