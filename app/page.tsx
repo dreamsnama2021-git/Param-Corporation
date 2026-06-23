@@ -10,10 +10,12 @@ import AboutUs from "@/components/AboutUs";
 import FastestGrowing from "@/components/FastGrowing";
 import InstagramReels from "@/components/Instagram";
 import PopupForm from "@/components/PopupForm";
+import CategoryShowcase from "@/components/CategoryBanner";
 
 export default function Page() {
   return (
     <main className="overflow-x-hidden">
+      <CategoryShowcase/>
       <Hero />
       <AboutUs />
       <ProductSections />
@@ -43,7 +45,7 @@ export default function Page() {
           formEndpoint="..."    // Your API endpoint
       ==================================================================== */}
       <PopupForm
-        delay={1500}
+        delay={25000}
         title="Get In Touch"
         // subtitle="Fill out the form and our team will get back to you within 24 hours."
         buttonText="Submit"

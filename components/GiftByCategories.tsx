@@ -136,6 +136,7 @@ function GiftsByCategories() {
   return (
     <section className="w-full bg-[#fafcff] py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
+<<<<<<< HEAD
         {/* Section Header - Now Added */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -161,6 +162,10 @@ function GiftsByCategories() {
           </div>
         </motion.div>
 
+=======
+        {/* Section Header - same as above */}
+        
+>>>>>>> 18dded464f0e325ed34785339d396f585f9d7a72
         {/* Categories Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 xl:gap-8 mb-10 sm:mb-12 lg:mb-12 xl:mb-16">
           {CATEGORIES.map((item, index) => (
