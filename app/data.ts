@@ -105,7 +105,7 @@ export const personalizedGifts: CategoryItem[] = [
   { name: "Name Plate", slug: "photo-gifts", description: "Personalized photo items and collages" },
   { name: "3D Printed Plates", slug: "custom-stationery", description: "Branded and personalized stationery sets" },
   { name: "Personalized Desk Utility", slug: "embossed-leather", description: "Personalized leather goods and accessories" },
-  { name: "Personalized Gifts", slug: "engraved-keychains", description: "Custom metal and wooden keychains" },
+  // { name: "Personalized Gifts", slug: "engraved-keychains", description: "Custom metal and wooden keychains" },
 ];
 
 // 7. Digital Gifts (Tech and electronic items)
