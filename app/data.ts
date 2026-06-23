@@ -46,10 +46,7 @@ export const categories: CategoryItem[] = [
   { name: "Indoor Plants", slug: "indoor-plants", description: "Thoughtful and premium doctor gifting solutions designed to create a calming clinic environment while offering memorable brand presence." },
   { name: "Calendars", slug: "calendars", description: "Custom-designed branded calendars created as practical pharma promotional gifts that ensure year-round doctor engagement and consistent brand visibility." },
   { name: "Photo Frames", slug: "photo-frames", description: "Elegant customized photo frames designed to create subtle but long-lasting pharma branding presence in doctors’ clinics and personal workspaces." },
-  { name: "Pharma Launch Kits", slug: "pharma-launch-kits", description: "Comprehensive branding kits for pharmaceutical product launches and promotions" },
-  { name: "Custom Doctor Kits", slug: "custom-doctor-kits", description: "Personalized gift kits tailored for doctors with pharma branding and utilities" },
-  { name: "Surgical Tools", slug: "surgical-tools", description: "Branded surgical instruments and tools for medical professionals and hospitals" },
-  { name: "Custom Training Models", slug: "custom-training-models", description: "Educational medical models customized for pharma training and demonstrations" },
+  
 ];
 
 // 3. By Price

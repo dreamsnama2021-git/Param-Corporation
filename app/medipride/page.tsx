@@ -246,31 +246,37 @@ const SERVICES = [
     title: "Patient Education Tools",
     desc: "Simplifying medical information to help patients understand conditions and treatments better.",
     icon: <Users size={28} />,
+    backgroundImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop", // Medical consultation
   },
   {
     title: "Medical Content & Visual Communication",
     desc: "Transforming complex medical data into clear, engaging, and visually impactful content.",
     icon: <FileText size={28} />,
+    backgroundImage: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=800&h=600&fit=crop", // Medical documents/lab
   },
   {
     title: "Flipcharts & Educational Kits",
     desc: "Interactive tools designed to support doctors in explaining medical concepts effectively.",
     icon: <Presentation size={28} />,
+    backgroundImage: "https://images.unsplash.com/photo-1584467735867-0772e3f6b4d6?w=800&h=600&fit=crop", // Doctor with patient
   },
   {
     title: "Posters & Awareness Materials",
     desc: "Visually driven materials that promote awareness, prevention, and better health understanding.",
     icon: <Monitor size={28} />,
+    backgroundImage: "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=800&h=600&fit=crop", // Healthcare awareness
   },
   {
     title: "Doctor Engagement Tools",
     desc: "Strategic solutions that help pharma brands connect meaningfully with healthcare professionals.",
     icon: <Activity size={28} />,
+    backgroundImage: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&h=600&fit=crop", // Medical team
   },
   {
     title: "Concept-Based Healthcare Communication",
     desc: "Creative communication ideas built around therapy, brand, and patient understanding.",
     icon: <Lightbulb size={28} />,
+    backgroundImage: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop", // Medical innovation
   },
 ];
 
@@ -713,83 +719,100 @@ function MediPrideContent() {
         </div>
       </section>
 
-      {/* service */}
-      <section className="py-10 sm:py-12 md:py-14 lg:py-16 bg-slate-50 overflow-hidden">
-        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
-          <div
-            className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16"
-            data-aos="fade-up"
-            data-aos-duration="800"
-          >
-            <span
-              className="text-[#00a65d] font-bold uppercase tracking-widest text-[10px] sm:text-xs md:text-sm inline-block"
-              data-aos="fade-down"
-              data-aos-delay="100"
-            >
-              Core Offerings
-            </span>
-            <h2
-              className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mt-1.5 sm:mt-2"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              Specialized Medical{" "}
-              <span className="text-[#0093cb] relative inline-block">
-                Communication Solutions
-                <span className="absolute -bottom-1 left-0 w-full h-1 bg-[#0093cb]/20 rounded-full transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></span>
-              </span>
-            </h2>
-          </div>
+   {/* service */}
+<section className="py-10 sm:py-12 md:py-14 lg:py-16 bg-slate-50 overflow-hidden">
+  <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
+    <div
+      className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16"
+      data-aos="fade-up"
+      data-aos-duration="800"
+    >
+      <span
+        className="text-[#00a65d] font-bold uppercase tracking-widest text-[12px] sm:text-xs md:text-sm xl:text-base inline-block"
+        data-aos="fade-down"
+        data-aos-delay="100"
+      >
+        Core Offerings
+      </span>
+      <h2
+        className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mt-1.5 sm:mt-2"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        Specialized Medical{" "}
+        <span className="text-[#0093cb] relative inline-block">
+          Communication Solutions
+          <span className="absolute -bottom-1 left-0 w-full h-1 bg-[#0093cb]/20 rounded-full transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></span>
+        </span>
+      </h2>
+    </div>
 
-          <SwipeCarousel count={SERVICES.length} accentColor="#0093cb">
-            {SERVICES.map((service, index) => (
-              <div
-                key={index}
-                className="snap-center flex-shrink-0 w-[82vw] sm:w-[46vw] bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 text-center shadow-sm border border-slate-100 card-hover-effect"
-              >
-                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#0093cb]/10 rounded-xl sm:rounded-2xl flex items-center justify-center text-[#0093cb] mx-auto mb-4 sm:mb-5 group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
-                </div>
-                <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 sm:mb-2 group-hover:text-[#0093cb] transition-colors duration-300">
-                  {service.title}
-                </h3>
-                <p className="text-slate-500 leading-relaxed text-xs sm:text-sm">
-                  {service.desc}
-                </p>
-              </div>
-            ))}
-          </SwipeCarousel>
-
-          <div className="hidden lg:grid grid-cols-3 gap-6 lg:gap-8">
-            {SERVICES.map((service, index) => (
-              <div
-                key={index}
-                className="group relative bg-white rounded-2xl xl:rounded-3xl p-6 xl:p-8 text-center shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100"
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-                data-aos-duration="600"
-                style={{
-                  animation: `slideUpFade 0.6s ease-out ${index * 0.1}s forwards`,
-                  opacity: 0,
-                }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0093cb]/5 to-transparent rounded-2xl xl:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-14 h-14 xl:w-16 xl:h-16 bg-[#0093cb]/10 rounded-xl xl:rounded-2xl flex items-center justify-center text-[#0093cb] mx-auto mb-5 xl:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    {service.icon}
-                  </div>
-                  <h3 className="text-lg xl:text-xl font-bold text-slate-900 mb-2 xl:mb-3 group-hover:text-[#0093cb] transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate-500 leading-relaxed text-sm xl:text-base">
-                    {service.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
+    <SwipeCarousel count={SERVICES.length} accentColor="#0093cb">
+      {SERVICES.map((service, index) => (
+        <div
+          key={index}
+          className="snap-center flex-shrink-0 w-[82vw] sm:w-[46vw] bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 text-center shadow-sm border border-slate-100 card-hover-effect relative overflow-hidden min-h-[280px] sm:min-h-[320px]"
+          style={{
+            backgroundImage: `url(${service.backgroundImage || 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop'})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/50 rounded-2xl sm:rounded-3xl"></div>
+          
+          {/* Content */}
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 backdrop-blur-sm rounded-xl sm:rounded-2xl flex items-center justify-center text-white mx-auto mb-4 sm:mb-5 group-hover:scale-110 transition-transform duration-300 border border-white/30">
+              {service.icon}
+            </div>
+            <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2 group-hover:text-[#0093cb] transition-colors duration-300">
+              {service.title}
+            </h3>
+            <p className="text-white/90 leading-relaxed text-xs sm:text-sm xl:text-base">
+              {service.desc}
+            </p>
           </div>
         </div>
-      </section>
+      ))}
+    </SwipeCarousel>
+
+    <div className="hidden lg:grid grid-cols-3 gap-6 lg:gap-8">
+      {SERVICES.map((service, index) => (
+        <div
+          key={index}
+          className="group relative bg-white rounded-2xl xl:rounded-3xl p-6 xl:p-8 text-center shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100 min-h-[300px] xl:min-h-[340px] overflow-hidden"
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+          data-aos-duration="600"
+          style={{
+            animation: `slideUpFade 0.6s ease-out ${index * 0.1}s forwards`,
+            opacity: 0,
+            backgroundImage: `url(${service.backgroundImage || 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop'})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/40 rounded-2xl xl:rounded-3xl"></div>
+          
+          {/* Content */}
+          <div className="relative z-10 flex flex-col items-center justify-center h-full">
+            <div className="w-14 h-14 xl:w-16 xl:h-16 bg-white/20 backdrop-blur-sm rounded-xl xl:rounded-2xl flex items-center justify-center text-white mx-auto mb-5 xl:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border border-white/30">
+              {service.icon}
+            </div>
+            <h3 className="text-lg xl:text-xl font-bold text-white mb-2 xl:mb-3 group-hover:text-[#0093cb] transition-colors duration-300">
+              {service.title}
+            </h3>
+            <p className="text-white/90 leading-relaxed text-sm xl:text-base">
+              {service.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
       <div>
         <TherapyCollageGrid

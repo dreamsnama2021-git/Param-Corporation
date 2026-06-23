@@ -528,7 +528,7 @@ function CollageGallerySection() {
                     text-white px-5 lg:px-6 xl:px-8 py-2.5 lg:py-3 xl:py-3.5 rounded-full font-semibold text-sm xl:text-base 
                     transition-all duration-300 hover:shadow-lg hover:shadow-[#0093cb]/30 active:scale-95 mx-auto"
                 >
-                  <span>See All ({koruGalleryImages.length - INITIAL_COUNT}+ more)</span>
+                  <span>See All </span>
                   <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
                 </button>
               ) : (

@@ -91,15 +91,9 @@ export default function Navbar() {
   }
 
   const mainNavItems = [
-<<<<<<< HEAD
     // { label: "Digital Inputs", href: "/digital-gifts", isButton: true },
     // { label: "Koru", href: "/koru", isButton: true },
     // { label: "Medipride", href: "/medipride", isButton: true },
-=======
-    { label: "Digital Inputs", href: "/digital-gifts", isButton: true },
-    { label: "Koru", href: "/koru", isButton: true },
-    { label: "Medipride", href: "/medipride", isButton: true },
->>>>>>> 18dded464f0e325ed34785339d396f585f9d7a72
     { label: "About Us", href: "/about-us" },
     { label: "Case Study", href: "/case-study" },
     { label: "Contact Us", href: "/contact-us" },

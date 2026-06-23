@@ -8,19 +8,23 @@ import { ArrowRight } from "lucide-react";
 const categories = [
   {
     title: "Digital Input",
-    image:"https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png",
+    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png",
+    href: "/digital-gifts", // Added href
   },
   {
     title: "Koru",
     image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/4.png",
+    href: "/koru", // Added href
   },
   {
     title: "Medipride",
     image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_03_15%20PM.png",
+    href: "/medipride", // Added href
   },
   {
     title: "Pharma Launch",
     image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_15_09%20PM.png",
+    href: "/pharma-launch/all?tab=all", // Added href (you can change this to the correct path)
   },
 ];
 
@@ -82,7 +86,7 @@ export default function BrandCategories() {
                 show: { opacity: 1, y: 0 },
               }}
             >
-              <Link href="#" className="group block">
+              <Link href={item.href} className="group block"> {/* Changed href to use item.href */}
                 <div className="flex flex-col items-center">
                   {/* Circle Image */}
                   <div className="relative">
@@ -109,7 +113,6 @@ export default function BrandCategories() {
                       <img
                         src={item.image}
                         alt={item.title}
-                       
                         className="object-contain object-top transition duration-700 group-hover:scale-110"
                       />
 

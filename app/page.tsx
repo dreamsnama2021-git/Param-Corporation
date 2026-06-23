@@ -1,8 +1,7 @@
 // app/page.tsx
 import Hero from "@/components/Hero";
 import ProductSections from "@/components/GiftByCategories";
-import SubCategory from "@/components/Category";
-import Testimonial, { TestimonialCardsVariant } from "@/components/Testimonial";
+import  { TestimonialCardsVariant } from "@/components/Testimonial";
 import CaseStudy from "@/components/CaseStudy";
 import ClientSection from "@/components/Clientele";
 import CreativeStatsSection from "@/components/Counter";
@@ -13,9 +12,10 @@ import PopupForm from "@/components/PopupForm";
 import CategoryShowcase from "@/components/CategoryBanner";
 
 export default function Page() {
+  const POPUP_DELAY = 2 * 60 * 1000; // 2 minutes in milliseconds
   return (
     <main className="overflow-x-hidden">
-      <CategoryShowcase/>
+      <CategoryShowcase />
       <Hero />
       <AboutUs />
       <ProductSections />
@@ -44,10 +44,10 @@ export default function Page() {
           buttonText="Send"     // Custom button text
           formEndpoint="..."    // Your API endpoint
       ==================================================================== */}
+
       <PopupForm
-        delay={25000}
+        delay={POPUP_DELAY}
         title="Get In Touch"
-        // subtitle="Fill out the form and our team will get back to you within 24 hours."
         buttonText="Submit"
         formEndpoint="/api/contact"
       />
