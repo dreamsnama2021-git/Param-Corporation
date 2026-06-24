@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Easing } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 const categories = [
@@ -49,13 +49,16 @@ const containerVariants = {
   },
 };
 
+// Define custom easing as a proper Easing type
+const customEase: Easing = [0.22, 1, 0.36, 1] as Easing;
+
 const itemVariants = {
   hidden: { opacity: 0, y: 40, scale: 0.95 },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.55, ease: customEase },
   },
 };
 
@@ -79,13 +82,13 @@ export default function BrandCategories() {
         }}
       />
 
-      <div className="relative  mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.55, ease: customEase }}
           className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
         >
           <div>
@@ -138,7 +141,6 @@ export default function BrandCategories() {
                     <div
                       className="
                         relative
-                        
                         h-56 w-56
                         overflow-hidden
                         rounded-full
