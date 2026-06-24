@@ -998,10 +998,8 @@ function CategorySection({
 
 // ─── Main Page Component ──────────────────────────────────────────
 function PharmaLaunchPageContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const tabParam = searchParams.get("tab") as TabId | null;
+  // Use state for active tab instead of URL params
+  const [activeTab, setActiveTab] = useState<TabId>("all");
   const [lightboxState, setLightboxState] = useState({
     isOpen: false,
     imageUrl: "",
@@ -1009,10 +1007,10 @@ function PharmaLaunchPageContent() {
   });
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
-  const activeTab: TabId = tabParam && TABS.some((t) => t.id === tabParam) ? tabParam : "all";
   const activeTabColor = TABS.find((t) => t.id === activeTab)?.color || BRAND.primary;
   const tabCategories = useMemo(() => getCategoriesForTab(activeTab), [activeTab]);
 
+  // Handle hash-based navigation for category scrolling
   useEffect(() => {
     const hash = window.location.hash;
     if (hash && hash.startsWith('#category-')) {
@@ -1050,7 +1048,7 @@ function PharmaLaunchPageContent() {
   }, [groupedProducts]);
 
   const handleTabSelect = (tabId: TabId) => {
-    router.push(`/pharma-launch?tab=${tabId}`, { scroll: false });
+    setActiveTab(tabId);
   };
 
   const handleImageClick = (product: any) => {

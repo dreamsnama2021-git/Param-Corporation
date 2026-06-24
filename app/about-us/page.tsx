@@ -530,11 +530,7 @@ const TeamSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-<<<<<<< HEAD
-          className="max-w-3xl mx-auto text-center mb-10 sm:mb-12 md:mb-16"
-=======
           className="max-w-5xl mx-auto text-center mb-10 sm:mb-12 md:mb-16"
->>>>>>> 18dded464f0e325ed34785339d396f585f9d7a72
         >
           <p className="text-sm sm:text-base text-[#6b7280] leading-relaxed">
             Our team understands the unique dynamics of pharmaceutical
@@ -547,11 +543,7 @@ const TeamSection = () => {
         </motion.div>
 
         {/* Team Grid */}
-<<<<<<< HEAD
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
-=======
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
->>>>>>> 18dded464f0e325ed34785339d396f585f9d7a72
           {team.map((member, idx) => (
             <TeamCard key={idx} member={member} />
           ))}
