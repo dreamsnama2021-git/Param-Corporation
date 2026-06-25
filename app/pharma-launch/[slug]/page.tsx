@@ -436,7 +436,6 @@ const BRAND = {
 
 const TABS = [
   { id: "all", label: "All Products", color: BRAND.primary },
-  { id: "categories", label: "Categories", color: BRAND.primary },
 ] as const;
 
 type TabId = (typeof TABS)[number]["id"];
@@ -446,7 +445,6 @@ const MAX_PRODUCTS_PER_CATEGORY = 8;
 // ─── Helper Functions ──────────────────────────────────────────────
 const getCategoriesForTab = (tabId: TabId) => {
   if (tabId === "all") return pharmaCategories;
-  if (tabId === "categories") return pharmaCategories;
   return [];
 };
 
@@ -697,32 +695,50 @@ function DownloadCatalogueModal({
 function SidebarWithSubcategories({
   activeTab,
   onSelect,
+  onCategorySelect,
+  selectedCategory,
 }: {
   activeTab: TabId;
   onSelect: (tabId: TabId) => void;
+  onCategorySelect: (categorySlug: string | null) => void;
+  selectedCategory: string | null;
 }) {
-  const subCategories = useMemo(() => {
-    if (activeTab === "all") return [];
-    return getCategoriesForTab(activeTab);
-  }, [activeTab]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const getCount = (tabId: TabId) => {
-    if (tabId === "all") return pharmaProducts.length;
-    const cats = getCategoriesForTab(tabId);
-    return pharmaProducts.filter((p) => cats.some((cat) => cat.slug === p.category)).length;
-  };
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const getSubCategoryCount = (slug: string) => {
     return pharmaProducts.filter((p) => p.category === slug).length;
   };
 
-  const handleSubCategoryClick = (slug: string) => {
-    const element = document.getElementById(`category-${slug}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      element.classList.add('highlight-category');
-      setTimeout(() => element.classList.remove('highlight-category'), 3000);
-    }
+  const handleAllProductsClick = () => {
+    setIsDropdownOpen(false);
+    onCategorySelect(null);
+    onSelect("all");
+  };
+
+  const handleCategoryClick = (categorySlug: string) => {
+    setIsDropdownOpen(false);
+    onCategorySelect(categorySlug);
+    onSelect("all");
+    setTimeout(() => {
+      const element = document.getElementById(`category-${categorySlug}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        element.classList.add('highlight-category');
+        setTimeout(() => element.classList.remove('highlight-category'), 3000);
+      }
+    }, 100);
   };
 
   return (
@@ -733,69 +749,68 @@ function SidebarWithSubcategories({
           <div className="h-px flex-1 bg-gray-200" />
         </div>
 
-        <div className="bg-white rounded-xl border-2 border-gray-200 shadow-sm overflow-hidden">
-          {TABS.map((tab, index) => {
-            const count = getCount(tab.id);
-            const isSelected = activeTab === tab.id;
-            const hasSubcategories = tab.id !== "all";
+        <div className="bg-white rounded-xl border-2 border-gray-200 shadow-sm overflow-hidden" ref={dropdownRef}>
+          {/* Main Dropdown Button - Shows current selection */}
+          <button
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="w-full flex items-center justify-between py-3 px-4 text-left transition-colors hover:bg-gray-50 border-b border-gray-100"
+            type="button"
+          >
+            <div className="flex items-center gap-3">
+              <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: BRAND.primary }} />
+              <span className="text-sm font-semibold text-[#060706]">
+                {selectedCategory 
+                  ? pharmaCategories.find(c => c.slug === selectedCategory)?.name 
+                  : "All Products"}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-gray-400">
+                {selectedCategory 
+                  ? getSubCategoryCount(selectedCategory)
+                  : pharmaProducts.length}
+              </span>
+              <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`} />
+            </div>
+          </button>
 
-            return (
-              <div key={tab.id}>
-                <button
-                  onClick={() => onSelect(tab.id)}
-                  className={`w-full flex items-center justify-between py-3 px-4 text-left transition-colors relative ${
-                    isSelected ? "bg-gray-50" : "hover:bg-gray-50"
-                  } ${index !== TABS.length - 1 ? "border-b border-gray-100" : ""}`}
-                  type="button"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: tab.color }} />
-                    <span className={`text-sm ${isSelected ? "font-semibold text-[#060706]" : "text-gray-700"}`}>
-                      {tab.label}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-400">{count}</span>
-                    {hasSubcategories && (
-                      <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${isSelected ? "rotate-180" : ""}`} />
-                    )}
-                  </div>
-                </button>
-
-                <AnimatePresence>
-                  {isSelected && subCategories.length > 0 && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="bg-gray-50/50 border-t border-gray-100 overflow-hidden"
-                    >
-                      <div className="py-2 px-2 space-y-0.5 max-h-[50vh] overflow-y-auto scrollbar-hide">
-                        {subCategories.map((cat) => {
-                          const count = getSubCategoryCount(cat.slug);
-                          return (
-                            <button
-                              key={cat.slug}
-                              onClick={() => handleSubCategoryClick(cat.slug)}
-                              className="w-full group flex items-center justify-between py-2.5 px-3 rounded-lg text-sm text-gray-600 hover:text-[#060706] hover:bg-white transition-all text-left"
-                              type="button"
-                            >
-                              <div className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#0093cb] transition-colors" />
-                                <span className="line-clamp-1">{cat.name}</span>
-                              </div>
-                              <span className="text-xs text-gray-400 ml-2 flex-shrink-0">{count}</span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
+          {/* Dropdown Menu - Only shows categories, not "All Products" again */}
+          <AnimatePresence>
+            {isDropdownOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2 }}
+                className="overflow-hidden"
+              >
+                <div className="py-2 px-2 space-y-0.5 bg-gray-50/50 border-t border-gray-100">
+                  {/* Category Options - No "All Products" here since it's already the main button */}
+                  {pharmaCategories.map((cat) => {
+                    const count = getSubCategoryCount(cat.slug);
+                    const isSelected = selectedCategory === cat.slug;
+                    return (
+                      <button
+                        key={cat.slug}
+                        onClick={() => handleCategoryClick(cat.slug)}
+                        className={`w-full group flex items-center justify-between py-2.5 px-3 rounded-lg text-sm hover:text-[#060706] hover:bg-white transition-all text-left ${
+                          isSelected ? "text-[#0093cb] bg-white" : "text-gray-600"
+                        }`}
+                        type="button"
+                      >
+                        <div className="flex items-center gap-2">
+                          {isSelected && <Check className="w-3.5 h-3.5 text-[#0093cb]" />}
+                          {!isSelected && <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#0093cb] transition-colors" />}
+                          <span className={isSelected ? "font-medium" : ""}>{cat.name}</span>
+                        </div>
+                        <span className="text-xs text-gray-400 ml-2 flex-shrink-0">{count}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>
@@ -953,7 +968,6 @@ function CategorySection({
                 {group.icon}
               </div>
               <h2 className="text-xl lg:text-2xl font-bold text-[#060706]">{group.categoryName}</h2>
-              <span className="text-sm text-gray-400 font-normal">({group.products.length})</span>
             </div>
             {group.description && <p className="text-sm text-gray-500">{group.description}</p>}
             <div className="mt-3 w-16 h-1 rounded-full" style={{ background: `linear-gradient(to right, ${BRAND.primary}, ${BRAND.secondary})` }} />
@@ -987,7 +1001,7 @@ function CategorySection({
             {showAll ? (
               <>Show Less <ChevronDown className="w-4 h-4" /></>
             ) : (
-              <>Show More ({group.products.length - MAX_PRODUCTS_PER_CATEGORY} more) <ChevronDown className="w-4 h-4" /></>
+              <>Show More <ChevronDown className="w-4 h-4" /></>
             )}
           </button>
         </div>
@@ -998,8 +1012,8 @@ function CategorySection({
 
 // ─── Main Page Component ──────────────────────────────────────────
 function PharmaLaunchPageContent() {
-  // Use state for active tab instead of URL params
   const [activeTab, setActiveTab] = useState<TabId>("all");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [lightboxState, setLightboxState] = useState({
     isOpen: false,
     imageUrl: "",
@@ -1008,27 +1022,25 @@ function PharmaLaunchPageContent() {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
   const activeTabColor = TABS.find((t) => t.id === activeTab)?.color || BRAND.primary;
-  const tabCategories = useMemo(() => getCategoriesForTab(activeTab), [activeTab]);
-
-  // Handle hash-based navigation for category scrolling
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (hash && hash.startsWith('#category-')) {
-      const categorySlug = hash.replace('#category-', '');
-      setTimeout(() => {
-        const element = document.getElementById(`category-${categorySlug}`);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          element.classList.add('highlight-category');
-          setTimeout(() => element.classList.remove('highlight-category'), 3000);
-        }
-      }, 500);
+  
+  // Filter products based on selected category
+  const filteredProducts = useMemo(() => {
+    if (selectedCategory) {
+      return pharmaProducts.filter((p) => p.category === selectedCategory);
     }
-  }, [activeTab]);
+    return pharmaProducts;
+  }, [selectedCategory]);
 
+  // Group products by category
   const groupedProducts = useMemo(() => {
     const groups: { categoryName: string; categorySlug: string; products: any[]; description?: string; icon?: any }[] = [];
-    tabCategories.forEach((cat) => {
+    
+    // If a specific category is selected, only show that category
+    const categoriesToShow = selectedCategory 
+      ? pharmaCategories.filter(cat => cat.slug === selectedCategory)
+      : pharmaCategories;
+    
+    categoriesToShow.forEach((cat) => {
       const products = pharmaProducts.filter((p) => p.category === cat.slug);
       if (products.length > 0) {
         groups.push({
@@ -1040,17 +1052,25 @@ function PharmaLaunchPageContent() {
         });
       }
     });
+    
     return groups;
-  }, [tabCategories]);
+  }, [selectedCategory]);
 
   const totalProducts = useMemo(() => {
-    return groupedProducts.reduce((sum, group) => sum + group.products.length, 0);
-  }, [groupedProducts]);
+    return filteredProducts.length;
+  }, [filteredProducts]);
 
   const handleTabSelect = (tabId: TabId) => {
     setActiveTab(tabId);
   };
 
+  // Handle category selection from dropdown
+  const handleCategorySelect = (categorySlug: string | null) => {
+    setSelectedCategory(categorySlug);
+    setActiveTab("all");
+  };
+
+  // Handle image click for lightbox
   const handleImageClick = (product: any) => {
     const imageUrl = product.image || (product.images && product.images[0]);
     setLightboxState({
@@ -1064,6 +1084,24 @@ function PharmaLaunchPageContent() {
     setLightboxState(prev => ({ ...prev, isOpen: false }));
   };
 
+  // Handle hash-based navigation for category scrolling
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#category-')) {
+      const categorySlug = hash.replace('#category-', '');
+      setSelectedCategory(categorySlug);
+      setActiveTab("all");
+      setTimeout(() => {
+        const element = document.getElementById(`category-${categorySlug}`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          element.classList.add('highlight-category');
+          setTimeout(() => element.classList.remove('highlight-category'), 3000);
+        }
+      }, 500);
+    }
+  }, []);
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: listingStyles }} />
@@ -1074,25 +1112,56 @@ function PharmaLaunchPageContent() {
           <div className="flex flex-col lg:flex-row gap-4 xl:gap-8 2xl:gap-12">
             <aside className="lg:w-64 flex-shrink-0">
               <div className="sticky top-[100px]">
-                <SidebarWithSubcategories activeTab={activeTab} onSelect={handleTabSelect} />
+                <SidebarWithSubcategories 
+                  activeTab={activeTab} 
+                  onSelect={handleTabSelect}
+                  onCategorySelect={handleCategorySelect}
+                  selectedCategory={selectedCategory}
+                />
               </div>
             </aside>
 
             <main className="flex-1 min-w-0">
+              {/* Active filter indicator */}
+              {selectedCategory && (
+                <div className="mb-4 flex items-center gap-2">
+                  <span className="text-sm text-gray-500">Filtered by:</span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0093cb]/10 text-[#0093cb] text-sm font-medium">
+                    {pharmaCategories.find(c => c.slug === selectedCategory)?.name}
+                    <button
+                      onClick={() => {
+                        setSelectedCategory(null);
+                        setActiveTab("all");
+                      }}
+                      className="hover:bg-[#0093cb]/20 rounded-full p-0.5 transition-colors"
+                      type="button"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </span>
+                </div>
+              )}
+
               {groupedProducts.length === 0 ? (
                 <div className="text-center py-20">
                   <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-[#0093cb]/5 flex items-center justify-center">
                     <Package className="w-8 h-8 text-[#0093cb]/40" />
                   </div>
-                  <p className="text-gray-500 text-lg">No products found.</p>
+                  <p className="text-gray-500 text-lg">No products found in this category.</p>
                 </div>
               ) : (
                 <>
                   <div className="mb-8 flex items-center justify-between flex-wrap gap-4">
-                    <p className="text-sm text-gray-500">
-                      Showing <span className="font-semibold text-[#060706]">{totalProducts}</span> products
-                      in <span className="font-semibold text-[#060706]">{groupedProducts.length}</span> categories
-                    </p>
+                    <div>
+                      <h1 className="text-2xl lg:text-3xl font-bold text-[#060706]">
+                        {selectedCategory 
+                          ? pharmaCategories.find(c => c.slug === selectedCategory)?.name 
+                          : "All Products"}
+                      </h1>
+                      <p className="text-sm text-gray-500 mt-1">
+                        {totalProducts} product{totalProducts !== 1 ? 's' : ''} available
+                      </p>
+                    </div>
                     <button
                       onClick={() => setIsDownloadModalOpen(true)}
                       className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all shadow-md hover:shadow-lg text-white"
