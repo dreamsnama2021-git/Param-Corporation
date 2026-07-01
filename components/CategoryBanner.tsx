@@ -8,6 +8,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 const categories = [
   {
     title: "Digital Input",
+    description: "Transform your ideas into stunning digital experiences",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png",
     href: "/digital-gifts",
@@ -16,6 +17,7 @@ const categories = [
   },
   {
     title: "Koru",
+    description: "Embrace the beauty of new beginnings and growth",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/4.png",
     href: "/koru",
@@ -24,6 +26,7 @@ const categories = [
   },
   {
     title: "Medipride",
+    description: "Empowering healthcare with pride and innovation",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_03_15%20PM.png",
     href: "/medipride",
@@ -32,6 +35,7 @@ const categories = [
   },
   {
     title: "Pharma Launch",
+    description: "Bringing breakthrough medicines to the world",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_15_09%20PM.png",
     href: "/pharma-launch/all?tab=all",
@@ -178,9 +182,14 @@ export default function BrandCategories() {
                     {item.title}
                   </h3>
 
+                  {/* ✨ NEW: Description line under title */}
+                  <p className="mt-1 sm:mt-1.5 md:mt-2 text-center text-[10px] sm:text-xs md:text-sm text-slate-500 max-w-[140px] sm:max-w-[160px] md:max-w-[200px] lg:max-w-[220px] leading-tight">
+                    {item.description}
+                  </p>
+
                   {/* Animated underline */}
                   <div
-                    className={`mt-1 sm:mt-1.5 md:mt-2 h-[2px] w-0 rounded-full bg-gradient-to-r ${item.accent} transition-all duration-500 group-hover:w-6 sm:group-hover:w-8 md:group-hover:w-10 lg:group-hover:w-12`}
+                    className={`mt-1.5 sm:mt-2 md:mt-2.5 h-[2px] w-0 rounded-full bg-gradient-to-r ${item.accent} transition-all duration-500 group-hover:w-6 sm:group-hover:w-8 md:group-hover:w-10 lg:group-hover:w-12`}
                   />
 
                   {/* Arrow nudge */}

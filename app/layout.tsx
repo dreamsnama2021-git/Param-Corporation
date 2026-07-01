@@ -8,7 +8,8 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import BackgroundDecoration from "@/components/BackgroundDecoration";
 import ContentProtection from "@/components/ContentProtection";
 import Script from "next/script";
-
+import BrandNavButton from "@/components/BrandNavButton";
+import FloatingButtons from "@/components/FloatingButtons";
 // Primary Font for Headings
 const display = Poppins({
   subsets: ["latin"],
@@ -47,7 +48,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Navbar />
           <main className="flex-grow">{children}</main>
           <Footer />
-          <WhatsAppButton />
+          <FloatingButtons />
         </div>
       </body>
     </html>

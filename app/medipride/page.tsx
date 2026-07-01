@@ -766,7 +766,7 @@ function MediPrideContent() {
             <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 backdrop-blur-sm rounded-xl sm:rounded-2xl flex items-center justify-center text-white mx-auto mb-4 sm:mb-5 group-hover:scale-110 transition-transform duration-300 border border-white/30">
               {service.icon}
             </div>
-            <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2 group-hover:text-[#0093cb] transition-colors duration-300">
+            <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2  transition-colors duration-300">
               {service.title}
             </h3>
             <p className="text-white/90 leading-relaxed text-xs sm:text-sm xl:text-base">
