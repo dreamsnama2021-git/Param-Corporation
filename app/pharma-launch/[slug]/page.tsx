@@ -731,6 +731,7 @@ function SidebarWithSubcategories({
     setIsDropdownOpen(false);
     onCategorySelect(categorySlug);
     onSelect("all");
+    // Scroll to category after state update
     setTimeout(() => {
       const element = document.getElementById(`category-${categorySlug}`);
       if (element) {
@@ -738,7 +739,7 @@ function SidebarWithSubcategories({
         element.classList.add('highlight-category');
         setTimeout(() => element.classList.remove('highlight-category'), 3000);
       }
-    }, 100);
+    }, 200);
   };
 
   return (
@@ -750,7 +751,7 @@ function SidebarWithSubcategories({
         </div>
 
         <div className="bg-white rounded-xl border-2 border-gray-200 shadow-sm overflow-hidden" ref={dropdownRef}>
-          {/* Main Dropdown Button - Shows current selection */}
+          {/* Main Dropdown Button - ALWAYS shows "All Products" */}
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             className="w-full flex items-center justify-between py-3 px-4 text-left transition-colors hover:bg-gray-50 border-b border-gray-100"
@@ -759,22 +760,18 @@ function SidebarWithSubcategories({
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: BRAND.primary }} />
               <span className="text-sm font-semibold text-[#060706]">
-                {selectedCategory 
-                  ? pharmaCategories.find(c => c.slug === selectedCategory)?.name 
-                  : "All Products"}
+                All Products
               </span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-xs text-gray-400">
-                {selectedCategory 
-                  ? getSubCategoryCount(selectedCategory)
-                  : pharmaProducts.length}
+                {pharmaProducts.length}
               </span>
               <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`} />
             </div>
           </button>
 
-          {/* Dropdown Menu - Only shows categories, not "All Products" again */}
+          {/* Dropdown Menu - ONLY categories, NO "All Products" duplicate */}
           <AnimatePresence>
             {isDropdownOpen && (
               <motion.div
@@ -785,7 +782,7 @@ function SidebarWithSubcategories({
                 className="overflow-hidden"
               >
                 <div className="py-2 px-2 space-y-0.5 bg-gray-50/50 border-t border-gray-100">
-                  {/* Category Options - No "All Products" here since it's already the main button */}
+                  {/* Only Category Options - No "All Products" here since it's already the main button */}
                   {pharmaCategories.map((cat) => {
                     const count = getSubCategoryCount(cat.slug);
                     const isSelected = selectedCategory === cat.slug;
@@ -816,7 +813,6 @@ function SidebarWithSubcategories({
     </div>
   );
 }
-
 // ─── Image Lightbox ──────────────────────────────────────────────
 function ImageLightboxModal({
   imageUrl,
@@ -936,11 +932,13 @@ function CategorySection({
   activeTabColor,
   onViewAll,
   onImageClick,
+  isHighlighted = false,
 }: {
   group: any;
   activeTabColor: string;
   onViewAll: (categorySlug: string, categoryName: string) => void;
   onImageClick: (product: any) => void;
+  isHighlighted?: boolean;
 }) {
   const [showAll, setShowAll] = useState(false);
   const displayedProducts = showAll 
@@ -959,7 +957,10 @@ function CategorySection({
   };
 
   return (
-    <section id={`category-${group.categorySlug}`} className="category-section">
+    <section 
+      id={`category-${group.categorySlug}`} 
+      className={`category-section ${isHighlighted ? 'highlight-category' : ''}`}
+    >
       <div className="mb-6">
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div>
@@ -1020,27 +1021,15 @@ function PharmaLaunchPageContent() {
     productName: "",
   });
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [highlightedCategory, setHighlightedCategory] = useState<string | null>(null);
 
   const activeTabColor = TABS.find((t) => t.id === activeTab)?.color || BRAND.primary;
   
-  // Filter products based on selected category
-  const filteredProducts = useMemo(() => {
-    if (selectedCategory) {
-      return pharmaProducts.filter((p) => p.category === selectedCategory);
-    }
-    return pharmaProducts;
-  }, [selectedCategory]);
-
-  // Group products by category
+  // Group ALL products by category - always show all
   const groupedProducts = useMemo(() => {
     const groups: { categoryName: string; categorySlug: string; products: any[]; description?: string; icon?: any }[] = [];
     
-    // If a specific category is selected, only show that category
-    const categoriesToShow = selectedCategory 
-      ? pharmaCategories.filter(cat => cat.slug === selectedCategory)
-      : pharmaCategories;
-    
-    categoriesToShow.forEach((cat) => {
+    pharmaCategories.forEach((cat) => {
       const products = pharmaProducts.filter((p) => p.category === cat.slug);
       if (products.length > 0) {
         groups.push({
@@ -1054,20 +1043,37 @@ function PharmaLaunchPageContent() {
     });
     
     return groups;
-  }, [selectedCategory]);
+  }, []);
 
-  const totalProducts = useMemo(() => {
-    return filteredProducts.length;
-  }, [filteredProducts]);
+  const totalProducts = pharmaProducts.length;
 
   const handleTabSelect = (tabId: TabId) => {
     setActiveTab(tabId);
   };
 
-  // Handle category selection from dropdown
+  // Handle category selection - scrolls to category
   const handleCategorySelect = (categorySlug: string | null) => {
-    setSelectedCategory(categorySlug);
-    setActiveTab("all");
+    if (categorySlug) {
+      setSelectedCategory(categorySlug);
+      setHighlightedCategory(categorySlug);
+      setActiveTab("all");
+      
+      setTimeout(() => {
+        const element = document.getElementById(`category-${categorySlug}`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          element.classList.add('highlight-category');
+          setTimeout(() => {
+            element.classList.remove('highlight-category');
+            setHighlightedCategory(null);
+          }, 3000);
+        }
+      }, 200);
+    } else {
+      setSelectedCategory(null);
+      setHighlightedCategory(null);
+      setActiveTab("all");
+    }
   };
 
   // Handle image click for lightbox
@@ -1090,6 +1096,7 @@ function PharmaLaunchPageContent() {
     if (hash && hash.startsWith('#category-')) {
       const categorySlug = hash.replace('#category-', '');
       setSelectedCategory(categorySlug);
+      setHighlightedCategory(categorySlug);
       setActiveTab("all");
       setTimeout(() => {
         const element = document.getElementById(`category-${categorySlug}`);
@@ -1122,15 +1129,16 @@ function PharmaLaunchPageContent() {
             </aside>
 
             <main className="flex-1 min-w-0">
-              {/* Active filter indicator */}
+              {/* Active filter indicator - shows when a category is selected */}
               {selectedCategory && (
                 <div className="mb-4 flex items-center gap-2">
-                  <span className="text-sm text-gray-500">Filtered by:</span>
+                  <span className="text-sm text-gray-500">Viewing:</span>
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0093cb]/10 text-[#0093cb] text-sm font-medium">
                     {pharmaCategories.find(c => c.slug === selectedCategory)?.name}
                     <button
                       onClick={() => {
                         setSelectedCategory(null);
+                        setHighlightedCategory(null);
                         setActiveTab("all");
                       }}
                       className="hover:bg-[#0093cb]/20 rounded-full p-0.5 transition-colors"
@@ -1142,48 +1150,47 @@ function PharmaLaunchPageContent() {
                 </div>
               )}
 
+              {/* Title section - Always shows "All Products" */}
+              <div className="mb-8 flex items-center justify-between flex-wrap gap-4">
+                <div>
+                  <h1 className="text-2xl lg:text-3xl font-bold text-[#060706]">
+                    All Products
+                  </h1>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {totalProducts} product{totalProducts !== 1 ? 's' : ''} available
+                    {selectedCategory && ` — viewing ${pharmaCategories.find(c => c.slug === selectedCategory)?.name}`}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsDownloadModalOpen(true)}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all shadow-md hover:shadow-lg text-white"
+                  style={{ background: `linear-gradient(135deg, ${BRAND.primary}, ${BRAND.secondary})` }}
+                >
+                  <Download className="w-4 h-4" />
+                  Download Catalogue
+                </button>
+              </div>
+
               {groupedProducts.length === 0 ? (
                 <div className="text-center py-20">
                   <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-[#0093cb]/5 flex items-center justify-center">
                     <Package className="w-8 h-8 text-[#0093cb]/40" />
                   </div>
-                  <p className="text-gray-500 text-lg">No products found in this category.</p>
+                  <p className="text-gray-500 text-lg">No products found.</p>
                 </div>
               ) : (
-                <>
-                  <div className="mb-8 flex items-center justify-between flex-wrap gap-4">
-                    <div>
-                      <h1 className="text-2xl lg:text-3xl font-bold text-[#060706]">
-                        {selectedCategory 
-                          ? pharmaCategories.find(c => c.slug === selectedCategory)?.name 
-                          : "All Products"}
-                      </h1>
-                      <p className="text-sm text-gray-500 mt-1">
-                        {totalProducts} product{totalProducts !== 1 ? 's' : ''} available
-                      </p>
-                    </div>
-                    <button
-                      onClick={() => setIsDownloadModalOpen(true)}
-                      className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all shadow-md hover:shadow-lg text-white"
-                      style={{ background: `linear-gradient(135deg, ${BRAND.primary}, ${BRAND.secondary})` }}
-                    >
-                      <Download className="w-4 h-4" />
-                      Download Catalogue
-                    </button>
-                  </div>
-
-                  <div className="space-y-14">
-                    {groupedProducts.map((group) => (
-                      <CategorySection
-                        key={group.categorySlug}
-                        group={group}
-                        activeTabColor={activeTabColor}
-                        onViewAll={() => {}}
-                        onImageClick={handleImageClick}
-                      />
-                    ))}
-                  </div>
-                </>
+                <div className="space-y-14">
+                  {groupedProducts.map((group) => (
+                    <CategorySection
+                      key={group.categorySlug}
+                      group={group}
+                      activeTabColor={activeTabColor}
+                      onViewAll={() => {}}
+                      onImageClick={handleImageClick}
+                      isHighlighted={highlightedCategory === group.categorySlug}
+                    />
+                  ))}
+                </div>
               )}
             </main>
           </div>
