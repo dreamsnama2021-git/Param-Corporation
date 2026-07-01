@@ -472,13 +472,13 @@ function LoadingFallback() {
 // ─── MEDIPRIDE PAGE BANNER ─────────────────────────────────────────────────────────────
 
 const PageBanner = () => (
- <div className="relative w-full h-[60vh] md:h-[40vh] lg:h-[65vh] xl:h-[65vh] 2xl:h-[65vh] overflow-hidden">
+ <div className="relative w-full h-[60.5vh] md:h-[29.5vh] lg:h-[45vh] xl:h-[59vh] 2xl:h-[67.5vh] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Medipride%20page%20Mobile.png"
       alt="MediPride Banner - Mobile"
       fill
-      className="object-fill object-center block md:hidden"
+      className="object-contain object-center block md:hidden"
       priority
       unoptimized
     />
@@ -488,7 +488,7 @@ const PageBanner = () => (
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Medipride%20page%20Tablet.png"
       alt="MediPride Banner - Tablet"
       fill
-      className="object-fill object-center hidden md:block lg:hidden"
+      className="object-contain object-center hidden md:block lg:hidden"
       priority
       unoptimized
     />
