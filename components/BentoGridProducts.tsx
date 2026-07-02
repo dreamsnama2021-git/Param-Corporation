@@ -80,25 +80,53 @@ const LazyImage = memo(function LazyImage({
   className,
   priority = false,
 }: LazyImageProps) {
-  const [imgSrc, setImgSrc] = useState(src);
+  const [imgSrc, setImgSrc] = useState(src || FALLBACK_IMAGE);
+  const [inView, setInView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setImgSrc(src);
+    setImgSrc(src || FALLBACK_IMAGE);
   }, [src]);
 
+  useEffect(() => {
+    if (priority || inView) {
+      setInView(true);
+      return;
+    }
+    const el = ref.current;
+    if (!el) return;
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [priority, inView]);
+
   return (
-    <Image
-      src={imgSrc}
-      alt={alt}
-      fill={fill}
-      sizes={sizes}
-      className={className}
-      placeholder="blur"
-      blurDataURL={BLUR_PLACEHOLDER}
-      loading={priority ? "eager" : "lazy"}
-      priority={priority}
-      onError={() => setImgSrc(FALLBACK_IMAGE)}
-    />
+    <div ref={ref} className={`relative ${fill ? 'w-full h-full' : ''} ${className || ''}`}>
+      {(inView || priority) && (
+        <Image
+          src={imgSrc}
+          alt={alt}
+          fill={fill}
+          sizes={sizes}
+          className="object-cover"
+          placeholder="blur"
+          blurDataURL={BLUR_PLACEHOLDER}
+          loading={priority ? "eager" : "lazy"}
+          priority={priority}
+          onError={() => setImgSrc(FALLBACK_IMAGE)}
+        />
+      )}
+    </div>
   );
 });
 
@@ -1117,7 +1145,7 @@ function Modal({
   const [galleryIndex, setGalleryIndex] = useState<number | null>(null);
 
   // Collect all images from all categories
-  const allImages = therapy.items.map((item) => item.img);
+  const allImages = therapy.items.map((item) => item.img).filter(Boolean) as string[];
 
   useEffect(() => {
     setMounted(true);

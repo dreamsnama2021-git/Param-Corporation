@@ -206,7 +206,7 @@ export default function Navbar() {
         }`}
       >
         {/* OLD VERSION EXACT CONTAINER SPACING */}
-        <div className="px-4 max-w-[1500px] mx-auto">
+        <div className="px-4 xl:px-8 max-w-[1500px] mx-auto">
           {/* OLD VERSION EXACT HEIGHT */}
           <div className="flex items-center justify-between h-14">
             {/* Logo */}
