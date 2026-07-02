@@ -53,7 +53,7 @@ const TRENDING_PRODUCTS = [
     id: "1",
     title: "Crystal Trophy",
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_27_29%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/WhatsApp%20Image%202026-07-02%20at%2010.03.14%20AM.jpeg",
     price: "89",
     tag: "Best Seller",
   },
@@ -61,7 +61,7 @@ const TRENDING_PRODUCTS = [
     id: "2",
     title: "Premium Globe",
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_28_41%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/WhatsApp%20Image%202026-07-02%20at%2010.06.41%20AM.jpeg",
     price: "120",
     tag: "Hot",
   },
