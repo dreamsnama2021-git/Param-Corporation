@@ -207,7 +207,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
   },
   "Orthopedics/Rheumatology": {
-    card: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80",
+    card: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Medipride/33.png",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_55_44%20PM.png",
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_55_32%20PM.png",
