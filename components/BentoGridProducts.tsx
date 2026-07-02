@@ -105,7 +105,7 @@ const LazyImage = memo(function LazyImage({
 // ─── Therapy Images Data with Temporary URLs ───
 const THERAPY_IMAGES_DATA: Record<string, any> = {
   "Cardio-Vascular": {
-    card: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
+    card: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Medipride/24.png",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20Jun%203%2C%202026%2C%2004_55_26%20PM.png",
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_24_05%20PM.png",
@@ -148,7 +148,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
   },
   Diabetes: {
-    card: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80",
+    card: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Medipride/31.png",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_03_15%20PM.png",
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_05_00%20PM.png",
@@ -191,7 +191,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
   },
   "ENT & Respiratory": {
-    card: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80",
+    card: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Medipride/8.png",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_29_49%20PM.png",
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_44%20PM.png",
@@ -492,7 +492,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
   },
   Urology: {
-    card: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
+    card: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Medipride/10.png",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/24.png",
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/76.png",
