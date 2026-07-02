@@ -161,18 +161,12 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
     matt: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_15_09%20PM.png",
-      // "https://picsum.photos/id/51/400/300",
-      // "https://picsum.photos/id/52/400/300",
     ],
     posters: [
-      // "https://picsum.photos/id/53/400/300",
-      // "https://picsum.photos/id/54/400/300",
-      // "https://picsum.photos/id/55/400/300",
+      
     ],
     medicalScale: [
-      // "https://picsum.photos/id/56/400/300",
-      // "https://picsum.photos/id/57/400/300",
-      // "https://picsum.photos/id/58/400/300",
+      
     ],
     writeWipe: [
       // "https://picsum.photos/id/59/400/300",
@@ -535,7 +529,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
   },
   Neurology: {
-    card: "https://mehtahospital.com/wp-content/uploads/2025/04/dr-mehta-hospital-neurology.webp",
+    card: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Medipride/17.png",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/EPILEPSY%20PATIENT%20EDUCATION%20LAPTOP%20MAT.png",
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/64.png",
@@ -750,7 +744,7 @@ const THERAPY_IMAGES_DATA: Record<string, any> = {
     ],
   },
   Hepatology: {
-    card: "https://www.gastropune.com/wp-content/uploads/2024/07/Untitled-design-2024-07-16T115210.358-1024x614.png",
+    card: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Medipride/16.png",
     books: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Frame.png",
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Table%20Top.png",
