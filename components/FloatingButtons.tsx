@@ -33,42 +33,58 @@ export default function FloatingButtons() {
     return pathname === brand.href;
   });
 
-  // Show brand nav on brand pages OR after hero on home page
-  const shouldShowBrandNav = isBrandPage || showBrandNav;
-
-  // Detect scroll position on home page
+  // Determine the current brand index based on pathname
   useEffect(() => {
-    const handleScroll = () => {
-      if (pathname === '/') {
-        // Get the hero section height (you can adjust this value)
-        const heroHeight = window.innerHeight * 0.9; // 80% of viewport height
+    const currentBrandIndex = BRANDS.findIndex(brand => {
+      if (brand.href.includes('?')) {
+        return pathname?.startsWith(brand.href.split('?')[0]);
+      }
+      return pathname === brand.href;
+    });
+    
+    if (currentBrandIndex !== -1) {
+      setCurrentIndex(currentBrandIndex);
+    }
+  }, [pathname]);
+
+  // Control brand nav visibility based on scroll on home page
+  useEffect(() => {
+    // On home page, show after scrolling past hero
+    if (pathname === '/') {
+      const handleScroll = () => {
+        const heroHeight = window.innerHeight * 0.9;
         const scrollPosition = window.scrollY;
         
-        // Show brand nav after scrolling past hero
         if (scrollPosition > heroHeight) {
           setShowBrandNav(true);
         } else {
           setShowBrandNav(false);
         }
-      }
-    };
+      };
 
-    // Check initial scroll position
-    handleScroll();
+      // Check initial scroll position
+      handleScroll();
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    } 
+    // On brand pages or any other page, always show
+    else {
+      setShowBrandNav(true);
+    }
   }, [pathname]);
 
   const goToPrevious = () => {
     const newIndex = currentIndex > 0 ? currentIndex - 1 : BRANDS.length - 1;
     setCurrentIndex(newIndex);
+    setIsOpen(false);
     router.push(BRANDS[newIndex].href);
   };
 
   const goToNext = () => {
     const newIndex = currentIndex < BRANDS.length - 1 ? currentIndex + 1 : 0;
     setCurrentIndex(newIndex);
+    setIsOpen(false);
     router.push(BRANDS[newIndex].href);
   };
 
@@ -78,10 +94,30 @@ export default function FloatingButtons() {
     router.push(BRANDS[index].href);
   };
 
+  // Don't render anything on home page before scroll
+  if (pathname === '/' && !showBrandNav) {
+    return (
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+        {/* WhatsApp Button - Always visible */}
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-14 h-14 flex items-center justify-center 
+            rounded-full shadow-[var(--shadow-strong)] 
+            bg-[#25D366] text-white 
+            hover:scale-105 active:scale-95 transition-all duration-200"
+        >
+          <WhatsappLogoIcon className="w-6 h-6" />
+        </a>
+      </div>
+    );
+  }
+
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-      {/* Brand Navigation - Shows on brand pages OR after hero on home page */}
-      {shouldShowBrandNav && (
+      {/* Brand Navigation - Shows conditionally */}
+      {showBrandNav && (
         <>
           <button
             onClick={() => setIsOpen(!isOpen)}
