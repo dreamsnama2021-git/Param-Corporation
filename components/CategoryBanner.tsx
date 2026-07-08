@@ -19,7 +19,7 @@ const categories = [
     title: "Koru",
     description: "Embrace the beauty of new beginnings and growth",
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/4.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Koru_1_260x260.png",
     href: "/koru",
     accent: "from-[#00a65d] to-[#00c853]",
     glow: "rgba(0,166,93,0.35)",
