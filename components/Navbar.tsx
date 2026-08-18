@@ -90,10 +90,17 @@ export default function Navbar() {
     return <div className="h-14 bg-white" />;
   }
 
-  const mainNavItems = [
-    { label: "Digital Inputs", href: "/digital-gifts", isButton: true },
-    { label: "Koru", href: "/koru", isButton: true },
-    { label: "Medipride", href: "/medipride", isButton: true },
+  // Define type for nav items
+  type NavItem = {
+    label: string;
+    href: string;
+    isButton?: boolean;
+  };
+
+  const mainNavItems: NavItem[] = [
+    // { label: "Digital Inputs", href: "/digital-gifts", isButton: true },
+    // { label: "Koru", href: "/koru", isButton: true },
+    // { label: "Medipride", href: "/medipride", isButton: true },
     { label: "About Us", href: "/about-us" },
     { label: "Case Study", href: "/case-study" },
     { label: "Contact Us", href: "/contact-us" },
@@ -199,7 +206,7 @@ export default function Navbar() {
         }`}
       >
         {/* OLD VERSION EXACT CONTAINER SPACING */}
-        <div className="px-4 max-w-[1500px] mx-auto">
+        <div className="px-4 xl:px-8 max-w-[1500px] mx-auto">
           {/* OLD VERSION EXACT HEIGHT */}
           <div className="flex items-center justify-between h-14">
             {/* Logo */}
@@ -212,7 +219,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Menu */}
-            <ul className="hidden  lg:flex items-center gap-3 xl:gap-4">
+            <ul className="hidden lg:flex items-center gap-3 xl:gap-4">
               {/* Products */}
               <li
                 className="relative mega-menu-container"
@@ -237,7 +244,7 @@ export default function Navbar() {
                 {/* Mega Menu */}
                 {activeDropdown === "products" && (
                   <div
-                    className="absolute top-full left-[10rem] xl:left-1/2 -translate-x-1/2 w-[850px] bg-white/98 backdrop-blur-xl rounded-xl shadow-2xl border border-gray-200  p-4 z-50"
+                    className="absolute top-full left-[10rem] xl:left-1/2 -translate-x-1/2 w-[850px] bg-white/98 backdrop-blur-xl rounded-xl shadow-2xl border border-gray-200 p-4 z-50"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
@@ -296,13 +303,13 @@ export default function Navbar() {
                 )}
               </li>
 
-              {/* Main Nav */}
+              {/* Main Nav - Fixed isButton check */}
               {mainNavItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
                   className={`px-3 py-0.5 text-xs xl:text-sm font-semibold rounded-full transition ${
-                    item.isButton
+                    item.isButton === true
                       ? "bg-[var(--clr-primary)] text-white hover:bg-[var(--clr-secondary)]"
                       : "text-gray-700 hover:text-[var(--clr-primary)]"
                   }`}
@@ -436,14 +443,14 @@ export default function Navbar() {
 
               <div className="h-px bg-gray-200 my-2" />
 
-              {/* Main Nav Mobile */}
+              {/* Main Nav Mobile - Fixed isButton check */}
               <div className="space-y-2">
                 {mainNavItems.map((item) => (
                   <Link
                     key={item.label}
                     href={item.href}
                     className={`block px-3 py-2 text-sm font-semibold rounded-lg ${
-                      item.isButton
+                      item.isButton === true
                         ? "bg-[var(--clr-primary)] text-white text-center"
                         : "text-gray-700 hover:bg-gray-50"
                     }`}

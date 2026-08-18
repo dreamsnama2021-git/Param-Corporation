@@ -12,7 +12,8 @@ const CATEGORIES = [
   {
     id: "1",
     title: "Category",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/32.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/32.png",
     count: "24",
     link: "/categories/all?tab=categories",
     tab: "categories",
@@ -20,7 +21,8 @@ const CATEGORIES = [
   {
     id: "2",
     title: "Therapy",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/28.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/28.png",
     count: "18",
     link: "/medipride",
     isExternal: false,
@@ -28,7 +30,8 @@ const CATEGORIES = [
   {
     id: "3",
     title: "Personalized Gifts",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%204.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Personlized/3D%20Plates/3D%204.png",
     count: "32",
     link: "/categories/all?tab=personalized",
     tab: "personalized-gifts",
@@ -36,7 +39,8 @@ const CATEGORIES = [
   {
     id: "4",
     title: "Occasion",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png",
     count: "15",
     link: "/categories/all?tab=occasion",
     tab: "occasion",
@@ -48,77 +52,84 @@ const TRENDING_PRODUCTS = [
   {
     id: "1",
     title: "Crystal Trophy",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_27_29%20PM.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/WhatsApp%20Image%202026-07-02%20at%2010.03.14%20AM.jpeg",
     price: "89",
     tag: "Best Seller",
   },
   {
     id: "2",
     title: "Premium Globe",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_28_41%20PM.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/WhatsApp%20Image%202026-07-02%20at%2010.06.41%20AM.jpeg",
     price: "120",
     tag: "Hot",
   },
   {
     id: "3",
     title: "LED Heart Lamp",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_28_52%20PM.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_28_52%20PM.png",
     price: "75",
     tag: "New",
   },
   {
     id: "4",
     title: "Executive Award",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_29_49%20PM.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_29_49%20PM.png",
     price: "150",
     tag: "Prime",
   },
   {
     id: "5",
     title: "Golden Stethoscope",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_00_38%20PM.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_00_38%20PM.png",
     price: "199",
     tag: "Premium",
   },
   {
     id: "6",
     title: "Medical Plaque",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_01_16%20PM.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_01_16%20PM.png",
     price: "85",
     tag: "Popular",
   },
   {
     id: "7",
     title: "Doctor's Diary",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_03_57%20PM.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_03_57%20PM.png",
     price: "45",
     tag: "Essential",
   },
   {
     id: "8",
     title: "Clinic Name Plate",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_04_56%20PM.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_04_56%20PM.png",
     price: "110",
     tag: "Custom",
   },
   {
     id: "9",
     title: "Caduceus Statue",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_05_02%20PM.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_05_02%20PM.png",
     price: "175",
     tag: "Classic",
   },
   {
     id: "10",
     title: "Digital Prescription Pad",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Hepatology/Paper%20Weight.png",
+    image:
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/Hepatology/Paper%20Weight.png",
     price: "95",
     tag: "Digital",
   },
 ];
-
-
-
 
 // ─── CATEGORIES SECTION ─────────────────
 function GiftsByCategories() {
@@ -127,8 +138,8 @@ function GiftsByCategories() {
   // Function to handle navigation with scroll to top on destination
   const handleNavigation = (href: string) => {
     // Store flag in sessionStorage
-    sessionStorage.setItem('scrollToTop', 'true');
-    
+    sessionStorage.setItem("scrollToTop", "true");
+
     // Navigate using Next.js router
     router.push(href);
   };
@@ -136,8 +147,31 @@ function GiftsByCategories() {
   return (
     <section className="w-full bg-[#fafcff] py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
-        {/* Section Header - same as above */}
-        
+        {/* Section Header - Now Added */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-12 xl:mb-16"
+        >
+          <p className="text-xs xl:text-sm font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#0093cb]">
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+            Shop by Category
+            <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
+          </p>
+
+          <h2 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-[#1a1a1a]">
+            Our <span className="text-[#0093cb]">Products</span>
+          </h2>
+
+          <div className="flex justify-center items-center gap-2 sm:gap-3">
+            <div className="w-6 sm:w-8 h-[1.5px] bg-[#0093cb]/30" />
+            <div className="w-12 sm:w-14 md:w-16 h-1 bg-[#0093cb] rounded-full" />
+            <div className="w-6 sm:w-8 h-[1.5px] bg-[#0093cb]/30" />
+          </div>
+        </motion.div>
+
         {/* Categories Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 xl:gap-8 mb-10 sm:mb-12 lg:mb-12 xl:mb-16">
           {CATEGORIES.map((item, index) => (
@@ -149,7 +183,11 @@ function GiftsByCategories() {
               transition={{ duration: 0.55, delay: index * 0.1 }}
             >
               <div
-                onClick={() => handleNavigation(item.link || `/categories/${item.id}?tab=${item.tab}`)}
+                onClick={() =>
+                  handleNavigation(
+                    item.link || `/categories/${item.id}?tab=${item.tab}`,
+                  )
+                }
                 className="group cursor-pointer relative h-[250px] sm:h-[280px] md:h-[320px] lg:h-[350px] xl:h-[380px] rounded-xl sm:rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-1.5 sm:hover:-translate-y-2 block border border-transparent hover:border-[#0093cb]/20"
               >
                 <Image
@@ -159,10 +197,10 @@ function GiftsByCategories() {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   unoptimized
                 />
-                
+
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 {/* Subtle Primary Glow on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0093cb]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -207,7 +245,11 @@ function TrendingProducts() {
   const speedRef = useRef(0.8);
 
   // Duplicate products for seamless infinite scroll
-  const duplicatedProducts = [...TRENDING_PRODUCTS, ...TRENDING_PRODUCTS, ...TRENDING_PRODUCTS];
+  const duplicatedProducts = [
+    ...TRENDING_PRODUCTS,
+    ...TRENDING_PRODUCTS,
+    ...TRENDING_PRODUCTS,
+  ];
 
   const animate = useCallback(() => {
     if (!scrollRef.current || isHovered) {
@@ -242,10 +284,14 @@ function TrendingProducts() {
     <section className="w-full bg-[#f8fafc] py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, #0093cb 1px, transparent 0)',
-          backgroundSize: '30px 30px'
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, #0093cb 1px, transparent 0)",
+            backgroundSize: "30px 30px",
+          }}
+        />
       </div>
 
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8 relative ">
@@ -289,12 +335,11 @@ function TrendingProducts() {
             <div
               ref={scrollRef}
               className="flex gap-4 sm:gap-5 lg:gap-6"
-              style={{ willChange: 'transform' }}
+              style={{ willChange: "transform" }}
             >
               {duplicatedProducts.map((item, index) => (
                 <div
                   key={`${item.id}-${index}`}
-                  
                   className="group relative h-[220px] sm:h-[260px] md:h-[280px] lg:h-[300px] xl:h-[340px] 
                     w-[calc(25%-12px)] lg:w-[calc(25%-18px)] 
                     min-w-[160px] sm:min-w-[180px] md:min-w-[200px] lg:min-w-[220px] xl:min-w-[260px]
@@ -316,19 +361,17 @@ function TrendingProducts() {
 
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
-                  
+
                   {/* Subtle Primary Glow */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0093cb]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   {/* Tag Badge */}
-                
 
                   {/* Name at Bottom - Following Style Guide Card Title Specs */}
                   <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 lg:p-5">
                     <h3 className="font-bold text-base sm:text-[16px] md:text-lg xl:text-xl text-white group-hover:translate-x-1 transition-transform duration-300">
                       {item.title}
                     </h3>
-              
                   </div>
                 </div>
               ))}
