@@ -63,7 +63,7 @@ export default function KoruCommitment() {
       title: "Education Support",
       desc: "Supporting education and learning for a brighter tomorrow.",
       icon: GraduationCap,
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=80",
+      image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=500&q=80",
     },
     {
       title: "Health Awareness",
