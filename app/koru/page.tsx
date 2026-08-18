@@ -24,6 +24,7 @@ import {
 import ImageGallery from "@/components/Productgallery";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import KoruCommitment from "@/components/KoruCommitment";
 
 // ─── Define the types for the props ───────────────────────────
 interface SwipeCarouselProps {
@@ -580,6 +581,9 @@ export default function KoruCommunications() {
 
       {/* ── WHY CHOOSE KORU ── */}
       <WhyChooseKoruSection />
+
+      {/* ── SUSTAINABILITY & COMMITMENT ── */}
+      <KoruCommitment />
 
       {/* ── GALLERY ── */}
       <section className="style-section-padding bg-slate-50">

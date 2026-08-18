@@ -11,13 +11,23 @@ import FastestGrowing from "@/components/FastGrowing";
 import InstagramReels from "@/components/Instagram";
 import PopupForm from "@/components/PopupForm";
 import CategoryShowcase from "@/components/CategoryBanner";
+import ProductShowcaseGrid from "@/components/ProductShowcaseGrid";
+import FoundersMessage from "@/components/FoundersMessage";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import AboutDesignProcess from "@/components/AboutDesignProcess";
+import IndustriesWeServe from "@/components/IndustriesWeServe";
 
 export default function Page() {
   return (
     <main className="overflow-x-hidden">
+      <ProductShowcaseGrid />
       <CategoryShowcase/>
       <Hero />
+      <FoundersMessage />
       <AboutUs />
+      <WhyChooseUs />
+      <IndustriesWeServe />
+      <AboutDesignProcess />
       <ProductSections />
       <ClientSection />
       <CaseStudy />

@@ -25,12 +25,23 @@ import {
   Wrench,
   Lock,
   Leaf,
+  Handshake,
+  Award,
+  Clock,
+  PenTool,
+  Quote,
 } from "lucide-react";
 import Image from "next/image";
 import {
   EditorialTimeline,
   TimelineItem,
 } from "../../components/EditorialTImeline";
+import AboutIntro from "../../components/AboutIntro";
+import WhatWeDoOfferings from "../../components/WhatWeDoOfferings";
+import AboutDesignProcess from "../../components/AboutDesignProcess";
+import QualityAssurance from "../../components/QualityAssurance";
+import ProjectWorkflow from "../../components/ProjectWorkflow";
+import TeamCulture from "../../components/TeamCulture";
 
 // ─── DATA: TIMELINE ─────────────────────────────────────────────────────────
 const timelineItems: TimelineItem[] = [
@@ -210,100 +221,140 @@ const PageBanner = () => (
 
 // ─── WHY US SECTION ───────────────────────────────────────────────────────────
 const WhyUsSection = () => {
-  const row1Cards = [
+  const cards = [
     {
-      title: "End to End Solutions",
-      desc: "Complete pharma branding services from product ideation to customization, packaging, and delivery.",
-      icon: Workflow,
-      color: "bg-amber-500",
+      title: "Strategic Understanding",
+      desc: "We understand your brand, objectives, and audience to recommend solutions that truly work.",
+      icon: Lightbulb,
+      color: "text-[#0093cb]",
+      borderColor: "border-[#0093cb]/20",
     },
     {
-      title: "Pan-India Delivery",
-      desc: "Seamless nationwide delivery of doctor engagement tools and healthcare promotional products.",
-      icon: Truck,
-      color: "bg-blue-500",
+      title: "Creative Innovation",
+      desc: "Original concepts and innovative designs that make your brand stand out in the market.",
+      icon: PenTool,
+      color: "text-[#00a8b5]",
+      borderColor: "border-[#00a8b5]/20",
     },
     {
-      title: "In-House Manufacturing & R&D",
-      desc: "Quality-driven manufacturing and innovation for customized pharma promotional solutions.",
-      icon: FlaskConical,
-      color: "bg-rose-500",
-    },
-  ];
-  const row2Cards = [
-    {
-      title: "Pharma Expertise",
-      desc: "Customized pharma promotional products and doctor gifting solutions designed for effective brand recall.",
-      icon: Pill,
-      color: "bg-emerald-500",
+      title: "Premium Quality",
+      desc: "High-quality materials and fine finishing that reflect your brand's premium value.",
+      icon: Award,
+      color: "text-[#00a65d]",
+      borderColor: "border-[#00a65d]/20",
     },
     {
-      title: "Strong Vendor Ecosystem & Sourcing",
-      desc: "Reliable sourcing network ensuring premium corporate gifts for pharmaceutical companies.",
-      icon: Network,
-      color: "bg-violet-500",
+      title: "Timely Execution",
+      desc: "Efficient planning and strong execution to ensure on-time delivery, every time.",
+      icon: Clock,
+      color: "text-[#003b46]",
+      borderColor: "border-[#003b46]/20",
     },
     {
-      title: "After Sales Service",
-      desc: "Ongoing support for smooth execution of doctor gifting and branding campaigns",
-      icon: Wrench,
-      color: "bg-orange-500",
+      title: "Doctor & Patient Centric",
+      desc: "Solutions designed to engage doctors better and empower patients with knowledge.",
+      icon: Users,
+      color: "text-[#0093cb]",
+      borderColor: "border-[#0093cb]/20",
     },
     {
-      title: "We Maintain Confidentiality",
-      desc: "Secure handling of pharmaceutical marketing assets, campaign strategies, and product concepts.",
-      icon: Lock,
-      color: "bg-cyan-500",
+      title: "Long-Term Partnership",
+      desc: "We grow with our clients, building trust, delivering consistency, and creating long-term value.",
+      icon: Handshake,
+      color: "text-[#00a65d]",
+      borderColor: "border-[#00a65d]/20",
     },
   ];
-
-  interface CardItem {
-    title: string;
-    desc: string;
-    icon: React.ComponentType<{ size?: number }>;
-    color: string;
-  }
-
-  const Card = ({ item }: { item: CardItem }) => (
-    <div className="bg-white p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 h-full hover:shadow-lg transition-shadow flex flex-col">
-      <div
-        className={`w-8 h-8 sm:w-10 sm:h-10 ${item.color} rounded-lg sm:rounded-xl mb-3 sm:mb-4 flex items-center justify-center text-white flex-shrink-0`}
-      >
-        <item.icon size={18} />
-      </div>
-      {/* Increased from text-sm to text-base, sm:text-base to sm:text-lg */}
-      <h3 className="text-base xl:text-lg font-bold mb-1.5 sm:mb-2 text-[#0f172a] flex-shrink-0">
-        {item.title}
-      </h3>
-      {/* Increased from text-xs to text-sm, sm:text-sm to sm:text-base */}
-      <p className="text-sm xl:text-base text-[#6b7280] leading-relaxed flex-grow">
-        {item.desc}
-      </p>
-    </div>
-  );
 
   return (
-    <section className="py-10 sm:py-14 md:py-16 lg:py-20 bg-slate-50 overflow-visible">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 space-y-3 sm:space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-4">
-          <div className="flex flex-col justify-center py-2 md:py-0">
-            {/* Subtitle: Increased from text-[10px] to text-xs, sm:text-[11px] to sm:text-[13px] */}
-            <p className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-1.5 sm:mb-2">
-              Why Param
-            </p>
-            {/* Title: Increased from text-2xl to text-3xl, sm:text-3xl to sm:text-4xl, md:text-4xl to md:text-5xl */}
-            <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold leading-tight text-[#0f172a]">
-              The <span className="text-[#0093cb]">Difference</span>
-            </h2>
+    <section className="py-16 sm:py-20 lg:py-24 bg-slate-50 relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* LEFT COLUMN: Header & 6 Grid Cards (Span 8) */}
+          <div className="lg:col-span-8 space-y-10">
+            {/* Header */}
+            <div className="space-y-4">
+              <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-slate-800 leading-tight">
+                Why <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Clients Choose Us</span>
+              </h2>
+              {/* Divider line */}
+              <div className="h-1 w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full" />
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
+                In a competitive healthcare landscape, we go beyond manufacturing—we become an extension of your marketing team, committed to delivering solutions that create value and lasting impact.
+              </p>
+            </div>
+
+            {/* 3x2 Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {cards.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center space-y-3"
+                  >
+                    <div className={`p-2.5 rounded-xl bg-slate-50 border ${item.borderColor}`}>
+                      <Icon className={`w-6 h-6 ${item.color}`} />
+                    </div>
+                    <h3 className="font-bold text-sm sm:text-base text-slate-800 uppercase tracking-wide leading-tight">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          {row1Cards.map((item, i) => (
-            <Card key={i} item={item} />
-          ))}
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 xl:gap-4">
-          {row2Cards.map((item, i) => (
-            <Card key={i} item={item} />
-          ))}
+
+          {/* RIGHT COLUMN: Quote & Product Image Showcase (Span 4) */}
+          <div className="lg:col-span-4 flex flex-col gap-6 w-full">
+            
+            {/* Quote Block */}
+            <div className="relative rounded-3xl overflow-hidden shadow-xl border border-white bg-gradient-to-br from-[#0093cb] to-[#00a65d] text-white p-6 sm:p-8 flex flex-col justify-between">
+              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08)_0%,transparent_60%)] pointer-events-none" />
+              <Quote className="w-8 h-8 text-white/20 shrink-0 transform -scale-x-100 mb-4" />
+              <p className="text-white/95 text-xs sm:text-sm font-semibold italic leading-relaxed">
+                "Our commitment to innovation, quality, and partnership is what makes us the preferred choice for leading healthcare brands."
+              </p>
+              <div className="flex justify-end mt-4">
+                <Quote className="w-8 h-8 text-white/20 shrink-0" />
+              </div>
+            </div>
+
+            {/* Showcase Visual Collage */}
+            <div className="rounded-3xl overflow-hidden bg-white border border-slate-100 shadow-md p-4 flex flex-col items-center">
+              <div className="grid grid-cols-2 gap-2 w-full h-[200px] sm:h-[240px]">
+                <div className="rounded-2xl overflow-hidden bg-slate-50 relative h-full">
+                  <img
+                    src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/21.png"
+                    alt="Acrylic Display Model"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="grid grid-rows-2 gap-2 h-full">
+                  <div className="rounded-xl overflow-hidden bg-slate-50 relative h-full">
+                    <img
+                      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png"
+                      alt="Digital Frame"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="rounded-xl overflow-hidden bg-slate-50 relative h-full">
+                    <img
+                      src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=300"
+                      alt="Clock Display"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </div>
     </section>
@@ -348,107 +399,6 @@ function VisionSwipeCarousel({ children, count }: VisionMissionProps) {
   );
 }
 
-interface CardData {
-  number: string;
-  label: string;
-  title: string;
-  tagline: string;
-  desc: string;
-  icon: React.ReactNode;
-  iconBg: string;
-  iconColor: string;
-  showCta?: boolean;
-  ctaLabel?: string;
-  ctaHref?: string;
-  estLabel: string;
-}
-function VisionCard({ item }: { item: CardData }) {
-  return (
-    <div className="bg-white rounded-xl sm:rounded-2xl border border-slate-200 p-5 sm:p-7 flex flex-col hover:border-slate-300 hover:shadow-sm transition-all duration-200 h-full">
-      <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 flex-shrink-0">
-        {/* Number/Label: Increased from text-[10px] to text-xs, sm:text-[11px] to sm:text-[13px] */}
-        <span className="text-xs sm:text-[13px] font-medium uppercase tracking-widest text-slate-400">
-          {item.number} / {item.label}
-        </span>
-        <div className="flex-1 h-px bg-slate-100" />
-      </div>
-      <div
-        className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 ${item.iconBg} flex-shrink-0`}
-      >
-        <span className={item.iconColor}>{item.icon}</span>
-      </div>
-      {/* Title: Increased from text-sm to text-base, sm:text-base to sm:text-lg, lg:text-[17px] to lg:text-[19px] */}
-      <h3 className="text-base sm:text-lg lg:text-[19px] font-semibold text-[#0f172a] mb-1.5 sm:mb-2 flex-shrink-0">
-        {item.title}
-      </h3>
-      {/* Description: Increased from text-xs to text-sm, sm:text-sm to sm:text-base, lg:text-[13px] to lg:text-[15px] */}
-      <p className="text-sm sm:text-base lg:text-[15px] text-[#6b7280] leading-relaxed flex-grow overflow-y-auto">
-        {item.desc}
-      </p>
-    </div>
-  );
-}
-const VisionSection = () => {
-  const data: CardData[] = [
-    {
-      number: "01",
-      label: "Vision",
-      title: "Creating Meaningful Doctor & Pharma Brand Connections",
-      tagline: '"Every gift strengthens doctor relationships"',
-      desc: "To become India's most trusted partner for pharma branding, doctor engagement solutions, and customized pharmaceutical promotional products, delivering meaningful brand experiences that create long-term impact.",
-      icon: <Target size={18} className="sm:size-5" />,
-      iconBg: "bg-blue-50",
-      iconColor: "text-[#0093cb]",
-      showCta: true,
-      ctaLabel: "Our Vision",
-      ctaHref: "#",
-      estLabel: "Est. 2019",
-    },
-    {
-      number: "02",
-      label: "Mission",
-      title: "Driven by Healthcare Communication. Focused on Results.",
-      tagline: '"Quality, creativity, and reliability"',
-      desc: "To design and deliver innovative doctor gifting solutions, patient education materials, clinic branding products, and healthcare communication tools that strengthen pharma relationships and improve engagement outcomes.",
-      icon: <Rocket size={18} className="sm:size-5" />,
-      iconBg: "bg-emerald-50",
-      iconColor: "text-[#00a65d]",
-      showCta: false,
-      estLabel: "Since 2019",
-    },
-  ];
-
-  return (
-    <section className="py-10 sm:py-14 md:py-16 lg:py-20 bg-white overflow-visible">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
-        <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          {/* Subtitle: Increased from text-[10px] to text-xs, sm:text-[11px] to sm:text-[13px] */}
-          <p className="text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 text-[#0093cb]">
-            Our Purpose
-          </p>
-          {/* Title: Increased from text-2xl to text-3xl, sm:text-3xl to sm:text-4xl, md:text-4xl to md:text-5xl */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0f172a]">
-            Vision & <span className="text-[#0093cb]">Mission</span>
-          </h2>
-        </div>
-        <VisionSwipeCarousel count={data.length}>
-          {data.map((item, idx) => (
-            <div key={idx} className="snap-center flex-shrink-0 w-[85vw] min-h-[300px] sm:min-h-[320px]">
-              <VisionCard item={item} />
-            </div>
-          ))}
-        </VisionSwipeCarousel>
-        <div className="hidden md:grid md:grid-cols-2 gap-4 sm:gap-6">
-          {data.map((item, idx) => (
-            <div key={idx} className="min-h-[300px] sm:min-h-[320px]">
-              <VisionCard item={item} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
 
 // ─── TEAM SECTION ────────────────────────────────────────────────────────────
 interface TeamMember {
@@ -560,6 +510,12 @@ export default function AboutUsPage() {
       {/* ── BANNER ── */}
       <PageBanner />
 
+      {/* ── ABOUT INTRO ── */}
+      <AboutIntro />
+
+      {/* ── WHAT WE DO & CORE OFFERINGS ── */}
+      <WhatWeDoOfferings />
+
       {/* ── JOURNEY / TIMELINE ── */}
       <section className="py-10 sm:py-14 md:py-16 lg:py-20 bg-white overflow-visible">
         <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
@@ -576,8 +532,11 @@ export default function AboutUsPage() {
       </section>
 
       <WhyUsSection />
-      <VisionSection />
+      <QualityAssurance />
+      <AboutDesignProcess />
+      <ProjectWorkflow />
       <TeamSection />
+      <TeamCulture />
 
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {
