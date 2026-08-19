@@ -59,7 +59,7 @@ const StatCard = ({ icon: Icon, value, suffix, label, isSales = false, prefix = 
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       whileHover={{ y: -6, scale: 1.02 }}
-      className="relative group flex items-center gap-4 p-5 md:p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all duration-300 overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-black/20"
+      className="relative group flex items-center gap-3 xl:gap-4 p-4 xl:p-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all duration-300 overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-black/20"
     >
       {/* Dynamic background glow on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -69,35 +69,35 @@ const StatCard = ({ icon: Icon, value, suffix, label, isSales = false, prefix = 
       <div className="absolute -left-4 -top-4 w-12 h-12 bg-[#82C341]/10 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
       {/* Icon Container with Animated Border Ring */}
-      <div className="relative flex-shrink-0 flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/10 text-white group-hover:text-[#82C341] transition-colors duration-300">
-        <Icon className="w-7 h-7 md:w-8 md:h-8 stroke-[1.25] relative z-10 transition-transform duration-500 group-hover:rotate-12" />
+      <div className="relative flex-shrink-0 flex items-center justify-center w-11 h-11 xl:w-14 xl:h-14 rounded-xl bg-white/10 text-white group-hover:text-[#82C341] transition-colors duration-300">
+        <Icon className="w-5 h-5 xl:w-7 xl:h-7 stroke-[1.25] relative z-10 transition-transform duration-500 group-hover:rotate-12" />
         <div className="absolute inset-0 rounded-xl border border-white/20 group-hover:border-[#82C341]/50 group-hover:scale-105 transition-all duration-300" />
       </div>
       
       {/* Text Content */}
-      <div className="flex flex-col justify-center relative z-10">
+      <div className="flex flex-col justify-center relative z-10 min-w-0">
         {isSales ? (
-          <>
-            <span className="text-white/80 text-xs md:text-[13px] font-semibold tracking-wider uppercase mb-0.5">
+          <div className="flex flex-col">
+            <span className="text-white/80 text-[10px] xl:text-[11px] font-semibold tracking-wider uppercase leading-none mb-1">
               {label}
             </span>
-            <div className="flex items-baseline text-[#82C341] font-black tracking-tight">
-              <span className="text-2xl md:text-3xl">
-                <AnimatedCounter value={value} />
-              </span>
-              <span className="text-lg md:text-xl font-bold ml-1">{suffix}</span>
-            </div>
-          </>
+            <span className="text-[#82C341] text-2xl xl:text-3xl font-black tracking-tight leading-none">
+              <AnimatedCounter value={value} />
+            </span>
+            <span className="text-[#82C341] text-[13px] xl:text-sm font-bold tracking-wide mt-1 leading-none">
+              {suffix}
+            </span>
+          </div>
         ) : (
           <>
             <div className="flex items-baseline text-[#82C341] font-black tracking-tight leading-none mb-1">
-              <span className="text-2xl md:text-3xl">
-                {prefix && <span className="text-lg md:text-xl font-bold mr-0.5">{prefix}</span>}
+              <span className="text-xl xl:text-2xl">
+                {prefix && <span className="text-sm xl:text-base font-bold mr-0.5">{prefix}</span>}
                 <AnimatedCounter value={value} />
               </span>
-              <span className="text-xl md:text-2xl font-bold ml-0.5">{suffix}</span>
+              <span className="text-lg xl:text-xl font-bold ml-0.5">{suffix}</span>
             </div>
-            <span className="text-white/90 text-xs md:text-sm font-medium tracking-wide leading-snug max-w-[180px] group-hover:text-white transition-colors">
+            <span className="text-white/90 text-[11px] xl:text-xs font-semibold tracking-wide leading-tight max-w-[150px] group-hover:text-white transition-colors">
               {label}
             </span>
           </>
@@ -119,9 +119,9 @@ export default function StatsBanner() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,_var(--tw-gradient-stops))] from-green-500/10 via-transparent to-transparent pointer-events-none" />
           
-          <div className="relative z-10 bg-[#001740]/40 backdrop-blur-xl rounded-[18px] md:rounded-[28px] p-6 md:p-8">
+          <div className="relative z-10 bg-[#001740]/40 backdrop-blur-xl rounded-[18px] md:rounded-[28px] p-4 md:p-6 lg:p-4 xl:p-8">
             {/* Grid Layout */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4 lg:gap-3 xl:gap-6">
               
               {/* Stat 1 */}
               <StatCard 
