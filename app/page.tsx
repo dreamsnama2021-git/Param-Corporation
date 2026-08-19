@@ -1,5 +1,6 @@
 // app/page.tsx
 import Hero from "@/components/Hero";
+import StatsBanner from "@/components/StatsBanner";
 import ProductSections from "@/components/GiftByCategories";
 import  { TestimonialCardsVariant } from "@/components/Testimonial";
 import CaseStudy from "@/components/CaseStudy";
@@ -23,6 +24,7 @@ export default function Page() {
       <ProductShowcaseGrid />
       <CategoryShowcase />
       <Hero />
+      <StatsBanner />
       <FoundersMessage />
       <AboutUs />
       <WhyChooseUs />
