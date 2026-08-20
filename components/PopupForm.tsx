@@ -146,7 +146,7 @@ export default function PopupForm({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={handleOverlayClick}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99999] flex items-center justify-center p-4"
           >
             {/* ================================================================
                 📦 POPUP CONTAINER

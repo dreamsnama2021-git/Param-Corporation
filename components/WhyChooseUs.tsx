@@ -129,53 +129,11 @@ export default function WhyChooseUs() {
           </div>
         </div>
 
-        {/* LOWER CARD: Statistics */}
-        <div className="bg-white rounded-3xl border border-slate-100 shadow-xl p-8 sm:p-10">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-            {stats.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={idx}
-                  className={`flex flex-col items-center text-center p-3 ${
-                    idx >= 2 && idx < 4 ? "pt-6 md:pt-3" : ""
-                  } ${idx === 0 ? "" : "md:pl-4"}`}
-                >
-                  <Icon className={`w-8 h-8 ${item.color} mb-3`} />
-                  <span className={`text-2xl sm:text-3xl font-black ${item.color}`}>
-                    {item.value}
-                  </span>
-                  <span className="text-slate-500 text-xs sm:text-sm font-semibold mt-1">
-                    {item.label}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+    
 
       </div>
 
-      {/* Decorative Bottom Wave Shape with Wavy Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-0">
-        <svg
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          className="relative block w-full h-[70px] sm:h-[100px]"
-        >
-          <defs>
-            <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#003b46" />
-              <stop offset="50%" stopColor="#0093cb" />
-              <stop offset="100%" stopColor="#00a65d" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M0,0 C150,90 350,120 600,100 C850,80 1050,90 1200,0 L1200,120 L0,120 Z"
-            fill="url(#wave-gradient)"
-          />
-        </svg>
-      </div>
+   
     </section>
   );
 }

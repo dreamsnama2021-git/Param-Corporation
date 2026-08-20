@@ -512,7 +512,7 @@ export default function AboutUsPage() {
 
       {/* ── ABOUT INTRO ── */}
       <AboutIntro />
-
+<WhyUsSection />
       {/* ── WHAT WE DO & CORE OFFERINGS ── */}
       <WhatWeDoOfferings />
 
@@ -531,9 +531,9 @@ export default function AboutUsPage() {
         <EditorialTimeline items={timelineItems} />
       </section>
 
-      <WhyUsSection />
+      
       <QualityAssurance />
-      <AboutDesignProcess />
+      <AboutDesignProcess showAll={true} />
       <ProjectWorkflow />
       <TeamSection />
       <TeamCulture />

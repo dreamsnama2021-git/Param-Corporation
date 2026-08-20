@@ -107,7 +107,7 @@ export const personalizedGifts: CategoryItem[] = [
   { name: "Name Plate", slug: "photo-gifts", description: "Personalized photo items and collages" },
   { name: "3D Printed Plates", slug: "custom-stationery", description: "Branded and personalized stationery sets" },
   { name: "Personalized Desk Utility", slug: "embossed-leather", description: "Personalized leather goods and accessories" },
-  { name: "Personalized Gifts", slug: "engraved-keychains", description: "Custom metal and wooden keychains" },
+  // { name: "Personalized Gifts", slug: "engraved-keychains", description: "Custom metal and wooden keychains" },
   // { name: "Custom Apparel", slug: "custom-apparel", description: "Personalized T-shirts, caps and clothing" },
   // { name: "Personalized Diaries", slug: "personalized-diaries", description: "Custom notebooks and planners" },
   // { name: "Custom Drinkware", slug: "custom-drinkware", description: "Personalized bottles and sippers" },

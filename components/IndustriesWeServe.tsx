@@ -18,7 +18,7 @@ export default function IndustriesWeServe() {
       title: "Pharmaceutical",
       desc: "Helping pharma brands strengthen brand recall, doctor engagement and scientific communication.",
       icon: Pill,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/21.png",
+      image: "/industry-we-cater/PHARMA.jpg.jpeg",
       color: "text-[#0093cb]",
       borderColor: "border-[#0093cb]/20",
     },
@@ -26,7 +26,7 @@ export default function IndustriesWeServe() {
       title: "Healthcare",
       desc: "Supporting healthcare brands with patient education and awareness driven solutions.",
       icon: Heart,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/30.png",
+      image: "/industry-we-cater/Food and Hospitality.jpg.jpeg",
       color: "text-[#00a65d]",
       borderColor: "border-[#00a65d]/20",
     },
@@ -34,7 +34,7 @@ export default function IndustriesWeServe() {
       title: "Hospitals",
       desc: "Building trust and strengthening patient relationships with meaningful touchpoints.",
       icon: Building2,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/22.png",
+      image: "/industry-we-cater/HOSPITALS.jpg.jpeg",
       color: "text-[#003b46]",
       borderColor: "border-[#003b46]/20",
     },
@@ -66,7 +66,7 @@ export default function IndustriesWeServe() {
       title: "Diagnostics",
       desc: "Supporting diagnostic brands with impactful communication and educational solutions.",
       icon: Microscope,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/27.png",
+      image: "/industry-we-cater/LABORAORATIES.jpg.jpeg",
       color: "text-[#00a65d]",
       borderColor: "border-[#00a65d]/20",
     },
@@ -113,36 +113,44 @@ export default function IndustriesWeServe() {
           {industries.map((ind, idx) => {
             const Icon = ind.icon;
             return (
-              <div key={idx} className="flip-card-container w-full h-[360px] cursor-pointer">
+              <div key={idx} className="flip-card-container w-full h-[300px] cursor-pointer">
                 <div className="flip-card w-full h-full relative transition-transform duration-700 ease-out transform-style-3d">
                   
-                  {/* Front Side: Only Image */}
-                  <div className="flip-card-front absolute w-full h-full rounded-3xl border border-slate-100 overflow-hidden shadow-sm bg-white backface-hidden">
+                  {/* Front Side: Image + Icon + Industry Name */}
+                  <div className="flip-card-front absolute w-full h-[360px] rounded-3xl border border-slate-100 overflow-hidden shadow-sm bg-white backface-hidden text-white">
                     <img
                       src={ind.image}
                       alt={ind.title}
-                      className="w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-fill z-0"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 to-transparent pointer-events-none" />
+                    {/* Reduced black overlay */}
+                    <div className="absolute inset-0 bg-black/10 z-10 pointer-events-none" />
+                    
+                    {/* Content overlay in top-left corner */}
+                    <div className="absolute top-5 left-5 z-20 flex items-center gap-2.5">
+                      {/* Icon */}
+                      <div className="w-10 h-10 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center shadow-lg">
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
+                      {/* Title */}
+                      <h3 className="text-xs sm:text-sm font-black uppercase tracking-wider text-white drop-shadow-md">
+                        {ind.title}
+                      </h3>
+                    </div>
                   </div>
 
                   {/* Back Side: The Content */}
-                  <div className="flip-card-back absolute w-full h-full rounded-3xl border border-slate-100 p-6 flex flex-col items-center justify-center text-center shadow-lg bg-slate-50 rotate-y-180 backface-hidden">
+                  <div className="flip-card-back absolute w-full h-full rounded-3xl border border-slate-100 p-8 flex flex-col items-center justify-center text-center shadow-lg bg-slate-50 rotate-y-180 backface-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-white to-slate-50/50 pointer-events-none rounded-3xl" />
                     
                     <div className="relative z-10 space-y-4">
-                      {/* Icon */}
-                      <div className={`w-14 h-14 rounded-full bg-slate-100 border ${ind.borderColor} flex items-center justify-center mx-auto shadow-sm`}>
-                        <Icon className={`w-7 h-7 ${ind.color}`} />
-                      </div>
-
-                      {/* Title */}
-                      <h3 className={`text-lg font-extrabold ${ind.color} tracking-tight`}>
+                      <span className={`text-[9px] mb-4 xl:mb-8 font-bold uppercase tracking-widest ${ind.color} bg-slate-100 px-3 py-1 rounded-full border ${ind.borderColor}`}>
+                        Overview
+                      </span>
+                      <h4 className={`text-md font-extrabold ${ind.color} uppercase tracking-tight`}>
                         {ind.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                      </h4>
+                      <p className="text-slate-600 text-sm leading-relaxed font-medium">
                         {ind.desc}
                       </p>
                     </div>
@@ -176,6 +184,16 @@ export default function IndustriesWeServe() {
         }
         .flip-card {
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+          width: 100%;
+          height: 100%;
+        }
+        .flip-card-front,
+        .flip-card-back {
+          position: absolute;
+          width: 100% !important;
+          height: 100% !important;
+          top: 0;
+          left: 0;
         }
       `}</style>
     </section>

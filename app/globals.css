@@ -378,10 +378,6 @@ body > * {
   z-index: 1;
 }
 
-/* Force grid pattern visibility */
-.fixed.inset-0 {
-  z-index: 0 !important;
-}
 
 /* =====================================================
    COMPONENTS

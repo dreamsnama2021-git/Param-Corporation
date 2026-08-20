@@ -12,7 +12,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-export default function AboutDesignProcess() {
+export default function AboutDesignProcess({ showAll = false }: { showAll?: boolean }) {
   const philosophy = [
     {
       title: "Audience First",
@@ -112,101 +112,105 @@ export default function AboutDesignProcess() {
     <section className="bg-slate-50/50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100">
       <div className="max-w-[1400px] w-full mx-auto relative z-10 space-y-16 sm:space-y-20">
         
-        {/* TOP COMPONENT: Overview / Intro */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left: Text headings */}
-          <div className="lg:col-span-6 flex flex-col justify-center">
-            <div className="mb-6">
-              <h2 className="text-5xl sm:text-6xl font-black tracking-tight leading-tight text-slate-800">
-                Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Design Process</span>
-              </h2>
-              {/* Divider line */}
-              <div className="h-1 w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] mt-4 rounded-full" />
-            </div>
-
-            <h3 className="text-xl sm:text-2xl font-bold text-[#0093cb] mb-4">
-              Where Ideas Take Shape and Brands Come Alive.
-            </h3>
-
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              At Param Corporation, design is more than creativity – it is a thoughtful process that blends strategy, science, and aesthetics to create solutions that communicate, engage and deliver measurable impact.
-            </p>
-          </div>
-
-          {/* Right: Collage representing sketches & products */}
-          <div className="lg:col-span-6 relative flex justify-center items-center">
-            <div className="relative w-full max-w-[500px] h-[320px] sm:h-[360px] rounded-3xl overflow-hidden bg-white border border-slate-100 shadow-md p-4">
-              <div className="grid grid-cols-3 gap-3 w-full h-full">
-                <div className="rounded-2xl overflow-hidden bg-slate-50 relative h-full">
-                  <img
-                    src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=300"
-                    alt="Conceptual Ideation Sketch"
-                    className="w-full h-full object-cover"
-                  />
+        {showAll && (
+          <>
+            {/* TOP COMPONENT: Overview / Intro */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* Left: Text headings */}
+              <div className="lg:col-span-6 flex flex-col justify-center">
+                <div className="mb-6">
+                  <h2 className="text-5xl sm:text-6xl font-black tracking-tight leading-tight text-slate-800">
+                    Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Design Process</span>
+                  </h2>
+                  {/* Divider line */}
+                  <div className="h-1 w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] mt-4 rounded-full" />
                 </div>
-                <div className="grid grid-rows-2 gap-3 h-full">
-                  <div className="rounded-xl overflow-hidden bg-slate-50 relative h-full">
-                    <img
-                      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/20.png"
-                      alt="Finished Design Product"
-                      className="w-full h-full object-cover"
-                    />
+
+                <h3 className="text-xl sm:text-2xl font-bold text-[#0093cb] mb-4">
+                  Where Ideas Take Shape and Brands Come Alive.
+                </h3>
+
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                  At Param Corporation, design is more than creativity – it is a thoughtful process that blends strategy, science, and aesthetics to create solutions that communicate, engage and deliver measurable impact.
+                </p>
+              </div>
+
+              {/* Right: Collage representing sketches & products */}
+              <div className="lg:col-span-6 relative flex justify-center items-center">
+                <div className="relative w-full max-w-[500px] h-[320px] sm:h-[360px] rounded-3xl overflow-hidden bg-white border border-slate-100 shadow-md p-4">
+                  <div className="grid grid-cols-3 gap-3 w-full h-full">
+                    <div className="rounded-2xl overflow-hidden bg-slate-50 relative h-full">
+                      <img
+                        src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=300"
+                        alt="Conceptual Ideation Sketch"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="grid grid-rows-2 gap-3 h-full">
+                      <div className="rounded-xl overflow-hidden bg-slate-50 relative h-full">
+                        <img
+                          src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/20.png"
+                          alt="Finished Design Product"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="rounded-xl overflow-hidden bg-slate-50 relative h-full">
+                        <img
+                          src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=300"
+                          alt="3D Visualization Workstation"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div className="rounded-2xl overflow-hidden bg-slate-50 relative h-full">
+                      <img
+                        src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=300"
+                        alt="Research & Understand Phase"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   </div>
-                  <div className="rounded-xl overflow-hidden bg-slate-50 relative h-full">
-                    <img
-                      src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=300"
-                      alt="3D Visualization Workstation"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="rounded-2xl overflow-hidden bg-slate-50 relative h-full">
-                  <img
-                    src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=300"
-                    alt="Research & Understand Phase"
-                    className="w-full h-full object-cover"
-                  />
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* MIDDLE COMPONENT: Our Design Philosophy */}
-        <div className="space-y-10">
-          <div className="text-center">
-            <h3 className="text-3xl font-extrabold text-slate-800 tracking-tight">
-              Our Design Philosophy
-            </h3>
-            <div className="flex justify-center gap-1.5 mt-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#0093cb]" />
-              <div className="w-2.5 h-2.5 rounded-full bg-[#00a8b5]" />
-              <div className="w-2.5 h-2.5 rounded-full bg-[#00a65d]" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            {philosophy.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center space-y-4"
-                >
-                  <div className={`p-2.5 rounded-xl bg-slate-50 border ${item.borderColor}`}>
-                    <Icon className={`w-6 h-6 ${item.color}`} />
-                  </div>
-                  <h4 className="font-bold text-sm sm:text-base text-slate-800 tracking-wide uppercase leading-tight">
-                    {item.title}
-                  </h4>
-                  <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed">
-                    {item.desc}
-                  </p>
+            {/* MIDDLE COMPONENT: Our Design Philosophy */}
+            <div className="space-y-10">
+              <div className="text-center">
+                <h3 className="text-3xl font-extrabold text-slate-800 tracking-tight">
+                  Our Design Philosophy
+                </h3>
+                <div className="flex justify-center gap-1.5 mt-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#0093cb]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#00a8b5]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#00a65d]" />
                 </div>
-              );
-            })}
-          </div>
-        </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                {philosophy.map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center space-y-4"
+                    >
+                      <div className={`p-2.5 rounded-xl bg-slate-50 border ${item.borderColor}`}>
+                        <Icon className={`w-6 h-6 ${item.color}`} />
+                      </div>
+                      <h4 className="font-bold text-sm sm:text-base text-slate-800 tracking-wide uppercase leading-tight">
+                        {item.title}
+                      </h4>
+                      <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
 
         {/* BOTTOM COMPONENT: The 6-Step Process Timeline */}
         <div className="space-y-12">

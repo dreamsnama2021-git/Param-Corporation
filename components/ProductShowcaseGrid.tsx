@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Search, Maximize2 } from "lucide-react";
 import Link from "next/link";
 
 export default function ProductShowcaseGrid() {
@@ -10,184 +10,222 @@ export default function ProductShowcaseGrid() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 120, damping: 18 } },
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } as any },
   };
 
   return (
-    <section className="bg-[#f5f5f3] py-8 lg:py-6 px-4 sm:px-6 lg:px-8 lg:h-[calc(100vh-90px)] lg:min-h-[650px] lg:max-h-[820px] flex items-center justify-center overflow-hidden border-b border-slate-200">
-      <div className="w-full max-w-[1400px] h-full flex flex-col justify-between">
-        
+    <section className="bg-[#fafcff] py-8 lg:py-6 px-4 sm:px-6 lg:px-8 overflow-hidden flex items-center justify-center border-b border-[#0093cb]/10 lg:h-[calc(100vh-90px)] lg:min-h-[700px] lg:max-h-[900px]">
+      <div className="w-full max-w-[1800px] h-full flex flex-col justify-center">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
-          className="h-full flex flex-col gap-4 lg:gap-5 justify-between"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-12 gap-5 h-full items-stretch"
         >
-          {/* TOP ROW: 2 Cards (Desktop Reminders & Medipride) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 h-[30%] lg:h-[30%] min-h-[160px] lg:min-h-0">
-            
+          {/* COLUMN 1: Category 1 (Desktop Brand Reminders) & Category 2 (Medipride Communications) */}
+          <div className="md:col-span-5 flex flex-col gap-5 h-full">
             {/* Card 1: Desktop Brand Reminders */}
             <motion.div
               variants={itemVariants}
-              className="rounded-3xl bg-[#e5e4e0] p-5 lg:p-6 flex flex-col justify-between h-full relative overflow-hidden group"
+              whileHover={{ y: -4 }}
+              className="rounded-[32px] bg-[#e6f4fa] p-6 lg:p-8 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-[0_15px_40px_rgba(0,147,203,0.05)] border border-[#0093cb]/15 text-[#002d40]"
             >
-              <div className="flex justify-between items-start">
-                <div>
-                  <span className="text-[10px] uppercase font-extrabold tracking-widest text-slate-800 block mb-1">
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <img
+                  src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_16%20PM.png"
+                  alt="Desktop Brand Reminders"
+                  className="w-full h-full object-cover opacity-25 group-hover:opacity-35 transition-all duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#e6f4fa] via-[#e6f4fa]/20 to-transparent pointer-events-none" />
+              </div>
+
+              <div className="z-10">
+                <div className="flex justify-between items-start mb-4">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#0093cb] bg-[#0093cb]/10 px-3 py-1 rounded-full">
                     Category 01
                   </span>
-                  <h3 className="text-xl lg:text-2xl font-black text-slate-900 uppercase leading-none tracking-tight mb-2">
-                    Desktop Brand Reminders <span className="font-light text-slate-500">──→</span>
-                  </h3>
-                  <p className="text-slate-600 text-xs max-w-md leading-relaxed line-clamp-2">
-                    Paperweights, tabletops, promotional merchandise, 3D printed & fibre resin ranges.
-                  </p>
+                  <span className="text-[10px] font-bold text-[#002d40]/40">EVERGREEN RANGE</span>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-sm group-hover:bg-slate-100 shrink-0">
-                  <ArrowUpRight className="w-4 h-4" />
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-1.5 mt-2 overflow-hidden max-h-[30px] lg:max-h-[35px]">
-                {["Paperweights", "Tabletops", "Merchandise", "3D Printed", "Resin"].map((tag) => (
-                  <span key={tag} className="text-[9px] font-bold uppercase tracking-wider text-slate-800 bg-white/40 px-2.5 py-1 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Card 2: Medipride Communications */}
-            <motion.div
-              variants={itemVariants}
-              className="rounded-3xl bg-[#e5e4e0] p-5 lg:p-6 flex flex-col justify-between h-full relative overflow-hidden group"
-            >
-              <div className="flex justify-between items-start">
-                <div>
-                  <span className="text-[10px] uppercase font-extrabold tracking-widest text-slate-800 block mb-1">
-                    Category 02
-                  </span>
-                  <h3 className="text-xl lg:text-2xl font-black text-slate-900 uppercase leading-none tracking-tight mb-2">
-                    Medipride Communications <span className="font-light text-slate-500">──→</span>
-                  </h3>
-                  <p className="text-slate-600 text-xs max-w-md leading-relaxed line-clamp-2">
-                    Scientific inputs, therapy inputs, flipcharts, and write & wipe utility boards.
-                  </p>
-                </div>
-                <div className="w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-sm group-hover:bg-slate-100 shrink-0">
-                  <ArrowUpRight className="w-4 h-4" />
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-1.5 mt-2 overflow-hidden max-h-[30px] lg:max-h-[35px]">
-                {["Therapy", "Days", "Write & Wipe", "Flipchart"].map((tag) => (
-                  <span key={tag} className="text-[9px] font-bold uppercase tracking-wider text-slate-800 bg-white/40 px-2.5 py-1 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-          </div>
-
-          {/* MIDDLE ROW: 1 Large Card (Digital Engagement Solutions) */}
-          <motion.div
-            variants={itemVariants}
-            className="rounded-3xl bg-[#e5e4e0] p-5 lg:p-6 flex flex-col md:flex-row gap-6 items-stretch justify-between h-[36%] lg:h-[36%] min-h-[180px] lg:min-h-0 relative group overflow-hidden"
-          >
-            <div className="flex flex-col justify-between max-w-xl py-1">
-              <div>
-                <span className="text-[10px] uppercase font-extrabold tracking-widest text-slate-800 block mb-1">
-                  Category 03
-                </span>
-                <h3 className="text-2xl lg:text-3xl font-black text-slate-900 uppercase leading-none tracking-tight mb-2">
-                  Digital Engagement Solutions
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight leading-none mb-2">
+                  Desktop Brand Reminders
                 </h3>
-                <p className="text-slate-600 text-xs lg:text-sm leading-relaxed max-w-md line-clamp-3">
-                  Interactive technology-driven platforms like DigiPRO, HRA calculators, and custom QR code integration.
+                <p className="text-xs sm:text-sm font-medium leading-relaxed opacity-85 max-w-sm">
+                  Paperweights, tabletops, promotional merchandise, 3D printed & fibre resin ranges, plants, as per days.
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-1.5 mt-3">
-                {["DigiPRO", "QR Products", "HRA Calculators", "Websites"].map((tag) => (
-                  <span key={tag} className="text-[9px] font-bold uppercase tracking-wider text-slate-800 bg-white/40 px-2.5 py-1 rounded-full">
-                    {tag}
+              <div className="w-full text-left text-[9px] font-bold tracking-wider uppercase opacity-40 z-10">
+                Param Corporation
+              </div>
+            </motion.div>
+
+            {/* Card 2: Medipride Communications / Scientific Inputs */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -4 }}
+              className="rounded-[32px] bg-[#00a65d] p-6 lg:p-8 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-[0_15px_40px_rgba(0,166,93,0.1)] text-white"
+            >
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <img
+                  src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_03%20PM.png"
+                  alt="Scientific Inputs"
+                  className="w-full h-full object-cover opacity-25 group-hover:opacity-35 transition-all duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#00a65d] via-[#00a65d]/20 to-transparent pointer-events-none" />
+              </div>
+
+              <div className="flex justify-between items-start z-10">
+                <div>
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-white/80 block mb-1">
+                    Category 02
                   </span>
-                ))}
+                  <h3 className="text-xl lg:text-2xl font-bold uppercase tracking-tight">
+                    Medipride Communications
+                  </h3>
+                </div>
+                <div className="w-10 h-10 rounded-full bg-white text-[#00a65d] flex items-center justify-center shadow-md hover:scale-105 transition-all">
+                  <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
+                </div>
               </div>
-            </div>
 
-            {/* Visual Column */}
-            <div className="hidden md:block w-2/5 rounded-2xl overflow-hidden bg-slate-50 border border-slate-200 shrink-0 relative h-full">
-              <img 
-                src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png" 
-                alt="Digital Engagement Solutions"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-              <div className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-md">
-                <ArrowUpRight className="w-4 h-4" />
+              <div className="flex justify-between items-end z-10">
+                <div>
+                  <p className="text-xs text-white/90 max-w-[320px] leading-snug">
+                    Scientific Inputs: As per therapy, as per days, write & wipe utility, and flipcharts.
+                  </p>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
-          {/* BOTTOM ROW: 2 Cards (Hyperpersonalized & Visual Aids) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5 h-[30%] lg:h-[30%] min-h-[160px] lg:min-h-0">
-            
+          {/* COLUMN 2: Category 3 (Digital Solutions) & Category 4 (Hyperpersonalized) */}
+          <div className="md:col-span-3 flex flex-col gap-5 h-full">
+            {/* Card 3: Digital Engagement Solutions */}
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -4 }}
+              className="rounded-[32px] bg-[#0093cb] p-6 lg:p-8 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-[0_15px_40px_rgba(0,147,203,0.1)] text-white"
+            >
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <img
+                  src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png"
+                  alt="Digital Solutions"
+                  className="w-full h-full object-cover opacity-25 group-hover:opacity-35 transition-all duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0093cb] via-[#0093cb]/20 to-transparent pointer-events-none" />
+              </div>
+
+              <div className="z-10">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-white/80 block mb-2">
+                  Category 03
+                </span>
+                <h3 className="text-lg font-bold uppercase tracking-tight mb-2">
+                  Digital Engagement
+                </h3>
+                <p className="text-xs leading-relaxed opacity-90">
+                  Solutions: DigiPRO, QR code based products, and HRA calculators.
+                </p>
+              </div>
+
+              <div className="z-10 text-[9px] opacity-80 font-semibold">
+                DigiPRO &bull; QR Products
+              </div>
+            </motion.div>
+
             {/* Card 4: Hyperpersonalized Products */}
             <motion.div
               variants={itemVariants}
-              className="relative rounded-3xl overflow-hidden group bg-[#ebeae6] h-full"
+              whileHover={{ y: -4 }}
+              className="rounded-[32px] bg-[#f0f9eb] p-6 lg:p-8 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-[0_15px_40px_rgba(0,166,93,0.05)] border border-[#00a65d]/10 text-[#004d2b]"
             >
-              <img 
-                src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/3D%20PRINTED/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_04_56%20PM.png" 
-                alt="Hyperpersonalized Products"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              
-              <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between text-white">
-                <span className="text-xs font-extrabold uppercase tracking-widest bg-black/35 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10">
-                  #Hyperpersonalized
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <img
+                  src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/22.png"
+                  alt="Hyperpersonalized"
+                  className="w-full h-full object-cover opacity-25 group-hover:opacity-35 transition-all duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#f0f9eb] via-[#f0f9eb]/20 to-transparent pointer-events-none" />
+              </div>
+
+              <div className="z-10">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#00a65d] block mb-2">
+                  Category 04
                 </span>
-                <div className="w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-lg group-hover:bg-slate-100 transition-colors">
-                  <ArrowUpRight className="w-4 h-4" />
-                </div>
+                <h3 className="text-lg font-bold uppercase tracking-tight mb-1">
+                  Hyperpersonalized
+                </h3>
+                <p className="text-xs leading-snug opacity-75">
+                  Products: Creative and unique custom QR code & name based products.
+                </p>
+              </div>
+
+              <div className="z-10 text-center text-[9px] font-bold uppercase tracking-wider opacity-55">
+                Creative ✦ Name Products
               </div>
             </motion.div>
-
-            {/* Card 5: Visual Aids & Detailers */}
-            <motion.div
-              variants={itemVariants}
-              className="relative rounded-3xl overflow-hidden group bg-[#ebeae6] h-full"
-            >
-              <img 
-                src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/28.png" 
-                alt="Visual Aids & Detailers"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              
-              <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between text-white">
-                <span className="text-xs font-extrabold uppercase tracking-widest bg-black/35 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10">
-                  #VisualAids
-                </span>
-                <div className="w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-lg group-hover:bg-slate-100 transition-colors">
-                  <ArrowUpRight className="w-4 h-4" />
-                </div>
-              </div>
-            </motion.div>
-
           </div>
 
+          {/* COLUMN 3: Category 5 (Visual Aids & Detailers) */}
+          <div className="md:col-span-4 h-full">
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ y: -4 }}
+              className="rounded-[32px] relative overflow-hidden group h-full min-h-[480px] md:h-full flex flex-col justify-between p-6 lg:p-8 shadow-xl bg-stone-900"
+            >
+              {/* Product Background Image */}
+              <div className="absolute inset-0">
+                <img
+                  src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_04_56%20PM.png"
+                  alt="Visual Aids & Detailers"
+                  className="w-full h-full object-cover opacity-65 transition-transform duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/50" />
+              </div>
+
+              <div className="z-10">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#f3eae3] bg-[#0093cb] px-3.5 py-1.5 rounded-full border border-white/10 shadow-sm">
+                  Category 05
+                </span>
+                <h3 className="text-2xl font-black uppercase text-[#f3eae3] tracking-tight leading-none mt-4">
+                  Visual Aids & Detailers
+                </h3>
+              </div>
+
+              <div className="z-10 flex flex-col gap-4 mt-auto">
+                <p className="text-xs sm:text-sm text-[#f3eae3]/90 leading-relaxed max-w-[320px]">
+                  Highly structured visual aids, scientific detailers, and consultative tools.
+                </p>
+
+                <div className="flex justify-between items-center mt-2">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#f3eae3]/60">
+                    Explore collection
+                  </span>
+                  
+                  {/* Floating Action Icons */}
+                  <div className="flex gap-2">
+                    <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-[#0093cb] hover:scale-105 transition-all pointer-events-auto cursor-pointer">
+                      <Search className="w-4 h-4" />
+                    </div>
+                    <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-[#0093cb] hover:scale-105 transition-all pointer-events-auto cursor-pointer">
+                      <Maximize2 className="w-4 h-4" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

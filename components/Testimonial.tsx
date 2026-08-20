@@ -7,6 +7,39 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const testimonials = [
   {
     quote:
+      "Param Corporation is a dependable partner who consistently delivers high-quality solutions on time. Their attention to detail and professional approach are commendable.",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0012-scaled.jpg",
+    name: "Vikram Singh",
+    role: "Brand Manager",
+    company: "Cipla Ltd",
+    stat: "Dependable Partner",
+    initials: "VS",
+    avatarColor: "blue",
+  },
+  {
+    quote:
+      "We value Param Corporation's creativity, commitment and the way they truly understand our requirements. They are a key part of our success.",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0007-scaled.jpg",
+    name: "Neha Bhatia",
+    role: "Product Head",
+    company: "Lupin",
+    stat: "Creative Value",
+    initials: "NB",
+    avatarColor: "indigo",
+  },
+  {
+    quote:
+      "Excellent service, timely delivery and great support throughout the project. We look forward to continuing our association with Param Corporation.",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0006-scaled.jpg",
+    name: "Anupam Mehta",
+    role: "Marketing Head",
+    company: "Glenmark",
+    stat: "Excellent Service",
+    initials: "AM",
+    avatarColor: "teal",
+  },
+  {
+    quote:
       "I was traveling across and i met doctors and field force. The response of the Patient Education Write and Wipe board and the EDD and Ovulation Calculator is very impressive. A big shout out to the whole Param Team!",
     logo: "https://paramcorp.in/wp-content/uploads/2025/01/Untitled-design-1.png",
     name: "Ms. Deeksha Pahwa",

@@ -14,7 +14,7 @@ export default function FoundersMessage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* LEFT COLUMN: Message content */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          <div className="lg:col-span-6 flex flex-col justify-center">
             
             {/* Heading */}
             <div className="mb-8">
@@ -34,7 +34,7 @@ export default function FoundersMessage() {
             </h4>
 
             {/* Paragraphs */}
-            <div className="space-y-5 text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
+            <div className="space-y-5 text-slate-600 text-sm lg:text-[16px] leading-relaxed mb-8">
               <p>
                 When we started Param Corporation, our vision was simple yet powerful – to create innovative, impactful, and meaningful solutions that help the healthcare industry communicate better.
               </p>
@@ -50,7 +50,7 @@ export default function FoundersMessage() {
             <div className="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100 relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#0093cb]/5 to-transparent rounded-bl-3xl" />
               <Quote className="w-10 h-10 text-[#00a65d]/20 shrink-0 transform -scale-x-100" />
-              <p className="text-slate-700 italic font-medium text-sm sm:text-base leading-relaxed">
+              <p className="text-slate-700 italic font-medium text-sm lg:text-[16px] leading-relaxed">
                 "Thank you for being a part of our journey. Together, let’s continue to empower healthcare brands and make a difference."
               </p>
             </div>
@@ -58,10 +58,10 @@ export default function FoundersMessage() {
           </div>
 
           {/* RIGHT COLUMN: Founder Image & Vision/Mission Card */}
-          <div className="lg:col-span-5 relative flex justify-center items-center">
+          <div className="lg:col-span-6 relative flex justify-center items-center">
             
             {/* Image Outer Wrapper (With custom border-radius layout from screenshot) */}
-            <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[60px] rounded-br-[120px] rounded-tl-[120px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
+            <div className="relative w-full max-w-[500px] aspect-[4/5] rounded-[60px] rounded-br-[120px] rounded-tl-[120px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
               <img
                 src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/WhatsApp%20Image%202026-06-01%20at%207.26.05%20PM.jpeg"
                 alt="Mr. Sanchay Dosi - Founder"
@@ -71,29 +71,29 @@ export default function FoundersMessage() {
             </div>
 
             {/* Floating Vision/Mission Overlay Box */}
-            <div className="absolute bottom-[-40px] right-[-10px] sm:right-[-20px] w-[260px] rounded-3xl overflow-hidden shadow-2xl border border-white/20 bg-gradient-to-br from-[#0093cb] to-[#00a65d] text-white p-6 z-20">
+            <div className="absolute bottom-[-80px] right-[-50px] sm:right-[-90px] w-[330px] rounded-[32px] overflow-hidden shadow-2xl border border-white/20 bg-gradient-to-br from-[#0093cb] to-[#00a65d] text-white p-7 sm:p-8 z-20">
               {/* Vision Section */}
-              <div className="mb-5 pb-5 border-b border-white/20">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                    <Target className="w-4 h-4 text-white" />
+              <div className="mb-6 pb-6 border-b border-white/20">
+                <div className="flex items-center gap-3.5 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shadow-inner">
+                    <Target className="w-5 h-5 text-white" />
                   </div>
-                  <h5 className="font-bold text-sm tracking-wide uppercase">Our Vision</h5>
+                  <h5 className="font-black text-base tracking-wider uppercase">Our Vision</h5>
                 </div>
-                <p className="text-white/80 text-[11px] leading-relaxed">
+                <p className="text-white/90 text-[12px] xl:text-[13px] leading-relaxed font-medium">
                   To be the most innovative and trusted partner in healthcare marketing solutions.
                 </p>
               </div>
 
               {/* Mission Section */}
               <div>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                    <Eye className="w-4 h-4 text-white" />
+                <div className="flex items-center gap-3.5 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center shadow-inner">
+                    <Eye className="w-5 h-5 text-white" />
                   </div>
-                  <h5 className="font-bold text-sm tracking-wide uppercase">Our Mission</h5>
+                  <h5 className="font-black text-base tracking-wider uppercase">Our Mission</h5>
                 </div>
-                <p className="text-white/80 text-[11px] leading-relaxed mt-2">
+                <p className="text-white/90 text-[12px] xl:text-[13px] leading-relaxed font-medium">
                   Empowering brands through impactful scientific communications and high-recall marketing tools.
                 </p>
               </div>
