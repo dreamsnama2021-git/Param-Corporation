@@ -120,37 +120,35 @@ export default function KoruCommitment() {
           </div>
 
           {/* Right graphics */}
-          <div className="lg:col-span-6 grid grid-cols-12 gap-6 items-center">
+          <div className="lg:col-span-6 w-full flex justify-center">
             {/* Image Setup */}
-            <div className="col-span-9 relative">
-              <div className="relative w-full aspect-[4/3] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
-                <img
-                  src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=800&q=80"
-                  alt="Sustainable Office Products"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent pointer-events-none" />
-              </div>
-            </div>
+            <div className="relative w-full aspect-[4/3] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100 group">
+              <img
+                src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=800&q=80"
+                alt="Sustainable Office Products"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent pointer-events-none" />
 
-            {/* Vertically Aligned Labels */}
-            <div className="col-span-3 space-y-4">
-              {[
-                { name: "People", icon: Users, color: "text-[#0093cb]" },
-                { name: "Communities", icon: Globe, color: "text-[#00a65d]" },
-                { name: "Environment", icon: Leaf, color: "text-[#003b46]" },
-                { name: "Future", icon: TrendingUp, color: "text-[#0093cb]" },
-              ].map((label, idx) => {
-                const Icon = label.icon;
-                return (
-                  <div key={idx} className="flex flex-col items-center text-center p-2 rounded-xl bg-slate-50 border border-slate-100 shadow-sm">
-                    <Icon className={`w-5 h-5 ${label.color} mb-1`} />
-                    <span className="text-[10px] font-bold text-slate-700 uppercase tracking-tighter">
-                      {label.name}
-                    </span>
-                  </div>
-                );
-              })}
+              {/* Horizontally Aligned Labels overlay inside the image */}
+              <div className="absolute bottom-6 left-6 right-6 flex flex-row flex-wrap items-center justify-center gap-3 z-10">
+                {[
+                  { name: "People", icon: Users, color: "text-[#0093cb]" },
+                  { name: "Communities", icon: Globe, color: "text-[#00a65d]" },
+                  { name: "Environment", icon: Leaf, color: "text-[#003b46]" },
+                  { name: "Future", icon: TrendingUp, color: "text-[#0093cb]" },
+                ].map((label, idx) => {
+                  const Icon = label.icon;
+                  return (
+                    <div key={idx} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-sm shadow-md border border-white/20 hover:scale-105 transition-transform duration-300">
+                      <Icon className={`w-4 h-4 ${label.color}`} />
+                      <span className="text-[10px] sm:text-xs font-black text-slate-800 uppercase tracking-wider">
+                        {label.name}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -170,15 +168,18 @@ export default function KoruCommitment() {
               return (
                 <div
                   key={idx}
-                  className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center space-y-4"
+                  className="group relative bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#00a65d]/20 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center space-y-4 cursor-pointer"
                 >
-                  <div className={`p-3 rounded-xl ${p.bgColor} border ${p.borderColor}`}>
+                  {/* Soft Gradient Overlay on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0093cb]/5 to-[#00a65d]/5 rounded-[14px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  
+                  <div className={`p-3 rounded-xl ${p.bgColor} border ${p.borderColor} transition-colors duration-300 group-hover:bg-white group-hover:shadow-sm z-10`}>
                     <Icon className={`w-6 h-6 ${p.color}`} />
                   </div>
-                  <h4 className="font-extrabold text-sm sm:text-base text-slate-800 tracking-tight min-h-[38px] flex items-center justify-center">
+                  <h4 className="font-extrabold text-sm sm:text-base text-slate-800 tracking-tight min-h-[38px] flex items-center justify-center z-10">
                     {p.title}
                   </h4>
-                  <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed">
+                  <p className="text-slate-500 text-xs sm:text-sm xl:text-base leading-relaxed z-10">
                     {p.desc}
                   </p>
                 </div>
@@ -202,20 +203,23 @@ export default function KoruCommitment() {
               return (
                 <div
                   key={idx}
-                  className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                  className="group relative bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#00a65d]/20 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
+                  {/* Soft Gradient Overlay on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#00a65d]/5 via-transparent to-[#0093cb]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
                   {/* Image Header */}
-                  <div className="h-44 relative overflow-hidden bg-slate-50">
-                    <img src={r.image} alt={r.title} className="w-full h-full object-cover" />
+                  <div className="h-44 relative overflow-hidden bg-slate-50 z-10">
+                    <img src={r.image} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute top-4 left-4 w-9 h-9 rounded-full bg-white/95 shadow-md flex items-center justify-center">
                       <Icon className="w-5 h-5 text-[#00a65d]" />
                     </div>
                   </div>
 
                   {/* Body Content */}
-                  <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                  <div className="p-6 space-y-3 flex-1 flex flex-col justify-between z-10">
                     <div>
-                      <h4 className="font-extrabold text-base text-slate-800 leading-snug">
+                      <h4 className="font-extrabold text-base text-slate-800 leading-snug group-hover:text-[#00a65d] transition-colors duration-300">
                         {r.title}
                       </h4>
                       <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mt-2">

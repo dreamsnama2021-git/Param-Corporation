@@ -190,10 +190,10 @@ export default function ProjectWorkflow() {
               return (
                 <div
                   key={idx}
-                  className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between relative group"
+                  className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative group cursor-pointer"
                 >
                   {/* Step Number Circle */}
-                  <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-slate-950 text-white font-extrabold text-xs flex items-center justify-center shadow-md">
+                  <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-gradient-to-r from-[#0093cb] to-[#00a65d] text-white font-extrabold text-xs flex items-center justify-center shadow-md">
                     {step.num}
                   </div>
 
@@ -207,7 +207,7 @@ export default function ProjectWorkflow() {
                       {step.title}
                     </h4>
 
-                    <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed">
+                    <p className="text-slate-500 text-xs sm:text-sm xl:text-base leading-relaxed">
                       {step.desc}
                     </p>
                   </div>
@@ -225,8 +225,8 @@ export default function ProjectWorkflow() {
         </div>
 
         {/* ─── WHY OUR WORKFLOW WORKS BAR ─────────────────────────────────── */}
-        <div className="bg-slate-900 rounded-[32px] p-6 sm:p-8 text-white relative overflow-hidden shadow-xl">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0093cb]/10 to-[#00a65d]/10 pointer-events-none" />
+        <div className="bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-[32px] p-6 sm:p-8 text-white relative overflow-hidden shadow-xl">
+          <div className="absolute inset-0 bg-black/10 pointer-events-none" />
           
           <div className="relative z-10 space-y-6">
             <h3 className="text-lg sm:text-xl font-extrabold tracking-tight text-center flex items-center justify-center gap-3">
@@ -235,7 +235,7 @@ export default function ProjectWorkflow() {
               <span className="h-px w-10 bg-gradient-to-l from-transparent to-white/40" />
             </h3>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-white/10">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-white/15">
               {benefits.map((benefit, idx) => {
                 const Icon = benefit.icon;
                 return (
@@ -245,10 +245,10 @@ export default function ProjectWorkflow() {
                       idx >= 2 && idx < 4 ? "pt-6 md:pt-3" : ""
                     } ${idx === 0 ? "" : "md:pl-4"}`}
                   >
-                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mb-3">
-                      <Icon className="w-5 h-5 text-[#0093cb]" />
+                    <div className="w-11 h-11 rounded-full bg-white/20 border border-white/10 flex items-center justify-center mb-3 shadow-inner hover:scale-110 transition-transform duration-300">
+                      <Icon className="w-5 h-5 text-white" />
                     </div>
-                    <span className="text-white text-xs sm:text-[13px] font-bold">
+                    <span className="text-white text-xs sm:text-[13px] font-bold tracking-wide">
                       {benefit.title}
                     </span>
                   </div>

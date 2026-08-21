@@ -197,15 +197,18 @@ export default function QualityAssurance() {
               return (
                 <div
                   key={idx}
-                  className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center space-y-3"
+                  className="group relative bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center space-y-3 cursor-pointer overflow-hidden"
                 >
-                  <div className={`p-3 rounded-xl ${item.bgColor} border ${item.borderColor}`}>
+                  {/* Soft Brand Gradient Overlay on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0093cb]/5 to-[#00a65d]/5 rounded-[14px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                  <div className={`p-3 rounded-xl ${item.bgColor} border ${item.borderColor} transition-all duration-300 group-hover:bg-white group-hover:scale-105 z-10`}>
                     <Icon className={`w-6 h-6 ${item.color}`} />
                   </div>
-                  <h4 className="font-bold text-xs sm:text-sm text-slate-800 uppercase tracking-wide leading-tight min-h-[32px] flex items-center justify-center">
+                  <h4 className="font-bold text-xs sm:text-sm text-slate-800 uppercase tracking-wide leading-tight min-h-[32px] flex items-center justify-center z-10 transition-colors duration-300 group-hover:text-[#0093cb]">
                     {item.title}
                   </h4>
-                  <p className="text-slate-500 text-xs leading-relaxed">
+                  <p className="text-slate-500 text-xs leading-relaxed z-10">
                     {item.desc}
                   </p>
                 </div>
@@ -215,10 +218,10 @@ export default function QualityAssurance() {
         </div>
 
         {/* ─── CERTIFICATIONS & PROCESS FLOW ──────────────────────────────── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 gap-8 lg:gap-12">
           
-          {/* Left Column: Certifications */}
-          <div className="lg:col-span-5 bg-slate-50/50 rounded-3xl p-6 sm:p-8 border border-slate-100 flex flex-col justify-between">
+          {/* Row 1: Certifications */}
+          <div className="w-full bg-slate-50/50 rounded-3xl p-6 sm:p-8 border border-slate-100 flex flex-col justify-between">
             <div className="mb-6">
               <h3 className="text-2xl font-extrabold text-slate-800 tracking-tight">
                 Our Certifications
@@ -226,49 +229,49 @@ export default function QualityAssurance() {
               <div className="h-0.5 w-12 bg-[#0093cb] mt-2 rounded-full" />
             </div>
 
-            <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-3 gap-4 items-center justify-center">
+            <div className="grid grid-cols-3 sm:grid-cols-5 gap-4 items-center justify-center">
               {/* ISO 9001 */}
-              <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-sm flex flex-col items-center justify-center text-center min-h-[100px] hover:shadow-md transition-shadow">
-                <span className="text-[10px] font-black text-[#0093cb] uppercase tracking-wider">ISO</span>
-                <span className="text-[13px] font-black text-slate-800">9001:2015</span>
-                <span className="text-[9px] font-medium text-slate-400 mt-1.5 leading-tight">Quality Mgmt System</span>
+              <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col items-center justify-center text-center min-h-[120px] hover:shadow-md transition-shadow">
+                <span className="text-[12px] font-black text-[#0093cb] uppercase tracking-wider">ISO</span>
+                <span className="text-base sm:text-lg font-black text-slate-800">9001:2015</span>
+                <span className="text-[11px] font-medium text-slate-500 mt-2 leading-tight">Quality Mgmt System</span>
               </div>
 
               {/* ISO 14001 */}
-              <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-sm flex flex-col items-center justify-center text-center min-h-[100px] hover:shadow-md transition-shadow">
-                <span className="text-[10px] font-black text-[#00a65d] uppercase tracking-wider">ISO</span>
-                <span className="text-[13px] font-black text-slate-800">14001:2015</span>
-                <span className="text-[9px] font-medium text-slate-400 mt-1.5 leading-tight">Env Mgmt System</span>
+              <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col items-center justify-center text-center min-h-[120px] hover:shadow-md transition-shadow">
+                <span className="text-[12px] font-black text-[#00a65d] uppercase tracking-wider">ISO</span>
+                <span className="text-base sm:text-lg font-black text-slate-800">14001:2015</span>
+                <span className="text-[11px] font-medium text-slate-500 mt-2 leading-tight">Env Mgmt System</span>
               </div>
 
               {/* ISO 45001 */}
-              <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-sm flex flex-col items-center justify-center text-center min-h-[100px] hover:shadow-md transition-shadow">
-                <span className="text-[10px] font-black text-[#0093cb] uppercase tracking-wider">ISO</span>
-                <span className="text-[13px] font-black text-slate-800">45001:2018</span>
-                <span className="text-[9px] font-medium text-slate-400 mt-1.5 leading-tight">Occu Health & Safety</span>
+              <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col items-center justify-center text-center min-h-[120px] hover:shadow-md transition-shadow">
+                <span className="text-[12px] font-black text-[#0093cb] uppercase tracking-wider">ISO</span>
+                <span className="text-base sm:text-lg font-black text-slate-800">45001:2018</span>
+                <span className="text-[11px] font-medium text-slate-500 mt-2 leading-tight">Occu Health & Safety</span>
               </div>
 
               {/* MSME */}
-              <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-sm flex flex-col items-center justify-center text-center min-h-[100px] hover:shadow-md transition-shadow">
-                <div className="text-[11px] font-black text-[#003b46] tracking-wider uppercase leading-none">MSME</div>
-                <div className="h-0.5 w-6 bg-[#00a65d] my-1" />
-                <span className="text-[8px] font-bold text-slate-500 uppercase tracking-tighter">Govt. of India</span>
-                <span className="text-[8px] font-medium text-slate-400 mt-0.5 leading-none">Registered</span>
+              <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col items-center justify-center text-center min-h-[120px] hover:shadow-md transition-shadow">
+                <div className="text-sm font-black text-[#003b46] tracking-wider uppercase leading-none">MSME</div>
+                <div className="h-0.5 w-8 bg-[#00a65d] my-1.5" />
+                <span className="text-[11px] font-bold text-slate-600 uppercase tracking-tighter">Govt. of India</span>
+                <span className="text-[10px] font-medium text-slate-500 mt-0.5 leading-none">Registered</span>
               </div>
 
               {/* ZED Bronze */}
-              <div className="bg-white p-3 rounded-xl border border-slate-200/80 shadow-sm flex flex-col items-center justify-center text-center min-h-[100px] hover:shadow-md transition-shadow">
-                <div className="text-[12px] font-extrabold text-[#b87333] tracking-wide uppercase">ZED</div>
-                <div className="bg-[#b87333]/15 text-[#b87333] text-[8px] font-extrabold px-1.5 py-0.5 rounded-full mt-1">
+              <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-sm flex flex-col items-center justify-center text-center min-h-[120px] hover:shadow-md transition-shadow">
+                <div className="text-sm font-extrabold text-[#b87333] tracking-wide uppercase">ZED</div>
+                <div className="bg-[#b87333]/15 text-[#b87333] text-[9px] font-extrabold px-2 py-1 rounded-full mt-1.5">
                   BRONZE
                 </div>
-                <span className="text-[8px] font-medium text-slate-400 mt-1 leading-none">Certified</span>
+                <span className="text-[10px] font-medium text-slate-500 mt-1.5 leading-none">Certified</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Quality at Every Step */}
-          <div className="lg:col-span-7 bg-slate-50/50 rounded-3xl p-6 sm:p-8 border border-slate-100 space-y-6">
+          {/* Row 2: Quality at Every Step */}
+          <div className="w-full bg-slate-50/50 rounded-3xl p-6 sm:p-8 border border-slate-100 space-y-6">
             <div>
               <h3 className="text-2xl font-extrabold text-slate-800 tracking-tight">
                 Quality at Every Step
@@ -279,12 +282,12 @@ export default function QualityAssurance() {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               {steps.map((step, idx) => (
                 <React.Fragment key={idx}>
-                  <div className="flex flex-col items-center text-center group w-full max-w-[100px]">
-                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md relative group-hover:scale-105 transition-transform duration-300">
+                  <div className="flex flex-col items-center text-center group w-full max-w-[160px]">
+                    <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-md relative group-hover:scale-105 transition-transform duration-300">
                       <img src={step.image} alt={step.title} className="w-full h-full object-cover" />
                     </div>
-                    <span className="text-xs font-bold text-[#0093cb] mt-2">{step.num}</span>
-                    <h4 className="text-[10px] font-bold text-slate-700 leading-tight mt-1">
+                    <span className="text-sm sm:text-base font-bold text-[#0093cb] mt-3">{step.num}</span>
+                    <h4 className="text-xs sm:text-sm xl:text-base font-bold text-slate-700 leading-tight mt-1.5 min-h-[40px] flex items-center justify-center">
                       {step.title}
                     </h4>
                   </div>
@@ -312,15 +315,18 @@ export default function QualityAssurance() {
               return (
                 <div
                   key={idx}
-                  className="bg-slate-50/50 p-6 rounded-2xl border border-slate-100 flex flex-col items-center text-center space-y-4 hover:bg-white hover:shadow-md transition-all duration-300"
+                  className="group relative bg-slate-50/50 p-6 rounded-2xl border border-slate-100 flex flex-col items-center text-center space-y-4 hover:bg-white hover:shadow-xl hover:border-[#0093cb]/20 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer overflow-hidden"
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#0093cb]/10 flex items-center justify-center">
+                  {/* Soft Brand Gradient Overlay on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0093cb]/5 to-[#00a65d]/5 rounded-[14px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                  <div className="w-12 h-12 rounded-full bg-[#0093cb]/10 flex items-center justify-center z-10 transition-transform duration-300 group-hover:scale-110">
                     <Icon className="w-6 h-6 text-[#0093cb]" />
                   </div>
-                  <h4 className="font-bold text-sm sm:text-base text-slate-800 tracking-tight leading-snug">
+                  <h4 className="font-bold text-sm sm:text-base text-slate-800 tracking-tight leading-snug z-10 transition-colors duration-300 group-hover:text-[#0093cb]">
                     {item.title}
                   </h4>
-                  <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed">
+                  <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed z-10">
                     {item.desc}
                   </p>
                 </div>

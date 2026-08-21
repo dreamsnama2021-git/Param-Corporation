@@ -110,14 +110,14 @@ export default function WhyChooseUs() {
               return (
                 <div
                   key={idx}
-                  className={`flex flex-col items-center text-center px-3 pt-6 sm:pt-0 ${
+                  className={`group flex flex-col items-center text-center px-3 pt-6 sm:pt-0 cursor-pointer ${
                     idx === 0 ? "" : "lg:pl-4"
                   }`}
                 >
-                  <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 shadow-sm mb-4">
-                    <Icon className={`w-6 h-6 ${item.color}`} />
+                  <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 shadow-sm mb-4 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#0093cb]/10 group-hover:border-[#0093cb]/20">
+                    <Icon className={`w-6 h-6 ${item.color} transition-colors duration-300`} />
                   </div>
-                  <h3 className={`font-bold text-sm sm:text-base mb-2 ${item.color}`}>
+                  <h3 className={`font-bold text-sm sm:text-base mb-2 ${item.color} transition-colors duration-300`}>
                     {item.title}
                   </h3>
                   <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed">

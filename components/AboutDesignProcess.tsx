@@ -115,63 +115,22 @@ export default function AboutDesignProcess({ showAll = false }: { showAll?: bool
         {showAll && (
           <>
             {/* TOP COMPONENT: Overview / Intro */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              {/* Left: Text headings */}
-              <div className="lg:col-span-6 flex flex-col justify-center">
-                <div className="mb-6">
-                  <h2 className="text-5xl sm:text-6xl font-black tracking-tight leading-tight text-slate-800">
-                    Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Design Process</span>
-                  </h2>
-                  {/* Divider line */}
-                  <div className="h-1 w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] mt-4 rounded-full" />
-                </div>
-
-                <h3 className="text-xl sm:text-2xl font-bold text-[#0093cb] mb-4">
-                  Where Ideas Take Shape and Brands Come Alive.
-                </h3>
-
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                  At Param Corporation, design is more than creativity – it is a thoughtful process that blends strategy, science, and aesthetics to create solutions that communicate, engage and deliver measurable impact.
-                </p>
+            <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-6">
+              <div>
+                <h2 className="text-5xl sm:text-6xl font-black tracking-tight leading-tight text-slate-800">
+                  Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Design Process</span>
+                </h2>
+                {/* Divider line */}
+                <div className="h-1 w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] mt-4 mx-auto rounded-full" />
               </div>
 
-              {/* Right: Collage representing sketches & products */}
-              <div className="lg:col-span-6 relative flex justify-center items-center">
-                <div className="relative w-full max-w-[500px] h-[320px] sm:h-[360px] rounded-3xl overflow-hidden bg-white border border-slate-100 shadow-md p-4">
-                  <div className="grid grid-cols-3 gap-3 w-full h-full">
-                    <div className="rounded-2xl overflow-hidden bg-slate-50 relative h-full">
-                      <img
-                        src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=300"
-                        alt="Conceptual Ideation Sketch"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="grid grid-rows-2 gap-3 h-full">
-                      <div className="rounded-xl overflow-hidden bg-slate-50 relative h-full">
-                        <img
-                          src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/20.png"
-                          alt="Finished Design Product"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="rounded-xl overflow-hidden bg-slate-50 relative h-full">
-                        <img
-                          src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=300"
-                          alt="3D Visualization Workstation"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="rounded-2xl overflow-hidden bg-slate-50 relative h-full">
-                      <img
-                        src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=300"
-                        alt="Research & Understand Phase"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#0093cb]">
+                Where Ideas Take Shape and Brands Come Alive.
+              </h3>
+
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                At Param Corporation, design is more than creativity – it is a thoughtful process that blends strategy, science, and aesthetics to create solutions that communicate, engage and deliver measurable impact.
+              </p>
             </div>
 
             {/* MIDDLE COMPONENT: Our Design Philosophy */}
@@ -193,15 +152,28 @@ export default function AboutDesignProcess({ showAll = false }: { showAll?: bool
                   return (
                     <div
                       key={idx}
-                      className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center space-y-4"
+                      className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center space-y-4 cursor-pointer"
                     >
-                      <div className={`p-2.5 rounded-xl bg-slate-50 border ${item.borderColor}`}>
-                        <Icon className={`w-6 h-6 ${item.color}`} />
-                      </div>
+                      {/* Swinging & Hanging Icon wrapper */}
+                      <motion.div 
+                        animate={{ 
+                          rotate: [0, -12, 10, -8, 6, -4, 2, 0] 
+                        }}
+                        transition={{
+                          duration: 5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: idx * 0.4
+                        }}
+                        style={{ originY: 0 }}
+                        className={`p-3 rounded-xl bg-slate-50 border ${item.borderColor} shadow-sm shrink-0`}
+                      >
+                        <Icon className={`w-10 h-10 ${item.color}`} />
+                      </motion.div>
                       <h4 className="font-bold text-sm sm:text-base text-slate-800 tracking-wide uppercase leading-tight">
                         {item.title}
                       </h4>
-                      <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed">
+                      <p className="text-slate-500 text-xs sm:text-sm xl:text-base leading-relaxed">
                         {item.desc}
                       </p>
                     </div>
@@ -238,7 +210,7 @@ export default function AboutDesignProcess({ showAll = false }: { showAll?: bool
                       <img 
                         src={step.image} 
                         alt={step.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain bg-white"
                       />
                     </motion.div>
 

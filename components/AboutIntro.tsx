@@ -126,7 +126,7 @@ export default function AboutIntro() {
   const center = size / 2;
   const outerRadius = 240;
   const innerRadius = 115;
-  const labelRadius = (outerRadius + innerRadius) / 2 + 10;
+  const labelRadius = (outerRadius + innerRadius) / 2 - 5;
 
   return (
     <section className="bg-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100">
@@ -250,21 +250,21 @@ export default function AboutIntro() {
                         >
                           {/* Render Icon */}
                           <foreignObject
-                            x={textPos.x - 22}
-                            y={textPos.y - 32}
-                            width="44"
-                            height="44"
+                            x={textPos.x - 30}
+                            y={textPos.y - 35}
+                            width="60"
+                            height="60"
                             className="pointer-events-none"
                           >
                             <div className="w-full h-full flex items-center justify-center text-white">
-                              <StepIcon className="w-6 h-6 stroke-[1.8]" />
+                              <StepIcon className="w-10 h-10 stroke-[1.8]" />
                             </div>
                           </foreignObject>
-
+ 
                           {/* Render Title */}
                           <text
                             x={textPos.x}
-                            y={textPos.y + 24}
+                            y={textPos.y + 35}
                             textAnchor="middle"
                             fill="#ffffff"
                             className="text-[12px] sm:text-[13px] font-bold tracking-wide pointer-events-none fill-white"
@@ -342,22 +342,28 @@ export default function AboutIntro() {
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
+            whileHover={{ 
+              y: -8, 
+              scale: 1.02,
+              boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
+            }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative w-full rounded-3xl overflow-hidden shadow-xl border border-white bg-gradient-to-r from-[#0093cb] to-[#00a65d] text-white p-8 flex flex-col items-start gap-4"
+            transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+            className="group relative w-full rounded-3xl overflow-hidden border border-white/20 bg-gradient-to-r from-[#0093cb] to-[#00a65d] text-white p-8 flex flex-col items-start gap-4 cursor-pointer"
           >
-            {/* Visual overlay path grid */}
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08)_0%,transparent_60%)] pointer-events-none" />
+            {/* Visual overlay path grid / Hover gradient glow */}
+            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08)_0%,transparent_60%)] transition-opacity duration-500 group-hover:opacity-40 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#00a65d] to-[#0093cb] opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none" />
             
-            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-md">
-              <Target className="w-6 h-6 text-white" />
+            <div className="relative z-10 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-md transition-all duration-500 group-hover:scale-110 group-hover:rotate-[360deg] group-hover:bg-white group-hover:text-[#0093cb]">
+              <Target className="w-6 h-6 text-white transition-colors duration-500 group-hover:text-[#0093cb]" />
             </div>
             
-            <h3 className="text-xl sm:text-2xl font-black uppercase tracking-wide">
+            <h3 className="relative z-10 text-xl sm:text-2xl font-black uppercase tracking-wide group-hover:translate-x-1 transition-transform duration-300">
               Our Vision
             </h3>
             
-            <p className="text-white/90 text-sm sm:text-base leading-relaxed font-medium">
+            <p className="relative z-10 text-white/90 text-sm sm:text-base leading-relaxed font-medium">
               To be the most innovative and trusted partner in healthcare marketing solutions.
             </p>
           </motion.div>
@@ -366,22 +372,28 @@ export default function AboutIntro() {
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
+            whileHover={{ 
+              y: -8, 
+              scale: 1.02,
+              boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
+            }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative w-full rounded-3xl overflow-hidden shadow-xl border border-white bg-gradient-to-r from-[#0093cb] to-[#00a65d] text-white p-8 flex flex-col items-start gap-4"
+            transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+            className="group relative w-full rounded-3xl overflow-hidden border border-white/20 bg-gradient-to-r from-[#0093cb] to-[#00a65d] text-white p-8 flex flex-col items-start gap-4 cursor-pointer"
           >
-            {/* Visual overlay path grid */}
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08)_0%,transparent_60%)] pointer-events-none" />
+            {/* Visual overlay path grid / Hover gradient glow */}
+            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08)_0%,transparent_60%)] transition-opacity duration-500 group-hover:opacity-40 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#00a65d] to-[#0093cb] opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none" />
             
-            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-md">
-              <Eye className="w-6 h-6 text-white" />
+            <div className="relative z-10 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-md transition-all duration-500 group-hover:scale-110 group-hover:rotate-[360deg] group-hover:bg-white group-hover:text-[#00a65d]">
+              <Eye className="w-6 h-6 text-white transition-colors duration-500 group-hover:text-[#00a65d]" />
             </div>
             
-            <h3 className="text-xl sm:text-2xl font-black uppercase tracking-wide">
+            <h3 className="relative z-10 text-xl sm:text-2xl font-black uppercase tracking-wide group-hover:translate-x-1 transition-transform duration-300">
               Our Mission
             </h3>
             
-            <p className="text-white/90 text-sm sm:text-base leading-relaxed font-medium">
+            <p className="relative z-10 text-white/90 text-sm sm:text-base leading-relaxed font-medium">
               To empower healthcare brands through creative, customized, and impactful communication solutions.
             </p>
           </motion.div>

@@ -37,7 +37,7 @@ export default function WhatWeDoOfferings() {
       icon: BookOpen,
       title: "PATIENT EDUCATION PRODUCTS",
       desc: "Tools that empower patients with knowledge and support better health outcomes.",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Timeline/Koru%202025.png", // Patient chart/booklet
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/1.png", // Patient chart/booklet
       color: "text-[#00a65d]",
       borderColor: "border-[#00a65d]/20",
       numBg: "bg-[#00a65d]",
@@ -72,18 +72,21 @@ export default function WhatWeDoOfferings() {
       <div className="max-w-[1400px] w-full mx-auto relative z-10 space-y-16">
         
         {/* TOP COMPONENT: What We Do Intro Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           
-          {/* Left Column: Heading & Text */}
-          <div className="lg:col-span-6 flex flex-col justify-center">
-            <div className="mb-6">
+          {/* Left Column: Heading (Span 5) */}
+          <div className="lg:col-span-5 flex flex-col justify-start">
+            <div className="mb-2">
               <h2 className="text-5xl sm:text-6xl font-black tracking-tight leading-tight text-slate-800">
                 What <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#0093cb] to-[#00a65d]">We Do</span>
               </h2>
               {/* Underline Divider */}
               <div className="h-1 w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] mt-4 rounded-full" />
             </div>
+          </div>
 
+          {/* Right Column: Subtitle & Body (Span 7) */}
+          <div className="lg:col-span-7 flex flex-col justify-start lg:pt-3">
             <h3 className="text-xl sm:text-2xl font-bold text-[#0093cb] mb-4">
               Smart Solutions. Stronger Connections.
             </h3>
@@ -91,45 +94,6 @@ export default function WhatWeDoOfferings() {
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
               We design, develop and deliver innovative promotional solutions that help pharmaceutical and healthcare brands engage better, communicate smarter, and create a lasting impact.
             </p>
-          </div>
-
-          {/* Right Column: Visual Product Composition */}
-          <div className="lg:col-span-6 relative flex justify-center items-center">
-            {/* Collage Container */}
-            <div className="relative w-full max-w-[500px] h-[320px] sm:h-[360px] rounded-3xl overflow-hidden bg-slate-50 border border-slate-100 shadow-lg flex items-center justify-center p-4">
-              <div className="grid grid-cols-3 gap-3 w-full h-full">
-                <div className="rounded-2xl overflow-hidden bg-slate-100 shadow-sm relative h-full">
-                  <img
-                    src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=300"
-                    alt="Desktop Reminder Item"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="grid grid-rows-2 gap-3 h-full">
-                  <div className="rounded-2xl overflow-hidden bg-slate-100 shadow-sm relative h-full">
-                    <img
-                      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/21.png"
-                      alt="Scientific Model"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="rounded-2xl overflow-hidden bg-slate-100 shadow-sm relative h-full">
-                    <img
-                      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png"
-                      alt="Digital Input"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="rounded-2xl overflow-hidden bg-slate-100 shadow-sm relative h-full">
-                  <img
-                    src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300"
-                    alt="Promotional Merchandise"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
           </div>
 
         </div>
@@ -156,9 +120,10 @@ export default function WhatWeDoOfferings() {
                   key={idx}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -8, scale: 1.01 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                  className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl hover:border-[#0093cb]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer"
                 >
                   {/* Top info */}
                   <div className="p-5 flex flex-col items-start space-y-4">
@@ -184,11 +149,11 @@ export default function WhatWeDoOfferings() {
                   </div>
 
                   {/* Product Image */}
-                  <div className="h-[140px] w-full bg-slate-50 relative border-t border-slate-50 overflow-hidden">
+                  <div className="h-[240px] w-full bg-slate-50 relative border-t border-slate-100 overflow-hidden">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 bg-slate-50"
                     />
                   </div>
                 </motion.div>

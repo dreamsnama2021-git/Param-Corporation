@@ -19,7 +19,7 @@ const InstagramReels = () => {
       </div>
 
       {/* Feed Container - lower z-index */}
-      <div className="relative   max-w-[1500px] mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-8">
+      <div className="relative w-full">
         <div
           className="elfsight-app-2cde112f-a39a-4777-a605-2cdbb7fee660"
           data-elfsight-app-lazy

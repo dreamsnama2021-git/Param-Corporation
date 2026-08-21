@@ -269,10 +269,10 @@ const WhyUsSection = () => {
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-slate-50 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           
-          {/* LEFT COLUMN: Header & 6 Grid Cards (Span 8) */}
-          <div className="lg:col-span-8 space-y-10">
+          {/* LEFT COLUMN: Header & 6 Grid Cards (Span 1) */}
+          <div className="lg:col-span-1 space-y-10">
             {/* Header */}
             <div className="space-y-4">
               <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-slate-800 leading-tight">
@@ -292,7 +292,7 @@ const WhyUsSection = () => {
                 return (
                   <div
                     key={idx}
-                    className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center space-y-3"
+                    className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center space-y-3 cursor-pointer"
                   >
                     <div className={`p-2.5 rounded-xl bg-slate-50 border ${item.borderColor}`}>
                       <Icon className={`w-6 h-6 ${item.color}`} />
@@ -309,50 +309,30 @@ const WhyUsSection = () => {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Quote & Product Image Showcase (Span 4) */}
-          <div className="lg:col-span-4 flex flex-col gap-6 w-full">
-            
-            {/* Quote Block */}
-            <div className="relative rounded-3xl overflow-hidden shadow-xl border border-white bg-gradient-to-br from-[#0093cb] to-[#00a65d] text-white p-6 sm:p-8 flex flex-col justify-between">
-              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08)_0%,transparent_60%)] pointer-events-none" />
-              <Quote className="w-8 h-8 text-white/20 shrink-0 transform -scale-x-100 mb-4" />
-              <p className="text-white/95 text-xs sm:text-sm font-semibold italic leading-relaxed">
-                "Our commitment to innovation, quality, and partnership is what makes us the preferred choice for leading healthcare brands."
-              </p>
-              <div className="flex justify-end mt-4">
-                <Quote className="w-8 h-8 text-white/20 shrink-0" />
-              </div>
-            </div>
+          {/* RIGHT COLUMN: Quote & Product Image Showcase (Span 1) */}
+          <div className="lg:col-span-1 w-full">
+            {/* Combined Single Large Image with Quote Overlay */}
+            <div className="relative w-full h-[650px] lg:h-[750px] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100 group">
+              <img
+                src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/21.png"
+                alt="Acrylic Display Showcase Model"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              
+              {/* Subtle dark overlay for quote legibility */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-black/60 pointer-events-none" />
 
-            {/* Showcase Visual Collage */}
-            <div className="rounded-3xl overflow-hidden bg-white border border-slate-100 shadow-md p-4 flex flex-col items-center">
-              <div className="grid grid-cols-2 gap-2 w-full h-[200px] sm:h-[240px]">
-                <div className="rounded-2xl overflow-hidden bg-slate-50 relative h-full">
-                  <img
-                    src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/21.png"
-                    alt="Acrylic Display Model"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="grid grid-rows-2 gap-2 h-full">
-                  <div className="rounded-xl overflow-hidden bg-slate-50 relative h-full">
-                    <img
-                      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png"
-                      alt="Digital Frame"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="rounded-xl overflow-hidden bg-slate-50 relative h-full">
-                    <img
-                      src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=300"
-                      alt="Clock Display"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+              {/* Quote overlay card at the top */}
+              <div className="absolute top-6 left-6 right-6 p-6 rounded-3xl backdrop-blur-md bg-black/40 border border-white/10 text-white flex flex-col justify-between z-10">
+                <Quote className="w-8 h-8 text-white/40 shrink-0 transform -scale-x-100 mb-3" />
+                <p className="text-white text-xs sm:text-sm font-semibold italic leading-relaxed">
+                  "Our commitment to innovation, quality, and partnership is what makes us the preferred choice for leading healthcare brands."
+                </p>
+                <div className="flex justify-end mt-2">
+                  <Quote className="w-8 h-8 text-white/40 shrink-0" />
                 </div>
               </div>
             </div>
-
           </div>
 
         </div>

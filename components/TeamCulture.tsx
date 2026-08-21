@@ -60,22 +60,22 @@ export default function TeamCulture() {
     {
       title: "One Team. One Goal.",
       icon: Users,
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&q=80",
+      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80",
     },
     {
       title: "Celebrating Together.",
       icon: Sparkles,
-      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500&q=80",
+      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
     },
     {
       title: "Learning Everyday.",
       icon: BookOpen,
-      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&q=80",
+      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80",
     },
     {
       title: "Work Culture That Inspires.",
       icon: Smile,
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&q=80",
+      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
     },
   ];
 
@@ -161,7 +161,7 @@ export default function TeamCulture() {
               return (
                 <div
                   key={idx}
-                  className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center space-y-4"
+                  className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center space-y-4 cursor-pointer"
                 >
                   <div className={`p-3 rounded-xl ${c.bgColor} border ${c.borderColor}`}>
                     <Icon className={`w-6 h-6 ${c.color}`} />
@@ -169,7 +169,7 @@ export default function TeamCulture() {
                   <h4 className="font-extrabold text-sm sm:text-base text-slate-800 tracking-tight">
                     {c.title}
                   </h4>
-                  <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed">
+                  <p className="text-slate-500 text-xs sm:text-sm xl:text-base leading-relaxed">
                     {c.desc}
                   </p>
                 </div>
@@ -179,29 +179,32 @@ export default function TeamCulture() {
         </div>
 
         {/* ─── DAILY LIFE COLLAGE ────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 rounded-[32px] overflow-hidden shadow-lg border border-slate-100">
           {collage.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={idx}
-                className="group relative rounded-3xl overflow-hidden shadow-md aspect-video sm:aspect-square flex flex-col justify-end p-6 border border-slate-100 hover:shadow-xl transition-shadow duration-300"
+                className="relative h-[320px] sm:h-[360px] w-full overflow-hidden group"
               >
-                {/* Background Image */}
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                {/* Black Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent pointer-events-none" />
+                {/* Background Image - full height */}
+                <div className="absolute inset-0 w-full h-full">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                
+                {/* Dark Overlay Gradient - full height */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 pointer-events-none" />
 
-                {/* Content Overlay */}
-                <div className="relative z-10 space-y-2 text-white">
-                  <div className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-white" />
+                {/* Content Overlay - positioned at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col items-center justify-end space-y-2 text-white p-6 pb-8">
+                  <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg border border-white/10">
+                    <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <h4 className="font-extrabold text-sm sm:text-base leading-snug">
+                  <h4 className="font-extrabold text-sm sm:text-base leading-snug text-center max-w-[200px]">
                     {item.title}
                   </h4>
                 </div>
