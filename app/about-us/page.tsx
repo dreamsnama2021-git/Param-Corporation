@@ -309,31 +309,33 @@ const WhyUsSection = () => {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Quote & Product Image Showcase (Span 1) */}
-          <div className="lg:col-span-1 w-full">
-            {/* Combined Single Large Image with Quote Overlay */}
-            <div className="relative w-full h-[650px] lg:h-[750px] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100 group">
-              <img
-                src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/21.png"
-                alt="Acrylic Display Showcase Model"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              
-              {/* Subtle dark overlay for quote legibility */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-black/60 pointer-events-none" />
+      {/* RIGHT COLUMN: Quote & Product Image Showcase (Span 1) */}
+<div className="lg:col-span-1 w-full">
+  {/* Combined Single Large Image with Quote Overlay */}
+  <div 
+    className="relative w-full h-[650px] lg:h-[750px] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white group"
+    style={{ 
+      backgroundImage: 'url(https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/21.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat'
+    }}
+  >
+    {/* Subtle dark overlay for quote legibility */}
+    <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-black/60 pointer-events-none" />
 
-              {/* Quote overlay card at the top */}
-              <div className="absolute top-6 left-6 right-6 p-6 rounded-3xl backdrop-blur-md bg-black/40 border border-white/10 text-white flex flex-col justify-between z-10">
-                <Quote className="w-8 h-8 text-white/40 shrink-0 transform -scale-x-100 mb-3" />
-                <p className="text-white text-xs sm:text-sm font-semibold italic leading-relaxed">
-                  "Our commitment to innovation, quality, and partnership is what makes us the preferred choice for leading healthcare brands."
-                </p>
-                <div className="flex justify-end mt-2">
-                  <Quote className="w-8 h-8 text-white/40 shrink-0" />
-                </div>
-              </div>
-            </div>
-          </div>
+    {/* Quote overlay card at the top */}
+    <div className="absolute top-6 left-6 right-6 p-6 rounded-3xl backdrop-blur-md bg-black/40 border border-white/10 text-white flex flex-col justify-between z-10">
+      <Quote className="w-8 h-8 text-white/40 shrink-0 transform -scale-x-100 mb-3" />
+      <p className="text-white text-xs sm:text-sm font-semibold italic leading-relaxed">
+        "Our commitment to innovation, quality, and partnership is what makes us the preferred choice for leading healthcare brands."
+      </p>
+      <div className="flex justify-end mt-2">
+        <Quote className="w-8 h-8 text-white/40 shrink-0" />
+      </div>
+    </div>
+  </div>
+</div>
 
         </div>
       </div>
