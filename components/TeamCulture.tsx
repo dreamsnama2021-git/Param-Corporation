@@ -123,27 +123,29 @@ export default function TeamCulture() {
             </div>
           </div>
 
-          {/* Right Block Image */}
-          <div className="lg:col-span-6 flex justify-center relative">
-            <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
-              <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
-                alt="Param Team Collaborating"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent pointer-events-none" />
-              
-              {/* Motto Badge overlay */}
-              <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-sm shadow-md rounded-2xl border border-white/20 p-4 max-w-[200px]">
-                <h4 className="text-xs font-black text-slate-800 tracking-wider uppercase leading-none">
-                  Empowering Ideas.
-                </h4>
-                <p className="text-[10px] font-bold text-[#00a65d] uppercase tracking-wider mt-1.5 leading-none">
-                  Creating Impact.
-                </p>
-              </div>
-            </div>
-          </div>
+    {/* Right Block Image */}
+<div className="lg:col-span-6 flex justify-center relative">
+  <div className="relative w-full max-w-[500px] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-white">
+    
+    <img
+      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=90"
+      alt="Param Team Collaborating"
+      className="block w-full h-auto object-contain"
+    />
+
+    {/* Motto Badge overlay */}
+    <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-sm shadow-md rounded-2xl border border-white/20 p-4 max-w-[200px]">
+      <h4 className="text-xs font-black text-slate-800 tracking-wider uppercase leading-none">
+        Empowering Ideas.
+      </h4>
+
+      <p className="text-[10px] font-bold text-[#00a65d] uppercase tracking-wider mt-1.5 leading-none">
+        Creating Impact.
+      </p>
+    </div>
+
+  </div>
+</div>
         </div>
 
         {/* ─── OUR CULTURE CARDS ──────────────────────────────────────────── */}
@@ -178,40 +180,43 @@ export default function TeamCulture() {
           </div>
         </div>
 
-        {/* ─── DAILY LIFE COLLAGE ────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 rounded-[32px] overflow-hidden shadow-lg border border-slate-100">
-          {collage.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={idx}
-                className="relative h-[320px] sm:h-[360px] w-full overflow-hidden group"
-              >
-                {/* Background Image - full height */}
-                <div className="absolute inset-0 w-full h-full">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                
-                {/* Dark Overlay Gradient - full height */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 pointer-events-none" />
+{/* ─── DAILY LIFE COLLAGE ────────────────────────────────────────── */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 rounded-[32px] overflow-hidden shadow-lg border border-slate-100">
+  {collage.map((item, idx) => {
+    const Icon = item.icon;
 
-                {/* Content Overlay - positioned at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col items-center justify-end space-y-2 text-white p-6 pb-8">
-                  <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg border border-white/10">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h4 className="font-extrabold text-sm sm:text-base leading-snug text-center max-w-[200px]">
-                    {item.title}
-                  </h4>
-                </div>
-              </div>
-            );
-          })}
+    return (
+      <div
+        key={idx}
+        className="relative h-[320px] sm:h-[360px] w-full overflow-hidden group"
+        style={{
+          backgroundImage: `url(${item.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* Gradient overlay from bottom to top for better text visibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
+
+        {/* Image hover overlay effect */}
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500 pointer-events-none" />
+
+        {/* Content directly on image */}
+        <div className="absolute inset-0 flex flex-col items-center justify-end text-white pb-8 px-6 z-10">
+          {/* Icon Badge container with brand colors on hover */}
+          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 mb-3 shadow-md transition-all duration-300 group-hover:bg-[#0093cb] group-hover:border-[#0093cb]/50 group-hover:scale-110">
+            <Icon className="w-6 h-6 text-white" />
+          </div>
+
+          <h4 className="font-extrabold text-sm sm:text-base text-center leading-snug drop-shadow-lg tracking-wide group-hover:text-[#0093cb] transition-colors duration-300">
+            {item.title}
+          </h4>
         </div>
+      </div>
+    );
+  })}
+</div>
 
       </div>
     </section>

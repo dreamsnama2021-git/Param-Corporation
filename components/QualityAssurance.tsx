@@ -73,7 +73,7 @@ export default function QualityAssurance() {
     {
       num: "01",
       title: "Raw Material Selection",
-      image: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?w=300&q=80",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=300&q=80",
     },
     {
       num: "02",
@@ -158,28 +158,31 @@ export default function QualityAssurance() {
             </p>
           </div>
 
-          {/* Right Image/Badge Column */}
-          <div className="lg:col-span-6 flex flex-col items-center relative">
-            <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
-              <img
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
-                alt="Quality Assurance Measurement"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent pointer-events-none" />
-            </div>
+{/* Right Image/Badge Column */}
+<div className="lg:col-span-6 flex flex-col items-center relative">
+  <div 
+    className="relative w-full max-w-[500px] aspect-[4/3] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white"
+    style={{ 
+      backgroundImage: 'url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat'
+    }}
+  >
+    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent pointer-events-none" />
+  </div>
 
-            {/* Quality Badge Overlay */}
-            <div className="absolute bottom-[-20px] left-4 sm:left-10 bg-white shadow-xl rounded-2xl border border-slate-100 p-4 sm:p-5 flex items-center gap-4 max-w-[320px]">
-              <div className="w-12 h-12 rounded-full bg-[#0093cb]/10 flex items-center justify-center shrink-0">
-                <CheckCircle2 className="w-6 h-6 text-[#0093cb]" />
-              </div>
-              <div>
-                <h4 className="font-bold text-xs sm:text-sm text-slate-800">Quality you can see.</h4>
-                <p className="text-slate-500 text-[11px] sm:text-xs">Trust you can feel.</p>
-              </div>
-            </div>
-          </div>
+  {/* Quality Badge Overlay */}
+  <div className="absolute bottom-[-20px] left-4 sm:left-10 bg-white shadow-xl rounded-2xl border border-slate-100 p-4 sm:p-5 flex items-center gap-4 max-w-[320px]">
+    <div className="w-12 h-12 rounded-full bg-[#0093cb]/10 flex items-center justify-center shrink-0">
+      <CheckCircle2 className="w-6 h-6 text-[#0093cb]" />
+    </div>
+    <div>
+      <h4 className="font-bold text-xs sm:text-sm text-slate-800">Quality you can see.</h4>
+      <p className="text-slate-500 text-[11px] sm:text-xs">Trust you can feel.</p>
+    </div>
+  </div>
+</div>
         </div>
 
         {/* ─── QUALITY PRACTICES ───────────────────────────────────────────── */}
@@ -270,34 +273,39 @@ export default function QualityAssurance() {
             </div>
           </div>
 
-          {/* Row 2: Quality at Every Step */}
-          <div className="w-full bg-slate-50/50 rounded-3xl p-6 sm:p-8 border border-slate-100 space-y-6">
-            <div>
-              <h3 className="text-2xl font-extrabold text-slate-800 tracking-tight">
-                Quality at Every Step
-              </h3>
-              <div className="h-0.5 w-12 bg-[#0093cb] mt-2 rounded-full" />
-            </div>
+       {/* Row 2: Quality at Every Step */}
+<div className="w-full bg-slate-50/50 rounded-3xl p-6 sm:p-8 border border-slate-100 space-y-6">
+  <div>
+    <h3 className="text-2xl font-extrabold text-slate-800 tracking-tight">
+      Quality at Every Step
+    </h3>
+    <div className="h-0.5 w-12 bg-[#0093cb] mt-2 rounded-full" />
+  </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              {steps.map((step, idx) => (
-                <React.Fragment key={idx}>
-                  <div className="flex flex-col items-center text-center group w-full max-w-[160px]">
-                    <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-md relative group-hover:scale-105 transition-transform duration-300">
-                      <img src={step.image} alt={step.title} className="w-full h-full object-cover" />
-                    </div>
-                    <span className="text-sm sm:text-base font-bold text-[#0093cb] mt-3">{step.num}</span>
-                    <h4 className="text-xs sm:text-sm xl:text-base font-bold text-slate-700 leading-tight mt-1.5 min-h-[40px] flex items-center justify-center">
-                      {step.title}
-                    </h4>
-                  </div>
-                  {idx < steps.length - 1 && (
-                    <ArrowRight className="hidden sm:block w-4 h-4 text-slate-300 shrink-0" />
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
+  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+    {steps.map((step, idx) => (
+      <React.Fragment key={idx}>
+        <div className="flex flex-col items-center text-center group w-full max-w-[160px]">
+          <div 
+            className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-md group-hover:scale-105 transition-transform duration-300 bg-cover bg-center"
+            style={{ 
+              backgroundImage: `url(${step.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
+          />
+          <span className="text-sm sm:text-base font-bold text-[#0093cb] mt-3">{step.num}</span>
+          <h4 className="text-xs sm:text-sm xl:text-base font-bold text-slate-700 leading-tight mt-1.5 min-h-[40px] flex items-center justify-center">
+            {step.title}
+          </h4>
+        </div>
+        {idx < steps.length - 1 && (
+          <ArrowRight className="hidden sm:block w-4 h-4 text-slate-300 shrink-0" />
+        )}
+      </React.Fragment>
+    ))}
+  </div>
+</div>
         </div>
 
         {/* ─── COMMITMENT TO EXCELLENCE ────────────────────────────────────── */}

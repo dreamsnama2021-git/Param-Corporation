@@ -111,7 +111,7 @@ export default function AboutDesignProcess({ showAll = false }: { showAll?: bool
   return (
     <section className="bg-slate-50/50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100">
       <div className="max-w-[1400px] w-full mx-auto relative z-10 space-y-16 sm:space-y-20">
-        
+
         {showAll && (
           <>
             {/* TOP COMPONENT: Overview / Intro */}
@@ -155,9 +155,9 @@ export default function AboutDesignProcess({ showAll = false }: { showAll?: bool
                       className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center space-y-4 cursor-pointer"
                     >
                       {/* Swinging & Hanging Icon wrapper */}
-                      <motion.div 
-                        animate={{ 
-                          rotate: [0, -12, 10, -8, 6, -4, 2, 0] 
+                      <motion.div
+                        animate={{
+                          rotate: [0, -12, 10, -8, 6, -4, 2, 0]
                         }}
                         transition={{
                           duration: 5,
@@ -200,19 +200,14 @@ export default function AboutDesignProcess({ showAll = false }: { showAll?: bool
                 <React.Fragment key={idx}>
                   {/* Step */}
                   <div className="flex flex-col items-center text-center max-w-[210px] w-full group">
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: idx * 0.1 }}
-                      className={`w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 ${step.borderColor} shadow-lg relative shrink-0 transition-transform duration-300 group-hover:scale-105`}
-                    >
-                      <img 
-                        src={step.image} 
-                        alt={step.title}
-                        className="w-full h-full object-contain bg-white"
-                      />
-                    </motion.div>
+                      className={`w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 ${step.borderColor} shadow-lg relative shrink-0 transition-transform duration-300 group-hover:scale-105 bg-cover bg-center`}
+                      style={{ backgroundImage: `url(${step.image})` }}
+                    />
 
                     <div className="mt-5 space-y-1.5 px-2">
                       <span className={`text-base font-extrabold tracking-wider block ${step.textColor}`}>

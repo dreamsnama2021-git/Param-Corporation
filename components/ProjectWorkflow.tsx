@@ -168,17 +168,22 @@ export default function ProjectWorkflow() {
             </p>
           </div>
 
-          {/* Right Showcase image of laptop showing project workflow */}
-          <div className="lg:col-span-6 flex justify-center">
-            <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
-              <img
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80"
-                alt="Structured Workflow Laptop Screen"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent pointer-events-none" />
-            </div>
-          </div>
+         {/* Right Showcase image of laptop showing project workflow */}
+<div className="lg:col-span-6 flex justify-center">
+  <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white">
+    <img
+      src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80"
+      alt="Structured Workflow Laptop Screen"
+      className="absolute inset-0 w-auto h-full object-cover mx-auto"
+      style={{ 
+        minWidth: '100%',
+        minHeight: '100%',
+        objectFit: 'cover'
+      }}
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent pointer-events-none" />
+  </div>
+</div>
         </div>
 
         {/* ─── 10-STEP TIMELINE GRID ──────────────────────────────────────── */}
