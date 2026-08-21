@@ -225,11 +225,11 @@ export default function QualityAssurance() {
           
           {/* Row 1: Certifications */}
           <div className="w-full bg-slate-50/50 rounded-3xl p-6 sm:p-8 border border-slate-100 flex flex-col justify-between">
-            <div className="mb-6">
+            <div className="mb-6 flex flex-col items-center text-center">
               <h3 className="text-2xl font-extrabold text-slate-800 tracking-tight">
                 Our Certifications
               </h3>
-              <div className="h-0.5 w-12 bg-[#0093cb] mt-2 rounded-full" />
+              <div className="h-0.5 w-12 bg-[#0093cb] mt-2 mx-auto rounded-full" />
             </div>
 
             <div className="grid grid-cols-3 sm:grid-cols-5 gap-4 items-center justify-center">
@@ -275,11 +275,11 @@ export default function QualityAssurance() {
 
        {/* Row 2: Quality at Every Step */}
 <div className="w-full bg-slate-50/50 rounded-3xl p-6 sm:p-8 border border-slate-100 space-y-6">
-  <div>
+  <div className="flex flex-col items-center text-center">
     <h3 className="text-2xl font-extrabold text-slate-800 tracking-tight">
       Quality at Every Step
     </h3>
-    <div className="h-0.5 w-12 bg-[#0093cb] mt-2 rounded-full" />
+    <div className="h-0.5 w-12 bg-[#0093cb] mt-2 mx-auto rounded-full" />
   </div>
 
   <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
