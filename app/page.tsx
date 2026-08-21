@@ -21,10 +21,10 @@ export default function Page() {
   const POPUP_DELAY = 2 * 60 * 1000; // 2 minutes in milliseconds
   return (
     <main className="overflow-x-hidden">
-      <HeroProductGridGapless />
+      {/* <HeroProductGridGapless /> */}
       <ProductShowcaseGrid />
       <FoundersMessage />
-      <AboutUs />
+      {/* <AboutUs /> */}
       <ProductSections />
       <WhyChooseUs />
       <AboutDesignProcess />

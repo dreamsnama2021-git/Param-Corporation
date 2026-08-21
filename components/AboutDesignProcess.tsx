@@ -12,7 +12,13 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-export default function AboutDesignProcess({ showAll = false }: { showAll?: boolean }) {
+export default function AboutDesignProcess({
+  showAll = false,
+  showSteps = true,
+}: {
+  showAll?: boolean;
+  showSteps?: boolean;
+}) {
   const philosophy = [
     {
       title: "Audience First",
@@ -185,68 +191,70 @@ export default function AboutDesignProcess({ showAll = false }: { showAll?: bool
         )}
 
         {/* BOTTOM COMPONENT: The 6-Step Process Timeline */}
-        <div className="space-y-12">
-          <div className="text-center">
-            <h3 className="text-3xl font-extrabold text-slate-800 tracking-tight">
-              Our Design Process
-            </h3>
-            <div className="h-0.5 w-16 bg-[#0093cb] mx-auto mt-3 rounded-full" />
-          </div>
+        {showSteps && (
+          <div className="space-y-12">
+            <div className="text-center">
+              <h3 className="text-3xl font-extrabold text-slate-800 tracking-tight">
+                Our Design Process
+              </h3>
+              <div className="h-0.5 w-16 bg-[#0093cb] mx-auto mt-3 rounded-full" />
+            </div>
 
-          {/* Timeline Grid */}
-          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 lg:gap-2">
-            {steps.map((step, idx) => {
-              return (
-                <React.Fragment key={idx}>
-                  {/* Step */}
-                  <div className="flex flex-col items-center text-center max-w-[210px] w-full group">
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: idx * 0.1 }}
-                      className={`w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 ${step.borderColor} shadow-lg relative shrink-0 transition-transform duration-300 group-hover:scale-105 bg-cover bg-center`}
-                      style={{ backgroundImage: `url(${step.image})` }}
-                    />
+            {/* Timeline Grid */}
+            <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 lg:gap-2">
+              {steps.map((step, idx) => {
+                return (
+                  <React.Fragment key={idx}>
+                    {/* Step */}
+                    <div className="flex flex-col items-center text-center max-w-[210px] w-full group">
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: idx * 0.1 }}
+                        className={`w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 ${step.borderColor} shadow-lg relative shrink-0 transition-transform duration-300 group-hover:scale-105 bg-cover bg-center`}
+                        style={{ backgroundImage: `url(${step.image})` }}
+                      />
 
-                    <div className="mt-5 space-y-1.5 px-2">
-                      <span className={`text-base font-extrabold tracking-wider block ${step.textColor}`}>
-                        {step.num}
-                      </span>
-                      <h3 className={`text-sm sm:text-base font-black leading-snug uppercase ${step.textColor}`}>
-                        {step.title}
-                      </h3>
+                      <div className="mt-5 space-y-1.5 px-2">
+                        <span className={`text-base font-extrabold tracking-wider block ${step.textColor}`}>
+                          {step.num}
+                        </span>
+                        <h3 className={`text-sm sm:text-base font-black leading-snug uppercase ${step.textColor}`}>
+                          {step.title}
+                        </h3>
+                      </div>
+
+                      <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed mt-2.5 px-1 font-medium">
+                        {step.desc}
+                      </p>
                     </div>
 
-                    <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed mt-2.5 px-1 font-medium">
-                      {step.desc}
-                    </p>
-                  </div>
-
-                  {/* Connector Arrow */}
-                  {idx < steps.length - 1 && (
-                    <div className="flex items-center justify-center py-2 lg:py-0 lg:mt-12 shrink-0">
-                      {/* Desktop */}
-                      <div className="hidden lg:flex items-center gap-1">
-                        <span className={`text-lg font-bold tracking-widest ${step.arrowColor}`}>
-                          ⋯⋯
-                        </span>
-                        <ChevronRight className={`w-5 h-5 stroke-[2.5] ${step.arrowColor}`} />
+                    {/* Connector Arrow */}
+                    {idx < steps.length - 1 && (
+                      <div className="flex items-center justify-center py-2 lg:py-0 lg:mt-12 shrink-0">
+                        {/* Desktop */}
+                        <div className="hidden lg:flex items-center gap-1">
+                          <span className={`text-lg font-bold tracking-widest ${step.arrowColor}`}>
+                            ⋯⋯
+                          </span>
+                          <ChevronRight className={`w-5 h-5 stroke-[2.5] ${step.arrowColor}`} />
+                        </div>
+                        {/* Mobile */}
+                        <div className="flex lg:hidden flex-col items-center gap-0.5">
+                          <span className={`text-xs font-bold leading-none ${step.arrowColor}`}>
+                            ⋮
+                          </span>
+                          <ChevronDown className={`w-4 h-4 stroke-[2.5] ${step.arrowColor}`} />
+                        </div>
                       </div>
-                      {/* Mobile */}
-                      <div className="flex lg:hidden flex-col items-center gap-0.5">
-                        <span className={`text-xs font-bold leading-none ${step.arrowColor}`}>
-                          ⋮
-                        </span>
-                        <ChevronDown className={`w-4 h-4 stroke-[2.5] ${step.arrowColor}`} />
-                      </div>
-                    </div>
-                  )}
-                </React.Fragment>
-              );
-            })}
+                    )}
+                  </React.Fragment>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
 
       </div>
     </section>

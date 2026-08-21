@@ -515,7 +515,7 @@ export default function AboutUsPage() {
 
       
       <QualityAssurance />
-      <AboutDesignProcess showAll={true} />
+      <AboutDesignProcess showAll={true} showSteps={false} />
       <ProjectWorkflow />
       <TeamSection />
       <TeamCulture />

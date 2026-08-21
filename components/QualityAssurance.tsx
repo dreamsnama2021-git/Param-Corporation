@@ -273,39 +273,7 @@ export default function QualityAssurance() {
             </div>
           </div>
 
-       {/* Row 2: Quality at Every Step */}
-<div className="w-full bg-slate-50/50 rounded-3xl p-6 sm:p-8 border border-slate-100 space-y-6">
-  <div className="flex flex-col items-center text-center">
-    <h3 className="text-2xl font-extrabold text-slate-800 tracking-tight">
-      Quality at Every Step
-    </h3>
-    <div className="h-0.5 w-12 bg-[#0093cb] mt-2 mx-auto rounded-full" />
-  </div>
-
-  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-    {steps.map((step, idx) => (
-      <React.Fragment key={idx}>
-        <div className="flex flex-col items-center text-center group w-full max-w-[160px]">
-          <div 
-            className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-md group-hover:scale-105 transition-transform duration-300 bg-cover bg-center"
-            style={{ 
-              backgroundImage: `url(${step.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}
-          />
-          <span className="text-sm sm:text-base font-bold text-[#0093cb] mt-3">{step.num}</span>
-          <h4 className="text-xs sm:text-sm xl:text-base font-bold text-slate-700 leading-tight mt-1.5 min-h-[40px] flex items-center justify-center">
-            {step.title}
-          </h4>
-        </div>
-        {idx < steps.length - 1 && (
-          <ArrowRight className="hidden sm:block w-4 h-4 text-slate-300 shrink-0" />
-        )}
-      </React.Fragment>
-    ))}
-  </div>
-</div>
+   
         </div>
 
         {/* ─── COMMITMENT TO EXCELLENCE ────────────────────────────────────── */}
