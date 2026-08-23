@@ -226,7 +226,7 @@ export default function QualityAssurance() {
           {/* Row 1: Certifications */}
           <div className="w-full bg-slate-50/50 rounded-3xl p-6 sm:p-8 border border-slate-100 flex flex-col justify-between">
             <div className="mb-6 flex flex-col items-center text-center">
-              <h3 className="text-2xl font-extrabold text-slate-800 tracking-tight">
+              <h3 className="text-3xl font-extrabold text-slate-800 tracking-tight">
                 Our Certifications
               </h3>
               <div className="h-0.5 w-12 bg-[#0093cb] mt-2 mx-auto rounded-full" />

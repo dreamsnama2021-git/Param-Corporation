@@ -142,14 +142,10 @@ export default function AboutDesignProcess({
             {/* MIDDLE COMPONENT: Our Design Philosophy */}
             <div className="space-y-10">
               <div className="text-center">
-                <h3 className="text-3xl font-extrabold text-slate-800 tracking-tight">
+                {/* <h3 className="text-3xl font-extrabold text-slate-800 tracking-tight">
                   Our Design Philosophy
-                </h3>
-                <div className="flex justify-center gap-1.5 mt-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#0093cb]" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#00a8b5]" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#00a65d]" />
-                </div>
+                </h3> */}
+               
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
