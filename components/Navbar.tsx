@@ -98,6 +98,7 @@ export default function Navbar() {
   };
 
   const mainNavItems: NavItem[] = [
+    { label: "Personalized Gifts", href: "/personalized" },
     // { label: "Digital Inputs", href: "/digital-gifts", isButton: true },
     // { label: "Koru", href: "/koru", isButton: true },
     // { label: "Medipride", href: "/medipride", isButton: true },
@@ -151,7 +152,7 @@ export default function Navbar() {
     if (tabId === "categories") {
       router.push(`/categories/all?tab=categories#category-${categorySlug}`);
     } else if (tabId === "personalized") {
-      router.push(`/categories/all?tab=personalized#category-${categorySlug}`);
+      router.push(`/personalized#category-${categorySlug}`);
     } else if (tabId === "occasion") {
       router.push(`/categories/all?tab=occasion#category-${categorySlug}`);
     } else if (tabId === "therapy") {
@@ -280,7 +281,7 @@ export default function Navbar() {
                                     </Link>
                                   ) : (
                                     <a
-                                      href={`/categories/all?tab=${column.tabId}#category-${item.slug}`}
+                                      href={column.tabId === "personalized" ? `/personalized#category-${item.slug}` : `/categories/all?tab=${column.tabId}#category-${item.slug}`}
                                       onClick={(e) =>
                                         handleCategoryClick(
                                           e,
@@ -422,7 +423,7 @@ export default function Navbar() {
                           ) : (
                             <Link
                               key={item.slug}
-                              href={`/categories/all?tab=${column.tabId}#category-${item.slug}`}
+                              href={column.tabId === "personalized" ? `/personalized#category-${item.slug}` : `/categories/all?tab=${column.tabId}#category-${item.slug}`}
                               onClick={() =>
                                 setMobileOpen(false)
                               }

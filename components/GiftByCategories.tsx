@@ -145,7 +145,7 @@ function GiftsByCategories() {
   };
 
   return (
-    <section className="w-full bg-[#fafcff] py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20">
+    <section className="w-full bg-[#fafcff] py-8 sm:py-8 md:py-10 lg:py-12 xl:py-12">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
         {/* Section Header - Now Added */}
         <motion.div
@@ -281,7 +281,7 @@ function TrendingProducts() {
   const handleMouseLeave = () => setIsHovered(false);
 
   return (
-    <section className="w-full bg-[#f8fafc] py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 relative overflow-hidden">
+    <section className="w-full bg-[#f8fafc] py-8 sm:py-8 md:py-10 lg:py-12 xl:py-12 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div

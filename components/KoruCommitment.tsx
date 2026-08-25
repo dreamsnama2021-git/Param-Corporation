@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import {
   Users,
   Leaf,
@@ -108,11 +109,11 @@ export default function KoruCommitment() {
               <div className="h-1 w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] mt-4 rounded-full" />
             </div>
 
-            <h3 className="text-xl sm:text-2xl font-bold text-[#0093cb]">
+             <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0093cb]">
               For People. For Communities. For the Planet.
             </h3>
 
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
               At Param Corporation, we believe that responsible business practices and sustainable
               thinking are essential for a brighter future. We are committed to making a positive
               impact—today and always.
@@ -168,18 +169,36 @@ export default function KoruCommitment() {
               return (
                 <div
                   key={idx}
-                  className="group relative bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#00a65d]/20 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center space-y-4 cursor-pointer"
+                  className="group relative bg-white p-6 pt-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#00a65d]/20 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center space-y-3 cursor-pointer"
                 >
                   {/* Soft Gradient Overlay on Hover */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#0093cb]/5 to-[#00a65d]/5 rounded-[14px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   
-                  <div className={`p-3 rounded-xl ${p.bgColor} border ${p.borderColor} transition-colors duration-300 group-hover:bg-white group-hover:shadow-sm z-10`}>
-                    <Icon className={`w-6 h-6 ${p.color}`} />
+                  {/* Hanging Swing Icon Setup */}
+                  <div className="flex flex-col items-center z-10 -mt-4">
+                    {/* Hanging Line */}
+                    <div className="w-[1.5px] h-6 bg-slate-200 group-hover:bg-[#00a65d]/40 transition-colors duration-300" />
+                    
+                    {/* Swinging Icon Container */}
+                    <motion.div
+                      style={{ transformOrigin: "top center" }}
+                      whileHover={{ 
+                        rotate: [0, -14, 12, -8, 5, -2, 0],
+                      }}
+                      transition={{
+                        duration: 1.2,
+                        ease: "easeInOut"
+                      }}
+                      className={`p-3 rounded-xl ${p.bgColor} border ${p.borderColor} transition-colors duration-300 group-hover:bg-white group-hover:shadow-md z-10 flex items-center justify-center`}
+                    >
+                      <Icon className={`w-6 h-6 ${p.color}`} />
+                    </motion.div>
                   </div>
-                  <h4 className="font-extrabold text-sm sm:text-base text-slate-800 tracking-tight min-h-[38px] flex items-center justify-center z-10">
+
+                  <h4 className="font-extrabold text-[15px] sm:text-base md:text-lg text-slate-800 tracking-tight min-h-[38px] flex items-center justify-center z-10 uppercase mt-2">
                     {p.title}
                   </h4>
-                  <p className="text-slate-500 text-xs sm:text-sm xl:text-base leading-relaxed z-10">
+                  <p className="text-slate-600 text-xs sm:text-xs md:text-sm leading-relaxed z-10">
                     {p.desc}
                   </p>
                 </div>

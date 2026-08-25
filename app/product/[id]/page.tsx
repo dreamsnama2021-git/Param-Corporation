@@ -25,7 +25,7 @@ import {
   Building2,
   Hash,
 } from "lucide-react";
-import { allProducts } from "../../data";
+import { allProducts, personalizedGifts } from "../../data";
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -51,6 +51,18 @@ export default function ProductDetailPage() {
   const product = useMemo(() => {
     return allProducts.find((p) => p.id.toString() === id);
   }, [id]);
+
+  // Redirect to personalized gifts page if product is personalized
+  useEffect(() => {
+    if (product) {
+      const isPersonalized = personalizedGifts.some(
+        (cat) => cat.slug === product.category
+      );
+      if (isPersonalized) {
+        router.replace(`/personalized#category-${product.category}`);
+      }
+    }
+  }, [product, router]);
 
   // Get images array
   const images = useMemo(() => {

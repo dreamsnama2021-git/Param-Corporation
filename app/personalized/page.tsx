@@ -1,43 +1,34 @@
-/* ─── Category Page with Left Sidebar Dropdown + Subcategories ─── */
+/* ─── Personalized Gifts Page with Left Sidebar + Subcategories ─── */
 "use client";
 
 import React, {
   useMemo,
   useState,
   useEffect,
-  useRef,
   Suspense,
 } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import {
-  ArrowUpRight,
   Home,
   ChevronRight,
-  ChevronLeft,
   X,
-  ZoomIn,
-  Grid3X3,
-  ChevronDown,
-  Check,
   Package,
-  Eye,
   Download,
   Mail,
   Phone,
   User,
   Building2,
-  Send,
   Loader2,
+  Check,
+  ChevronDown,
 } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   allProducts,
-  categories,
-  occasions,
   personalizedGifts,
-} from "../../data";
+} from "../data";
 
 const listingStyles = `
   .listing-container { font-family: system-ui, -apple-system, sans-serif; }
@@ -93,23 +84,6 @@ const BRAND = {
   accent: "#060706",
 };
 
-// Tab configuration with brand colors
-const TABS = [
-  { id: "all", label: "All Products", color: BRAND.primary },
-  { id: "categories", label: "Categories", color: BRAND.primary },
-  { id: "occasion", label: "Occasions", color: "#8B5CF6" },
-] as const;
-
-type TabId = (typeof TABS)[number]["id"];
-
-// Get categories based on active tab
-const getCategoriesForTab = (tabId: TabId) => {
-  if (tabId === "all") return [...categories, ...occasions];
-  if (tabId === "categories") return categories;
-  if (tabId === "occasion") return occasions;
-  return [];
-};
-
 // Maximum products to show per subcategory
 const MAX_PRODUCTS_PER_CATEGORY = 10;
 
@@ -149,13 +123,13 @@ const ProductImage = ({ src, alt, className = "" }: { src: string; alt: string; 
   );
 };
 
-// Banner Component with proper image handling
+// Banner Component
 const PageBanner = () => (
  <div className="relative w-full h-[60.5vh] md:h-[29.5vh] lg:h-[45vh] xl:h-[59vh] 2xl:h-[67.5vh] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Mobile.png"
-      alt="MediPride Banner - Mobile"
+      alt="Personalized Gifts Banner - Mobile"
       fill
       className="object-contain object-center block md:hidden"
       priority
@@ -165,7 +139,7 @@ const PageBanner = () => (
     {/* Tablet image */}
     <Image
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Tablet.png"
-      alt="MediPride Banner - Tablet"
+      alt="Personalized Gifts Banner - Tablet"
       fill
       className="object-contain object-center hidden md:block lg:hidden"
       priority
@@ -175,20 +149,15 @@ const PageBanner = () => (
     {/* Desktop image */}
     <Image
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Desktop.png"
-      alt="MediPride Banner - Desktop"
+      alt="Personalized Gifts Banner - Desktop"
       fill
       className="object-fill object-center hidden lg:block"
       priority
       unoptimized
     />
-
-   
   </div>
 );
 
-/* ══════════════════════════════════════════
-   DOWNLOAD CATALOGUE FORM MODAL
-══════════════════════════════════════════ */
 interface FormData {
   fullName: string;
   email: string;
@@ -252,7 +221,6 @@ function DownloadCatalogueModal({
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    // Clear error when user starts typing
     if (errors[field as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [field]: undefined }));
     }
@@ -268,19 +236,8 @@ function DownloadCatalogueModal({
     setIsSubmitting(true);
 
     try {
-      // Simulate API call - replace with your actual API endpoint
       await new Promise(resolve => setTimeout(resolve, 1500));
-
-      // You can add your API call here:
-      // await fetch('/api/download-catalogue', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData),
-      // });
-
       setIsSubmitted(true);
-      
-      // Trigger download after successful submission
       setTimeout(() => {
         downloadCatalogue();
       }, 500);
@@ -292,20 +249,16 @@ function DownloadCatalogueModal({
   };
 
   const downloadCatalogue = () => {
-    // Create catalogue content with all products
     let catalogueContent = `========================================
-COMPLETE PRODUCT CATALOGUE
+PERSONALIZED GIFTS CATALOGUE
 ========================================
 Generated: ${new Date().toLocaleDateString()}
 Total Products: ${totalProducts}
 Categories: ${categoriesCount}
 ========================================\n\n`;
 
-    // Add all products from allProducts data
-    const groupedProducts = getCategoriesForTab("all");
     const productMap = new Map<string, any[]>();
-    
-    groupedProducts.forEach(cat => {
+    personalizedGifts.forEach(cat => {
       const products = allProducts.filter(p => p.category === cat.slug);
       if (products.length > 0) {
         productMap.set(cat.name, products);
@@ -343,7 +296,7 @@ END OF CATALOGUE
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `Complete_Product_Catalogue_${new Date().toISOString().split('T')[0]}.txt`;
+    a.download = `Personalized_Gifts_Catalogue_${new Date().toISOString().split('T')[0]}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -383,7 +336,6 @@ END OF CATALOGUE
             className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header */}
             <div className="relative p-6 border-b border-gray-100">
               <button
                 onClick={handleClose}
@@ -407,7 +359,7 @@ END OF CATALOGUE
                     </div>
                   </div>
                   <p className="text-sm text-gray-500">
-                    Please fill in your details below to download the complete product catalogue.
+                    Please fill in your details below to download the personalized gifts catalogue.
                   </p>
                 </>
               ) : (
@@ -417,16 +369,14 @@ END OF CATALOGUE
                   </div>
                   <h2 className="text-xl font-bold text-[#060706] mb-2">Thank You!</h2>
                   <p className="text-sm text-gray-500">
-                    Your download will begin shortly. Check your email for a copy.
+                    Your download will begin shortly.
                   </p>
                 </div>
               )}
             </div>
 
-            {/* Form */}
             {!isSubmitted && (
               <form onSubmit={handleSubmit} className="p-6 space-y-4">
-                {/* Full Name */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     Full Name <span className="text-red-500">*</span>
@@ -449,7 +399,6 @@ END OF CATALOGUE
                   )}
                 </div>
 
-                {/* Email */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     Email Address <span className="text-red-500">*</span>
@@ -472,7 +421,6 @@ END OF CATALOGUE
                   )}
                 </div>
 
-                {/* Phone */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     Phone Number <span className="text-red-500">*</span>
@@ -495,7 +443,6 @@ END OF CATALOGUE
                   )}
                 </div>
 
-                {/* Company Name (Optional) */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     Company Name <span className="text-gray-400">(Optional)</span>
@@ -513,22 +460,6 @@ END OF CATALOGUE
                   </div>
                 </div>
 
-                {/* Designation (Optional) */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    Designation <span className="text-gray-400">(Optional)</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.designation}
-                    onChange={(e) => handleInputChange("designation", e.target.value)}
-                    placeholder="e.g., Procurement Manager"
-                    className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#0093cb]/20 focus:border-[#0093cb] transition-colors text-sm"
-                    disabled={isSubmitting}
-                  />
-                </div>
-
-                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -549,14 +480,9 @@ END OF CATALOGUE
                     </>
                   )}
                 </button>
-
-                <p className="text-xs text-center text-gray-400">
-                  We respect your privacy. Your information will not be shared with third parties.
-                </p>
               </form>
             )}
 
-            {/* Success State */}
             {isSubmitted && (
               <div className="p-6 pt-0">
                 <button
@@ -575,27 +501,7 @@ END OF CATALOGUE
   );
 }
 
-/* ══════════════════════════════════════════
-   SIDEBAR WITH DROPDOWN + SUBCATEGORIES
-══════════════════════════════════════════ */
-function SidebarWithSubcategories({
-  activeTab,
-  onSelect,
-}: {
-  activeTab: TabId;
-  onSelect: (tabId: TabId) => void;
-}) {
-  const subCategories = useMemo(() => {
-    if (activeTab === "all") return [];
-    return getCategoriesForTab(activeTab);
-  }, [activeTab]);
-
-  const getCount = (tabId: TabId) => {
-    if (tabId === "all") return allProducts.length;
-    const cats = getCategoriesForTab(tabId);
-    return allProducts.filter((p) => cats.some((cat) => cat.slug === p.category)).length;
-  };
-
+function SidebarWithSubcategories() {
   const getSubCategoryCount = (slug: string) => {
     return allProducts.filter((p) => p.category === slug).length;
   };
@@ -621,98 +527,39 @@ function SidebarWithSubcategories({
       <div>
         <div className="flex items-center gap-2 mb-3">
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
-            Filter By
+            Personalized Gifts
           </span>
           <div className="h-px flex-1 bg-gray-200" />
         </div>
 
         <div className="bg-white rounded-xl border-2 border-gray-200 shadow-sm overflow-hidden">
-          {TABS.map((tab, index) => {
-            const count = getCount(tab.id);
-            const isSelected = activeTab === tab.id;
-            const hasSubcategories = tab.id !== "all";
-
-            return (
-              <div key={tab.id}>
+          <div className="py-2 px-2 space-y-0.5">
+            {personalizedGifts.map((cat) => {
+              const count = getSubCategoryCount(cat.slug);
+              return (
                 <button
-                  onClick={() => onSelect(tab.id)}
-                  className={`w-full flex items-center justify-between py-3 px-4 text-left transition-colors relative ${
-                    isSelected
-                      ? "bg-gray-50"
-                      : "hover:bg-gray-50"
-                  } ${index !== TABS.length - 1 ? "border-b border-gray-100" : ""}`}
+                  key={cat.slug}
+                  onClick={() => handleSubCategoryClick(cat.slug)}
+                  className="w-full group flex items-center justify-between py-2.5 px-3 rounded-lg text-sm text-gray-600 hover:text-[#060706] hover:bg-gray-50 transition-all text-left"
                   type="button"
                 >
-                  <div className="flex items-center gap-3">
-                    <span
-                      className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: tab.color }}
-                    />
-                    <span className={`text-sm ${
-                      isSelected 
-                        ? "font-semibold text-[#060706]" 
-                        : "text-gray-700"
-                    }`}>
-                      {tab.label}
-                    </span>
-                  </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-400">{count}</span>
-                    {hasSubcategories && (
-                      <ChevronDown
-                        className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${
-                          isSelected ? "rotate-180" : ""
-                        }`}
-                      />
-                    )}
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#0093cb] transition-colors" />
+                    <span className="line-clamp-1">{cat.name}</span>
                   </div>
+                  <span className="text-xs text-gray-400 ml-2 flex-shrink-0">
+                    {count}
+                  </span>
                 </button>
-
-                <AnimatePresence>
-                  {isSelected && subCategories.length > 0 && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="bg-gray-50/50 border-t border-gray-100 overflow-hidden"
-                    >
-                      <div className="py-2 px-2 space-y-0.5 max-h-[50vh] overflow-y-auto scrollbar-hide">
-                        {subCategories.map((cat) => {
-                          const count = getSubCategoryCount(cat.slug);
-                          return (
-                            <button
-                              key={cat.slug}
-                              onClick={() => handleSubCategoryClick(cat.slug)}
-                              className="w-full group flex items-center justify-between py-2.5 px-3 rounded-lg text-sm text-gray-600 hover:text-[#060706] hover:bg-white transition-all text-left"
-                              type="button"
-                            >
-                              <div className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#0093cb] transition-colors" />
-                                <span className="line-clamp-1">{cat.name}</span>
-                              </div>
-                              <span className="text-xs text-gray-400 ml-2 flex-shrink-0">
-                                {count}
-                              </span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-/* ══════════════════════════════════════════
-   IMAGE LIGHTBOX MODAL (Single Image Only - No Navigation)
-══════════════════════════════════════════ */
 function ImageLightboxModal({
   imageUrl,
   productName,
@@ -732,7 +579,6 @@ function ImageLightboxModal({
       className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center"
       onClick={onClose}
     >
-      {/* Close Button */}
       <button
         onClick={onClose}
         className="absolute top-12 xl:top-20 right-6 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
@@ -740,7 +586,6 @@ function ImageLightboxModal({
         <X className="w-5 h-5" />
       </button>
 
-      {/* Main Image Container */}
       <div className="relative w-full h-[80vh] flex items-center justify-center p-25 md:p-16">
         {imageUrl && !imageError ? (
           <img
@@ -760,16 +605,11 @@ function ImageLightboxModal({
   );
 }
 
-/* ══════════════════════════════════════════
-   PRODUCT CARD (Opens Image Lightbox Only)
-══════════════════════════════════════════ */
 function ProductCard({
   product,
-  accentColor,
   onImageClick,
 }: {
   product: any;
-  accentColor: string;
   onImageClick: (product: any) => void;
 }) {
   const productImage = product.image || (product.images && product.images[0]);
@@ -834,18 +674,11 @@ function ProductCard({
   );
 }
 
-/* ══════════════════════════════════════════
-   CATEGORY SECTION WITH VIEW MORE
-══════════════════════════════════════════ */
 function CategorySection({
   group,
-  activeTabColor,
-  onViewAll,
   onImageClick,
 }: {
   group: any;
-  activeTabColor: string;
-  onViewAll: (categorySlug: string, categoryName: string) => void;
   onImageClick: (product: any) => void;
 }) {
   const [showAll, setShowAll] = useState(false);
@@ -862,10 +695,6 @@ function CategorySection({
       }
     }
     setShowAll(!showAll);
-  };
-
-  const handleViewAllProducts = () => {
-    onViewAll(group.categorySlug, group.categoryName);
   };
 
   return (
@@ -902,7 +731,6 @@ function CategorySection({
           <ProductCard
             key={product.id}
             product={product}
-            accentColor={activeTabColor}
             onImageClick={onImageClick}
           />
         ))}
@@ -938,14 +766,7 @@ function CategorySection({
   );
 }
 
-/* ══════════════════════════════════════════
-   MAIN PAGE COMPONENT WITH SCROLL LOGIC
-══════════════════════════════════════════ */
-function CategoryPageContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const tabParam = searchParams.get("tab") as TabId | null;
+function PersonalizedPageContent() {
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
     imageUrl: string;
@@ -957,14 +778,6 @@ function CategoryPageContent() {
   });
 
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
-
-  const activeTab: TabId = useMemo(() => {
-    if (tabParam && TABS.some((t) => t.id === tabParam)) return tabParam;
-    return "all";
-  }, [tabParam]);
-
-  const activeTabColor = TABS.find((t) => t.id === activeTab)?.color || BRAND.primary;
-  const tabCategories = useMemo(() => getCategoriesForTab(activeTab), [activeTab]);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -987,12 +800,12 @@ function CategoryPageContent() {
         }
       }, 500);
     }
-  }, [activeTab]);
+  }, []);
 
   const groupedProducts = useMemo(() => {
     const groups: { categoryName: string; categorySlug: string; products: any[]; description?: string }[] = [];
 
-    tabCategories.forEach((cat) => {
+    personalizedGifts.forEach((cat) => {
       const products = allProducts.filter((p) => p.category === cat.slug);
       if (products.length > 0) {
         groups.push({
@@ -1005,19 +818,11 @@ function CategoryPageContent() {
     });
 
     return groups;
-  }, [tabCategories]);
+  }, []);
 
   const totalProducts = useMemo(() => {
     return groupedProducts.reduce((sum, group) => sum + group.products.length, 0);
   }, [groupedProducts]);
-
-  const handleTabSelect = (tabId: TabId) => {
-    router.push(`/categories/all?tab=${tabId}`, { scroll: false });
-  };
-
-  const handleViewAllProducts = (categorySlug: string, categoryName: string) => {
-    router.push(`/categories/all?tab=${activeTab}&category=${categorySlug}`);
-  };
 
   const handleImageClick = (product: any) => {
     const imageUrl = product.image || (product.images && product.images[0]);
@@ -1046,7 +851,7 @@ function CategoryPageContent() {
           <div className="flex flex-col lg:flex-row gap-4 xl:gap-8 2xl:gap-12">
             <aside className="lg:w-64 flex-shrink-0">
               <div className="sticky top-[100px]">
-                <SidebarWithSubcategories activeTab={activeTab} onSelect={handleTabSelect} />
+                <SidebarWithSubcategories />
               </div>
             </aside>
 
@@ -1057,22 +862,13 @@ function CategoryPageContent() {
                     <Package className="w-8 h-8 text-[#0093cb]/40" />
                   </div>
                   <p className="text-gray-500 text-lg">No products found.</p>
-                  <button
-                    onClick={() => router.push("/categories/all?tab=all")}
-                    className="mt-4 text-sm font-medium px-6 py-2.5 rounded-full text-white transition-all hover:shadow-lg"
-                    style={{ background: `linear-gradient(to right, ${BRAND.primary}, ${BRAND.secondary})` }}
-                    type="button"
-                  >
-                    View all products
-                  </button>
                 </div>
               ) : (
                 <>
-                  {/* Header with Product Count on Left and Download Button on Right */}
                   <div className="mb-8 flex items-center justify-between flex-wrap gap-4">
                     <p className="text-sm text-gray-500">
                       Showing <span className="font-semibold text-[#060706]">{totalProducts}</span> products
-                      in <span className="font-semibold text-[#060706]">{groupedProducts.length}</span> subcategories
+                      in <span className="font-semibold text-[#060706]">{groupedProducts.length}</span> categories
                     </p>
                     
                     <button
@@ -1093,8 +889,6 @@ function CategoryPageContent() {
                       <CategorySection
                         key={group.categorySlug}
                         group={group}
-                        activeTabColor={activeTabColor}
-                        onViewAll={handleViewAllProducts}
                         onImageClick={handleImageClick}
                       />
                     ))}
@@ -1106,7 +900,6 @@ function CategoryPageContent() {
         </div>
       </div>
 
-      {/* Download Catalogue Modal */}
       <DownloadCatalogueModal
         isOpen={isDownloadModalOpen}
         onClose={() => setIsDownloadModalOpen(false)}
@@ -1114,7 +907,6 @@ function CategoryPageContent() {
         categoriesCount={groupedProducts.length}
       />
 
-      {/* Image Lightbox */}
       <AnimatePresence>
         {lightboxState.isOpen && (
           <ImageLightboxModal
@@ -1128,17 +920,14 @@ function CategoryPageContent() {
   );
 }
 
-/* ══════════════════════════════════════════
-   EXPORT WITH SUSPENSE BOUNDARY
-══════════════════════════════════════════ */
-export default function CategoryPage() {
+export default function PersonalizedPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
         <div className="w-8 h-8 border-4 border-[#0093cb] border-t-transparent rounded-full animate-spin" />
       </div>
     }>
-      <CategoryPageContent />
+      <PersonalizedPageContent />
     </Suspense>
   );
 }

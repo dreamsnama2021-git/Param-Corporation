@@ -4,136 +4,246 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   Lightbulb,
-  Compass,
-  Award,
-  Clock,
-  Heart,
-  Handshake,
-  Users,
-  Gift,
-  MapPin,
   Factory,
-  Trophy,
+  Award,
+  Users,
+  Handshake,
 } from "lucide-react";
 
 export default function WhyChooseUs() {
-  const benefits = [
+  const pillars = [
     {
-      icon: Lightbulb,
+      num: "01",
       title: "Idea to Impact",
-      desc: "We understand your objectives and turn them into impactful solutions.",
-      color: "text-[#0093cb]",
+      desc: "Turning brand objectives into creative, high-recall marketing tools.",
+      icon: Lightbulb,
+      color: "#0093cb",
+      // Desktop positions relative to the curved layout
+      dotX: 80,
+      dotY: 75,
+      textX: 170,
+      textY: 48,
     },
     {
-      icon: Compass,
+      num: "02",
       title: "End-to-End Solutions",
-      desc: "Conceptualization to delivery - we handle everything under one roof.",
-      color: "text-[#00a8b5]",
-    },
-    {
-      icon: Award,
-      title: "Quality Assured",
-      desc: "Premium materials and strict quality standards in every product we deliver.",
-      color: "text-[#00a65d]",
-    },
-    {
-      icon: Clock,
-      title: "On-Time Delivery",
-      desc: "Strong planning and execution to meet your timelines, every time.",
-      color: "text-[#003b46]",
-    },
-    {
-      icon: Heart,
-      title: "Doctor Centric",
-      desc: "Solutions designed keeping doctors and patients at the heart of communication.",
-      color: "text-[#0093cb]",
-    },
-    {
-      icon: Handshake,
-      title: "Long-Term Partnership",
-      desc: "We believe in building relationships that grow stronger with every project.",
-      color: "text-[#00a65d]",
-    },
-  ];
-
-  const stats = [
-    {
-      icon: Users,
-      value: "100+",
-      label: "Happy Clients",
-      color: "text-[#0093cb]",
-    },
-    {
-      icon: Gift,
-      value: "1000+",
-      label: "Unique Products Delivered",
-      color: "text-[#0093cb]",
-    },
-    {
-      icon: MapPin,
-      value: "PAN India",
-      label: "Delivery Network",
-      color: "text-[#00a65d]",
-    },
-    {
+      desc: "In-house conceptualization, design, production, and delivery.",
       icon: Factory,
-      value: "In-house",
-      label: "Design & Production",
-      color: "text-[#00a65d]",
+      color: "#005f73",
+      dotX: 175,
+      dotY: 170,
+      textX: 265,
+      textY: 143,
     },
     {
-      icon: Trophy,
-      value: "10+ Years",
-      label: "Of Innovation & Trust",
-      color: "text-[#003b46]",
+      num: "03",
+      title: "Premium Quality",
+      desc: "Fine finishing and strict quality control for high brand value.",
+      icon: Award,
+      color: "#00a8b5",
+      dotX: 210,
+      dotY: 300,
+      textX: 300,
+      textY: 273,
+    },
+    {
+      num: "04",
+      title: "Doctor & Patient Centric",
+      desc: "Creative consultative tools and patient awareness aids.",
+      icon: Users,
+      color: "#00a65d",
+      dotX: 175,
+      dotY: 430,
+      textX: 265,
+      textY: 403,
+    },
+    {
+      num: "05",
+      title: "Long-Term Trust",
+      desc: "Reliable PAN India delivery, consistency, and partnerships.",
+      icon: Handshake,
+      color: "#8ac926",
+      dotX: 80,
+      dotY: 525,
+      textX: 170,
+      textY: 498,
     },
   ];
 
   return (
-    <section className="bg-slate-50/50 py-16 sm:py-20 relative overflow-hidden flex flex-col items-center">
-      <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
-        
-        {/* UPPER CARD: Why Clients Choose Us benefits */}
-        <div className="bg-white rounded-3xl border border-slate-100 shadow-xl p-8 sm:p-10">
-          {/* Header */}
-          <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">
-              Why Clients Choose Us
-            </h2>
-            <div className="h-0.5 w-16 bg-gradient-to-r from-[#0093cb] to-[#00a65d] mx-auto mt-3 rounded-full" />
+    <section className="bg-white py-6 sm:py-8 lg:py-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100 flex flex-col items-center justify-center w-full">
+      {/* Subtle Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: "radial-gradient(#000 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+
+      <div className="max-w-[1400px] w-full mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          {/* LEFT COLUMN: Header Content */}
+          <div className="lg:col-span-5 flex flex-col justify-center text-center lg:text-left relative py-8">
+            {/* Large Decorative Star Shape in Background (Matches the sample visual concept) */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none z-0">
+              <svg className="w-[320px] h-[320px] sm:w-[400px] sm:h-[400px]" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192L12 .587z" />
+              </svg>
+            </div>
+
+            <div className="relative z-10 space-y-6">
+              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] block">
+                Param Corporation Advantages
+              </span>
+              <h2 className="text-4xl sm:text-5xl lg:text-[46px] font-black tracking-tight leading-tight text-slate-900 uppercase">
+                Why <br className="hidden lg:block" />
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Clients Choose</span> <br />
+                Us
+              </h2>
+              <div className="h-1 w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full mx-auto lg:mx-0" />
+              <p className="text-slate-500 text-sm sm:text-base leading-relaxed max-w-md mx-auto lg:mx-0 font-medium">
+                We blend scientific understanding, creative innovation, and strict quality controls to deliver high-recall marketing tools and patient-centric communication aids.
+              </p>
+            </div>
           </div>
 
-          {/* Grid of benefits */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-6 divide-y sm:divide-y-0 lg:divide-x divide-slate-100">
-            {benefits.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={idx}
-                  className={`group flex flex-col items-center text-center px-3 pt-6 sm:pt-0 cursor-pointer ${
-                    idx === 0 ? "" : "lg:pl-4"
-                  }`}
-                >
-                  <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 shadow-sm mb-4 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#0093cb]/10 group-hover:border-[#0093cb]/20">
-                    <Icon className={`w-6 h-6 ${item.color} transition-colors duration-300`} />
-                  </div>
-                  <h3 className={`font-bold text-sm sm:text-base mb-2 ${item.color} transition-colors duration-300`}>
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              );
-            })}
+          {/* RIGHT COLUMN: Desktop Curved layout or Mobile timeline */}
+          <div className="lg:col-span-7 relative flex justify-center">
+            
+            {/* DESKTOP VIEW: Curved Arch Layout */}
+            <div className="hidden lg:block relative w-[680px] h-[600px] shrink-0 select-none">
+              
+              {/* SVG Curved Arch & Pointer Lines */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                {/* Main Curved Arch */}
+                <path
+                  d="M 80,75 A 260,260 0 0,1 80,525"
+                  fill="none"
+                  stroke="#e2e8f0"
+                  strokeWidth="2.5"
+                  strokeDasharray="4 4"
+                />
+
+                {/* Connector pointers to text blocks */}
+                {pillars.map((pillar, idx) => {
+                  const endLineX = pillar.textX - 15;
+                  return (
+                    <g key={idx}>
+                      <line
+                        x1={pillar.dotX + 32}
+                        y1={pillar.dotY}
+                        x2={endLineX}
+                        y2={pillar.dotY}
+                        stroke="#0093cb"
+                        strokeWidth="1.5"
+                      />
+                      <circle
+                        cx={endLineX}
+                        cy={pillar.dotY}
+                        r="2.5"
+                        fill="#0093cb"
+                      />
+                    </g>
+                  );
+                })}
+              </svg>
+
+              {/* Pillars Interactive Elements */}
+              {pillars.map((pillar, idx) => {
+                const Icon = pillar.icon;
+                return (
+                  <React.Fragment key={idx}>
+                    {/* Circle Node on the Arch */}
+                    <motion.div
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: idx * 0.1 }}
+                      className="absolute w-16 h-16 rounded-full bg-white border-2 border-slate-200 shadow-md flex items-center justify-center z-10 font-black text-xl text-slate-800 hover:border-[#0093cb] hover:scale-115 transition-all duration-300 cursor-pointer"
+                      style={{
+                        left: `${pillar.dotX - 32}px`,
+                        top: `${pillar.dotY - 32}px`,
+                      }}
+                    >
+                      {pillar.num}
+                    </motion.div>
+
+                    {/* Text block next to the node */}
+                    <motion.div
+                      initial={{ x: 20, opacity: 0 }}
+                      whileInView={{ x: 0, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: idx * 0.1 }}
+                      className="absolute flex items-start gap-4 w-[360px]"
+                      style={{
+                        left: `${pillar.textX}px`,
+                        top: `${pillar.textY - 8}px`,
+                      }}
+                    >
+                      {/* Icon */}
+                      <div className="p-3 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm shrink-0" style={{ color: pillar.color }}>
+                        <Icon className="w-6.5 h-6.5 stroke-[2]" />
+                      </div>
+
+                      {/* Header and Desc */}
+                      <div className="text-left pt-1">
+                        <h4 className="text-base font-black text-slate-900 leading-tight uppercase tracking-tight">
+                          {pillar.title}
+                        </h4>
+                        <p className="text-slate-500 text-[13px] leading-snug mt-1.5 font-medium">
+                          {pillar.desc}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </React.Fragment>
+                );
+              })}
+            </div>
+
+            {/* MOBILE & TABLET VIEW: Vertical Timeline */}
+            <div className="block lg:hidden relative pl-8 py-4 space-y-10 w-full max-w-md mx-auto">
+              {/* Left Vertical Line */}
+              <div className="absolute top-0 bottom-0 left-3.5 w-[2px] bg-slate-200" />
+
+              {pillars.map((pillar, idx) => {
+                const Icon = pillar.icon;
+
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4 }}
+                    className="relative flex items-start gap-4"
+                  >
+                    {/* Node Dot on vertical line */}
+                    <div className="absolute left-[-22px] top-6 w-3.5 h-3.5 rounded-full bg-slate-955 border-2 border-white shadow z-10" />
+
+                    {/* Circular Icon & Number */}
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="text-base font-bold text-slate-500">{pillar.num}.</span>
+                      <div
+                        className="w-14 h-14 rounded-full border-2 border-slate-200 bg-white flex items-center justify-center shadow"
+                        style={{ color: pillar.color }}
+                      >
+                        <Icon className="w-6 h-6 stroke-[2]" />
+                      </div>
+                    </div>
+
+                    {/* Text content next to icon */}
+                    <div className="pt-2 text-left">
+                      <h4 className="text-base font-black text-slate-900 leading-tight uppercase">
+                        {pillar.title}
+                      </h4>
+                      <p className="text-slate-500 text-sm mt-1 font-medium">
+                        {pillar.desc}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
           </div>
         </div>
-
-    
-
       </div>
-
-   
     </section>
   );
 }

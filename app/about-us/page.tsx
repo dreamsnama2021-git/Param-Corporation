@@ -36,7 +36,7 @@ import {
   EditorialTimeline,
   TimelineItem,
 } from "../../components/EditorialTImeline";
-import AboutIntro from "../../components/AboutIntro";
+import FoundersMessage from "../../components/FoundersMessage";
 import WhatWeDoOfferings from "../../components/WhatWeDoOfferings";
 import AboutDesignProcess from "../../components/AboutDesignProcess";
 import QualityAssurance from "../../components/QualityAssurance";
@@ -492,8 +492,8 @@ export default function AboutUsPage() {
       {/* ── BANNER ── */}
       <PageBanner />
 
-      {/* ── ABOUT INTRO ── */}
-      <AboutIntro />
+      {/* ── FOUNDERS MESSAGE ── */}
+      <FoundersMessage />
 <WhyUsSection />
       {/* ── WHAT WE DO & CORE OFFERINGS ── */}
       <WhatWeDoOfferings />

@@ -5,7 +5,7 @@ import { Target, Eye, Quote } from "lucide-react";
 
 export default function FoundersMessage() {
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100">
+    <section className="bg-white py-8 sm:py-10 lg:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100">
       {/* Decorative background blur shapes */}
       <div className="absolute top-1/3 left-0 w-96 h-96 bg-[#0093cb]/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-96 h-96 bg-[#00a65d]/5 rounded-full blur-[100px] pointer-events-none" />

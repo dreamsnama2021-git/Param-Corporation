@@ -129,7 +129,7 @@ export default function AboutIntro() {
   const labelRadius = (outerRadius + innerRadius) / 2 - 5;
 
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100">
+    <section className="bg-white py-12 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100">
       {/* Decorative background blur shapes */}
       <div className="absolute top-10 left-10 w-96 h-96 bg-[#0093cb]/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#00a65d]/5 rounded-full blur-[120px] pointer-events-none" />
@@ -137,7 +137,7 @@ export default function AboutIntro() {
       <div className="max-w-[1300px] mx-auto relative z-10">
         
         {/* TOP ROW: About content (Left) & Circular Diagram (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16 lg:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* COLUMN 1: About content (Span 7) */}
           <div className="lg:col-span-7 flex flex-col justify-center">
@@ -335,70 +335,7 @@ export default function AboutIntro() {
 
         </div>
 
-        {/* BOTTOM ROW: Vision & Mission 2-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 border-t border-slate-100 pt-16">
-          
-          {/* Card 1: Our Vision */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            whileHover={{ 
-              y: -8, 
-              scale: 1.02,
-              boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
-            }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
-            className="group relative w-full rounded-3xl overflow-hidden border border-white/20 bg-gradient-to-r from-[#0093cb] to-[#00a65d] text-white p-8 flex flex-col items-start gap-4 cursor-pointer"
-          >
-            {/* Visual overlay path grid / Hover gradient glow */}
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08)_0%,transparent_60%)] transition-opacity duration-500 group-hover:opacity-40 pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00a65d] to-[#0093cb] opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none" />
-            
-            <div className="relative z-10 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-md transition-all duration-500 group-hover:scale-110 group-hover:rotate-[360deg] group-hover:bg-white group-hover:text-[#0093cb]">
-              <Target className="w-6 h-6 text-white transition-colors duration-500 group-hover:text-[#0093cb]" />
-            </div>
-            
-            <h3 className="relative z-10 text-xl sm:text-2xl font-black uppercase tracking-wide group-hover:translate-x-1 transition-transform duration-300">
-              Our Vision
-            </h3>
-            
-            <p className="relative z-10 text-white/90 text-sm sm:text-base leading-relaxed font-medium">
-              To be the most innovative and trusted partner in healthcare marketing solutions.
-            </p>
-          </motion.div>
-
-          {/* Card 2: Our Mission */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            whileHover={{ 
-              y: -8, 
-              scale: 1.02,
-              boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
-            }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
-            className="group relative w-full rounded-3xl overflow-hidden border border-white/20 bg-gradient-to-r from-[#0093cb] to-[#00a65d] text-white p-8 flex flex-col items-start gap-4 cursor-pointer"
-          >
-            {/* Visual overlay path grid / Hover gradient glow */}
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08)_0%,transparent_60%)] transition-opacity duration-500 group-hover:opacity-40 pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00a65d] to-[#0093cb] opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out pointer-events-none" />
-            
-            <div className="relative z-10 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-md transition-all duration-500 group-hover:scale-110 group-hover:rotate-[360deg] group-hover:bg-white group-hover:text-[#00a65d]">
-              <Eye className="w-6 h-6 text-white transition-colors duration-500 group-hover:text-[#00a65d]" />
-            </div>
-            
-            <h3 className="relative z-10 text-xl sm:text-2xl font-black uppercase tracking-wide group-hover:translate-x-1 transition-transform duration-300">
-              Our Mission
-            </h3>
-            
-            <p className="relative z-10 text-white/90 text-sm sm:text-base leading-relaxed font-medium">
-              To empower healthcare brands through creative, customized, and impactful communication solutions.
-            </p>
-          </motion.div>
-
-        </div>
+    
 
       </div>
     </section>

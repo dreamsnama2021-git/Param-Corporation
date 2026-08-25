@@ -4,9 +4,9 @@ import React, { useRef, useEffect, useState, ReactNode } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useInView } from 'framer-motion';
 import { 
   Users, 
-  PackageCheck, 
-  Clock, 
-  MapPin, 
+  Package, 
+  Award, 
+  FileCheck, 
   TrendingUp,
   ArrowUpRight,
   Sparkles
@@ -39,33 +39,33 @@ interface FloatingShapeProps {
 const stats: Stat[] = [
   {
     id: 1,
-    value: 1000,
+    value: 100,
     suffix: "+",
-    label: "PHARMA EXCLUSIVE PRODUCTS",
-    subtext: "& CONCEPTS",
-    icon: PackageCheck,
+    label: "CORPORATE CLIENTS",
+    subtext: "TRUSTED PARTNERSHIPS",
+    icon: Users,
     gradient: "from-[#0093cb] to-[#0077b6]",
     accent: "#0093cb",
     position: "center"
   },
   {
     id: 2,
-    value:10,
+    value: 1000,
     suffix: "+",
-    label: "YEARS INDUSTRY EXPERIENCE",
-    subtext: "",
-    icon: Users,
+    label: "PRODUCTS ACROSS CATEGORIES",
+    subtext: "DIVERSE GIFT RANGE",
+    icon: Package,
     gradient: "from-[#00a65d] to-[#008f4c]",
     accent: "#00a65d",
     position: "top"
   },
   {
     id: 3,
-    value: 100,
+    value: 10,
     suffix: "+",
-    label: "PHARMA COMPANIES",
-    subtext: "REGISTERED VENDOR",
-    icon: Users,
+    label: "YEARS OF EXPERIENCE",
+    subtext: "INDUSTRY EXPERTISE",
+    icon: Award,
     gradient: "from-[#8bde7a] to-[#6bc952]",
     accent: "#8bde7a",
     position: "top"
@@ -74,24 +74,24 @@ const stats: Stat[] = [
     id: 4,
     value: 1000,
     suffix: "+",
-    label: "LARGE VALUE ORDERS SERVED",
-    subtext: "IN LAST 5 YEARS",
-    icon: MapPin,
+    label: "LARGE TICKET SIZE ORDERS",
+    subtext: "BULK & CUSTOM ORDERS",
+    icon: FileCheck,
     gradient: "from-[#0093cb] to-[#00a65d]",
     accent: "#0093cb",
     position: "center"
   },
-  // {
-  //   id: 5,
-  //   value: 1,
-  //   suffix: "",
-  //   label: "Trusted by Leading Pharma Brands",
-  //   subtext: "Industry Leaders",
-  //   icon: Users,
-  //   gradient: "from-[#0093cb] to-[#0077b6]",
-  //   accent: "#0093cb",
-  //   position: "top"
-  // },
+  {
+    id: 5,
+    value: 100,
+    suffix: "M+",
+    label: "TOTAL SALES ACHIEVED",
+    subtext: "CUMULATIVE BRAND VALUE",
+    icon: TrendingUp,
+    gradient: "from-[#0093cb] to-[#0077b6]",
+    accent: "#0093cb",
+    position: "top"
+  },
 ];
 
 // 3D Tilt Card Component
@@ -312,7 +312,7 @@ export default function CreativeStatsSection(): React.ReactElement {
         </div>
 
         {/* Stats Grid - Staggered Layout */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           {stats.map((stat, index) => (
             <TiltCard key={stat.id} stat={stat} index={index} />
           ))}

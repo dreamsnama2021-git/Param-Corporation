@@ -1,12 +1,12 @@
 // app/page.tsx
-import HeroProductGridGapless from "@/components/HeroProductGridGapless";
+// import HeroProductGridGapless from "@/components/HeroProductGridGapless";
 import ProductShowcaseGrid from "@/components/ProductShowcaseGrid";
-import FoundersMessage from "@/components/FoundersMessage";
-import AboutUs from "@/components/AboutUs";
+import AboutIntro from "@/components/AboutIntro";
+// import AboutUs from "@/components/AboutUs";
 import ProductSections from "@/components/GiftByCategories";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import AboutDesignProcess from "@/components/AboutDesignProcess";
-import ClientSection from "@/components/Clientele";
+// import ClientSection from "@/components/Clientele";
 import ClientTicker from "@/components/ClientTicker";
 import CaseStudy from "@/components/CaseStudy";
 import FastestGrowing from "@/components/FastGrowing";
@@ -16,6 +16,7 @@ import StatsBanner from "@/components/StatsBanner";
 import InstagramReels from "@/components/Instagram";
 import { TestimonialCardsVariant } from "@/components/Testimonial";
 import PopupForm from "@/components/PopupForm";
+import WorkflowBar from "@/components/WorkflowBar";
 
 export default function Page() {
   const POPUP_DELAY = 2 * 60 * 1000; // 2 minutes in milliseconds
@@ -23,18 +24,19 @@ export default function Page() {
     <main className="overflow-x-hidden">
       {/* <HeroProductGridGapless /> */}
       <ProductShowcaseGrid />
-      <FoundersMessage />
+      <AboutIntro />
       {/* <AboutUs /> */}
       <ProductSections />
       <WhyChooseUs />
       <AboutDesignProcess />
       <ClientTicker />
-      <ClientSection />
+      <WorkflowBar />
+      {/* <ClientSection /> */}
       <CaseStudy />
-      <FastestGrowing />
+      {/* <FastestGrowing /> */}
       <IndustriesWeServe />
       <CreativeStatsSection />
-      <StatsBanner />
+      {/* <StatsBanner /> */}
       <InstagramReels />
       <TestimonialCardsVariant />
 

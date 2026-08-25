@@ -138,7 +138,7 @@ export default function ProjectWorkflow() {
   ];
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-slate-50/50 relative overflow-hidden border-b border-slate-100">
+    <section id="project-workflow" className="py-16 sm:py-20 lg:py-24 bg-slate-50/50 relative overflow-hidden border-b border-slate-100">
       {/* Background Blurs */}
       <div className="absolute top-1/3 right-0 w-96 h-96 bg-[#0093cb]/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-10 left-0 w-96 h-96 bg-[#00a65d]/5 rounded-full blur-[100px] pointer-events-none" />
@@ -229,39 +229,7 @@ export default function ProjectWorkflow() {
           </div>
         </div>
 
-        {/* ─── WHY OUR WORKFLOW WORKS BAR ─────────────────────────────────── */}
-        <div className="bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-[32px] p-6 sm:p-8 text-white relative overflow-hidden shadow-xl">
-          <div className="absolute inset-0 bg-black/10 pointer-events-none" />
-          
-          <div className="relative z-10 space-y-6">
-            <h3 className="text-lg sm:text-xl font-extrabold tracking-tight text-center flex items-center justify-center gap-3">
-              <span className="h-px w-10 bg-gradient-to-r from-transparent to-white/40" />
-              Why Our Workflow Works
-              <span className="h-px w-10 bg-gradient-to-l from-transparent to-white/40" />
-            </h3>
-
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-white/15">
-              {benefits.map((benefit, idx) => {
-                const Icon = benefit.icon;
-                return (
-                  <div
-                    key={idx}
-                    className={`flex flex-col items-center text-center p-3 ${
-                      idx >= 2 && idx < 4 ? "pt-6 md:pt-3" : ""
-                    } ${idx === 0 ? "" : "md:pl-4"}`}
-                  >
-                    <div className="w-11 h-11 rounded-full bg-white/20 border border-white/10 flex items-center justify-center mb-3 shadow-inner hover:scale-110 transition-transform duration-300">
-                      <Icon className="w-5 h-5 text-white" />
-                    </div>
-                    <span className="text-white text-xs sm:text-[13px] font-bold tracking-wide">
-                      {benefit.title}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+     
 
       </div>
     </section>

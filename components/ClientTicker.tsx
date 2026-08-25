@@ -69,8 +69,11 @@ const clients = [
 ];
 
 export default function ClientTicker() {
+  // Sort clients alphabetically by name
+  const sortedClients = [...clients].sort((a, b) => a.name.localeCompare(b.name));
+  
   // Triple the array to ensure seamless looping
-  const tripleClients = [...clients, ...clients, ...clients];
+  const tripleClients = [...sortedClients, ...sortedClients, ...sortedClients];
 
   return (
     <section className="w-full bg-white py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 overflow-hidden border-b border-slate-100">
