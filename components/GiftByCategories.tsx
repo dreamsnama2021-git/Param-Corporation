@@ -101,7 +101,7 @@ const TRENDING_PRODUCTS = [
     id: "7",
     title: "Doctor's Diary",
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2012_56_38%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2003_47_10%20PM.png",
     price: "45",
     tag: "Essential",
   },
