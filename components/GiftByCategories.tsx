@@ -125,7 +125,7 @@ const TRENDING_PRODUCTS = [
     id: "10",
     title: "Digital Prescription Pad",
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/WhatsApp%20Image%202026-06-06%20at%208.42.56%20PM.jpeg",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2004_33_38%20PM.png",
     price: "95",
     tag: "Digital",
   },
