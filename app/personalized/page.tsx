@@ -249,58 +249,12 @@ function DownloadCatalogueModal({
   };
 
   const downloadCatalogue = () => {
-    let catalogueContent = `========================================
-PERSONALIZED GIFTS CATALOGUE
-========================================
-Generated: ${new Date().toLocaleDateString()}
-Total Products: ${totalProducts}
-Categories: ${categoriesCount}
-========================================\n\n`;
-
-    const productMap = new Map<string, any[]>();
-    personalizedGifts.forEach(cat => {
-      const products = allProducts.filter(p => p.category === cat.slug);
-      if (products.length > 0) {
-        productMap.set(cat.name, products);
-      }
-    });
-
-    let groupIndex = 0;
-    productMap.forEach((products, categoryName) => {
-      groupIndex++;
-      catalogueContent += `${groupIndex}. ${categoryName.toUpperCase()}\n`;
-      catalogueContent += `${'='.repeat(categoryName.length + 4)}\n`;
-      catalogueContent += `Products: ${products.length}\n\n`;
-      
-      products.forEach((product, productIndex) => {
-        catalogueContent += `  ${productIndex + 1}. ${product.name}\n`;
-        catalogueContent += `     Category: ${product.category}\n`;
-        catalogueContent += `     Description: ${product.description || 'No description'}\n`;
-        if (product.features && product.features.length > 0) {
-          catalogueContent += `     Features: ${product.features.join(', ')}\n`;
-        }
-        if (product.tags && product.tags.length > 0) {
-          catalogueContent += `     Tags: ${product.tags.join(', ')}\n`;
-        }
-        catalogueContent += `\n`;
-      });
-      
-      catalogueContent += `\n`;
-    });
-
-    catalogueContent += `========================================
-END OF CATALOGUE
-========================================`;
-
-    const blob = new Blob([catalogueContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url;
-    a.download = `Personalized_Gifts_Catalogue_${new Date().toISOString().split('T')[0]}.txt`;
+    a.href = "/catalogue/personlized-catalogue.pdf";
+    a.download = "personlized-catalogue.pdf";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    URL.revokeObjectURL(url);
   };
 
   const handleClose = () => {

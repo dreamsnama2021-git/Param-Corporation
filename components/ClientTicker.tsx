@@ -4,67 +4,65 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const clients = [
-  // --- Logos from Medipride ---
   {
-    name: "Abbott",
+    name: "Blisson",
     logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0014-scaled.jpg",
   },
   {
-    name: "Sun Pharma",
-    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0013-scaled.jpg",
-  },
-  {
-    name: "Cipla",
-    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0012-scaled.jpg",
-  },
-  {
-    name: "Alkem",
+    name: "Overseas Health Care",
     logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0011-scaled.jpg",
-  },
-  {
-    name: "Lupin",
-    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0007-scaled.jpg",
-  },
-  // --- New Logos from ParamCorp ---
-  {
-    name: "Wockhardt",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/30-r0ab2j57fa83f10caqxix4wdrv1r5342o3bfsjgavo.png",
-  },
-  {
-    name: "Pfizer",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/1-18-r0ab0wv7nk0bf7czr1qnmjlsxz0zvuops2vc1duplg.png",
-  },
-  {
-    name: "Novartis",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/2-8-r0ab0yqw182w2fa9g2jwrj4q4qrqb8w6gc6azxrx90.png",
-  },
-  {
-    name: "GSK",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/3-11-r0ab10mkew5gpn7j53d5winnbiigqn3n4lh9yhp4wk.png",
-  },
-  {
-    name: "Sanofi",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/4-6-r0ab14dx68am0322j4zo6hphp1zxlfikh437vljk7o.png",
-  },
-  {
-    name: "AstraZeneca",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/5-6-r0ab169ljwd6nazc85sxbh8evtqo0tq15de6u5grv8.png",
-  },
-  {
-    name: "Intas",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/13-1-r0ab1kd6eewhhgeuxtwbuvobslt68aa07b6h1avv9w.png",
-  },
-  {
-    name: "Eris Lifesciences",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/14-1-r0ab1m8us2z24oc4mupkzv78zdjwnohgvkhfzut2xg.png",
-  },
-  {
-    name: "Micro Labs",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/25-1-r0ab27v559snjpgq4m2037qun8lckpvamjhm17x0yc.png",
   },
   {
     name: "Aristo Pharma",
     logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/35-1-r0ab37l0cz5jsw0uc1htpyqd7vpap7t3fga29qg2dw.png",
+  },
+  {
+    name: "Akumentis",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/5-6-r0ab169ljwd6nazc85sxbh8evtqo0tq15de6u5grv8.png",
+  },
+  {
+    name: "Group Pharma",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0012-scaled.jpg",
+  },
+  {
+    name: "Mankind",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/14-1-r0ab1m8us2z24oc4mupkzv78zdjwnohgvkhfzut2xg.png",
+  },
+  {
+    name: "Centaur",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/3-11-r0ab10mkew5gpn7j53d5winnbiigqn3n4lh9yhp4wk.png",
+  },
+  {
+    name: "Torrent Pharma",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/13-1-r0ab1kd6eewhhgeuxtwbuvobslt68aa07b6h1avv9w.png",
+  },
+  // {
+  //   name: "Lupin",
+  //   logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0007-scaled.jpg",
+  // },
+  {
+    name: "Sirmaxo",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/25-1-r0ab27v559snjpgq4m2037qun8lckpvamjhm17x0yc.png",
+  },
+  {
+    name: "Cipla",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/2-8-r0ab0yqw182w2fa9g2jwrj4q4qrqb8w6gc6azxrx90.png",
+  },
+  {
+    name: "Alembic",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/1-18-r0ab0wv7nk0bf7czr1qnmjlsxz0zvuops2vc1duplg.png",
+  },
+  {
+    name: "IPCA",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/4-6-r0ab14dx68am0322j4zo6hphp1zxlfikh437vljk7o.png",
+  },
+  {
+    name: "Ajanta Pharma",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0013-scaled.jpg",
+  },
+  {
+    name: "GP",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/30-r0ab2j57fa83f10caqxix4wdrv1r5342o3bfsjgavo.png",
   },
 ];
 

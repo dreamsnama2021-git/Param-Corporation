@@ -182,12 +182,15 @@ export default function KoruCommitment() {
                     {/* Swinging Icon Container */}
                     <motion.div
                       style={{ transformOrigin: "top center" }}
-                      whileHover={{ 
-                        rotate: [0, -14, 12, -8, 5, -2, 0],
+                      animate={{ 
+                        rotate: [-6, 6, -6],
                       }}
                       transition={{
-                        duration: 1.2,
-                        ease: "easeInOut"
+                        duration: 3.5 + (idx * 0.3),
+                        ease: "easeInOut",
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        delay: idx * 0.2
                       }}
                       className={`p-3 rounded-xl ${p.bgColor} border ${p.borderColor} transition-colors duration-300 group-hover:bg-white group-hover:shadow-md z-10 flex items-center justify-center`}
                     >

@@ -98,7 +98,6 @@ export default function Navbar() {
   };
 
   const mainNavItems: NavItem[] = [
-    { label: "Personalized Gifts", href: "/personalized" },
     // { label: "Digital Inputs", href: "/digital-gifts", isButton: true },
     // { label: "Koru", href: "/koru", isButton: true },
     // { label: "Medipride", href: "/medipride", isButton: true },

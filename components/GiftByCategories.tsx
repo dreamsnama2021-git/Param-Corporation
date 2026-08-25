@@ -379,22 +379,7 @@ function TrendingProducts() {
           </div>
         </div>
 
-        {/* View All Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55, delay: 0.2 }}
-          className="flex justify-center mt-8 sm:mt-10 md:mt-12 lg:mt-12 xl:mt-16"
-        >
-          <Link
-            href="/products/all"
-            className="group flex items-center gap-2 sm:gap-3 bg-white border-2 border-[#0093cb] text-[#0093cb] px-5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full font-semibold text-sm hover:bg-[#0093cb] hover:text-white hover:shadow-[0_8px_25px_-10px_rgba(0,147,203,0.4)] transition-all duration-300"
-          >
-            <span>View All Products</span>
-            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </motion.div>
+        {/* Removed View All Button */}
       </div>
     </section>
   );

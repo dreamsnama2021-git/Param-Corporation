@@ -78,26 +78,26 @@ export default function WhyChooseUs() {
       <div className="max-w-[1400px] w-full mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* LEFT COLUMN: Header Content */}
-          <div className="lg:col-span-5 flex flex-col justify-center text-center lg:text-left relative py-8">
-            {/* Large Decorative Star Shape in Background (Matches the sample visual concept) */}
+          {/* LEFT COLUMN: Header Content (Centered alignment on all screen sizes) */}
+          <div className="lg:col-span-5 flex flex-col justify-center items-center text-center relative py-8 w-full">
+            {/* Large Decorative Star Shape in Background */}
             <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none z-0">
               <svg className="w-[320px] h-[320px] sm:w-[400px] sm:h-[400px]" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192L12 .587z" />
               </svg>
             </div>
 
-            <div className="relative z-10 space-y-6">
+            <div className="relative z-10 space-y-6 flex flex-col items-center w-full">
               <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] block">
                 Param Corporation Advantages
               </span>
-              <h2 className="text-4xl sm:text-5xl lg:text-[46px] font-black tracking-tight leading-tight text-slate-900 uppercase">
-                Why <br className="hidden lg:block" />
+              <h2 className="text-4xl sm:text-5xl lg:text-[46px] font-black tracking-tight leading-tight text-slate-900 uppercase text-center">
+                Why <br />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Clients Choose</span> <br />
                 Us
               </h2>
-              <div className="h-1 w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full mx-auto lg:mx-0" />
-              <p className="text-slate-500 text-sm sm:text-base leading-relaxed max-w-md mx-auto lg:mx-0 font-medium">
+              <div className="h-1 w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full mx-auto" />
+              <p className="text-slate-500 text-sm sm:text-base leading-relaxed max-w-md mx-auto font-medium text-center">
                 We blend scientific understanding, creative innovation, and strict quality controls to deliver high-recall marketing tools and patient-centric communication aids.
               </p>
             </div>
