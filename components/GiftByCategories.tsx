@@ -69,7 +69,7 @@ const TRENDING_PRODUCTS = [
     id: "3",
     title: "LED Heart Lamp",
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2024%2C%202026%2C%2006_41_53%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2003_47_10%20PM.png",
     price: "75",
     tag: "New",
   },
@@ -77,7 +77,7 @@ const TRENDING_PRODUCTS = [
     id: "4",
     title: "Executive Award",
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2024%2C%202026%2C%2007_56_26%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2004_02_09%20PM.png",
     price: "150",
     tag: "Prime",
   },
@@ -85,7 +85,7 @@ const TRENDING_PRODUCTS = [
     id: "5",
     title: "Golden Stethoscope",
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2012_35_07%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2004_06_30%20PM.png",
     price: "199",
     tag: "Premium",
   },
@@ -93,7 +93,7 @@ const TRENDING_PRODUCTS = [
     id: "6",
     title: "Medical Plaque",
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2012_53_28%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2004_02_24%20PM.png",
     price: "85",
     tag: "Popular",
   },
@@ -101,7 +101,7 @@ const TRENDING_PRODUCTS = [
     id: "7",
     title: "Doctor's Diary",
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2003_47_10%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2004_09_25%20PM.png",
     price: "45",
     tag: "Essential",
   },
@@ -109,7 +109,7 @@ const TRENDING_PRODUCTS = [
     id: "8",
     title: "Clinic Name Plate",
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2024%2C%202026%2C%2007_42_26%20PM.png",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2004_24_11%20PM.png",
     price: "110",
     tag: "Custom",
   },
@@ -117,7 +117,7 @@ const TRENDING_PRODUCTS = [
     id: "9",
     title: "Caduceus Statue",
     image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/WhatsApp%20Image%202026-06-06%20at%208.41.44%20PM.jpeg",
+      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/uterus_ovary_product_339x338.png",
     price: "175",
     tag: "Classic",
   },
