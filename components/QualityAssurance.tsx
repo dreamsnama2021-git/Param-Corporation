@@ -188,7 +188,7 @@ export default function QualityAssurance() {
               <div 
                 className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
                 style={{ 
-                  backgroundImage: 'url(https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80)',
+                  backgroundImage: 'url(https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Our%20Quality%20Assurance.png)',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   backgroundRepeat: 'no-repeat'
