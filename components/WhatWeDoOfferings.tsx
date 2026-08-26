@@ -17,7 +17,7 @@ export default function WhatWeDoOfferings() {
       icon: Monitor,
       title: "DESKTOP BRAND REMINDERS",
       desc: "Creative and functional desktop products that keep your brand top-of-mind.",
-      image: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=500", // Desk clock / pen stand visual
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Our%20Core%20Offerings/DESKTOP%20BRAND%20REMINDERS.png", // Desk clock / pen stand visual
       color: "text-[#0093cb]",
       borderColor: "border-[#0093cb]/20",
       numBg: "bg-[#0093cb]",
