@@ -57,7 +57,7 @@ export default function WhatWeDoOfferings() {
       icon: Gift,
       title: "CUSTOMIZED PROMOTIONAL MERCHANDISE",
       desc: "Fully customized merchandise that reflects your brand identity and values.",
-      image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500", // Backpack / Bottle
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Our%20Core%20Offerings/ChatGPT%20Image%20Aug%2026%2C%202026%2C%2005_07_44%20PM.png", // Backpack / Bottle
       color: "text-[#003b46]",
       borderColor: "border-[#003b46]/20",
       numBg: "bg-[#003b46]",
