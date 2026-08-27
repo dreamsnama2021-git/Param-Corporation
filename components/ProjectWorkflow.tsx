@@ -172,7 +172,7 @@ export default function ProjectWorkflow() {
 <div className="lg:col-span-6 flex justify-center">
   <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white">
     <img
-      src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Our%20Project%20Workflow.png"
       alt="Structured Workflow Laptop Screen"
       className="absolute inset-0 w-auto h-full object-cover mx-auto"
       style={{ 

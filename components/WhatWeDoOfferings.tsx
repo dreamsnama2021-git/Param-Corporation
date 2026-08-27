@@ -17,7 +17,7 @@ export default function WhatWeDoOfferings() {
       icon: Monitor,
       title: "DESKTOP BRAND REMINDERS",
       desc: "Creative and functional desktop products that keep your brand top-of-mind.",
-      image: "https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=500", // Desk clock / pen stand visual
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Our%20Core%20Offerings/DESKTOP%20BRAND%20REMINDERS.png", // Desk clock / pen stand visual
       color: "text-[#0093cb]",
       borderColor: "border-[#0093cb]/20",
       numBg: "bg-[#0093cb]",
@@ -27,7 +27,7 @@ export default function WhatWeDoOfferings() {
       icon: FlaskConical,
       title: "SCIENTIFIC PROMOTIONAL PRODUCTS",
       desc: "Scientifically relevant and innovative products that simplify complex messages.",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/21.png", // Kidney/Anatomy model
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Our%20Core%20Offerings/SCIENTIFIC%20PROMOTIONAL%20PRODUCTS.png", // Kidney/Anatomy model
       color: "text-[#00a8b5]",
       borderColor: "border-[#00a8b5]/20",
       numBg: "bg-[#00a8b5]",
@@ -37,7 +37,7 @@ export default function WhatWeDoOfferings() {
       icon: BookOpen,
       title: "PATIENT EDUCATION PRODUCTS",
       desc: "Tools that empower patients with knowledge and support better health outcomes.",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/1.png", // Patient chart/booklet
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Our%20Core%20Offerings/PATIENT%20EDUCATION%20PRODUCTS.png", // Patient chart/booklet
       color: "text-[#00a65d]",
       borderColor: "border-[#00a65d]/20",
       numBg: "bg-[#00a65d]",
@@ -47,7 +47,7 @@ export default function WhatWeDoOfferings() {
       icon: QrCode,
       title: "DIGITAL ENGAGEMENT PRODUCTS",
       desc: "QR-enabled and digital solutions that connect brands to a smart audience.",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png", // Smartphone / QR visual
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Our%20Core%20Offerings/DIGITAL%20ENGAGEMENT%20PRODUCTS.png", // Smartphone / QR visual
       color: "text-[#8ac926]",
       borderColor: "border-[#8ac926]/20",
       numBg: "bg-[#8ac926]",
@@ -57,7 +57,7 @@ export default function WhatWeDoOfferings() {
       icon: Gift,
       title: "CUSTOMIZED PROMOTIONAL MERCHANDISE",
       desc: "Fully customized merchandise that reflects your brand identity and values.",
-      image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500", // Backpack / Bottle
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Our%20Core%20Offerings/ChatGPT%20Image%20Aug%2026%2C%202026%2C%2005_07_44%20PM.png", // Backpack / Bottle
       color: "text-[#003b46]",
       borderColor: "border-[#003b46]/20",
       numBg: "bg-[#003b46]",

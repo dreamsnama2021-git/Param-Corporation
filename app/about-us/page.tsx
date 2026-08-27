@@ -315,7 +315,7 @@ const WhyUsSection = () => {
   <div 
     className="relative w-full h-[650px] lg:h-[750px] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white group"
     style={{ 
-      backgroundImage: 'url(https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/21.png)',
+      backgroundImage: 'url(https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Why%20Clients%20Choose%20Us.png)',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat'

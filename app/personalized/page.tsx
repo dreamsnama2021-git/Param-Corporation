@@ -148,7 +148,7 @@ const PageBanner = () => (
 
     {/* Desktop image */}
     <Image
-      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Desktop.png"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Personalize.png"
       alt="Personalized Gifts Banner - Desktop"
       fill
       className="object-fill object-center hidden lg:block"
