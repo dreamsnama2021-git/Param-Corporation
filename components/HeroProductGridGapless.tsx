@@ -43,7 +43,7 @@ export default function HeroProductGridGapless() {
             {/* Background Image with Zoom & Overlay */}
             <div className="absolute inset-0 z-0">
               <img
-                src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_16%20PM.png"
+                src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2010_36_24%20AM.png"
                 alt="Desktop Brand Reminders"
                 className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
               />
@@ -89,7 +89,7 @@ export default function HeroProductGridGapless() {
             >
               <div className="absolute inset-0 z-0">
                 <img
-                  src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png"
+                  src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_39_15%20AM.png"
                   alt="Digital Solutions"
                   className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
@@ -153,7 +153,7 @@ export default function HeroProductGridGapless() {
           >
             <div className="absolute inset-0 z-0">
               <img
-                src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_03%20PM.png"
+                src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_29_20%20AM.png"
                 alt="Scientific Inputs"
                 className="w-full h-full object-cover opacity-65 group-hover:opacity-85 transition-opacity duration-700 ease-out"
               />
@@ -191,7 +191,7 @@ export default function HeroProductGridGapless() {
             {/* Background Image & Overlay */}
             <div className="absolute inset-0 z-0">
               <img
-                src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=1200&q=80"
+                src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_50_19%20AM.png"
                 alt="Koru Commitment"
                 className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-103 transition-transform duration-1000 ease-out"
               />
