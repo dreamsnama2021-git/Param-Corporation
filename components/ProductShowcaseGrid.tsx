@@ -187,7 +187,7 @@ export default function ProductShowcaseGrid() {
 
           {/* COLUMN 3: Category 5 (Visual Aids & Detailers) */}
           <div className="md:col-span-4 h-full">
-            <Link href="/pharma-launch/all?tab=all" className="h-full block">
+            <Link href="/koru" className="h-full block">
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
