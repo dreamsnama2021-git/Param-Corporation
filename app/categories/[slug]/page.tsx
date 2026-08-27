@@ -208,11 +208,13 @@ function DownloadCatalogueModal({
   onClose,
   totalProducts,
   categoriesCount,
+  selectedSubcategory = null,
 }: {
   isOpen: boolean;
   onClose: () => void;
   totalProducts: number;
   categoriesCount: number;
+  selectedSubcategory?: { categorySlug: string; categoryName: string; products: any[] } | null;
 }) {
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
@@ -268,15 +270,7 @@ function DownloadCatalogueModal({
     setIsSubmitting(true);
 
     try {
-      // Simulate API call - replace with your actual API endpoint
       await new Promise(resolve => setTimeout(resolve, 1500));
-
-      // You can add your API call here:
-      // await fetch('/api/download-catalogue', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData),
-      // });
 
       setIsSubmitted(true);
       
@@ -292,6 +286,63 @@ function DownloadCatalogueModal({
   };
 
   const downloadCatalogue = () => {
+    if (selectedSubcategory) {
+      const slug = (selectedSubcategory.categorySlug || "").toLowerCase();
+      const name = (selectedSubcategory.categoryName || "").toLowerCase();
+
+      if (
+        slug.includes("tabletop") ||
+        slug.includes("table-top") ||
+        name.includes("tabletop") ||
+        name.includes("table top")
+      ) {
+        const a = document.createElement("a");
+        a.href = "/catalogue/table-top-catalogue.pdf";
+        a.download = "table-top-catalogue.pdf";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        return;
+      }
+
+      let catalogueContent = `========================================
+${selectedSubcategory.categoryName.toUpperCase()} PRODUCT CATALOGUE
+========================================
+Generated: ${new Date().toLocaleDateString()}
+Category: ${selectedSubcategory.categoryName}
+Total Products: ${selectedSubcategory.products.length}
+========================================\n\n`;
+
+      selectedSubcategory.products.forEach((product: any, productIndex: number) => {
+        catalogueContent += `  ${productIndex + 1}. ${product.name}\n`;
+        catalogueContent += `     Category: ${product.categoryName || selectedSubcategory.categoryName}\n`;
+        catalogueContent += `     Description: ${product.description || 'No description'}\n`;
+        if (product.features && product.features.length > 0) {
+          catalogueContent += `     Features: ${product.features.join(', ')}\n`;
+        }
+        if (product.tags && product.tags.length > 0) {
+          catalogueContent += `     Tags: ${product.tags.join(', ')}\n`;
+        }
+        catalogueContent += `\n`;
+      });
+
+      catalogueContent += `========================================
+END OF CATALOGUE
+========================================`;
+
+      const blob = new Blob([catalogueContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const safeName = selectedSubcategory.categoryName.replace(/[^a-zA-Z0-9]/g, '_');
+      a.download = `${safeName}_Catalogue_${new Date().toISOString().split('T')[0]}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      return;
+    }
+
     // Create catalogue content with all products
     let catalogueContent = `========================================
 COMPLETE PRODUCT CATALOGUE
@@ -400,14 +451,22 @@ END OF CATALOGUE
                       <Download className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h2 className="text-xl font-bold text-[#060706]">Download Catalogue</h2>
+                      <h2 className="text-xl font-bold text-[#060706]">
+                        {selectedSubcategory
+                          ? `Download ${selectedSubcategory.categoryName} Catalogue`
+                          : "Download Catalogue"}
+                      </h2>
                       <p className="text-sm text-gray-500">
-                        {totalProducts} products • {categoriesCount} categories
+                        {selectedSubcategory
+                          ? `${selectedSubcategory.products.length} products in ${selectedSubcategory.categoryName}`
+                          : `${totalProducts} products • ${categoriesCount} categories`}
                       </p>
                     </div>
                   </div>
                   <p className="text-sm text-gray-500">
-                    Please fill in your details below to download the complete product catalogue.
+                    {selectedSubcategory
+                      ? `Please fill in your details below to download the ${selectedSubcategory.categoryName} catalogue.`
+                      : "Please fill in your details below to download the complete product catalogue."}
                   </p>
                 </>
               ) : (
@@ -842,11 +901,13 @@ function CategorySection({
   activeTabColor,
   onViewAll,
   onImageClick,
+  onDownloadCatalogue,
 }: {
   group: any;
   activeTabColor: string;
   onViewAll: (categorySlug: string, categoryName: string) => void;
   onImageClick: (product: any) => void;
+  onDownloadCatalogue?: (group: any) => void;
 }) {
   const [showAll, setShowAll] = useState(false);
   const displayedProducts = showAll 
@@ -875,7 +936,7 @@ function CategorySection({
     >
       <div className="mb-6">
         <div className="flex items-center justify-between flex-wrap gap-3">
-          <div>
+          <div className="flex-1 min-w-[240px]">
             <div className="flex items-center gap-3 mb-2">
               <h2 className="text-xl lg:text-2xl font-bold text-[#060706]">
                 {group.categoryName}
@@ -894,6 +955,17 @@ function CategorySection({
               }}
             />
           </div>
+
+          {onDownloadCatalogue && (
+            <button
+              onClick={() => onDownloadCatalogue(group)}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all shadow-sm hover:shadow-md border border-[#0093cb]/30 text-[#0093cb] hover:bg-[#0093cb] hover:text-white bg-white group/dl"
+              type="button"
+            >
+              <Download className="w-4 h-4 transition-transform group-hover/dl:-translate-y-0.5" />
+              Download {group.categoryName} Catalogue
+            </button>
+          )}
         </div>
       </div>
 
@@ -956,7 +1028,13 @@ function CategoryPageContent() {
     productName: "",
   });
 
-  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [downloadModalState, setDownloadModalState] = useState<{
+    isOpen: boolean;
+    selectedSubcategory: any | null;
+  }>({
+    isOpen: false,
+    selectedSubcategory: null,
+  });
 
   const activeTab: TabId = useMemo(() => {
     if (tabParam && TABS.some((t) => t.id === tabParam)) return tabParam;
@@ -1032,8 +1110,11 @@ function CategoryPageContent() {
     setLightboxState(prev => ({ ...prev, isOpen: false }));
   };
 
-  const handleDownloadClick = () => {
-    setIsDownloadModalOpen(true);
+  const handleDownloadClick = (subcategory?: any) => {
+    setDownloadModalState({
+      isOpen: true,
+      selectedSubcategory: subcategory || null,
+    });
   };
 
   return (
@@ -1076,7 +1157,7 @@ function CategoryPageContent() {
                     </p>
                     
                     <button
-                      onClick={handleDownloadClick}
+                      onClick={() => handleDownloadClick()}
                       className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all shadow-md hover:shadow-lg"
                       style={{
                         background: `linear-gradient(135deg, ${BRAND.primary}, ${BRAND.secondary})`,
@@ -1084,7 +1165,7 @@ function CategoryPageContent() {
                       }}
                     >
                       <Download className="w-4 h-4" />
-                      Download Catalogue
+                      Download Complete Catalogue
                     </button>
                   </div>
 
@@ -1096,6 +1177,7 @@ function CategoryPageContent() {
                         activeTabColor={activeTabColor}
                         onViewAll={handleViewAllProducts}
                         onImageClick={handleImageClick}
+                        onDownloadCatalogue={(sub) => handleDownloadClick(sub)}
                       />
                     ))}
                   </div>
@@ -1108,10 +1190,11 @@ function CategoryPageContent() {
 
       {/* Download Catalogue Modal */}
       <DownloadCatalogueModal
-        isOpen={isDownloadModalOpen}
-        onClose={() => setIsDownloadModalOpen(false)}
+        isOpen={downloadModalState.isOpen}
+        onClose={() => setDownloadModalState(prev => ({ ...prev, isOpen: false }))}
         totalProducts={totalProducts}
         categoriesCount={groupedProducts.length}
+        selectedSubcategory={downloadModalState.selectedSubcategory}
       />
 
       {/* Image Lightbox */}

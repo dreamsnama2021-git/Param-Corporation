@@ -82,7 +82,7 @@ const pharmaProducts = [
     name: "Complete Pharma Launch Kit",
     category: "pharma-launch-kits",
     description: "All-in-one branding kit for pharmaceutical product launches",
-    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Pharma/launch-kit-1.jpg",
+    image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/22.png",
     features: ["Complete Branding", "Premium Quality"],
     tags: ["Launch Kit", "Branding"],
   },
@@ -504,11 +504,13 @@ function DownloadCatalogueModal({
   onClose,
   totalProducts,
   categoriesCount,
+  selectedSubcategory = null,
 }: {
   isOpen: boolean;
   onClose: () => void;
   totalProducts: number;
   categoriesCount: number;
+  selectedSubcategory?: { categorySlug: string; categoryName: string; products: any[] } | null;
 }) {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -543,10 +545,72 @@ function DownloadCatalogueModal({
     try {
       await new Promise(resolve => setTimeout(resolve, 1500));
       setIsSubmitted(true);
+      setTimeout(() => {
+        downloadCatalogue();
+      }, 500);
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const downloadCatalogue = () => {
+    if (selectedSubcategory) {
+      const slug = (selectedSubcategory.categorySlug || "").toLowerCase();
+      const name = (selectedSubcategory.categoryName || "").toLowerCase();
+
+      if (
+        slug.includes("tabletop") ||
+        slug.includes("table-top") ||
+        name.includes("tabletop") ||
+        name.includes("table top")
+      ) {
+        const a = document.createElement("a");
+        a.href = "/catalogue/table-top-catalogue.pdf";
+        a.download = "table-top-catalogue.pdf";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        return;
+      }
+
+      let catalogueContent = `========================================
+${selectedSubcategory.categoryName.toUpperCase()} PRODUCT CATALOGUE
+========================================
+Generated: ${new Date().toLocaleDateString()}
+Category: ${selectedSubcategory.categoryName}
+Total Products: ${selectedSubcategory.products.length}
+========================================\n\n`;
+
+      selectedSubcategory.products.forEach((product: any, productIndex: number) => {
+        catalogueContent += `  ${productIndex + 1}. ${product.name}\n`;
+        catalogueContent += `     Category: ${product.categoryName || selectedSubcategory.categoryName}\n`;
+        catalogueContent += `     Description: ${product.description || 'No description'}\n`;
+        if (product.features && product.features.length > 0) {
+          catalogueContent += `     Features: ${product.features.join(', ')}\n`;
+        }
+        if (product.tags && product.tags.length > 0) {
+          catalogueContent += `     Tags: ${product.tags.join(', ')}\n`;
+        }
+        catalogueContent += `\n`;
+      });
+
+      catalogueContent += `========================================
+END OF CATALOGUE
+========================================`;
+
+      const blob = new Blob([catalogueContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const safeName = selectedSubcategory.categoryName.replace(/[^a-zA-Z0-9]/g, '_');
+      a.download = `${safeName}_Catalogue_${new Date().toISOString().split('T')[0]}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      return;
     }
   };
 
@@ -582,11 +646,23 @@ function DownloadCatalogueModal({
                       <Download className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h2 className="text-xl font-bold text-[#060706]">Download Pharma Catalogue</h2>
-                      <p className="text-sm text-gray-500">{totalProducts} products • {categoriesCount} categories</p>
+                      <h2 className="text-xl font-bold text-[#060706]">
+                        {selectedSubcategory
+                          ? `Download ${selectedSubcategory.categoryName} Catalogue`
+                          : "Download Pharma Catalogue"}
+                      </h2>
+                      <p className="text-sm text-gray-500">
+                        {selectedSubcategory
+                          ? `${selectedSubcategory.products.length} products in ${selectedSubcategory.categoryName}`
+                          : `${totalProducts} products • ${categoriesCount} categories`}
+                      </p>
                     </div>
                   </div>
-                  <p className="text-sm text-gray-500">Fill in your details to download the complete pharma catalogue.</p>
+                  <p className="text-sm text-gray-500">
+                    {selectedSubcategory
+                      ? `Please fill in your details below to download the ${selectedSubcategory.categoryName} catalogue.`
+                      : "Fill in your details to download the complete pharma catalogue."}
+                  </p>
                 </>
               ) : (
                 <div className="text-center py-4">
@@ -933,12 +1009,14 @@ function CategorySection({
   onViewAll,
   onImageClick,
   isHighlighted = false,
+  onDownloadCatalogue,
 }: {
   group: any;
   activeTabColor: string;
   onViewAll: (categorySlug: string, categoryName: string) => void;
   onImageClick: (product: any) => void;
   isHighlighted?: boolean;
+  onDownloadCatalogue?: (group: any) => void;
 }) {
   const [showAll, setShowAll] = useState(false);
   const displayedProducts = showAll 
@@ -963,7 +1041,7 @@ function CategorySection({
     >
       <div className="mb-6">
         <div className="flex items-center justify-between flex-wrap gap-3">
-          <div>
+          <div className="flex-1 min-w-[240px]">
             <div className="flex items-center gap-3 mb-2">
               <div className="p-2 rounded-lg bg-[#0093cb]/10 text-[#0093cb]">
                 {group.icon}
@@ -973,6 +1051,17 @@ function CategorySection({
             {group.description && <p className="text-sm text-gray-500">{group.description}</p>}
             <div className="mt-3 w-16 h-1 rounded-full" style={{ background: `linear-gradient(to right, ${BRAND.primary}, ${BRAND.secondary})` }} />
           </div>
+
+          {onDownloadCatalogue && (
+            <button
+              onClick={() => onDownloadCatalogue(group)}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all shadow-sm hover:shadow-md border border-[#0093cb]/30 text-[#0093cb] hover:bg-[#0093cb] hover:text-white bg-white group/dl"
+              type="button"
+            >
+              <Download className="w-4 h-4 transition-transform group-hover/dl:-translate-y-0.5" />
+              Download {group.categoryName} Catalogue
+            </button>
+          )}
         </div>
       </div>
 
@@ -1020,7 +1109,13 @@ function PharmaLaunchPageContent() {
     imageUrl: "",
     productName: "",
   });
-  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [downloadModalState, setDownloadModalState] = useState<{
+    isOpen: boolean;
+    selectedSubcategory: any | null;
+  }>({
+    isOpen: false,
+    selectedSubcategory: null,
+  });
   const [highlightedCategory, setHighlightedCategory] = useState<string | null>(null);
 
   const activeTabColor = TABS.find((t) => t.id === activeTab)?.color || BRAND.primary;
@@ -1088,6 +1183,13 @@ function PharmaLaunchPageContent() {
 
   const closeLightbox = () => {
     setLightboxState(prev => ({ ...prev, isOpen: false }));
+  };
+
+  const handleDownloadClick = (subcategory?: any) => {
+    setDownloadModalState({
+      isOpen: true,
+      selectedSubcategory: subcategory || null,
+    });
   };
 
   // Handle hash-based navigation for category scrolling
@@ -1162,7 +1264,7 @@ function PharmaLaunchPageContent() {
                   </p>
                 </div>
                 <button
-                  onClick={() => setIsDownloadModalOpen(true)}
+                  onClick={() => handleDownloadClick()}
                   className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all shadow-md hover:shadow-lg text-white"
                   style={{ background: `linear-gradient(135deg, ${BRAND.primary}, ${BRAND.secondary})` }}
                 >
@@ -1198,10 +1300,11 @@ function PharmaLaunchPageContent() {
       </div>
 
       <DownloadCatalogueModal
-        isOpen={isDownloadModalOpen}
-        onClose={() => setIsDownloadModalOpen(false)}
+        isOpen={downloadModalState.isOpen}
+        onClose={() => setDownloadModalState(prev => ({ ...prev, isOpen: false }))}
         totalProducts={totalProducts}
         categoriesCount={groupedProducts.length}
+        selectedSubcategory={downloadModalState.selectedSubcategory}
       />
 
       <AnimatePresence>
