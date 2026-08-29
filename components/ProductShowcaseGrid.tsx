@@ -196,7 +196,7 @@ export default function ProductShowcaseGrid() {
                 {/* Product Background Image */}
                 <div className="absolute inset-0">
                   <img
-                    src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2029%2C%202026%2C%2009_03_12%20AM.png"
+                    src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2029%2C%202026%2C%2010_06_11%20AM.png"
                     alt="Visual Aids & Detailers"
                     className="w-full h-full object-cover opacity-65 transition-transform duration-1000 group-hover:scale-105"
                   />
