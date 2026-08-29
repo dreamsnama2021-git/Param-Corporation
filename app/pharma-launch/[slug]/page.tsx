@@ -75,7 +75,7 @@ const pharmaCategories = [
 ];
 
 // Sample pharmaceutical products for each category
-// const pharmaProducts = [
+const pharmaProducts = [
 //  ─── Pharma Launch Kits ──────────────────────────────────────────
 //   {
 //     id: 1,
