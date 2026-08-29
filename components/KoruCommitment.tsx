@@ -125,7 +125,7 @@ export default function KoruCommitment() {
             {/* Image Setup */}
             <div className="relative w-full aspect-[4/3] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100 group">
               <img
-                src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=800&q=80"
+                src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/ChatGPT%20Image%20Aug%2029%2C%202026%2C%2012_12_52%20PM.png"
                 alt="Sustainable Office Products"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
