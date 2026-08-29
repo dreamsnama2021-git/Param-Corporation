@@ -76,7 +76,7 @@ const pharmaCategories = [
 
 // Sample pharmaceutical products for each category
 // const pharmaProducts = [
-//   // ─── Pharma Launch Kits ──────────────────────────────────────────
+//  ─── Pharma Launch Kits ──────────────────────────────────────────
 //   {
 //     id: 1,
 //     name: "Complete Pharma Launch Kit",
@@ -242,7 +242,7 @@ const pharmaCategories = [
   //   tags: ["Utility", "Doctor"],
   // },
 
-  // // ─── Surgical Tools ──────────────────────────────────────────────
+  // ─── Surgical Tools ──────────────────────────────────────────────
   // {
   //   id: 19,
   //   name: "Premium Surgical Instrument Set",
