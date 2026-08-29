@@ -71,15 +71,15 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="bg-white py-6 sm:py-8 lg:py-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100 flex flex-col items-center justify-center w-full">
+    <section className="bg-white py-6 sm:py-8 lg:py-8 xl:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100 flex flex-col items-center justify-center w-full">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{ backgroundImage: "radial-gradient(#000 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
 
       <div className="max-w-[1400px] w-full mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 xl:gap-8 items-center">
           
           {/* LEFT COLUMN: Header Content (Centered alignment on all screen sizes) */}
-          <div className="lg:col-span-5 flex flex-col justify-center items-center text-center relative py-8 w-full">
+          <div className="lg:col-span-5 flex flex-col justify-center items-center text-center relative py-4 lg:py-6 w-full">
             {/* Large Decorative Star Shape in Background */}
             <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none z-0">
               <svg className="w-[320px] h-[320px] sm:w-[400px] sm:h-[400px]" viewBox="0 0 24 24" fill="currentColor">
@@ -87,17 +87,17 @@ export default function WhyChooseUs() {
               </svg>
             </div>
 
-            <div className="relative z-10 space-y-6 flex flex-col items-center w-full">
+            <div className="relative z-10 space-y-4 lg:space-y-5 flex flex-col items-center w-full">
               <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] block">
                 Param Corporation Advantages
               </span>
-              <h2 className="text-4xl sm:text-5xl lg:text-[46px] font-black tracking-tight leading-tight text-slate-900 uppercase text-center">
+              <h2 className="text-3xl sm:text-4xl lg:text-3xl xl:text-[46px] font-black tracking-tight leading-tight text-slate-900 uppercase text-center">
                 Why <br />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Clients Choose</span> <br />
                 Us
               </h2>
-              <div className="h-1 w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full mx-auto" />
-              <p className="text-slate-500 text-sm sm:text-base leading-relaxed max-w-md mx-auto font-medium text-center">
+              <div className="h-1 w-20 lg:w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full mx-auto" />
+              <p className="text-slate-500 text-xs sm:text-sm xl:text-base leading-relaxed max-w-md mx-auto font-medium text-center">
                 We blend scientific understanding, creative innovation, and strict quality controls to deliver high-recall marketing tools and patient-centric communication aids.
               </p>
             </div>
@@ -107,7 +107,7 @@ export default function WhyChooseUs() {
           <div className="lg:col-span-7 relative flex justify-center">
             
             {/* DESKTOP VIEW: Curved Arch Layout */}
-            <div className="hidden lg:block relative w-[680px] h-[600px] shrink-0 select-none">
+            <div className="hidden lg:block relative w-[580px] h-[520px] xl:w-[680px] xl:h-[600px] shrink-0 select-none scale-90 xl:scale-100 origin-center">
               
               {/* SVG Curved Arch & Pointer Lines */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">

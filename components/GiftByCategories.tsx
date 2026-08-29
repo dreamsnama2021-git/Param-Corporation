@@ -134,6 +134,21 @@ const TRENDING_PRODUCTS = [
 // ─── CATEGORIES SECTION ─────────────────
 function GiftsByCategories() {
   const router = useRouter();
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  // Auto-slide 3 cards upfront at a time
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1 >= CATEGORIES.length ? 0 : prev + 1));
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const visibleCategories = [
+    CATEGORIES[slideIndex % CATEGORIES.length],
+    CATEGORIES[(slideIndex + 1) % CATEGORIES.length],
+    CATEGORIES[(slideIndex + 2) % CATEGORIES.length],
+  ];
 
   // Function to handle navigation with scroll to top on destination
   const handleNavigation = (href: string) => {
@@ -145,7 +160,7 @@ function GiftsByCategories() {
   };
 
   return (
-    <section className="w-full bg-[#fafcff] py-8 sm:py-8 md:py-10 lg:py-12 xl:py-12">
+    <section className="w-full bg-[#fafcff] py-6 sm:py-8 md:py-8 lg:py-8 xl:py-12">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
         {/* Section Header - Now Added */}
         <motion.div
@@ -153,7 +168,7 @@ function GiftsByCategories() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
-          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-12 xl:mb-16"
+          className="text-center mb-6 sm:mb-8 lg:mb-8 xl:mb-16"
         >
           <p className="text-xs xl:text-sm font-bold uppercase tracking-[0.2em] mb-2 sm:mb-3 flex items-center justify-center gap-2 text-[#0093cb]">
             <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
@@ -161,7 +176,7 @@ function GiftsByCategories() {
             <span className="inline-block w-4 sm:w-5 md:w-6 h-[1.5px] bg-[#0093cb]" />
           </p>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-[#1a1a1a]">
+          <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-black capitalize tracking-tight mb-2 sm:mb-3 text-[#1a1a1a]">
             Our <span className="text-[#0093cb]">Products</span>
           </h2>
 
@@ -172,47 +187,70 @@ function GiftsByCategories() {
           </div>
         </motion.div>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 xl:gap-8 mb-10 sm:mb-12 lg:mb-12 xl:mb-16">
-          {CATEGORIES.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: index * 0.1 }}
-            >
-              <div
-                onClick={() =>
-                  handleNavigation(
-                    item.link || `/categories/${item.id}?tab=${item.tab}`,
-                  )
-                }
-                className="group cursor-pointer relative h-[250px] sm:h-[280px] md:h-[320px] lg:h-[350px] xl:h-[380px] rounded-xl sm:rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-1.5 sm:hover:-translate-y-2 block border border-transparent hover:border-[#0093cb]/20"
+        {/* Categories Grid - 3 Cards Upfront + Auto Slide */}
+        <div className="space-y-4 mb-6 sm:mb-10 lg:mb-10 xl:mb-16">
+          <div className="flex sm:grid sm:grid-cols-3 gap-4 lg:gap-6 xl:gap-8 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
+            {visibleCategories.map((item) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="snap-center shrink-0 w-[75vw] max-w-[280px] sm:w-auto sm:max-w-none"
               >
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  unoptimized
-                />
+                <div
+                  onClick={() =>
+                    handleNavigation(
+                      item.link || `/categories/${item.id}?tab=${item.tab}`,
+                    )
+                  }
+                  className="group cursor-pointer relative h-[310px] sm:h-[300px] md:h-[320px] lg:h-[310px] xl:h-[380px] rounded-xl sm:rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-1.5 sm:hover:-translate-y-2 block border border-transparent hover:border-[#0093cb]/20"
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    unoptimized
+                  />
 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
 
-                {/* Subtle Primary Glow on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0093cb]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Subtle Primary Glow on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0093cb]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 text-white">
-                  <h3 className="font-bold text-base sm:text-[16px] md:text-lg xl:text-xl mb-0.5 sm:mb-1 group-hover:translate-x-1 transition-transform duration-300">
-                    {item.title}
-                  </h3>
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 text-white">
+                    <h3 className="font-bold text-base sm:text-lg md:text-xl xl:text-xl mb-0.5 sm:mb-1 group-hover:translate-x-1 transition-transform duration-300">
+                      {item.title}
+                    </h3>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Auto-Slide Indicator Dots */}
+          <div className="hidden sm:flex justify-center items-center gap-3 pt-1">
+            <div className="flex items-center gap-1.5">
+              {CATEGORIES.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSlideIndex(idx)}
+                  className={`transition-all duration-300 rounded-full ${
+                    slideIndex % CATEGORIES.length === idx
+                      ? "w-6 h-2 bg-[#0093cb]"
+                      : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                  }`}
+                  aria-label={`Slide to category ${idx + 1}`}
+                />
+              ))}
+            </div>
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+              0{(slideIndex % CATEGORIES.length) + 1} / 04 &bull; Auto Sliding
+            </span>
+          </div>
         </div>
 
         {/* View All Button */}

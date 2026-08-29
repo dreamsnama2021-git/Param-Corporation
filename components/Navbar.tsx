@@ -244,17 +244,17 @@ export default function Navbar() {
                 {/* Mega Menu */}
                 {activeDropdown === "products" && (
                   <div
-                    className="absolute top-full left-[10rem] xl:left-1/2 -translate-x-1/2 w-[850px] bg-white/98 backdrop-blur-xl rounded-xl shadow-2xl border border-gray-200 p-4 z-50"
+                    className="absolute top-full right-[-60px] lg:right-[-200px] xl:left-1/2 xl:-translate-x-1/2 w-[92vw] max-w-[780px] xl:max-w-[840px] max-h-[480px] sm:max-h-[500px] lg:max-h-[540px] xl:max-h-none overflow-y-auto xl:overflow-visible bg-white/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200 p-3.5 sm:p-4 xl:p-5 z-50 shadow-slate-300/50"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
-                    {/* OLD VERSION GRID SPACING */}
-                    <div className="grid grid-cols-4 gap-2 xl:gap-4">
+                    {/* MEGA MENU GRID */}
+                    <div className="grid grid-cols-4 gap-3 xl:gap-5">
                       {megaMenuColumns.map((column, idx) => (
                         <div key={idx}>
-                          <h3 className="font-bold text-xs xl:text-sm uppercase text-gray-700 mb-2 flex items-center gap-2">
+                          <h3 className="font-bold text-[11px] xl:text-xs uppercase text-gray-800 mb-2 flex items-center gap-1.5 tracking-wider border-b border-gray-100 pb-1">
                             <div
-                              className="w-2 h-2 rounded-full"
+                              className="w-1.5 h-1.5 rounded-full"
                               style={{
                                 backgroundColor: column.color,
                               }}
@@ -263,7 +263,7 @@ export default function Navbar() {
                             {column.title}
                           </h3>
 
-                          <ul className="space-y-3 xl:space-y-4">
+                          <ul className="space-y-1 xl:space-y-1.5">
                             {column.data
                               ?.slice(0, 15)
                               .map((item: any) => (
@@ -271,7 +271,7 @@ export default function Navbar() {
                                   {column.tabId === "therapy" ? (
                                     <Link
                                       href={`/medipride?therapy=${item.slug}`}
-                                      className="text-xs xl:text-sm text-gray-600 hover:text-[var(--clr-primary)] block"
+                                      className="text-[11px] xl:text-xs text-gray-600 hover:text-[var(--clr-primary)] hover:font-medium transition block py-[1px] leading-tight"
                                       onClick={() =>
                                         setActiveDropdown(null)
                                       }
@@ -288,7 +288,7 @@ export default function Navbar() {
                                           item.slug
                                         )
                                       }
-                                      className="text-xs xl:text-sm text-gray-600 hover:text-[var(--clr-primary)] block"
+                                      className="text-[11px] xl:text-xs text-gray-600 hover:text-[var(--clr-primary)] hover:font-medium transition block py-[1px] leading-tight"
                                     >
                                       {item.name}
                                     </a>

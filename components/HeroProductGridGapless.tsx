@@ -22,7 +22,7 @@ export default function HeroProductGridGapless() {
   };
 
   return (
-    <section className="w-full lg:h-[calc(145vh-56px)] lg:min-h-[1150px] flex flex-col bg-[#05080c] text-white overflow-hidden font-sans border-b border-white/5 select-none relative">
+    <section className="w-full lg:h-[calc(100vh-80px)] flex flex-col bg-[#05080c] text-white overflow-hidden font-sans border-b border-white/5 select-none relative">
       {/* Subtle Grid Pattern Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
       

@@ -41,21 +41,21 @@ export default function WorkflowBar() {
               <span className="h-px w-10 bg-gradient-to-l from-transparent to-white/40" />
             </h3>
 
-            {/* 5-Column Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-white/15">
+            {/* 5 Benefits - Mobile Horizontal Slideable + Desktop 5-Column Grid */}
+            <div className="flex md:grid md:grid-cols-5 gap-3.5 md:gap-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-hide pb-3 md:pb-0 md:divide-x divide-white/15 -mx-2 px-2 md:mx-0 md:px-0">
               {benefits.map((benefit, idx) => {
                 const Icon = benefit.icon;
                 return (
                   <div
                     key={idx}
-                    className={`flex flex-col items-center text-center p-3 ${
-                      idx >= 2 && idx < 4 ? "pt-6 md:pt-3" : ""
-                    } ${idx === 0 ? "" : "md:pl-4"}`}
+                    className={`snap-center shrink-0 w-[56vw] max-w-[210px] md:w-auto md:max-w-none bg-white/10 md:bg-transparent backdrop-blur-md md:backdrop-blur-none rounded-2xl md:rounded-none p-4 md:p-3 border border-white/15 md:border-none flex flex-col items-center text-center justify-center ${
+                      idx === 0 ? "" : "md:pl-4"
+                    }`}
                   >
-                    <div className="w-11 h-11 2xl:w-14 2xl:h-14 rounded-full bg-white/20 border border-white/10 flex items-center justify-center mb-3 shadow-inner hover:scale-110 transition-transform duration-300">
+                    <div className="w-11 h-11 2xl:w-14 2xl:h-14 rounded-full bg-white/20 border border-white/10 flex items-center justify-center mb-2.5 shadow-inner hover:scale-110 transition-transform duration-300">
                       <Icon className="w-5 h-5 2xl:w-6.5 2xl:h-6.5 text-white" />
                     </div>
-                    <span className="text-white text-xs sm:text-[13px] 2xl:text-base font-bold tracking-wide">
+                    <span className="text-white text-xs sm:text-[13px] 2xl:text-base font-bold tracking-wide leading-snug">
                       {benefit.title}
                     </span>
                   </div>

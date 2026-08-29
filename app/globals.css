@@ -154,12 +154,25 @@
     --h4-size: clamp(1rem, 1.2vw, 1.125rem);
     --para-size: 0.9375rem;
     --desc-size: 0.875rem;
-    --space-2xl: 3rem;
+    --space-2xl: 2.25rem;
   }
   
   .ui-section {
     max-width: var(--container-max);
     padding: var(--space-2xl) var(--container-padding);
+  }
+  
+  .style-section-padding {
+    padding-top: 36px !important;
+    padding-bottom: 36px !important;
+  }
+  
+  .style-title {
+    font-size: 26px !important;
+  }
+  
+  .style-description {
+    font-size: 14px !important;
   }
   
   /* Navbar link adjustments - keep navbar visible */
@@ -171,6 +184,16 @@
   nav .lg\:flex .px-3 {
     padding-left: 0.5rem !important;
     padding-right: 0.5rem !important;
+  }
+}
+
+/* =====================================================
+   SHORT VIEWPORT HEIGHT ENHANCEMENTS (< 750px height)
+===================================================== */
+@media (max-height: 750px) {
+  .ui-section, .style-section-padding {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
   }
 }
 

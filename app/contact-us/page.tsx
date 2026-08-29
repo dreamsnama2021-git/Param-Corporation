@@ -15,13 +15,13 @@ import Image from "next/image";
 
 // ─── Contact US PAGE BANNER ─────────────────────────────────────────────────────────────
 const PageBanner = () => (
- <div className="relative w-full h-[60.5vh] md:h-[29.5vh] lg:h-[45vh] xl:h-[59vh] 2xl:h-[67.5vh] overflow-hidden">
+ <div className="relative w-full h-[220px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[520px] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Mobile%20Contact%20us%20Banner.png"
       alt="About Us Banner - Mobile"
       fill
-      className="object-contain object-center block md:hidden"
+      className="object-cover object-center block md:hidden"
       priority
       unoptimized
     />
@@ -31,7 +31,7 @@ const PageBanner = () => (
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Tablet%20Contact%20us%20Banner.jpg"
       alt="About Us Banner - Tablet"
       fill
-      className="object-contain object-center hidden md:block lg:hidden"
+      className="object-cover object-center hidden md:block lg:hidden"
       priority
       unoptimized
     />
@@ -41,7 +41,7 @@ const PageBanner = () => (
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Desktop%20Contact%20us%20Banner.png"
       alt="About Us Banner - Desktop"
       fill
-      className="object-fill object-center hidden lg:block"
+      className="object-cover object-center hidden lg:block"
       priority
       unoptimized
     />

@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 
 export default function QualityAssurance() {
+  const [slideIndex, setSlideIndex] = React.useState(0);
+
   const practices = [
     {
       title: "Raw Material Inspection",
@@ -69,6 +71,14 @@ export default function QualityAssurance() {
       borderColor: "border-[#0093cb]/20",
     },
   ];
+
+  // Auto-slide 2 cards upfront at a time
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setSlideIndex((prev) => (prev + 2 >= practices.length ? 0 : prev + 2));
+    }, 3800);
+    return () => clearInterval(timer);
+  }, [practices.length]);
 
   const steps = [
     {
@@ -135,55 +145,80 @@ export default function QualityAssurance() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
         
         {/* ─── REDESIGNED QUALITY ASSURANCE HERO & PRACTICES ─────────────────── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Title, Intro & 6 Quality Practices Cards (Span 7) */}
-          <div className="lg:col-span-7 space-y-8">
-            <div className="space-y-4 text-left">
-              <span className="text-sm font-bold uppercase tracking-widest text-[#0093cb] block">
+          {/* Left Column: Title, Intro & 2-Card Auto-Slider (Span 6) */}
+          <div className="lg:col-span-6 space-y-6">
+            <div className="space-y-3 text-left">
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0093cb] block">
                 Quality First
               </span>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-800 tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-black text-slate-800 tracking-tight leading-tight">
                 Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Quality Assurance</span>
               </h2>
-              <div className="h-1 w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full" />
+              <div className="h-1 w-20 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full" />
               
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl pt-2">
+              <p className="text-slate-600 text-xs sm:text-sm lg:text-base leading-relaxed max-w-2xl pt-1">
                 We are committed to delivering products that meet the highest standards of quality, safety and reliability—every single time. Our rigorous multi-stage quality control checks ensure absolute flawlessness in design and function.
               </p>
             </div>
 
-            {/* 6 Quality Practices Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {practices.map((item, idx) => {
-                const Icon = item.icon;
-                return (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ y: -4 }}
-                    className="group relative bg-white p-5 rounded-2xl border border-slate-100/80 shadow-sm hover:shadow-lg hover:border-[#0093cb]/20 transition-all duration-300 flex flex-col items-start text-left space-y-3 cursor-pointer overflow-hidden"
-                  >
-                    {/* Soft Brand Gradient Overlay on Hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#0093cb]/5 to-[#00a65d]/5 rounded-[14px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            {/* 2-CARD AUTO-SLIDING CONTAINER */}
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 min-h-[150px] items-stretch">
+                {practices.slice(slideIndex, slideIndex + 2).map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.div
+                      key={item.title}
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="group relative bg-white p-4.5 rounded-2xl border border-slate-100/80 shadow-sm hover:shadow-lg hover:border-[#0093cb]/20 transition-all duration-300 flex flex-col items-start text-left space-y-2.5 cursor-pointer overflow-hidden justify-center"
+                    >
+                      {/* Soft Brand Gradient Overlay on Hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#0093cb]/5 to-[#00a65d]/5 rounded-[14px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                    <div className={`p-2.5 rounded-xl ${item.bgColor} border ${item.borderColor} transition-all duration-300 group-hover:bg-white group-hover:scale-105 z-10`}>
-                      <Icon className={`w-5 h-5 ${item.color}`} />
-                    </div>
-                    <h4 className="font-extrabold text-sm sm:text-sm md:text-[13px] lg:text-sm text-slate-800 uppercase tracking-wide leading-tight z-10 transition-colors duration-300 group-hover:text-[#0093cb]">
-                      {item.title}
-                    </h4>
-                    <p className="text-slate-500 text-xs md:text-[11px] lg:text-xs leading-relaxed z-10">
-                      {item.desc}
-                    </p>
-                  </motion.div>
-                );
-              })}
+                      <div className={`p-2 rounded-xl ${item.bgColor} border ${item.borderColor} transition-all duration-300 group-hover:bg-white group-hover:scale-105 z-10`}>
+                        <Icon className={`w-5 h-5 ${item.color}`} />
+                      </div>
+                      <h4 className="font-extrabold text-xs sm:text-sm text-slate-800 uppercase tracking-wide leading-tight z-10 transition-colors duration-300 group-hover:text-[#0093cb]">
+                        {item.title}
+                      </h4>
+                      <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed z-10 line-clamp-3">
+                        {item.desc}
+                      </p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {/* Auto-Slide Dots Navigation */}
+              <div className="flex items-center gap-3 pt-1">
+                <div className="flex items-center gap-1.5">
+                  {[0, 2, 4].map((pairIndex) => (
+                    <button
+                      key={pairIndex}
+                      onClick={() => setSlideIndex(pairIndex)}
+                      className={`transition-all duration-300 rounded-full ${
+                        slideIndex === pairIndex
+                          ? "w-7 h-2 bg-[#0093cb]"
+                          : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                      }`}
+                      aria-label={`Slide to group ${pairIndex / 2 + 1}`}
+                    />
+                  ))}
+                </div>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                  0{slideIndex / 2 + 1} / 03 &bull; Auto Sliding
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Right Column: Premium Mockup Image with Quote Overlay (Span 5) */}
-          <div className="lg:col-span-5 flex flex-col items-center relative w-full">
-            <div className="relative w-full max-w-[480px] lg:max-w-[540px] xl:max-w-[580px] aspect-[4/5] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100 group">
+          {/* Right Column: Enlarged Mockup Image with Quote Overlay (Span 6) */}
+          <div className="lg:col-span-6 flex flex-col items-center relative w-full">
+            <div className="relative w-full h-[400px] sm:h-[480px] lg:h-[460px] xl:h-[540px] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100 group">
               {/* Product Mockup / Testing Image */}
               <div 
                 className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"

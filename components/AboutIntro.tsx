@@ -129,7 +129,7 @@ export default function AboutIntro() {
   const labelRadius = (outerRadius + innerRadius) / 2 - 5;
 
   return (
-    <section className="bg-white py-12 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100">
+    <section className="bg-white py-8 sm:py-10 lg:py-10 xl:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100">
       {/* Decorative background blur shapes */}
       <div className="absolute top-10 left-10 w-96 h-96 bg-[#0093cb]/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#00a65d]/5 rounded-full blur-[120px] pointer-events-none" />
@@ -137,35 +137,32 @@ export default function AboutIntro() {
       <div className="max-w-[1300px] mx-auto relative z-10">
         
         {/* TOP ROW: About content (Left) & Circular Diagram (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-16 items-center">
           
           {/* COLUMN 1: About content (Span 7) */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             
             {/* Heading */}
-            <div className="mb-6">
-              <span className="text-4xl sm:text-5xl font-light text-slate-800 tracking-tight block">
-                About
-              </span>
-              <span className="text-5xl sm:text-6xl font-black bg-clip-text text-transparent bg-gradient-to-r from-[#0093cb] to-[#00a65d] tracking-tight block mt-1 pb-2">
-                Param Corporation
-              </span>
+            <div className="mb-4 lg:mb-5">
+              <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-black tracking-tight text-slate-800 leading-tight">
+                About <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Param Corporation</span>
+              </h2>
               {/* Underline Divider */}
-              <div className="h-1 w-28 bg-gradient-to-r from-[#0093cb] to-[#00a65d] mt-2 rounded-full" />
+              <div className="h-1 w-20 bg-gradient-to-r from-[#0093cb] to-[#00a65d] mt-3 rounded-full" />
             </div>
 
             {/* Subheadings */}
-            <div className="mb-6">
-              <h3 className="text-lg sm:text-xl font-bold text-[#0093cb]">
+            <div className="mb-4 lg:mb-5">
+              <h3 className="text-base sm:text-lg lg:text-base xl:text-xl font-bold text-[#0093cb]">
                 Innovative Solutions.
               </h3>
-              <h3 className="text-lg sm:text-xl font-bold text-[#003b46]">
+              <h3 className="text-base sm:text-lg lg:text-base xl:text-xl font-bold text-[#003b46]">
                 Stronger Connections. Better Outcomes.
               </h3>
             </div>
 
             {/* Paragraphs */}
-            <div className="space-y-5 text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
+            <div className="space-y-4 text-slate-600 text-xs sm:text-sm xl:text-base leading-relaxed mb-6">
               <p>
                 Param Corporation is one of India's fastest-growing companies specializing in customized promotional merchandise, doctor engagement tools, patient education products, and digital healthcare communication solutions for the pharmaceutical and healthcare industry.
               </p>
@@ -175,10 +172,10 @@ export default function AboutIntro() {
             </div>
 
             {/* Quote Block */}
-            <div className="flex gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100 relative overflow-hidden group">
+            <div className="flex gap-3.5 p-4 lg:p-4 xl:p-5 rounded-2xl bg-slate-50 border border-slate-100 relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#0093cb]/5 to-transparent rounded-bl-3xl" />
-              <Quote className="w-10 h-10 text-[#00a65d]/20 shrink-0 transform -scale-x-100" />
-              <p className="text-slate-700 italic font-medium text-sm sm:text-base leading-relaxed">
+              <Quote className="w-8 h-8 lg:w-9 lg:h-9 text-[#00a65d]/20 shrink-0 transform -scale-x-100" />
+              <p className="text-slate-700 italic font-medium text-xs sm:text-sm xl:text-base leading-relaxed">
                 "We don't just create products,{" "}
                 <span className="text-[#0093cb] font-bold">we create experiences</span> that make your brand unforgettable."
               </p>
@@ -190,15 +187,15 @@ export default function AboutIntro() {
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
             
             {/* Header for diagram */}
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-extrabold text-slate-800 tracking-tight">
+            <div className="text-center mb-4 lg:mb-5">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-800 tracking-tight">
                 What We Do
               </h3>
-              <div className="h-1 w-12 bg-[#0093cb] mx-auto mt-2 rounded-full" />
+              <div className="h-1 w-10 lg:w-12 bg-[#0093cb] mx-auto mt-1.5 rounded-full" />
             </div>
 
             {/* Circular Diagram Wrapper */}
-            <div className="relative w-full max-w-[430px] aspect-square flex items-center justify-center select-none">
+            <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[350px] xl:max-w-[430px] aspect-square flex items-center justify-center select-none">
               
               {/* SVG Circle */}
               <svg

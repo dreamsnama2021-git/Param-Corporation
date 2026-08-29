@@ -186,13 +186,13 @@ const FloatingCard = ({
 
 // ─── ABOUT US PAGE BANNER ─────────────────────────────────────────────────────────────
 const PageBanner = () => (
- <div className="relative w-full h-[60.5vh] md:h-[29.5vh] lg:h-[45vh] xl:h-[59vh] 2xl:h-[67.5vh] overflow-hidden">
+ <div className="relative w-full h-[220px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[520px] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/About%20page%20Mobile.jpg"
       alt="About Us Banner - Mobile"
       fill
-      className="object-contain object-center block md:hidden"
+      className="object-cover object-center block md:hidden"
       priority
       unoptimized
     />
@@ -202,7 +202,7 @@ const PageBanner = () => (
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/About%20page%20%20Tablet.jpg"
       alt="About Us Banner - Tablet"
       fill
-      className="object-contain object-center hidden md:block lg:hidden"
+      className="object-cover object-center hidden md:block lg:hidden"
       priority
       unoptimized
     />
@@ -212,7 +212,7 @@ const PageBanner = () => (
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/About%20page%20Desktop.jpg"
       alt="About Us Banner - Desktop"
       fill
-      className="object-fill object-center hidden lg:block"
+      className="object-cover object-center hidden lg:block"
       priority
       unoptimized
     />
@@ -221,6 +221,8 @@ const PageBanner = () => (
 
 // ─── WHY US SECTION ───────────────────────────────────────────────────────────
 const WhyUsSection = () => {
+  const [slideIndex, setSlideIndex] = useState(0);
+
   const cards = [
     {
       title: "Strategic Understanding",
@@ -266,76 +268,108 @@ const WhyUsSection = () => {
     },
   ];
 
+  // Auto-slide 2 cards upfront at a time
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setSlideIndex((prev) => (prev + 2 >= cards.length ? 0 : prev + 2));
+    }, 3800);
+    return () => clearInterval(timer);
+  }, [cards.length]);
+
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-slate-50 relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 bg-slate-50 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
           
-          {/* LEFT COLUMN: Header & 6 Grid Cards (Span 1) */}
-          <div className="lg:col-span-1 space-y-10">
+          {/* LEFT COLUMN: Header & 2-Card Auto-Slider */}
+          <div className="lg:col-span-1 space-y-6 lg:space-y-8">
             {/* Header */}
-            <div className="space-y-4">
-              <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-slate-800 leading-tight">
+            <div className="space-y-3 sm:space-y-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-black tracking-tight text-slate-800 leading-tight">
                 Why <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#0093cb] to-[#00a65d]">Clients Choose Us</span>
               </h2>
               {/* Divider line */}
               <div className="h-1 w-24 bg-gradient-to-r from-[#0093cb] to-[#00a65d] rounded-full" />
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
+              <p className="text-slate-600 text-xs sm:text-sm lg:text-base leading-relaxed max-w-2xl">
                 In a competitive healthcare landscape, we go beyond manufacturing—we become an extension of your marketing team, committed to delivering solutions that create value and lasting impact.
               </p>
             </div>
 
-            {/* 3x2 Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {cards.map((item, idx) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={idx}
-                    className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center space-y-3 cursor-pointer"
-                  >
-                    <div className={`p-2.5 rounded-xl bg-slate-50 border ${item.borderColor}`}>
-                      <Icon className={`w-6 h-6 ${item.color}`} />
-                    </div>
-                    <h3 className="font-bold text-sm sm:text-base text-slate-800 uppercase tracking-wide leading-tight">
-                      {item.title}
-                    </h3>
-                    <p className="text-slate-500 text-xs sm:text-[13px] leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                );
-              })}
+            {/* 2-CARD AUTO-SLIDING CONTAINER */}
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 min-h-[160px] items-stretch">
+                {cards.slice(slideIndex, slideIndex + 2).map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.div
+                      key={item.title}
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="bg-white p-4 lg:p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 transition-all duration-300 flex flex-col items-center text-center space-y-2.5 justify-center"
+                    >
+                      <div className={`p-2.5 rounded-xl bg-slate-50 border ${item.borderColor}`}>
+                        <Icon className={`w-5 h-5 ${item.color}`} />
+                      </div>
+                      <h3 className="font-bold text-xs sm:text-sm text-slate-800 uppercase tracking-tight leading-snug">
+                        {item.title}
+                      </h3>
+                      <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed font-medium line-clamp-3">
+                        {item.desc}
+                      </p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {/* Auto-Slide Indicator Dots & Controls */}
+              <div className="flex items-center gap-3 pt-1">
+                <div className="flex items-center gap-1.5">
+                  {[0, 2, 4].map((pairIndex) => (
+                    <button
+                      key={pairIndex}
+                      onClick={() => setSlideIndex(pairIndex)}
+                      className={`transition-all duration-300 rounded-full ${
+                        slideIndex === pairIndex
+                          ? "w-7 h-2 bg-[#0093cb]"
+                          : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                      }`}
+                      aria-label={`Slide to group ${pairIndex / 2 + 1}`}
+                    />
+                  ))}
+                </div>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                  0{slideIndex / 2 + 1} / 03 &bull; Auto Sliding
+                </span>
+              </div>
             </div>
+
           </div>
 
-      {/* RIGHT COLUMN: Quote & Product Image Showcase (Span 1) */}
-<div className="lg:col-span-1 w-full">
-  {/* Combined Single Large Image with Quote Overlay */}
-  <div 
-    className="relative w-full h-[650px] lg:h-[750px] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white group"
-    style={{ 
-      backgroundImage: 'url(https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Why%20Clients%20Choose%20Us.png)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    }}
-  >
-    {/* Subtle dark overlay for quote legibility */}
-    <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-black/60 pointer-events-none" />
+          {/* RIGHT COLUMN: Product Image Showcase */}
+          <div className="lg:col-span-1 w-full">
+            <div 
+              className="relative w-full h-[400px] sm:h-[480px] lg:h-[450px] xl:h-[540px] rounded-[32px] sm:rounded-[40px] rounded-br-[80px] sm:rounded-br-[100px] rounded-tl-[80px] sm:rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white group"
+              style={{ 
+                backgroundImage: 'url(https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Why%20Clients%20Choose%20Us.png)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-black/60 pointer-events-none" />
 
-    {/* Quote overlay card at the top */}
-    <div className="absolute top-6 left-6 right-6 p-6 rounded-3xl backdrop-blur-md bg-black/40 border border-white/10 text-white flex flex-col justify-between z-10">
-      <Quote className="w-8 h-8 text-white/40 shrink-0 transform -scale-x-100 mb-3" />
-      <p className="text-white text-xs sm:text-sm font-semibold italic leading-relaxed">
-        "Our commitment to innovation, quality, and partnership is what makes us the preferred choice for leading healthcare brands."
-      </p>
-      <div className="flex justify-end mt-2">
-        <Quote className="w-8 h-8 text-white/40 shrink-0" />
-      </div>
-    </div>
-  </div>
-</div>
+              <div className="absolute top-6 left-6 right-6 p-5 sm:p-6 rounded-3xl backdrop-blur-md bg-black/40 border border-white/10 text-white flex flex-col justify-between z-10">
+                <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-white/40 shrink-0 transform -scale-x-100 mb-2" />
+                <p className="text-white text-xs sm:text-sm font-semibold italic leading-relaxed">
+                  "Our commitment to innovation, quality, and partnership is what makes us the preferred choice for leading healthcare brands."
+                </p>
+                <div className="flex justify-end mt-1">
+                  <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-white/40 shrink-0" />
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -449,7 +483,7 @@ const TeamSection = () => {
             <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-[#0093cb] mb-2 sm:mb-3">
               Experts in Pharma Branding & Doctor Gifting
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-[#0f172a]">
+            <h2 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-black leading-tight text-[#0f172a]">
               Meet Our <span className="text-[#0093cb]">Leadership</span>
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-[#0093cb] to-[#00a65d] mx-auto mt-4 rounded-full" />

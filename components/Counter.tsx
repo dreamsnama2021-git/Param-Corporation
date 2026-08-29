@@ -169,7 +169,7 @@ const TiltCard = ({ stat, index }: TiltCardProps): React.ReactElement => {
         rotateY,
         transformStyle: "preserve-3d"
       }}
-      className="relative group perspective-1000"
+      className={`relative group perspective-1000 ${index === stats.length - 1 ? 'col-span-2 md:col-span-1' : ''}`}
     >
       <div className={`relative bg-white/70 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-5 lg:p-6 
         border border-white/50 shadow-xl hover:shadow-2xl 
@@ -260,10 +260,25 @@ const FloatingShape = ({ delay, color, className }: FloatingShapeProps): React.R
 
 export default function CreativeStatsSection(): React.ReactElement {
   const [isClient, setIsClient] = useState<boolean>(false);
+  const [slideIndex, setSlideIndex] = useState<number>(0);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  // Auto-slide 3 cards upfront at a time
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1 >= stats.length ? 0 : prev + 1));
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const visibleStats = [
+    stats[slideIndex % stats.length],
+    stats[(slideIndex + 1) % stats.length],
+    stats[(slideIndex + 2) % stats.length],
+  ];
 
   return (
     <section className="relative w-full py-6 sm:py-8 md:py-10 lg:py-12 overflow-hidden bg-[#fafafa00]">
@@ -293,7 +308,7 @@ export default function CreativeStatsSection(): React.ReactElement {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-extrabold capitalize tracking-tight mb-2 sm:mb-3 text-gray-900"
+            className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-black capitalize tracking-tight mb-2 sm:mb-3 text-gray-900"
           >
             Achieved <span className="text-[#0093cb]">Numbers</span>
           </motion.h2>
@@ -311,11 +326,34 @@ export default function CreativeStatsSection(): React.ReactElement {
           </motion.p>
         </div>
 
-        {/* Stats Grid - Staggered Layout */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-          {stats.map((stat, index) => (
-            <TiltCard key={stat.id} stat={stat} index={index} />
-          ))}
+        {/* 3 Stats Cards Upfront + Auto Slide */}
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+            {visibleStats.map((stat, index) => (
+              <TiltCard key={stat.id} stat={stat} index={index} />
+            ))}
+          </div>
+
+          {/* Auto-Slide Indicator Dots */}
+          <div className="flex justify-center items-center gap-3 pt-2">
+            <div className="flex items-center gap-1.5">
+              {stats.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSlideIndex(idx)}
+                  className={`transition-all duration-300 rounded-full ${
+                    slideIndex % stats.length === idx
+                      ? "w-6 h-2 bg-[#0093cb]"
+                      : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                  }`}
+                  aria-label={`Slide to stat ${idx + 1}`}
+                />
+              ))}
+            </div>
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+              0{(slideIndex % stats.length) + 1} / 05 &bull; Auto Sliding
+            </span>
+          </div>
         </div>
 
       </div>
