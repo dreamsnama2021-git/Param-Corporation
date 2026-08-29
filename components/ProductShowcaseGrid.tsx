@@ -42,7 +42,7 @@ export default function ProductShowcaseGrid() {
                 {/* Background Image */}
                 <div className="absolute inset-0">
                   <img
-                    src="Banners/Circle Banner/ChatGPT Image Aug 27, 2026, 10_36_24 AM.png"
+                    src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2010_36_24%20AM.png"
                     alt="Desktop Brand Reminders"
                     className="w-full h-full object-cover opacity-25 group-hover:opacity-35 transition-all duration-1000 group-hover:scale-105"
                   />
