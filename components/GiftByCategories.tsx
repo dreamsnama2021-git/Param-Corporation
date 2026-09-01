@@ -51,7 +51,7 @@ const CATEGORIES = [
 const TRENDING_PRODUCTS = [
   {
     id: "1",
-    title: "Crystal Trophy",
+    title: "Customized Gutt Shaped Pen Holder",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/WhatsApp%20Image%202026-07-02%20at%2010.03.14%20AM.jpeg",
     price: "89",
@@ -59,7 +59,7 @@ const TRENDING_PRODUCTS = [
   },
   {
     id: "2",
-    title: "Premium Globe",
+    title: "Stages Of Acne Anatomical Poster",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/WhatsApp%20Image%202026-07-02%20at%2010.06.41%20AM.jpeg",
     price: "120",
@@ -67,7 +67,7 @@ const TRENDING_PRODUCTS = [
   },
   {
     id: "3",
-    title: "LED Heart Lamp",
+    title: "Eco Friendly Moss Penholder",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2003_47_10%20PM.png",
     price: "75",
@@ -75,7 +75,7 @@ const TRENDING_PRODUCTS = [
   },
   {
     id: "4",
-    title: "Executive Award",
+    title: "Death Of An Artery Anatomical Poster",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2004_02_09%20PM.png",
     price: "150",
@@ -83,7 +83,7 @@ const TRENDING_PRODUCTS = [
   },
   {
     id: "5",
-    title: "Golden Stethoscope",
+    title: "Palm Plant",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2004_06_30%20PM.png",
     price: "199",
@@ -91,7 +91,7 @@ const TRENDING_PRODUCTS = [
   },
   {
     id: "6",
-    title: "Medical Plaque",
+    title: "Write & Wipe Edustand With Anatomical Poster",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2004_02_24%20PM.png",
     price: "85",
@@ -99,7 +99,7 @@ const TRENDING_PRODUCTS = [
   },
   {
     id: "7",
-    title: "Doctor's Diary",
+    title: "Aesthetic Heart Vase",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2004_09_25%20PM.png",
     price: "45",
@@ -107,7 +107,7 @@ const TRENDING_PRODUCTS = [
   },
   {
     id: "8",
-    title: "Clinic Name Plate",
+    title: "Types Of Bone Fractures Anatomical Poster",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2004_24_11%20PM.png",
     price: "110",
@@ -115,7 +115,7 @@ const TRENDING_PRODUCTS = [
   },
   {
     id: "9",
-    title: "Caduceus Statue",
+    title: "Uterus Anatomical Model",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/uterus_ovary_product_339x338.png",
     price: "175",
@@ -123,7 +123,7 @@ const TRENDING_PRODUCTS = [
   },
   {
     id: "10",
-    title: "Digital Prescription Pad",
+    title: "Personalised Name Stand",
     image:
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2004_33_38%20PM.png",
     price: "95",
