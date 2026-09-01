@@ -128,7 +128,7 @@ export const digitalGifts: CategoryItem[] = [
 
 export const allProducts: Product[] = [
   // Categories - Paperweights (IDs: 1-50)
-  { id: 1, name: "Kidney Stone", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/20.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
+  { id: 1, name: "KIDNEY STONE", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/20.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
   { id: 2, name: "BRISTOL STOOL CHART PELLET", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/58.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
   { id: 3, name: "CUSTOMIZED FLOWER SHAPE PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_16%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   { id: 4, name: "5 STAR THEME MAGNETIC PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_32%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
@@ -297,23 +297,18 @@ export const allProducts: Product[] = [
     ]
   },
   {
-    id: 51, name: "INTESTINE SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_44%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
+    id: 51, name: "ALLERGIC RHINITIS", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_44%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png",
       // "Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
     ]
   },
   {
-    id: 51, name: "INTESTINE SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_44_54%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
+    id: 52, name: "NASAL CAVITY", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_44_54%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
       "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png",
       // "Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
     ]
   },
-  {
-    id: 51, name: "INTESTINE SHAPED PEN STAND", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_41_44%20PM.png", price: "₹699", category: "fibre-resin-products", categoryName: "Fibre and Resin Products", description: "Anatomy-inspired intestine shaped pen stand for medical professionals", images: [
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_41%20PM.png",
-      // "Fibre & Resin/INTESTINE SHAPED PEN STAND 2.JPG"
-    ]
-  },
+  
 
   // Categories - Eco Friendly (IDs: 51-54)
   // { id: 51, name: "Bamboo Cutlery Set", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Eco%20Friendly%20Products/CUSTOMIZED%20DENTIST%20THEME%20WOODEN%20CLOCK%201.JPG", price: "₹499", category: "eco-friendly-products", categoryName: "Eco Friendly Products", description: "Sustainable bamboo utensils" },
@@ -396,9 +391,9 @@ export const allProducts: Product[] = [
   // },
 
   // Categories - Indoor Plants (IDs: 67-76)
-  // { id: 67, name: "AGLAONEMA PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/AGLAONEMA%20PLANT%201.jpeg", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
-  // { id: 68, name: "ARECA PALM PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/ARECA%20PALM%20PLANT%201.jpeg", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
-  // { id: 69, name: "CHAMAEDOREA PALM", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/CHAMAEDOREA%20PALM%201.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
+  { id: 67, name: "JADE PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/JADE%20PLANT.png", price: "₹899", category: "indoor-plants", categoryName: "Indoor Plants", description: "Low maintenance succulent combo" },
+  { id: 68, name: "NEON POTHOS PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/NEON%20POTHOS%20PLANT.png", price: "₹649", category: "indoor-plants", categoryName: "Indoor Plants", description: "2-layer lucky bamboo in ceramic pot" },
+  { id: 69, name: "PEACE LILY PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/PEACE%20LILY%20PLANT.png", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
   // { id: 70, name: "DESSERT ROSE PLANT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/DESSERT%20ROSE%20PLANT.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
   // { id: 71, name: "DIEFFENBACHIA", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/Indoor%20Plant/DIEFFENBACHIA%201.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
   // { id: 72, name: "DESSERT ROSE PLANT", image: "Indoor Plant/DESSERT ROSE PLANT.jpeg", price: "₹799", category: "indoor-plants", categoryName: "Indoor Plants", description: "Snake plant for clinic and office air purification" },
