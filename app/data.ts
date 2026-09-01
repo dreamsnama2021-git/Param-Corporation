@@ -128,7 +128,7 @@ export const digitalGifts: CategoryItem[] = [
 
 export const allProducts: Product[] = [
   // Categories - Paperweights (IDs: 1-50)
-  { id: 1, name: "Kidney Stone", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/20.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
+  { id: 1, name: "KIDNEY STONE", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/20.png", price: "₹29", category: "paperweights", categoryName: "Paperweights", description: "Elegant crystal paperweight for desk" },
   { id: 2, name: "BRISTOL STOOL CHART PELLET", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/58.png", price: "₹25", category: "paperweights", categoryName: "Paperweights", description: "Customizable with company logo" },
   { id: 3, name: "CUSTOMIZED FLOWER SHAPE PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_16%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
   { id: 4, name: "5 STAR THEME MAGNETIC PAPERWEIGHT", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_32%20PM.png", price: "₹30", category: "paperweights", categoryName: "Paperweights", description: "Brushed metal desk paperweight" },
