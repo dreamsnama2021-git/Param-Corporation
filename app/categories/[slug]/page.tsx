@@ -151,7 +151,7 @@ const ProductImage = ({ src, alt, className = "" }: { src: string; alt: string; 
 
 // Banner Component with proper image handling
 const PageBanner = () => (
- <div className="relative w-full h-[220px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[520px] overflow-hidden">
+ <div className="relative w-full h-[220px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[590px] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Mobile.png"
@@ -1177,7 +1177,6 @@ function CategoryPageContent() {
                         activeTabColor={activeTabColor}
                         onViewAll={handleViewAllProducts}
                         onImageClick={handleImageClick}
-                        onDownloadCatalogue={(sub) => handleDownloadClick(sub)}
                       />
                     ))}
                   </div>

@@ -12,6 +12,16 @@ import {
 
 export default function WhatWeDoOfferings() {
   const [slideIndex, setSlideIndex] = React.useState(0);
+  const [isDesktopXl, setIsDesktopXl] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkWidth = () => {
+      setIsDesktopXl(window.innerWidth >= 1280);
+    };
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
 
   const offerings = [
     {
@@ -66,19 +76,22 @@ export default function WhatWeDoOfferings() {
     },
   ];
 
-  // Auto-slide 3 cards upfront at a time
+  // Auto-slide 3 cards upfront at a time on screens < 1280px
   React.useEffect(() => {
+    if (isDesktopXl) return;
     const timer = setInterval(() => {
       setSlideIndex((prev) => (prev + 1 >= offerings.length ? 0 : prev + 1));
     }, 4000);
     return () => clearInterval(timer);
-  }, [offerings.length]);
+  }, [isDesktopXl, offerings.length]);
 
-  const visibleOfferings = [
-    offerings[slideIndex % offerings.length],
-    offerings[(slideIndex + 1) % offerings.length],
-    offerings[(slideIndex + 2) % offerings.length],
-  ];
+  const visibleOfferings = isDesktopXl
+    ? offerings
+    : [
+        offerings[slideIndex % offerings.length],
+        offerings[(slideIndex + 1) % offerings.length],
+        offerings[(slideIndex + 2) % offerings.length],
+      ];
 
   return (
     <section className="bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100">
@@ -114,7 +127,7 @@ export default function WhatWeDoOfferings() {
 
         </div>
 
-        {/* BOTTOM COMPONENT: Our Core Offerings (3 Cards Upfront + Auto Slide) */}
+        {/* BOTTOM COMPONENT: Our Core Offerings (5 Cards Grid on >=1280px, 3 Cards Auto-Sliding on <1280px) */}
         <div className="space-y-8">
           
           {/* Header */}
@@ -127,9 +140,9 @@ export default function WhatWeDoOfferings() {
             </p>
           </div>
 
-          {/* 3 CARDS UPFRONT AUTO-SLIDING CONTAINER */}
+          {/* CARDS CONTAINER */}
           <div className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-6 items-stretch">
               {visibleOfferings.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -163,12 +176,12 @@ export default function WhatWeDoOfferings() {
                       </p>
                     </div>
 
-                    {/* Product Image - Full Image Display Without Cutting */}
-                    <div className="h-[160px] sm:h-[180px] w-full bg-slate-50/80 relative border-t border-slate-100/80 overflow-hidden p-2.5 sm:p-3 flex items-center justify-center">
+                    {/* Product Image - Full Width Edge-to-Edge Display */}
+                    <div className="h-[200px] sm:h-[220px] w-full relative overflow-hidden mt-auto">
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-contain object-center hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                   </motion.div>
@@ -176,26 +189,28 @@ export default function WhatWeDoOfferings() {
               })}
             </div>
 
-            {/* Auto-Slide Dots Navigation */}
-            <div className="flex justify-center items-center gap-3 pt-2">
-              <div className="flex items-center gap-1.5">
-                {offerings.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setSlideIndex(idx)}
-                    className={`transition-all duration-300 rounded-full ${
-                      slideIndex % offerings.length === idx
-                        ? "w-6 h-2 bg-[#0093cb]"
-                        : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
-                    }`}
-                    aria-label={`Slide to offering ${idx + 1}`}
-                  />
-                ))}
+            {/* Auto-Slide Dots Navigation (only on <1280px) */}
+            {!isDesktopXl && (
+              <div className="flex justify-center items-center gap-3 pt-2">
+                <div className="flex items-center gap-1.5">
+                  {offerings.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSlideIndex(idx)}
+                      className={`transition-all duration-300 rounded-full ${
+                        slideIndex % offerings.length === idx
+                          ? "w-6 h-2 bg-[#0093cb]"
+                          : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                      }`}
+                      aria-label={`Slide to offering ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                  0{(slideIndex % offerings.length) + 1} / 05 &bull; Auto Sliding
+                </span>
               </div>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                0{(slideIndex % offerings.length) + 1} / 05 &bull; Auto Sliding
-              </span>
-            </div>
+            )}
           </div>
 
         </div>

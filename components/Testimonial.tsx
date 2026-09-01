@@ -8,7 +8,7 @@ const testimonials = [
   {
     quote:
       "Param Corporation is a dependable partner who consistently delivers high-quality solutions on time. Their attention to detail and professional approach are commendable.",
-    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0012-scaled.jpg",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/2-8-r0ab0yqw182w2fa9g2jwrj4q4qrqb8w6gc6azxrx90.png",
     name: "Vikram Singh",
     role: "Brand Manager",
     company: "Cipla Ltd",
@@ -19,10 +19,10 @@ const testimonials = [
   {
     quote:
       "We value Param Corporation's creativity, commitment and the way they truly understand our requirements. They are a key part of our success.",
-    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0007-scaled.jpg",
+    logo: "https://paramcorp.in/wp-content/uploads/2025/01/Untitled-design-1.png",
     name: "Neha Bhatia",
     role: "Product Head",
-    company: "Lupin",
+    company: "Mankind Pharma Ltd",
     stat: "Creative Value",
     initials: "NB",
     avatarColor: "indigo",
@@ -30,10 +30,10 @@ const testimonials = [
   {
     quote:
       "Excellent service, timely delivery and great support throughout the project. We look forward to continuing our association with Param Corporation.",
-    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0006-scaled.jpg",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/1-18-r0ab0wv7nk0bf7czr1qnmjlsxz0zvuops2vc1duplg.png",
     name: "Anupam Mehta",
     role: "Marketing Head",
-    company: "Glenmark",
+    company: "Alembic Pharmaceuticals",
     stat: "Excellent Service",
     initials: "AM",
     avatarColor: "teal",
@@ -77,7 +77,7 @@ const testimonials = [
     logo: "https://paramcorp.in/wp-content/uploads/2025/01/Untitled-design-2.png",
     name: "Aayesha Idrisi",
     role: "Operations Manager",
-    company: "Ajanta International",
+    company: "Ajanta Pharma",
     stat: "Commendable Service",
     initials: "AI",
     avatarColor: "green",
@@ -96,7 +96,7 @@ const testimonials = [
   {
     quote:
       "The quality and attention to detail exceeded our expectations. The team delivered exceptional results within our timeline and budget constraints.",
-    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0012-scaled.jpg",
+    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/2-8-r0ab0yqw182w2fa9g2jwrj4q4qrqb8w6gc6azxrx90.png",
     name: "Priya Sharma",
     role: "HR Director",
     company: "Cipla Ltd",

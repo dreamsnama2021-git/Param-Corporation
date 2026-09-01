@@ -261,24 +261,34 @@ const FloatingShape = ({ delay, color, className }: FloatingShapeProps): React.R
 export default function CreativeStatsSection(): React.ReactElement {
   const [isClient, setIsClient] = useState<boolean>(false);
   const [slideIndex, setSlideIndex] = useState<number>(0);
+  const [isDesktopXl, setIsDesktopXl] = useState<boolean>(false);
 
   useEffect(() => {
     setIsClient(true);
+    const checkWidth = () => {
+      setIsDesktopXl(window.innerWidth >= 1280);
+    };
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
   }, []);
 
-  // Auto-slide 3 cards upfront at a time
+  // Auto-slide 3 cards upfront at a time on screens < 1280px
   useEffect(() => {
+    if (isDesktopXl) return;
     const timer = setInterval(() => {
       setSlideIndex((prev) => (prev + 1 >= stats.length ? 0 : prev + 1));
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isDesktopXl]);
 
-  const visibleStats = [
-    stats[slideIndex % stats.length],
-    stats[(slideIndex + 1) % stats.length],
-    stats[(slideIndex + 2) % stats.length],
-  ];
+  const visibleStats = isDesktopXl
+    ? stats
+    : [
+        stats[slideIndex % stats.length],
+        stats[(slideIndex + 1) % stats.length],
+        stats[(slideIndex + 2) % stats.length],
+      ];
 
   return (
     <section className="relative w-full py-6 sm:py-8 md:py-10 lg:py-12 overflow-hidden bg-[#fafafa00]">
@@ -326,34 +336,36 @@ export default function CreativeStatsSection(): React.ReactElement {
           </motion.p>
         </div>
 
-        {/* 3 Stats Cards Upfront + Auto Slide */}
+        {/* 5 Stats Cards Upfront on >=1280px, 3 Cards Auto-Sliding on <1280px */}
         <div className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
             {visibleStats.map((stat, index) => (
               <TiltCard key={stat.id} stat={stat} index={index} />
             ))}
           </div>
 
-          {/* Auto-Slide Indicator Dots */}
-          <div className="flex justify-center items-center gap-3 pt-2">
-            <div className="flex items-center gap-1.5">
-              {stats.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSlideIndex(idx)}
-                  className={`transition-all duration-300 rounded-full ${
-                    slideIndex % stats.length === idx
-                      ? "w-6 h-2 bg-[#0093cb]"
-                      : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
-                  }`}
-                  aria-label={`Slide to stat ${idx + 1}`}
-                />
-              ))}
+          {/* Auto-Slide Indicator Dots (only on <1280px) */}
+          {!isDesktopXl && (
+            <div className="flex justify-center items-center gap-3 pt-2">
+              <div className="flex items-center gap-1.5">
+                {stats.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSlideIndex(idx)}
+                    className={`transition-all duration-300 rounded-full ${
+                      slideIndex % stats.length === idx
+                        ? "w-6 h-2 bg-[#0093cb]"
+                        : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                    }`}
+                    aria-label={`Slide to stat ${idx + 1}`}
+                  />
+                ))}
+              </div>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                0{(slideIndex % stats.length) + 1} / 05 &bull; Auto Sliding
+              </span>
             </div>
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-              0{(slideIndex % stats.length) + 1} / 05 &bull; Auto Sliding
-            </span>
-          </div>
+          )}
         </div>
 
       </div>

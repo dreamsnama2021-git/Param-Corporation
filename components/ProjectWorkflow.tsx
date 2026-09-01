@@ -23,6 +23,16 @@ import {
 
 export default function ProjectWorkflow() {
   const [slideIndex, setSlideIndex] = React.useState(0);
+  const [isDesktopXl, setIsDesktopXl] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkWidth = () => {
+      setIsDesktopXl(window.innerWidth >= 1280);
+    };
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
 
   const steps = [
     {
@@ -117,19 +127,22 @@ export default function ProjectWorkflow() {
     },
   ];
 
-  // Auto-slide 3 cards upfront at a time
+  // Auto-slide 3 cards upfront at a time on screens < 1280px
   React.useEffect(() => {
+    if (isDesktopXl) return;
     const timer = setInterval(() => {
       setSlideIndex((prev) => (prev + 1 >= steps.length ? 0 : prev + 1));
     }, 4000);
     return () => clearInterval(timer);
-  }, [steps.length]);
+  }, [isDesktopXl, steps.length]);
 
-  const visibleSteps = [
-    steps[slideIndex % steps.length],
-    steps[(slideIndex + 1) % steps.length],
-    steps[(slideIndex + 2) % steps.length],
-  ];
+  const visibleSteps = isDesktopXl
+    ? steps
+    : [
+        steps[slideIndex % steps.length],
+        steps[(slideIndex + 1) % steps.length],
+        steps[(slideIndex + 2) % steps.length],
+      ];
 
   return (
     <section id="project-workflow" className="py-12 sm:py-16 lg:py-20 bg-slate-50/50 relative overflow-hidden border-b border-slate-100">
@@ -175,9 +188,9 @@ export default function ProjectWorkflow() {
           </div>
         </div>
 
-        {/* ─── 3 WORKFLOW CARDS UPFRONT + AUTO SLIDE ─────────────────────── */}
+        {/* ─── WORKFLOW CARDS CONTAINER (10 Cards Grid on >=1280px, 3 Cards Auto-Sliding on <1280px) ─── */}
         <div className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-6 items-stretch">
             {visibleSteps.map((step) => {
               const Icon = step.icon;
               return (
@@ -212,26 +225,28 @@ export default function ProjectWorkflow() {
             })}
           </div>
 
-          {/* Auto-Slide Indicator Dots */}
-          <div className="flex justify-center items-center gap-3 pt-2">
-            <div className="flex items-center gap-1.5">
-              {steps.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSlideIndex(idx)}
-                  className={`transition-all duration-300 rounded-full ${
-                    slideIndex % steps.length === idx
-                      ? "w-6 h-2 bg-[#0093cb]"
-                      : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
-                  }`}
-                  aria-label={`Slide to step ${idx + 1}`}
-                />
-              ))}
+          {/* Auto-Slide Indicator Dots (only on <1280px) */}
+          {!isDesktopXl && (
+            <div className="flex justify-center items-center gap-3 pt-2">
+              <div className="flex items-center gap-1.5">
+                {steps.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSlideIndex(idx)}
+                    className={`transition-all duration-300 rounded-full ${
+                      slideIndex % steps.length === idx
+                        ? "w-6 h-2 bg-[#0093cb]"
+                        : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                    }`}
+                    aria-label={`Slide to step ${idx + 1}`}
+                  />
+                ))}
+              </div>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                0{(slideIndex % steps.length) + 1} / 10 &bull; Auto Sliding
+              </span>
             </div>
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-              0{(slideIndex % steps.length) + 1} / 10 &bull; Auto Sliding
-            </span>
-          </div>
+          )}
         </div>
 
      

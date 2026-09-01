@@ -186,7 +186,7 @@ const FloatingCard = ({
 
 // ─── ABOUT US PAGE BANNER ─────────────────────────────────────────────────────────────
 const PageBanner = () => (
- <div className="relative w-full h-[220px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[520px] overflow-hidden">
+ <div className="relative w-full h-[220px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[590px] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/About%20page%20Mobile.jpg"
@@ -268,20 +268,34 @@ const WhyUsSection = () => {
     },
   ];
 
-  // Auto-slide 2 cards upfront at a time
+  const [isDesktopXl, setIsDesktopXl] = React.useState(false);
+
   React.useEffect(() => {
+    const checkWidth = () => {
+      setIsDesktopXl(window.innerWidth >= 1280);
+    };
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
+
+  // Auto-slide 2 cards upfront at a time on screens < 1280px
+  React.useEffect(() => {
+    if (isDesktopXl) return;
     const timer = setInterval(() => {
       setSlideIndex((prev) => (prev + 2 >= cards.length ? 0 : prev + 2));
     }, 3800);
     return () => clearInterval(timer);
-  }, [cards.length]);
+  }, [isDesktopXl, cards.length]);
+
+  const visibleCards = isDesktopXl ? cards : cards.slice(slideIndex, slideIndex + 2);
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-slate-50 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
           
-          {/* LEFT COLUMN: Header & 2-Card Auto-Slider */}
+          {/* LEFT COLUMN: Header & Cards Grid */}
           <div className="lg:col-span-1 space-y-6 lg:space-y-8">
             {/* Header */}
             <div className="space-y-3 sm:space-y-4">
@@ -295,10 +309,10 @@ const WhyUsSection = () => {
               </p>
             </div>
 
-            {/* 2-CARD AUTO-SLIDING CONTAINER */}
+            {/* CARDS CONTAINER (All Cards Grid on >=1280px, 2 Cards Auto-Sliding on <1280px) */}
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 min-h-[160px] items-stretch">
-                {cards.slice(slideIndex, slideIndex + 2).map((item) => {
+                {visibleCards.map((item) => {
                   const Icon = item.icon;
                   return (
                     <motion.div
@@ -322,26 +336,28 @@ const WhyUsSection = () => {
                 })}
               </div>
 
-              {/* Auto-Slide Indicator Dots & Controls */}
-              <div className="flex items-center gap-3 pt-1">
-                <div className="flex items-center gap-1.5">
-                  {[0, 2, 4].map((pairIndex) => (
-                    <button
-                      key={pairIndex}
-                      onClick={() => setSlideIndex(pairIndex)}
-                      className={`transition-all duration-300 rounded-full ${
-                        slideIndex === pairIndex
-                          ? "w-7 h-2 bg-[#0093cb]"
-                          : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
-                      }`}
-                      aria-label={`Slide to group ${pairIndex / 2 + 1}`}
-                    />
-                  ))}
+              {/* Auto-Slide Indicator Dots (only on <1280px) */}
+              {!isDesktopXl && (
+                <div className="flex items-center gap-3 pt-1">
+                  <div className="flex items-center gap-1.5">
+                    {[0, 2, 4].map((pairIndex) => (
+                      <button
+                        key={pairIndex}
+                        onClick={() => setSlideIndex(pairIndex)}
+                        className={`transition-all duration-300 rounded-full ${
+                          slideIndex === pairIndex
+                            ? "w-7 h-2 bg-[#0093cb]"
+                            : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                        }`}
+                        aria-label={`Slide to group ${pairIndex / 2 + 1}`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    0{slideIndex / 2 + 1} / 03 &bull; Auto Sliding
+                  </span>
                 </div>
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                  0{slideIndex / 2 + 1} / 03 &bull; Auto Sliding
-                </span>
-              </div>
+              )}
             </div>
 
           </div>

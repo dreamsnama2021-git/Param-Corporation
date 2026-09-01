@@ -14,13 +14,23 @@ import {
 
 export default function IndustriesWeServe() {
   const [slideIndex, setSlideIndex] = useState(0);
+  const [isDesktopXl, setIsDesktopXl] = useState(false);
+
+  useEffect(() => {
+    const checkWidth = () => {
+      setIsDesktopXl(window.innerWidth >= 1240);
+    };
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
 
   const industries = [
     {
       title: "Pharma Brand",
       desc: "Specialized engagement tools, visual aids, and promotional items crafted specifically for pharma marketing.",
       icon: Pill,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Industries%20We%20Serve/PHARMA.png",
+      image: "/industry-we-cater/PHARMA.jpg.jpeg",
       color: "text-[#0093cb]",
       borderColor: "border-[#0093cb]/20",
     },
@@ -28,7 +38,7 @@ export default function IndustriesWeServe() {
       title: "Hospitals",
       desc: "Patient education models, awareness tools, and hospital branding merchandise that enhance patient trust.",
       icon: Stethoscope,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Industries%20We%20Serve/HOSPITALS.png",
+      image: "/industry-we-cater/HOSPITALS.jpg.jpeg",
       color: "text-[#00a8b5]",
       borderColor: "border-[#00a8b5]/20",
     },
@@ -36,7 +46,7 @@ export default function IndustriesWeServe() {
       title: "Medical Devices",
       desc: "Scientific models, demonstration aids, and custom tech gifts that showcase device innovation.",
       icon: Activity,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Industries%20We%20Serve/MEDICAL%20DEVICE.png",
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/32.png",
       color: "text-[#00a65d]",
       borderColor: "border-[#00a65d]/20",
     },
@@ -44,7 +54,7 @@ export default function IndustriesWeServe() {
       title: "Ayurveda & Herbals",
       desc: "Natural, eco-friendly, and wellness-centric promotional products aligned with traditional healing.",
       icon: Leaf,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Industries%20We%20Serve/AYURVEDA.png",
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png",
       color: "text-[#8ac926]",
       borderColor: "border-[#8ac926]/20",
     },
@@ -52,7 +62,7 @@ export default function IndustriesWeServe() {
       title: "Nutraceuticals",
       desc: "Modern, lifestyle-focused promotional merchandise that highlights health, fitness, and nutrition.",
       icon: Shield,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Industries%20We%20Serve/NUTRACEUTICALS.png",
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2003_47_10%20PM.png",
       color: "text-[#003b46]",
       borderColor: "border-[#003b46]/20",
     },
@@ -82,19 +92,22 @@ export default function IndustriesWeServe() {
     },
   ];
 
-  // Auto-slide 3 cards upfront at a time
+  // Auto-slide 3 cards upfront at a time on screens < 1240px
   useEffect(() => {
+    if (isDesktopXl) return;
     const timer = setInterval(() => {
       setSlideIndex((prev) => (prev + 1 >= industries.length ? 0 : prev + 1));
     }, 4000);
     return () => clearInterval(timer);
-  }, [industries.length]);
+  }, [isDesktopXl, industries.length]);
 
-  const visibleIndustries = [
-    industries[slideIndex % industries.length],
-    industries[(slideIndex + 1) % industries.length],
-    industries[(slideIndex + 2) % industries.length],
-  ];
+  const visibleIndustries = isDesktopXl
+    ? industries
+    : [
+        industries[slideIndex % industries.length],
+        industries[(slideIndex + 1) % industries.length],
+        industries[(slideIndex + 2) % industries.length],
+      ];
 
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden border-b border-slate-100">
@@ -124,9 +137,9 @@ export default function IndustriesWeServe() {
           </div>
         </div>
 
-        {/* 3 FLIP CARDS UPFRONT + AUTO SLIDE */}
+        {/* 3 FLIP CARDS ON <1240px, 8 CARDS GRID ON >=1240px */}
         <div className="space-y-4">
-          <div className="flex sm:grid sm:grid-cols-3 gap-4 lg:gap-6 xl:gap-8 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="flex sm:grid sm:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6 xl:gap-8 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
             {visibleIndustries.map((ind) => {
               const Icon = ind.icon;
               return (
@@ -173,26 +186,28 @@ export default function IndustriesWeServe() {
             })}
           </div>
 
-          {/* Auto-Slide Indicator Dots */}
-          <div className="hidden sm:flex justify-center items-center gap-3 pt-2">
-            <div className="flex items-center gap-1.5">
-              {industries.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSlideIndex(idx)}
-                  className={`transition-all duration-300 rounded-full ${
-                    slideIndex % industries.length === idx
-                      ? "w-6 h-2 bg-[#0093cb]"
-                      : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
-                  }`}
-                  aria-label={`Slide to industry ${idx + 1}`}
-                />
-              ))}
+          {/* Auto-Slide Indicator Dots (only shown when auto-sliding on <1240px) */}
+          {!isDesktopXl && (
+            <div className="hidden sm:flex justify-center items-center gap-3 pt-2">
+              <div className="flex items-center gap-1.5">
+                {industries.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSlideIndex(idx)}
+                    className={`transition-all duration-300 rounded-full ${
+                      slideIndex % industries.length === idx
+                        ? "w-6 h-2 bg-[#0093cb]"
+                        : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                    }`}
+                    aria-label={`Slide to industry ${idx + 1}`}
+                  />
+                ))}
+              </div>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                0{(slideIndex % industries.length) + 1} / 08 &bull; Auto Sliding
+              </span>
             </div>
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-              0{(slideIndex % industries.length) + 1} / 08 &bull; Auto Sliding
-            </span>
-          </div>
+          )}
         </div>
 
       </div>

@@ -199,7 +199,9 @@ export default function Footer() {
               className="text-white text-sm xl:text-lg font-medium mb-3 sm:mb-3 md:mb-4 pb-1.5 sm:pb-1.5 md:pb-2 
               border-b-2 border-[var(--clr-primary)] inline-block"
             >
-              By Category
+              <Link href="/categories/all?tab=categories" className="hover:text-[var(--clr-primary)] transition-colors">
+                By Category
+              </Link>
             </h3>
 
             <ul className="space-y-1.5 sm:space-y-1.5 md:space-y-2">
@@ -228,7 +230,9 @@ export default function Footer() {
               className="text-white text-sm xl:text-lg font-medium mb-3 sm:mb-3 md:mb-4 pb-1.5 sm:pb-1.5 md:pb-2 
               border-b-2 border-[var(--clr-primary)] inline-block"
             >
-              By Therapy
+              <Link href="/medipride" className="hover:text-[var(--clr-primary)] transition-colors">
+                By Therapy
+              </Link>
             </h3>
 
             <ul className="space-y-1.5 sm:space-y-1.5 md:space-y-2">
@@ -255,7 +259,9 @@ export default function Footer() {
               className="text-white text-sm xl:text-lg font-medium mb-3 sm:mb-3 md:mb-4 pb-1.5 sm:pb-1.5 md:pb-2 
               border-b-2 border-[var(--clr-primary)] inline-block"
             >
-              By Occasion
+              <Link href="/categories/all?tab=occasion" className="hover:text-[var(--clr-primary)] transition-colors">
+                By Occasion
+              </Link>
             </h3>
 
             <ul className="space-y-1.5 sm:space-y-1.5 md:space-y-2">
@@ -283,7 +289,9 @@ export default function Footer() {
               className="text-white text-sm xl:text-lg font-medium mb-3 sm:mb-3 md:mb-4 pb-1.5 sm:pb-1.5 md:pb-2 
               border-b-2 border-[var(--clr-primary)] inline-block"
             >
-              Personalized Gifts
+              <Link href="/personalized" className="hover:text-[var(--clr-primary)] transition-colors">
+                Personalized Gifts
+              </Link>
             </h3>
 
             <ul className="space-y-1.5 sm:space-y-1.5 md:space-y-2">

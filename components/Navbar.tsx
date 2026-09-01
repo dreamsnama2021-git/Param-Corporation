@@ -112,24 +112,28 @@ export default function Navbar() {
       data: categories,
       tabId: "categories",
       color: "#F5A623",
+      href: "/categories/all?tab=categories",
     },
     {
       title: "Therapy",
       data: therapies,
       tabId: "therapy",
       color: "#10B981",
+      href: "/medipride",
     },
     {
       title: "Personalized Gifts",
       data: personalizedGifts,
       tabId: "personalized",
       color: "#8B5CF6",
+      href: "/personalized",
     },
     {
       title: "Occasion",
       data: occasions,
       tabId: "occasion",
       color: "#EF4444",
+      href: "/categories/all?tab=occasion",
     },
   ];
 
@@ -260,7 +264,13 @@ export default function Navbar() {
                               }}
                             />
 
-                            {column.title}
+                            <Link
+                              href={column.href}
+                              className="hover:text-[var(--clr-primary)] transition-colors cursor-pointer"
+                              onClick={() => setActiveDropdown(null)}
+                            >
+                              {column.title}
+                            </Link>
                           </h3>
 
                           <ul className="space-y-1 xl:space-y-1.5">
@@ -385,9 +395,16 @@ export default function Navbar() {
                         }}
                       />
 
-                      <span className="text-xs sm:text-sm">
+                      <Link
+                        href={column.href}
+                        className="text-xs sm:text-sm hover:text-[var(--clr-primary)]"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setMobileOpen(false);
+                        }}
+                      >
                         {column.title}
-                      </span>
+                      </Link>
                     </span>
 
                     <ChevronDown

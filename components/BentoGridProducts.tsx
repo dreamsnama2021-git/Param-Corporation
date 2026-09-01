@@ -790,16 +790,14 @@ const generateCategoryProducts = (
   const details = categoryDetails[category];
   const therapyImages = THERAPY_IMAGES_DATA[therapyName];
   const categoryKey = getCategoryKey(category);
-  const categoryImages = therapyImages?.[categoryKey] || [
-    // "https://picsum.photos/id/1/400/300",
-    // "https://picsum.photos/id/2/400/300",
-    // "https://picsum.photos/id/3/400/300",
-  ];
+  const categoryImages = therapyImages?.[categoryKey] || [];
 
-  return [0, 1, 2].map((index) => ({
-    title: `${therapyName}: ${details.titles[index]}`,
-    desc: `${details.descBase} ${index === 0 ? "Ideal for healthcare professionals." : index === 1 ? "Enhances clinical workflow and patient understanding." : "Trusted by medical facilities worldwide."}`,
-    img: categoryImages[index] || categoryImages[0],
+  if (!categoryImages || categoryImages.length === 0) return [];
+
+  return categoryImages.map((imgUrl: string, index: number) => ({
+    title: `${therapyName}: ${details?.titles?.[index % (details?.titles?.length || 1)] || category}`,
+    desc: `${details?.descBase || ""} ${index === 0 ? "Ideal for healthcare professionals." : index === 1 ? "Enhances clinical workflow and patient understanding." : "Trusted by medical facilities worldwide."}`,
+    img: imgUrl,
     category,
   }));
 };
@@ -1144,8 +1142,10 @@ function Modal({
   const [mounted, setMounted] = useState(false);
   const [galleryIndex, setGalleryIndex] = useState<number | null>(null);
 
-  // Collect all images from all categories
-  const allImages = therapy.items.map((item) => item.img).filter(Boolean) as string[];
+  // Collect all unique images from all categories
+  const allImages = Array.from(
+    new Set(therapy.items.map((item) => item.img).filter(Boolean))
+  ) as string[];
 
   useEffect(() => {
     setMounted(true);

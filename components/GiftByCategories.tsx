@@ -135,20 +135,33 @@ const TRENDING_PRODUCTS = [
 function GiftsByCategories() {
   const router = useRouter();
   const [slideIndex, setSlideIndex] = useState(0);
+  const [isDesktopXl, setIsDesktopXl] = useState(false);
 
-  // Auto-slide 3 cards upfront at a time
   useEffect(() => {
+    const checkWidth = () => {
+      setIsDesktopXl(window.innerWidth >= 768);
+    };
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
+
+  // Auto-slide 3 cards upfront at a time on mobile (< 768px)
+  useEffect(() => {
+    if (isDesktopXl) return;
     const timer = setInterval(() => {
       setSlideIndex((prev) => (prev + 1 >= CATEGORIES.length ? 0 : prev + 1));
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isDesktopXl]);
 
-  const visibleCategories = [
-    CATEGORIES[slideIndex % CATEGORIES.length],
-    CATEGORIES[(slideIndex + 1) % CATEGORIES.length],
-    CATEGORIES[(slideIndex + 2) % CATEGORIES.length],
-  ];
+  const visibleCategories = isDesktopXl
+    ? CATEGORIES
+    : [
+        CATEGORIES[slideIndex % CATEGORIES.length],
+        CATEGORIES[(slideIndex + 1) % CATEGORIES.length],
+        CATEGORIES[(slideIndex + 2) % CATEGORIES.length],
+      ];
 
   // Function to handle navigation with scroll to top on destination
   const handleNavigation = (href: string) => {
@@ -187,9 +200,9 @@ function GiftsByCategories() {
           </div>
         </motion.div>
 
-        {/* Categories Grid - 3 Cards Upfront + Auto Slide */}
+        {/* Categories Grid - 4 Columns Grid */}
         <div className="space-y-4 mb-6 sm:mb-10 lg:mb-10 xl:mb-16">
-          <div className="flex sm:grid sm:grid-cols-3 gap-4 lg:gap-6 xl:gap-8 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4 lg:gap-6 xl:gap-8 pb-4 sm:pb-0">
             {visibleCategories.map((item) => (
               <motion.div
                 key={item.id}
@@ -231,26 +244,28 @@ function GiftsByCategories() {
             ))}
           </div>
 
-          {/* Auto-Slide Indicator Dots */}
-          <div className="hidden sm:flex justify-center items-center gap-3 pt-1">
-            <div className="flex items-center gap-1.5">
-              {CATEGORIES.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSlideIndex(idx)}
-                  className={`transition-all duration-300 rounded-full ${
-                    slideIndex % CATEGORIES.length === idx
-                      ? "w-6 h-2 bg-[#0093cb]"
-                      : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
-                  }`}
-                  aria-label={`Slide to category ${idx + 1}`}
-                />
-              ))}
+          {/* Auto-Slide Indicator Dots (only shown when auto-sliding on <1200px) */}
+          {!isDesktopXl && (
+            <div className="hidden sm:flex justify-center items-center gap-3 pt-1">
+              <div className="flex items-center gap-1.5">
+                {CATEGORIES.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSlideIndex(idx)}
+                    className={`transition-all duration-300 rounded-full ${
+                      slideIndex % CATEGORIES.length === idx
+                        ? "w-6 h-2 bg-[#0093cb]"
+                        : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                    }`}
+                    aria-label={`Slide to category ${idx + 1}`}
+                  />
+                ))}
+              </div>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                0{(slideIndex % CATEGORIES.length) + 1} / 04 &bull; Auto Sliding
+              </span>
             </div>
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-              0{(slideIndex % CATEGORIES.length) + 1} / 04 &bull; Auto Sliding
-            </span>
-          </div>
+          )}
         </div>
 
         {/* View All Button */}
@@ -407,7 +422,7 @@ function TrendingProducts() {
 
                   {/* Name at Bottom - Following Style Guide Card Title Specs */}
                   <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 lg:p-5">
-                    <h3 className="font-bold text-base sm:text-[16px] md:text-lg xl:text-xl text-white group-hover:translate-x-1 transition-transform duration-300">
+                    <h3 className="font-normal text-base sm:text-[16px] md:text-base xl:text-lg text-white group-hover:translate-x-1 transition-transform duration-300">
                       {item.title}
                     </h3>
                   </div>

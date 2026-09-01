@@ -486,7 +486,7 @@ const ProductImage = ({ src, alt, className = "" }: { src: string; alt: string; 
 
 // ─── Page Banner ──────────────────────────────────────────────────
 const PageBanner = () => (
-  <div className="relative w-full h-[220px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[520px] overflow-hidden">
+  <div className="relative w-full h-[220px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[590px] overflow-hidden">
     <Image
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Pharma%20Launch.png"
       alt="Pharma Launch Banner"

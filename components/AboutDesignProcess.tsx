@@ -22,6 +22,16 @@ export default function AboutDesignProcess({
   showSteps?: boolean;
 }) {
   const [slideIndex, setSlideIndex] = React.useState(0);
+  const [isDesktopXl, setIsDesktopXl] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkWidth = () => {
+      setIsDesktopXl(window.innerWidth >= 1280);
+    };
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
 
   const philosophy = [
     {
@@ -61,19 +71,22 @@ export default function AboutDesignProcess({
     },
   ];
 
-  // Auto-slide 3 cards upfront at a time
+  // Auto-slide 3 cards upfront at a time on screens < 1280px
   React.useEffect(() => {
+    if (isDesktopXl) return;
     const timer = setInterval(() => {
       setSlideIndex((prev) => (prev + 1 >= philosophy.length ? 0 : prev + 1));
     }, 4000);
     return () => clearInterval(timer);
-  }, [philosophy.length]);
+  }, [isDesktopXl, philosophy.length]);
 
-  const visiblePhilosophy = [
-    philosophy[slideIndex % philosophy.length],
-    philosophy[(slideIndex + 1) % philosophy.length],
-    philosophy[(slideIndex + 2) % philosophy.length],
-  ];
+  const visiblePhilosophy = isDesktopXl
+    ? philosophy
+    : [
+        philosophy[slideIndex % philosophy.length],
+        philosophy[(slideIndex + 1) % philosophy.length],
+        philosophy[(slideIndex + 2) % philosophy.length],
+      ];
 
   const steps = [
     {
@@ -154,9 +167,9 @@ export default function AboutDesignProcess({
               </p>
             </div>
 
-            {/* MIDDLE COMPONENT: Our Design Philosophy (3 Cards Upfront + Auto Slide) */}
+            {/* MIDDLE COMPONENT: Our Design Philosophy (5 Cards Grid on >=1280px, 3 Cards Auto-Sliding on <1280px) */}
             <div className="space-y-4 w-full">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-6 items-stretch">
                 {visiblePhilosophy.map((item) => {
                   const Icon = item.icon;
                   return (
@@ -181,26 +194,28 @@ export default function AboutDesignProcess({
                 })}
               </div>
 
-              {/* Auto-Slide Indicator Dots */}
-              <div className="flex justify-center items-center gap-3 pt-2">
-                <div className="flex items-center gap-1.5">
-                  {philosophy.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setSlideIndex(idx)}
-                      className={`transition-all duration-300 rounded-full ${
-                        slideIndex % philosophy.length === idx
-                          ? "w-6 h-2 bg-[#0093cb]"
-                          : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
-                      }`}
-                      aria-label={`Slide to philosophy ${idx + 1}`}
-                    />
-                  ))}
+              {/* Auto-Slide Indicator Dots (only on <1280px) */}
+              {!isDesktopXl && (
+                <div className="flex justify-center items-center gap-3 pt-2">
+                  <div className="flex items-center gap-1.5">
+                    {philosophy.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setSlideIndex(idx)}
+                        className={`transition-all duration-300 rounded-full ${
+                          slideIndex % philosophy.length === idx
+                            ? "w-6 h-2 bg-[#0093cb]"
+                            : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                        }`}
+                        aria-label={`Slide to philosophy ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    0{(slideIndex % philosophy.length) + 1} / 05 &bull; Auto Sliding
+                  </span>
                 </div>
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                  0{(slideIndex % philosophy.length) + 1} / 05 &bull; Auto Sliding
-                </span>
-              </div>
+              )}
             </div>
           </>
         )}

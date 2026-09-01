@@ -573,7 +573,7 @@ function SectionBadge({ children, className }: { children: React.ReactNode; clas
 
 // ─── DIGITAL PAGE BANNER ─────────────────────────────────────────────────────
 const PageBanner = () => (
- <div className="relative w-full h-[220px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[520px] overflow-hidden">
+ <div className="relative w-full h-[220px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[590px] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Digital%20Input%20Page%20Mobile.png"

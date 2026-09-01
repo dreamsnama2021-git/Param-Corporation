@@ -20,6 +20,16 @@ import {
 
 export default function QualityAssurance() {
   const [slideIndex, setSlideIndex] = React.useState(0);
+  const [isDesktopXl, setIsDesktopXl] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkWidth = () => {
+      setIsDesktopXl(window.innerWidth >= 1280);
+    };
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+    return () => window.removeEventListener("resize", checkWidth);
+  }, []);
 
   const practices = [
     {
@@ -72,13 +82,16 @@ export default function QualityAssurance() {
     },
   ];
 
-  // Auto-slide 2 cards upfront at a time
+  // Auto-slide 2 cards upfront at a time on screens < 1280px
   React.useEffect(() => {
+    if (isDesktopXl) return;
     const timer = setInterval(() => {
       setSlideIndex((prev) => (prev + 2 >= practices.length ? 0 : prev + 2));
     }, 3800);
     return () => clearInterval(timer);
-  }, [practices.length]);
+  }, [isDesktopXl, practices.length]);
+
+  const visiblePractices = isDesktopXl ? practices : practices.slice(slideIndex, slideIndex + 2);
 
   const steps = [
     {
@@ -147,7 +160,7 @@ export default function QualityAssurance() {
         {/* ─── REDESIGNED QUALITY ASSURANCE HERO & PRACTICES ─────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Title, Intro & 2-Card Auto-Slider (Span 6) */}
+          {/* Left Column: Title, Intro & Practices Grid (Span 6) */}
           <div className="lg:col-span-6 space-y-6">
             <div className="space-y-3 text-left">
               <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0093cb] block">
@@ -163,10 +176,10 @@ export default function QualityAssurance() {
               </p>
             </div>
 
-            {/* 2-CARD AUTO-SLIDING CONTAINER */}
+            {/* PRACTICES CONTAINER (All 6 Cards Grid on >=1280px, 2 Cards Auto-Sliding on <1280px) */}
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 min-h-[150px] items-stretch">
-                {practices.slice(slideIndex, slideIndex + 2).map((item) => {
+                {visiblePractices.map((item) => {
                   const Icon = item.icon;
                   return (
                     <motion.div
@@ -193,26 +206,28 @@ export default function QualityAssurance() {
                 })}
               </div>
 
-              {/* Auto-Slide Dots Navigation */}
-              <div className="flex items-center gap-3 pt-1">
-                <div className="flex items-center gap-1.5">
-                  {[0, 2, 4].map((pairIndex) => (
-                    <button
-                      key={pairIndex}
-                      onClick={() => setSlideIndex(pairIndex)}
-                      className={`transition-all duration-300 rounded-full ${
-                        slideIndex === pairIndex
-                          ? "w-7 h-2 bg-[#0093cb]"
-                          : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
-                      }`}
-                      aria-label={`Slide to group ${pairIndex / 2 + 1}`}
-                    />
-                  ))}
+              {/* Auto-Slide Dots Navigation (only on <1280px) */}
+              {!isDesktopXl && (
+                <div className="flex items-center gap-3 pt-1">
+                  <div className="flex items-center gap-1.5">
+                    {[0, 2, 4].map((pairIndex) => (
+                      <button
+                        key={pairIndex}
+                        onClick={() => setSlideIndex(pairIndex)}
+                        className={`transition-all duration-300 rounded-full ${
+                          slideIndex === pairIndex
+                            ? "w-7 h-2 bg-[#0093cb]"
+                            : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                        }`}
+                        aria-label={`Slide to group ${pairIndex / 2 + 1}`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    0{slideIndex / 2 + 1} / 03 &bull; Auto Sliding
+                  </span>
                 </div>
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                  0{slideIndex / 2 + 1} / 03 &bull; Auto Sliding
-                </span>
-              </div>
+              )}
             </div>
           </div>
 
