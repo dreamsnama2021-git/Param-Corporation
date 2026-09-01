@@ -122,8 +122,8 @@ export default function ProductShowcaseGrid() {
   };
 
   return (
-    <section className="bg-[#fafcff] py-4 sm:py-6 md:py-8 lg:py-10 px-2 sm:px-6 lg:px-8 overflow-hidden flex items-center justify-center border-b border-[#0093cb]/10 min-h-[600px] lg:min-h-[750px] xl:min-h-[820px]">
-      <div className="w-full max-w-[1800px] h-full flex flex-col justify-center min-h-[580px] lg:min-h-[720px] xl:min-h-[780px]">
+    <section className="bg-[#fafcff] py-4 md:py-8 lg:py-4 px-2 sm:px-6 lg:px-8 overflow-hidden flex items-center justify-center border-b border-[#0093cb]/10 md:min-h-[580px] lg:h-[calc(100vh-80px)] lg:max-h-[calc(100vh-80px)]">
+      <div className="w-full max-w-[1800px] h-full flex flex-col justify-center">
         
         {/* MOBILE CREATIVE HORIZONTAL PEEK CAROUSEL VIEW (< md) */}
         <div className="block md:hidden w-full py-2">
@@ -244,13 +244,8 @@ export default function ProductShowcaseGrid() {
               >
                 {/* Background Image */}
                 <div
-                  className="absolute inset-0 z-0 transition-all duration-700 group-hover:scale-105 pointer-events-none"
-                  style={{ 
-                    backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2010_36_24%20AM.png")`,
-                    backgroundSize: '100% 100%',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat'
-                  }}
+                  className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none"
+                  style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2010_36_24%20AM.png")` }}
                 />
 
                 <div className="z-10 bg-[#e6f4fa]/10 backdrop-blur-sm p-4 sm:p-4.5 rounded-2xl border border-[#0093cb]/20 shadow-md">
