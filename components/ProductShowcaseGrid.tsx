@@ -240,30 +240,32 @@ export default function ProductShowcaseGrid() {
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl text-[#002d40] cursor-pointer h-full min-h-0"
+                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
               >
                 {/* Background Image */}
                 <div
                   className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none"
                   style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2010_36_24%20AM.png")` }}
                 />
+                {/* Top/Bottom Gradient Scrim */}
+                <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#e6f4fa]/90 via-transparent to-[#e6f4fa]/80 pointer-events-none" />
 
-                <div className="z-10 bg-[#e6f4fa]/10 backdrop-blur-sm p-4 sm:p-4.5 rounded-2xl border border-[#0093cb]/20 shadow-md">
-                  <div className="flex justify-between items-start mb-2.5">
-                    <span className="text-[11px] md:text-xs font-extrabold uppercase tracking-widest text-[#0093cb] bg-[#0093cb]/15 px-3 py-1 rounded-full border border-[#0093cb]/20">
+                <div className="z-10">
+                  <div className="flex justify-between items-start mb-2">
+                    <span className="text-[11px] md:text-xs font-extrabold uppercase tracking-widest text-[#0093cb] bg-[#0093cb]/15 px-3 py-1 rounded-full border border-[#0093cb]/20 backdrop-blur-sm">
                       Category 01
                     </span>
-                    <span className="text-[11px] font-bold text-[#002d40]/60">EVERGREEN RANGE</span>
+                    <span className="text-[11px] font-extrabold text-[#002d40]/70 bg-white/40 px-2.5 py-0.5 rounded-full border border-[#002d40]/10 backdrop-blur-sm">EVERGREEN RANGE</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-black uppercase tracking-tight leading-tight mb-2 text-[#002d40]">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-black uppercase tracking-tight leading-tight mb-1.5 text-[#002d40] drop-shadow-sm">
                     Desktop Brand Reminders
                   </h3>
-                  <p className="text-xs md:text-sm lg:text-xs font-semibold leading-relaxed text-[#002d40]/85 max-w-sm line-clamp-3">
+                  <p className="text-xs md:text-sm lg:text-xs font-bold leading-relaxed text-[#002d40]/90 max-w-sm line-clamp-2">
                     Paperweights, tabletops, promotional merchandise, 3D printed & fibre resin ranges, plants, as per days.
                   </p>
                 </div>
 
-                <div className="w-fit text-left text-[10px] font-extrabold tracking-wider uppercase text-[#002d40]/80 bg-[#e6f4fa]/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-[#0093cb]/20 shadow-sm z-10 mt-2">
+                <div className="w-fit text-left text-[10px] font-extrabold tracking-wider uppercase text-[#002d40] bg-[#e6f4fa]/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-[#0093cb]/20 shadow-sm z-10 mt-2">
                   Param Corporation
                 </div>
               </motion.div>
@@ -274,34 +276,34 @@ export default function ProductShowcaseGrid() {
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl text-white cursor-pointer h-full min-h-0"
+                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
               >
                 {/* Background Image */}
                 <div
                   className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none"
                   style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_29_20%20AM.png")` }}
                 />
+                {/* Top/Bottom Gradient Scrim */}
+                <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#00361e]/85 via-transparent to-[#00361e]/80 pointer-events-none" />
 
-                <div className="flex justify-between items-start z-10 bg-[#004d2b]/50 backdrop-blur-sm p-3.5 sm:p-4 rounded-2xl border border-white/20 shadow-md">
-                  <div>
-                    <span className="text-[11px] font-extrabold uppercase tracking-widest text-emerald-300 block mb-1">
+                <div className="z-10">
+                  <div className="flex justify-between items-start mb-1">
+                    <span className="text-[11px] font-extrabold uppercase tracking-widest text-emerald-300 bg-emerald-950/50 px-3 py-0.5 rounded-full border border-emerald-400/30 backdrop-blur-sm">
                       Category 02
                     </span>
-                    <h3 className="text-base sm:text-lg md:text-2xl lg:text-xl font-bold uppercase tracking-tight leading-tight text-white">
-                      Medipride Communications
-                    </h3>
+                    <div className="w-8 h-8 rounded-full bg-white text-[#00a65d] flex items-center justify-center shadow-md hover:scale-105 transition-all shrink-0">
+                      <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+                    </div>
                   </div>
-                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white text-[#00a65d] flex items-center justify-center shadow-md hover:scale-105 transition-all shrink-0">
-                    <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
-                  </div>
+                  <h3 className="text-base sm:text-lg md:text-2xl lg:text-xl font-black uppercase tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+                    Medipride Communications
+                  </h3>
                 </div>
 
-                <div className="flex justify-between items-end z-10 mt-2 bg-[#004d2b]/45 backdrop-blur-sm p-3 rounded-xl border border-white/20 shadow-md">
-                  <div>
-                    <p className="text-xs md:text-sm lg:text-xs text-white/95 max-w-[340px] leading-snug line-clamp-2 font-medium">
-                      Scientific Inputs: As per therapy, as per days, write & wipe utility, and flipcharts.
-                    </p>
-                  </div>
+                <div className="z-10 mt-2">
+                  <p className="text-xs md:text-sm lg:text-xs text-white/95 leading-snug line-clamp-2 font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] bg-black/30 backdrop-blur-sm p-2 rounded-xl border border-white/10 w-fit">
+                    Scientific Inputs: As per therapy, write & wipe utility, and flipcharts.
+                  </p>
                 </div>
               </motion.div>
             </Link>
@@ -314,27 +316,29 @@ export default function ProductShowcaseGrid() {
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl text-white cursor-pointer h-full min-h-0"
+                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
               >
                 {/* Background Image */}
                 <div
                   className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none"
                   style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_39_15%20AM.png")` }}
                 />
+                {/* Gradient Overlay Scrim */}
+                <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#002f45]/85 via-transparent to-[#002f45]/80 pointer-events-none" />
 
-                <div className="z-10 bg-[#004b6e]/45 backdrop-blur-sm p-3.5 sm:p-4 rounded-2xl border border-white/20 shadow-md">
-                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-300 block mb-1">
+                <div className="z-10">
+                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-300 bg-cyan-950/60 px-3 py-0.5 rounded-full border border-cyan-400/30 backdrop-blur-sm inline-block mb-1">
                     Category 03
                   </span>
-                  <h3 className="text-sm sm:text-base md:text-xl lg:text-lg font-bold uppercase tracking-tight mb-1.5 text-white">
+                  <h3 className="text-sm sm:text-base md:text-xl lg:text-lg font-black uppercase tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] mb-1">
                     Digital Engagement
                   </h3>
-                  <p className="text-xs md:text-sm lg:text-xs leading-relaxed text-white/95 line-clamp-2 font-medium">
+                  <p className="text-xs md:text-sm lg:text-xs leading-relaxed text-white/95 line-clamp-2 font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                     Solutions: DigiPRO, QR code based products, and HRA calculators.
                   </p>
                 </div>
 
-                <div className="z-10 text-[10px] text-white/90 font-extrabold tracking-wide mt-2 bg-[#004b6e]/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 shadow-sm w-fit">
+                <div className="z-10 text-[10px] text-white/90 font-extrabold tracking-wide mt-2 bg-black/40 backdrop-blur-md px-3 py-1 rounded-xl border border-white/20 shadow-sm w-fit">
                   DigiPRO &bull; QR Products
                 </div>
               </motion.div>
@@ -345,27 +349,29 @@ export default function ProductShowcaseGrid() {
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl text-[#004d2b] cursor-pointer h-full min-h-0"
+                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
               >
                 {/* Background Image */}
                 <div
                   className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none"
                   style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_50_19%20AM.png")` }}
                 />
+                {/* Gradient Overlay Scrim */}
+                <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#e8f5e5]/90 via-transparent to-[#e8f5e5]/85 pointer-events-none" />
 
-                <div className="z-10 bg-[#f0f9eb]/50 backdrop-blur-sm p-3.5 sm:p-4 rounded-2xl border border-[#00a65d]/25 shadow-md">
-                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#00a65d] block mb-1">
+                <div className="z-10">
+                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#00a65d] bg-[#00a65d]/15 px-3 py-0.5 rounded-full border border-[#00a65d]/25 backdrop-blur-sm inline-block mb-1">
                     Category 04
                   </span>
-                  <h3 className="text-sm sm:text-base md:text-xl lg:text-lg font-bold uppercase tracking-tight mb-1.5 text-[#004d2b]">
+                  <h3 className="text-sm sm:text-base md:text-xl lg:text-lg font-black uppercase tracking-tight text-[#004d2b] drop-shadow-sm mb-1">
                     Hyperpersonalized
                   </h3>
-                  <p className="text-xs md:text-sm lg:text-xs leading-snug text-[#004d2b]/90 line-clamp-2 font-semibold">
+                  <p className="text-xs md:text-sm lg:text-xs leading-snug text-[#004d2b]/95 line-clamp-2 font-bold">
                     Products: Creative and unique custom QR code & name based products.
                   </p>
                 </div>
 
-                <div className="z-10 text-center text-[10px] font-bold uppercase tracking-wider text-[#004d2b] bg-[#f0f9eb]/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-[#00a65d]/25 shadow-sm w-fit self-center mt-2">
+                <div className="z-10 text-center text-[10px] font-extrabold uppercase tracking-wider text-[#004d2b] bg-[#e8f5e5]/95 backdrop-blur-md px-3 py-1 rounded-xl border border-[#00a65d]/25 shadow-sm w-fit self-center mt-2">
                   Creative ✦ Name Products
                 </div>
               </motion.div>
@@ -375,66 +381,70 @@ export default function ProductShowcaseGrid() {
           {/* COLUMN 3: Category 5 (Coming Soon) & Category 6 (Visual Aids & Detailers) */}
           <div className="md:col-span-4 flex flex-col gap-4 lg:gap-4 h-full min-h-0">
             {/* Card 5: Coming Soon */}
-            <Link href="#" className="flex-1 flex flex-col min-h-0">
+            <Link href="#" className="flex flex-col min-h-0" style={{ flex: "40 1 0%" }}>
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl text-white cursor-pointer h-full min-h-0"
+                className="rounded-2xl lg:rounded-3xl p-4 md:p-5 lg:p-4 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
               >
                 {/* Background Image */}
                 <div
                   className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none"
                   style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_39_15%20AM.png")` }}
                 />
+                {/* Gradient Overlay Scrim */}
+                <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/80 via-transparent to-black/70 pointer-events-none" />
 
-                <div className="z-10 bg-black/50 backdrop-blur-sm p-3.5 sm:p-4 rounded-2xl border border-white/20 shadow-md">
-                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-amber-400 block mb-1">
+                <div className="z-10">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-amber-300 bg-black/40 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-amber-400/30 inline-block mb-1 shadow-sm">
                     Category 05
                   </span>
-                  <h3 className="text-sm sm:text-base md:text-xl lg:text-lg font-bold uppercase tracking-tight mb-1.5 text-white">
+                  <h3 className="text-sm sm:text-base font-black uppercase tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] mb-0.5">
                     Coming Soon
                   </h3>
-                  <p className="text-xs md:text-sm lg:text-xs leading-relaxed text-white/95 line-clamp-2 font-medium">
+                  <p className="text-[11px] sm:text-xs text-white/90 font-semibold leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] line-clamp-2">
                     Exciting new medical innovations & upcoming product launches.
                   </p>
                 </div>
 
-                <div className="z-10 text-[10px] text-white/90 font-extrabold tracking-wide mt-2 bg-black/50 backdrop-blur-sm px-3 py-1.5 rounded-xl border border-white/20 shadow-sm w-fit">
+                <div className="z-10 text-[9px] text-white/90 font-extrabold tracking-wide bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/20 shadow-sm w-fit">
                   Upcoming Products ✦ Stay Tuned
                 </div>
               </motion.div>
             </Link>
 
             {/* Card 6: Visual Aids & Detailers (Koru) */}
-            <Link href="/koru" className="flex-1 flex flex-col min-h-0">
+            <Link href="/koru" className="flex flex-col min-h-0" style={{ flex: "60 1 0%" }}>
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl text-[#f3eae3] cursor-pointer h-full min-h-0"
+                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
               >
                 {/* Product Background Image */}
                 <div
                   className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none"
                   style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2029%2C%202026%2C%2010_06_11%20AM.png")` }}
                 />
+                {/* Gradient Overlay Scrim */}
+                <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/80 via-transparent to-black/70 pointer-events-none" />
 
-                <div className="z-10 bg-black/50 backdrop-blur-sm p-3.5 sm:p-4 rounded-2xl border border-white/20 shadow-md">
-                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#f3eae3] bg-[#0093cb] px-3.5 py-0.5 rounded-full border border-white/10 shadow-sm inline-block mb-1">
+                <div className="z-10">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-white bg-[#0093cb] px-3 py-0.5 rounded-full border border-white/20 shadow-sm inline-block mb-1.5">
                     Category 06
                   </span>
-                  <h3 className="text-sm sm:text-base md:text-xl lg:text-lg font-bold uppercase tracking-tight mb-1.5 text-[#f3eae3]">
+                  <h3 className="text-base sm:text-lg md:text-xl font-black uppercase tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] mb-1">
                     Visual Aids & Detailers
                   </h3>
-                  <p className="text-xs md:text-sm lg:text-xs leading-relaxed text-[#f3eae3]/95 line-clamp-2 font-medium">
+                  <p className="text-xs sm:text-sm text-white/90 font-semibold leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] line-clamp-2">
                     Highly structured visual aids, scientific detailers, and consultative tools.
                   </p>
                 </div>
 
-                <div className="z-10 flex items-center justify-between mt-2 bg-black/50 backdrop-blur-sm px-3.5 py-1.5 rounded-xl border border-white/20 shadow-sm">
+                <div className="z-10 flex items-center justify-between bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 shadow-sm">
                   <span className="text-[10px] text-white/90 font-extrabold tracking-wide">
                     Explore Collection ✦ Detailers
                   </span>
-                  <div className="w-6 h-6 rounded-full bg-white/20 text-white flex items-center justify-center">
+                  <div className="w-5 h-5 rounded-full bg-white/20 text-white flex items-center justify-center">
                     <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
                   </div>
                 </div>
