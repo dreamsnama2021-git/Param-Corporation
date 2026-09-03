@@ -46,7 +46,7 @@ export default function ProductShowcaseGrid() {
       link: "/medipride",
       bgClass: "from-[#071711] via-[#092218] to-[#0d3324]",
       accentColor: "#00a65d",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2001_17_03%20PM.png",
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/medipride.png",
       tabName: "Medipride"
     },
     {
@@ -281,7 +281,7 @@ export default function ProductShowcaseGrid() {
                 {/* Background Image */}
                 <div
                   className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none"
-                  style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_29_20%20AM.png")` }}
+                  style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/medipride.png")` }}
                 />
                 {/* Top/Bottom Gradient Scrim */}
                 <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#00361e]/85 via-transparent to-[#00361e]/80 pointer-events-none" />
