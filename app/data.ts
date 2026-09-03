@@ -437,14 +437,14 @@ export const allProducts: Product[] = [
 
   
   // Categories - Photo Frames (IDs: 73-95)
-  {
-    id: 73, name: "GUTT BRAIN CONNECTION CONCEPTUALISED FRAME", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_01_16%20PM.png", price: "₹1299", category: "photo-frames", categoryName: "Photo Frames", description: "Beautiful resin art frame featuring baby designs - perfect for pediatric clinics", images: [
-      "Photo Frames/BABIES RESIN ART FRAME 1.JPG",
-      // "Photo Frames/BABIES RESIN ART FRAME 2.JPG",
-      // "Photo Frames/BABIES RESIN ART FRAME 3.JPG",
-      // "Photo Frames/BABIES RESIN ART FRAME 4.JPG"
-    ]
-  },
+  // {
+  //   id: 73, name: "GUTT BRAIN CONNECTION CONCEPTUALISED FRAME", image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_01_16%20PM.png", price: "₹1299", category: "photo-frames", categoryName: "Photo Frames", description: "Beautiful resin art frame featuring baby designs - perfect for pediatric clinics", images: [
+  //     "Photo Frames/BABIES RESIN ART FRAME 1.JPG",
+  //     // "Photo Frames/BABIES RESIN ART FRAME 2.JPG",
+  //     // "Photo Frames/BABIES RESIN ART FRAME 3.JPG",
+  //     // "Photo Frames/BABIES RESIN ART FRAME 4.JPG"
+  //   ]
+  // },
   // {
   //   id: 74, name: "BRAIN RESIN ART FRAME", image: "Photo Frames/BRAIN RESIN ART FRAME 1.JPG", price: "₹1499", category: "photo-frames", categoryName: "Photo Frames", description: "Neurology-themed resin art frame with brain anatomy design", images: [
   //     "Photo Frames/BRAIN RESIN ART FRAME 1.JPG",
