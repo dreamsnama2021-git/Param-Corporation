@@ -34,7 +34,7 @@ export default function ProductShowcaseGrid() {
       link: "/categories/all?tab=categories",
       bgClass: "from-[#08222f] via-[#092a3b] to-[#0c374d]",
       accentColor: "#0093cb",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_02_16%20PM.png",
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Categories.png",
       tabName: "Desktop"
     },
     {
@@ -58,7 +58,7 @@ export default function ProductShowcaseGrid() {
       link: "/digital-gifts",
       bgClass: "from-[#031d2e] via-[#062c44] to-[#083c5e]",
       accentColor: "#0093cb",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Digital%20Inputs/10.png",
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Digital.png",
       tabName: "Digital"
     },
     {
@@ -70,7 +70,7 @@ export default function ProductShowcaseGrid() {
       link: "/personalized",
       bgClass: "from-[#0f2419] via-[#143323] to-[#1a442e]",
       accentColor: "#00a65d",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/22.png",
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Personalized.png",
       tabName: "Personalized"
     },
     {
@@ -94,7 +94,7 @@ export default function ProductShowcaseGrid() {
       link: "/koru",
       bgClass: "from-[#171412] via-[#241e1a] to-[#120f0d]",
       accentColor: "#0093cb",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2002_04_56%20PM.png",
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Koru.png",
       tabName: "Detailers"
     }
   ];
@@ -245,7 +245,7 @@ export default function ProductShowcaseGrid() {
                 {/* Background Image */}
                 <div
                   className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none"
-                  style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2010_36_24%20AM.png")` }}
+                  style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Categories.png")` }}
                 />
                 {/* Top/Bottom Gradient Scrim */}
                 <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#e6f4fa]/90 via-transparent to-[#e6f4fa]/80 pointer-events-none" />
@@ -321,7 +321,7 @@ export default function ProductShowcaseGrid() {
                 {/* Background Image */}
                 <div
                   className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none"
-                  style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_39_15%20AM.png")` }}
+                  style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Digital.png")` }}
                 />
                 {/* Gradient Overlay Scrim */}
                 <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#002f45]/85 via-transparent to-[#002f45]/80 pointer-events-none" />
@@ -354,7 +354,7 @@ export default function ProductShowcaseGrid() {
                 {/* Background Image */}
                 <div
                   className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none"
-                  style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_50_19%20AM.png")` }}
+                  style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Personalized.png")` }}
                 />
                 {/* Gradient Overlay Scrim */}
                 <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#e8f5e5]/90 via-transparent to-[#e8f5e5]/85 pointer-events-none" />
@@ -423,7 +423,7 @@ export default function ProductShowcaseGrid() {
                 {/* Product Background Image */}
                 <div
                   className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none"
-                  style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2029%2C%202026%2C%2010_06_11%20AM.png")` }}
+                  style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Koru.png")` }}
                 />
                 {/* Gradient Overlay Scrim */}
                 <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/80 via-transparent to-black/70 pointer-events-none" />
