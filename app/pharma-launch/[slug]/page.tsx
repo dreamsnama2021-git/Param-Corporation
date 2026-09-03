@@ -171,7 +171,7 @@ const pharmaProducts = [
   // ─── Custom Doctor Kits ──────────────────────────────────────────
   {
     id: 11,
-    name: "Premium Doctor Welcome Kit",
+    name: "CUSTOMISED DERMA DIGITAL KIT",
     category: "custom-doctor-kits",
     description: "Personalized welcome kit for doctors with pharma branding",
     image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/68.png",
@@ -319,7 +319,7 @@ const pharmaProducts = [
   // ─── Custom Training Models ──────────────────────────────────────
   {
     id: 27,
-    name: "Medical Training Model Kit",
+    name: "CPR COUNSELLING POSTER",
     category: "custom-training-models",
     description: "Custom medical training models for pharma education",
     image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/65.png",
@@ -328,7 +328,7 @@ const pharmaProducts = [
   },
   {
     id: 28,
-    name: "Anatomical Training Model",
+    name: "EHS SCORE ASSESSMENT TOOL",
     category: "custom-training-models",
     description: "Detailed anatomical models for medical training",
     image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/76.png",
@@ -337,7 +337,7 @@ const pharmaProducts = [
   },
   {
     id: 29,
-    name: "Pharmaceutical Training Kit",
+    name: "EPLEY MANEUVER EXCERISE TRAINING 3D POSTER",
     category: "custom-training-models",
     description: "Complete training kit for pharmaceutical education",
     image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/83.png",
@@ -346,7 +346,7 @@ const pharmaProducts = [
   },
   {
     id: 30,
-    name: "Interactive Training Model",
+    name: "NEUROPATHIC PAIN SENSORY ASSESSMENT KIT",
     category: "custom-training-models",
     description: "Interactive models for engaging medical training",
     image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_03_15%20PM.png",
@@ -355,7 +355,7 @@ const pharmaProducts = [
   },
   {
     id: 31,
-    name: "3D Medical Training Models",
+    name: "ORTHOPEDIC FINGER EXERCISES MODEL",
     category: "custom-training-models",
     description: "3D printed medical models for advanced training",
     image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2025%2C%202026%2C%2004_37_54%20PM.png",
@@ -364,7 +364,7 @@ const pharmaProducts = [
   },
   {
     id: 32,
-    name: "Surgical Training Simulator",
+    name: "CUSTOMISED INHALER TRAINING KIT",
     category: "custom-training-models",
     description: "Simulator models for surgical training and practice",
     image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/ChatGPT%20Image%20May%2028%2C%202026%2C%2005_42_08%20PM.png",
@@ -373,7 +373,7 @@ const pharmaProducts = [
   },
   {
     id: 33,
-    name: "Custom Pharma Training Models",
+    name: "XTIKTR SURGICAL PROCEDURE FLIPCHART",
     category: "custom-training-models",
     description: "Fully customizable training models for specific pharma needs",
     image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Final%20Edit%20Images/Urology-.png",
