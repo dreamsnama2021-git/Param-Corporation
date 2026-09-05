@@ -55,7 +55,7 @@ export default function FoundersMessage() {
           </div>
 
           {/* RIGHT COLUMN: Founder Image & Vision/Mission Overlay Card */}
-          <div className="lg:col-span-6 relative flex justify-center items-center pb-12 sm:pb-16 lg:pb-0">
+          <div className="lg:col-span-6 relative flex justify-center items-center pb-20 sm:pb-28 lg:pb-16">
             
             {/* Image Outer Wrapper */}
             <div className="relative w-full max-w-[440px] sm:max-w-[480px] aspect-[4/5] rounded-[40px] sm:rounded-[60px] rounded-br-[80px] sm:rounded-br-[120px] rounded-tl-[80px] sm:rounded-tl-[120px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
@@ -67,8 +67,8 @@ export default function FoundersMessage() {
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent pointer-events-none" />
             </div>
 
-            {/* Floating Vision/Mission Overlay Box (Overlays on bottom-right of photo) */}
-            <div className="absolute -bottom-8 sm:-bottom-12 right-2 sm:right-6 md:right-10 lg:-right-6 xl:-right-10 w-[290px] sm:w-[330px] rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-2xl border border-white/20 bg-gradient-to-br from-[#0093cb] to-[#00a65d] text-white p-5 sm:p-7 z-20">
+            {/* Floating Vision/Mission Overlay Box (Shifted downwards) */}
+            <div className="absolute -bottom-14 sm:-bottom-18 md:-bottom-20 lg:-bottom-14 xl:-bottom-18 right-2 sm:right-6 md:right-10 lg:-right-6 xl:-right-10 w-[290px] sm:w-[330px] rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-2xl border border-white/20 bg-gradient-to-br from-[#0093cb] to-[#00a65d] text-white p-5 sm:p-7 z-20">
               {/* Vision Section */}
               <div className="mb-4 sm:mb-5 pb-4 sm:pb-5 border-b border-white/20">
                 <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-2.5">
