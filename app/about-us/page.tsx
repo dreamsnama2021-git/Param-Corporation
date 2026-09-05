@@ -363,9 +363,9 @@ const WhyUsSection = () => {
           </div>
 
           {/* RIGHT COLUMN: Product Image Showcase */}
-          <div className="lg:col-span-1 w-full">
+          <div className="lg:col-span-1 w-full flex flex-col h-full justify-center">
             <div 
-              className="relative w-full h-[400px] sm:h-[480px] lg:h-[450px] xl:h-[540px] rounded-[32px] sm:rounded-[40px] rounded-br-[80px] sm:rounded-br-[100px] rounded-tl-[80px] sm:rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white group"
+              className="relative w-full h-[480px] sm:h-[560px] lg:h-full lg:min-h-[620px] xl:min-h-[680px] 2xl:min-h-[720px] rounded-[32px] sm:rounded-[40px] rounded-br-[80px] sm:rounded-br-[100px] rounded-tl-[80px] sm:rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white group"
               style={{ 
                 backgroundImage: 'url(https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Why%20Clients%20Choose%20Us.png)',
                 backgroundSize: 'cover',

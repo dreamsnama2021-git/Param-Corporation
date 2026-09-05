@@ -15,7 +15,6 @@ import {
   Award,
   Leaf,
   Handshake,
-  ArrowRight,
 } from "lucide-react";
 
 export default function QualityAssurance() {
@@ -232,8 +231,8 @@ export default function QualityAssurance() {
           </div>
 
           {/* Right Column: Enlarged Mockup Image with Quote Overlay (Span 6) */}
-          <div className="lg:col-span-6 flex flex-col items-center relative w-full">
-            <div className="relative w-full h-[400px] sm:h-[480px] lg:h-[460px] xl:h-[540px] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100 group">
+          <div className="lg:col-span-6 flex flex-col justify-center relative w-full h-full">
+            <div className="relative w-full h-[480px] sm:h-[560px] lg:h-full lg:min-h-[620px] xl:min-h-[680px] 2xl:min-h-[720px] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100 group">
               {/* Product Mockup / Testing Image */}
               <div 
                 className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
@@ -371,7 +370,7 @@ export default function QualityAssurance() {
                   <motion.div
                     key={idx}
                     whileHover={{ x: 6 }}
-                    className="group/item flex items-center gap-4 bg-white/70 backdrop-blur-md p-4 sm:p-4.5 rounded-2xl border border-slate-100/80 shadow-sm hover:shadow-[0_8px_20px_-6px_rgba(0,147,203,0.15)] hover:border-[#0093cb]/20 hover:bg-white transition-all duration-300 cursor-pointer"
+                    className="group/item flex items-center gap-4 bg-white/70 backdrop-blur-md p-4 sm:p-4.5 rounded-2xl border border-slate-100/80 shadow-sm hover:shadow-[0_8px_20px_-6px_rgba(0,147,203,0.15)] hover:border-[#0093cb]/20 hover:bg-white transition-all duration-300 cursor-default"
                   >
                     {/* Icon wrapper */}
                     <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center z-10 transition-transform duration-300 group-hover/item:scale-105 group-hover/item:bg-[#0093cb]/10 text-slate-600 group-hover/item:text-[#0093cb] shrink-0">
@@ -386,11 +385,6 @@ export default function QualityAssurance() {
                       <p className="text-slate-500 text-xs sm:text-[13px] leading-snug mt-0.5 font-medium">
                         {item.desc}
                       </p>
-                    </div>
-
-                    {/* Subtle Right Arrow indicator */}
-                    <div className="opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 text-[#0093cb] pr-2 shrink-0">
-                      <ArrowRight className="w-4 h-4 stroke-[2.5]" />
                     </div>
                   </motion.div>
                 );

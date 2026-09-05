@@ -55,45 +55,50 @@ export default function FoundersMessage() {
           </div>
 
           {/* RIGHT COLUMN: Founder Image & Vision/Mission Overlay Card */}
-          <div className="lg:col-span-6 relative flex justify-center items-center">
+          <div className="lg:col-span-6 relative flex justify-center items-center pb-24 sm:pb-28 lg:pb-32">
             
-            {/* Image Outer Wrapper */}
-            <div className="relative w-full max-w-[440px] sm:max-w-[480px] aspect-[4/5] rounded-[40px] sm:rounded-[60px] rounded-br-[80px] sm:rounded-br-[120px] rounded-tl-[80px] sm:rounded-tl-[120px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
-              <img
-                src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/WhatsApp%20Image%202026-06-01%20at%207.26.05%20PM.jpeg"
-                alt="Mr. Sanchay Dosi - Founder"
-                className="w-full h-full object-cover object-top"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent pointer-events-none" />
-            </div>
-
-            {/* Floating Vision/Mission Overlay Box */}
-            <div className="absolute -bottom-10 sm:-bottom-14 md:-bottom-16 lg:-bottom-12 xl:-bottom-14 right-2 sm:right-6 md:right-10 lg:-right-6 xl:-right-10 w-[290px] sm:w-[330px] rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-2xl border border-white/20 bg-gradient-to-br from-[#0093cb] to-[#00a65d] text-white p-5 sm:p-7 z-20">
-              {/* Vision Section */}
-              <div className="mb-4 sm:mb-5 pb-4 sm:pb-5 border-b border-white/20">
-                <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-2.5">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/15 flex items-center justify-center shadow-inner shrink-0">
-                    <Target className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                  </div>
-                  <h5 className="font-black text-xs sm:text-base tracking-wider uppercase">Our Vision</h5>
-                </div>
-                <p className="text-white/90 text-[11px] sm:text-[13px] leading-relaxed font-medium">
-                  To be the most innovative and trusted partner in healthcare marketing solutions.
-                </p>
+            {/* Relative wrapper linking photo & floating card */}
+            <div className="relative w-full max-w-[440px] sm:max-w-[480px]">
+              
+              {/* Image Outer Wrapper */}
+              <div className="relative w-full aspect-[4/5] rounded-[40px] sm:rounded-[60px] rounded-br-[80px] sm:rounded-br-[120px] rounded-tl-[80px] sm:rounded-tl-[120px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
+                <img
+                  src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/WhatsApp%20Image%202026-06-01%20at%207.26.05%20PM.jpeg"
+                  alt="Mr. Sanchay Dosi - Founder"
+                  className="w-full h-full object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent pointer-events-none" />
               </div>
 
-              {/* Mission Section */}
-              <div>
-                <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-2.5">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/15 flex items-center justify-center shadow-inner shrink-0">
-                    <Eye className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+              {/* Floating Vision/Mission Overlay Box: shifted further to the right on xl screens */}
+              <div className="absolute bottom-0 -right-3 sm:-right-8 md:-right-10 lg:-right-14 xl:-right-24 2xl:-right-28 translate-y-[50%] w-[290px] sm:w-[330px] rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-2xl border border-white/20 bg-gradient-to-br from-[#0093cb] to-[#00a65d] text-white p-5 sm:p-7 z-20">
+                {/* Vision Section (Top half, sitting on the image) */}
+                <div className="mb-4 sm:mb-5 pb-4 sm:pb-5 border-b border-white/20">
+                  <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-2.5">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/15 flex items-center justify-center shadow-inner shrink-0">
+                      <Target className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                    </div>
+                    <h5 className="font-black text-xs sm:text-base tracking-wider uppercase">Our Vision</h5>
                   </div>
-                  <h5 className="font-black text-xs sm:text-base tracking-wider uppercase">Our Mission</h5>
+                  <p className="text-white/90 text-[11px] sm:text-[13px] leading-relaxed font-medium">
+                    To be the most innovative and trusted partner in healthcare marketing solutions.
+                  </p>
                 </div>
-                <p className="text-white/90 text-[11px] sm:text-[13px] leading-relaxed font-medium">
-                  Empowering brands through impactful scientific communications and high-recall marketing tools.
-                </p>
+
+                {/* Mission Section (Bottom half, sitting below the image) */}
+                <div>
+                  <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-2.5">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/15 flex items-center justify-center shadow-inner shrink-0">
+                      <Eye className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                    </div>
+                    <h5 className="font-black text-xs sm:text-base tracking-wider uppercase">Our Mission</h5>
+                  </div>
+                  <p className="text-white/90 text-[11px] sm:text-[13px] leading-relaxed font-medium">
+                    Empowering brands through impactful scientific communications and high-recall marketing tools.
+                  </p>
+                </div>
               </div>
+
             </div>
 
           </div>

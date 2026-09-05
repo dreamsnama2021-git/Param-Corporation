@@ -19,6 +19,7 @@ import {
   Clock,
   Users,
   ArrowRight,
+  CheckCircle2,
 } from "lucide-react";
 
 export default function ProjectWorkflow() {
@@ -206,13 +207,20 @@ export default function ProjectWorkflow() {
                     {step.num}
                   </div>
 
+                  {/* Outside Floating Arrow in Center pointing to Next Step */}
+                  {step.num !== 10 && (
+                    <div className="hidden sm:flex absolute -right-3.5 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white shadow-lg border border-slate-200 text-[#0093cb] items-center justify-center opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 pointer-events-none">
+                      <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                    </div>
+                  )}
+
                   <div className="space-y-3">
                     {/* Icon Container */}
-                    <div className={`w-11 h-11 rounded-2xl ${step.bgColor} border ${step.borderColor} flex items-center justify-center`}>
+                    <div className={`w-11 h-11 rounded-2xl ${step.bgColor} border ${step.borderColor} flex items-center justify-center transition-transform duration-300 group-hover:scale-105`}>
                       <Icon className={`w-5 h-5 ${step.color}`} />
                     </div>
 
-                    <h4 className="font-extrabold text-xs sm:text-sm text-slate-800 leading-snug uppercase tracking-tight">
+                    <h4 className="font-extrabold text-xs sm:text-sm text-slate-800 leading-snug uppercase tracking-tight group-hover:text-[#0093cb] transition-colors duration-200">
                       {step.title}
                     </h4>
 
