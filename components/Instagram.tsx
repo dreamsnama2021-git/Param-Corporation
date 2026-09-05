@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from "react";
+import React from "react";
 import Script from "next/script";
 
 const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -19,41 +19,13 @@ const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const WATERMARK_HEIGHT = 44; // px — height of bottom Elfsight watermark badge
-
 const InstagramReels = () => {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
-  const initResizer = () => {
-    if (typeof (window as any).iFrameResize !== "undefined" && iframeRef.current) {
-      (window as any).iFrameResize(
-        {
-          log: false,
-          checkOrigin: false,
-          scrolling: false,
-          sizeWidth: true,
-          onResized: ({ height }: { height: number }) => {
-            if (wrapperRef.current && iframeRef.current) {
-              const clippedHeight = Math.max(300, height - WATERMARK_HEIGHT);
-              wrapperRef.current.style.height = `${clippedHeight}px`;
-              iframeRef.current.style.height = `${height}px`;
-            }
-          },
-        },
-        iframeRef.current
-      );
-    }
-  };
-
   return (
     <section className="relative py-8 sm:py-10 md:py-12 lg:py-16 bg-[#f9fafb] overflow-hidden">
-
-      {/* iframeResizer parent-side script */}
+      {/* Elfsight Platform Script */}
       <Script
-        src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.7/iframeResizer.min.js"
+        src="https://static.elfsight.com/platform/platform.js"
         strategy="afterInteractive"
-        onLoad={initResizer}
       />
 
       {/* Header */}
@@ -73,28 +45,31 @@ const InstagramReels = () => {
         </p>
       </div>
 
-      {/* Instagram Feed */}
-      <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Wrapper — clips watermark badge via overflow:hidden */}
+      {/* Instagram Feed Container — dynamically expands naturally as posts are loaded */}
+      <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 min-h-[350px]">
         <div
-          ref={wrapperRef}
-          className="relative w-full overflow-hidden rounded-2xl transition-all duration-300"
-          style={{ minHeight: "450px" }}
-        >
-          <iframe
-            ref={iframeRef}
-            src="https://2cde112fa39a4777a6052cdbb7fee660.elf.site"
-            title="Param Corporation Instagram Feed"
-            loading="lazy"
-            className="w-full border-0 block"
-            style={{ minHeight: "450px" }}
-            scrolling="no"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-          />
-        </div>
-
+          className="elfsight-app-2cde112f-a39a-4777-a605-2cdbb7fee660"
+          data-elfsight-app-lazy
+        />
       </div>
+
+      {/* Embedded CSS to guarantee watermark is hidden while preserving all posts and pagination */}
+      <style jsx global>{`
+        a[href*="elfsight.com"],
+        .elfsight-app-2cde112f-a39a-4777-a605-2cdbb7fee660 a[href*="elfsight.com"],
+        div[class*="BadgeContainer"],
+        [class*="WidgetTitle__Container"] {
+          display: none !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          pointer-events: none !important;
+          height: 0 !important;
+          max-height: 0 !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          overflow: hidden !important;
+        }
+      `}</style>
     </section>
   );
 };
