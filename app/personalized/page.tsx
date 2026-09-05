@@ -238,7 +238,24 @@ function DownloadCatalogueModal({
     setIsSubmitting(true);
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      try {
+        await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fullName: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            companyName: formData.companyName,
+            designation: formData.designation,
+            categoryName: selectedSubcategory?.categoryName || "Personalized Gifts",
+            source: `Catalogue Download - ${selectedSubcategory?.categoryName || "Personalized Gifts"}`,
+          }),
+        });
+      } catch (err) {
+        console.warn("Could not send lead email:", err);
+      }
+
       setIsSubmitted(true);
       setTimeout(() => {
         downloadCatalogue();

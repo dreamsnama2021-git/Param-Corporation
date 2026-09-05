@@ -103,13 +103,15 @@ export default function PopupForm({
     setIsSubmitting(true);
 
     try {
-      // Replace with your actual form submission logic
       const response = await fetch(formEndpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          source: "Homepage Popup Form",
+        }),
       });
 
       if (response.ok) {

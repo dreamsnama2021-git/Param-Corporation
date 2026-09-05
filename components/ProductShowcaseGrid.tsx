@@ -163,50 +163,64 @@ export default function ProductShowcaseGrid() {
             onScroll={handleScroll}
             className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-3.5 pt-1 pb-3 px-2"
           >
-            {mobileCards.map((card) => (
-              <div
-                key={card.id}
-                className="snap-center shrink-0 w-[84vw] max-w-[320px] h-[370px] rounded-3xl relative overflow-hidden shadow-xl flex flex-col justify-between p-5"
-              >
-                {/* Card Background Image */}
+            {mobileCards.map((card) =>
+              card.id === 4 ? (
                 <div
-                  className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none scale-105"
-                  style={{ backgroundImage: `url("${card.image}")` }}
-                />
-
-                {/* Top Badges */}
-                <div className="relative z-10 flex items-center justify-between">
-                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-white/90 bg-white/15 px-3 py-1 rounded-full border border-white/20 backdrop-blur-md">
-                    {card.badge}
-                  </span>
-                  <span className="text-[9px] font-extrabold uppercase tracking-wider text-white/70 bg-black/30 px-2.5 py-1 rounded-full backdrop-blur-md">
-                    {card.tag}
-                  </span>
-                </div>
-
-                {/* Bottom Content & CTA */}
-                <div className="relative z-10 space-y-3 bg-black/65 backdrop-blur-md p-3.5 rounded-2xl border border-white/20 shadow-lg">
-                  <div>
-                    <h3 className="text-xl font-black uppercase text-white tracking-tight leading-tight mb-1.5">
-                      {card.title}
+                  key={card.id}
+                  className="snap-center shrink-0 w-[84vw] max-w-[320px] h-[370px] rounded-3xl relative overflow-hidden shadow-xl flex items-center justify-center p-5 bg-gradient-to-br from-[#0a1525]/90 via-[#10233b]/85 to-[#06101d]/95 backdrop-blur-xl border border-white/15"
+                >
+                  <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-md pointer-events-none" />
+                  <div className="relative z-10 text-center">
+                    <h3 className="text-3xl sm:text-4xl font-black uppercase tracking-wider text-white drop-shadow-lg">
+                      Coming Soon
                     </h3>
-                    <p className="text-xs text-white/90 leading-relaxed font-medium line-clamp-2">
-                      {card.desc}
-                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div
+                  key={card.id}
+                  className="snap-center shrink-0 w-[84vw] max-w-[320px] h-[370px] rounded-3xl relative overflow-hidden shadow-xl flex flex-col justify-between p-5"
+                >
+                  {/* Card Background Image */}
+                  <div
+                    className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none scale-105"
+                    style={{ backgroundImage: `url("${card.image}")` }}
+                  />
+
+                  {/* Top Badges */}
+                  <div className="relative z-10 flex items-center justify-between">
+                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-white/90 bg-white/15 px-3 py-1 rounded-full border border-white/20 backdrop-blur-md">
+                      {card.badge}
+                    </span>
+                    <span className="text-[9px] font-extrabold uppercase tracking-wider text-white/70 bg-black/30 px-2.5 py-1 rounded-full backdrop-blur-md">
+                      {card.tag}
+                    </span>
                   </div>
 
-                  <Link
-                    href={card.link}
-                    className="w-full py-2.5 px-4 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white font-bold text-xs flex items-center justify-between transition-all active:scale-98 shadow-lg"
-                  >
-                    <span>Explore Collection</span>
-                    <div className="w-6 h-6 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-md">
-                      <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                  {/* Bottom Content & CTA */}
+                  <div className="relative z-10 space-y-3 bg-black/65 backdrop-blur-md p-3.5 rounded-2xl border border-white/20 shadow-lg">
+                    <div>
+                      <h3 className="text-xl font-black uppercase text-white tracking-tight leading-tight mb-1.5">
+                        {card.title}
+                      </h3>
+                      <p className="text-xs text-white/90 leading-relaxed font-medium line-clamp-2">
+                        {card.desc}
+                      </p>
                     </div>
-                  </Link>
+
+                    <Link
+                      href={card.link}
+                      className="w-full py-2.5 px-4 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white font-bold text-xs flex items-center justify-between transition-all active:scale-98 shadow-lg"
+                    >
+                      <span>Explore Collection</span>
+                      <div className="w-6 h-6 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-md">
+                        <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                      </div>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
 
           {/* Carousel Dots Indicator */}
@@ -381,37 +395,20 @@ export default function ProductShowcaseGrid() {
           {/* COLUMN 3: Category 5 (Coming Soon) & Category 6 (Visual Aids & Detailers) */}
           <div className="md:col-span-4 flex flex-col gap-4 lg:gap-4 h-full min-h-0">
             {/* Card 5: Coming Soon */}
-            <Link href="#" className="flex flex-col min-h-0" style={{ flex: "40 1 0%" }}>
+            <div className="flex flex-col min-h-0" style={{ flex: "40 1 0%" }}>
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-4 md:p-5 lg:p-4 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
+                className="rounded-2xl lg:rounded-3xl p-4 md:p-5 lg:p-4 flex items-center justify-center flex-1 relative overflow-hidden group shadow-xl h-full min-h-0 bg-gradient-to-br from-[#0a1525]/90 via-[#10233b]/85 to-[#06101d]/95 backdrop-blur-xl border border-white/15"
               >
-                {/* Background Image */}
-                <div
-                  className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none"
-                  style={{ backgroundImage: `url("https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_39_15%20AM.png")` }}
-                />
-                {/* Gradient Overlay Scrim */}
-                <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/80 via-transparent to-black/70 pointer-events-none" />
-
-                <div className="z-10">
-                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-amber-300 bg-black/40 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-amber-400/30 inline-block mb-1 shadow-sm">
-                    Category 05
-                  </span>
-                  <h3 className="text-sm sm:text-base font-black uppercase tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] mb-0.5">
+                <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-md pointer-events-none" />
+                <div className="relative z-10 text-center">
+                  <h3 className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-black uppercase tracking-wider text-white drop-shadow-lg">
                     Coming Soon
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-white/90 font-semibold leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] line-clamp-2">
-                    Exciting new medical innovations & upcoming product launches.
-                  </p>
-                </div>
-
-                <div className="z-10 text-[9px] text-white/90 font-extrabold tracking-wide bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/20 shadow-sm w-fit">
-                  Upcoming Products ✦ Stay Tuned
                 </div>
               </motion.div>
-            </Link>
+            </div>
 
             {/* Card 6: Visual Aids & Detailers (Koru) */}
             <Link href="/koru" className="flex flex-col min-h-0" style={{ flex: "60 1 0%" }}>

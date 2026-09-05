@@ -9,6 +9,8 @@ import {
   Send,
   Sparkles,
   Clock,
+  Check,
+  Loader2,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -56,11 +58,38 @@ export default function ContactUs() {
     query: "",
   });
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Message sent successfully!");
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          source: "Contact Us Page",
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message. Please try again.");
+      }
+
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", query: "" });
+    } catch (err: any) {
+      setErrorMessage(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -233,81 +262,117 @@ export default function ContactUs() {
                   </h3>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-3 flex-1">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      placeholder="Your Full Name"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      onFocus={() => setFocusedField("name")}
-                      onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] font-[family-name:var(--font-body)]"
-                    />
-                    <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
-                      focusedField === "name" ? "scale-x-100" : "scale-x-0"
-                    }`} />
+                {isSubmitted ? (
+                  <div className="text-center py-8 flex flex-col items-center justify-center space-y-4 flex-1">
+                    <div className="w-16 h-16 bg-[#00a65d]/10 text-[#00a65d] rounded-full flex items-center justify-center">
+                      <Check className="w-8 h-8" />
+                    </div>
+                    <h4 className="text-xl font-bold text-[#0f172a] font-[family-name:var(--font-display)]">
+                      Message Sent!
+                    </h4>
+                    <p className="text-sm text-[#6b7280] max-w-xs font-[family-name:var(--font-body)]">
+                      Thank you for contacting Param Corporation. Our team will review your message and get back to you shortly.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setIsSubmitted(false)}
+                      className="text-xs text-[#0093cb] font-semibold hover:underline mt-2"
+                    >
+                      Send another message
+                    </button>
                   </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-3 flex-1">
+                    {errorMessage && (
+                      <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs">
+                        {errorMessage}
+                      </div>
+                    )}
+                    <div className="relative">
+                      <input
+                        type="text"
+                        placeholder="Your Full Name"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        onFocus={() => setFocusedField("name")}
+                        onBlur={() => setFocusedField(null)}
+                        className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] font-[family-name:var(--font-body)]"
+                      />
+                      <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
+                        focusedField === "name" ? "scale-x-100" : "scale-x-0"
+                      }`} />
+                    </div>
 
-                  <div className="relative">
-                    <input
-                      type="email"
-                      placeholder="Email Address"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      onFocus={() => setFocusedField("email")}
-                      onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] font-[family-name:var(--font-body)]"
-                    />
-                    <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
-                      focusedField === "email" ? "scale-x-100" : "scale-x-0"
-                    }`} />
-                  </div>
+                    <div className="relative">
+                      <input
+                        type="email"
+                        placeholder="Email Address"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        onFocus={() => setFocusedField("email")}
+                        onBlur={() => setFocusedField(null)}
+                        className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] font-[family-name:var(--font-body)]"
+                      />
+                      <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
+                        focusedField === "email" ? "scale-x-100" : "scale-x-0"
+                      }`} />
+                    </div>
 
-                  <div className="relative">
-                    <input
-                      type="tel"
-                      placeholder="Phone Number"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      onFocus={() => setFocusedField("phone")}
-                      onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] font-[family-name:var(--font-body)]"
-                    />
-                    <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
-                      focusedField === "phone" ? "scale-x-100" : "scale-x-0"
-                    }`} />
-                  </div>
+                    <div className="relative">
+                      <input
+                        type="tel"
+                        placeholder="Phone Number"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        onFocus={() => setFocusedField("phone")}
+                        onBlur={() => setFocusedField(null)}
+                        className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] font-[family-name:var(--font-body)]"
+                      />
+                      <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
+                        focusedField === "phone" ? "scale-x-100" : "scale-x-0"
+                      }`} />
+                    </div>
 
-                  <div className="relative">
-                    <textarea
-                      placeholder="How can we help you?"
-                      required
-                      rows={3}
-                      value={formData.query}
-                      onChange={(e) => setFormData({ ...formData, query: e.target.value })}
-                      onFocus={() => setFocusedField("query")}
-                      onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] resize-none font-[family-name:var(--font-body)]"
-                    />
-                    <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
-                      focusedField === "query" ? "scale-x-100" : "scale-x-0"
-                    }`} />
-                  </div>
+                    <div className="relative">
+                      <textarea
+                        placeholder="How can we help you?"
+                        required
+                        rows={3}
+                        value={formData.query}
+                        onChange={(e) => setFormData({ ...formData, query: e.target.value })}
+                        onFocus={() => setFocusedField("query")}
+                        onBlur={() => setFocusedField(null)}
+                        className="w-full px-4 py-2.5 bg-[#f8fafc] rounded-xl border border-[#eef2f7] focus:border-[#0093cb] focus:bg-white outline-none transition-all text-sm placeholder:text-[#6b7280] resize-none font-[family-name:var(--font-body)]"
+                      />
+                      <div className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0093cb] to-[#00a65d] transition-all duration-300 ${
+                        focusedField === "query" ? "scale-x-100" : "scale-x-0"
+                      }`} />
+                    </div>
 
-                  <button
-                    type="submit"
-                    className="group relative w-full bg-[#0093cb] hover:bg-[#00a65d] text-white px-8 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg overflow-hidden font-[family-name:var(--font-display)]"
-                  >
-                    <span className="relative z-10 flex items-center gap-2 text-sm">
-                      Send Message
-                      <Send className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                  </button>
-                </form>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="group relative w-full bg-[#0093cb] hover:bg-[#00a65d] text-white px-8 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg overflow-hidden font-[family-name:var(--font-display)] disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? (
+                        <span className="relative z-10 flex items-center gap-2 text-sm">
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          Sending...
+                        </span>
+                      ) : (
+                        <>
+                          <span className="relative z-10 flex items-center gap-2 text-sm">
+                            Send Message
+                            <Send className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                          </span>
+                          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
 
                 <p className="text-center text-[10px] text-[#6b7280] mt-3 pt-1 font-[family-name:var(--font-body)] font-light">
                   We typically respond within 24 hours
