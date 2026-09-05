@@ -4,12 +4,16 @@ import React, { useState, useEffect } from "react";
 import {
   Pill,
   Stethoscope,
-  Activity,
-  Leaf,
-  Shield,
-  PawPrint,
+  Building2,
+  ShoppingBag,
   Microscope,
-  Smile,
+  Car,
+  Building,
+  Landmark,
+  Wifi,
+  Plane,
+  UtensilsCrossed,
+  ShieldCheck,
 } from "lucide-react";
 
 export default function IndustriesWeServe() {
@@ -43,52 +47,84 @@ export default function IndustriesWeServe() {
       borderColor: "border-[#00a8b5]/20",
     },
     {
-      title: "Medical Devices",
-      desc: "Scientific models, demonstration aids, and custom tech gifts that showcase device innovation.",
-      icon: Activity,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Therepy/ENT%20%26%20Respiratory/32.png",
+      title: "Corporates",
+      desc: "Executive desk utilities, onboarding kits, and premium customized corporate gifts for teams and clients.",
+      icon: Building2,
+      image: "/industry-we-cater/CORPORATES.jpg.jpeg",
+      color: "text-[#0093cb]",
+      borderColor: "border-[#0093cb]/20",
+    },
+    {
+      title: "FMCG",
+      desc: "High-volume promotional products, retail activation merchandise, and high-recall brand visibility aids.",
+      icon: ShoppingBag,
+      image: "/industry-we-cater/FMCG.jpg.jpeg",
       color: "text-[#00a65d]",
       borderColor: "border-[#00a65d]/20",
     },
     {
-      title: "Ayurveda & Herbals",
-      desc: "Natural, eco-friendly, and wellness-centric promotional products aligned with traditional healing.",
-      icon: Leaf,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Categories/FIBRE%20%26%20RESIN/ChatGPT%20Image%20May%2028%2C%202026%2C%2003_09_06%20PM.png",
-      color: "text-[#8ac926]",
-      borderColor: "border-[#8ac926]/20",
-    },
-    {
-      title: "Nutraceuticals",
-      desc: "Modern, lifestyle-focused promotional merchandise that highlights health, fitness, and nutrition.",
-      icon: Shield,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Doctors%20Fav/ChatGPT%20Image%20Aug%2025%2C%202026%2C%2003_47_10%20PM.png",
-      color: "text-[#003b46]",
-      borderColor: "border-[#003b46]/20",
-    },
-    {
-      title: "Animal Health",
-      desc: "Customized promotional items tailored for veterinary professionals and livestock health brands.",
-      icon: PawPrint,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Industries%20We%20Serve/ChatGPT%20Image%20Aug%2026%2C%202026%2C%2003_36_40%20PM.png",
-      color: "text-[#003b46]",
-      borderColor: "border-[#003b46]/20",
-    },
-    {
-      title: "Diagnostics",
-      desc: "Supporting diagnostic brands with impactful communication and educational solutions.",
+      title: "Laboratories",
+      desc: "Supporting diagnostic brands with impactful communication, specimen displays, and educational solutions.",
       icon: Microscope,
       image: "/industry-we-cater/LABORAORATIES.jpg.jpeg",
       color: "text-[#00a65d]",
       borderColor: "border-[#00a65d]/20",
     },
     {
-      title: "Wellness",
-      desc: "Encouraging well-being and lifestyle awareness through thoughtful brand experiences.",
-      icon: Smile,
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Industries%20We%20Serve/ChatGPT%20Image%20Aug%2026%2C%202026%2C%2003_36_23%20PM.png",
+      title: "Automotive",
+      desc: "Premium desk models, showroom accessories, and customized merchandise for automobile brands.",
+      icon: Car,
+      image: "/industry-we-cater/AUTOMOTIVE.jpg.jpeg",
+      color: "text-[#003b46]",
+      borderColor: "border-[#003b46]/20",
+    },
+    {
+      title: "Construction & Real Estate",
+      desc: "Architectural keepsakes, project launch mementos, and luxury client handover gifts.",
+      icon: Building,
+      image: "/industry-we-cater/CONSTRUCTION & REAL ESTATE.jpg.jpeg",
       color: "text-[#0093cb]",
       borderColor: "border-[#0093cb]/20",
+    },
+    {
+      title: "Insurance & Finance",
+      desc: "Trust-building advisor kits, milestone awards, and financial wellness reminder tools.",
+      icon: Landmark,
+      image: "/industry-we-cater/INSURANCE & FINANCE.jpg.jpeg",
+      color: "text-[#00a8b5]",
+      borderColor: "border-[#00a8b5]/20",
+    },
+    {
+      title: "Telecom & Networking",
+      desc: "Tech giveaways, connectivity reminders, and dynamic QR-enabled utility products.",
+      icon: Wifi,
+      image: "/industry-we-cater/TELECOM & NETWORKING COMPANIES.jpg.jpeg",
+      color: "text-[#0093cb]",
+      borderColor: "border-[#0093cb]/20",
+    },
+    {
+      title: "Travel & Tourism",
+      desc: "Destination mementos, wanderlust lifestyle items, and customized travel accessories.",
+      icon: Plane,
+      image: "/industry-we-cater/TRAVEL & TOURISM.jpg.jpeg",
+      color: "text-[#00a65d]",
+      borderColor: "border-[#00a65d]/20",
+    },
+    {
+      title: "Food & Hospitality",
+      desc: "Bespoke culinary merchandise, chef brand reminders, and hospitality guest amenities.",
+      icon: UtensilsCrossed,
+      image: "/industry-we-cater/Food and Hospitality.jpg.jpeg",
+      color: "text-[#8ac926]",
+      borderColor: "border-[#8ac926]/20",
+    },
+    {
+      title: "Government Institutes",
+      desc: "Formal mementos, institutional felicitation awards, and public awareness campaign items.",
+      icon: ShieldCheck,
+      image: "/industry-we-cater/GOVERNMENT INSTITUTES.jpg.jpeg",
+      color: "text-[#003b46]",
+      borderColor: "border-[#003b46]/20",
     },
   ];
 
@@ -137,7 +173,7 @@ export default function IndustriesWeServe() {
           </div>
         </div>
 
-        {/* 3 FLIP CARDS ON <1240px, 8 CARDS GRID ON >=1240px */}
+        {/* 3 FLIP CARDS ON <1240px, 12 CARDS GRID ON >=1240px */}
         <div className="space-y-4">
           <div className="flex sm:grid sm:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6 xl:gap-8 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
             {visibleIndustries.map((ind) => {
@@ -149,7 +185,7 @@ export default function IndustriesWeServe() {
                     {/* Front Side */}
                     <div
                       className="flip-card-front absolute inset-0 w-full h-full rounded-2xl lg:rounded-3xl border border-slate-100 overflow-hidden shadow-sm bg-cover bg-center bg-no-repeat backface-hidden text-white flex flex-col justify-end p-5 lg:p-6"
-                      style={{ backgroundImage: `url("${ind.image}")` }}
+                      style={{ backgroundImage: `url("${encodeURI(ind.image)}")` }}
                     >
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 pointer-events-none" />
                       
@@ -204,7 +240,7 @@ export default function IndustriesWeServe() {
                 ))}
               </div>
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                0{(slideIndex % industries.length) + 1} / 08 &bull; Auto Sliding
+                {String((slideIndex % industries.length) + 1).padStart(2, "0")} / {String(industries.length).padStart(2, "0")} &bull; Auto Sliding
               </span>
             </div>
           )}
