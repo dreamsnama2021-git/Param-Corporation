@@ -19,6 +19,8 @@ const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const WATERMARK_HEIGHT = 44; // px — height of bottom Elfsight watermark badge
+
 const InstagramReels = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -33,7 +35,8 @@ const InstagramReels = () => {
           sizeWidth: true,
           onResized: ({ height }: { height: number }) => {
             if (wrapperRef.current && iframeRef.current) {
-              wrapperRef.current.style.height = `${height}px`;
+              const clippedHeight = Math.max(300, height - WATERMARK_HEIGHT);
+              wrapperRef.current.style.height = `${clippedHeight}px`;
               iframeRef.current.style.height = `${height}px`;
             }
           },
@@ -73,10 +76,10 @@ const InstagramReels = () => {
       {/* Instagram Feed */}
       <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Wrapper */}
+        {/* Wrapper — clips watermark badge via overflow:hidden */}
         <div
           ref={wrapperRef}
-          className="relative w-full rounded-2xl transition-all duration-300"
+          className="relative w-full overflow-hidden rounded-2xl transition-all duration-300"
           style={{ minHeight: "450px" }}
         >
           <iframe
