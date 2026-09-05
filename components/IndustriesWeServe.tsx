@@ -8,12 +8,8 @@ import {
   ShoppingBag,
   Microscope,
   Car,
-  Building,
   Landmark,
-  Wifi,
-  Plane,
   UtensilsCrossed,
-  ShieldCheck,
 } from "lucide-react";
 
 export default function IndustriesWeServe() {
@@ -63,7 +59,7 @@ export default function IndustriesWeServe() {
       borderColor: "border-[#00a65d]/20",
     },
     {
-      title: "Laboratories",
+      title: "Diagnostics & Labs",
       desc: "Supporting diagnostic brands with impactful communication, specimen displays, and educational solutions.",
       icon: Microscope,
       image: "/industry-we-cater/LABORAORATIES.jpg.jpeg",
@@ -79,14 +75,6 @@ export default function IndustriesWeServe() {
       borderColor: "border-[#003b46]/20",
     },
     {
-      title: "Construction & Real Estate",
-      desc: "Architectural keepsakes, project launch mementos, and luxury client handover gifts.",
-      icon: Building,
-      image: "/industry-we-cater/CONSTRUCTION & REAL ESTATE.jpg.jpeg",
-      color: "text-[#0093cb]",
-      borderColor: "border-[#0093cb]/20",
-    },
-    {
       title: "Insurance & Finance",
       desc: "Trust-building advisor kits, milestone awards, and financial wellness reminder tools.",
       icon: Landmark,
@@ -95,36 +83,12 @@ export default function IndustriesWeServe() {
       borderColor: "border-[#00a8b5]/20",
     },
     {
-      title: "Telecom & Networking",
-      desc: "Tech giveaways, connectivity reminders, and dynamic QR-enabled utility products.",
-      icon: Wifi,
-      image: "/industry-we-cater/TELECOM & NETWORKING COMPANIES.jpg.jpeg",
-      color: "text-[#0093cb]",
-      borderColor: "border-[#0093cb]/20",
-    },
-    {
-      title: "Travel & Tourism",
-      desc: "Destination mementos, wanderlust lifestyle items, and customized travel accessories.",
-      icon: Plane,
-      image: "/industry-we-cater/TRAVEL & TOURISM.jpg.jpeg",
-      color: "text-[#00a65d]",
-      borderColor: "border-[#00a65d]/20",
-    },
-    {
       title: "Food & Hospitality",
       desc: "Bespoke culinary merchandise, chef brand reminders, and hospitality guest amenities.",
       icon: UtensilsCrossed,
       image: "/industry-we-cater/Food and Hospitality.jpg.jpeg",
       color: "text-[#8ac926]",
       borderColor: "border-[#8ac926]/20",
-    },
-    {
-      title: "Government Institutes",
-      desc: "Formal mementos, institutional felicitation awards, and public awareness campaign items.",
-      icon: ShieldCheck,
-      image: "/industry-we-cater/GOVERNMENT INSTITUTES.jpg.jpeg",
-      color: "text-[#003b46]",
-      borderColor: "border-[#003b46]/20",
     },
   ];
 
