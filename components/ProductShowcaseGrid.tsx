@@ -80,8 +80,8 @@ export default function ProductShowcaseGrid() {
       title: "Coming Soon",
       desc: "Exciting new medical innovations & upcoming product launches.",
       link: "#",
-      bgClass: "from-[#1f1b07] via-[#2d270c] to-[#141105]",
-      accentColor: "#F5A623",
+      bgClass: "from-[#072c44] via-[#0b3c5d] to-[#00a65d]",
+      accentColor: "#0093cb",
       image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_39_15%20AM.png",
       tabName: "Coming Soon"
     },
@@ -167,10 +167,15 @@ export default function ProductShowcaseGrid() {
               card.id === 4 ? (
                 <div
                   key={card.id}
-                  className="snap-center shrink-0 w-[84vw] max-w-[320px] h-[370px] rounded-3xl relative overflow-hidden shadow-xl flex items-center justify-center p-5 bg-gradient-to-br from-[#0a1525]/90 via-[#10233b]/85 to-[#06101d]/95 backdrop-blur-xl border border-white/15"
+                  className="snap-center shrink-0 w-[84vw] max-w-[320px] h-[370px] rounded-3xl relative overflow-hidden shadow-xl flex items-center justify-center p-5 bg-gradient-to-br from-[#072c44] via-[#0093cb]/85 to-[#00a65d] border border-white/20"
                 >
-                  <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-md pointer-events-none" />
+                  <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#0093cb]/40 rounded-full blur-2xl pointer-events-none" />
+                  <div className="absolute -bottom-12 -left-12 w-36 h-36 bg-[#00a65d]/40 rounded-full blur-2xl pointer-events-none" />
+                  <div className="absolute inset-0 bg-black/15 pointer-events-none" />
                   <div className="relative z-10 text-center">
+                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-white/90 bg-white/15 px-3 py-1 rounded-full border border-white/20 backdrop-blur-md inline-block mb-3">
+                      Category 05
+                    </span>
                     <h3 className="text-3xl sm:text-4xl font-black uppercase tracking-wider text-white drop-shadow-lg">
                       Coming Soon
                     </h3>
@@ -399,10 +404,15 @@ export default function ProductShowcaseGrid() {
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-4 md:p-5 lg:p-4 flex items-center justify-center flex-1 relative overflow-hidden group shadow-xl h-full min-h-0 bg-gradient-to-br from-[#0a1525]/90 via-[#10233b]/85 to-[#06101d]/95 backdrop-blur-xl border border-white/15"
+                className="rounded-2xl lg:rounded-3xl p-4 md:p-5 lg:p-4 flex items-center justify-center flex-1 relative overflow-hidden group shadow-xl h-full min-h-0 bg-gradient-to-br from-[#072c44] via-[#0093cb]/85 to-[#00a65d] border border-white/20"
               >
-                <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-md pointer-events-none" />
+                <div className="absolute -top-12 -right-12 w-40 h-40 bg-[#0093cb]/40 rounded-full blur-2xl pointer-events-none group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute -bottom-12 -left-12 w-40 h-40 bg-[#00a65d]/40 rounded-full blur-2xl pointer-events-none group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-black/15 pointer-events-none" />
                 <div className="relative z-10 text-center">
+                  <span className="text-[10px] md:text-[11px] font-extrabold uppercase tracking-widest text-white/90 bg-white/15 px-3 py-1 rounded-full border border-white/20 backdrop-blur-md inline-block mb-2.5">
+                    Category 05
+                  </span>
                   <h3 className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-black uppercase tracking-wider text-white drop-shadow-lg">
                     Coming Soon
                   </h3>
