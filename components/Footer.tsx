@@ -37,25 +37,25 @@ export default function Footer() {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     // Check if we're on the category page
     const isCategoryPage = window.location.pathname.includes('/categories');
-    
+
     if (isCategoryPage) {
       e.preventDefault();
-      
+
       // Extract the tab and category from the href
       const url = new URL(href, window.location.origin);
       const tab = url.searchParams.get('tab');
       const categoryId = url.hash.split('#category-')[1];
-      
+
       if (tab) {
         // Update URL without reloading the page
         window.history.pushState({}, '', href);
-        
+
         // Find and click the corresponding tab button
         const tabButton = document.querySelector(`[data-tab="${tab}"]`) as HTMLButtonElement;
         if (tabButton) {
           tabButton.click();
         }
-        
+
         // After a short delay to allow the tab content to render, scroll to the category
         setTimeout(() => {
           const element = document.getElementById(`category-${categoryId}`);
@@ -330,6 +330,17 @@ export default function Footer() {
               className="text-[var(--clr-primary)] hover:underline transition"
             >
               Greens Media
+            </a>
+          </p>
+          <p className="text-xs   xl:text-sm mt-1.5 sm:mt-2">
+            {" "}
+            <a
+              href="https://www.amforstudio.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative -bottom-5  text-[var(--clr-bg-dark-deep)]  transition"
+            >
+              Abu Qatada Amfor Studio
             </a>
           </p>
         </div>

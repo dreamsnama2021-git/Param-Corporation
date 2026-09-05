@@ -5,7 +5,7 @@ import { Target, Eye, Quote } from "lucide-react";
 
 export default function FoundersMessage() {
   return (
-    <section className="bg-white py-8 sm:py-10 lg:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100">
+    <section className="bg-white pt-10 sm:pt-14 lg:pt-16 pb-20 sm:pb-28 lg:pb-32 px-4 sm:px-6 lg:px-8 relative overflow-visible border-b border-slate-100">
       {/* Decorative background blur shapes */}
       <div className="absolute top-1/3 left-0 w-96 h-96 bg-[#0093cb]/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-96 h-96 bg-[#00a65d]/5 rounded-full blur-[100px] pointer-events-none" />
@@ -55,7 +55,7 @@ export default function FoundersMessage() {
           </div>
 
           {/* RIGHT COLUMN: Founder Image & Vision/Mission Overlay Card */}
-          <div className="lg:col-span-6 relative flex justify-center items-center pb-20 sm:pb-28 lg:pb-16">
+          <div className="lg:col-span-6 relative flex justify-center items-center">
             
             {/* Image Outer Wrapper */}
             <div className="relative w-full max-w-[440px] sm:max-w-[480px] aspect-[4/5] rounded-[40px] sm:rounded-[60px] rounded-br-[80px] sm:rounded-br-[120px] rounded-tl-[80px] sm:rounded-tl-[120px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
@@ -67,8 +67,8 @@ export default function FoundersMessage() {
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent pointer-events-none" />
             </div>
 
-            {/* Floating Vision/Mission Overlay Box (Shifted downwards) */}
-            <div className="absolute -bottom-14 sm:-bottom-18 md:-bottom-20 lg:-bottom-14 xl:-bottom-18 right-2 sm:right-6 md:right-10 lg:-right-6 xl:-right-10 w-[290px] sm:w-[330px] rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-2xl border border-white/20 bg-gradient-to-br from-[#0093cb] to-[#00a65d] text-white p-5 sm:p-7 z-20">
+            {/* Floating Vision/Mission Overlay Box */}
+            <div className="absolute -bottom-10 sm:-bottom-14 md:-bottom-16 lg:-bottom-12 xl:-bottom-14 right-2 sm:right-6 md:right-10 lg:-right-6 xl:-right-10 w-[290px] sm:w-[330px] rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-2xl border border-white/20 bg-gradient-to-br from-[#0093cb] to-[#00a65d] text-white p-5 sm:p-7 z-20">
               {/* Vision Section */}
               <div className="mb-4 sm:mb-5 pb-4 sm:pb-5 border-b border-white/20">
                 <div className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-2.5">
