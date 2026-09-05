@@ -3,8 +3,6 @@
 import { useRef } from "react";
 import Script from "next/script";
 
-const WATERMARK_HEIGHT = 52; // px — height of "Free Instagram Feed Widget" badge
-
 const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     {...props}
@@ -32,11 +30,10 @@ const InstagramReels = () => {
           log: false,
           checkOrigin: false,
           scrolling: false,
+          sizeWidth: true,
           onResized: ({ height }: { height: number }) => {
             if (wrapperRef.current && iframeRef.current) {
-              // Clip watermark: show content minus the badge height
-              const clippedHeight = height - WATERMARK_HEIGHT;
-              wrapperRef.current.style.height = `${clippedHeight}px`;
+              wrapperRef.current.style.height = `${height}px`;
               iframeRef.current.style.height = `${height}px`;
             }
           },
@@ -47,7 +44,7 @@ const InstagramReels = () => {
   };
 
   return (
-    <section className="relative py-8 sm:py-10 md:py-12 bg-[#f9fafb] overflow-hidden">
+    <section className="relative py-8 sm:py-10 md:py-12 lg:py-16 bg-[#f9fafb] overflow-hidden">
 
       {/* iframeResizer parent-side script */}
       <Script
@@ -76,11 +73,11 @@ const InstagramReels = () => {
       {/* Instagram Feed */}
       <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Wrapper — clips watermark via overflow:hidden; height set dynamically by iframeResizer */}
+        {/* Wrapper */}
         <div
           ref={wrapperRef}
-          className="relative w-full overflow-hidden rounded-2xl"
-          style={{ minHeight: "300px" }}
+          className="relative w-full rounded-2xl transition-all duration-300"
+          style={{ minHeight: "450px" }}
         >
           <iframe
             ref={iframeRef}
@@ -88,29 +85,12 @@ const InstagramReels = () => {
             title="Param Corporation Instagram Feed"
             loading="lazy"
             className="w-full border-0 block"
-            style={{ minHeight: "300px" }}
+            style={{ minHeight: "450px" }}
             scrolling="no"
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
           />
-          {/* Solid cover over any residual watermark */}
-          <div
-            className="absolute -bottom-15 left-0 right-0 pointer-events-none"
-            style={{ height: `${WATERMARK_HEIGHT}px`, background: "#f9fafb" }}
-          />
         </div>
 
-        {/* Follow CTA */}
-        <div className="mt-6 text-center">
-          <a
-            href="https://www.instagram.com/paramcorporation"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center z-30 gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-[#0093cb] to-[#00a65d] text-white font-extrabold text-xs uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-105 transition-all"
-          >
-            <InstagramIcon className="w-4 h-4" />
-            <span>Follow @paramcorporation on Instagram</span>
-          </a>
-        </div>
       </div>
     </section>
   );
