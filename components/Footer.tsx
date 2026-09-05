@@ -332,7 +332,7 @@ export default function Footer() {
               Greens Media
             </a>
           </p>
-          <p className="text-xs   xl:text-sm mt-1.5 sm:mt-2">
+          <p className="text-xs   xl:text-sm -mt-2">
             {" "}
             <a
               href="https://www.amforstudio.in/"
