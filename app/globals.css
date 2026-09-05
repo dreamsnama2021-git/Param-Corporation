@@ -1451,21 +1451,6 @@ nav img {
   pointer-events: none;
 }
 
-/* Hide Elfsight watermark branding badge */
-a[href*="elfsight.com"],
-[class*="elfsight-app"] a[href*="elfsight.com"],
-div[class*="BadgeContainer"] {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-}
-
 /* ----------------------------------------------
    QUICK REFERENCE TABLE (CSS Comments)
 --------------------------------------------- */
