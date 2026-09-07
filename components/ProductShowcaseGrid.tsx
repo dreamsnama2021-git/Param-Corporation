@@ -37,7 +37,7 @@ export default function ProductShowcaseGrid() {
       bgClass: "from-[#08222f] via-[#092a3b] to-[#0c374d]",
       accentColor: "#0093cb",
       desktopImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Categories.png",
-      mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Categories.png",
+      mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Banners_Circle%20Banner_Categories%20Mobile.png",
       tabName: "Desktop"
     },
     {
@@ -51,7 +51,7 @@ export default function ProductShowcaseGrid() {
       bgClass: "from-[#071711] via-[#092218] to-[#0d3324]",
       accentColor: "#00a65d",
       desktopImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/medipride.png",
-      mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/medipride.png",
+      mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Banners_Circle%20Banner_medipride%20Mobile.png",
       tabName: "Medipride"
     },
     {
@@ -65,7 +65,7 @@ export default function ProductShowcaseGrid() {
       bgClass: "from-[#031d2e] via-[#062c44] to-[#083c5e]",
       accentColor: "#0093cb",
       desktopImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Digital%20Update.png",
-      mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Digital%20Update.png",
+      mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Banners_Circle%20Banner_Digital%20Update%20Mobile.png",
       tabName: "Digital"
     },
     {
@@ -79,7 +79,7 @@ export default function ProductShowcaseGrid() {
       bgClass: "from-[#0f2419] via-[#143323] to-[#1a442e]",
       accentColor: "#00a65d",
       desktopImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Peersonalized%20Update.png",
-      mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Peersonalized%20Update.png",
+      mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Banners_Circle%20Banner_Peersonalized%20Update%20Mobile.png",
       tabName: "Personalized"
     },
     {
@@ -107,7 +107,7 @@ export default function ProductShowcaseGrid() {
       bgClass: "from-[#171412] via-[#241e1a] to-[#120f0d]",
       accentColor: "#0093cb",
       desktopImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Koru%20update.png",
-      mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Koru.png",
+      mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Banners_Circle%20Banner_Koru%20update%20Mobile.png",
       tabName: "Detailers"
     }
   ];
