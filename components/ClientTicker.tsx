@@ -18,7 +18,7 @@ const clients = [
   },
   {
     name: "Akumentis",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/5-6-r0ab169ljwd6nazc85sxbh8evtqo0tq15de6u5grv8.png",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0005-scaled.jpg",
   },
   {
     name: "Group Pharma",
@@ -26,7 +26,7 @@ const clients = [
   },
   {
     name: "Mankind",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/14-1-r0ab1m8us2z24oc4mupkzv78zdjwnohgvkhfzut2xg.png",
+    logo: "https://companieslogo.com/img/orig/MANKIND.NS_BIG-e2edbe6b.png?t=1720244492",
   },
   {
     name: "Centaur",
@@ -54,7 +54,7 @@ const clients = [
   },
   {
     name: "IPCA",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/4-6-r0ab14dx68am0322j4zo6hphp1zxlfikh437vljk7o.png",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0004-scaled.jpg",
   },
   {
     name: "Ajanta Pharma",
