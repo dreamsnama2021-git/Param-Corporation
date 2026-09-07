@@ -489,7 +489,7 @@ const PageBanner = () => (
   <div className="relative w-full h-[510px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[590px] overflow-hidden">
     {/* Mobile image */}
     <Image
-      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Pharma%20Launch.png"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Mobile.png"
       alt="Pharma Launch Banner - Mobile"
       fill
       className="object-cover object-center block md:hidden"
@@ -499,7 +499,7 @@ const PageBanner = () => (
 
     {/* Tablet image */}
     <Image
-      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Pharma%20Launch.png"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Tablet.png"
       alt="Pharma Launch Banner - Tablet"
       fill
       className="object-cover object-center hidden md:block lg:hidden"
