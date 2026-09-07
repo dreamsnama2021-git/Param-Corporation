@@ -58,7 +58,7 @@ export default function ProductShowcaseGrid() {
       link: "/digital-gifts",
       bgClass: "from-[#031d2e] via-[#062c44] to-[#083c5e]",
       accentColor: "#0093cb",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Digital.png",
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Digital%20Update.png",
       tabName: "Digital"
     },
     {
@@ -70,7 +70,7 @@ export default function ProductShowcaseGrid() {
       link: "/personalized",
       bgClass: "from-[#0f2419] via-[#143323] to-[#1a442e]",
       accentColor: "#00a65d",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Personalized.png",
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Peersonalized%20Update.png",
       tabName: "Personalized"
     },
     {
@@ -94,7 +94,7 @@ export default function ProductShowcaseGrid() {
       link: "/koru",
       bgClass: "from-[#171412] via-[#241e1a] to-[#120f0d]",
       accentColor: "#0093cb",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Koru.png",
+      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Koru%20update.png",
       tabName: "Detailers"
     }
   ];
