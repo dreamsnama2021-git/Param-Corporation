@@ -154,7 +154,7 @@ const PageBanner = () => (
  <div className="relative w-full h-[220px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[590px] overflow-hidden">
     {/* Mobile image */}
     <Image
-      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Mobile.png"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Banners_Categories%20Banner%20Mobile.png"
       alt="MediPride Banner - Mobile"
       fill
       className="object-cover object-center block md:hidden"
@@ -164,7 +164,7 @@ const PageBanner = () => (
 
     {/* Tablet image */}
     <Image
-      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/Products%20page%20Tablet.png"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Banners_Categories%20Banner%20Tablet.png"
       alt="MediPride Banner - Tablet"
       fill
       className="object-cover object-center hidden md:block lg:hidden"
@@ -174,7 +174,7 @@ const PageBanner = () => (
 
     {/* Desktop image */}
     <Image
-      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Categories%20Banner.png"
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Banners_Categories%20Banner%20Desktop.png"
       alt="MediPride Banner - Desktop"
       fill
       className="object-cover object-center hidden lg:block"
