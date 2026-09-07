@@ -177,7 +177,7 @@ export default function QualityAssurance() {
 
             {/* PRACTICES CONTAINER (All 6 Cards Grid on >=1280px, 2 Cards Auto-Sliding on <1280px) */}
             <div className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 min-h-[150px] items-stretch">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 min-h-[150px] items-stretch">
                 {visiblePractices.map((item) => {
                   const Icon = item.icon;
                   return (
@@ -186,18 +186,18 @@ export default function QualityAssurance() {
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4 }}
-                      className="group relative bg-white p-4.5 rounded-2xl border border-slate-100/80 shadow-sm hover:shadow-lg hover:border-[#0093cb]/20 transition-all duration-300 flex flex-col items-start text-left space-y-2.5 cursor-pointer overflow-hidden justify-center"
+                      className="group relative bg-white p-3.5 sm:p-4.5 rounded-2xl border border-slate-100/80 shadow-sm hover:shadow-lg hover:border-[#0093cb]/20 transition-all duration-300 flex flex-col items-start text-left space-y-2 sm:space-y-2.5 cursor-pointer overflow-hidden justify-center min-w-0"
                     >
                       {/* Soft Brand Gradient Overlay on Hover */}
                       <div className="absolute inset-0 bg-gradient-to-br from-[#0093cb]/5 to-[#00a65d]/5 rounded-[14px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                      <div className={`p-2 rounded-xl ${item.bgColor} border ${item.borderColor} transition-all duration-300 group-hover:bg-white group-hover:scale-105 z-10`}>
-                        <Icon className={`w-5 h-5 ${item.color}`} />
+                      <div className={`p-1.5 sm:p-2 rounded-xl ${item.bgColor} border ${item.borderColor} transition-all duration-300 group-hover:bg-white group-hover:scale-105 z-10`}>
+                        <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${item.color}`} />
                       </div>
-                      <h4 className="font-extrabold text-xs sm:text-sm text-slate-800 uppercase tracking-wide leading-tight z-10 transition-colors duration-300 group-hover:text-[#0093cb]">
+                      <h4 className="font-extrabold text-[11px] sm:text-sm text-slate-800 uppercase tracking-wide leading-tight z-10 transition-colors duration-300 group-hover:text-[#0093cb] line-clamp-2">
                         {item.title}
                       </h4>
-                      <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed z-10 line-clamp-3">
+                      <p className="text-slate-500 text-[10px] sm:text-xs leading-relaxed z-10 line-clamp-3">
                         {item.desc}
                       </p>
                     </motion.div>

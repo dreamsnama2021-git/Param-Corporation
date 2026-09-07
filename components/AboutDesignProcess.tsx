@@ -71,11 +71,13 @@ export default function AboutDesignProcess({
     },
   ];
 
-  // Auto-slide 3 cards upfront at a time on screens < 1280px
+  const totalPages = Math.ceil(philosophy.length / 2); // 3 pages
+
+  // Auto-slide 2 cards upfront at a time on screens < 1280px (full pair stepping)
   React.useEffect(() => {
     if (isDesktopXl) return;
     const timer = setInterval(() => {
-      setSlideIndex((prev) => (prev + 1 >= philosophy.length ? 0 : prev + 1));
+      setSlideIndex((prev) => (prev + 2 >= philosophy.length ? 0 : prev + 2));
     }, 4000);
     return () => clearInterval(timer);
   }, [isDesktopXl, philosophy.length]);
@@ -85,7 +87,6 @@ export default function AboutDesignProcess({
     : [
         philosophy[slideIndex % philosophy.length],
         philosophy[(slideIndex + 1) % philosophy.length],
-        philosophy[(slideIndex + 2) % philosophy.length],
       ];
 
   const steps = [
@@ -167,26 +168,26 @@ export default function AboutDesignProcess({
               </p>
             </div>
 
-            {/* MIDDLE COMPONENT: Our Design Philosophy (5 Cards Grid on >=1280px, 3 Cards Auto-Sliding on <1280px) */}
+            {/* MIDDLE COMPONENT: Our Design Philosophy (5 Cards Grid on >=1280px, 2 Cards Auto-Sliding on <1280px) */}
             <div className="space-y-4 w-full">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-6 items-stretch">
+              <div className="grid grid-cols-2 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6 items-stretch max-w-[640px] xl:max-w-none mx-auto">
                 {visiblePhilosophy.map((item) => {
                   const Icon = item.icon;
                   return (
                     <motion.div
-                      key={item.title}
-                      initial={{ opacity: 0, y: 15 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="group bg-white p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 transition-all duration-300 flex flex-col items-center text-center space-y-3 cursor-pointer justify-center"
+                      key={`${item.title}-${slideIndex}`}
+                      initial={{ opacity: 0.3, scale: 0.98 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className="group bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 transition-all duration-300 flex flex-col items-center text-center space-y-2 sm:space-y-3 cursor-pointer justify-center min-w-0"
                     >
-                      <div className={`p-3 rounded-xl bg-slate-50 border ${item.borderColor} shadow-sm shrink-0`}>
-                        <Icon className={`w-7 h-7 ${item.color}`} />
+                      <div className={`p-2 sm:p-3 rounded-xl bg-slate-50 border ${item.borderColor} shadow-sm shrink-0`}>
+                        <Icon className={`w-5 h-5 sm:w-7 sm:h-7 ${item.color}`} />
                       </div>
-                      <h4 className="font-extrabold text-xs sm:text-sm text-slate-800 tracking-wide uppercase leading-tight">
+                      <h4 className="font-extrabold text-[11px] sm:text-sm text-slate-800 tracking-wide uppercase leading-tight line-clamp-2">
                         {item.title}
                       </h4>
-                      <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed font-medium line-clamp-3">
+                      <p className="text-slate-500 text-[10px] sm:text-xs leading-snug sm:leading-relaxed font-medium line-clamp-3">
                         {item.desc}
                       </p>
                     </motion.div>
@@ -198,21 +199,21 @@ export default function AboutDesignProcess({
               {!isDesktopXl && (
                 <div className="flex justify-center items-center gap-3 pt-2">
                   <div className="flex items-center gap-1.5">
-                    {philosophy.map((_, idx) => (
+                    {Array.from({ length: totalPages }).map((_, pageIdx) => (
                       <button
-                        key={idx}
-                        onClick={() => setSlideIndex(idx)}
+                        key={pageIdx}
+                        onClick={() => setSlideIndex(pageIdx * 2)}
                         className={`transition-all duration-300 rounded-full ${
-                          slideIndex % philosophy.length === idx
+                          Math.floor(slideIndex / 2) === pageIdx
                             ? "w-6 h-2 bg-[#0093cb]"
                             : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
                         }`}
-                        aria-label={`Slide to philosophy ${idx + 1}`}
+                        aria-label={`Slide to philosophy pair ${pageIdx + 1}`}
                       />
                     ))}
                   </div>
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                    0{(slideIndex % philosophy.length) + 1} / 05 &bull; Auto Sliding
+                    0{Math.floor(slideIndex / 2) + 1} / 0{totalPages} &bull; Auto Sliding
                   </span>
                 </div>
               )}

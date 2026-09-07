@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Monitor,
@@ -8,20 +8,12 @@ import {
   BookOpen,
   QrCode,
   Gift,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 export default function WhatWeDoOfferings() {
-  const [slideIndex, setSlideIndex] = React.useState(0);
-  const [isDesktopXl, setIsDesktopXl] = React.useState(false);
-
-  React.useEffect(() => {
-    const checkWidth = () => {
-      setIsDesktopXl(window.innerWidth >= 1280);
-    };
-    checkWidth();
-    window.addEventListener("resize", checkWidth);
-    return () => window.removeEventListener("resize", checkWidth);
-  }, []);
+  const [slideIndex, setSlideIndex] = useState(0);
 
   const offerings = [
     {
@@ -76,22 +68,23 @@ export default function WhatWeDoOfferings() {
     },
   ];
 
-  // Auto-slide 3 cards upfront at a time on screens < 1280px
-  React.useEffect(() => {
-    if (isDesktopXl) return;
+  const totalPages = Math.ceil(offerings.length / 2); // 3 pages
+
+  // Auto-slide every 4 seconds by 2 (full columns)
+  useEffect(() => {
     const timer = setInterval(() => {
-      setSlideIndex((prev) => (prev + 1 >= offerings.length ? 0 : prev + 1));
+      setSlideIndex((prev) => (prev + 2 >= offerings.length ? 0 : prev + 2));
     }, 4000);
     return () => clearInterval(timer);
-  }, [isDesktopXl, offerings.length]);
+  }, [offerings.length]);
 
-  const visibleOfferings = isDesktopXl
-    ? offerings
-    : [
-        offerings[slideIndex % offerings.length],
-        offerings[(slideIndex + 1) % offerings.length],
-        offerings[(slideIndex + 2) % offerings.length],
-      ];
+  const handlePrev = () => {
+    setSlideIndex((prev) => (prev - 2 < 0 ? (totalPages - 1) * 2 : prev - 2));
+  };
+
+  const handleNext = () => {
+    setSlideIndex((prev) => (prev + 2 >= offerings.length ? 0 : prev + 2));
+  };
 
   return (
     <section className="bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100">
@@ -127,7 +120,7 @@ export default function WhatWeDoOfferings() {
 
         </div>
 
-        {/* BOTTOM COMPONENT: Our Core Offerings (5 Cards Grid on >=1280px, 3 Cards Auto-Sliding on <1280px) */}
+        {/* BOTTOM COMPONENT: Our Core Offerings */}
         <div className="space-y-8">
           
           {/* Header */}
@@ -140,48 +133,92 @@ export default function WhatWeDoOfferings() {
             </p>
           </div>
 
-          {/* CARDS CONTAINER */}
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-6 items-stretch">
-              {visibleOfferings.map((item) => {
+          {/* ── DESKTOP VIEW (>= 1280px): ALL 5 CARDS IN GRID ── */}
+          <div className="hidden xl:grid grid-cols-5 gap-5 lg:gap-6 items-stretch">
+            {offerings.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.num}
+                  className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl hover:border-[#0093cb]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer w-full"
+                >
+                  {/* Top info */}
+                  <div className="p-5 flex flex-col items-start space-y-3">
+                    <div className="flex items-center justify-between w-full">
+                      <span className={`text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center ${item.numBg}`}>
+                        {item.num}
+                      </span>
+                      <div className={`p-2 rounded-lg bg-slate-50 border ${item.borderColor}`}>
+                        <Icon className={`w-5 h-5 ${item.color}`} />
+                      </div>
+                    </div>
+
+                    <h4 className="text-[13px] font-black text-slate-800 tracking-wide uppercase leading-tight">
+                      {item.title}
+                    </h4>
+
+                    <p className="text-slate-500 text-xs leading-relaxed font-medium line-clamp-2">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  {/* Product Image Container */}
+                  <div className="w-full aspect-square relative overflow-hidden mt-auto">
+                    <div
+                      className="w-full h-full bg-cover bg-center bg-no-repeat transition-transform duration-500 hover:scale-105"
+                      style={{
+                        backgroundImage: `url("${item.image}")`,
+                      }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* ── MOBILE & TABLET VIEW (< 1280px): 2 CARDS UPFRONT WITH SLIDING ── */}
+          <div className="block xl:hidden space-y-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 max-w-[640px] mx-auto w-full items-stretch">
+              {[
+                offerings[slideIndex % offerings.length],
+                offerings[(slideIndex + 1) % offerings.length],
+              ].map((item) => {
                 const Icon = item.icon;
                 return (
                   <motion.div
-                    key={item.num}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl hover:border-[#0093cb]/30 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                    key={`${item.num}-${slideIndex}`}
+                    initial={{ opacity: 0.3, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer w-full min-w-0"
                   >
                     {/* Top info */}
-                    <div className="p-4 sm:p-5 flex flex-col items-start space-y-3">
-                      {/* Badge and Icon */}
+                    <div className="p-3 sm:p-4 md:p-5 flex flex-col items-start space-y-1.5 sm:space-y-3">
                       <div className="flex items-center justify-between w-full">
-                        <span className={`text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center ${item.numBg}`}>
+                        <span className={`text-white text-[10px] sm:text-xs font-bold rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center ${item.numBg}`}>
                           {item.num}
                         </span>
-                        <div className={`p-2 rounded-lg bg-slate-50 border ${item.borderColor}`}>
-                          <Icon className={`w-5 h-5 ${item.color}`} />
+                        <div className={`p-1.5 sm:p-2 rounded-lg bg-slate-50 border ${item.borderColor}`}>
+                          <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 ${item.color}`} />
                         </div>
                       </div>
 
-                      {/* Title */}
-                      <h4 className="text-xs sm:text-[13px] font-black text-slate-800 tracking-wide uppercase leading-tight">
+                      <h4 className="text-[11px] sm:text-[13px] font-black text-slate-800 tracking-wide uppercase leading-tight line-clamp-2">
                         {item.title}
                       </h4>
 
-                      {/* Description */}
-                      <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed font-medium line-clamp-2">
+                      <p className="text-slate-500 text-[10px] sm:text-xs leading-snug sm:leading-relaxed font-medium line-clamp-2">
                         {item.desc}
                       </p>
                     </div>
 
-                    {/* Product Image - Full Width Edge-to-Edge Display */}
-                    <div className="h-[200px] sm:h-[220px] w-full relative overflow-hidden mt-auto">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+                    {/* Product Image Container */}
+                    <div className="w-full aspect-square relative overflow-hidden mt-auto">
+                      <div
+                        className="w-full h-full bg-cover bg-center bg-no-repeat transition-transform duration-500 hover:scale-105"
+                        style={{
+                          backgroundImage: `url("${item.image}")`,
+                        }}
                       />
                     </div>
                   </motion.div>
@@ -189,28 +226,48 @@ export default function WhatWeDoOfferings() {
               })}
             </div>
 
-            {/* Auto-Slide Dots Navigation (only on <1280px) */}
-            {!isDesktopXl && (
-              <div className="flex justify-center items-center gap-3 pt-2">
+            {/* Auto-Slide Dots Navigation & Controls */}
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2">
+              <div className="flex items-center gap-3">
+                {/* Prev Button */}
+                <button
+                  onClick={handlePrev}
+                  aria-label="Previous offering"
+                  className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 flex items-center justify-center transition-all shadow-sm active:scale-95"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+
+                {/* Dots Navigation for pairs */}
                 <div className="flex items-center gap-1.5">
-                  {offerings.map((_, idx) => (
+                  {Array.from({ length: totalPages }).map((_, pageIdx) => (
                     <button
-                      key={idx}
-                      onClick={() => setSlideIndex(idx)}
+                      key={pageIdx}
+                      onClick={() => setSlideIndex(pageIdx * 2)}
                       className={`transition-all duration-300 rounded-full ${
-                        slideIndex % offerings.length === idx
+                        Math.floor(slideIndex / 2) === pageIdx
                           ? "w-6 h-2 bg-[#0093cb]"
                           : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
                       }`}
-                      aria-label={`Slide to offering ${idx + 1}`}
+                      aria-label={`Slide to pair ${pageIdx + 1}`}
                     />
                   ))}
                 </div>
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                  0{(slideIndex % offerings.length) + 1} / 05 &bull; Auto Sliding
-                </span>
+
+                {/* Next Button */}
+                <button
+                  onClick={handleNext}
+                  aria-label="Next offering"
+                  className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 flex items-center justify-center transition-all shadow-sm active:scale-95"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
               </div>
-            )}
+
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                0{Math.floor(slideIndex / 2) + 1} / 0{totalPages} &bull; Auto Sliding
+              </span>
+            </div>
           </div>
 
         </div>
@@ -219,3 +276,6 @@ export default function WhatWeDoOfferings() {
     </section>
   );
 }
+
+
+

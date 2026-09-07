@@ -146,11 +146,13 @@ function GiftsByCategories() {
     return () => window.removeEventListener("resize", checkWidth);
   }, []);
 
-  // Auto-slide 3 cards upfront at a time on mobile (< 768px)
+  const totalPages = Math.ceil(CATEGORIES.length / 2); // 2 pages
+
+  // Auto-slide 2 cards upfront at a time on mobile (< 768px)
   useEffect(() => {
     if (isDesktopXl) return;
     const timer = setInterval(() => {
-      setSlideIndex((prev) => (prev + 1 >= CATEGORIES.length ? 0 : prev + 1));
+      setSlideIndex((prev) => (prev + 2 >= CATEGORIES.length ? 0 : prev + 2));
     }, 4000);
     return () => clearInterval(timer);
   }, [isDesktopXl]);
@@ -160,7 +162,6 @@ function GiftsByCategories() {
     : [
         CATEGORIES[slideIndex % CATEGORIES.length],
         CATEGORIES[(slideIndex + 1) % CATEGORIES.length],
-        CATEGORIES[(slideIndex + 2) % CATEGORIES.length],
       ];
 
   // Function to handle navigation with scroll to top on destination
@@ -202,14 +203,14 @@ function GiftsByCategories() {
 
         {/* Categories Grid - 4 Columns Grid */}
         <div className="space-y-4 mb-6 sm:mb-10 lg:mb-10 xl:mb-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4 lg:gap-6 xl:gap-8 pb-4 sm:pb-0">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 xl:gap-8 pb-2 sm:pb-0">
             {visibleCategories.map((item) => (
               <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="snap-center shrink-0 w-[75vw] max-w-[280px] sm:w-auto sm:max-w-none"
+                key={`${item.id}-${slideIndex}`}
+                initial={{ opacity: 0.3, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="w-full"
               >
                 <div
                   onClick={() =>
@@ -217,7 +218,7 @@ function GiftsByCategories() {
                       item.link || `/categories/${item.id}?tab=${item.tab}`,
                     )
                   }
-                  className="group cursor-pointer relative h-[310px] sm:h-[300px] md:h-[320px] lg:h-[310px] xl:h-[380px] rounded-xl sm:rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-1.5 sm:hover:-translate-y-2 block border border-transparent hover:border-[#0093cb]/20"
+                  className="group cursor-pointer relative h-[220px] sm:h-[280px] md:h-[320px] lg:h-[310px] xl:h-[380px] rounded-xl sm:rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-1.5 sm:hover:-translate-y-2 block border border-transparent hover:border-[#0093cb]/20"
                 >
                   <Image
                     src={item.image}
@@ -234,8 +235,8 @@ function GiftsByCategories() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0093cb]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 text-white">
-                    <h3 className="font-bold text-base sm:text-lg md:text-xl xl:text-xl mb-0.5 sm:mb-1 group-hover:translate-x-1 transition-transform duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5 md:p-6 text-white">
+                    <h3 className="font-bold text-xs sm:text-lg md:text-xl xl:text-xl mb-0.5 sm:mb-1 group-hover:translate-x-1 transition-transform duration-300 line-clamp-2">
                       {item.title}
                     </h3>
                   </div>
@@ -244,25 +245,25 @@ function GiftsByCategories() {
             ))}
           </div>
 
-          {/* Auto-Slide Indicator Dots (only shown when auto-sliding on <1200px) */}
+          {/* Auto-Slide Indicator Dots (only shown when auto-sliding on <768px) */}
           {!isDesktopXl && (
-            <div className="hidden sm:flex justify-center items-center gap-3 pt-1">
+            <div className="flex justify-center items-center gap-3 pt-1">
               <div className="flex items-center gap-1.5">
-                {CATEGORIES.map((_, idx) => (
+                {Array.from({ length: totalPages }).map((_, pageIdx) => (
                   <button
-                    key={idx}
-                    onClick={() => setSlideIndex(idx)}
+                    key={pageIdx}
+                    onClick={() => setSlideIndex(pageIdx * 2)}
                     className={`transition-all duration-300 rounded-full ${
-                      slideIndex % CATEGORIES.length === idx
+                      Math.floor(slideIndex / 2) === pageIdx
                         ? "w-6 h-2 bg-[#0093cb]"
                         : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
                     }`}
-                    aria-label={`Slide to category ${idx + 1}`}
+                    aria-label={`Slide to category pair ${pageIdx + 1}`}
                   />
                 ))}
               </div>
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                0{(slideIndex % CATEGORIES.length) + 1} / 04 &bull; Auto Sliding
+                0{Math.floor(slideIndex / 2) + 1} / 0{totalPages} &bull; Auto Sliding
               </span>
             </div>
           )}

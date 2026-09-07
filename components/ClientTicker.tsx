@@ -14,7 +14,7 @@ const clients = [
   },
   {
     name: "Aristo Pharma",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/35-1-r0ab37l0cz5jsw0uc1htpyqd7vpap7t3fga29qg2dw.png",
+    logo: "https://aristopharma.com/fontend/assets/img/logo/logo-dark.png",
   },
   {
     name: "Akumentis",
@@ -30,11 +30,11 @@ const clients = [
   },
   {
     name: "Centaur",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/3-11-r0ab10mkew5gpn7j53d5winnbiigqn3n4lh9yhp4wk.png",
+    logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0010-scaled.jpg",
   },
   {
     name: "Torrent Pharma",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/13-1-r0ab1kd6eewhhgeuxtwbuvobslt68aa07b6h1avv9w.png",
+    logo: "https://companieslogo.com/img/orig/TORNTPHARM.NS_BIG-69c0918d.png?t=1745730856",
   },
   // {
   //   name: "Lupin",
@@ -42,7 +42,7 @@ const clients = [
   // },
   {
     name: "Sirmaxo",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/25-1-r0ab27v559snjpgq4m2037qun8lckpvamjhm17x0yc.png",
+    logo: "https://enviro-technologies.com/wp-content/uploads/2024/07/sirmaxologo_enviro.png",
   },
   {
     name: "Cipla",
@@ -60,10 +60,10 @@ const clients = [
     name: "Ajanta Pharma",
     logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0013-scaled.jpg",
   },
-  {
-    name: "GP",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/30-r0ab2j57fa83f10caqxix4wdrv1r5342o3bfsjgavo.png",
-  },
+  // {
+  //   name: "GP",
+  //   logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/30-r0ab2j57fa83f10caqxix4wdrv1r5342o3bfsjgavo.png",
+  // },
 ];
 
 export default function ClientTicker() {

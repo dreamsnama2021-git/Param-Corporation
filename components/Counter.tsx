@@ -273,11 +273,13 @@ export default function CreativeStatsSection(): React.ReactElement {
     return () => window.removeEventListener("resize", checkWidth);
   }, []);
 
-  // Auto-slide 3 cards upfront at a time on screens < 1280px
+  const totalPages = Math.ceil(stats.length / 2); // 3 pages
+
+  // Auto-slide 2 cards upfront at a time on screens < 1280px (step by 2 pairs)
   useEffect(() => {
     if (isDesktopXl) return;
     const timer = setInterval(() => {
-      setSlideIndex((prev) => (prev + 1 >= stats.length ? 0 : prev + 1));
+      setSlideIndex((prev) => (prev + 2 >= stats.length ? 0 : prev + 2));
     }, 4000);
     return () => clearInterval(timer);
   }, [isDesktopXl]);
@@ -287,7 +289,6 @@ export default function CreativeStatsSection(): React.ReactElement {
     : [
         stats[slideIndex % stats.length],
         stats[(slideIndex + 1) % stats.length],
-        stats[(slideIndex + 2) % stats.length],
       ];
 
   return (
@@ -336,11 +337,11 @@ export default function CreativeStatsSection(): React.ReactElement {
           </motion.p>
         </div>
 
-        {/* 5 Stats Cards Upfront on >=1280px, 3 Cards Auto-Sliding on <1280px */}
+        {/* 5 Stats Cards Upfront on >=1280px, 2 Cards Auto-Sliding on <1280px */}
         <div className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+          <div className="grid grid-cols-2 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-[640px] xl:max-w-none mx-auto">
             {visibleStats.map((stat, index) => (
-              <TiltCard key={stat.id} stat={stat} index={index} />
+              <TiltCard key={`${stat.id}-${slideIndex}`} stat={stat} index={index} />
             ))}
           </div>
 
@@ -348,21 +349,21 @@ export default function CreativeStatsSection(): React.ReactElement {
           {!isDesktopXl && (
             <div className="flex justify-center items-center gap-3 pt-2">
               <div className="flex items-center gap-1.5">
-                {stats.map((_, idx) => (
+                {Array.from({ length: totalPages }).map((_, pageIdx) => (
                   <button
-                    key={idx}
-                    onClick={() => setSlideIndex(idx)}
+                    key={pageIdx}
+                    onClick={() => setSlideIndex(pageIdx * 2)}
                     className={`transition-all duration-300 rounded-full ${
-                      slideIndex % stats.length === idx
+                      Math.floor(slideIndex / 2) === pageIdx
                         ? "w-6 h-2 bg-[#0093cb]"
                         : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
                     }`}
-                    aria-label={`Slide to stat ${idx + 1}`}
+                    aria-label={`Slide to stat pair ${pageIdx + 1}`}
                   />
                 ))}
               </div>
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                0{(slideIndex % stats.length) + 1} / 05 &bull; Auto Sliding
+                0{Math.floor(slideIndex / 2) + 1} / 0{totalPages} &bull; Auto Sliding
               </span>
             </div>
           )}

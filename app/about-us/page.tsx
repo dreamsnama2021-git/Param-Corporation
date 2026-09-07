@@ -186,7 +186,7 @@ const FloatingCard = ({
 
 // ─── ABOUT US PAGE BANNER ─────────────────────────────────────────────────────────────
 const PageBanner = () => (
- <div className="relative w-full h-[220px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[590px] overflow-hidden">
+  <div className="relative w-full h-[510px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[590px] overflow-hidden">
     {/* Mobile image */}
     <Image
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/About%20page%20Mobile.jpg"
@@ -294,7 +294,7 @@ const WhyUsSection = () => {
     <section className="py-12 sm:py-16 lg:py-20 bg-slate-50 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
-          
+
           {/* LEFT COLUMN: Header & Cards Grid */}
           <div className="lg:col-span-1 space-y-6 lg:space-y-8">
             {/* Header */}
@@ -311,7 +311,7 @@ const WhyUsSection = () => {
 
             {/* CARDS CONTAINER (All Cards Grid on >=1280px, 2 Cards Auto-Sliding on <1280px) */}
             <div className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 min-h-[160px] items-stretch">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 min-h-[160px] items-stretch">
                 {visibleCards.map((item) => {
                   const Icon = item.icon;
                   return (
@@ -320,15 +320,15 @@ const WhyUsSection = () => {
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4 }}
-                      className="bg-white p-4 lg:p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 transition-all duration-300 flex flex-col items-center text-center space-y-2.5 justify-center"
+                      className="bg-white p-3.5 sm:p-4 lg:p-5 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 transition-all duration-300 flex flex-col items-center text-center space-y-2 sm:space-y-2.5 justify-center min-w-0"
                     >
-                      <div className={`p-2.5 rounded-xl bg-slate-50 border ${item.borderColor}`}>
-                        <Icon className={`w-5 h-5 ${item.color}`} />
+                      <div className={`p-2 sm:p-2.5 rounded-xl bg-slate-50 border ${item.borderColor}`}>
+                        <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${item.color}`} />
                       </div>
-                      <h3 className="font-bold text-xs sm:text-sm text-slate-800 uppercase tracking-tight leading-snug">
+                      <h3 className="font-bold text-[11px] sm:text-sm text-slate-800 uppercase tracking-tight leading-snug line-clamp-2">
                         {item.title}
                       </h3>
-                      <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed font-medium line-clamp-3">
+                      <p className="text-slate-500 text-[10px] sm:text-xs leading-relaxed font-medium line-clamp-3">
                         {item.desc}
                       </p>
                     </motion.div>
@@ -344,11 +344,10 @@ const WhyUsSection = () => {
                       <button
                         key={pairIndex}
                         onClick={() => setSlideIndex(pairIndex)}
-                        className={`transition-all duration-300 rounded-full ${
-                          slideIndex === pairIndex
+                        className={`transition-all duration-300 rounded-full ${slideIndex === pairIndex
                             ? "w-7 h-2 bg-[#0093cb]"
                             : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
-                        }`}
+                          }`}
                         aria-label={`Slide to group ${pairIndex / 2 + 1}`}
                       />
                     ))}
@@ -364,9 +363,9 @@ const WhyUsSection = () => {
 
           {/* RIGHT COLUMN: Product Image Showcase */}
           <div className="lg:col-span-1 w-full flex flex-col h-full justify-center">
-            <div 
+            <div
               className="relative w-full h-[480px] sm:h-[560px] lg:h-full lg:min-h-[620px] xl:min-h-[680px] 2xl:min-h-[720px] rounded-[32px] sm:rounded-[40px] rounded-br-[80px] sm:rounded-br-[100px] rounded-tl-[80px] sm:rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white group"
-              style={{ 
+              style={{
                 backgroundImage: 'url(https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Why%20Clients%20Choose%20Us.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -544,7 +543,7 @@ export default function AboutUsPage() {
 
       {/* ── FOUNDERS MESSAGE ── */}
       <FoundersMessage />
-<WhyUsSection />
+      <WhyUsSection />
       {/* ── WHAT WE DO & CORE OFFERINGS ── */}
       <WhatWeDoOfferings />
 
@@ -563,7 +562,7 @@ export default function AboutUsPage() {
         <EditorialTimeline items={timelineItems} />
       </section>
 
-      
+
       <QualityAssurance />
       <AboutDesignProcess showAll={true} showSteps={false} />
       <ProjectWorkflow />

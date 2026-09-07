@@ -4,48 +4,7 @@ import Image from "next/image";
 import { ArrowRight, Calendar, Building2, Tag, Clock } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-// ─── ORIGINAL CASE STUDIES DATA (Alternating Layout) ─────────────────
-const CASE_STUDIES = [
-  {
-    id: 1,
-    title: "Transforming Pharma Marketing Strategy",
-    category: "Medical Communications",
-    client: "Leading Healthcare Brand",
-    date: "2024",
-    description:
-      "Developed comprehensive digital strategy for pharmaceutical portfolio, resulting in 45% increase in physician engagement.",
-    image:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop",
-    slug: "pharma-strategy",
-    stats: { growth: "+45%", reach: "2.8M+" },
-  },
-  {
-    id: 2,
-    title: "Cardio-Diabetes Campaign Success",
-    category: "Digital Marketing",
-    client: "Global Pharma Co.",
-    date: "2023",
-    description:
-      "Executed multi-channel campaign targeting healthcare professionals with interactive content and KOL webinars.",
-    image:
-      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop",
-    slug: "cardio-campaign",
-    stats: { growth: "+60%", reach: "4.2M+" },
-  },
-  {
-    id: 3,
-    title: "Medical Device Launch Excellence",
-    category: "Brand Strategy",
-    client: "Medical Device Inc.",
-    date: "2024",
-    description:
-      "Comprehensive launch strategy for orthopedic devices including training programs and educational materials.",
-    image:
-      "https://www.adornscustomgifts.com/wp-content/uploads/2024/09/diwalicombo6-2.jpg",
-    slug: "device-launch",
-    stats: { growth: "+120%", reach: "1.5M+" },
-  },
-];
+
 
 // ─── NEW CASE STUDIES DATA (Card Grid Layout) ─────────────────
 const CASE_STUDIES_CARDS = [
@@ -60,28 +19,28 @@ const CASE_STUDIES_CARDS = [
     readTime: "6 min read",
     category: "Retail",
   },
-  {
-    id: 2,
-    title: "Scaling Healthcare Outreach with Digital-First Strategy",
-    description:
-      "Leveraging WhatsApp-led nurturing and targeted content to increase patient engagement by 200% for a leading clinic chain.",
-    image:
-      "https://auroveda.org/wp-content/uploads/2022/11/Ways-to-improve-Indias-current-Health-Care-system-copy.jpg",
-    slug: "healthcare-digital",
-    readTime: "4 min read",
-    category: "Healthcare",
-  },
-  {
-    id: 3,
-    title: "Corporate Gifting Success for Fortune 500 Company",
-    description:
-      "Implementing a personalized gifting solution that improved employee retention and client satisfaction scores significantly.",
-    image:
-      "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru-about.jpeg",
-    slug: "corporate-gifting",
-    readTime: "5 min read",
-    category: "Corporate",
-  },
+  // {
+  //   id: 2,
+  //   title: "Scaling Healthcare Outreach with Digital-First Strategy",
+  //   description:
+  //     "Leveraging WhatsApp-led nurturing and targeted content to increase patient engagement by 200% for a leading clinic chain.",
+  //   image:
+  //     "https://auroveda.org/wp-content/uploads/2022/11/Ways-to-improve-Indias-current-Health-Care-system-copy.jpg",
+  //   slug: "healthcare-digital",
+  //   readTime: "4 min read",
+  //   category: "Healthcare",
+  // },
+  // {
+  //   id: 3,
+  //   title: "Corporate Gifting Success for Fortune 500 Company",
+  //   description:
+  //     "Implementing a personalized gifting solution that improved employee retention and client satisfaction scores significantly.",
+  //   image:
+  //     "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Koru/koru-about.jpeg",
+  //   slug: "corporate-gifting",
+  //   readTime: "5 min read",
+  //   category: "Corporate",
+  // },
 ];
 
 // ─── NEW CARD GRID VARIANT (Reference Image Style) ─────────────────

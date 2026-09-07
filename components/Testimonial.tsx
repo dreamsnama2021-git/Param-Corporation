@@ -19,7 +19,7 @@ const testimonials = [
   {
     quote:
       "We value Param Corporation's creativity, commitment and the way they truly understand our requirements. They are a key part of our success.",
-    logo: "https://paramcorp.in/wp-content/uploads/2025/01/Untitled-design-1.png",
+    logo: "https://www.livelaw.in/h-upload/2025/04/03/594155-mankindnsbig-e2edbe6b-1.webp",
     name: "Neha Bhatia",
     role: "Product Head",
     company: "Mankind Pharma Ltd",
@@ -41,7 +41,7 @@ const testimonials = [
   {
     quote:
       "I was traveling across and i met doctors and field force. The response of the Patient Education Write and Wipe board and the EDD and Ovulation Calculator is very impressive. A big shout out to the whole Param Team!",
-    logo: "https://paramcorp.in/wp-content/uploads/2025/01/Untitled-design-1.png",
+    logo: "https://www.livelaw.in/h-upload/2025/04/03/594155-mankindnsbig-e2edbe6b-1.webp",
     name: "Ms. Deeksha Pahwa",
     role: "Brand Management",
     company: "Mankind Pharma Ltd",
@@ -52,7 +52,7 @@ const testimonials = [
   {
     quote:
       "Working with Param Corporation was a fantastic experience. They turned my concept into a practical solution, completing the Fluvir Dosage Scale with precision and dedication.",
-    logo: "https://paramcorp.in/wp-content/uploads/2025/01/HETERO_HEALTHCARE-1-e1737096475593.png",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Hetero_New_Logo-Colour-Transparent.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
     name: "Samriddhi Pednekar",
     role: "Product Management",
     company: "Hetero Healthcare",
@@ -63,7 +63,7 @@ const testimonials = [
   {
     quote:
       "Their innovative solutions, prompt responses, and seamless communication stood out. Their creativity and professionalism ensured results aligned perfectly with client needs.",
-    logo: "https://paramcorp.in/wp-content/uploads/2025/01/Untitled-design.png",
+    logo: "https://companieslogo.com/img/orig/TORNTPHARM.NS_BIG-69c0918d.png?t=1745730856",
     name: "Divya Kumar",
     role: "Marketing Head",
     company: "Torrent Pharma",
@@ -74,7 +74,7 @@ const testimonials = [
   {
     quote:
       "Their prompt responses, friendly demeanor, and comprehensive solutions are truly commendable. Their professionalism shines through in every aspect of their work.",
-    logo: "https://paramcorp.in/wp-content/uploads/2025/01/Untitled-design-2.png",
+    logo: "https://www.ajantapharma.com/assets/frontend/images/media/ajanta.png",
     name: "Aayesha Idrisi",
     role: "Operations Manager",
     company: "Ajanta Pharma",
@@ -85,7 +85,7 @@ const testimonials = [
   {
     quote:
       "Thanks for your prompt & timely response. Happy to see your team efforts within a short notice. Looking forward to continuing our partnership on future projects!",
-    logo: "https://paramcorp.in/wp-content/uploads/2025/01/wockhart-testi.png",
+    logo: "https://pharmasource.global/wp-content/uploads/2024/11/Wockhardt-Limited-1.png",
     name: "Sidhharth Roy",
     role: "Procurement Lead",
     company: "Wockhardt",

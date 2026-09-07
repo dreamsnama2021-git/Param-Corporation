@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   MessageSquare,
@@ -13,27 +13,13 @@ import {
   Truck,
   HeartHandshake,
   TrendingUp,
-  Target,
-  Workflow,
-  Award,
-  Clock,
-  Users,
   ArrowRight,
-  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 export default function ProjectWorkflow() {
-  const [slideIndex, setSlideIndex] = React.useState(0);
-  const [isDesktopXl, setIsDesktopXl] = React.useState(false);
-
-  React.useEffect(() => {
-    const checkWidth = () => {
-      setIsDesktopXl(window.innerWidth >= 1280);
-    };
-    checkWidth();
-    window.addEventListener("resize", checkWidth);
-    return () => window.removeEventListener("resize", checkWidth);
-  }, []);
+  const [slideIndex, setSlideIndex] = useState(0);
 
   const steps = [
     {
@@ -128,22 +114,23 @@ export default function ProjectWorkflow() {
     },
   ];
 
-  // Auto-slide 3 cards upfront at a time on screens < 1280px
-  React.useEffect(() => {
-    if (isDesktopXl) return;
+  const totalPages = Math.ceil(steps.length / 2); // 5 pages
+
+  // Auto-slide every 4 seconds on mobile/tablet (advance by 2 full columns)
+  useEffect(() => {
     const timer = setInterval(() => {
-      setSlideIndex((prev) => (prev + 1 >= steps.length ? 0 : prev + 1));
+      setSlideIndex((prev) => (prev + 2 >= steps.length ? 0 : prev + 2));
     }, 4000);
     return () => clearInterval(timer);
-  }, [isDesktopXl, steps.length]);
+  }, [steps.length]);
 
-  const visibleSteps = isDesktopXl
-    ? steps
-    : [
-        steps[slideIndex % steps.length],
-        steps[(slideIndex + 1) % steps.length],
-        steps[(slideIndex + 2) % steps.length],
-      ];
+  const handlePrev = () => {
+    setSlideIndex((prev) => (prev - 2 < 0 ? (totalPages - 1) * 2 : prev - 2));
+  };
+
+  const handleNext = () => {
+    setSlideIndex((prev) => (prev + 2 >= steps.length ? 0 : prev + 2));
+  };
 
   return (
     <section id="project-workflow" className="py-12 sm:py-16 lg:py-20 bg-slate-50/50 relative overflow-hidden border-b border-slate-100">
@@ -176,55 +163,92 @@ export default function ProjectWorkflow() {
             </p>
           </div>
 
-         {/* Right Showcase image of laptop showing project workflow */}
-          <div className="lg:col-span-6 flex justify-center">
-            <div className="relative w-full h-[360px] sm:h-[420px] lg:h-[400px] xl:h-[460px] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
-              <img
-                src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Our%20Project%20Workflow.png"
-                alt="Structured Workflow Laptop Screen"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
+          {/* Right Showcase image of laptop showing project workflow */}
+          <div className="lg:col-span-6 flex justify-center w-full">
+            <div
+              className="relative w-full h-[320px] sm:h-[400px] lg:h-[420px] xl:h-[460px] rounded-[40px] rounded-br-[100px] rounded-tl-[100px] overflow-hidden shadow-2xl border-4 border-white group"
+              style={{
+                backgroundImage: 'url(https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/About%20Us%20Page/Our%20Project%20Workflow.png)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+            >
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
 
-        {/* ─── WORKFLOW CARDS CONTAINER (10 Cards Grid on >=1280px, 3 Cards Auto-Sliding on <1280px) ─── */}
-        <div className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-6 items-stretch">
-            {visibleSteps.map((step) => {
+        {/* ─── DESKTOP VIEW (>= 1280px): ALL 10 CARDS GRID ─── */}
+        <div className="hidden xl:grid grid-cols-5 gap-5 lg:gap-6 items-stretch">
+          {steps.map((step) => {
+            const Icon = step.icon;
+            return (
+              <div
+                key={step.num}
+                className="bg-white p-5 sm:p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 transition-all duration-300 flex flex-col justify-between relative group cursor-pointer"
+              >
+                {/* Step Number Circle */}
+                <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-gradient-to-r from-[#0093cb] to-[#00a65d] text-white font-extrabold text-xs flex items-center justify-center shadow-md z-10">
+                  {step.num}
+                </div>
+
+                {/* Outside Floating Arrow */}
+                {step.num !== 10 && (
+                  <div className="hidden sm:flex absolute -right-3.5 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white shadow-lg border border-slate-200 text-[#0093cb] items-center justify-center opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 pointer-events-none">
+                    <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                  </div>
+                )}
+
+                <div className="space-y-3">
+                  <div className={`w-11 h-11 rounded-2xl ${step.bgColor} border ${step.borderColor} flex items-center justify-center transition-transform duration-300 group-hover:scale-105`}>
+                    <Icon className={`w-5 h-5 ${step.color}`} />
+                  </div>
+
+                  <h4 className="font-extrabold text-xs sm:text-sm text-slate-800 leading-snug uppercase tracking-tight group-hover:text-[#0093cb] transition-colors duration-200">
+                    {step.title}
+                  </h4>
+
+                  <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed font-medium line-clamp-3">
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ─── MOBILE & TABLET VIEW (< 1280px): 2 CARDS UPFRONT WITH SLIDING ─── */}
+        <div className="block xl:hidden space-y-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 max-w-[640px] mx-auto w-full items-stretch">
+            {[
+              steps[slideIndex % steps.length],
+              steps[(slideIndex + 1) % steps.length],
+            ].map((step) => {
               const Icon = step.icon;
               return (
                 <motion.div
-                  key={step.num}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="bg-white p-5 sm:p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0093cb]/30 transition-all duration-300 flex flex-col justify-between relative group cursor-pointer"
+                  key={`${step.num}-${slideIndex}`}
+                  initial={{ opacity: 0.3, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="bg-white p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative group cursor-pointer w-full min-w-0"
                 >
                   {/* Step Number Circle */}
-                  <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-gradient-to-r from-[#0093cb] to-[#00a65d] text-white font-extrabold text-xs flex items-center justify-center shadow-md z-10">
+                  <div className="absolute -top-2.5 -left-2.5 sm:-top-3 sm:-left-3 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-[#0093cb] to-[#00a65d] text-white font-extrabold text-[10px] sm:text-xs flex items-center justify-center shadow-md z-10">
                     {step.num}
                   </div>
 
-                  {/* Outside Floating Arrow in Center pointing to Next Step */}
-                  {step.num !== 10 && (
-                    <div className="hidden sm:flex absolute -right-3.5 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white shadow-lg border border-slate-200 text-[#0093cb] items-center justify-center opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 pointer-events-none">
-                      <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-                    </div>
-                  )}
-
-                  <div className="space-y-3">
-                    {/* Icon Container */}
-                    <div className={`w-11 h-11 rounded-2xl ${step.bgColor} border ${step.borderColor} flex items-center justify-center transition-transform duration-300 group-hover:scale-105`}>
-                      <Icon className={`w-5 h-5 ${step.color}`} />
+                  <div className="space-y-2 sm:space-y-3">
+                    <div className={`w-8 h-8 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl ${step.bgColor} border ${step.borderColor} flex items-center justify-center`}>
+                      <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${step.color}`} />
                     </div>
 
-                    <h4 className="font-extrabold text-xs sm:text-sm text-slate-800 leading-snug uppercase tracking-tight group-hover:text-[#0093cb] transition-colors duration-200">
+                    <h4 className="font-extrabold text-[11px] sm:text-sm text-slate-800 leading-snug uppercase tracking-tight line-clamp-2">
                       {step.title}
                     </h4>
 
-                    <p className="text-slate-500 text-[11px] sm:text-xs leading-relaxed font-medium line-clamp-3">
+                    <p className="text-slate-500 text-[10px] sm:text-xs leading-snug sm:leading-relaxed font-medium line-clamp-3">
                       {step.desc}
                     </p>
                   </div>
@@ -233,33 +257,52 @@ export default function ProjectWorkflow() {
             })}
           </div>
 
-          {/* Auto-Slide Indicator Dots (only on <1280px) */}
-          {!isDesktopXl && (
-            <div className="flex justify-center items-center gap-3 pt-2">
-              <div className="flex items-center gap-1.5">
-                {steps.map((_, idx) => (
+          {/* Auto-Slide Dots Navigation & Controls */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2">
+            <div className="flex items-center gap-3">
+              {/* Prev Button */}
+              <button
+                onClick={handlePrev}
+                aria-label="Previous step"
+                className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 flex items-center justify-center transition-all shadow-sm active:scale-95"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              {/* Dots Navigation */}
+              <div className="flex items-center gap-1.5 overflow-x-auto max-w-[200px] py-1">
+                {Array.from({ length: totalPages }).map((_, pageIdx) => (
                   <button
-                    key={idx}
-                    onClick={() => setSlideIndex(idx)}
-                    className={`transition-all duration-300 rounded-full ${
-                      slideIndex % steps.length === idx
-                        ? "w-6 h-2 bg-[#0093cb]"
+                    key={pageIdx}
+                    onClick={() => setSlideIndex(pageIdx * 2)}
+                    className={`transition-all duration-300 rounded-full shrink-0 ${
+                      Math.floor(slideIndex / 2) === pageIdx
+                        ? "w-5 h-2 bg-[#0093cb]"
                         : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
                     }`}
-                    aria-label={`Slide to step ${idx + 1}`}
+                    aria-label={`Slide to steps ${pageIdx * 2 + 1} and ${pageIdx * 2 + 2}`}
                   />
                 ))}
               </div>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                0{(slideIndex % steps.length) + 1} / 10 &bull; Auto Sliding
-              </span>
-            </div>
-          )}
-        </div>
 
-     
+              {/* Next Button */}
+              <button
+                onClick={handleNext}
+                aria-label="Next step"
+                className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 flex items-center justify-center transition-all shadow-sm active:scale-95"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+              0{Math.floor(slideIndex / 2) + 1} / 0{totalPages} &bull; Auto Sliding
+            </span>
+          </div>
+        </div>
 
       </div>
     </section>
   );
 }
+
