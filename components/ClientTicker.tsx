@@ -50,7 +50,7 @@ const clients = [
   },
   {
     name: "Alembic",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/1-18-r0ab0wv7nk0bf7czr1qnmjlsxz0zvuops2vc1duplg.png",
+    logo: "https://upload.wikimedia.org/wikipedia/en/f/f4/Alembic_Pharmaceuticals_Ltd_logo.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
   },
   {
     name: "IPCA",
