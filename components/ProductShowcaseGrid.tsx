@@ -261,16 +261,16 @@ export default function ProductShowcaseGrid() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="hidden md:grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-4 h-full items-stretch"
+          className="hidden md:grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-3.5 lg:gap-3.5 xl:gap-4 h-full items-stretch"
         >
           {/* COLUMN 1: Category 1 (Desktop Brand Reminders) & Category 2 (Medipride Communications) */}
-          <div className="md:col-span-5 flex flex-col gap-4 lg:gap-4 h-full min-h-0">
+          <div className="md:col-span-5 flex flex-col gap-3 md:gap-3.5 lg:gap-3.5 xl:gap-4 h-full min-h-0">
             {/* Card 1: Desktop Brand Reminders */}
             <Link href={showcaseCards[0].link} className="flex-1 flex flex-col min-h-0">
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
+                className="rounded-2xl lg:rounded-3xl p-4 md:p-4 lg:p-4.5 xl:p-6 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
               >
                 {/* Desktop Background Image */}
                 <div
@@ -281,23 +281,23 @@ export default function ProductShowcaseGrid() {
                 <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#e6f4fa]/90 via-transparent to-[#e6f4fa]/80 pointer-events-none" />
 
                 <div className="z-10">
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-[11px] md:text-xs font-extrabold uppercase tracking-widest text-[#0093cb] bg-[#0093cb]/15 px-3 py-1 rounded-full border border-[#0093cb]/20 backdrop-blur-sm">
+                  <div className="flex justify-between items-start mb-1.5">
+                    <span className="text-[10px] md:text-[11px] lg:text-[10px] xl:text-xs font-extrabold uppercase tracking-widest text-[#0093cb] bg-[#0093cb]/15 px-2.5 py-0.5 md:px-3 md:py-1 rounded-full border border-[#0093cb]/20 backdrop-blur-sm">
                       {showcaseCards[0].badge}
                     </span>
-                    <span className="text-[11px] font-extrabold text-[#002d40]/70 bg-white/40 px-2.5 py-0.5 rounded-full border border-[#002d40]/10 backdrop-blur-sm">
+                    <span className="text-[10px] md:text-[11px] lg:text-[10px] xl:text-[11px] font-extrabold text-[#002d40]/70 bg-white/40 px-2 py-0.5 rounded-full border border-[#002d40]/10 backdrop-blur-sm">
                       {showcaseCards[0].tag?.toUpperCase()}
                     </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-black uppercase tracking-tight leading-tight mb-1.5 text-[#002d40] drop-shadow-sm">
+                  <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-black uppercase tracking-tight leading-tight mb-1 text-[#002d40] drop-shadow-sm">
                     {showcaseCards[0].title}
                   </h3>
-                  <p className="text-xs md:text-sm lg:text-xs font-bold leading-relaxed text-[#002d40]/90 max-w-sm line-clamp-2">
+                  <p className="text-[11px] md:text-xs lg:text-[11px] xl:text-xs font-bold leading-relaxed text-[#002d40]/90 max-w-sm line-clamp-2">
                     {showcaseCards[0].desc}
                   </p>
                 </div>
 
-                <div className="w-fit text-left text-[10px] font-extrabold tracking-wider uppercase text-[#002d40] bg-[#e6f4fa]/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-[#0093cb]/20 shadow-sm z-10 mt-2">
+                <div className="w-fit text-left text-[9px] md:text-[10px] font-extrabold tracking-wider uppercase text-[#002d40] bg-[#e6f4fa]/90 backdrop-blur-md px-2.5 py-1 md:px-3 md:py-1.5 rounded-xl border border-[#0093cb]/20 shadow-sm z-10 mt-1.5">
                   Param Corporation
                 </div>
               </motion.div>
@@ -308,7 +308,7 @@ export default function ProductShowcaseGrid() {
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
+                className="rounded-2xl lg:rounded-3xl p-4 md:p-4 lg:p-4.5 xl:p-6 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
               >
                 {/* Desktop Background Image */}
                 <div
@@ -320,20 +320,20 @@ export default function ProductShowcaseGrid() {
 
                 <div className="z-10">
                   <div className="flex justify-between items-start mb-1">
-                    <span className="text-[11px] font-extrabold uppercase tracking-widest text-emerald-300 bg-emerald-950/50 px-3 py-0.5 rounded-full border border-emerald-400/30 backdrop-blur-sm">
+                    <span className="text-[10px] md:text-[11px] lg:text-[10px] xl:text-xs font-extrabold uppercase tracking-widest text-emerald-300 bg-emerald-950/50 px-2.5 py-0.5 rounded-full border border-emerald-400/30 backdrop-blur-sm">
                       {showcaseCards[1].badge}
                     </span>
-                    <div className="w-8 h-8 rounded-full bg-white text-[#00a65d] flex items-center justify-center shadow-md hover:scale-105 transition-all shrink-0">
-                      <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+                    <div className="w-6 h-6 md:w-7 md:h-7 lg:w-7 lg:h-7 xl:w-8 xl:h-8 rounded-full bg-white text-[#00a65d] flex items-center justify-center shadow-md hover:scale-105 transition-all shrink-0">
+                      <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 stroke-[2.5]" />
                     </div>
                   </div>
-                  <h3 className="text-base sm:text-lg md:text-2xl lg:text-xl font-black uppercase tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+                  <h3 className="text-sm md:text-base lg:text-base xl:text-xl 2xl:text-2xl font-black uppercase tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
                     {showcaseCards[1].title}
                   </h3>
                 </div>
 
-                <div className="z-10 mt-2">
-                  <p className="text-xs md:text-sm lg:text-xs text-white/95 leading-snug line-clamp-2 font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] bg-black/30 backdrop-blur-sm p-2 rounded-xl border border-white/10 w-fit">
+                <div className="z-10 mt-1.5">
+                  <p className="text-[10px] md:text-xs lg:text-[11px] xl:text-xs text-white/95 leading-snug line-clamp-2 font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] bg-black/30 backdrop-blur-sm p-1.5 md:p-2 rounded-xl border border-white/10 w-fit">
                     {showcaseCards[1].desc}
                   </p>
                 </div>
@@ -342,13 +342,13 @@ export default function ProductShowcaseGrid() {
           </div>
 
           {/* COLUMN 2: Category 3 (Digital Solutions) & Category 4 (Hyperpersonalized) */}
-          <div className="md:col-span-3 flex flex-col gap-4 lg:gap-4 h-full min-h-0">
+          <div className="md:col-span-3 flex flex-col gap-3 md:gap-3.5 lg:gap-3.5 xl:gap-4 h-full min-h-0">
             {/* Card 3: Digital Engagement Solutions */}
             <Link href={showcaseCards[2].link} className="flex-1 flex flex-col min-h-0">
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
+                className="rounded-2xl lg:rounded-3xl p-4 md:p-4 lg:p-4.5 xl:p-6 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
               >
                 {/* Desktop Background Image */}
                 <div
@@ -359,18 +359,18 @@ export default function ProductShowcaseGrid() {
                 <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#002f45]/85 via-transparent to-[#002f45]/80 pointer-events-none" />
 
                 <div className="z-10">
-                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-cyan-300 bg-cyan-950/60 px-3 py-0.5 rounded-full border border-cyan-400/30 backdrop-blur-sm inline-block mb-1">
+                  <span className="text-[10px] md:text-[11px] lg:text-[10px] xl:text-xs font-extrabold uppercase tracking-widest text-cyan-300 bg-cyan-950/60 px-2.5 py-0.5 rounded-full border border-cyan-400/30 backdrop-blur-sm inline-block mb-1">
                     {showcaseCards[2].badge}
                   </span>
-                  <h3 className="text-sm sm:text-base md:text-xl lg:text-lg font-black uppercase tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] mb-1">
+                  <h3 className="text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-lg font-black uppercase tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] mb-1">
                     {showcaseCards[2].title}
                   </h3>
-                  <p className="text-xs md:text-sm lg:text-xs leading-relaxed text-white/95 line-clamp-2 font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                  <p className="text-[10px] md:text-xs lg:text-[11px] xl:text-xs leading-relaxed text-white/95 line-clamp-2 font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                     {showcaseCards[2].desc}
                   </p>
                 </div>
 
-                <div className="z-10 text-[10px] text-white/90 font-extrabold tracking-wide mt-2 bg-black/40 backdrop-blur-md px-3 py-1 rounded-xl border border-white/20 shadow-sm w-fit">
+                <div className="z-10 text-[9px] md:text-[10px] text-white/90 font-extrabold tracking-wide mt-1.5 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-xl border border-white/20 shadow-sm w-fit">
                   DigiPRO &bull; QR Products
                 </div>
               </motion.div>
@@ -381,7 +381,7 @@ export default function ProductShowcaseGrid() {
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
+                className="rounded-2xl lg:rounded-3xl p-4 md:p-4 lg:p-4.5 xl:p-6 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
               >
                 {/* Desktop Background Image */}
                 <div
@@ -392,18 +392,18 @@ export default function ProductShowcaseGrid() {
                 <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#e8f5e5]/90 via-transparent to-[#e8f5e5]/85 pointer-events-none" />
 
                 <div className="z-10">
-                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#00a65d] bg-[#00a65d]/15 px-3 py-0.5 rounded-full border border-[#00a65d]/25 backdrop-blur-sm inline-block mb-1">
+                  <span className="text-[10px] md:text-[11px] lg:text-[10px] xl:text-xs font-extrabold uppercase tracking-widest text-[#00a65d] bg-[#00a65d]/15 px-2.5 py-0.5 rounded-full border border-[#00a65d]/25 backdrop-blur-sm inline-block mb-1">
                     {showcaseCards[3].badge}
                   </span>
-                  <h3 className="text-sm sm:text-base md:text-xl lg:text-lg font-black uppercase tracking-tight text-[#004d2b] drop-shadow-sm mb-1">
+                  <h3 className="text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-lg font-black uppercase tracking-tight text-[#004d2b] drop-shadow-sm mb-1">
                     {showcaseCards[3].title}
                   </h3>
-                  <p className="text-xs md:text-sm lg:text-xs leading-snug text-[#004d2b]/95 line-clamp-2 font-bold">
+                  <p className="text-[10px] md:text-xs lg:text-[11px] xl:text-xs leading-snug text-[#004d2b]/95 line-clamp-2 font-bold">
                     {showcaseCards[3].desc}
                   </p>
                 </div>
 
-                <div className="z-10 text-center text-[10px] font-extrabold uppercase tracking-wider text-[#004d2b] bg-[#e8f5e5]/95 backdrop-blur-md px-3 py-1 rounded-xl border border-[#00a65d]/25 shadow-sm w-fit self-center mt-2">
+                <div className="z-10 text-center text-[9px] md:text-[10px] font-extrabold uppercase tracking-wider text-[#004d2b] bg-[#e8f5e5]/95 backdrop-blur-md px-2.5 py-1 rounded-xl border border-[#00a65d]/25 shadow-sm w-fit self-center mt-1.5">
                   Creative ✦ Name Products
                 </div>
               </motion.div>
@@ -411,22 +411,22 @@ export default function ProductShowcaseGrid() {
           </div>
 
           {/* COLUMN 3: Category 5 (Coming Soon) & Category 6 (Visual Aids & Detailers) */}
-          <div className="md:col-span-4 flex flex-col gap-4 lg:gap-4 h-full min-h-0">
+          <div className="md:col-span-4 flex flex-col gap-3 md:gap-3.5 lg:gap-3.5 xl:gap-4 h-full min-h-0">
             {/* Card 5: Coming Soon */}
             <div className="flex flex-col min-h-0" style={{ flex: "40 1 0%" }}>
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-4 md:p-5 lg:p-4 flex items-center justify-center flex-1 relative overflow-hidden group shadow-xl h-full min-h-0 bg-gradient-to-br from-[#072c44] via-[#0093cb]/85 to-[#00a65d] border border-white/20"
+                className="rounded-2xl lg:rounded-3xl p-3.5 md:p-4 lg:p-4 xl:p-5 flex items-center justify-center flex-1 relative overflow-hidden group shadow-xl h-full min-h-0 bg-gradient-to-br from-[#072c44] via-[#0093cb]/85 to-[#00a65d] border border-white/20"
               >
                 <div className="absolute -top-12 -right-12 w-40 h-40 bg-[#0093cb]/40 rounded-full blur-2xl pointer-events-none group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute -bottom-12 -left-12 w-40 h-40 bg-[#00a65d]/40 rounded-full blur-2xl pointer-events-none group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-black/15 pointer-events-none" />
                 <div className="relative z-10 text-center">
-                  <span className="text-[10px] md:text-[11px] font-extrabold uppercase tracking-widest text-white/90 bg-white/15 px-3 py-1 rounded-full border border-white/20 backdrop-blur-md inline-block mb-2.5">
+                  <span className="text-[9px] md:text-[10px] lg:text-[10px] xl:text-[11px] font-extrabold uppercase tracking-widest text-white/90 bg-white/15 px-2.5 py-0.5 md:px-3 md:py-1 rounded-full border border-white/20 backdrop-blur-md inline-block mb-1.5 md:mb-2">
                     {showcaseCards[4].badge}
                   </span>
-                  <h3 className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-black uppercase tracking-wider text-white drop-shadow-lg">
+                  <h3 className="text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-black uppercase tracking-wider text-white drop-shadow-lg">
                     {showcaseCards[4].title}
                   </h3>
                 </div>
@@ -438,7 +438,7 @@ export default function ProductShowcaseGrid() {
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-5 md:p-6 lg:p-5 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
+                className="rounded-2xl lg:rounded-3xl p-4 md:p-4 lg:p-4.5 xl:p-6 flex flex-col justify-between flex-1 relative overflow-hidden group shadow-xl cursor-pointer h-full min-h-0"
               >
                 {/* Desktop Background Image */}
                 <div
@@ -449,23 +449,23 @@ export default function ProductShowcaseGrid() {
                 <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/80 via-transparent to-black/70 pointer-events-none" />
 
                 <div className="z-10">
-                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-white bg-[#0093cb] px-3 py-0.5 rounded-full border border-white/20 shadow-sm inline-block mb-1.5">
+                  <span className="text-[10px] md:text-[11px] lg:text-[10px] xl:text-xs font-extrabold uppercase tracking-widest text-white bg-[#0093cb] px-2.5 py-0.5 rounded-full border border-white/20 shadow-sm inline-block mb-1">
                     {showcaseCards[5].badge}
                   </span>
-                  <h3 className="text-base sm:text-lg md:text-xl font-black uppercase tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] mb-1">
+                  <h3 className="text-sm md:text-sm lg:text-base xl:text-lg 2xl:text-xl font-black uppercase tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] mb-1">
                     {showcaseCards[5].title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-white/90 font-semibold leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] line-clamp-2">
+                  <p className="text-[10px] md:text-xs lg:text-[11px] xl:text-xs text-white/90 font-semibold leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] line-clamp-2">
                     {showcaseCards[5].desc}
                   </p>
                 </div>
 
-                <div className="z-10 flex items-center justify-between bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 shadow-sm">
-                  <span className="text-[10px] text-white/90 font-extrabold tracking-wide">
+                <div className="z-10 flex items-center justify-between bg-black/40 backdrop-blur-md px-2.5 py-1 md:px-3 md:py-1.5 rounded-xl border border-white/20 shadow-sm">
+                  <span className="text-[9px] md:text-[10px] text-white/90 font-extrabold tracking-wide">
                     Explore Collection ✦ Detailers
                   </span>
-                  <div className="w-5 h-5 rounded-full bg-white/20 text-white flex items-center justify-center">
-                    <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                  <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-white/20 text-white flex items-center justify-center">
+                    <ArrowUpRight className="w-3 h-3 md:w-3.5 md:h-3.5 stroke-[2.5]" />
                   </div>
                 </div>
               </motion.div>
