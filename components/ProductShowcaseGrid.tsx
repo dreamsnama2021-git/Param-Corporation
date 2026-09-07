@@ -92,8 +92,6 @@ export default function ProductShowcaseGrid() {
       link: "#",
       bgClass: "from-[#072c44] via-[#0b3c5d] to-[#00a65d]",
       accentColor: "#0093cb",
-      desktopImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_39_15%20AM.png",
-      mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/ChatGPT%20Image%20Aug%2027%2C%202026%2C%2009_39_15%20AM.png",
       tabName: "Coming Soon"
     },
     {
@@ -182,13 +180,6 @@ export default function ProductShowcaseGrid() {
                   key={card.id}
                   className="snap-center shrink-0 w-[84vw] max-w-[320px] h-[370px] rounded-3xl relative overflow-hidden shadow-xl flex items-center justify-center p-5 bg-gradient-to-br from-[#072c44] via-[#0093cb]/85 to-[#00a65d] border border-white/20"
                 >
-                  {/* Optional mobile banner image if provided */}
-                  {card.mobileImage && (
-                    <div
-                      className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-30 mix-blend-overlay"
-                      style={{ backgroundImage: `url("${card.mobileImage}")` }}
-                    />
-                  )}
                   <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#0093cb]/40 rounded-full blur-2xl pointer-events-none" />
                   <div className="absolute -bottom-12 -left-12 w-36 h-36 bg-[#00a65d]/40 rounded-full blur-2xl pointer-events-none" />
                   <div className="absolute inset-0 bg-black/15 pointer-events-none" />
@@ -428,12 +419,6 @@ export default function ProductShowcaseGrid() {
                 whileHover={{ y: -4 }}
                 className="rounded-2xl lg:rounded-3xl p-4 md:p-5 lg:p-4 flex items-center justify-center flex-1 relative overflow-hidden group shadow-xl h-full min-h-0 bg-gradient-to-br from-[#072c44] via-[#0093cb]/85 to-[#00a65d] border border-white/20"
               >
-                {showcaseCards[4].desktopImage && (
-                  <div
-                    className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 group-hover:scale-105 pointer-events-none opacity-25 mix-blend-overlay"
-                    style={{ backgroundImage: `url("${showcaseCards[4].desktopImage}")` }}
-                  />
-                )}
                 <div className="absolute -top-12 -right-12 w-40 h-40 bg-[#0093cb]/40 rounded-full blur-2xl pointer-events-none group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute -bottom-12 -left-12 w-40 h-40 bg-[#00a65d]/40 rounded-full blur-2xl pointer-events-none group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-black/15 pointer-events-none" />
