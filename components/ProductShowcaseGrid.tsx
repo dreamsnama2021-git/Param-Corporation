@@ -78,7 +78,8 @@ export default function ProductShowcaseGrid() {
       link: "/personalized",
       bgClass: "from-[#0f2419] via-[#143323] to-[#1a442e]",
       accentColor: "#00a65d",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Personalized.png",
+      desktopImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Personalized.png",
+      mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Personalized.png",
       tabName: "Personalized"
     },
     {
@@ -105,7 +106,8 @@ export default function ProductShowcaseGrid() {
       link: "/koru",
       bgClass: "from-[#171412] via-[#241e1a] to-[#120f0d]",
       accentColor: "#0093cb",
-      image: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Koru.png",
+      desktopImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Koru.png",
+      mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Koru.png",
       tabName: "Detailers"
     }
   ];
