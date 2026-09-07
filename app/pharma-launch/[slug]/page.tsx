@@ -487,33 +487,35 @@ const ProductImage = ({ src, alt, className = "" }: { src: string; alt: string; 
 // ─── Page Banner ──────────────────────────────────────────────────
 const PageBanner = () => (
   <div className="relative w-full h-[510px] sm:h-[300px] md:h-[340px] lg:h-[380px] xl:h-[450px] 2xl:h-[590px] overflow-hidden">
+    {/* Mobile image */}
     <Image
       src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Pharma%20Launch.png"
-      alt="Pharma Launch Banner"
+      alt="Pharma Launch Banner - Mobile"
       fill
-      className="object-cover object-center"
+      className="object-cover object-center block md:hidden"
       priority
       unoptimized
     />
+
     {/* Tablet image */}
-        <Image
-          src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/About%20page%20%20Tablet.jpg"
-          alt="About Us Banner - Tablet"
-          fill
-          className="object-cover object-center hidden md:block lg:hidden"
-          priority
-          unoptimized
-        />
-    
-        {/* Desktop image */}
-        <Image
-          src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Inner%20Banner/About%20page%20Desktop.jpg"
-          alt="About Us Banner - Desktop"
-          fill
-          className="object-cover object-center hidden lg:block"
-          priority
-          unoptimized
-        />
+    <Image
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Pharma%20Launch.png"
+      alt="Pharma Launch Banner - Tablet"
+      fill
+      className="object-cover object-center hidden md:block lg:hidden"
+      priority
+      unoptimized
+    />
+
+    {/* Desktop image */}
+    <Image
+      src="https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Pharma%20Launch.png"
+      alt="Pharma Launch Banner - Desktop"
+      fill
+      className="object-cover object-center hidden lg:block"
+      priority
+      unoptimized
+    />
   </div>
 );
 

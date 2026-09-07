@@ -46,7 +46,7 @@ const clients = [
   },
   {
     name: "Cipla",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/2-8-r0ab0yqw182w2fa9g2jwrj4q4qrqb8w6gc6azxrx90.png",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/b/be/Cipla_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
   },
   {
     name: "Alembic",
