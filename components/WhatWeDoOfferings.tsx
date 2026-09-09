@@ -12,6 +12,8 @@ import {
   ChevronRight,
 } from "lucide-react";
 
+import { useSwipe } from "@/hooks/useSwipe";
+
 export default function WhatWeDoOfferings() {
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -85,6 +87,11 @@ export default function WhatWeDoOfferings() {
   const handleNext = () => {
     setSlideIndex((prev) => (prev + 2 >= offerings.length ? 0 : prev + 2));
   };
+
+  const swipeHandlers = useSwipe({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+  });
 
   return (
     <section className="bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-slate-100">
@@ -176,8 +183,11 @@ export default function WhatWeDoOfferings() {
             })}
           </div>
 
-          {/* ── MOBILE & TABLET VIEW (< 1280px): 2 CARDS UPFRONT WITH SLIDING ── */}
-          <div className="block xl:hidden space-y-4">
+          {/* ── MOBILE & TABLET VIEW (< 1280px): 2 CARDS UPFRONT WITH SLIDING & TOUCH SWIPE ── */}
+          <div 
+            className="block xl:hidden space-y-4 touch-pan-y select-none"
+            {...swipeHandlers}
+          >
             <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 max-w-[640px] mx-auto w-full items-stretch">
               {[
                 offerings[slideIndex % offerings.length],

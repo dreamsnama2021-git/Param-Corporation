@@ -28,9 +28,12 @@ import {
   Handshake,
   Award,
   Clock,
+  CheckCircle2,
   PenTool,
   Quote,
 } from "lucide-react";
+import { useSwipe } from "@/hooks/useSwipe";
+import Testimonial from "@/components/Testimonial";
 import Image from "next/image";
 import {
   EditorialTimeline,
@@ -288,6 +291,19 @@ const WhyUsSection = () => {
     return () => clearInterval(timer);
   }, [isDesktopXl, cards.length]);
 
+  const handlePrev = () => {
+    setSlideIndex((prev) => (prev - 2 < 0 ? 4 : prev - 2));
+  };
+
+  const handleNext = () => {
+    setSlideIndex((prev) => (prev + 2 >= cards.length ? 0 : prev + 2));
+  };
+
+  const swipeHandlers = useSwipe({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+  });
+
   const visibleCards = isDesktopXl ? cards : cards.slice(slideIndex, slideIndex + 2);
 
   return (
@@ -310,7 +326,10 @@ const WhyUsSection = () => {
             </div>
 
             {/* CARDS CONTAINER (All Cards Grid on >=1280px, 2 Cards Auto-Sliding on <1280px) */}
-            <div className="space-y-4">
+            <div 
+              className="space-y-4 touch-pan-y select-none"
+              {...(!isDesktopXl ? swipeHandlers : {})}
+            >
               <div className="grid grid-cols-2 gap-3 sm:gap-4 min-h-[160px] items-stretch">
                 {visibleCards.map((item) => {
                   const Icon = item.icon;

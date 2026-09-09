@@ -11,6 +11,7 @@ import {
   ArrowUpRight,
   Sparkles
 } from 'lucide-react';
+import { useSwipe } from '@/hooks/useSwipe';
 
 // Type definitions
 interface Stat {
@@ -275,6 +276,19 @@ export default function CreativeStatsSection(): React.ReactElement {
 
   const totalPages = Math.ceil(stats.length / 2); // 3 pages
 
+  const handlePrev = () => {
+    setSlideIndex((prev) => (prev - 2 < 0 ? (totalPages - 1) * 2 : prev - 2));
+  };
+
+  const handleNext = () => {
+    setSlideIndex((prev) => (prev + 2 >= stats.length ? 0 : prev + 2));
+  };
+
+  const swipeHandlers = useSwipe({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+  });
+
   // Auto-slide 2 cards upfront at a time on screens < 1280px (step by 2 pairs)
   useEffect(() => {
     if (isDesktopXl) return;
@@ -338,7 +352,10 @@ export default function CreativeStatsSection(): React.ReactElement {
         </div>
 
         {/* 5 Stats Cards Upfront on >=1280px, 2 Cards Auto-Sliding on <1280px */}
-        <div className="space-y-4">
+        <div 
+          className="space-y-4 touch-pan-y select-none"
+          {...(!isDesktopXl ? swipeHandlers : {})}
+        >
           <div className="grid grid-cols-2 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-[640px] xl:max-w-none mx-auto">
             {visibleStats.map((stat, index) => (
               <TiltCard key={`${stat.id}-${slideIndex}`} stat={stat} index={index} />

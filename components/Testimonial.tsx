@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useSwipe } from "@/hooks/useSwipe";
 
 const testimonials = [
   {
@@ -128,6 +129,11 @@ const TestimonialCards = () => {
     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
   };
 
+  const swipeHandlers = useSwipe({
+    onSwipedLeft: nextPage,
+    onSwipedRight: prevPage,
+  });
+
   const getCurrentTestimonials = () => {
     const start = currentPage * itemsPerPage;
     return testimonials.slice(start, start + itemsPerPage);
@@ -168,7 +174,10 @@ const TestimonialCards = () => {
         </motion.div>
 
         {/* Testimonials Grid - Container stays fixed */}
-        <div className="relative">
+        <div 
+          className="relative touch-pan-y select-none"
+          {...swipeHandlers}
+        >
           <div
             className="grid md:grid-cols-3 overflow-hidden rounded-lg sm:rounded-xl"
             style={{
@@ -269,6 +278,11 @@ export const TestimonialCardsVariant = () => {
     setCurrentPage((prev) => (prev - 1 + totalGroups) % totalGroups);
   };
 
+  const swipeHandlers = useSwipe({
+    onSwipedLeft: nextGroup,
+    onSwipedRight: prevGroup,
+  });
+
   const getCurrentTestimonials = () => {
     const start = currentPage * itemsPerGroup;
     const group = testimonials.slice(start, start + itemsPerGroup);
@@ -313,7 +327,10 @@ export const TestimonialCardsVariant = () => {
         </motion.div>
 
         {/* Grid - Container stays fixed */}
-        <div className="relative">
+        <div 
+          className="relative touch-pan-y select-none"
+          {...swipeHandlers}
+        >
           <div
             className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-lg sm:rounded-xl"
             style={{

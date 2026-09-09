@@ -17,6 +17,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import { useSwipe } from "@/hooks/useSwipe";
 
 export default function ProjectWorkflow() {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -132,6 +133,11 @@ export default function ProjectWorkflow() {
     setSlideIndex((prev) => (prev + 2 >= steps.length ? 0 : prev + 2));
   };
 
+  const swipeHandlers = useSwipe({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+  });
+
   return (
     <section id="project-workflow" className="py-12 sm:py-16 lg:py-20 bg-slate-50/50 relative overflow-hidden border-b border-slate-100">
       {/* Background Blurs */}
@@ -218,8 +224,11 @@ export default function ProjectWorkflow() {
           })}
         </div>
 
-        {/* ─── MOBILE & TABLET VIEW (< 1280px): 2 CARDS UPFRONT WITH SLIDING ─── */}
-        <div className="block xl:hidden space-y-4">
+        {/* ─── MOBILE & TABLET VIEW (< 1280px): 2 CARDS UPFRONT WITH SLIDING & TOUCH SWIPE ─── */}
+        <div 
+          className="block xl:hidden space-y-4 touch-pan-y select-none"
+          {...swipeHandlers}
+        >
           <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 max-w-[640px] mx-auto w-full items-stretch">
             {[
               steps[slideIndex % steps.length],

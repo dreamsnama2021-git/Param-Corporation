@@ -160,20 +160,32 @@ export default function HeroWithStats() {
     }
   }, []);
 
+  const [startY, setStartY] = useState(0);
+
   // Handle drag/swipe
   const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
     stopAutoPlay();
     setIsDragging(true);
     const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
     setStartX(clientX);
+    setStartY(clientY);
     setIsTransitioning(false);
   };
 
   const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDragging) return;
     const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-    const diff = clientX - startX;
-    setTranslateX(diff);
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    const diffX = clientX - startX;
+    const diffY = clientY - startY;
+
+    // If it's more vertical than horizontal on mobile, don't hijack horizontal drag heavily
+    if ('touches' in e && Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffX) < 10) {
+      return;
+    }
+
+    setTranslateX(diffX);
   };
 
   const handleDragEnd = (e: React.MouseEvent | React.TouchEvent) => {
@@ -185,10 +197,10 @@ export default function HeroWithStats() {
     setIsDragging(false);
     setIsTransitioning(true);
     
-    const clientX = 'touches' in e ? e.changedTouches[0].clientX : e.clientX;
+    const clientX = 'changedTouches' in e ? e.changedTouches[0].clientX : e.clientX;
     const diff = clientX - startX;
     
-    if (Math.abs(diff) > 50) {
+    if (Math.abs(diff) > 40) {
       if (diff > 0) {
         prevSlide();
       } else {
@@ -229,7 +241,7 @@ export default function HeroWithStats() {
         {/* Slides Container */}
         <div 
           ref={containerRef}
-          className="relative w-full h-full flex"
+          className="relative w-full h-full flex touch-pan-y select-none"
           style={{
             transform: getTransformStyle(),
             transition: isTransitioning && !isDragging ? 'transform 700ms cubic-bezier(0.4, 0, 0.2, 1)' : 'none',

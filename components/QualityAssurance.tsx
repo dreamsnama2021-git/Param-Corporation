@@ -16,6 +16,7 @@ import {
   Leaf,
   Handshake,
 } from "lucide-react";
+import { useSwipe } from "@/hooks/useSwipe";
 
 export default function QualityAssurance() {
   const [slideIndex, setSlideIndex] = React.useState(0);
@@ -89,6 +90,19 @@ export default function QualityAssurance() {
     }, 3800);
     return () => clearInterval(timer);
   }, [isDesktopXl, practices.length]);
+
+  const handlePrev = () => {
+    setSlideIndex((prev) => (prev - 2 < 0 ? 4 : prev - 2));
+  };
+
+  const handleNext = () => {
+    setSlideIndex((prev) => (prev + 2 >= practices.length ? 0 : prev + 2));
+  };
+
+  const swipeHandlers = useSwipe({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+  });
 
   const visiblePractices = isDesktopXl ? practices : practices.slice(slideIndex, slideIndex + 2);
 
@@ -176,7 +190,10 @@ export default function QualityAssurance() {
             </div>
 
             {/* PRACTICES CONTAINER (All 6 Cards Grid on >=1280px, 2 Cards Auto-Sliding on <1280px) */}
-            <div className="space-y-4">
+            <div 
+              className="space-y-4 touch-pan-y select-none"
+              {...(!isDesktopXl ? swipeHandlers : {})}
+            >
               <div className="grid grid-cols-2 gap-3 sm:gap-4 min-h-[150px] items-stretch">
                 {visiblePractices.map((item) => {
                   const Icon = item.icon;

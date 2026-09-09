@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useSwipe } from "@/hooks/useSwipe";
 
 // ─── CATEGORIES DATA ─────────────────
 const CATEGORIES = [
@@ -148,6 +149,19 @@ function GiftsByCategories() {
 
   const totalPages = Math.ceil(CATEGORIES.length / 2); // 2 pages
 
+  const handlePrev = () => {
+    setSlideIndex((prev) => (prev - 2 < 0 ? (totalPages - 1) * 2 : prev - 2));
+  };
+
+  const handleNext = () => {
+    setSlideIndex((prev) => (prev + 2 >= CATEGORIES.length ? 0 : prev + 2));
+  };
+
+  const swipeHandlers = useSwipe({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+  });
+
   // Auto-slide 2 cards upfront at a time on mobile (< 768px)
   useEffect(() => {
     if (isDesktopXl) return;
@@ -202,7 +216,10 @@ function GiftsByCategories() {
         </motion.div>
 
         {/* Categories Grid - 4 Columns Grid */}
-        <div className="space-y-4 mb-6 sm:mb-10 lg:mb-10 xl:mb-16">
+        <div 
+          className="space-y-4 mb-6 sm:mb-10 lg:mb-10 xl:mb-16 touch-pan-y select-none"
+          {...(!isDesktopXl ? swipeHandlers : {})}
+        >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 xl:gap-8 pb-2 sm:pb-0">
             {visibleCategories.map((item) => (
               <motion.div

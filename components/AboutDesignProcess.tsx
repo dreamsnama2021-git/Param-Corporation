@@ -13,6 +13,7 @@ import {
   Award,
   Leaf,
 } from "lucide-react";
+import { useSwipe } from "@/hooks/useSwipe";
 
 export default function AboutDesignProcess({
   showAll = false,
@@ -72,6 +73,19 @@ export default function AboutDesignProcess({
   ];
 
   const totalPages = Math.ceil(philosophy.length / 2); // 3 pages
+
+  const handlePrev = () => {
+    setSlideIndex((prev) => (prev - 2 < 0 ? (totalPages - 1) * 2 : prev - 2));
+  };
+
+  const handleNext = () => {
+    setSlideIndex((prev) => (prev + 2 >= philosophy.length ? 0 : prev + 2));
+  };
+
+  const swipeHandlers = useSwipe({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+  });
 
   // Auto-slide 2 cards upfront at a time on screens < 1280px (full pair stepping)
   React.useEffect(() => {
@@ -169,7 +183,10 @@ export default function AboutDesignProcess({
             </div>
 
             {/* MIDDLE COMPONENT: Our Design Philosophy (5 Cards Grid on >=1280px, 2 Cards Auto-Sliding on <1280px) */}
-            <div className="space-y-4 w-full">
+            <div 
+              className="space-y-4 w-full touch-pan-y select-none"
+              {...(!isDesktopXl ? swipeHandlers : {})}
+            >
               <div className="grid grid-cols-2 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6 items-stretch max-w-[640px] xl:max-w-none mx-auto">
                 {visiblePhilosophy.map((item) => {
                   const Icon = item.icon;
