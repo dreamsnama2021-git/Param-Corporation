@@ -265,7 +265,7 @@ export default function WhatWeDoOfferings() {
               </div>
 
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                0{Math.floor(slideIndex / 2) + 1} / 0{totalPages} &bull; Auto Sliding
+                0{Math.floor(slideIndex / 2) + 1} / 0{totalPages}
               </span>
             </div>
           </div>

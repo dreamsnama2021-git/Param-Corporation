@@ -8,7 +8,7 @@ const testimonials = [
   {
     quote:
       "Param Corporation is a dependable partner who consistently delivers high-quality solutions on time. Their attention to detail and professional approach are commendable.",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/2-8-r0ab0yqw182w2fa9g2jwrj4q4qrqb8w6gc6azxrx90.png",
+    logo: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Cipla_logo.svg/1280px-Cipla_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
     name: "Vikram Singh",
     role: "Brand Manager",
     company: "Cipla Ltd",
@@ -30,7 +30,7 @@ const testimonials = [
   {
     quote:
       "Excellent service, timely delivery and great support throughout the project. We look forward to continuing our association with Param Corporation.",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/1-18-r0ab0wv7nk0bf7czr1qnmjlsxz0zvuops2vc1duplg.png",
+    logo: "https://upload.wikimedia.org/wikipedia/en/archive/f/f4/20170122064257%21Alembic_Pharmaceuticals_Ltd_logo.png",
     name: "Anupam Mehta",
     role: "Marketing Head",
     company: "Alembic Pharmaceuticals",
@@ -96,7 +96,7 @@ const testimonials = [
   {
     quote:
       "The quality and attention to detail exceeded our expectations. The team delivered exceptional results within our timeline and budget constraints.",
-    logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/2-8-r0ab0yqw182w2fa9g2jwrj4q4qrqb8w6gc6azxrx90.png",
+    logo: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Cipla_logo.svg/1280px-Cipla_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail",
     name: "Priya Sharma",
     role: "HR Director",
     company: "Cipla Ltd",

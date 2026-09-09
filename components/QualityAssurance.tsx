@@ -223,7 +223,7 @@ export default function QualityAssurance() {
                     ))}
                   </div>
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                    0{slideIndex / 2 + 1} / 03 &bull; Auto Sliding
+                    0{slideIndex / 2 + 1} / 03
                   </span>
                 </div>
               )}

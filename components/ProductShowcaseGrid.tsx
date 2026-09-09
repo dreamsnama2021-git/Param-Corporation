@@ -85,28 +85,28 @@ export default function ProductShowcaseGrid() {
     {
       id: 4,
       badge: "Category 05",
-      tag: "Upcoming",
-      title: "Coming Soon",
-      desc: "Exciting new medical innovations & upcoming product launches.",
-      mobileDesc: "Exciting new medical innovations & upcoming product launches.",
-      link: "#",
-      bgClass: "from-[#072c44] via-[#0b3c5d] to-[#00a65d]",
-      accentColor: "#0093cb",
-      tabName: "Coming Soon"
-    },
-    {
-      id: 5,
-      badge: "Category 06",
       tag: "Clinical Aids",
       title: "Visual Aids & Detailers",
       desc: "Highly structured visual aids, scientific detailers, and consultative tools.",
       mobileDesc: "Highly structured visual aids, scientific detailers, and consultative tools.",
+      link: "#",
+      bgClass: "from-[#072c44] via-[#0b3c5d] to-[#00a65d]",
+      accentColor: "#0093cb",
+      tabName: "Visual Aids"
+    },
+    {
+      id: 5,
+      badge: "Category 06",
+      tag: "Sustainability",
+      title: "Koru",
+      desc: "Eco-friendly, sustainable desk companions and responsible green initiatives.",
+      mobileDesc: "Eco-friendly, sustainable desk companions and responsible green initiatives.",
       link: "/koru",
       bgClass: "from-[#171412] via-[#241e1a] to-[#120f0d]",
-      accentColor: "#0093cb",
+      accentColor: "#00a65d",
       desktopImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Koru%20update.png",
       mobileImage: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Banners/Circle%20Banner/Banners_Circle%20Banner_Koru%20update%20Mobile.png",
-      tabName: "Detailers"
+      tabName: "Koru"
     }
   ];
 
@@ -178,18 +178,24 @@ export default function ProductShowcaseGrid() {
               card.id === 4 ? (
                 <div
                   key={card.id}
-                  className="snap-center shrink-0 w-[84vw] max-w-[320px] h-[370px] rounded-3xl relative overflow-hidden shadow-xl flex items-center justify-center p-5 bg-gradient-to-br from-[#072c44] via-[#0093cb]/85 to-[#00a65d] border border-white/20"
+                  className="snap-center shrink-0 w-[84vw] max-w-[320px] h-[370px] rounded-3xl relative overflow-hidden shadow-xl flex items-center justify-center p-5 bg-gradient-to-br from-[#072c44] via-[#0093cb]/85 to-[#00a65d] border border-white/20 text-center"
                 >
                   <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#0093cb]/40 rounded-full blur-2xl pointer-events-none" />
                   <div className="absolute -bottom-12 -left-12 w-36 h-36 bg-[#00a65d]/40 rounded-full blur-2xl pointer-events-none" />
                   <div className="absolute inset-0 bg-black/15 pointer-events-none" />
-                  <div className="relative z-10 text-center">
+                  <div className="relative z-10 text-center flex flex-col items-center justify-center">
                     <span className="text-[10px] font-extrabold uppercase tracking-widest text-white/90 bg-white/15 px-3 py-1 rounded-full border border-white/20 backdrop-blur-md inline-block mb-3">
-                      Category 05
+                      {card.badge}
                     </span>
-                    <h3 className="text-3xl sm:text-4xl font-black uppercase tracking-wider text-white drop-shadow-lg">
+                    <h3 className="text-3xl sm:text-4xl font-black uppercase tracking-wider text-white drop-shadow-lg mb-2">
                       Coming Soon
                     </h3>
+                    <div className="text-sm font-black uppercase tracking-wider text-cyan-200 drop-shadow-sm mb-1.5">
+                      {card.title}
+                    </div>
+                    <p className="text-xs text-white/90 font-medium leading-relaxed max-w-[260px] mx-auto">
+                      {card.mobileDesc || card.desc}
+                    </p>
                   </div>
                 </div>
               ) : (
@@ -410,30 +416,37 @@ export default function ProductShowcaseGrid() {
             </Link>
           </div>
 
-          {/* COLUMN 3: Category 5 (Coming Soon) & Category 6 (Visual Aids & Detailers) */}
+          {/* COLUMN 3: Category 5 (Visual Aids & Detailers - Coming Soon) & Category 6 (Koru - Sustainability) */}
           <div className="md:col-span-4 flex flex-col gap-3 md:gap-3.5 lg:gap-3.5 xl:gap-4 h-full min-h-0">
-            {/* Card 5: Coming Soon */}
+            {/* Card 5: Visual Aids & Detailers (Coming Soon) */}
             <div className="flex flex-col min-h-0" style={{ flex: "40 1 0%" }}>
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="rounded-2xl lg:rounded-3xl p-3.5 md:p-4 lg:p-4 xl:p-5 flex items-center justify-center flex-1 relative overflow-hidden group shadow-xl h-full min-h-0 bg-gradient-to-br from-[#072c44] via-[#0093cb]/85 to-[#00a65d] border border-white/20"
+                className="rounded-2xl lg:rounded-3xl p-3.5 md:p-4 lg:p-4 xl:p-5 flex items-center justify-center flex-1 relative overflow-hidden group shadow-xl h-full min-h-0 bg-gradient-to-br from-[#072c44] via-[#0093cb]/85 to-[#00a65d] border border-white/20 text-center"
               >
                 <div className="absolute -top-12 -right-12 w-40 h-40 bg-[#0093cb]/40 rounded-full blur-2xl pointer-events-none group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute -bottom-12 -left-12 w-40 h-40 bg-[#00a65d]/40 rounded-full blur-2xl pointer-events-none group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-black/15 pointer-events-none" />
-                <div className="relative z-10 text-center">
+                
+                <div className="relative z-10 text-center flex flex-col items-center justify-center">
                   <span className="text-[9px] md:text-[10px] lg:text-[10px] xl:text-[11px] font-extrabold uppercase tracking-widest text-white/90 bg-white/15 px-2.5 py-0.5 md:px-3 md:py-1 rounded-full border border-white/20 backdrop-blur-md inline-block mb-1.5 md:mb-2">
                     {showcaseCards[4].badge}
                   </span>
-                  <h3 className="text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-black uppercase tracking-wider text-white drop-shadow-lg">
-                    {showcaseCards[4].title}
+                  <h3 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-black uppercase tracking-wider text-white drop-shadow-lg mb-1">
+                    Coming Soon
                   </h3>
+                  <div className="text-xs md:text-sm font-black uppercase tracking-wider text-cyan-200 drop-shadow-sm mb-1">
+                    {showcaseCards[4].title}
+                  </div>
+                  <p className="text-[10px] md:text-[11px] lg:text-[11px] xl:text-xs text-white/90 font-medium leading-tight max-w-[340px] mx-auto line-clamp-2">
+                    {showcaseCards[4].desc}
+                  </p>
                 </div>
               </motion.div>
             </div>
 
-            {/* Card 6: Visual Aids & Detailers (Koru) */}
+            {/* Card 6: Koru (Sustainability) */}
             <Link href={showcaseCards[5].link} className="flex flex-col min-h-0" style={{ flex: "60 1 0%" }}>
               <motion.div
                 variants={itemVariants}
@@ -449,9 +462,14 @@ export default function ProductShowcaseGrid() {
                 <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/80 via-transparent to-black/70 pointer-events-none" />
 
                 <div className="z-10">
-                  <span className="text-[10px] md:text-[11px] lg:text-[10px] xl:text-xs font-extrabold uppercase tracking-widest text-white bg-[#0093cb] px-2.5 py-0.5 rounded-full border border-white/20 shadow-sm inline-block mb-1">
-                    {showcaseCards[5].badge}
-                  </span>
+                  <div className="flex justify-between items-start mb-1">
+                    <span className="text-[10px] md:text-[11px] lg:text-[10px] xl:text-xs font-extrabold uppercase tracking-widest text-white bg-[#00a65d] px-2.5 py-0.5 rounded-full border border-white/20 shadow-sm inline-block">
+                      {showcaseCards[5].badge}
+                    </span>
+                    <span className="text-[9px] md:text-[10px] lg:text-[10px] xl:text-[11px] font-extrabold uppercase tracking-wider text-white/80 bg-black/30 px-2 py-0.5 rounded-full border border-white/15 backdrop-blur-md">
+                      {showcaseCards[5].tag?.toUpperCase()}
+                    </span>
+                  </div>
                   <h3 className="text-sm md:text-sm lg:text-base xl:text-lg 2xl:text-xl font-black uppercase tracking-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] mb-1">
                     {showcaseCards[5].title}
                   </h3>
@@ -462,7 +480,7 @@ export default function ProductShowcaseGrid() {
 
                 <div className="z-10 flex items-center justify-between bg-black/40 backdrop-blur-md px-2.5 py-1 md:px-3 md:py-1.5 rounded-xl border border-white/20 shadow-sm">
                   <span className="text-[9px] md:text-[10px] text-white/90 font-extrabold tracking-wide">
-                    Explore Collection ✦ Detailers
+                    Explore Collection ✦ Koru
                   </span>
                   <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-white/20 text-white flex items-center justify-center">
                     <ArrowUpRight className="w-3 h-3 md:w-3.5 md:h-3.5 stroke-[2.5]" />
