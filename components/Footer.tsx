@@ -321,28 +321,28 @@ export default function Footer() {
             © 2026 | All rights reserved by Param Corporation
           </p>
 
-          <p className="text-xs  xl:text-sm mt-1.5 sm:mt-2">
+          <p className="text-xs xl:text-sm mt-1.5 sm:mt-2">
             Designed & Developed by{" "}
             <a
               href="https://www.greensmedia.co.in"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
               className="text-[var(--clr-primary)] hover:underline transition"
             >
               Greens Media
             </a>
           </p>
-          <p className="text-xs   xl:text-sm -mt-2">
-            {" "}
+
+          <div className="w-full flex justify-end -mt-3">
             <a
               href="https://www.amforstudio.in/"
               target="_blank"
-              rel="noopener noreferrer"
-              className="relative -bottom-5  text-[var(--clr-bg-dark-deep)]  transition"
+              rel="noopener"
+              className="text-[var(--clr-bg-dark-deep)] select-none text-[10px] sm:text-xs cursor-default"
             >
               Abu Qatada Amfor Studio
             </a>
-          </p>
+          </div>
         </div>
       </div>
     </footer>
