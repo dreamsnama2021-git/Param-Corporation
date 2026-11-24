@@ -64,6 +64,62 @@ const clients = [
     name: "Alkem",
     logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/Alkem.png",
   },
+  {
+    name: "Aristo",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/Aristo.png",
+  },
+  {
+    name: "Bal Pharma",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/Bal%20Pharma.png",
+  },
+  {
+    name: "Dhootapapeshwar Ayurved",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/Dhootapapeshwar%20Ayurved.png",
+  },
+  {
+    name: "Emcure",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/Emcure.png",
+  },
+  {
+    name: "Entod",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/Entod.png",
+  },
+  {
+    name: "Glenmark",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/Glenmark%20Logo%20Transparent.png",
+  },
+  {
+    name: "Hetero Healthcare",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/Hetero%20Healthcare.png",
+  },
+  {
+    name: "INTEGRACE",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/INTEGRACE.png",
+  },
+  {
+    name: "MSN",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/MSN.png",
+  },
+  {
+    name: "Merck",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/Merck.png",
+  },
+  {
+    name: "PG Health",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/PG%20Health.png",
+  },
+  {
+    name: "RPG Life Sciences",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/RPG%20Life%20Sciences.png",
+  },
+  {
+    name: "Sunways",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/Red%20Sunways%20Triangle%20Logo.png",
+  },
+  {
+    name: "UNS",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/UNS.png",
+  },
 ];
 
 export default function ClientTicker() {
