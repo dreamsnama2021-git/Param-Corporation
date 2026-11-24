@@ -22,7 +22,7 @@ export default function ClientSection() {
     },
     {
       name: "Alkem",
-      logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/Alkem.png",
+      logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0011-scaled.jpg",
     },
     {
       name: "Alembic",
