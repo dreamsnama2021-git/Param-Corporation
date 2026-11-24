@@ -36,10 +36,10 @@ const clients = [
     name: "Torrent Pharma",
     logo: "https://companieslogo.com/img/orig/TORNTPHARM.NS_BIG-69c0918d.png?t=1745730856",
   },
-  // {
-  //   name: "Lupin",
-  //   logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0007-scaled.jpg",
-  // },
+  {
+    name: "Lupin",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/Lupin.png",
+  },
   {
     name: "Sirmaxo",
     logo: "https://enviro-technologies.com/wp-content/uploads/2024/07/sirmaxologo_enviro.png",
@@ -60,10 +60,10 @@ const clients = [
     name: "Ajanta Pharma",
     logo: "https://medipride.org/wp-content/uploads/2026/01/Lgo-1_page-0013-scaled.jpg",
   },
-  // {
-  //   name: "GP",
-  //   logo: "https://paramcorp.in/wp-content/uploads/elementor/thumbs/30-r0ab2j57fa83f10caqxix4wdrv1r5342o3bfsjgavo.png",
-  // },
+  {
+    name: "Alkem",
+    logo: "https://pub-735dbd7583d74ad5949115d6fdf77023.r2.dev/Client%20Logo/Alkem.png",
+  },
 ];
 
 export default function ClientTicker() {
